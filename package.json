@@ -16,5 +16,11 @@
     "url": "https://github.com/kyougi-kai/Mahjongrammer/issues"
   },
   "homepage": "https://github.com/kyougi-kai/Mahjongrammer#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "add": "^2.0.6",
+    "express": "^4.21.2",
+    "http": "^0.0.1-security",
+    "yarn": "^1.22.22"
+  }
 }
