@@ -19,14 +19,3 @@ function startGame(){
         _gm = new GM(parseInt(document.getElementById("inputNumberOfPlayer").value), parseInt(document.getElementById("inputMaxHai").value), _dm);
     }
 }
-
-document.getElementById("gF").addEventListener("change", (e)=>{
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = function(e) {
-         _dm.
-      };
-      reader.readAsText(file);
-    }
-});

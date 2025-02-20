@@ -2,25 +2,29 @@ const express = require('express');
 const path = require('path');
 const ejs = require('ejs');
 const fs = require('fs');
+const http = require('http')
 
-const app = express();
-app.engine('ejs', ejs.renderFile);
-const template = fs.readFileSync('./public/html/test-0.1.ejs', 'utf8');
-
-app.get('/', (req, res) => {
-    ejs.render(template, {
-        title:"EJS Sample Code",
-        content: "This is EJS Sample..."
-    }, (err, html) => {
-        if(err){
-            res.status(500).send("エラー");
+const server = http.createServer((req, res) => {
+    if(req.url === "/"){
+        returnFile('./public/html/test-0.1.html')
+    }
+    console.log(req.url);
+    fs.readFile('./public/html/test-0.1.html', 'utf-8', (error, data) => {
+        if(error){
+            console.error(error);
+            return;
         }
-        else {
-            res.send(html);
-        }
-    });
+        
+        res.writeHead(200, {'Content-Type':'text/html'});
+        res.write(data);
+        res.end();
+    })
 });
 
-app.listen(8081, ()=>{
-    console.log("Server is running on http://localhost:8081");
+function returnFile(path){
+
+}
+
+server.listen(8080, ()=>{
+    console.log("うごいてるよ！");  
 });
