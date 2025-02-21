@@ -1,14 +1,13 @@
 class GM{
     constructor(numberOfPlayer, maxHai, dm){
         this._numberOfPlayer = numberOfPlayer;
-        this._wariai = wariai;
+        this._wariai = dm.wariai;
         this._maxHai = maxHai;
         this._wakus = [];
         this._focusHai = null;
         this._nowPhase = -1;
         this._DM = dm;
         this._HM = new HM();
-        console.log(wariai);
 
         //捨てるボタン
         this._throwButton = document.createElement("button");

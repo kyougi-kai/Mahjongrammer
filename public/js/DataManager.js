@@ -1,6 +1,6 @@
 class DM{
-    constructor(wariai){
-        this._wariai = wariai;
+    constructor(callF){
+        this._wariai = [];
         this._partOfSpeech = ["noun", "verb", "adjective", "adverb", "pronoun", "preposition", "conjunction", "interjection", "article", "auxiliaryVerb", "quantifier", "possessive"];
         this._tango = {
             noun : ["dog","school","book","car","apple","city","teacher","computer","river","mountain","idea","happiness","music","game","house","door","flower","table","pencil","phone","actor","actress","advice","air","airplane","airport","animal","answer","area","arm","artist","athlete","author","baby","bag","ball","banana","band","bank","bar","bath","bed","beef","beginner","bike","bird","birthday","blanket","blood","board","boat","body","book","border","bottle","box","boy","bread","brother","building","bus","cake","camera","capital","car","card","carpet","cat","center","chance","change","chicken","child","class","classroom","clothes","cloud","coffee","color","company","computer","cousin","cow","cup","desk","dog","door","down","dream","drink","drum","ear","earth","egg","engine","event","example","eye","face","family","fan","farmer","father","feet","field","file","fish","flower","foot","friend","game","garden","gate","girl","glove","goal","grandfather","grandmother","group","guide","gym","hair","hand","hat","head","heart","home","hospital","house","idea","invention","island","jacket","job","juice","key","king","kitchen","lady","lamp","land","language","laundry","law","leader","leg","library","life","light","line","lip","lock","lunch","machine","man","market","match","meal","medicine","member","menu","message","minute","mirror","money","month","movie","museum","music","name","nephew","news","night","nose","number","object","office","opinion","orange","owner","paint","paper","parent","park","pen","people","photo","picture","place","plane","plate","pool","post","prize","queen","question","radio","rain","restaurant","room","sail","salt","school","season","secretary","seed","shelf","shirt","shoe","singer","sister","snow","soccer","song","south","space","speaker","spot","star","station","stomach","student","subway","sugar","summer","sunglasses","table","tail","team","television","test","thing","thought","ticket","time","tooth","town","toy","traffic","train","transport","tree","umbrella","uncle","uniform","village","voice","water","week","wife","window","winter","woman","world","year","yellow","yoga","zoo"],
@@ -16,11 +16,34 @@ class DM{
             quantifier : ["some", "many", "few", "several", "all", "both", "each", "every", "most", "much", "enough", "plenty", "little", "any", "no", "half", "double", "dozen", "various"],
         }
 
-        this._tangoCard = null;
+        this._data = [];
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', '../data.txt', true);
+
+        xhr.onload = () => {
+            if (xhr.status === 200) {
+              let resData = xhr.responseText;
+              resData = resData.split("\r\n");
+              resData.forEach((value) => {
+                this._data.push(value.split(','));
+              });
+
+              callF();
+            }
+        };
+        xhr.send();
     }
 
     get tango(){
         return this._tango;
+    }
+
+    set wariai(value){
+        this._wariai = value;
+    }
+
+    get data(){
+        return this._data;
     }
 
     pickTango(){
@@ -50,5 +73,26 @@ class DM{
 
     loadTangoWariai(data){
         console.log(data);
+    }
+
+    saveWariai(){
+        let saveText = [];
+        console.log(this._data);
+        this._data.forEach((elem) => {
+            saveText.push(elem.join(","));
+        });
+        saveText = saveText.join("\r\n");
+        console.log(saveText);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/saveFile", true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log("ファイルが保存されました");
+            }
+        };
+        xhr.send(JSON.stringify({text: saveText}));
     }
 }

@@ -1,30 +1,23 @@
 const express = require('express');
-const path = require('path');
-const ejs = require('ejs');
+const app = express();
 const fs = require('fs');
-const http = require('http')
 
-const server = http.createServer((req, res) => {
-    if(req.url === "/"){
-        returnFile('./public/html/test-0.1.html')
-    }
-    console.log(req.url);
-    fs.readFile('./public/html/test-0.1.html', 'utf-8', (error, data) => {
-        if(error){
-            console.error(error);
+app.use(express.static('public'));
+
+app.use(express.json());
+
+app.post('/saveFile', (req, res) => {
+    const { text } = req.body;
+    fs.writeFile("./public/data.txt", text, (err) => {
+        if (err) {
+            res.status(500).send(err);
             return;
         }
-        
-        res.writeHead(200, {'Content-Type':'text/html'});
-        res.write(data);
-        res.end();
-    })
+        res.send("ファイルが保存されました");
+    });
 });
 
-function returnFile(path){
 
-}
-
-server.listen(8080, ()=>{
-    console.log("うごいてるよ！");  
+app.listen(3000, () => {
+  console.log('Server listening on port 3000');
 });
