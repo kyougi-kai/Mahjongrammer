@@ -1,16 +1,22 @@
 let _gm = null;
 let startFlg = false;
 let _dm = new DM(callF);
+const fileNameInput = document.getElementById("fileName");
+const wariaiSelect = document.getElementById("wariaiSelect");
 
 //今度やる
 function callF(){
     //ドロップダウンに追加
     _dm.data.forEach((vlist) => {
-        let tp = document.createElement("option");
-        tp.innerHTML = vlist[0];
-       document.getElementById("wariaiSelect").appendChild(tp);
+        appendOption(vlist[0]);
     });
     console.log(_dm.data);
+}
+
+function appendOption(optionName){
+    let tp = document.createElement("option");
+    tp.innerHTML = optionName;
+    document.getElementById("wariaiSelect").appendChild(tp);
 }
 
 function startGame(){
@@ -31,19 +37,18 @@ function startGame(){
     }
 }
 
-const wariaiSelect = document.getElementById("wariaiSelect");
 wariaiSelect.addEventListener("change", (e)=>{
-
     Array.from(document.getElementById("hinsi").children).forEach((elem, idx) => {
         if(idx % 2 == 1){
             elem.value = _dm.data[wariaiSelect.selectedIndex][parseInt(idx / 2) + 1];
         }
     });
+    fileNameInput.value = _dm.data[wariaiSelect.selectedIndex][0];
 });
 
 function saveWariai(){
     let tem = [];
-    let lname = document.getElementById("fileName").value;
+    let lname = fileNameInput.value;
     Array.from(document.getElementById("hinsi").children).forEach((elem, idx) => {
         if(idx % 2 == 1){
             tem.push(elem.value);
@@ -57,12 +62,15 @@ function saveWariai(){
     if(fidx == -1){
         tem.unshift(lname);
         _dm.data.push(tem);
+        appendOption(lname);
     }
     else{
-        for(let i = 0; i < _dm.data[fidx].length; i++){
-            _dm.data[fidx][i] = tem[i];
+        for(let i = 1; i < _dm.data[fidx].length; i++){
+            _dm.data[fidx][i] = tem[i - 1];
         }
+        console.log(_dm.data);
     }
 
+    wariaiSelect.options[Array.from(wariaiSelect.options).length - 1].selected = true;
     _dm.saveWariai();
 }
