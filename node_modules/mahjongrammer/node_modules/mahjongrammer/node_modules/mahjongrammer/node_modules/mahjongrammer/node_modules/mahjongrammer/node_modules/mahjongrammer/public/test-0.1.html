@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h2{
+            margin: 0;
+        }
+
+        input[type="number"]{
+            width: 70px;
+        }
+
+        p{
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <script src="./js/HaiManager.js"></script>
+    <script src="./js/DataManager.js"></script>
+    <script src="./js/GameManager.js"></script>
+    <div id="ready">
+        <h2>プレイ人数</h2>
+        <input type="number" id="inputNumberOfPlayer" value="4">
+        <h2>最大枚数</h2>
+        <input type="number" id="inputMaxHai" value="8">
+        <div style="display: flex;" id="hinsi">
+            <h2>名詞</h2>
+            <input type="number" value="1">
+            <h2>動詞</h2>
+            <input type="number" value="1">
+            <h2>形容詞</h2>
+            <input type="number" value="1">
+            <h2>副詞</h2>
+            <input type="number" value="1">
+            <h2>代名詞</h2>
+            <input type="number" value="1">
+            <h2>前置詞</h2>
+            <input type="number" value="1">
+            <h2>接続詞</h2>
+            <input type="number" value="1">
+            <h2>感嘆詞</h2>
+            <input type="number" value="1">
+            <h2>冠詞</h2>
+            <input type="number" value="1">
+            <h2>助動詞</h2>
+            <input type="number" value="1">
+        </div>
+        <button onclick="startGame();" style="margin-right: 20px;">決定</button>
+        <select id="wariaiSelect">
+            
+        </select>
+        <input type="text" id="fileName">
+        <button onclick="saveWariai();">割合保存</button>
+    </div>
+    <script src="./js/main.js"></script>
+</body>
+</html>
