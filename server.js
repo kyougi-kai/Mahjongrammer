@@ -11,11 +11,11 @@ const server = http.createServer(app);
 const wss = new WebSocket.Server({server});
 
 const pool = mysql.createPool({
-    host: process.env.MYSQLHOST,
-    user: process.env.MYSQLUSER,
-    password: process.env.MYSQLPASSWORD,
-    database: process.env.MYSQLDATABASE,
-    port: process.env.MYSQLPORT,
+    host: 'trolley.proxy.rlwy.net',
+    user: 'root',
+    password: 'yqHSkiatKYxPmlMdQJjdArjmYmdiWhDB',
+    database: 'railway',
+    port: '59200',
     connectionLimit:20,
     namedPlaceholders: true
 });
