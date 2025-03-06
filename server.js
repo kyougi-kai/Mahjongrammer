@@ -2,11 +2,13 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const mysql = require('mysql2/promise');
-const WebScoket = require('ws');
+const WebSocket = require('ws');
+const http = require('http');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const wss = new WebScoket.Server({port:8080});
+const server = http.createServer(app);
+const wss = new WebSocket.Server({server});
 
 const pool = mysql.createPool({
     user: 'root',
@@ -84,8 +86,8 @@ app.get('/room', (req, res) => {
     });
 });
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+server.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
 
 function loginCheck(req, res){
@@ -101,11 +103,11 @@ async function getRooms(){
 }
 
 async function createRoom(name) {
-    await pool.query(`insert into room values("${name}")`);
+    await pool.query(`insert into room values(?)`, [name]);
 }
 
 async function deleteRoom(name) {
-    await pool.query(`delete from room where parent_name = "${name}"`);
+    await pool.query(`delete from room where parent_name = ?`, name);
 }
 
 async function checkValue(tableName, fieldName, value){
