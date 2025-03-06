@@ -23,7 +23,7 @@ app.use(cookieParser());
 app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
-app.set("views", path.join(__dirname, '../views'));
+app.set("views", path.join(__dirname, 'views'));
 
 wss.on('connection', async ws => {
     const data = await getRooms();
