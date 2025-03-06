@@ -5,6 +5,7 @@ const mysql = require('mysql2/promise');
 const WebScoket = require('ws');
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 const wss = new WebScoket.Server({port:8080});
 
 const pool = mysql.createPool({
@@ -83,8 +84,8 @@ app.get('/room', (req, res) => {
     });
 });
 
-app.listen(3000, () => {
-    console.log('Server is running on http://localhost:3000');
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
 
 function loginCheck(req, res){
