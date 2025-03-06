@@ -11,13 +11,20 @@ const server = http.createServer(app);
 const wss = new WebSocket.Server({server});
 
 const pool = mysql.createPool({
-    user: 'root',
-    host: 'localhost',
-    database: 'mahjongrammer_db',
-    password: 'Kyougikai831',
+    host: process.env.MYSQLHOST,
+    user: process.env.MYSQLUSER,
+    password: process.env.MYSQLPASSWORD,
+    database: process.env.MYSQLDATABASE,
+    port: process.env.MYSQLPORT,
     connectionLimit:20,
     namedPlaceholders: true
 });
+
+console.log("host :" + process.env.MYSQLHOST);
+console.log("user : " + process.env.MYSQLUSER);
+console.log("password :" + process.env.MYSQLPASSWORD);
+console.log("database :" + process.env.MYSQLDATABASE);
+console.log("port :" + process.env.MYSQLPORT);
 
 app.use(cookieParser());
 app.use(express.static('public'));
@@ -33,7 +40,7 @@ wss.on('connection', async ws => {
         const jdt = JSON.parse(dt);
         const key = Object.keys(jdt)[0];
         if(key == 'createRoom'){
-            checkValue('room', 'parent_name', jdt.createRoom)
+            checkValue('Room', 'parent_name', jdt.createRoom)
             .then((value) => {
                 if(value == 0){
                     createRoom(jdt.createRoom);
@@ -98,16 +105,16 @@ function loginCheck(req, res){
 }
 
 async function getRooms(){
-    const results = await pool.query('select * from room');
+    const results = await pool.query('select * from Room');
     return results[0];
 }
 
 async function createRoom(name) {
-    await pool.query(`insert into room values(?)`, [name]);
+    await pool.query(`insert into Room values(?)`, [name]);
 }
 
 async function deleteRoom(name) {
-    await pool.query(`delete from room where parent_name = ?`, name);
+    await pool.query(`delete from Room where parent_name = ?`, name);
 }
 
 async function checkValue(tableName, fieldName, value){
