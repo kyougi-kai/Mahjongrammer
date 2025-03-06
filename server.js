@@ -20,12 +20,6 @@ const pool = mysql.createPool({
     namedPlaceholders: true
 });
 
-console.log("host :" + process.env.MYSQLHOST);
-console.log("user : " + process.env.MYSQLUSER);
-console.log("password :" + process.env.MYSQLPASSWORD);
-console.log("database :" + process.env.MYSQLDATABASE);
-console.log("port :" + process.env.MYSQLPORT);
-
 app.use(cookieParser());
 app.use(express.static('public'));
 

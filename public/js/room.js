@@ -5,7 +5,7 @@ let startFlg = false;
 let rooms = [];
 
 window.onload = () => {
-  socket = new WebSocket('ws://localhost:8080');
+  socket = new WebSocket(`wss://${window.location.host}`);
 
   socket.addEventListener('open', (event) => {
     console.log("サーバーに接続しました");
