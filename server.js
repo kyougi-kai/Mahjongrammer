@@ -17,7 +17,8 @@ const pool = mysql.createPool({
     database: 'railway',
     port: '59200',
     connectionLimit:20,
-    namedPlaceholders: true
+    namedPlaceholders: true,
+    charset: 'utf8mb4'
 });
 
 app.use(cookieParser());
