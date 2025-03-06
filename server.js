@@ -31,26 +31,29 @@ wss.on('connection', async ws => {
     const data = await getRooms();
     ws.send(JSON.stringify(data));
 
-    ws.on('message', (dt) => {
-        const jdt = JSON.parse(dt);
-        const key = Object.keys(jdt)[0];
-        if(key == 'createRoom'){
-            checkValue('Room', 'parent_name', jdt.createRoom)
-            .then((value) => {
+    ws.on('message', async (dt) => {
+        try{
+            const jdt = JSON.parse(dt);
+            const key = Object.keys(jdt)[0];
+            if(key == 'createRoom'){
+                const value = await checkValue('Room', 'parent_name', jdt.createRoom)
                 if(value == 0){
                     createRoom(jdt.createRoom);
                     wss.clients.forEach(client => {
                         client.send(JSON.stringify({newRoom : jdt.createRoom}));
                     });
                 }
-            });
+            }
+            else if(key == "deleteRoom"){
+                //消す処理
+                await deleteRoom(jdt.deleteRoom);
+                wss.clients.forEach(client => {
+                    client.send(JSON.stringify({deleteRoom : jdt.deleteRoom}));
+                });
+            }
         }
-        else if(key == "deleteRoom"){
-            //消す処理
-            deleteRoom(jdt.deleteRoom);
-            wss.clients.forEach(client => {
-                client.send(JSON.stringify({deleteRoom : jdt.deleteRoom}));
-            });
+        catch(err){
+            console.log(err);
         }
     })
 });
@@ -109,7 +112,7 @@ async function createRoom(name) {
 }
 
 async function deleteRoom(name) {
-    await pool.query(`delete from Room where parent_name = ?`, name);
+    await pool.query(`delete from Room where parent_name = ?`, [name]);
 }
 
 async function checkValue(tableName, fieldName, value){
