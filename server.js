@@ -11,11 +11,11 @@ const server = http.createServer(app);
 const wss = new WebSocket.Server({server});
 
 const pool = mysql.createPool({
-    host: 'trolley.proxy.rlwy.net',
-    user: 'root',
-    password: 'yqHSkiatKYxPmlMdQJjdArjmYmdiWhDB',
-    database: 'railway',
-    port: '59200',
+    host: process.env.host,
+    user: process.env.user,
+    password: process.env.password,
+    database: process.env.database,
+    port: process.env.port,
     connectionLimit:20,
     namedPlaceholders: true,
     charset: 'utf8mb4'
@@ -36,7 +36,7 @@ wss.on('connection', async ws => {
             const jdt = JSON.parse(dt);
             const key = Object.keys(jdt)[0];
             if(key == 'createRoom'){
-                const value = await checkValue('Room', 'parent_name', jdt.createRoom)
+                const value = await checkValue('Room', 'parent_name', jdt.createRoom);
                 if(value == 0){
                     createRoom(jdt.createRoom);
                     wss.clients.forEach(client => {

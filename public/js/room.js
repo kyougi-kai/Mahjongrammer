@@ -3,9 +3,10 @@ const userNameText = document.getElementById('userName');
 let socket;
 let startFlg = false;
 let rooms = [];
+const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
 
 window.onload = () => {
-  socket = new WebSocket(`wss://${window.location.host}`);
+  socket = new WebSocket(`${protocol}://${window.location.host}`);
 
   socket.addEventListener('open', (event) => {
     console.log("サーバーに接続しました");

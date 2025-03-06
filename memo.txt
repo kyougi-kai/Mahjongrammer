@@ -1,3 +1,27 @@
+//プロンプトからのクラウドデータベースへの接続
 mysql -h trolley.proxy.rlwy.net -u root -p railway --port 59200 --protocol=TCP
+
+//パスワード
 yqHSkiatKYxPmlMdQJjdArjmYmdiWhDB
+
+//データベース名
 railway
+
+//ローカルでの環境構築
+create database mahjongrammer_db;
+create user 'kyougi_kai'@'localhost' identified by 'Kyougikai831';
+grant all privileges on mahjongrammer_db.* to 'kyougi_kai'@'localhost';
+flush privileges;
+use mahjongrammer_db;
+create table Room(
+    parent_name varchar(255) primary key
+);
+create table users(
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NULL
+);
+
+//ローカルでのサーバー起動
+node --env-file=.env-local server.js
