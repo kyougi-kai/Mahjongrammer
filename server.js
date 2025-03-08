@@ -15,7 +15,7 @@ const pool = mysql.createPool({
     user: process.env.user,
     password: process.env.password,
     database: process.env.database,
-    port: process.env.port,
+    port: process.env.dbport,
     connectionLimit:20,
     namedPlaceholders: true,
     charset: 'utf8mb4'
@@ -78,17 +78,15 @@ app.get('/', (req,res) => {
     }
 });
 
-app.get('/room', (req, res) => {
+app.get('/room', async (req, res) => {
     loginCheck(req, res);
 
-    getRooms()
-    .then((value) => {
-        console.log(value);
+    try{
         res.render('pages/room', {name:req.cookies.name});
-    })
-    .catch((err) => {
-        console.log("エラーがでたよ : " + err);
-    });
+    }
+    catch(err){
+        console.log('Error :' + err);
+    }
 });
 
 server.listen(PORT, () => {
