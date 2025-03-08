@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const mysql = require('mysql2/promise');
 const WebSocket = require('ws');
 const http = require('http');
+const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -23,6 +24,7 @@ const pool = mysql.createPool({
 
 app.use(cookieParser());
 app.use(express.static('public'));
+app.use(cors());
 
 app.set('view engine', 'ejs');
 app.set("views", path.join(__dirname, 'views'));

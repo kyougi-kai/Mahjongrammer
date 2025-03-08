@@ -4,11 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>user</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <p>ユーザー名</p>
-    <input type="text" id="inputName">
-    <button onclick="decideName();">決定</button>
+    <div class="main-content">
+        <div class="login-div">
+            <div class="login-header">
+                <button onclick="changeForm('login');"><p style="border-bottom: 1px solid white;">ログイン</p></button>
+                <button onclick="changeForm('signin');"><p>サインイン</p></button>
+            </div>
+            <div>
+                <p>ユーザー名</p>
+                <input type="text">
+                <p>パスワード</p>
+                <input type="password">
+            </div>
+            <div class="login-footer">
+                <button onclick="decide();">決定</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/index.js"></script>
 </body>
-<script src="/js/index.js"></script>
 </html>
