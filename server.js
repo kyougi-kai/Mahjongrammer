@@ -5,6 +5,8 @@ const mysql = require('mysql2/promise');
 const WebSocket = require('ws');
 const http = require('http');
 const cors = require('cors');
+const bodyParser = require('body-parser');
+const { error, table } = require('console');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -25,6 +27,7 @@ const pool = mysql.createPool({
 app.use(cookieParser());
 app.use(express.static('public'));
 app.use(cors());
+app.use(express.json());
 
 app.set('view engine', 'ejs');
 app.set("views", path.join(__dirname, 'views'));
@@ -61,18 +64,8 @@ wss.on('connection', async ws => {
 });
 
 app.get('/', (req,res) => {
-    const name = req.cookies.name;
-    const inputName = req.query.name;
-    if(inputName){
-        res.cookie('name', inputName, {
-            maxAge: 259200000,
-            httpOnly: true,
-            path: '/'
-        });
-        res.redirect('/room');
-    }
-
-    if(name){
+    const loginId = req.cookies.loginId;
+    if(loginId){
         res.redirect('/room');
     }
     else{
@@ -84,20 +77,65 @@ app.get('/room', async (req, res) => {
     loginCheck(req, res);
 
     try{
-        res.render('pages/room', {name:req.cookies.name});
+        res.render('pages/room', {name:await getRow('users', 'username', 'user_id', req.cookies.userId)});
     }
     catch(err){
         console.log('Error :' + err);
     }
 });
 
+app.get('/deleteUser', async (req, res) => {
+    loginCheck(req, res);
+
+    try{
+        await deleteUser(req.cookies.userId);
+        res.clearCookie('userId', {path:'/'});
+        res.redirect('/');
+    }
+    catch(err){
+        console.log(err);
+    }
+})
+
+app.post('/login', async(req, res) => {
+    const {username, password} = req.body;
+    if(await checkValue('users', 'username', username) == 1 && await checkValue('users', 'password', password) == 1){
+        await savelogin(res, username);
+        res.json({success: true});
+    }
+    else{
+        res.json({success:false, error:'ユーザー名またはパスワードが間違っています'});
+    }
+});
+
+app.post('/signin', async (req, res) => {
+    const {username, password} = req.body;
+    if(await checkValue('users', 'username', username) == 1){
+        res.json({success: false, error:'ユーザー名が既に使われています'});
+    }
+    else{
+        await addUser(username, password);
+        await savelogin(res, username);
+        res.json({success: true});
+    }
+})
+
 server.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
 
+async function savelogin(res, username){
+    const userId = await getRow('users', 'user_id', 'username', username);
+    res.cookie('userId', userId, {
+        maxAge: 259200000,
+        httpOnly: true,
+        path: '/'
+    });
+}
+
 function loginCheck(req, res){
-    const name = req.cookies.name;
-    if(!name){
+    const userId = req.cookies.userId;
+    if(!userId){
         res.redirect('/');
     }
 }
@@ -118,4 +156,17 @@ async function deleteRoom(name) {
 async function checkValue(tableName, fieldName, value){
     const result = await pool.query(`select count(*) from ${tableName} where ${fieldName} = '${value}'`);
     return result[0][0]['count(*)'];
+}
+
+async function addUser(username, password) {
+    await pool.query('insert into users (username, password) values(?,?);', [username, password]);
+}
+
+async function getRow(tableName, fieldName, filterName, value) {
+    const result = await pool.query(`select ${fieldName} from ${tableName} where ${filterName} = ?`, [value]);
+    return result[0][0][fieldName];
+}
+
+async function deleteUser(userId) {
+    await pool.query('delete from users where user_id = ?', [userId]);
 }

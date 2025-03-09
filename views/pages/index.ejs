@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>user</title>
     <link rel="stylesheet" href="/css/index.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <div class="main-content">
@@ -14,15 +13,17 @@
                 <button onclick="changeForm('login');"><p style="border-bottom: 1px solid white;">ログイン</p></button>
                 <button onclick="changeForm('signin');"><p>サインイン</p></button>
             </div>
-            <div>
-                <p>ユーザー名</p>
-                <input type="text">
-                <p>パスワード</p>
-                <input type="password">
-            </div>
-            <div class="login-footer">
-                <button onclick="decide();">決定</button>
-            </div>
+            <form id="loginForm" >
+                <div>
+                    <p>ユーザー名</p>
+                    <input type="text" id="usernameInput" required>
+                    <p>パスワード</p>
+                    <input type="password" id="passwordInput" required>
+                </div>
+                <div class="login-footer">
+                    <button type="submit">決定</button>
+                </div>
+            </form>
         </div>
     </div>
 
