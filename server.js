@@ -99,24 +99,36 @@ app.get('/deleteUser', async (req, res) => {
 
 app.post('/login', async(req, res) => {
     const {username, password} = req.body;
-    if(await checkValue('users', 'username', username) == 1 && await checkValue('users', 'password', password) == 1){
-        await savelogin(res, username);
-        res.json({success: true});
+    try{
+        if(await checkValue('users', 'username', username) == 1 && await checkValue('users', 'password', password) == 1){
+            await savelogin(res, username);
+            res.json({success: true});
+        }
+        else{
+            res.json({success:false, error:'ユーザー名またはパスワードが間違っています'});
+        }
     }
-    else{
-        res.json({success:false, error:'ユーザー名またはパスワードが間違っています'});
+    catch(err){
+        console.log(err);
+        res.json({success: false, error:err});
     }
 });
 
 app.post('/signin', async (req, res) => {
     const {username, password} = req.body;
-    if(await checkValue('users', 'username', username) == 1){
-        res.json({success: false, error:'ユーザー名が既に使われています'});
+    try{
+        if(await checkValue('users', 'username', username) == 1){
+            res.json({success: false, error:'ユーザー名が既に使われています'});
+        }
+        else{
+            await addUser(username, password);
+            await savelogin(res, username);
+            res.json({success: true});
+        }
     }
-    else{
-        await addUser(username, password);
-        await savelogin(res, username);
-        res.json({success: true});
+    catch(err){
+        console.log(err);
+        res.json({success: false, error:err});
     }
 })
 
