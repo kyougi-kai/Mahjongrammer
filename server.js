@@ -95,6 +95,18 @@ app.get('/deleteUser', async (req, res) => {
     catch(err){
         console.log(err);
     }
+});
+
+app.get('/logout', async (req, res) => {
+    loginCheck(req, res);
+
+    try{
+        res.clearCookie('userId', {path:'/'});
+        res.redirect('/');
+    }
+    catch(err){
+        console.log(err);
+    }
 })
 
 app.post('/login', async(req, res) => {
