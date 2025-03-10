@@ -54,7 +54,16 @@ function createNewRoom(roomName){
 }
 
 function createRoom(){
-  const sendData = JSON.stringify({createRoom : userNameText.textContent});
+  let temporaryList = [];
+  Array.from(createRoomDiv.children).forEach((value) => {
+    if(Array.from(value.children).length != 2)return;
+    const ratio = parseInt(value.children[1].value);
+    temporaryList.push(ratio);
+  })
+  const sendData = JSON.stringify({
+    createRoom : userNameText.textContent,
+    ratio: temporaryList
+  });
   socket.send(sendData);
 }
 
