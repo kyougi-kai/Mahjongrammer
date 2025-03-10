@@ -6,7 +6,6 @@ const WebSocket = require('ws');
 const http = require('http');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const { error, table } = require('console');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
