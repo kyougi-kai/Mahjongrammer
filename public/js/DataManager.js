@@ -28,6 +28,13 @@ class DM{
             jodousi : ["can", "could", "will", "would", "shall", "should", "may", "might", "must"]
         }
 
+        this._tango = {
+            meisi : {
+                tokyo : ['場所', '固有名詞'],
+                dog : ['動物', ]
+            }
+        }
+
         this._data = [];
         const xhr = new XMLHttpRequest();
         xhr.open('GET', '../data.txt', true);

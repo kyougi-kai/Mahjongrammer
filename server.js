@@ -77,6 +77,7 @@ app.get('/room', async (req, res) => {
     loginCheck(req, res);
 
     try{
+        console.log(req.cookies.userId);
         res.render('pages/room', {name:await getRow('users', 'username', 'user_id', req.cookies.userId)});
     }
     catch(err){
