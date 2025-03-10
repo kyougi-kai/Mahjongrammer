@@ -13,14 +13,22 @@ create user 'kyougi_kai'@'localhost' identified by 'Kyougikai831';
 grant all privileges on mahjongrammer_db.* to 'kyougi_kai'@'localhost';
 flush privileges;
 use mahjongrammer_db;
-create table Room(
-    parent_name varchar(255) primary key
-);
 create table users(
-    user_id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NULL
+    user_id INT auto_increment primary key,
+    username varchar(255) not null,
+    password varchar(255) not null,
+    email varchar(255) null
+);
+create table room(
+    parent_id int primary key,
+    child1_id int null,
+    child2_id int null,
+    child3_id int null,
+    ratio varchar(255),
+    foreign key (parent_id) references users(user_id),
+    foreign key (child1_id) references users(user_id),
+    foreign key (child2_id) references users(user_id),
+    foreign key (child3_id) references users(user_id)
 );
 
 //ローカルでのサーバー起動

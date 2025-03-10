@@ -40,9 +40,10 @@ wss.on('connection', async ws => {
             const jdt = JSON.parse(dt);
             const key = Object.keys(jdt)[0];
             if(key == 'createRoom'){
-                const value = await checkValue('Room', 'parent_name', jdt.createRoom);
+                const userId = await getRow('users', 'user_id', 'username', jdt.createRoom);
+                const value = await checkValue('room', 'parent_id', userId);
                 if(value == 0){
-                    createRoom(jdt.createRoom);
+                    createRoom(userId);
                     wss.clients.forEach(client => {
                         client.send(JSON.stringify({newRoom : jdt.createRoom}));
                     });
@@ -168,8 +169,8 @@ async function getRooms(){
     return results[0];
 }
 
-async function createRoom(name) {
-    await pool.query(`insert into Room values(?)`, [name]);
+async function createRoom(parentId) {
+    await pool.query(`insert into room (parent_id) values(?)`, [parentId]);
 }
 
 async function deleteRoom(name) {
