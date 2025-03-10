@@ -1,3 +1,6 @@
+//ディレクトリ移動
+cd C:\Users\Student\Documents\Github\Mahjongrammer
+
 //プロンプトからのクラウドデータベースへの接続
 mysql -h trolley.proxy.rlwy.net -u root -p railway --port 59200 --protocol=TCP
 
@@ -33,3 +36,6 @@ create table room(
 
 //ローカルでのサーバー起動
 node --env-file=.env-local server.js
+
+//誰かが新しいライブラリを入れたら
+npm install

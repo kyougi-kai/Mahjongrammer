@@ -84,6 +84,10 @@ app.get('/room', async (req, res) => {
     }
 });
 
+app.get('/play', (req, res) => {
+    res.render('pages/play.ejs');
+});
+
 app.get('/deleteUser', async (req, res) => {
     loginCheck(req, res);
 

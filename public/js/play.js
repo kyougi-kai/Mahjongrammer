@@ -1,0 +1,3 @@
+function ei(){
+    alert('yoyoyo');
+}

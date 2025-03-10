@@ -1,0 +1,40 @@
+.taimen-div {
+    display: flex;              
+    justify-content: center;                
+}
+
+.jibun-div{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.migi-div{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.hidari-div{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.nametagu-tate-div{
+    width: 200px;
+    height: 50px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.nametagu-yoko-div{
+    width: 50px;
+    height: 200px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
