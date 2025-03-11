@@ -1,12 +1,18 @@
-let socket;
+let roomSocket;
+let parentName;
 const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
 window.onload = () => {
-    const parentName = document.getElementById('parentnameText').textContent;
+    roomSocket = new WebSocket(`${protocol}://${window.location.host}/room`);
+    parentName = document.getElementById('parentnameText').textContent;
     if(parentName != document.getElementById('usernameText').textContent){
-        socket = new WebSocket(`${protocol}://${window.location.host}/room`);
-
-        socket.onopen = () => {
-            socket.send(JSON.stringify({entryRoom:parentName}));
+        roomSocket.onopen = () => {
+            roomSocket.send(JSON.stringify({entryRoom:parentName}));
         }
     }
+}
+
+window.onbeforeunload = (event) => {
+    roomSocket.send(JSON.stringify({outRoom: parentName}));
+    event.preventDefault();
+    event.returnValue = 'Check';
 }

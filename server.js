@@ -62,11 +62,19 @@ wss.on('connection', async (ws, req) => {
                         });
                     }
                     else if(key === 'entryRoom'){
+                        const parentId = await nameToId(jdt.entryRoom);
+                        await pool.query('update room set num_of_childs = num_of_childs + 1 where parent_id = ?', [parentId]);
+                        const numOfChilds = await getRow('room', 'num_of_childs', 'parent_id', parentId);
                         wss.clients.forEach(async client => {
-                            const parentId = await nameToId(jdt.entryRoom);
-                            await pool.query('update room set num_of_childs = num_of_childs + 1 where parent_id = ?', [parentId]);
-                            const numOfChilds = await getRow('room', 'num_of_childs', 'parent_id', parentId);
                             client.send(JSON.stringify({entryRoomName:jdt.entryRoom, numOfChilds: numOfChilds}));
+                        });
+                    }
+                    else if(key === 'outRoom'){
+                        const parentId = await nameToId(jdt.entryRoom);
+                        await pool.query('update room set num_of_childs = num_of_childs - 1 where parent_id = ?', [parentId]);
+                        const numOfChilds = await getRow('room', 'num_of_childs', 'parent_id', parentId);
+                        wss.clients.forEach(async client => {
+                            client.send(JSON.stringify({outRoomName:jdt.entryRoom, numOfChilds: numOfChilds}));
                         });
                     }
                 }
@@ -86,6 +94,10 @@ app.get('/', (req,res) => {
     else{
         res.render('pages/index');
     }
+});
+
+app.get('/', (req, res) => {
+    res.render('index');
 });
 
 app.get('/room', async (req, res) => {

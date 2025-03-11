@@ -29,7 +29,7 @@ class DM{
         }
 
         this._tango = {
-            meisi : {
+            basic : {
                 tokyo : ['場所', '固有名詞'],
                 dog : ['動物', ]
             }
