@@ -27,6 +27,7 @@ create table room(
     child1_id int null,
     child2_id int null,
     child3_id int null,
+    num_of_childs int default 0,
     ratio varchar(255),
     foreign key (parent_id) references users(user_id),
     foreign key (child1_id) references users(user_id),
