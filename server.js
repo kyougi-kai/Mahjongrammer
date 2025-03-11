@@ -31,51 +31,36 @@ app.use(express.json());
 app.set('view engine', 'ejs');
 app.set("views", path.join(__dirname, 'views'));
 
-wss.on('connection', async (ws, req) => {
-    const url = req.url;
+wss.on('connection', async ws => {
+    const data = await getRooms();
+    ws.send(JSON.stringify(data));
 
-    switch(url){
-        case '/room':
-            const data = await pool.query('select username, num_of_childs from users,room where users.user_id = room.parent_id');
-            ws.send(JSON.stringify(data[0]));
-
-            ws.on('message', async (dt) => {
-                const jdt = JSON.parse(dt);
-                const key = Object.keys(jdt)[0];
-                try{
-                    if(key === 'createRoom'){
-                        const userId = await nameToId(jdt.createRoom);
-                        const value = await checkValue('room', 'parent_id', userId);
-                        if(value == 0){
-                            await createRoom(userId, JSON.stringify(jdt.ratio));
-                            wss.clients.forEach(client => {
-                                client.send(JSON.stringify({newRoom : jdt.createRoom}));
-                            });
-                        }
-                    }
-                    else if(key === "deleteRoom"){
-                        //消す処理
-                        const parentId = await nameToId(jdt.deleteRoom);
-                        await deleteRoom(parentId);
-                        wss.clients.forEach(client => {
-                            client.send(JSON.stringify({deleteRoom : jdt.deleteRoom}));
-                        });
-                    }
-                    else if(key === 'entryRoom'){
-                        wss.clients.forEach(async client => {
-                            const parentId = await nameToId(jdt.entryRoom);
-                            await pool.query('update room set num_of_childs = num_of_childs + 1 where parent_id = ?', [parentId]);
-                            const numOfChilds = await getRow('room', 'num_of_childs', 'parent_id', parentId);
-                            client.send(JSON.stringify({entryRoomName:jdt.entryRoom, numOfChilds: numOfChilds}));
-                        });
-                    }
+    ws.on('message', async (dt) => {
+        try{
+            const jdt = JSON.parse(dt);
+            const key = Object.keys(jdt)[0];
+            if(key == 'createRoom'){
+                const userId = await getRow('users', 'user_id', 'username', jdt.createRoom);
+                const value = await checkValue('room', 'parent_id', userId);
+                if(value == 0){
+                    await createRoom(userId, JSON.stringify(jdt.ratio));
+                    wss.clients.forEach(client => {
+                        client.send(JSON.stringify({newRoom : jdt.createRoom}));
+                    });
                 }
-                catch(err){
-                    console.log('Error :' + err);
-                }
-            });
-        break;
-    }
+            }
+            else if(key == "deleteRoom"){
+                //消す処理
+                await deleteRoom(jdt.deleteRoom);
+                wss.clients.forEach(client => {
+                    client.send(JSON.stringify({deleteRoom : jdt.deleteRoom}));
+                });
+            }
+        }
+        catch(err){
+            console.log(err);
+        }
+    })
 });
 
 app.get('/', (req,res) => {
@@ -92,6 +77,7 @@ app.get('/room', async (req, res) => {
     loginCheck(req, res);
 
     try{
+        console.log(req.cookies.userId);
         res.render('pages/room', {name:await getRow('users', 'username', 'user_id', req.cookies.userId)});
     }
     catch(err){
@@ -99,16 +85,8 @@ app.get('/room', async (req, res) => {
     }
 });
 
-app.get('/play/:parentName', async (req, res) => {
-    try{
-        const parentId = await nameToId(req.params.parentName);
-        const username = await idToName(req.cookies.userId);
-        res.render('pages/play', {parentName:req.params.parentName, username:username});
-    }
-    catch(err){
-        console.log(`Error :${err}`);
-        res.redirect('/room');
-    }
+app.get('/play', (req, res) => {
+    res.render('pages/play.ejs');
 });
 
 app.get('/deleteUser', async (req, res) => {
@@ -120,7 +98,7 @@ app.get('/deleteUser', async (req, res) => {
         res.redirect('/');
     }
     catch(err){
-        console.log(`Error :${err}`);
+        console.log(err);
     }
 });
 
@@ -132,7 +110,7 @@ app.get('/logout', async (req, res) => {
         res.redirect('/');
     }
     catch(err){
-        console.log(`Error :${err}`);
+        console.log(err);
     }
 })
 
@@ -148,7 +126,7 @@ app.post('/login', async(req, res) => {
         }
     }
     catch(err){
-        console.log(`Error :${err}`);
+        console.log(err);
         res.json({success: false, error:err});
     }
 });
@@ -166,7 +144,7 @@ app.post('/signin', async (req, res) => {
         }
     }
     catch(err){
-        console.log(`Error :${err}`);
+        console.log(err);
         res.json({success: false, error:err});
     }
 })
@@ -176,7 +154,7 @@ server.listen(PORT, () => {
 });
 
 async function savelogin(res, username){
-    const userId = await nameToId(username);
+    const userId = await getRow('users', 'user_id', 'username', username);
     res.cookie('userId', userId, {
         maxAge: 259200000,
         httpOnly: true,
@@ -191,12 +169,17 @@ function loginCheck(req, res){
     }
 }
 
+async function getRooms(){
+    const results = await pool.query('select * from Room');
+    return results[0];
+}
+
 async function createRoom(parentId, ratio) {
     await pool.query('insert into room (parent_id, ratio) values(?, ?)', [parentId, ratio]);
 }
 
-async function deleteRoom(parentId) {
-    await pool.query(`delete from room where parent_id = ?`, [parentId]);
+async function deleteRoom(name) {
+    await pool.query(`delete from Room where parent_name = ?`, [name]);
 }
 
 async function checkValue(tableName, fieldName, value){
@@ -213,21 +196,6 @@ async function getRow(tableName, fieldName, filterName, value) {
     return result[0][0][fieldName];
 }
 
-async function getRows(tableName, filterName, value) {
-    const result = await pool.query(`select * from ${tableName} where ${filterName} = ?`, [value]);
-    return result[0];
-}
-
 async function deleteUser(userId) {
     await pool.query('delete from users where user_id = ?', [userId]);
-}
-
-async function nameToId(username) {
-    const result = await pool.query('select user_id from users where username = ?', [username]);
-    return result[0][0]['user_id'];
-}
-
-async function idToName(userId) {
-    const result = await pool.query('select username from users where user_id = ?', [userId]);
-    return result[0][0]['username'];
 }
