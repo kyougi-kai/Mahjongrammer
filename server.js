@@ -6,6 +6,8 @@ const WebSocket = require('ws');
 const http = require('http');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const {v4: uuidv4} = require('uuid');
+
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -31,64 +33,119 @@ app.use(express.json());
 app.set('view engine', 'ejs');
 app.set("views", path.join(__dirname, 'views'));
 
+const roomClients = new Map();
+const playClients = new Map();
+
 wss.on('connection', async (ws, req) => {
     const url = req.url;
 
-    switch(url){
-        case '/room':
-            const data = await pool.query('select username, num_of_childs from users,room where users.user_id = room.parent_id');
-            ws.send(JSON.stringify(data[0]));
+    if(url === '/room'){
+        const uuid = uuidv4();
+        roomClients.set(uuid, ws);
+        console.log(`roomClients : ${roomClients.size}`);
 
-            ws.on('message', async (dt) => {
-                const jdt = JSON.parse(dt);
-                const key = Object.keys(jdt)[0];
-                try{
-                    if(key === 'createRoom'){
-                        const userId = await nameToId(jdt.createRoom);
-                        const value = await checkValue('room', 'parent_id', userId);
-                        if(value == 0){
-                            await createRoom(userId, JSON.stringify(jdt.ratio));
-                            wss.clients.forEach(client => {
-                                client.send(JSON.stringify({newRoom : jdt.createRoom}));
-                            });
-                        }
-                    }
-                    else if(key === "deleteRoom"){
-                        //消す処理
-                        const parentId = await nameToId(jdt.deleteRoom);
-                        await deleteRoom(parentId);
-                        wss.clients.forEach(client => {
-                            client.send(JSON.stringify({deleteRoom : jdt.deleteRoom}));
-                        });
-                    }
-                    else if(key === 'entryRoom'){
-                        const parentId = await nameToId(jdt.entryRoom);
-                        await pool.query('update room set num_of_childs = num_of_childs + 1 where parent_id = ?', [parentId]);
-                        const numOfChilds = await getRow('room', 'num_of_childs', 'parent_id', parentId);
-                        wss.clients.forEach(async client => {
-                            client.send(JSON.stringify({entryRoomName:jdt.entryRoom, numOfChilds: numOfChilds}));
-                        });
-                    }
-                    else if(key === 'outRoom'){
-                        const parentId = await nameToId(jdt.entryRoom);
-                        await pool.query('update room set num_of_childs = num_of_childs - 1 where parent_id = ?', [parentId]);
-                        const numOfChilds = await getRow('room', 'num_of_childs', 'parent_id', parentId);
-                        wss.clients.forEach(async client => {
-                            client.send(JSON.stringify({outRoomName:jdt.entryRoom, numOfChilds: numOfChilds}));
-                        });
-                    }
+        ws.on('close', ()=>{
+            roomClients.delete(uuid);
+            console.log(`roomClients : ${roomClients.size}`);
+        });
+
+        const data = await pool.query('\
+            select username, count(*) as room_member_counts \
+            from users, rooms, room_member \
+            where users.user_id = rooms.parent_id \
+            and rooms.room_id = room_member.room_id \
+            group by username');
+        ws.send(JSON.stringify(data[0]));
+        ws.on('message', async (messageData) => {
+            const message = JSON.parse(messageData);
+            try{
+                if(message.hasOwnProperty('createRoom')){
+                    const userId = await nameToId(message.createRoom);
+                    await createRoom(userId, JSON.stringify(message.ratio));
+                    roomClients.forEach(client => {
+                        client.send(JSON.stringify({newRoom : message.createRoom}));
+                    });
                 }
-                catch(err){
-                    console.log('Error :' + err);
+                else if(message.hasOwnProperty('deleteRoom')){
+                    //消す処理
+                    const parentId = await nameToId(message.deleteRoom);
+                    await deleteRoom(parentId);
+                    wss.clients.forEach(client => {
+                        client.send(JSON.stringify({deleteRoom : message.deleteRoom}));
+                    });
                 }
-            });
-        break;
+            }
+            catch(err){
+                console.log('Error :' + err);
+            }
+        });
+    }
+    else if(url.startsWith('/play')){
+        //切断したら配列から削除
+        let username;
+        let userId;
+        let parentId;
+        let roomId;
+        ws.on('close', ()=>{
+            playClients.delete(userId);
+        });
+
+        ws.on('message', async (messageData) => {
+            const message = JSON.parse(messageData);
+            console.log(`/play message : ${Object.keys(message)}`);
+            if(message.hasOwnProperty('entryRoom')){
+                parentId = await nameToId(message.entryRoom);
+                roomId = await getRow('rooms', 'room_id', 'parent_id', parentId);
+                username = message.username;
+                userId = await getRow('users', 'user_id', 'username', message.username);
+                //playClientsに保存
+                playClients.set(userId, ws);
+                console.log(`playClients : ${playClients}`);
+                
+                await entryRoom(roomId, userId);
+                const roomMemberCounts = await getRoomMemberCounts(roomId);
+                roomClients.forEach((roomClient) => {
+                    roomClient.send(JSON.stringify({entryRoom:message.entryRoom, roomMemberCounts: roomMemberCounts}));
+                });
+                console.log('メッセージ送信完了');
+            }
+            else if(message.hasOwnProperty('outRoom')){
+                if(message.outRoom == username){
+                    roomClients.forEach(client => {
+                        client.send(JSON.stringify({deleteRoom: message.outRoom}));
+                    });
+
+                    //他の人も強制退出させる処理
+                    await pool.query('delete from room_member where user_id = ?', [userId]);
+                    const roomMembers = await pool.query('\
+                        select user_id from room_member \
+                        where room_id = ?', [roomId]);
+                    roomMembers[0].forEach((roomMember) => {
+                        console.log(roomMember.user_id);
+                        playClients.get(roomMember.user_id).send(JSON.stringify({forcedFinish:true}));
+                    });
+                    await pool.query('delete from room_member where room_id = ?', [roomId]);
+                    await deleteRoom(parentId);
+                }
+                else{
+                    await pool.query('delete from room_member where user_id = ?', [userId]);
+                    console.log(roomId);
+                    const roomMemberCounts = await getRoomMemberCounts(roomId);
+                    console.log(roomMemberCounts);
+                    roomClients.forEach(async client => {
+                        client.send(JSON.stringify({outRoom:message.outRoom, roomMemberCounts: roomMemberCounts}));
+                    });
+                }
+            }
+        })
     }
 });
 
+
+
 app.get('/', (req,res) => {
-    const loginId = req.cookies.loginId;
-    if(loginId){
+    const userId = req.cookies.userId;
+    if(userId){
         res.redirect('/room');
     }
     else{
@@ -113,7 +170,6 @@ app.get('/room', async (req, res) => {
 
 app.get('/play/:parentName', async (req, res) => {
     try{
-        const parentId = await nameToId(req.params.parentName);
         const username = await idToName(req.cookies.userId);
         res.render('pages/play', {parentName:req.params.parentName, username:username});
     }
@@ -128,6 +184,7 @@ app.get('/deleteUser', async (req, res) => {
 
     try{
         await deleteUser(req.cookies.userId);
+
         res.clearCookie('userId', {path:'/'});
         res.redirect('/');
     }
@@ -204,11 +261,20 @@ function loginCheck(req, res){
 }
 
 async function createRoom(parentId, ratio) {
-    await pool.query('insert into room (parent_id, ratio) values(?, ?)', [parentId, ratio]);
+    await pool.query('insert into rooms (parent_id, ratio) values(?, ?)', [parentId, ratio]);
+}
+
+async function entryRoom(room_id, userId) {
+    await pool.query('insert into room_member values(?,?)', [room_id, userId])
+}
+
+async function getRoomMemberCounts(roomId) {
+    const result = await pool.query('select count(*) from room_member where room_id = ?', [roomId]);
+    return result[0][0]['count(*)'];
 }
 
 async function deleteRoom(parentId) {
-    await pool.query(`delete from room where parent_id = ?`, [parentId]);
+    await pool.query(`delete from rooms where parent_id = ?`, [parentId]);
 }
 
 async function checkValue(tableName, fieldName, value){

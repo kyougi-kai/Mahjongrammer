@@ -27,15 +27,18 @@ window.onload = () => {
         rooms.splice(idx, 1);
         mainDiv.children[idx].remove();
       }
-      else if(key === 'entryRoomName'){
-        updateNumberOfChilds(message.entryRoomName, parseInt(message.numOfChilds));
+      else if(key === 'entryRoom'){
+        updateRoomMemberCounts(message.entryRoom, parseInt(message.roomMemberCounts));
+      }
+      else if(key === 'outRoom'){
+        updateRoomMemberCounts(message.outRoom, parseInt(message.roomMemberCounts));
       }
     }
     else{
       startFlg = true;
       message.forEach((value) => {
         rooms.push(value.username);
-        createNewRoom(value.username, parseInt(value.num_of_childs));
+        createNewRoom(value.username, parseInt(value.room_member_counts));
       });
     }
   });
@@ -50,27 +53,29 @@ function showCreateRoom(){
   createRoomDiv.style.pointerEvents = 'all';
 }
 
-function createNewRoom(roomName, num = 0){
+function createNewRoom(roomName, roomMemberCounts = 0){
   let temporaryDiv = document.createElement('div');
   temporaryDiv.classList.add('room-div');
   let roomNameText = document.createElement('p');
   roomNameText.innerHTML = roomName;
   let temporaryText = document.createElement('p');
-  temporaryText.innerHTML = `${1 + num}/4`;
+  temporaryText.innerHTML = `${roomMemberCounts}/4`;
   mainDiv.appendChild(temporaryDiv);
   temporaryDiv.appendChild(roomNameText);
   temporaryDiv.appendChild(temporaryText);
-  temporaryDiv.setAttribute('onclick', `entryRoom('${roomName}');`);
+  if(roomMemberCounts != 4)temporaryDiv.setAttribute('onclick', `entryRoom('${roomName}');`);
 }
 
 function entryRoom(roomName){
   window.location.href = `/play/${roomName}`;
 }
 
-function updateNumberOfChilds(roomName, num){
+function updateRoomMemberCounts(roomName, roomMemberCounts){
   const idx = rooms.indexOf(roomName);
   console.log(mainDiv.children[idx].children);
-  mainDiv.children[idx].children[1].innerHTML = `${1 + num}/4`;
+  mainDiv.children[idx].children[1].innerHTML = `${roomMemberCounts}/4`;
+
+  roomMemberCounts == 4 ? mainDiv.children[idx].setAttribute('onclick', '') : mainDiv.children[idx].setAttribute('onclick', `entryRoom('${roomName}');`);
 }
 
 function createRoom(){
