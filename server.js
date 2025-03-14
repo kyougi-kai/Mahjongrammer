@@ -332,6 +332,7 @@ async function deleteUser(userId) {
 async function nameToId(username) {
     console.log(`function nameToId : ${username}`);
     const result = await pool.query('select user_id from users where username = ?', [username]);
+    console.log(result);
     return result[0][0]['user_id'];
 }
 
