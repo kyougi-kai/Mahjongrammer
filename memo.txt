@@ -31,7 +31,7 @@ create table rooms(
 create table room_member(
     room_id int,
     user_id char(36),
-    created_at datetime not null default curent_timestamp,
+    created_at datetime not null default current_timestamp,
     primary key (room_id, user_id),
     foreign key (room_id) references rooms(room_id) on delete cascade,
     foreign key (user_id) references users(user_id) on delete cascade
