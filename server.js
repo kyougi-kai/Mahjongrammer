@@ -34,7 +34,7 @@ app.set('view engine', 'ejs');
 app.set("views", path.join(__dirname, 'views'));
 
 const roomClients = new Map();
-const playClients = new Map();
+const playClients = {};
 
 wss.on('connection', async (ws, req) => {
     const url = req.url;
@@ -65,6 +65,8 @@ wss.on('connection', async (ws, req) => {
                     roomClients.forEach(client => {
                         client.send(JSON.stringify({newRoom : message.createRoom}));
                     });
+                    const roomId = await getRow('rooms', 'room_id', 'parent_id', userId);
+                    playClients[roomId] = {};
                 }
                 else if(message.hasOwnProperty('deleteRoom')){
                     //消す処理
@@ -86,30 +88,45 @@ wss.on('connection', async (ws, req) => {
         let userId;
         let parentId;
         let roomId;
+        let parentName = url.split('/')[2];
+
         ws.on('close', ()=>{
-            playClients.delete(userId);
+            //ちゃんと退出しなかった人用
+            try{
+                delete playClients[roomId][username];
+            }
+            catch(err){}
         });
 
         ws.on('message', async (messageData) => {
             const message = JSON.parse(messageData);
             console.log(`/play message : ${Object.keys(message)}`);
             if(message.hasOwnProperty('entryRoom')){
+                //色々データ取得
                 parentId = await nameToId(message.entryRoom);
                 roomId = await getRow('rooms', 'room_id', 'parent_id', parentId);
                 username = message.username;
                 userId = await getRow('users', 'user_id', 'username', message.username);
+
                 //playClientsに保存
-                playClients.set(userId, ws);
-                console.log(`playClients : ${playClients}`);
+                playClients[roomId][username] = ws;
                 
                 await entryRoom(roomId, userId);
                 const roomMemberCounts = await getRoomMemberCounts(roomId);
                 roomClients.forEach((roomClient) => {
                     roomClient.send(JSON.stringify({entryRoom:message.entryRoom, roomMemberCounts: roomMemberCounts}));
                 });
-                console.log('メッセージ送信完了');
+                
+                //roomMemberのデータを送信
+                const roomMembers = await getRoomMembers(roomId);
+                Object.values(playClients[roomId]).forEach((memberWs) => {
+                    memberWs.send(JSON.stringify({roomMembers:roomMembers[0]}));
+                });
             }
             else if(message.hasOwnProperty('outRoom')){
+                //playClientsから削除
+                delete playClients[roomId][username];
+
                 if(message.outRoom == username){
                     roomClients.forEach(client => {
                         client.send(JSON.stringify({deleteRoom: message.outRoom}));
@@ -117,15 +134,12 @@ wss.on('connection', async (ws, req) => {
 
                     //他の人も強制退出させる処理
                     await pool.query('delete from room_member where user_id = ?', [userId]);
-                    const roomMembers = await pool.query('\
-                        select user_id from room_member \
-                        where room_id = ?', [roomId]);
-                    roomMembers[0].forEach((roomMember) => {
-                        console.log(roomMember.user_id);
-                        playClients.get(roomMember.user_id).send(JSON.stringify({forcedFinish:true}));
+                    Object.values(playClients[roomId]).forEach((memberWs) => {
+                        memberWs.send(JSON.stringify({forcedFinish:true}));
                     });
                     await pool.query('delete from room_member where room_id = ?', [roomId]);
                     await deleteRoom(parentId);
+                    delete playClients[roomId];
                 }
                 else{
                     await pool.query('delete from room_member where user_id = ?', [userId]);
@@ -135,17 +149,32 @@ wss.on('connection', async (ws, req) => {
                     roomClients.forEach(async client => {
                         client.send(JSON.stringify({outRoom:message.outRoom, roomMemberCounts: roomMemberCounts}));
                     });
+
+                    //roomMemberのデータを送信
+                    const roomMembers = await getRoomMembers(roomId);
+                    Object.values(playClients[roomId]).forEach((memberWs) => {
+                        memberWs.send(JSON.stringify({roomMembers:roomMembers[0]}));
+                    });
                 }
             }
         })
     }
 });
 
+async function getRoomMembers(roomId){
+    const roomMembers = await pool.query('\
+        select username from users, room_member \
+        where users.user_id = room_member.user_id \
+        and room_member.room_id = ? \
+        order by created_at', [roomId]);
+    return roomMembers;
+}
 
 
-app.get('/', (req,res) => {
+
+app.get('/', async (req,res) => {
     const userId = req.cookies.userId;
-    if(userId){
+    if(await checkValue('users', 'user_id', userId)){
         res.redirect('/room');
     }
     else{
@@ -164,14 +193,14 @@ app.get('/room', async (req, res) => {
         res.render('pages/room', {name:await getRow('users', 'username', 'user_id', req.cookies.userId)});
     }
     catch(err){
-        console.log('Error :' + err);
+        console.log(`Error : ${err}`);
     }
 });
 
 app.get('/play/:parentName', async (req, res) => {
     try{
         const username = await idToName(req.cookies.userId);
-        res.render('pages/play', {parentName:req.params.parentName, username:username});
+        res.render('pages/play', {username:username});
     }
     catch(err){
         console.log(`Error :${err}`);
@@ -180,7 +209,7 @@ app.get('/play/:parentName', async (req, res) => {
 });
 
 app.get('/deleteUser', async (req, res) => {
-    loginCheck(req, res);
+    await loginCheck(req, res);
 
     try{
         await deleteUser(req.cookies.userId);
@@ -194,7 +223,7 @@ app.get('/deleteUser', async (req, res) => {
 });
 
 app.get('/logout', async (req, res) => {
-    loginCheck(req, res);
+    await loginCheck(req, res);
 
     try{
         res.clearCookie('userId', {path:'/'});
@@ -253,9 +282,9 @@ async function savelogin(res, username){
     });
 }
 
-function loginCheck(req, res){
+async function loginCheck(req, res){
     const userId = req.cookies.userId;
-    if(!userId){
+    if(await checkValue('users', 'user_id', userId) == 0){
         res.redirect('/');
     }
 }
@@ -265,7 +294,7 @@ async function createRoom(parentId, ratio) {
 }
 
 async function entryRoom(room_id, userId) {
-    await pool.query('insert into room_member values(?,?)', [room_id, userId])
+    await pool.query('insert into room_member (room_id, user_id) values(?,?)', [room_id, userId])
 }
 
 async function getRoomMemberCounts(roomId) {
@@ -283,7 +312,7 @@ async function checkValue(tableName, fieldName, value){
 }
 
 async function addUser(username, password) {
-    await pool.query('insert into users (username, password) values(?,?);', [username, password]);
+    await pool.query('insert into users (user_id, username, password) values(uuid(),?,?);', [username, password]);
 }
 
 async function getRow(tableName, fieldName, filterName, value) {

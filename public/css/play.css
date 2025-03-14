@@ -1,40 +1,42 @@
-.taimen-div {
-    display: flex;              
-    justify-content: center;                
+html{
+    height: 100%;
 }
 
-.jibun-div{
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
+.main-content{
+    height: 100%;
+    width: 100%;
 }
 
-.migi-div{
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-.hidari-div{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.nametagu-tate-div{
-    width: 200px;
-    height: 50px;
+.name{
+    position: absolute;
     border: 1px solid black;
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
 }
 
-.nametagu-yoko-div{
-    width: 50px;
-    height: 200px;
-    border: 1px solid black;
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
+.top{
+    top: 0;
+    left: 50%;
+}
+
+.bottom{
+    bottom: 0;
+    left:50%;
+}
+
+.right{
+    top: 50%;
+    right: 0;
+}
+
+.left{
+    top: 50%;
+    left: 0;
+}
+
+.name p{
+    font-size: 16px;
+    padding: 4px 8px;
+}
+
+.parent{
+    color: red;
 }
