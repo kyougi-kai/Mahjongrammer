@@ -6,7 +6,7 @@ let parentFlag = true;
 const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
 window.onload = () => {
     const nameDivs = document.getElementsByClassName('name');
-    parentName = (window.location.pathname).split('/')[2];
+    parentName = decodeURIComponent(window.location.pathname).split('/')[2];
     username = document.getElementById('usernameText').textContent;
     playSocket = new WebSocket(`${protocol}://${window.location.host}/play/${parentName}`);
 
