@@ -2,6 +2,10 @@ html{
     height: 100%;
 }
 
+body{
+    margin: 0;
+}
+
 .main-content{
     height: 100%;
     width: 100%;
@@ -19,7 +23,7 @@ html{
 
 .bottom{
     bottom: 0;
-    left:50%;
+    left: 10px;
 }
 
 .right{
@@ -39,4 +43,37 @@ html{
 
 .parent{
     color: red;
+}
+
+.card-footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.field{
+    display: flex;
+    justify-content: left;
+    width: 80%;
+    height: 95px;
+    border: 1px solid black;
+}
+
+.hai-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 80px;
+    border: 1px solid black;
+    margin: 4px 8px;
+}
+
+.hai-text{
+    margin: 0;
+    padding: 8px 16px;
 }

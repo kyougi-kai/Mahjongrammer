@@ -1,10 +1,17 @@
-let roomSocket;
+import { DM } from '/js/DataManager.js';
+
+let _dm;
 let playSocket
 let parentName;
 let username
 let parentFlag = true;
 const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
+
+const productionField = document.getElementById('productionField');
+const freeField = document.getElementById('freeField');
+
 window.onload = () => {
+    _dm = new DM();
     const nameDivs = document.getElementsByClassName('name');
     parentName = decodeURIComponent(window.location.pathname).split('/')[2];
     username = document.getElementById('usernameText').textContent;
@@ -45,6 +52,35 @@ window.onload = () => {
             });
         }
     });
+
+    //空の牌を入れておく
+    document.getElementById('testButton').onclick = () => {
+        appendHai();
+    }
+}
+
+function appendHai(){
+    const tango = _dm.pickTango();
+    const newHai = createHai(tango);
+    freeField.appendChild(newHai);
+}
+
+function appendEmptyHai(field){
+    const emptyHai = createHai('');
+    emptyHai.style.opacity = '0';
+    field.appendChild(emptyHai);
+}
+
+function createHai(tango){
+    const haiDiv = document.createElement('div');
+    haiDiv.classList.add('hai-div');
+    const haiText = document.createElement('p');
+    haiText.classList.add('hai-text');
+    haiText.innerText = tango;
+
+    haiDiv.appendChild(haiText);
+
+    return haiDiv;
 }
 
 window.onbeforeunload = (event) => {
