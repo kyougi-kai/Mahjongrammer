@@ -55,14 +55,18 @@ window.onload = () => {
 
     //空の牌を入れておく
     document.getElementById('testButton').onclick = () => {
-        appendHai();
+        /*
+        const hai = createHai(_dm.pickTango());
+        appendHai(hai);
+        alterHaiDraggble(hai);
+        */
     }
 }
 
-function appendHai(){
+/*
+function appendHai(Hai){
     const tango = _dm.pickTango();
-    const newHai = createHai(tango);
-    freeField.appendChild(newHai);
+    freeField.appendChild(Hai);
 }
 
 function appendEmptyHai(field){
@@ -82,6 +86,11 @@ function createHai(tango){
 
     return haiDiv;
 }
+
+function alterHaiDraggble(targetHai){
+    targetHai.draggable = true;
+}
+*/
 
 window.onbeforeunload = (event) => {
     if(parentFlag)playSocket.send(JSON.stringify({outRoom: parentName, username:username}));

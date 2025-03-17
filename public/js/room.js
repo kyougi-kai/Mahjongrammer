@@ -93,14 +93,6 @@ function createRoom(){
   window.location.href = `/play/${userNameText.textContent}`;
 }
 
-function deleteRoom(){
-  const idx = rooms.indexOf(userNameText.textContent);
-  if(idx != -1){
-    const sendData = JSON.stringify({deleteRoom: userNameText.textContent});
-    socket.send(sendData);
-  }
-}
-
 function closeDiv(){
   backgroundDiv.style.opacity = '0';
   createRoomDiv.style.opacity = '0';

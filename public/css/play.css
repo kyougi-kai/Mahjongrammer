@@ -77,3 +77,12 @@ body{
     margin: 0;
     padding: 8px 16px;
 }
+
+.close-btn{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 200px;
+    height: 120px;
+}
