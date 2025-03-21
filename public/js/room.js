@@ -24,8 +24,10 @@ window.onload = () => {
       }
       else if(key === 'deleteRoom'){
         const idx = rooms.indexOf(message[key]);
-        rooms.splice(idx, 1);
-        mainDiv.children[idx].remove();
+        if(idx != -1){
+          rooms.splice(idx, 1);
+          mainDiv.children[idx].remove();
+        }
       }
       else if(key === 'entryRoom'){
         updateRoomMemberCounts(message.entryRoom, parseInt(message.roomMemberCounts));

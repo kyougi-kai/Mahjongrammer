@@ -45,39 +45,6 @@ body{
     color: red;
 }
 
-.card-footer{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    box-sizing: border-box;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.field{
-    display: flex;
-    justify-content: left;
-    width: 80%;
-    height: 95px;
-    border: 1px solid black;
-}
-
-.hai-div{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 200px;
-    height: 80px;
-    border: 1px solid black;
-    margin: 4px 8px;
-}
-
-.hai-text{
-    margin: 0;
-    padding: 8px 16px;
-}
-
 .close-btn{
     position: absolute;
     top: 50%;
@@ -85,4 +52,47 @@ body{
     transform: translateX(-50%) translateY(-50%);
     width: 200px;
     height: 120px;
+    z-index: 2;
+}
+
+.footer {
+  display: flex; /* 子要素を横並びにする */
+  flex-wrap: wrap;
+  position: absolute;
+  bottom: 0px;
+  justify-content: center;
+}
+
+.hai-table{
+  display: flex;
+  background-color: rgb(255, 255, 255);
+  width: 80vw;
+  height: 150px;
+  text-align: center;
+  line-height: 100px;
+  border: 1px solid #333;
+}
+.border-div {
+    width: 200px;
+    height: 100px;
+    margin-top: 10px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: move; 
+}
+
+.score-bord{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 250px;
+    height: 250px;
+    border: 1px solid black;
+}
+
+.scoreBord p{
+    position: absolute;
 }

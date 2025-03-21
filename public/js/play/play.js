@@ -1,21 +1,23 @@
-import { DM } from '/js/DataManager.js';
+import { showHai } from '/js/play/HaiManager.js';
 
-let _dm;
 let playSocket
 let parentName;
 let username
 let parentFlag = true;
+let isParent = false;
+let players = [];
+let myTurn = false;
 const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
-
-const productionField = document.getElementById('productionField');
-const freeField = document.getElementById('freeField');
+const scoreBord = document.getElementById('scoreBord');
 
 window.onload = () => {
-    _dm = new DM();
     const nameDivs = document.getElementsByClassName('name');
     parentName = decodeURIComponent(window.location.pathname).split('/')[2];
     username = document.getElementById('usernameText').textContent;
     playSocket = new WebSocket(`${protocol}://${window.location.host}/play/${parentName}`);
+
+    isParent = username == parentName ? true : false;
+    if(!isParent)document.getElementById('closeBtn').remove();
 
     playSocket.addEventListener('open', () => {
         console.log("サーバーに接続しました");
@@ -50,47 +52,30 @@ window.onload = () => {
                 index == 0 ? target.style.color = 'red' : target.style.color = 'black';
                 target.innerHTML = member.username;
             });
+            players = roomMembers.concat();
+        }
+        else if(message.hasOwnProperty('start')){
+            gameStart();
         }
     });
+}
 
-    //空の牌を入れておく
-    document.getElementById('testButton').onclick = () => {
-        /*
-        const hai = createHai(_dm.pickTango());
-        appendHai(hai);
-        alterHaiDraggble(hai);
-        */
+document.getElementById('closeBtn').addEventListener("click", async (event) => {
+    if(players.length == (1, 0))return;
+
+    try{
+        document.getElementById('closeBtn').style.display = 'none';
+        scoreBord.style.opacity = '1';
+        const response = await fetch(`/play/${parentName}`, {
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body: JSON.stringify({roomClose:true})
+        });
     }
-}
-
-/*
-function appendHai(Hai){
-    const tango = _dm.pickTango();
-    freeField.appendChild(Hai);
-}
-
-function appendEmptyHai(field){
-    const emptyHai = createHai('');
-    emptyHai.style.opacity = '0';
-    field.appendChild(emptyHai);
-}
-
-function createHai(tango){
-    const haiDiv = document.createElement('div');
-    haiDiv.classList.add('hai-div');
-    const haiText = document.createElement('p');
-    haiText.classList.add('hai-text');
-    haiText.innerText = tango;
-
-    haiDiv.appendChild(haiText);
-
-    return haiDiv;
-}
-
-function alterHaiDraggble(targetHai){
-    targetHai.draggable = true;
-}
-*/
+    catch(err){
+        console.error(err);
+    }
+});
 
 window.onbeforeunload = (event) => {
     if(parentFlag)playSocket.send(JSON.stringify({outRoom: parentName, username:username}));

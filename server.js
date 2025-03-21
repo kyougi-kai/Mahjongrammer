@@ -72,9 +72,7 @@ wss.on('connection', async (ws, req) => {
                     //消す処理
                     const parentId = await nameToId(message.deleteRoom);
                     await deleteRoom(parentId);
-                    wss.clients.forEach(client => {
-                        client.send(JSON.stringify({deleteRoom : message.deleteRoom}));
-                    });
+                    hideRoom(message.deleteRoom);
                 }
             }
             catch(err){
@@ -125,12 +123,10 @@ wss.on('connection', async (ws, req) => {
             }
             else if(message.hasOwnProperty('outRoom')){
                 //playClientsから削除
-                delete playClients[roomId][username];
+                delete [roomId][username];
 
                 if(message.outRoom == username){
-                    roomClients.forEach(client => {
-                        client.send(JSON.stringify({deleteRoom: message.outRoom}));
-                    });
+                    hideRoom(message.outRoom);
 
                     //他の人も強制退出させる処理
                     await pool.query('delete from room_member where user_id = ?', [userId]);
@@ -160,6 +156,12 @@ wss.on('connection', async (ws, req) => {
         })
     }
 });
+
+function hideRoom(roomName){
+    roomClients.forEach(client => {
+        client.send(JSON.stringify({deleteRoom : roomName}));
+    });
+}
 
 async function getRoomMembers(roomId){
     const roomMembers = await pool.query('\
@@ -195,6 +197,9 @@ app.get('/room', async (req, res) => {
 
 app.get('/play/:parentName', async (req, res) => {
     try{
+        const parentId = await nameToId(req.params.parentName);
+        if(await checkValue('rooms', 'parent_id', parentId) == 0)res.redirect('/room');
+
         const username = await idToName(req.cookies.userId);
         res.render('pages/play', {username:username});
     }
@@ -265,8 +270,16 @@ app.post('/signin', async (req, res) => {
     }
 })
 
-app.post('/play/:parentName/:message', async (req, res) => {
-    
+app.post('/play/:parentName', async (req, res) => {
+    if(req.body.hasOwnProperty('roomClose')){
+        hideRoom(req.params.parentName);
+        const result = await pool.query('select room_id from rooms, users \
+            where rooms.parent_id = users.user_id \
+            and users.username = ?', [req.params.parentName]);
+        Object.values(playClients[result[0][0]['room_id']]).forEach((client) => {
+            client.send(JSON.stringify({start:true}));
+        });
+    }
 });
 
 server.listen(PORT, () => {

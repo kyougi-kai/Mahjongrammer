@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/css/play.css">
-    <script src="/js/play.js" type="module" defer></script>
+    <script src="/js/play/play.js" type="module" defer></script>
 </head>
 <body>
     <div class="main-content">
@@ -24,18 +24,21 @@
 
         <button id="testButton">Button</button>
 
-        <button class="close-btn">締め切る</button>
+        <button class="close-btn" id="closeBtn">締め切る</button>
 
-        <!--
-        <div class="card-footer">
-            <div class="field" id="productionField">
-                
+        <div class="footer">
+            <div class="hai-table" id="wordUp">
+    
             </div>
-            <div class="field" id="freeField">
-
+            <div class="hai-table" id="wordDown">
             </div>
         </div>
-        -->
+        <div class="score-bord" style="opacity: 0;" id="scoreBord">
+            <p class="top" style="transform: translateX(-50%) rotateZ(180deg);">25000</p>
+            <p class="right" style="transform: translateY(-50%) rotateZ(-90deg);">25000</p>
+            <p class="bottom" style="left: 50%;transform:translateX(-50%);">25000</p>
+            <p class="left" style="transform:translateY(-50%) rotateZ(90deg);">25000</p>
+        </div>
     </div>
 </body>
 </html>

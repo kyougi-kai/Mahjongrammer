@@ -14,7 +14,6 @@ export class DM{
             kansi : ["a", "an", "the"],
             jodousi : ["can", "could", "will", "would", "shall", "should", "may", "might", "must"]
         }
-
         /*
         this._data = [];
         const xhr = new XMLHttpRequest();

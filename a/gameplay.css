@@ -1,0 +1,26 @@
+.footer {
+  display: flex; /* 子要素を横並びにする */
+  flex-wrap: wrap;
+  position: absolute;
+  bottom: 0px;
+}
+
+.hai-table{
+  display: flex;
+  background-color: rgb(255, 255, 255);
+  width: 80vw;
+  height: 150px;
+  text-align: center;
+  line-height: 100px;
+  border: 1px solid #333;
+}
+.border-div {
+    width: 200px;
+    height: 100px;
+    margin-top: 10px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: move; 
+}
