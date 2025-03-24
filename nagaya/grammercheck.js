@@ -1,6 +1,15 @@
-const nlp = require('compromise');
 
-let doc = nlp("she plays soccer");
-console.log(doc.json());
-console.log(doc.out()); 
-// The two presitents are to meet at paris.
+    tango = {
+        apple : {
+            mean: ["りんご"]
+        },
+        wood : {
+            mean: ["木製"]
+        }
+    }
+    let objectmean = "apple";
+    let tangoGo = tango.objectmean;
+    function tangoviews(){
+        console.log(12345689);
+        console.log(tangoGo);
+    }
