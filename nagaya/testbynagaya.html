@@ -6,16 +6,48 @@
     <title>Document</title>
 </head>
 <style>
-    .example4{
-        background: linear-gradient(10000deg,#e60000,#f39800,#fff100,#009944,#0068b7,#1d2088,#920783, #e60000) 0 / 200%;
+    /* .example4{
+        background: linear-gradient(361deg,#e60000,#f39800,#fff100,#009944,#0068b7,#1d2088,#920783, #e60000) 0 / 200%;
         height: 100%;
         animation: 5s example4 linear infinite;
     }
     @keyframes example4{
             100% { background-position: 200%; }
-        }
+        } */
 </style>
 <body class="example4">
     <script src="grammercheck.js"></script>
+    <button onclick="tangoviews();"></button>
+    <form> 
+        <input type="text" placeholder="S">
+        <input type="text" placeholder="V">
+        <input type="button" value="SV判定">
+    </form>
+    <form> 
+        <input type="text" placeholder="S">
+        <input type="text" placeholder="V">
+        <input type="text" placeholder="C">
+        <input type="button" value="SVC判定">
+    </form>
+    <form> 
+        <input type="text" placeholder="S">
+        <input type="text" placeholder="V">
+        <input type="text" placeholder="O">
+        <input type="button" value="SVO判定">
+    </form>
+    <form> 
+        <input type="text" placeholder="S">
+        <input type="text" placeholder="V">
+        <input type="text" placeholder="O">
+        <input type="text" placeholder="C">
+        <input type="button" value="SVOC判定">
+    </form>
+    <form> 
+        <input type="text" placeholder="S">
+        <input type="text" placeholder="V">
+        <input type="text" placeholder="O">
+        <input typr="text" placeholder="O">
+        <input type="button" value="SVOO判定">
+    </form>
 </body>
 </html>
