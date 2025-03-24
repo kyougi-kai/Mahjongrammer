@@ -1,4 +1,4 @@
-import { showHai } from '/js/play/HaiManager.js';
+import gameManager from '/js/play/HaiManager.js';
 
 let playSocket
 let parentName;
@@ -9,6 +9,7 @@ let players = [];
 let myTurn = false;
 const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
 const scoreBord = document.getElementById('scoreBord');
+const _gameManager = new gameManager();
 
 window.onload = () => {
     const nameDivs = document.getElementsByClassName('name');
@@ -17,7 +18,8 @@ window.onload = () => {
     playSocket = new WebSocket(`${protocol}://${window.location.host}/play/${parentName}`);
 
     isParent = username == parentName ? true : false;
-    if(!isParent)document.getElementById('closeBtn').remove();
+    _gameManager.isParent = isParent;
+    !isParent ? document.getElementById('closeBtn').remove() : document.getElementById('closeBtn').style.display = 'block';
 
     playSocket.addEventListener('open', () => {
         console.log("サーバーに接続しました");
@@ -42,6 +44,8 @@ window.onload = () => {
                 }
             });
             console.log(ownNumber);
+            _gameManager.ownNumber = ownNumber;
+            _gameManager.roomMemberCounts = roomMembers.length;
 
             Array.from(nameDivs).forEach((value) => {
                 value.children[0].innerHTML = '';
@@ -55,7 +59,7 @@ window.onload = () => {
             players = roomMembers.concat();
         }
         else if(message.hasOwnProperty('start')){
-            gameStart();
+            _gameManager.gameStart();
         }
     });
 }
@@ -65,7 +69,6 @@ document.getElementById('closeBtn').addEventListener("click", async (event) => {
 
     try{
         document.getElementById('closeBtn').style.display = 'none';
-        scoreBord.style.opacity = '1';
         const response = await fetch(`/play/${parentName}`, {
             method:'POST',
             headers:{'Content-Type':'application/json'},
