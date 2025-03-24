@@ -17,11 +17,110 @@
     </div>
     <script src="./DataManager.js"></script>
     <script>
+        export default class HaiMG{
+            /*
+            1.constructorの変数をthis
+            2.今までの変数名をthisに変える
+            */
+            constructor(){
+                this._dm = new DM();
+                this._idCounter = 0;
+                let draggedElement = null;
+                let originalParent = null;
+                let kai = 0;
+
+                document.querySelectorAll('.hai-table').forEach(parent => {
+            parent.addEventListener('dragover',function(event){
+            event.preventDefault();//ドロップの可能
+
+            if (!draggedElement) return;
+
+            const elements = [...document.querySelectorAll('.border-div')];//border-divを持っているすべての要素を取得
+
+            elements.forEach(el => {
+                if (el !== draggedElement) {//自分はチェックしない
+                    const rect = el.getBoundingClientRect();
+                    const centerX = rect.left + rect.width / 2;
+                    /*
+                    座標情報を所得
+                    xの中心centerX
+                    */
+
+                    if (
+                        event.clientX > rect.left &&
+                        event.clientX < rect.right &&
+                        event.clientY > rect.top &&
+                        event.clientY < rect.bottom
+                        /*
+                        event.clientがマウスのX,Y
+                        重なっているかの判定
+                        */
+                    ) {
+                        if (event.clientX < centerX) {
+                            el.parentNode.insertBefore(draggedElement, el);
+                        } else {
+                            el.parentNode.insertBefore(draggedElement, el.nextSibling);
+                        }
+                        /*
+                        ドラッグしている要素 (draggedElement) のマウス位置が、重なった要素 (el) の中心より左か右かを判定
+                        event.clientX < centerX → マウスが el の左側
+                        → draggedElement を el の前に挿入
+                        event.clientX >= centerX → マウスが el の右側
+                        → draggedElement を el の次に挿入
+                        */
+                    }
+                }
+            });
+        });
+
+        parent.addEventListener('drop',function(event) {
+            event.preventDefault();
+            if(draggedElement){
+                // 親が異なり、かつその親の子要素数が0の場合のみ、親要素に追加
+                if(parent !== originalParent && parent.children.length === 0){
+                    parent.appendChild(draggedElement);
+                }
+                draggedElement.style.opacity = '1'
+                draggedElement = null;
+            }
+        });
+    });
+            }
+
+            showHai(){
+                const borderDiv = document.createElement('div');
+                borderDiv.classList.add('border-div');
+                // _dm.pickTango() で単語が取れる
+                borderDiv.textContent = this._dm.pickTango();
+                // ドラッグアンドドロップを有効にする
+                borderDiv.setAttribute('draggable', 'true');
+                borderDiv.id = `hai-${idCounter++}`;//なくてもOK　必要になるときがあるかも？
+
+                borderDiv.addEventListener('dragstart', function(event) {
+                    event.dataTransfer.setData('text/plain', event.target.id);
+                    draggedElement = event.target;
+                    originalParent = draggedElement.parentNode; // ドラッグ開始時の親要素を保存
+                    setTimeout(() => event.target.style.opacity = '0.25', 0); // ドラッグ中は透明に
+                });
+
+                borderDiv.addEventListener('dragend', function(event) {
+                    draggedElement.style.opacity = '1'; // ドラッグ終了時に元に戻す
+                    draggedElement = null;
+                });
+
+                document.getElementById('wordDown').appendChild(borderDiv);
+
+                return borderDiv;
+            }
+        }
+
+        /*
         const _dm = new DM();
         let idCounter = 0;
         let draggedElement = null;
         let originalParent = null;
         let kai = 0;
+        
         function showHai() {
             const borderDiv = document.createElement('div');
             borderDiv.classList.add('border-div');
@@ -44,7 +143,10 @@
             });
 
             document.getElementById('wordDown').appendChild(borderDiv);
+
+            return borderDiv;
         }
+            */
         document.querySelectorAll('.hai-table').forEach(parent => {
             parent.addEventListener('dragover',function(event){
             event.preventDefault();//ドロップの可能
