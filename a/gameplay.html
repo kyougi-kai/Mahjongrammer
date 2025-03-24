@@ -19,7 +19,9 @@
     <script>
         const _dm = new DM();
         let idCounter = 0;
-        let draggedElement = null; 
+        let draggedElement = null;
+        let originalParent = null;
+        let kai = 0;
         function showHai() {
             const borderDiv = document.createElement('div');
             borderDiv.classList.add('border-div');
@@ -32,6 +34,7 @@
             borderDiv.addEventListener('dragstart', function(event) {
                 event.dataTransfer.setData('text/plain', event.target.id);
                 draggedElement = event.target;
+                originalParent = draggedElement.parentNode; // ドラッグ開始時の親要素を保存
                 setTimeout(() => event.target.style.opacity = '0.25', 0); // ドラッグ中は透明に
             });
 
@@ -89,8 +92,11 @@
         parent.addEventListener('drop',function(event) {
             event.preventDefault();
             if(draggedElement){
-                parent.appendChild(draggedElement);//親に追加
-                draggedElement.style.opacity = '1';
+                // 親が異なり、かつその親の子要素数が0の場合のみ、親要素に追加
+                if(parent !== originalParent && parent.children.length === 0){
+                    parent.appendChild(draggedElement);
+                }
+                draggedElement.style.opacity = '1'
                 draggedElement = null;
             }
         });

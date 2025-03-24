@@ -9,35 +9,35 @@
 </head>
 <body>
     <div class="main-content">
-        <div class="top name">
-            <p></p>
-        </div>
-        <div class="right name">
-            <p></p>
-        </div>
-        <div class="bottom name">
-            <p id="usernameText"><%= username %></p>
-        </div>
-        <div class="left name">
-            <p></p>
-        </div>
+        <div class="main-bord">
+            <div class="top name">
+                <p></p>
+            </div>
+            <div class="right name">
+                <p></p>
+            </div>
+            <div class="bottom name">
+                <p id="usernameText"><%= username %></p>
+            </div>
+            <div class="left name">
+                <p></p>
+            </div>
 
-        <button id="testButton">Button</button>
+            <div class="score-bord" style="opacity: 0;" id="scoreBord">
+                <p class="top" style="transform: translateX(-50%) rotateZ(180deg);">25000</p>
+                <p class="right" style="transform: translateY(-100%) rotateZ(-90deg);">25000</p>
+                <p class="bottom" style="left: 50%;transform:translateX(-50%);">25000</p>
+                <p class="left" style="transform:translateY(-100%) rotateZ(90deg);">25000</p>
+            </div>
 
-        <button class="close-btn" id="closeBtn">締め切る</button>
-
+            <button class="close-btn" id="closeBtn" style="display: none;">締め切る</button>
+        </div>
         <div class="footer">
             <div class="hai-table" id="wordUp">
     
             </div>
             <div class="hai-table" id="wordDown">
             </div>
-        </div>
-        <div class="score-bord" style="opacity: 0;" id="scoreBord">
-            <p class="top" style="transform: translateX(-50%) rotateZ(180deg);">25000</p>
-            <p class="right" style="transform: translateY(-50%) rotateZ(-90deg);">25000</p>
-            <p class="bottom" style="left: 50%;transform:translateX(-50%);">25000</p>
-            <p class="left" style="transform:translateY(-50%) rotateZ(90deg);">25000</p>
         </div>
     </div>
 </body>
