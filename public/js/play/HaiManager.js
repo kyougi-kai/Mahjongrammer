@@ -1,26 +1,30 @@
-import { DM } from '/js/until/DataManager.js' 
+import DM from '/js/until/dataManager.js';
 
-class HaiMG{
+export default class HM{
     constructor(){
         this._dm = new DM();
-        this._draggedElement = null;
-        this._targetElement = null;
-        this._clickFlag = false;
         this._idCounter = 0;
+        this._draggedElement = null;
+        this._originalParent = null;
+
+        //クリック
+        this._targetElement = null;
 
         document.querySelectorAll('.hai-table').forEach(parent => {
-            parent.addEventListener('dragover',function(event){
+            parent.addEventListener('dragover', event => {
                 event.preventDefault();//ドロップの可能
                 if (!this._draggedElement) return;
                 const elements = [...document.querySelectorAll('.border-div')];//border-divを持っているすべての要素を取得
+
                 elements.forEach(el => {
                     if (el !== this._draggedElement) {//自分はチェックしない
-                        const rect = el.getBoundingClientRect();
-                        const centerX = rect.left + rect.width / 2;
+                        let rect = el.getBoundingClientRect();
+                        let centerX = rect.left + rect.width / 2;
                         /*
                         座標情報を所得
                         xの中心centerX
                         */
+
                         if (
                             event.clientX > rect.left &&
                             event.clientX < rect.right &&
@@ -35,7 +39,7 @@ class HaiMG{
                                 el.parentNode.insertBefore(this._draggedElement, el);
                             } else {
                                 el.parentNode.insertBefore(this._draggedElement, el.nextSibling);
-                            }
+                        }
                             /*
                             ドラッグしている要素 (draggedElement) のマウス位置が、重なった要素 (el) の中心より左か右かを判定
                             event.clientX < centerX → マウスが el の左側
@@ -47,11 +51,15 @@ class HaiMG{
                     }
                 });
             });
-            parent.addEventListener('drop',function(event) {
+
+            parent.addEventListener('drop', event => {
                 event.preventDefault();
                 if(this._draggedElement){
-                    parent.appendChild(this._draggedElement);//親に追加
-                    this._draggedElement.style.opacity = '1';
+                // 親が異なり、かつその親の子要素数が0の場合のみ、親要素に追加
+                    if(parent !== this._originalParent && parent.children.length === 0){
+                        parent.appendChild(this._draggedElement);
+                    }
+                    this._draggedElement.style.opacity = '1'
                     this._draggedElement = null;
                 }
             });
@@ -65,82 +73,33 @@ class HaiMG{
         borderDiv.textContent = this._dm.pickTango();
         // ドラッグアンドドロップを有効にする
         borderDiv.setAttribute('draggable', 'true');
-        borderDiv.addEventListener('dragstart', function(event) {
+        borderDiv.id = `hai-${this._idCounter++}`;//なくてもOK　必要になるときがあるかも？
+
+        borderDiv.addEventListener('dragstart', event => {
             event.dataTransfer.setData('text/plain', event.target.id);
             this._draggedElement = event.target;
+            this._originalParent = this._draggedElement.parentNode; // ドラッグ開始時の親要素を保存
             setTimeout(() => event.target.style.opacity = '0.25', 0); // ドラッグ中は透明に
+            console.log(this._draggedElement);
         });
-        borderDiv.addEventListener('dragend', function(event) {
-            if(this._draggedElement)this._draggedElement.style.opacity = '1'; // ドラッグ終了時に元に戻す
+
+        borderDiv.addEventListener('dragend', event => {
+            if(!this._draggedElement)return;
+            this._draggedElement.style.opacity = '1'; // ドラッグ終了時に元に戻す
             this._draggedElement = null;
         });
+
         document.getElementById('wordDown').appendChild(borderDiv);
 
-        //選択処理
-    
         return borderDiv;
     }
 
-    changeClickMode(){
-        if(this._clickFlag){
-            this._clickFlag = false;
-        }
-        else{
-            this._clickFlag = true;
-        }
-    }
-}
+    attachClickEvent(element){
+        element.addEventListener('click', (event) => {
+            if(this._targetElement)this._targetElement.style.border = '';
 
-export default class gameManager{
-    constructor(){
-        this._hais = [];
-        this._isParent = false;
-        this._scoreBord = document.getElementById('scoreBord');
-        this._nowPhase = -1; // 0が親 0~3の数字で回す
-        this._ownNumber = -1; //自分が部屋に何番目に入ってきたか
-        this._roomMemberCounts = 0; //部屋にいるプレイヤー人数
-        this._hm = new HaiMG();
-    }
-
-    set isParent(value){
-        this._isParent = value;
-    }
-
-    set ownNumber(value){
-        this._ownNumber = value;
-    }
-
-    set roomMemberCounts(value){
-        this._roomMemberCounts = value;
-    }
-
-    gameStart(){
-        for(let i = 0; i < 7; i++){
-            this._hais.push(this._hm.showHai());
-        }
-        if(this._isParent){
-            this._hais.push(this._hm.showHai());
-        }
-
-        this._scoreBord.style.opacity = '1';
-        this.nextPhase();
-    }
-
-    nextPhase(){
-        //点滅削除
-        if(this._nowPhase != -1)this._scoreBord.children[this.phaseToPlayerNumber(this._nowPhase)].style.animaction = '';
-
-        // this._nowPhase  の更新
-        this._nowPhase = (this._nowPhase + 1) % 4;
-
-        //点滅付与
-        console.log('yoba');
-        console.log(this.phaseToPlayerNumber(this._nowPhase));
-        console.log(this._scoreBord.children[this.phaseToPlayerNumber(this._nowPhase)]);
-        this._scoreBord.children[this.phaseToPlayerNumber(this._nowPhase)].style.animation = 'blinking 2s infinite ease';
-    }
-
-    phaseToPlayerNumber(phase){
-        return (2 - this._ownNumber + phase) % 4
+            this._targetElement = event.target;
+            this._targetElement.style.border = '2px solid red';
+        });
     }
 }

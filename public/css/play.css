@@ -20,9 +20,21 @@ body, html {
     left: 50%;
 }
 
+.top-content{
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%) rotateZ(180deg);
+}
+
 .bottom{
     bottom: 0;
     left: 10px;
+}
+
+.bottom-content{
+    bottom: 10%;
+    left: 50%;
+    transform:translateX(-50%);
 }
 
 .right{
@@ -30,9 +42,21 @@ body, html {
     right: 0;
 }
 
+.right-content{
+    top: 50%;
+    right: 10%;
+    transform: translateY(-100%) rotateZ(-90deg);
+}
+
 .left{
     top: 50%;
     left: 0;
+}
+
+.left-content{
+    transform:translateY(-100%) rotateZ(90deg);
+    top: 50%;
+    left: 10%;
 }
 
 .name p{
@@ -67,6 +91,17 @@ body, html {
     justify-content: center;
 }
 
+.throw-hai{
+    position: absolute;
+
+    width: 140px;
+    height: 80px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .hai-table{
   display: flex;
   background-color: rgb(255, 255, 255);
@@ -76,6 +111,7 @@ body, html {
   line-height: 100px;
   border: 1px solid #333;
 }
+
 .border-div {
     width: 140px;
     height: 80px;
@@ -99,6 +135,15 @@ body, html {
 
 .score-bord p{
     position: absolute;
+}
+
+.throw-button{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 80px;
 }
 
 @keyframes blinking{

@@ -1,4 +1,4 @@
-import gameManager from '/js/play/HaiManager.js';
+import gameManager from '/js/play/gameManager.js';
 
 let playSocket
 let parentName;
