@@ -153,6 +153,16 @@ wss.on('connection', async (ws, req) => {
                     });
                 }
             }
+            else if(message.hasOwnProperty('throwHai')){
+                Object.values(playClients[roomId]).forEach((memberWs) => {
+                    memberWs.send(JSON.stringify({throwHai: message.throwHai, isBark:message.isBark, targetNumber:message.targetNumber}));
+                });
+            }
+            else if(message.hasOwnProperty('bark')){
+                Object.values(playClients[roomId]).forEach((memberWs) => {
+                    memberWs.send(JSON.stringify({bark: message.bark}));
+                });
+            }
         })
     }
 });

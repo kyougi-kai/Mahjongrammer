@@ -1,81 +1,94 @@
-import DM from '/js/until/dataManager.js';
-
 export default class HM{
-    constructor(){
-        this._dm = new DM();
+    constructor(throwEvent){
         this._idCounter = 0;
         this._draggedElement = null;
         this._originalParent = null;
+        this._movedAnotherParent = false;
 
-        //クリック
-        this._targetElement = null;
+        this._isMyTurn = false;
+        this._isBark = false;
 
-        document.querySelectorAll('.hai-table').forEach(parent => {
+        document.querySelectorAll('.hai-table').forEach((parent, index) => {
             parent.addEventListener('dragover', event => {
                 event.preventDefault();//ドロップの可能
                 if (!this._draggedElement) return;
-                const elements = [...document.querySelectorAll('.border-div')];//border-divを持っているすべての要素を取得
 
-                elements.forEach(el => {
-                    if (el !== this._draggedElement) {//自分はチェックしない
-                        let rect = el.getBoundingClientRect();
-                        let centerX = rect.left + rect.width / 2;
-                        /*
-                        座標情報を所得
-                        xの中心centerX
-                        */
+                const childrenCount = Array.from(parent.children).length;
+                if(childrenCount == 0 || event.clientX > parent.children[childrenCount - 1]?.getBoundingClientRect().right){
+                    parent.appendChild(this._draggedElement);
+                }
 
-                        if (
-                            event.clientX > rect.left &&
-                            event.clientX < rect.right &&
-                            event.clientY > rect.top &&
-                            event.clientY < rect.bottom
-                            /*
-                            event.clientがマウスのX,Y
-                            重なっているかの判定
-                            */
-                        ) {
-                            if (event.clientX < centerX) {
-                                el.parentNode.insertBefore(this._draggedElement, el);
-                            } else {
-                                el.parentNode.insertBefore(this._draggedElement, el.nextSibling);
+                    Array.from(parent.children).forEach((hai) => {
+                        if (hai !== this._draggedElement) {//自分はチェックしない
+                            let rect = hai.getBoundingClientRect();
+                            if (event.clientX > rect.left && event.clientX < rect.right && event.clientY > rect.top && event.clientY < rect.bottom) {
+                                 /*
+                                event.clientがマウスのX,Y
+                                重なっているかの判定
+                                */
+                                const idx = Array.from(parent.children).indexOf(hai);
+                                console.log(idx);
+                                console.log(Array.from(parent.children).indexOf(this._draggedElement));
+                                if(!this._movedAnotherParent && this._originalParent != hai.parentNode){
+                                    hai.parentNode.insertBefore(this._draggedElement, hai);
+                                }
+                                else if(idx > Array.from(parent.children).indexOf(this._draggedElement)){
+                                    hai.parentNode.insertBefore(this._draggedElement, hai.nextSibling);
+                                }
+                                else{
+                                    hai.parentNode.insertBefore(this._draggedElement, hai);
+                                }
+
+                                if(this._originalParent != hai.parentNode)this._movedAnotherParent = true;
+                            }
                         }
-                            /*
-                            ドラッグしている要素 (draggedElement) のマウス位置が、重なった要素 (el) の中心より左か右かを判定
-                            event.clientX < centerX → マウスが el の左側
-                            → draggedElement を el の前に挿入
-                            event.clientX >= centerX → マウスが el の右側
-                            → draggedElement を el の次に挿入
-                            */
-                        }
-                    }
-                });
+                    })
             });
-
             parent.addEventListener('drop', event => {
                 event.preventDefault();
                 if(this._draggedElement){
-                // 親が異なり、かつその親の子要素数が0の場合のみ、親要素に追加
-                    if(parent !== this._originalParent && parent.children.length === 0){
-                        parent.appendChild(this._draggedElement);
-                    }
                     this._draggedElement.style.opacity = '1'
                     this._draggedElement = null;
                 }
             });
         });
+
+        document.addEventListener('dragover', event => {
+            event.preventDefault();
+        });
+
+        //捨てる
+        document.addEventListener('drop', event => {
+            event.preventDefault();
+            if (this._draggedElement && (this._isMyTurn || this._isBark)){
+                let saveData = this._draggedElement.textContent;
+                this._draggedElement.remove();
+                throwEvent(saveData, this._isBark);
+                this._isMyTurn = false;
+                this._isBark = false;
+            }
+        });
     }
 
-    showHai(){
+    set isMyTurn(value){
+        this._isMyTurn = value;
+    }
+
+    set isBark(value){
+        this._isBark = value;
+    }
+
+    showHai(word){
         const borderDiv = document.createElement('div');
         borderDiv.classList.add('border-div');
         // _dm.pickTango() で単語が取れる
-        borderDiv.textContent = this._dm.pickTango();
+        borderDiv.textContent = word;
         // ドラッグアンドドロップを有効にする
         borderDiv.setAttribute('draggable', 'true');
         borderDiv.id = `hai-${this._idCounter++}`;//なくてもOK　必要になるときがあるかも？
 
         borderDiv.addEventListener('dragstart', event => {
+            this._movedAnotherParent = false;
             event.dataTransfer.setData('text/plain', event.target.id);
             this._draggedElement = event.target;
             this._originalParent = this._draggedElement.parentNode; // ドラッグ開始時の親要素を保存
@@ -92,14 +105,5 @@ export default class HM{
         document.getElementById('wordDown').appendChild(borderDiv);
 
         return borderDiv;
-    }
-
-    attachClickEvent(element){
-        element.addEventListener('click', (event) => {
-            if(this._targetElement)this._targetElement.style.border = '';
-
-            this._targetElement = event.target;
-            this._targetElement.style.border = '2px solid red';
-        });
     }
 }
