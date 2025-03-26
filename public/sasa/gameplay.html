@@ -33,40 +33,27 @@
                     parent.addEventListener('dragover', event => {
                         event.preventDefault();//ドロップの可能
                         if (!this._draggedElement) return;
-                        const tables = [...document.querySelectorAll('.hai-table')];//border-divを持っているすべての要素を取得
 
-                        const childrenCount = Array.from(tables[index].children).length;
-                        if(childrenCount == 0 || event.clientX > tables[index].children[childrenCount - 1]?.getBoundingClientRect().right){
-                            tables[index].appendChild(this._draggedElement);
+                        const childrenCount = Array.from(parent.children).length;
+                        if(childrenCount == 0 || event.clientX > parent.children[childrenCount - 1]?.getBoundingClientRect().right){
+                            parent.appendChild(this._draggedElement);
                         }
 
-                        tables.forEach(table => {
-
-                            Array.from(table.children).forEach((hai) => {
+                            Array.from(parent.children).forEach((hai) => {
                                 if (hai !== this._draggedElement) {//自分はチェックしない
                                     let rect = hai.getBoundingClientRect();
-                                    let centerX = rect.left + rect.width / 2;
-                                    /*
-                                    座標情報を所得
-                                    xの中心centerX
-                                    */
-                                    if (
-                                        event.clientX > rect.left &&
-                                        event.clientX < rect.right &&
-                                        event.clientY > rect.top &&
-                                        event.clientY < rect.bottom
-                                        /*
+                                    if (event.clientX > rect.left && event.clientX < rect.right && event.clientY > rect.top && event.clientY < rect.bottom) {
+                                         /*
                                         event.clientがマウスのX,Y
                                         重なっているかの判定
                                         */
-                                    ) {
-                                        const idx = Array.from(table.children).indexOf(hai);
+                                        const idx = Array.from(parent.children).indexOf(hai);
                                         console.log(idx);
-                                        console.log(Array.from(table.children).indexOf(this._draggedElement));
+                                        console.log(Array.from(parent.children).indexOf(this._draggedElement));
                                         if(!this._movedAnotherParent && this._originalParent != hai.parentNode){
                                             hai.parentNode.insertBefore(this._draggedElement, hai);
                                         }
-                                        else if(idx > Array.from(table.children).indexOf(this._draggedElement)){
+                                        else if(idx > Array.from(parent.children).indexOf(this._draggedElement)){
                                             hai.parentNode.insertBefore(this._draggedElement, hai.nextSibling);
                                         }
                                         else{
@@ -77,8 +64,6 @@
                                     }
                                 }
                             })
-                            
-                        });
                     });
                     parent.addEventListener('drop', event => {
                         event.preventDefault();
@@ -96,6 +81,8 @@
                 document.addEventListener('drop', event => {
                     event.preventDefault();
                     if (this._draggedElement) {
+                        let saveDate = this._draggedElement.textContent;
+                        console.log(saveDate);
                         this._draggedElement.remove();
                     }
                 });
