@@ -9,31 +9,24 @@
 <body>
     <button onclick="nanka.showHai();">start</button>
     <div class="footer">
-        <div class="hai-table" id="wordUp">
-        </div>
-        <div class="hai-table" id="wordDown">
-        </div>
+        <div class="hai-table" id="wordUp"></div>
+        <div class="hai-table" id="wordDown"></div>
     </div>
     <script src="../js/until/dmcopy.js"></script>
     <script defer>
         class HaiMG{
-            /*
-            1.constructorの変数をthis
-            2.今までの変数名をthisに変える
-            */
             constructor(){
                 this._dm = new DM();
                 this._idCounter = 0;
                 this._draggedElement = null;
                 this._originalParent = null;
                 this._movedAnotherParent = false;
-                this._sutehozon = null;
 
                 document.querySelectorAll('.hai-table').forEach((parent, index) => {
                     parent.addEventListener('dragover', event => {
-                        event.preventDefault();//ドロップの可能
+                        event.preventDefault(); // Allow drop
                         if (!this._draggedElement) return;
-                        const tables = [...document.querySelectorAll('.hai-table')];//border-divを持っているすべての要素を取得
+                        const tables = [...document.querySelectorAll('.hai-table')];
 
                         const childrenCount = Array.from(tables[index].children).length;
                         if(childrenCount == 0 || event.clientX > tables[index].children[childrenCount - 1]?.getBoundingClientRect().right){
@@ -41,28 +34,13 @@
                         }
 
                         tables.forEach(table => {
-
                             Array.from(table.children).forEach((hai) => {
-                                if (hai !== this._draggedElement) {//自分はチェックしない
+                                if (hai !== this._draggedElement) {
                                     let rect = hai.getBoundingClientRect();
                                     let centerX = rect.left + rect.width / 2;
-                                    /*
-                                    座標情報を所得
-                                    xの中心centerX
-                                    */
-                                    if (
-                                        event.clientX > rect.left &&
-                                        event.clientX < rect.right &&
-                                        event.clientY > rect.top &&
-                                        event.clientY < rect.bottom
-                                        /*
-                                        event.clientがマウスのX,Y
-                                        重なっているかの判定
-                                        */
-                                    ) {
+
+                                    if (event.clientX > rect.left && event.clientX < rect.right && event.clientY > rect.top && event.clientY < rect.bottom) {
                                         const idx = Array.from(table.children).indexOf(hai);
-                                        console.log(idx);
-                                        console.log(Array.from(table.children).indexOf(this._draggedElement));
                                         if(!this._movedAnotherParent && this._originalParent != hai.parentNode){
                                             hai.parentNode.insertBefore(this._draggedElement, hai);
                                         }
@@ -77,9 +55,9 @@
                                     }
                                 }
                             })
-                            
                         });
                     });
+
                     parent.addEventListener('drop', event => {
                         event.preventDefault();
                         if(this._draggedElement){
@@ -89,14 +67,18 @@
                     });
                 });
 
+                // Allow dropping anywhere in the document
                 document.addEventListener('dragover', event => {
-                    event.preventDefault();
+                    event.preventDefault(); // Allow drop on the document body
                 });
 
                 document.addEventListener('drop', event => {
                     event.preventDefault();
                     if (this._draggedElement) {
-                        this._draggedElement.remove();
+                        const target = document.querySelector('.footer');
+                        target.appendChild(this._draggedElement); // Append the dragged element to footer or any other location
+                        this._draggedElement.style.opacity = '1';
+                        this._draggedElement = null;
                     }
                 });
             }
@@ -104,24 +86,22 @@
             showHai(){
                 const borderDiv = document.createElement('div');
                 borderDiv.classList.add('border-div');
-                // _dm.pickTango() で単語が取れる
                 borderDiv.textContent = this._dm.pickTango();
-                // ドラッグアンドドロップを有効にする
                 borderDiv.setAttribute('draggable', 'true');
-                borderDiv.id = `hai-${this._idCounter++}`;//なくてもOK　必要になるときがあるかも？
+                borderDiv.id = `hai-${this._idCounter++}`;
 
                 borderDiv.addEventListener('dragstart', event => {
                     this._movedAnotherParent = false;
                     event.dataTransfer.setData('text/plain', event.target.id);
                     this._draggedElement = event.target;
-                    this._originalParent = this._draggedElement.parentNode; // ドラッグ開始時の親要素を保存
-                    setTimeout(() => event.target.style.opacity = '0.25', 0); // ドラッグ中は透明に
+                    this._originalParent = this._draggedElement.parentNode;
+                    setTimeout(() => event.target.style.opacity = '0.25', 0);
                     console.log(this._draggedElement);
                 });
 
                 borderDiv.addEventListener('dragend', event => {
                     if(!this._draggedElement)return;
-                    this._draggedElement.style.opacity = '1'; // ドラッグ終了時に元に戻す
+                    this._draggedElement.style.opacity = '1';
                     this._draggedElement = null;
                 });
 
