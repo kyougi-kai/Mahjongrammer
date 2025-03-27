@@ -105,7 +105,7 @@ export default class gameManager{
                 this._throwHais[this.phaseToPlayerNumber(this._nowPhase)];
                 targetElement.innerHTML = message.throwHai;
                 targetElement.style.opacity = '1';
-                
+                this._scoreBord.children[this.phaseToPlayerNumber(message.targetNumber)].style.animation = '';
                 message.isBark ? this.nextPhase() : this.barkPhase();
             }
             else if(message.hasOwnProperty('bark')){
@@ -116,6 +116,8 @@ export default class gameManager{
 
                 this._scoreBord.children[this.phaseToPlayerNumber(this._nowPhase)].style.animation = '';
                 this._scoreBord.children[this.phaseToPlayerNumber(message.bark)].style.animation = 'blinking 2s infinite ease';
+
+                alert(`${nameDivs[this.phaseToPlayerNumber(message.bark)].children[0].textContent}がポンした！`);
             }
         });
 
