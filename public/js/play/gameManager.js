@@ -27,7 +27,7 @@ export default class gameManager{
         this._isParent = username == parentName ? true : false;
         !this._isParent ? document.getElementById('closeBtn').remove() : document.getElementById('closeBtn').style.display = 'block';
 
-        this._barkTime = 5;
+        this._barkTime = 3;
         this._barkDiv = document.getElementById('barkDiv');
         this._barkInterval = null;
 
@@ -87,7 +87,10 @@ export default class gameManager{
                 });
                 
                 roomMembers.forEach((member, index) => {
-                    const target = nameDivs[(2 - this._ownNumber + index) % 4].children[0];
+                    //あとでなおす
+                    let targetIndex = (2 - this._ownNumber + index) % 4;
+                    if(targetIndex == -1)targetIndex = 3;
+                    const target = nameDivs[targetIndex].children[0];
                     index == 0 ? target.style.color = 'red' : target.style.color = 'black';
                     target.innerHTML = member.username;
                 });
@@ -171,7 +174,7 @@ export default class gameManager{
     }
 
     phaseToPlayerNumber(phase){
-        return (2 - this._ownNumber + phase) % 4
+        return (2 - this._ownNumber + phase) % 4 == -1 ? 3 : (2 - this._ownNumber + phase) % 4;
     }
 
     throwHai(word){
