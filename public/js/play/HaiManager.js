@@ -1,4 +1,4 @@
-export default class HM{
+export class HM{
     constructor(throwEvent){
         this._idCounter = 0;
         this._draggedElement = null;

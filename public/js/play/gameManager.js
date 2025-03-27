@@ -1,5 +1,5 @@
-import HM from '/js/play/haiManager.js';
-import DM from '/js/until/dataManager.js';
+import {HM} from '/js/play/haiManager.js';
+import {DM} from '/js/until/dataManager.js';
 
 export default class gameManager{
     constructor(){

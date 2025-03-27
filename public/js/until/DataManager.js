@@ -1,4 +1,4 @@
-export default class DM{
+export class DM{
     constructor(){
         this._wariai = [1,1,1,1,1,1,1,1,1,1];
         this._partOfSpeech = ["meisi", "dousi", "keiyousi", "hukusi", "daimeisi", "zentisi", "setuzokusi", "kantansi", "kansi", "jodousi"];
