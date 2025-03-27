@@ -109,7 +109,7 @@ export default class gameManager{
                 clearInterval(this._barkInterval);
                 this._barkDiv.style.display = 'none';
                 this._barkDiv.children[1].innerHTML = '';
-                this._throwHais[this.phaseToPlayerNumber(this._nowPhase)].style.display = 'none';
+                this._throwHais[this.phaseToPlayerNumber(this._nowPhase)].style.opacity = '0';
 
                 this._scoreBord.children[this.phaseToPlayerNumber(this._nowPhase)].style.animation = '';
                 this._scoreBord.children[this.phaseToPlayerNumber(message.bark)].style.animation = 'blinking 2s infinite ease';
