@@ -1,6 +1,6 @@
 export class DM{
     constructor(){
-        this._wariai = [1,1,1,1,1,1,1,1,1,1];
+        this._wariai = [3,3,1,1,2,1,0,0,2,2];
 
         let sum = 0;
         this._wariai.forEach((value) => {
