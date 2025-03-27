@@ -357,6 +357,374 @@ tango = {
     tags: ["叙述用法", "状態"],
     katuyou: ["tired", "more tired", "most tired"]
   },
+  quickly: {//副詞
+    hinsi: ["副詞"],
+    tags: ["様態"],
+  },
+  carefully: {
+    hinsi: ["副詞"],
+    tags: ["様態"],
+  },
+  loudly: {
+    hinsi: ["副詞"],
+    tags: ["様態"],
+  },
+  slowly: {
+    hinsi: ["副詞"],
+    tags: ["様態"],
+  },
+  happily: {
+    hinsi: ["副詞"],
+    tags: ["様態"],
+  },
+  sadly: {
+    hinsi: ["副詞"],
+    tags: ["様態"],
+  },
+  easily: {
+    hinsi: ["副詞"],
+    tags: ["様態"],
+  },
+  well: {
+    hinsi: ["副詞"],
+    tags: ["様態"],
+  },
+  now: {
+    hinsi: ["副詞"],
+    tags: ["時間"],
+  },
+  yesterday: {
+    hinsi: ["副詞"],
+    tags: ["時間"],
+  },
+  soon: {
+    hinsi: ["副詞"],
+    tags: ["時間"],
+  },
+  later: {
+    hinsi: ["副詞"],
+    tags: ["時間"],
+  },
+  today: {
+    hinsi: ["副詞"],
+    tags: ["時間"],
+  },
+  tomorrow: {
+    hinsi: ["副詞"],
+    tags: ["時間"],
+  },
+  recently: {
+    hinsi: ["副詞"],
+    tags: ["時間"],
+  },
+  already: {
+    hinsi: ["副詞"],
+    tags: ["時間"],
+  },
+  here: {
+    hinsi: ["副詞"],
+    tags: ["場所"],
+  },
+  there: {
+    hinsi: ["副詞"],
+    tags: ["場所"],
+  },
+  everywhere: {
+    hinsi: ["副詞"],
+    tags: ["場所"],
+  },
+  outside: {
+    hinsi: ["副詞"],
+    tags: ["場所"],
+  },
+  inside: {
+    hinsi: ["副詞"],
+    tags: ["場所"],
+  },
+  upstairs: {
+    hinsi: ["副詞"],
+    tags: ["場所"],
+  },
+  nearby: {
+    hinsi: ["副詞"],
+    tags: ["場所"],
+  },
+  always: {
+    hinsi: ["副詞"],
+    tags: ["頻度"],
+  },
+  often: {
+    hinsi: ["副詞"],
+    tags: ["頻度"],
+  },
+  sometimes: {
+    hinsi: ["副詞"],
+    tags: ["頻度"],
+  },
+  rarely: {
+    hinsi: ["副詞"],
+    tags: ["頻度"],
+  },
+  never: {
+    hinsi: ["副詞"],
+    tags: ["頻度"],
+  },
+  usually: {
+    hinsi: ["副詞"],
+    tags: ["頻度"],
+  },
+  occasionally: {
+    hinsi: ["副詞"],
+    tags: ["頻度"],
+  },
+  very: {
+    hinsi: ["副詞"],
+    tags: ["程度"],
+  },
+  almost: {
+    hinsi: ["副詞"],
+    tags: ["程度"],
+  },
+  completely: {
+    hinsi: ["副詞"],
+    tags: ["程度"],
+  },
+  quite: {
+    hinsi: ["副詞"],
+    tags: ["程度"],
+  },
+  extremely: {
+    hinsi: ["副詞"],
+    tags: ["程度"],
+  },
+  hardly: {
+    hinsi: ["副詞"],
+    tags: ["程度"],
+  },
+  totally: {
+    hinsi: ["副詞"],
+    tags: ["程度"],
+  },
+  fortunately: {
+    hinsi: ["副詞"],
+    tags: ["文修飾"],
+  },
+  unfortunately: {
+    hinsi: ["副詞"],
+    tags: ["文修飾"],
+  },
+  surprisingly: {
+    hinsi: ["副詞"],
+    tags: ["文修飾"],
+  },
+  obviously: {
+    hinsi: ["副詞"],
+    tags: ["文修飾"],
+  },
+  honestly: {
+    hinsi: ["副詞"],
+    tags: ["文修飾"],
+  },
+  do: {//助動詞
+    hinsi: ["助動詞"],
+    tags: ["助動詞"],
+  },
+  have: {
+    hinsi: ["助動詞"],
+    tags: ["助動詞"],
+  },
+  be: {
+    hinsi: ["助動詞"],
+    tags: ["助動詞"],
+  },
+  did: {
+    hinsi: ["助動詞"],
+    tags: ["助動詞"],
+  },
+  had: {
+    hinsi: ["助動詞"],
+    tags: ["助動詞"],
+  },
+  was: {
+    hinsi: ["助動詞"],
+    tags: ["助動詞"],
+  },
+  were: {
+    hinsi: ["助動詞"],
+    tags: ["助動詞"],
+  },
+  has: {
+    hinsi: ["助動詞"],
+    tags: ["助動詞"],
+  },
+  having: {
+    hinsi: ["助動詞"],
+    tags: ["助動詞"],
+  },
+  been: {
+    hinsi: ["助動詞"],
+    tags: ["助動詞"],
+  },
+  can: {
+    hinsi: ["助動詞"],
+    tags: ["法助動詞"],
+  },
+  will: {
+    hinsi: ["助動詞"],
+    tags: ["法助動詞"],
+  },
+  shall: {
+    hinsi: ["助動詞"],
+    tags: ["法助動詞"],
+  },
+  may: {
+    hinsi: ["助動詞"],
+    tags: ["法助動詞"],
+  },
+  must: {
+    hinsi: ["助動詞"],
+    tags: ["法助動詞"],
+  },
+  could: {
+    hinsi: ["助動詞"],
+    tags: ["法助動詞"],
+  },
+  would: {
+    hinsi: ["助動詞"],
+    tags: ["法助動詞"],
+  },
+  should: {
+    hinsi: ["助動詞"],
+    tags: ["法助動詞"],
+  },
+  might: {
+    hinsi: ["助動詞"],
+    tags: ["法助動詞"],
+  },  
+  at: {//前置詞
+    hinsi: ["前置詞"],
+    tags: ["時間", "場所"],
+  },
+  on: {
+    hinsi: ["前置詞"],
+    tags: ["時間", "場所"],
+  },
+  in: {
+    hinsi: ["前置詞"],
+    tags: ["時間", "場所"],
+  },
+  by: {
+    hinsi: ["前置詞"],
+    tags: ["時間", "手段"],
+  },
+  during: {
+    hinsi: ["前置詞"],
+    tags: ["時間"],
+  },
+  before: {
+    hinsi: ["前置詞"],
+    tags: ["時間"],
+  },
+  after: {
+    hinsi: ["前置詞"],
+    tags: ["時間"],
+  },
+  until: {
+    hinsi: ["前置詞"],
+    tags: ["時間"],
+  },
+  since: {
+    hinsi: ["前置詞"],
+    tags: ["時間"],
+  },
+  for: {
+    hinsi: ["前置詞"],
+    tags: ["時間"],
+  },
+  under: {
+    hinsi: ["前置詞"],
+    tags: ["場所"],
+  },
+  above: {
+    hinsi: ["前置詞"],
+    tags: ["場所"],
+  },
+  below: {
+    hinsi: ["前置詞"],
+    tags: ["場所"],
+  },
+  between: {
+    hinsi: ["前置詞"],
+    tags: ["場所"],
+  },
+  beside: {
+    hinsi: ["前置詞"],
+    tags: ["場所"],
+  },
+  near: {
+    hinsi: ["前置詞"],
+    tags: ["場所"],
+  },
+  inside: {
+    hinsi: ["前置詞"],
+    tags: ["場所"],
+  },
+  to: {
+    hinsi: ["前置詞"],
+    tags: ["方向"],
+  },
+  into: {
+    hinsi: ["前置詞"],
+    tags: ["方向"],
+  },
+  towards: {
+    hinsi: ["前置詞"],
+    tags: ["方向"],
+  },
+  through: {
+    hinsi: ["前置詞"],
+    tags: ["方向"],
+  },
+  across: {
+    hinsi: ["前置詞"],
+    tags: ["方向"],
+  },
+  along: {
+    hinsi: ["前置詞"],
+    tags: ["方向"],
+  },
+  around: {
+    hinsi: ["前置詞"],
+    tags: ["方向"],
+  },
+  onto: {
+    hinsi: ["前置詞"],
+    tags: ["方向"],
+  },
+  off: {
+    hinsi: ["前置詞"],
+    tags: ["方向"],
+  },
+  with: {
+    hinsi: ["前置詞"],
+    tags: ["手段"],
+  },
+  using: {
+    hinsi: ["前置詞"],
+    tags: ["手段"],
+  },
+  via: {
+    hinsi: ["前置詞"],
+    tags: ["手段"],
+  },
+  through: {
+    hinsi: ["前置詞"],
+    tags: ["手段"],
+  },
+  without: {
+    hinsi: ["前置詞"],
+    tags: ["手段"],
+  },
   a: {//冠詞
     hinsi: ["冠詞"],
     tags: ["不定冠詞"] 
@@ -368,11 +736,80 @@ tango = {
   the: { 
     hinsi: ["冠詞"],
     tags: ["定冠詞"] 
-  }
+  },
+  and: {//接続詞
+    hinsi: ["接続詞"],
+    tags: ["等位接続詞"],
+  },
+  but: {
+    hinsi: ["接続詞"],
+    tags: ["等位接続詞"],
+  },
+  or: {
+    hinsi: ["接続詞"],
+    tags: ["等位接続詞"],
+  },
+  so: {
+    hinsi: ["接続詞"],
+    tags: ["等位接続詞"],
+  },
+  yet: {
+    hinsi: ["接続詞"],
+    tags: ["等位接続詞"],
+  },
+  for: {
+    hinsi: ["接続詞"],
+    tags: ["等位接続詞"],
+  },
+  because: {
+    hinsi: ["接続詞"],
+    tags: ["従位接続詞"],
+  },
+  although: {
+    hinsi: ["接続詞"],
+    tags: ["従位接続詞"],
+  },
+  if: {
+    hinsi: ["接続詞"],
+    tags: ["従位接続詞"],
+  },
+  when: {
+    hinsi: ["接続詞"],
+    tags: ["従位接続詞"],
+  },
+  while: {
+    hinsi: ["接続詞"],
+    tags: ["従位接続詞"],
+  },
+  since: {
+    hinsi: ["接続詞"],
+    tags: ["従位接続詞"],
+  },
+  until: {
+    hinsi: ["接続詞"],
+    tags: ["従位接続詞"],
+  },
+  unless: {
+    hinsi: ["接続詞"],
+    tags: ["従位接続詞"],
+  },
+  though: {
+    hinsi: ["接続詞"],
+    tags: ["従位接続詞"],
+  },
 }
-let objectmean = "apple";
-let tangoGo = tango.objectmean;
-function tangoviews(){
-    console.log(12345689);
-    console.log(tangoGo);
+
+
+
+function getTangoToArray(nameForGetTango){
+  let getTango = document.getElementsByName(nameForGetTango);
+  let gettangoarray = [];
+  for (let inputTango of getTango) {
+    gettangoarray.push(inputTango.value);
+}
+  console.log(gettangoarray);
+}
+
+function checkS(){
+  getTangoToArray("textofS");
 }
