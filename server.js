@@ -37,6 +37,7 @@ app.set("views", path.join(__dirname, 'views'));
 
 const roomClients = new Map();
 const playClients = {};
+const playDatas = {};
 
 wss.on('connection', async (ws, req) => {
     const url = req.url;
@@ -69,6 +70,7 @@ wss.on('connection', async (ws, req) => {
                     });
                     const roomId = await getRow('rooms', 'room_id', 'parent_id', userId);
                     playClients[roomId] = {};
+                    playDatas[roomId] = {skip:0};
                 }
                 else if(message.hasOwnProperty('deleteRoom')){
                     //消す処理
@@ -142,6 +144,7 @@ wss.on('connection', async (ws, req) => {
                     await pool.query('delete from room_member where room_id = ?', [roomId]);
                     await deleteRoom(parentId);
                     delete playClients[roomId];
+                    delete playDatas[roomId];
                 }
                 else{
                     await pool.query('delete from room_member where user_id = ?', [userId]);
@@ -160,6 +163,7 @@ wss.on('connection', async (ws, req) => {
                 }
             }
             else if(message.hasOwnProperty('throwHai')){
+                playDatas[roomId].skip = 0;
                 Object.values(playClients[roomId]).forEach((memberWs) => {
                     memberWs.send(JSON.stringify({throwHai: message.throwHai, isBark:message.isBark, targetNumber:message.targetNumber}));
                 });
@@ -168,6 +172,14 @@ wss.on('connection', async (ws, req) => {
                 Object.values(playClients[roomId]).forEach((memberWs) => {
                     memberWs.send(JSON.stringify({bark: message.bark}));
                 });
+            }
+            else if(message.hasOwnProperty('skip')){
+                playDatas[roomId].skip++;
+                if(playDatas[roomId].skip >= await getRoomMemberCounts(roomId) - 1){
+                    Object.values(playClients[roomId]).forEach((memberWs) => {
+                        memberWs.send(JSON.stringify({skip: true}));
+                    });
+                }
             }
         })
     }

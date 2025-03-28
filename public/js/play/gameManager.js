@@ -14,8 +14,8 @@ export default class gameManager{
         this._ownNumber = -1; //自分が部屋に何番目に入ってきたか
         this._roomMemberCounts = 0; //部屋にいるプレイヤー人数
         this._hm = new HM(
-            (word, isBark) => {
-                this._playSocket.send(JSON.stringify({throwHai:word, isBark:isBark, targetNumber:this._ownNumber}));
+            (haiElement, isBark) => {
+                this._playSocket.send(JSON.stringify({throwHai:haiElement, isBark:isBark, targetNumber:this._ownNumber}));
             }
         );
         this._throwHais = document.getElementsByClassName('throw-hai');
@@ -27,7 +27,7 @@ export default class gameManager{
         this._isParent = username == parentName ? true : false;
         !this._isParent ? document.getElementById('closeBtn').remove() : document.getElementById('closeBtn').style.display = 'block';
 
-        this._barkTime = 3;
+        this._barkTime = 5;
         this._barkDiv = document.getElementById('barkDiv');
         this._barkInterval = null;
 
@@ -52,10 +52,16 @@ export default class gameManager{
 
         //なく
         this._barkDiv.children[0].addEventListener('click', (event) => {
-            this._hm.showHai(this._throwHais[this.phaseToPlayerNumber(this._nowPhase)].textContent);
+            this._hm.showHai(this._throwHais[this.phaseToPlayerNumber(this._nowPhase)].children[0].textContent);
             this._hm.isBark = true;
 
             this._playSocket.send(JSON.stringify({bark:this._ownNumber}));
+        });
+
+        //スキップ
+        this._barkDiv.children[1].addEventListener('click', (event) => {
+            this._barkDiv.style.display = 'none';
+            this._playSocket.send(JSON.stringify({skip:true}));
         });
 
         //通信
@@ -104,6 +110,7 @@ export default class gameManager{
                 this._throwHais[this.phaseToPlayerNumber(message.targetNumber)] :
                 this._throwHais[this.phaseToPlayerNumber(this._nowPhase)];
                 targetElement.innerHTML = message.throwHai;
+                targetElement.children[0].style.opacity = '1';
                 targetElement.style.opacity = '1';
                 this._scoreBord.children[this.phaseToPlayerNumber(message.targetNumber)].style.animation = '';
                 message.isBark ? this.nextPhase() : this.barkPhase();
@@ -111,7 +118,7 @@ export default class gameManager{
             else if(message.hasOwnProperty('bark')){
                 clearInterval(this._barkInterval);
                 this._barkDiv.style.display = 'none';
-                this._barkDiv.children[1].innerHTML = '';
+                this._barkDiv.querySelector('h2').innerHTML = '';
                 this._throwHais[this.phaseToPlayerNumber(this._nowPhase)].style.opacity = '0';
 
                 this._scoreBord.children[this.phaseToPlayerNumber(this._nowPhase)].style.animation = '';
@@ -122,6 +129,12 @@ export default class gameManager{
             else if(message.hasOwnProperty('tangoRatio')){
                 this._dm.updateRatio(message.tangoRatio);
             }
+            else if(message.hasOwnProperty('skip')){
+                this._barkDiv.style.display = 'none';
+                this._barkDiv.querySelector('h2').innerHTML = '';
+                clearInterval(this._barkInterval);
+                this.nextPhase();
+            }
         });
 
         window.onbeforeunload = (event) => {
@@ -130,28 +143,31 @@ export default class gameManager{
     }
 
     barkPhase(){
-        if(this._ownNumber == this._nowPhase)this._barkDiv.children[0].style.display = 'none';
+        if(this._ownNumber == this._nowPhase){
+            this._barkDiv.children[0].style.display = 'none';
+            this._barkDiv.children[1].style.display = 'none';
+        }
 
         this._barkDiv.style.display = 'block';
         let temporaryTime = this._barkTime;
-        this._barkDiv.children[1].innerHTML = temporaryTime;
+        this._barkDiv.querySelector('h2').innerHTML = temporaryTime;
         temporaryTime--;
         this._barkInterval = setInterval(() => {
             if(temporaryTime <= 0){
                 this._barkDiv.style.display = 'none';
-                this._barkDiv.children[1].innerHTML = temporaryTime;
+                this._barkDiv.querySelector('h2').innerHTML = temporaryTime;
                 clearInterval(this._barkInterval);
                 this.nextPhase();
             }
             console.log('call interval');
-            this._barkDiv.children[1].innerHTML = temporaryTime;
+            this._barkDiv.querySelector('h2').innerHTML = temporaryTime;
             temporaryTime--;
         }, 1000);
     }
 
     gameStart(){
         for(let i = 0; i < 7; i++){
-            this._hais.push(this._hm.showHai(this._dm.pickTango()));
+            this.pickTango();
         }
 
         this._scoreBord.style.opacity = '1';
@@ -161,6 +177,7 @@ export default class gameManager{
 
     nextPhase(){
         this._barkDiv.children[0].style.display = 'block';
+        this._barkDiv.children[1].style.display = 'block';
 
         //点滅削除
         if(this._nowPhase != -1)this._scoreBord.children[this.phaseToPlayerNumber(this._nowPhase)].style.animation = '';
@@ -174,7 +191,7 @@ export default class gameManager{
         //自分のターンなら
         if(this._nowPhase == this._ownNumber){
             this._hm.isMyTurn = true;
-            this._hm.showHai(this._dm.pickTango());
+            this.pickTango();
         }
     }
 
@@ -184,5 +201,10 @@ export default class gameManager{
 
     throwHai(word){
         this._playSocket.send(JSON.stringify({throwHai:word}));
+    }
+
+    pickTango(){
+        const tango = this._dm.pickTango();
+        this._hais.push(this._hm.showHai(tango.word, tango.partOfSpeech));
     }
 }

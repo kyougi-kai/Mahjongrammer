@@ -51,7 +51,7 @@ export class DM{
     */
 
     pickTango(){
-        let tango = null;
+        let returnValue = {}
         const randomValue = Math.random();
         let temporaryWariai = this._ratio.concat();
         console.log(temporaryWariai);
@@ -67,12 +67,14 @@ export class DM{
         temporaryWariai.forEach((value, idx) => {
             if(randomValue <= value && !finishFlag){
                 console.log(randomValue + " : " + value);
-                tango = this._tango[this._partOfSpeech[idx]][Math.floor(Math.random() * this._tango[this._partOfSpeech[idx]].length)];
+                returnValue.word = this._tango[this._partOfSpeech[idx]][Math.floor(Math.random() * this._tango[this._partOfSpeech[idx]].length)];
+                returnValue.partOfSpeech = this._partOfSpeech[idx];
                 finishFlag = true;
             }
         });
     
-        return tango;
+        console.log(returnValue);
+        return returnValue;
     }
 
     /*

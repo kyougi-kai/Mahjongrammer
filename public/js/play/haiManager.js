@@ -61,9 +61,8 @@ export class HM{
         document.addEventListener('drop', event => {
             event.preventDefault();
             if (this._draggedElement && (this._isMyTurn || this._isBark)){
-                let saveData = this._draggedElement.textContent;
+                throwEvent(this._draggedElement.outerHTML, this._isBark);
                 this._draggedElement.remove();
-                throwEvent(saveData, this._isBark);
                 this._isMyTurn = false;
                 this._isBark = false;
             }
@@ -78,11 +77,12 @@ export class HM{
         this._isBark = value;
     }
 
-    showHai(word){
+    showHai(word, partOfSpeech){
         const borderDiv = document.createElement('div');
+        const wordP = document.createElement('p');
         borderDiv.classList.add('border-div');
-        // _dm.pickTango() で単語が取れる
-        borderDiv.textContent = word;
+
+        wordP.textContent = word;
         // ドラッグアンドドロップを有効にする
         borderDiv.setAttribute('draggable', 'true');
         borderDiv.id = `hai-${this._idCounter++}`;//なくてもOK　必要になるときがあるかも？
@@ -102,6 +102,10 @@ export class HM{
             this._draggedElement = null;
         });
 
+        //画像
+        borderDiv.style.backgroundImage = `url(/img/partOfSpeech/${partOfSpeech}.png)`;
+
+        borderDiv.appendChild(wordP);
         document.getElementById('wordDown').appendChild(borderDiv);
 
         return borderDiv;
