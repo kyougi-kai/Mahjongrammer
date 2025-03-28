@@ -4,6 +4,10 @@ body, html {
     height: 100%;
 }
 
+p{
+    margin: 0;
+}
+
 .main-content{
     position: relative;
     height: 100%;
@@ -13,22 +17,18 @@ body, html {
 .name{
     position: absolute;
     border: 1px solid black;
-}
-
-.top{
-    top: 0;
-    left: 50%;
+    min-width: 120px;
+    background: #dfdfdf9c;
 }
 
 .top-content{
     top: 10%;
     left: 50%;
-    transform: translateX(-50%) rotateZ(180deg);
+    transform: translateX(-50%);
 }
 
-.bottom{
-    bottom: 0;
-    left: 10px;
+.score-bord .top-content{
+    transform: translateX(-50%) rotateZ(180deg);
 }
 
 .bottom-content{
@@ -37,30 +37,28 @@ body, html {
     transform:translateX(-50%);
 }
 
-.right{
-    top: 50%;
-    right: 0;
-}
-
 .right-content{
     top: 50%;
-    right: 10%;
+    right: 5%;
+    transform: translateY(-50%);
+}
+
+.score-bord .right-content{
     transform: translateY(-50%) rotateZ(-90deg);
 }
 
-.left{
+.left-content{
+    transform:translateY(-50%);
     top: 50%;
-    left: 0;
+    left: 5%;
 }
 
-.left-content{
+.score-bord .left-content{
     transform:translateY(-50%) rotateZ(90deg);
-    top: 50%;
-    left: 10%;
 }
 
 .name p{
-    font-size: 16px;
+    font-size: 20px;
     padding: 4px 8px;
 }
 
@@ -80,8 +78,9 @@ body, html {
 
 .main-bord{
     position: relative;
-    height: calc(100% - 204px);
+    height: calc(100% - 200px);
     width: 100%;
+    background:rgb(13, 121, 10);
 }
 
 .footer {
@@ -102,14 +101,22 @@ body, html {
     align-items: center;
 }
 
+.throw-hai-table{
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
 .hai-table{
   display: flex;
   background-color: rgb(255, 255, 255);
-  width: 80vw;
+  width: 100%;
   height: 100px;
   text-align: center;
   line-height: 100px;
-  border: 1px solid #333;
 }
 
 .border-div {
@@ -121,6 +128,9 @@ body, html {
     justify-content: center;
     align-items: center;
     cursor: move; 
+    background: #f7f7f7;
+    margin: auto 7px;
+    border-radius: 5px;
 }
 
 .score-bord{
@@ -131,10 +141,13 @@ body, html {
     width: 250px;
     height: 250px;
     border: 1px solid black;
+    background: #424242;
 }
 
 .score-bord p{
     position: absolute;
+    background: #dadada;
+    padding: 10px 25px;
 }
 
 .throw-button{
@@ -165,13 +178,25 @@ body, html {
 
 @keyframes blinking{
     0%{
-        background: transparent;
+        background: #dadada;
     }
     50%{
         background: rgba(255, 0, 0, 0.591);
     }
     100%{
-        background: transparent;
+        background: #dadada;
+    }
+}
+
+@keyframes blinking-bark{
+    0%{
+        background: #dadada;
+    }
+    50%{
+        background: rgba(0, 170, 255, 0.591);
+    }
+    100%{
+        background: #dadada;
     }
 }
 

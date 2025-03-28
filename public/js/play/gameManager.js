@@ -115,9 +115,12 @@ export default class gameManager{
                 this._throwHais[this.phaseToPlayerNumber(this._nowPhase)].style.opacity = '0';
 
                 this._scoreBord.children[this.phaseToPlayerNumber(this._nowPhase)].style.animation = '';
-                this._scoreBord.children[this.phaseToPlayerNumber(message.bark)].style.animation = 'blinking 2s infinite ease';
+                this._scoreBord.children[this.phaseToPlayerNumber(message.bark)].style.animation = 'blinking-bark 2s infinite ease';
 
                 alert(`${nameDivs[this.phaseToPlayerNumber(message.bark)].children[0].textContent}がポンした！`);
+            }
+            else if(message.hasOwnProperty('tangoRatio')){
+                this._dm.updateRatio(message.tangoRatio);
             }
         });
 

@@ -1,17 +1,6 @@
 export class DM{
     constructor(){
-        this._wariai = [3,3,1,1,2,1,0,0,2,2];
-
-        let sum = 0;
-        this._wariai.forEach((value) => {
-            sum += value;
-        })
-
-        let temporaryWariai = this._wariai.concat();
-        this._wariai = [];
-        temporaryWariai.forEach((value) => {
-            this._wariai.push(value / sum);
-        });
+        this._ratio = [];
 
         this._partOfSpeech = ["meisi", "dousi", "keiyousi", "hukusi", "daimeisi", "zentisi", "setuzokusi", "kantansi", "kansi", "jodousi"];
         this._tango = {
@@ -46,12 +35,13 @@ export class DM{
         */
     }
 
-    get tango(){
-        return this._tango;
+    updateRatio(ratio){
+        let sum = ratio.reduce((acc, value) => acc + value, 0);
+        this._ratio = ratio.map((value) => value / sum);
     }
 
-    set wariai(value){
-        this._wariai = value;
+    get tango(){
+        return this._tango;
     }
 
     /*
@@ -63,7 +53,7 @@ export class DM{
     pickTango(){
         let tango = null;
         const randomValue = Math.random();
-        let temporaryWariai = this._wariai.concat();
+        let temporaryWariai = this._ratio.concat();
         console.log(temporaryWariai);
         temporaryWariai.forEach((value, idx)=>{
             if(idx > 0){

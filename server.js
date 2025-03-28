@@ -25,6 +25,8 @@ const pool = mysql.createPool({
     charset: 'utf8mb4'
 });
 
+pool.query('delete from rooms');
+
 app.use(cookieParser());
 app.use(express.static('public'));
 app.use(cors());
@@ -108,6 +110,10 @@ wss.on('connection', async (ws, req) => {
 
                 //playClientsに保存
                 playClients[roomId][username] = ws;
+                
+                //自分に品詞の割合を送信
+                const ratio = await getRow('rooms', 'ratio', 'parent_id', parentId);
+                ws.send(JSON.stringify({tangoRatio: JSON.parse(ratio)}));
                 
                 await entryRoom(roomId, userId);
                 const roomMemberCounts = await getRoomMemberCounts(roomId);
