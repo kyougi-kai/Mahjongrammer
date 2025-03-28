@@ -4,9 +4,30 @@ export class HM{
         this._draggedElement = null;
         this._originalParent = null;
         this._movedAnotherParent = false;
+        this._selectionDiv = document.getElementById('selectionDiv');
+        this._divisions = document.getElementsByClassName('division-div');
+        this._wordUpRight = document.getElementById('wordUpRight');
+
+        Array.from(this._selectionDiv.children).forEach((value) => {
+            value.addEventListener('click', (event) => {
+                console.log('yobareta');
+                const targetText = (event.target.textContent);
+                this.showDivision(targetText.split(''));
+                this.changeCondition(this._selectionDiv);
+                this.changeCondition(this._wordUpRight);
+            });
+        });
 
         this._isMyTurn = false;
         this._isBark = false;
+
+        this._wordUpRight.children[0].addEventListener('click', (event) => {
+            this._divisions.forEach(element => {
+                if(element.style.opacity = '1')this.changeCondition(element);
+            })
+
+            this.changeCondition(this._selectionDiv);
+        });
 
         document.querySelectorAll('.hai-table').forEach((parent, index) => {
             parent.addEventListener('dragover', event => {
@@ -69,6 +90,41 @@ export class HM{
         });
     }
 
+    /**
+     * @param {string[]} targetPOS 
+     */
+    showDivision(targetPOS){
+        let numOfO = 0;
+        this.changeCondition(this._divisions[0]);
+        this.changeCondition(this._divisions[1]);
+        targetPOS.forEach(value => {
+            switch(value){
+                case 'C':
+                    this.changeCondition(this._divisions[2]);
+                    break;
+                case 'O':
+                    this.changeCondition(this._divisions[3 + numOfO]);
+                    numOfO++;
+                    break;
+            }
+        });
+    }
+
+    changeCondition(element){
+        if(element.style.opacity == '0'){
+            element.style.opacity = '1';
+            element.style.position = 'relative';
+            element.style.pointerEvents = 'all';
+            element.style.zIndex = '0';
+        }
+        else{
+            element.style.opacity = '0';
+            element.style.position = 'absolute';
+            element.style.pointerEvents = 'none';
+            element.style.zIndex = '-1';
+        }
+    }
+
     set isMyTurn(value){
         this._isMyTurn = value;
     }
@@ -109,5 +165,9 @@ export class HM{
         document.getElementById('wordDown').appendChild(borderDiv);
 
         return borderDiv;
+    }
+
+    gameStart(){
+        this.changeCondition(this._selectionDiv);
     }
 }

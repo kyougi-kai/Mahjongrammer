@@ -4,6 +4,9 @@ import {DM} from '/js/until/dataManager.js';
 export default class gameManager{
     constructor(){
         this._dm = new DM();
+        /**
+         * @type {boolean} 親がルーム内にいるかどうか
+         */
         this._parentFlag = true;
         this._players = [];
         const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
@@ -52,7 +55,14 @@ export default class gameManager{
 
         //なく
         this._barkDiv.children[0].addEventListener('click', (event) => {
-            this._hm.showHai(this._throwHais[this.phaseToPlayerNumber(this._nowPhase)].children[0].textContent);
+            const word = this._throwHais[this.phaseToPlayerNumber(this._nowPhase)].children[0].textContent;
+            let partOfSpeech;
+            Object.values(this._dm._tango).forEach((value, idx) => {
+                if(value.indexOf(word) != -1){
+                    partOfSpeech = Object.keys(this._dm._tango)[idx];
+                }
+            });
+            this._hm.showHai(word, partOfSpeech);
             this._hm.isBark = true;
 
             this._playSocket.send(JSON.stringify({bark:this._ownNumber}));
@@ -104,6 +114,7 @@ export default class gameManager{
             }
             else if(message.hasOwnProperty('start')){
                 this.gameStart();
+                this._hm.gameStart();
             }
             else if(message.hasOwnProperty('throwHai')){
                 const targetElement = message.isBark ?
@@ -123,6 +134,7 @@ export default class gameManager{
 
                 this._scoreBord.children[this.phaseToPlayerNumber(this._nowPhase)].style.animation = '';
                 this._scoreBord.children[this.phaseToPlayerNumber(message.bark)].style.animation = 'blinking-bark 2s infinite ease';
+                this._nowPhase = message.bark;
 
                 nameDivs[this.phaseToPlayerNumber(message.bark)].children[1].style.opacity = '1';
 

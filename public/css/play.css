@@ -62,6 +62,78 @@ p{
     padding: 4px 8px;
 }
 
+.selection-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.selection-div button{
+    width: 240px;
+    aspect-ratio: 3/ 1;
+    background: #ffbd59;
+    border-radius: 5px;
+    margin: 0 10px;
+    font-size: 24px;
+}
+
+.division-div{
+    min-width: 200px;
+    height: 100px;
+    margin: 50px 12px 0 12px;
+    background:#ffbd59;
+    position: relative;
+}
+
+.division-s::before{
+    content: 'S';
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateY(-100%);
+    width: 60px;
+    height: 25px;
+    background:#ffbd59;
+}
+
+.division-v::before{
+    content: 'V';
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateY(-100%);
+    width: 60px;
+    height: 25px;
+    background:#ffbd59;
+}
+
+
+.division-c::before{
+    content: 'C';
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateY(-100%);
+    width: 60px;
+    height: 25px;
+    background:#ffbd59;
+}
+
+.division-o::before{
+    content: 'O';
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateY(-100%);
+    width: 60px;
+    height: 25px;
+    background:#ffbd59;
+}
+
+
+
 .name div{
     position: absolute;
     width: 200px;
@@ -95,7 +167,7 @@ p{
 
 .main-bord{
     position: relative;
-    height: calc(100% - 200px);
+    height: calc(100% - 270px);
     width: 100%;
     background:rgb(13, 121, 10);
 }
@@ -194,6 +266,21 @@ p{
 .bark-div h2{
     font-size: 40px;
 }
+
+.word-up-right{
+    position: absolute;
+    height: 100%;
+    right: 0;
+    border-left: 1px solid black;
+}
+
+.word-up-right button{
+    background: #ffde59;
+    border: none;
+    padding: 10px 20px;
+    font-size: 20px;
+}
+
 
 @keyframes blinking{
     0%{
