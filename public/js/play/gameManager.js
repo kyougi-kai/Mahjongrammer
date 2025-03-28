@@ -124,7 +124,9 @@ export default class gameManager{
                 this._scoreBord.children[this.phaseToPlayerNumber(this._nowPhase)].style.animation = '';
                 this._scoreBord.children[this.phaseToPlayerNumber(message.bark)].style.animation = 'blinking-bark 2s infinite ease';
 
-                alert(`${nameDivs[this.phaseToPlayerNumber(message.bark)].children[0].textContent}がポンした！`);
+                nameDivs[this.phaseToPlayerNumber(message.bark)].children[1].style.opacity = '1';
+
+                setTimeout(() => nameDivs[this.phaseToPlayerNumber(message.bark)].children[1].style.opacity = '0', 2000);
             }
             else if(message.hasOwnProperty('tangoRatio')){
                 this._dm.updateRatio(message.tangoRatio);
