@@ -208,7 +208,7 @@ p{
 }
 
 .border-div {
-    width: 240px;
+    width: 170px;
     aspect-ratio: 3 / 1;
     margin-top: 10px;
     display: flex;
@@ -224,7 +224,7 @@ p{
     background: #ffffff91;
     padding: 12px 20px;
     border-radius: 10px;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bold;
 }
 
