@@ -8,8 +8,16 @@
     <script src="/js/play/play.js" type="module" defer></script>
 </head>
 <body>
+    <div class="background-div" id="backgroundDiv" style="opacity: 0;"></div>
     <div class="main-content">
         <div class="main-bord">
+            <div class="complete-div" id="completeDiv" style="opacity: 0;z-index:-1;pointer-events:none;">
+                <h2></h2>
+                <div class="complete-table">
+
+                </div>
+            </div>
+
             <div class="top-content name">
                 <p></p>
                 <div style="opacity: 0;">
@@ -54,6 +62,7 @@
                 <p class="right-content">25000</p>
                 <p class="bottom-content">25000</p>
                 <p class="left-content">25000</p>
+                <button class="finish-button" style="opacity: 0;pointer-events:none;" id="finishButton">あがる</button>
             </div>
 
             <button class="close-btn" id="closeBtn" style="display: none;">締め切る</button>

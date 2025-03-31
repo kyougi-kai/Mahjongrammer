@@ -25,14 +25,16 @@ export default class gameManager{
 
         const nameDivs = document.getElementsByClassName('name');
         const parentName = decodeURIComponent(window.location.pathname).split('/')[2];
-        const username = document.getElementById('usernameText').textContent;
+        this._username = document.getElementById('usernameText').textContent;
 
-        this._isParent = username == parentName ? true : false;
+        this._isParent = this._username == parentName ? true : false;
         !this._isParent ? document.getElementById('closeBtn').remove() : document.getElementById('closeBtn').style.display = 'block';
 
         this._barkTime = 5;
         this._barkDiv = document.getElementById('barkDiv');
         this._barkInterval = null;
+
+        this._completeDiv = document.getElementById('completeDiv');
 
         //締め切る処理
         document.getElementById('closeBtn')?.addEventListener("click", async (event) => {
@@ -77,7 +79,7 @@ export default class gameManager{
         //通信
         this._playSocket.addEventListener('open', () => {
             console.log("サーバーに接続しました");
-            this._playSocket.send(JSON.stringify({entryRoom: parentName, username:username}));
+            this._playSocket.send(JSON.stringify({entryRoom: parentName, username:this._username}));
         });
 
         this._playSocket.addEventListener('message', (event) => {
@@ -91,7 +93,7 @@ export default class gameManager{
                 console.log('ネームタグの入れ替えをします');
                 const roomMembers = message.roomMembers;
                 roomMembers.forEach((member, index) => {
-                    if(member.username == username){
+                    if(member.username == this._username){
                         this._ownNumber = index;
                         return;
                     }
@@ -117,6 +119,8 @@ export default class gameManager{
                 this._hm.gameStart();
             }
             else if(message.hasOwnProperty('throwHai')){
+                if(this._nowPhase == this._ownNumber)this._hm.changeCondition(this._finishButton, true);
+
                 const targetElement = message.isBark ?
                 this._throwHais[this.phaseToPlayerNumber(message.targetNumber)] :
                 this._throwHais[this.phaseToPlayerNumber(this._nowPhase)];
@@ -149,11 +153,38 @@ export default class gameManager{
                 clearInterval(this._barkInterval);
                 this.nextPhase();
             }
+            else if(message.hasOwnProperty('complete')){
+                this.showCompeleteDiv(message.complete, message.username);
+            }
         });
 
         window.onbeforeunload = (event) => {
-            if(this._parentFlag)this._playSocket.send(JSON.stringify({outRoom: parentName, username:username}));
+            if(this._parentFlag)this._playSocket.send(JSON.stringify({outRoom: parentName, username:this._username}));
         }
+
+        //上がる
+        this._finishButton = document.getElementById('finishButton');
+        this._finishButton.addEventListener('click', (event) => {
+            this.complete();
+        });
+    }
+
+    showCompeleteDiv(element, username){
+        this._hm.changeCondition(this._completeDiv, true);
+        document.getElementById('backgroundDiv').style.opacity = '1';
+        document.getElementById('backgroundDiv').style.zIndex = '2';
+        document.getElementById('backgroundDiv').style.pointerEvents = 'all';
+        this._completeDiv.style.zIndex = '3';
+        this._completeDiv.children[0].innerHTML = username;
+        this._completeDiv.children[1].innerHTML = element;
+    }
+
+    complete(){
+        const targetHais = Array.from(this._hm._divisions).filter(value => value.style.opacity == '1');
+        console.log(targetHais);
+        let sendData = '';
+        targetHais.forEach((value) => sendData += value.outerHTML);
+        this._playSocket.send(JSON.stringify({complete:sendData, username:this._username}));
     }
 
     barkPhase(){
@@ -204,6 +235,7 @@ export default class gameManager{
 
         //自分のターンなら
         if(this._nowPhase == this._ownNumber){
+            this._hm.changeCondition(this._finishButton, true);
             this._hm.isMyTurn = true;
             this.pickTango();
         }

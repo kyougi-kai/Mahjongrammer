@@ -181,6 +181,11 @@ wss.on('connection', async (ws, req) => {
                     });
                 }
             }
+            else if(message.hasOwnProperty('complete')){
+                Object.values(playClients[roomId]).forEach((memberWs) => {
+                    memberWs.send(JSON.stringify({complete: message.complete, username:message.username}));
+                });
+            }
         })
     }
 });

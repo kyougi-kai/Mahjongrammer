@@ -7,6 +7,7 @@ export class HM{
         this._selectionDiv = document.getElementById('selectionDiv');
         this._divisions = document.getElementsByClassName('division-div');
         this._wordUpRight = document.getElementById('wordUpRight');
+        this._wordDown = document.getElementById('wordDown');
 
         Array.from(this._selectionDiv.children).forEach((value) => {
             value.addEventListener('click', (event) => {
@@ -14,22 +15,30 @@ export class HM{
                 const targetText = (event.target.textContent);
                 this.showDivision(targetText.split(''));
                 this.changeCondition(this._selectionDiv);
-                this.changeCondition(this._wordUpRight);
+                this.changeCondition(this._wordUpRight, true);
             });
         });
 
         this._isMyTurn = false;
         this._isBark = false;
 
+        //リセットボタン
         this._wordUpRight.children[0].addEventListener('click', (event) => {
-            this._divisions.forEach(element => {
-                if(element.style.opacity = '1')this.changeCondition(element);
-            })
+            Array.from(this._divisions).forEach(element => {
+                if(element.style.opacity = '1'){
+                    while(Array.from(element.children).length != 0){
+                        this._wordDown.appendChild(element.children[0]);
+                    }
+                    this.changeCondition(element);
+                }
+            });
 
             this.changeCondition(this._selectionDiv);
+            this.changeCondition(this._wordUpRight, true);
         });
 
-        document.querySelectorAll('.hai-table').forEach((parent, index) => {
+        const draggBoxList = Array.from(this._divisions).concat(this._wordDown);
+        draggBoxList.forEach((parent, index) => {
             parent.addEventListener('dragover', event => {
                 event.preventDefault();//ドロップの可能
                 if (!this._draggedElement) return;
@@ -90,6 +99,10 @@ export class HM{
         });
     }
 
+    get divisions(){
+        return this._divisions;
+    }
+
     /**
      * @param {string[]} targetPOS 
      */
@@ -110,16 +123,16 @@ export class HM{
         });
     }
 
-    changeCondition(element){
+    changeCondition(element, dontChangePosition = false){
         if(element.style.opacity == '0'){
             element.style.opacity = '1';
-            element.style.position = 'relative';
+            if(!dontChangePosition)element.style.position = 'relative';
             element.style.pointerEvents = 'all';
             element.style.zIndex = '0';
         }
         else{
             element.style.opacity = '0';
-            element.style.position = 'absolute';
+            if(!dontChangePosition)element.style.position = 'absolute';
             element.style.pointerEvents = 'none';
             element.style.zIndex = '-1';
         }
