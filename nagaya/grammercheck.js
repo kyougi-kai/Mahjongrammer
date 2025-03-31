@@ -801,15 +801,3 @@ tango = {
 
 
 
-function getTangoToArray(nameForGetTango){
-  let getTango = document.getElementsByName(nameForGetTango);
-  let gettangoarray = [];
-  for (let inputTango of getTango) {
-    gettangoarray.push(inputTango.value);
-}
-  console.log(gettangoarray);
-}
-
-function checkS(){
-  getTangoToArray("textofS");
-}
