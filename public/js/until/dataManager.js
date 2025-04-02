@@ -1,38 +1,25 @@
+import { tango } from "/js/until/tangoData.js";
+
 export class DM{
     constructor(){
         this._ratio = [];
 
-        this._partOfSpeech = ["meisi", "dousi", "keiyousi", "hukusi", "daimeisi", "zentisi", "setuzokusi", "kantansi", "kansi", "jodousi"];
         this._tango = {
-            meisi : ["dog","school","book","car","apple","city","teacher","computer","river","mountain","idea","happiness","music","game","house","door","flower","table","pencil","phone","actor","actress","advice","air","airplane","airport","animal","answer","area","arm","artist","athlete","author","baby","bag","ball","banana","band","bank","bar","bath","bed","beef","beginner","bike","bird","birthday","blanket","blood","board","boat","body","book","border","bottle","box","boy","bread","brother","building","bus","cake","camera","capital","car","card","carpet","cat","center","chance","change","chicken","child","class","classroom","clothes","cloud","coffee","color","company","computer","cousin","cow","cup","desk","dog","door","down","dream","drink","drum","ear","earth","egg","engine","event","example","eye","face","family","fan","farmer","father","feet","field","file","fish","flower","foot","friend","game","garden","gate","girl","glove","goal","grandfather","grandmother","group","guide","gym","hair","hand","hat","head","heart","home","hospital","house","idea","invention","island","jacket","job","juice","key","king","kitchen","lady","lamp","land","language","laundry","law","leader","leg","library","life","light","line","lip","lock","lunch","machine","man","market","match","meal","medicine","member","menu","message","minute","mirror","money","month","movie","museum","music","name","nephew","news","night","nose","number","object","office","opinion","orange","owner","paint","paper","parent","park","pen","people","photo","picture","place","plane","plate","pool","post","prize","queen","question","radio","rain","restaurant","room","sail","salt","school","season","secretary","seed","shelf","shirt","shoe","singer","sister","snow","soccer","song","south","space","speaker","spot","star","station","stomach","student","subway","sugar","summer","sunglasses","table","tail","team","television","test","thing","thought","ticket","time","tooth","town","toy","traffic","train","transport","tree","umbrella","uncle","uniform","village","voice","water","week","wife","window","winter","woman","world","year","yellow","yoga","zoo"],
-            dousi :  ["run", "eat", "sleep", "write", "read", "play", "sing", "dance", "jump", "swim", "talk", "listen", "walk", "study", "work", "watch", "draw", "open", "close", "buy", "do", "does", "did", "have", "has", "had", "am", "is", "are", "was", "were", "be"],
-            keiyousi : ["beautiful", "big", "small", "tall", "short", "fast", "slow", "happy", "sad", "strong", "weak", "bright", "dark", "hot", "cold", "new", "old", "easy", "difficult", "interesting"],
-            hukusi : ["quickly", "slowly", "happily", "sadly", "loudly", "quietly", "well", "badly", "easily", "hard", "fast", "often", "sometimes", "always", "never", "here", "there", "now", "then", "soon"],
-            daimeisi : ["I", "you", "he", "she", "we", "they", "my", "your", "his", "her", "its", "our", "their", "me", "you", "him", "her", "it", "us", "them", "mine", "yours", "his", "hers", "ours", "theirs", "we", "you", "they", "us", "them"],
-            zentisi : ["in", "on", "at", "by", "with", "about", "for", "from", "to", "under", "over", "between", "among", "through", "against", "around", "before", "after", "inside", "outside"],
-            setuzokusi : ["and", "but", "or", "so", "because", "although", "if", "when", "while", "since", "until", "unless", "as", "than", "yet", "whether", "however", "though"],
-            kantansi : ["Wow", "Oh", "Oops"],
-            kansi : ["a", "an", "the"],
-            jodousi : ["can", "could", "will", "would", "shall", "should", "may", "might", "must"]
+            名詞:[],
+            動詞:[],
+            形容詞:[],
+            副詞:[],
+            代名詞:[],
+            前置詞:[],
+            接続詞:[],
+            感嘆詞:[],
+            冠詞:[],
+            助動詞:[]
         }
-        /*
-        this._data = [];
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', '../data.txt', true);
-
-        xhr.onload = () => {
-            if (xhr.status === 200) {
-              let resData = xhr.responseText;
-              resData = resData.split("\r\n");
-              resData.forEach((value) => {
-                this._data.push(value.split(','));
-              });
-
-              callF();
-            }
-        };
-        xhr.send();
-        */
+        
+        Object.keys(tango).forEach((spell) => {
+            this._tango[tango[spell].hinsi].push(spell);
+        });
     }
 
     updateRatio(ratio){
@@ -44,59 +31,26 @@ export class DM{
         return this._tango;
     }
 
-    /*
-    get data(){
-        return this._data;
-    }
-    */
-
     pickTango(){
         let returnValue = {}
         const randomValue = Math.random();
         let temporaryWariai = this._ratio.concat();
-        console.log(temporaryWariai);
-        temporaryWariai.forEach((value, idx)=>{
-            if(idx > 0){
-                temporaryWariai[idx] += temporaryWariai[idx - 1];
-            }
+        temporaryWariai.reduce((acc, cur, idx, array) => {
+            if(idx != 0)array[idx] += acc;
+            return array[idx];
         });
-
-        console.log(temporaryWariai);
         
         let finishFlag = false;
         temporaryWariai.forEach((value, idx) => {
             if(randomValue <= value && !finishFlag){
                 console.log(randomValue + " : " + value);
-                returnValue.word = this._tango[this._partOfSpeech[idx]][Math.floor(Math.random() * this._tango[this._partOfSpeech[idx]].length)];
-                returnValue.partOfSpeech = this._partOfSpeech[idx];
+                const targetKey = Object.keys(this._tango)[idx];
+                returnValue.word = this._tango[targetKey][Math.floor(Math.random() * this._tango[targetKey].length)];
+                returnValue.partOfSpeech = targetKey;
                 finishFlag = true;
             }
         });
-    
-        console.log(returnValue);
+
         return returnValue;
     }
-
-    /*
-    saveWariai(){
-        let saveText = [];
-        console.log(this._data);
-        this._data.forEach((elem) => {
-            saveText.push(elem.join(","));
-        });
-        saveText = saveText.join("\r\n");
-        console.log(saveText);
-
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "/saveFile", true);
-        xhr.setRequestHeader("Content-Type", "application/json");
-
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                console.log("ファイルが保存されました");
-            }
-        };
-        xhr.send(JSON.stringify({text: saveText}));
-    }
-    */
 }
