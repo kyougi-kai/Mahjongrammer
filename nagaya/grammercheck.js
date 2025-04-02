@@ -798,6 +798,98 @@ tango = {
     tags: ["従位接続詞"],
   },
 }
+const DaimeisicanSArray = ['主格','指示代名詞','不定代名詞','疑問代名詞'];
+const CheckSentencePatternTestArray = {
+  S:["an", "apple"],
+  V:["give"],
+  O:["you"],
+  C:["itself"],
+}
+
+let checkGrammerTestArray = { 
+  sentence:'1',
+  S:['you', 'a'],
+  V:['can', 'play']
+}
+
+checkGrammer(checkGrammerTestArray);
+
+function checkGrammer(targetArray){
+  let grammerTF = true;
+  switch(targetArray.sentence){
+    case '1':
+      if(!checkS(targetArray.S)){
+        grammerTF = false; 
+      }
+  }
+  console.log('結果：' + grammerTF)
+}
+
+function checkS(targetSentence){//＜S＞
+  let TF = false;
+  if(checkMeisiroot(targetSentence) || checkDaimeisiCanS(targetSentence)){
+    TF = true;
+  }
+  return TF;
+}
+
+function checkMeisiroot(targetSentence){//＜名詞根＞
+
+}
+
+function checkKansiroot(targetSentence){//＜冠詞根＞
+
+}
+
+function checkKeiyousiroot(targetSentence){//＜形容詞根＞
+
+}
+// S: I, He
+// your book, a happy desk
+function checkDaimeisiCanS(targetSentence){//＜主語に使える代名詞＞
+  if(targetSentence.length != 1)return false;
+  console.log(targetSentence);
+  let TF = false
+  DaimeisicanSArray.forEach(function(DaimeisiCanS){
+    if(tango[targetSentence].tags.includes(DaimeisiCanS)){
+      TF = true;
+    }
+  });
+  return TF;
+}
+
+console.log(checkDaimeisiCanS(['I']));
 
 
 
+
+
+
+
+
+
+
+
+// CheckSentencePattern(CheckSentencePatternTestArray);//文型が正しいか判断
+// function CheckSentencePattern(TargetArray){
+//   let CheckResult = false;
+//   let SentenceKeys = Object.keys(TargetArray);//TargetArrayのキーを入れる
+//   SentenceKeys = SentenceKeys.join("");
+//   console.log(SentenceKeys);
+//   if(
+//     SentenceKeys == "SV"    ||
+//     SentenceKeys == "SVC"   ||
+//     SentenceKeys == "SVO"   ||
+//     SentenceKeys == "SVOO"  ||
+//     SentenceKeys == "SVOC"  ||
+//     SentenceKeys == "SVM"   ||
+//     SentenceKeys == "SVCM"  ||
+//     SentenceKeys == "SVOM"  ||
+//     SentenceKeys == "SVOOM" ||
+//     SentenceKeys == "SVOCM" )
+//   {
+//     CheckResult = true;
+//   }
+//   console.log(CheckResult);
+//   return CheckResult;
+// }
