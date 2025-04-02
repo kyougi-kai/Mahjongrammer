@@ -51,49 +51,93 @@ tango = {
     hinsi: ["代名詞"],
     tags: ["一人称", "単数", "人称代名詞", "主格"]
   },
+  me: {
+    hinsi: ["代名詞"],
+    tags: ["一人称", "単数", "人称代名詞", "目的格"]
+  },
+  my: {
+    hinsi: ["代名詞"],
+    tags: ["一人称", "単数", "人称代名詞", "所有格"]
+  },
+  mine: {
+    hinsi: ["代名詞"],
+    tags: ["一人称", "単数", "人称代名詞", "所有代名詞"]
+  },
   you: {
     hinsi: ["代名詞"],
-    tags: ["二人称", "単数", "複数", "人称代名詞", "主格", "目的格"]
+    tags: ["二人称", "単数/複数", "人称代名詞", "主格/目的格"]
+  },
+  your: {
+    hinsi: ["代名詞"],
+    tags: ["二人称", "単数/複数", "人称代名詞", "所有格"]
+  },
+  yours: {
+    hinsi: ["代名詞"],
+    tags: ["二人称", "単数/複数", "人称代名詞", "所有代名詞"]
   },
   he: {
     hinsi: ["代名詞"],
     tags: ["三人称", "単数", "人称代名詞", "主格", "男性"]
   },
+  him: {
+    hinsi: ["代名詞"],
+    tags: ["三人称", "単数", "人称代名詞", "目的格", "男性"]
+  },
+  his: {
+    hinsi: ["代名詞"],
+    tags: ["三人称", "単数", "人称代名詞", "所有格", "男性"]
+  },
   she: {
     hinsi: ["代名詞"],
     tags: ["三人称", "単数", "人称代名詞", "主格", "女性"]
   },
+  her: {
+    hinsi: ["代名詞"],
+    tags: ["三人称", "単数", "人称代名詞", "目的格/所有格", "女性"]
+  },
+  hers: {
+    hinsi: ["代名詞"],
+    tags: ["三人称", "単数", "人称代名詞", "所有代名詞", "女性"]
+  },
   it: {
     hinsi: ["代名詞"],
-    tags: ["三人称", "単数", "人称代名詞", "主格", "中性"]
+    tags: ["三人称", "単数", "人称代名詞", "主格/目的格", "中性"]
+  },
+  its: {
+    hinsi: ["代名詞"],
+    tags: ["三人称", "単数", "人称代名詞", "所有格", "中性"]
   },
   we: {
     hinsi: ["代名詞"],
     tags: ["一人称", "複数", "人称代名詞", "主格"]
   },
-  they: {
-    hinsi: ["代名詞"],
-    tags: ["三人称", "複数", "人称代名詞", "主格"]
-  },
-  me: {
-    hinsi: ["代名詞"],
-    tags: ["一人称", "単数", "人称代名詞", "目的格"]
-  },
   us: {
     hinsi: ["代名詞"],
     tags: ["一人称", "複数", "人称代名詞", "目的格"]
   },
-  him: {
+  our: {
     hinsi: ["代名詞"],
-    tags: ["三人称", "単数", "人称代名詞", "目的格", "男性"]
+    tags: ["一人称", "複数", "人称代名詞", "所有格"]
   },
-  her: {
+  ours: {
     hinsi: ["代名詞"],
-    tags: ["三人称", "単数", "人称代名詞", "目的格", "女性"]
+    tags: ["一人称", "複数", "人称代名詞", "所有代名詞"]
+  },
+  they: {
+    hinsi: ["代名詞"],
+    tags: ["三人称", "複数", "人称代名詞", "主格"]
   },
   them: {
     hinsi: ["代名詞"],
     tags: ["三人称", "複数", "人称代名詞", "目的格"]
+  },
+  their: {
+    hinsi: ["代名詞"],
+    tags: ["三人称", "複数", "人称代名詞", "所有格"]
+  },
+  theirs: {
+    hinsi: ["代名詞"],
+    tags: ["三人称", "複数", "人称代名詞", "所有代名詞"]
   },
   this: {
     hinsi: ["代名詞"],
@@ -798,13 +842,8 @@ tango = {
     tags: ["従位接続詞"],
   },
 }
+
 const DaimeisicanSArray = ['主格','指示代名詞','不定代名詞','疑問代名詞'];
-const CheckSentencePatternTestArray = {
-  S:["an", "apple"],
-  V:["give"],
-  O:["you"],
-  C:["itself"],
-}
 
 let checkGrammerTestArray = { 
   sentence:'1',
@@ -812,7 +851,7 @@ let checkGrammerTestArray = {
   V:['can', 'play']
 }
 
-checkGrammer(checkGrammerTestArray);
+// checkGrammer(checkGrammerTestArray);
 
 function checkGrammer(targetArray){
   let grammerTF = true;
@@ -821,31 +860,43 @@ function checkGrammer(targetArray){
       if(!checkS(targetArray.S)){
         grammerTF = false; 
       }
+      if(!checkJidousi(targetArray.V) && !checkBedousi(targetArray.V)){
+        grammerTF = false;
+      }
   }
   console.log('結果：' + grammerTF)
 }
 
 function checkS(targetSentence){//＜S＞
-  let TF = false;
   if(checkMeisiroot(targetSentence) || checkDaimeisiCanS(targetSentence)){
-    TF = true;
+    return true;
   }
-  return TF;
+  return false;
 }
 
 function checkMeisiroot(targetSentence){//＜名詞根＞
-
+  let meisiIndex = targetSentence.length - 1;
+  if (!tango[targetSentence[meisiIndex]].hinsi.includes("名詞"))return false;
+  let targetIndex = checkKeiyousiroot(targetSentence,checkKansiroot(targetSentence));
+  if (meisiIndex == targetIndex)return true;
+  return false;
 }
 
 function checkKansiroot(targetSentence){//＜冠詞根＞
-
+  if(targetSentence.length > 0 && (tango[targetSentence[0]].hinsi.includes('冠詞') || tango[targetSentence[0]].tags.includes('所有格') || tango[targetSentence[0]].tags.includes('指示代名詞'))){
+    return 1;
+  }
+  return 0;
 }
 
-function checkKeiyousiroot(targetSentence){//＜形容詞根＞
-
+function checkKeiyousiroot(targetSentence,kansiCount){//＜形容詞根＞
+  let targetIndex = kansiCount;
+  while (targetIndex < targetSentence.length && tango[targetSentence[targetIndex]].hinsi.includes('形容詞')){
+    targetIndex++;
+  }
+  return targetIndex;
 }
-// S: I, He
-// your book, a happy desk
+
 function checkDaimeisiCanS(targetSentence){//＜主語に使える代名詞＞
   if(targetSentence.length != 1)return false;
   console.log(targetSentence);
@@ -858,7 +909,8 @@ function checkDaimeisiCanS(targetSentence){//＜主語に使える代名詞＞
   return TF;
 }
 
-console.log(checkDaimeisiCanS(['I']));
+// console.log(checkDaimeisiCanS(['I']));
+console.log(checkS(['a','apple']));
 
 
 
