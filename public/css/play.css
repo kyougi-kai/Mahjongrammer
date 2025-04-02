@@ -82,13 +82,13 @@ p{
 
 .division-div{
     min-width: 200px;
-    height: 100px;
-    margin: auto 12px;
+    height: 80%;
+    margin: 20px 20px 0 20px;
     background:#ffbd59;
     position: relative;
     display: flex;
-    padding: 10px 100px 10px 15px;
     align-items: center;
+    box-sizing: border-box;
 }
 
 .division-s::before{
@@ -136,7 +136,15 @@ p{
     background:#ffbd59;
 }
 
-
+.sentence-div{
+    display: flex;
+    align-items: center;
+    height: 90%;
+    min-width: 200px;
+    background: white;
+    margin: 20px;
+    box-sizing: border-box;
+}
 
 .name div{
     position: absolute;
@@ -177,7 +185,7 @@ p{
 }
 
 .footer {
-    
+    height: 270px;
     display: flex; /* 子要素を横並びにする */
     flex-wrap: wrap;
     justify-content: center;
@@ -201,9 +209,10 @@ p{
 
 .hai-table{
   display: flex;
+  align-items: center;
   background-color: rgb(255, 255, 255);
   width: 100%;
-  height: 100px;
+  height: 50%;
   text-align: center;
 }
 
@@ -317,6 +326,23 @@ p{
 
 .complete-table{
     display: flex;
+}
+
+.sentence-pattern{
+    width: 250px;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.sentence-pattern div{
+    background: rgb(255, 189, 89);
+    width: 200px;
+    height: 50px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
