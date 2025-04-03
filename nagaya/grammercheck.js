@@ -286,12 +286,12 @@ tango = {
     },
     make: {
         hinsi: ['動詞'],
-        tags: ['他動詞', '使役動詞'],
+        tags: ['他動詞', '使役動詞', 'SVOCがとれる動詞'],
         katuyou: ['make', 'makes', 'made', 'made', 'making'],
     },
     give: {
         hinsi: ['動詞'],
-        tags: ['他動詞'],
+        tags: ['他動詞', 'SVOOがとれる動詞'],
         katuyou: ['give', 'gives', 'gave', 'given', 'giving'],
     },
     take: {
@@ -310,8 +310,8 @@ tango = {
         katuyou: ['swim', 'swims', 'swam', 'swum', 'swimming'],
     },
     be: {
-        hinsi: ['動詞'],
-        tags: ['連結動詞', 'be動詞'],
+        hinsi: ['動詞', '助動詞'],
+        tags: ['連結動詞', 'be動詞', '相助動詞'],
         katuyou: ['be', '', '', 'been', 'being'],
     },
     am: {
@@ -577,43 +577,11 @@ tango = {
     do: {
         //助動詞
         hinsi: ['助動詞'],
-        tags: ['助動詞'],
+        tags: ['相助動詞'],
     },
     have: {
-        hinsi: ['助動詞'],
-        tags: ['助動詞'],
-    },
-    be: {
-        hinsi: ['助動詞'],
-        tags: ['助動詞'],
-    },
-    did: {
-        hinsi: ['助動詞'],
-        tags: ['助動詞'],
-    },
-    had: {
-        hinsi: ['助動詞'],
-        tags: ['助動詞'],
-    },
-    was: {
-        hinsi: ['助動詞'],
-        tags: ['助動詞'],
-    },
-    were: {
-        hinsi: ['助動詞'],
-        tags: ['助動詞'],
-    },
-    has: {
-        hinsi: ['助動詞'],
-        tags: ['助動詞'],
-    },
-    having: {
-        hinsi: ['助動詞'],
-        tags: ['助動詞'],
-    },
-    been: {
-        hinsi: ['助動詞'],
-        tags: ['助動詞'],
+        hinsi: ['助動詞', '動詞'],
+        tags: ['相助動詞', '他動詞', '動作動詞', '使役動詞'],
     },
     can: {
         hinsi: ['助動詞'],
@@ -853,6 +821,8 @@ tango = {
 };
 
 const DaimeisicanSArray = ['主格', '指示代名詞', '不定代名詞', '疑問代名詞'];
+const DaimeisicanCArray = ['主格', '所有代名詞', '再帰代名詞', '指示代名詞', '不定代名詞', '疑問代名詞'];
+const DaimeisicanOArray = ['目的格', '再帰代名詞', '指示代名詞', '不定代名詞', '疑問代名詞'];
 
 let checkGrammerTestArray = {
     sentence: '1',
@@ -865,11 +835,60 @@ let checkGrammerTestArray = {
 function checkGrammer(targetArray) {
     let grammerTF = true;
     switch (targetArray.sentence) {
-        case '1':
+        case '1': //第一文型SV
             if (!checkS(targetArray.S)) {
                 grammerTF = false;
             }
-            if (!checkJidousi(targetArray.V) && !checkBedousi(targetArray.V)) {
+            if (!checkJidousiRoot(targetArray.V) && !checkBedousiRoot(targetArray.V)) {
+                grammerTF = false;
+            }
+            break;
+        case '2': //第二文型SVC
+            if (!checkS(targetArray.S)) {
+                grammerTF = false;
+            }
+            if (!checkRenketuRoot(targetArray.V) && !checkBedousiRoot(targetArray.V)) {
+                grammerTF = false;
+            }
+            if (!checkC(targetArray.C)) {
+                grammerTF = false;
+            }
+            break;
+        case '3': //第三文型SVO
+            if (!checkS(targetArray.S)) {
+                grammerTF = false;
+            }
+            if (!checkTadousiRoot(targetArray.V)) {
+                grammerTF = false;
+            }
+            if (!checkO(targetArray.O1)) {
+                grammerTF = false;
+            }
+            break;
+        case '4': //第四文型SVOO
+            if (!checkS(targetArray.S)) {
+                grammerTF = false;
+            }
+            if (!checkVOfSVOORoot(targetArray.V)) {
+                grammerTF = false;
+            }
+            if (!checkO(targetArray.O1)) {
+                grammerTF = false;
+            }
+            if (!checkO(targetArray.O2)) {
+                grammerTF = false;
+            }
+        case '5': //第五文型SVOC
+            if (!checkS(targetArray.S)) {
+                grammerTF = false;
+            }
+            if (!checkVOfSVOCRoot(targetArray.V)) {
+                grammerTF = false;
+            }
+            if (!checkO(targetArray.O1)) {
+                grammerTF = false;
+            }
+            if (!checkC(targetArray.C)) {
                 grammerTF = false;
             }
     }
@@ -885,18 +904,97 @@ function checkS(targetSentence) /*＜S＞*/ {
 
 function checkJidousiRoot(targetSentence) /*＜自動詞根＞*/ {
     let targetIndex = checkJodousiRoot(targetSentence);
-    targetIndex += checkTHJRoot(targetSentence, targetIndex);
+    // targetIndex += checkTHJRoot(targetSentence, targetIndex);
     if (!tango[targetSentence[targetIndex]].tags.includes('自動詞')) {
         return false;
     } else {
         targetIndex += 1;
     }
-    targetIndex += checkYBJRoot(targetSentence, targetIndex);
+    // targetIndex += checkYBJRoot(targetSentence, targetIndex);
     if (targetIndex == targetSentence.length) return true;
     return false;
 }
 
-console.log(checkJidousiRoot(['run', 'quickly']));
+function checkTadousiRoot(targetSentence) /*他動詞根*/ {
+    let targetIndex = checkJodousiRoot(targetSentence);
+    // targetIndex += checkTHJRoot(targetSentence, targetIndex);
+    if (!tango[targetSentence[targetIndex]].tags.includes('他動詞')) {
+        return false;
+    } else {
+        targetIndex += 1;
+    }
+    // targetIndex += checkYBJRoot(targetSentence, targetIndex);
+    if (targetIndex == targetSentence.length) return true;
+    return false;
+}
+
+function checkBedousiRoot(targetSentence) /*＜be動詞根＞*/ {
+    let targetIndex = checkJodousiRoot(targetSentence);
+    if (!tango[targetSentence[targetIndex]].tags.includes('be動詞')) {
+        return false;
+    } else {
+        targetIndex += 1;
+    }
+    if (targetIndex == targetSentence.length) return true;
+    return false;
+}
+
+function checkRenketuRoot(targetSentence) /*＜連結動詞根*/ {
+    let targetIndex = checkJodousiRoot(targetSentence);
+    // targetIndex += checkTHJRoot(targetSentence, targetIndex);
+    if (!tango[targetSentence[targetIndex]].tags.includes('連結動詞')) {
+        return false;
+    } else {
+        targetIndex += 1;
+    }
+    // targetIndex += checkYBJRoot(targetSentence, targetIndex);
+    if (targetIndex == targetSentence.length) return true;
+    return false;
+}
+
+function checkVOfSVOORoot(targetSentence) /*＜SVOOがとれる動詞根＞*/ {
+    let targetIndex = checkJodousiRoot(targetSentence);
+    // targetIndex += checkTHJRoot(targetSentence, targetIndex);
+    if (!tango[targetSentence[targetIndex]].tags.includes('SVOOがとれる動詞')) {
+        return false;
+    } else {
+        targetIndex += 1;
+    }
+    // targetIndex += checkYBJRoot(targetSentence, targetIndex);
+    if (targetIndex == targetSentence.length) return true;
+    return false;
+}
+
+function checkVOfSVOCRoot(targetSentence) /*＜SVOCがとれる動詞根＞*/ {
+    let targetIndex = checkJodousiRoot(targetSentence);
+    // targetIndex += checkTHJRoot(targetSentence, targetIndex);
+    if (!tango[targetSentence[targetIndex]].tags.includes('SVOCがとれる動詞')) {
+        return false;
+    } else {
+        targetIndex += 1;
+    }
+    // targetIndex += checkYBJRoot(targetSentence, targetIndex);
+    if (targetIndex == targetSentence.length) return true;
+    return false;
+}
+
+function checkC(targetSentence) /*＜C＞*/ {
+    if (
+        checkMeisiRoot(targetSentence) ||
+        checkDaimeisiCanC(targetSentence) ||
+        (targetSentence.length == 1 && tango[targetSentence[0]].hinsi.includes('形容詞'))
+    ) {
+        return true;
+    }
+    return false;
+}
+
+function checkO(targetSentence) /*＜O＞*/ {
+    if (checkMeisiRoot(targetSentence) || checkDaimeisiCanO(targetSentence)) {
+        return true;
+    }
+    return false;
+}
 
 function checkMeisiRoot(targetSentence) /*＜名詞根＞*/ {
     let meisiIndex = targetSentence.length - 1;
@@ -918,8 +1016,7 @@ function checkKansiRoot(targetSentence) /*＜冠詞根＞*/ {
     return 0;
 }
 
-function checkKeiyousiRoot(targetSentence, kansiCount) /*＜形用詞根＞*/ {
-    let targetIndex = kansiCount;
+function checkKeiyousiRoot(targetSentence, targetIndex) /*＜形用詞根＞*/ {
     while (targetIndex < targetSentence.length && tango[targetSentence[targetIndex]].hinsi.includes('形容詞')) {
         targetIndex++;
     }
@@ -953,7 +1050,7 @@ function checkYBJRoot(targetSentence, targetIndex) /*＜様態場所時間副詞
 }
 
 function checkJodousiRoot(targetSentence) /*＜助動詞根＞*/ {
-    if (targetSentence.length > 0 && tango[targetSentence[0]].hinsi.includes('助動詞')) {
+    if (targetSentence.length > 1 && tango[targetSentence[0]].hinsi.includes('助動詞')) {
         return 1;
     }
     return 0;
@@ -964,28 +1061,12 @@ function checkDaimeisiCanS(targetSentence) /*＜主語に使える代名詞＞*/
     return DaimeisicanSArray.some((value) => tango[targetSentence].tags.includes(value));
 }
 
-console.log(checkDaimeisiCanS(['I']));
+function checkDaimeisiCanC(targetSentence) /*＜補語に使える代名詞＞*/ {
+    if (targetSentence.length != 1) return false;
+    return DaimeisicanCArray.some((value) => tango[targetSentence].tags.includes(value));
+}
 
-// CheckSentencePattern(CheckSentencePatternTestArray);//文型が正しいか判断
-// function CheckSentencePattern(TargetArray){
-//   let CheckResult = false;
-//   let SentenceKeys = Object.keys(TargetArray);//TargetArrayのキーを入れる
-//   SentenceKeys = SentenceKeys.join("");
-//   console.log(SentenceKeys);
-//   if(
-//     SentenceKeys == "SV"    ||
-//     SentenceKeys == "SVC"   ||
-//     SentenceKeys == "SVO"   ||
-//     SentenceKeys == "SVOO"  ||
-//     SentenceKeys == "SVOC"  ||
-//     SentenceKeys == "SVM"   ||
-//     SentenceKeys == "SVCM"  ||
-//     SentenceKeys == "SVOM"  ||
-//     SentenceKeys == "SVOOM" ||
-//     SentenceKeys == "SVOCM" )
-//   {
-//     CheckResult = true;
-//   }
-//   console.log(CheckResult);
-//   return CheckResult;
-// }
+function checkDaimeisiCanO(targetSentence) /*＜目的語に使える代名詞＞*/ {
+    if (targetSentence.length != 1) return false;
+    return DaimeisicanCArray.some((value) => tango[targetSentence].tags.includes(value));
+}
