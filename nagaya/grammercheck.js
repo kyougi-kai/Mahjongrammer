@@ -868,28 +868,32 @@ function checkGrammer(targetArray){
 }
 
 function checkS(targetSentence){//＜S＞
-  if(checkMeisiroot(targetSentence) || checkDaimeisiCanS(targetSentence)){
+  if(checkMeisiRoot(targetSentence) || checkDaimeisiCanS(targetSentence)){
     return true;
   }
   return false;
 }
 
-function checkMeisiroot(targetSentence){//＜名詞根＞
+function checkJidousiRoot(){
+
+}
+
+function checkMeisiRoot(targetSentence){//＜名詞根＞
   let meisiIndex = targetSentence.length - 1;
   if (!tango[targetSentence[meisiIndex]].hinsi.includes("名詞"))return false;
-  let targetIndex = checkKeiyousiroot(targetSentence,checkKansiroot(targetSentence));
+  let targetIndex = checkKeiyousiRoot(targetSentence,checkKansiRoot(targetSentence));
   if (meisiIndex == targetIndex)return true;
   return false;
 }
 
-function checkKansiroot(targetSentence){//＜冠詞根＞
+function checkKansiRoot(targetSentence){//＜冠詞根＞
   if(targetSentence.length > 0 && (tango[targetSentence[0]].hinsi.includes('冠詞') || tango[targetSentence[0]].tags.includes('所有格') || tango[targetSentence[0]].tags.includes('指示代名詞'))){
     return 1;
   }
   return 0;
 }
 
-function checkKeiyousiroot(targetSentence,kansiCount){//＜形容詞根＞
+function checkKeiyousiRoot(targetSentence,kansiCount){//＜形容詞根＞
   let targetIndex = kansiCount;
   while (targetIndex < targetSentence.length && tango[targetSentence[targetIndex]].hinsi.includes('形容詞')){
     targetIndex++;
@@ -899,8 +903,7 @@ function checkKeiyousiroot(targetSentence,kansiCount){//＜形容詞根＞
 
 function checkDaimeisiCanS(targetSentence){//＜主語に使える代名詞＞
   if(targetSentence.length != 1)return false;
-  console.log(targetSentence);
-  let TF = false
+  let TF = false;
   DaimeisicanSArray.forEach(function(DaimeisiCanS){
     if(tango[targetSentence].tags.includes(DaimeisiCanS)){
       TF = true;
@@ -910,7 +913,7 @@ function checkDaimeisiCanS(targetSentence){//＜主語に使える代名詞＞
 }
 
 // console.log(checkDaimeisiCanS(['I']));
-console.log(checkS(['an', 'happy', 'happy', 'happy', 'apple']));
+console.log(checkS(['I']));
 
 
 
