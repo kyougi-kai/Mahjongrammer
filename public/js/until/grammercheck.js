@@ -1,4 +1,4 @@
-tango = {
+export let tango = {
     apple: {
         //名詞
         hinsi: ['名詞'],
@@ -826,69 +826,72 @@ const DaimeisicanOArray = ['目的格', '再帰代名詞', '指示代名詞', '�
 
 let checkGrammerTestArray = {
     sentence: '1',
-    S: ['they'],
-    V: ['take', 'be'],
+    S: ['you', 'a'],
+    V: ['can', 'play'],
 };
 
-console.log(checkGrammer(checkGrammerTestArray));
+// checkGrammer(checkGrammerTestArray);
 
-function checkGrammer(targetArray) {
+export function checkGrammer(targetArray) {
+    console.log('checkGrammer');
+    console.log(targetArray);
+
     let grammerTF = true;
     switch (targetArray.sentence) {
         case '1': //第一文型SV
-            if (!checkS(targetArray.S)) {
+            if (!checkS(targetArray.s)) {
                 grammerTF = false;
             }
-            if (!checkJidousiRoot(targetArray.V) && !checkBedousiRoot(targetArray.V)) {
+            if (!checkJidousiRoot(targetArray.v) && !checkBedousiRoot(targetArray.v)) {
                 grammerTF = false;
             }
             break;
         case '2': //第二文型SVC
-            if (!checkS(targetArray.S)) {
+            if (!checkS(targetArray.s)) {
                 grammerTF = false;
             }
-            if (!checkRenketuRoot(targetArray.V) && !checkBedousiRoot(targetArray.V)) {
+            if (!checkRenketuRoot(targetArray.v) && !checkBedousiRoot(targetArray.v)) {
                 grammerTF = false;
             }
-            if (!checkC(targetArray.C)) {
+            if (!checkC(targetArray.c)) {
                 grammerTF = false;
             }
             break;
         case '3': //第三文型SVO
-            if (!checkS(targetArray.S)) {
+            if (!checkS(targetArray.s)) {
                 grammerTF = false;
             }
-            if (!checkTadousiRoot(targetArray.V)) {
+            if (!checkTadousiRoot(targetArray.v)) {
                 grammerTF = false;
             }
-            if (!checkO(targetArray.O1)) {
+            if (!checkO(targetArray.o1)) {
                 grammerTF = false;
             }
             break;
         case '4': //第四文型SVOO
-            if (!checkS(targetArray.S)) {
+            if (!checkS(targetArray.s)) {
                 grammerTF = false;
             }
-            if (!checkVOfSVOORoot(targetArray.V)) {
+            if (!checkVOfSVOORoot(targetArray.v)) {
                 grammerTF = false;
             }
-            if (!checkO(targetArray.O1)) {
+            if (!checkO(targetArray.o1)) {
                 grammerTF = false;
             }
-            if (!checkO(targetArray.O2)) {
+            if (!checkO(targetArray.o2)) {
                 grammerTF = false;
             }
         case '5': //第五文型SVOC
-            if (!checkS(targetArray.S)) {
+            if (!checkS(targetArray.s)) {
                 grammerTF = false;
             }
-            if (!checkVOfSVOCRoot(targetArray.V)) {
+            if (!checkVOfSVOCRoot(targetArray.v)) {
                 grammerTF = false;
             }
-            if (!checkO(targetArray.O1)) {
+            if (!checkO(targetArray.o1)) {
                 grammerTF = false;
             }
-            if (!checkC(targetArray.C)) {
+            if (!checkC(targetArray.c)) {
                 grammerTF = false;
             }
     }
@@ -1069,5 +1072,5 @@ function checkDaimeisiCanC(targetSentence) /*＜補語に使える代名詞＞*/
 
 function checkDaimeisiCanO(targetSentence) /*＜目的語に使える代名詞＞*/ {
     if (targetSentence.length != 1) return false;
-    return DaimeisicanCArray.some((value) => tango[targetSentence].tags.includes(value));
+    return DaimeisicanOArray.some((value) => tango[targetSentence].tags.includes(value));
 }

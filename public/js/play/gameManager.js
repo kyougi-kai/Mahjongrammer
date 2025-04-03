@@ -1,5 +1,6 @@
 import { HM } from '/js/play/haiManager.js';
 import { DM } from '/js/until/dataManager.js';
+import { checkGrammer } from '/js/until/grammercheck.js';
 
 export default class gameManager {
     constructor() {
@@ -180,13 +181,22 @@ export default class gameManager {
         const checkResult = this._hm.sentenceCheck();
         if (!checkResult) return;
 
-        console.log(checkResult);
+        if (
+            checkResult.sentence == 0 ||
+            checkResult.some((value) => {
+                return Object.values(value).some((nan) => nan.length == 0);
+            })
+        )
+            return;
 
-        /*
-        const targetHais = Array.from(this._hm._divisions).filter((value) => value.style.opacity == '1');
-        console.log(targetHais);
-        this._playSocket.send(JSON.stringify({ complete: document.getElementsByClassName('hai-table')[0].outerHTML, username: this._username }));
-        */
+        console.log(checkResult);
+        if (checkResult.every((value) => checkGrammer(value))) {
+            const targetHais = Array.from(this._hm._divisions).filter((value) => value.style.opacity == '1');
+            console.log(targetHais);
+            this._playSocket.send(JSON.stringify({ complete: document.getElementsByClassName('hai-table')[0].outerHTML, username: this._username }));
+        } else {
+            alert('ばかが');
+        }
     }
 
     barkPhase() {
