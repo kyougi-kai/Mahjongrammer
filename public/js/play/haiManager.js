@@ -1,11 +1,13 @@
 export class HM {
+    _draggedElement;
+    _originalParent;
+    _movedAnotherParent;
+
     constructor(throwEvent) {
-        this._draggedElement = null;
-        this._originalParent = null;
-        this._movedAnotherParent = false;
         this._sentencePatterns = Array.from(document.getElementById('sentencePattern').children);
         this._divisions = document.getElementsByClassName('division-div');
         this._wordDown = document.getElementById('wordDown');
+        this._haiTables = Array.from(document.getElementsByClassName('hai-table'));
 
         this._isMyTurn = false;
         this._isBark = false;
@@ -17,9 +19,11 @@ export class HM {
             this.attachDraggable(value, temporaryDiv);
         });
 
-        Array.from(document.getElementsByClassName('hai-table')).forEach((value) => {
+        this._haiTables.forEach((value) => {
             this.attachDraggabled(value);
         });
+
+        this.sentenceCheckList = ['sv', 'svm', 'svc', 'svcm', 'svo', 'svom', 'svoo', 'svoom', 'svoc', 'svocm'];
 
         //捨てる
         document.addEventListener('drop', (event) => {
@@ -115,6 +119,43 @@ export class HM {
         return borderDiv;
     }
 
+    sentenceCheck() {
+        const targetElements = Array.from(this._haiTables[0].children);
+        if (targetElements.length == 0) return false;
+
+        let returnSentences = [];
+        //白いやつのforEach
+        targetElements.forEach((element) => {
+            if (element.classList.contains('border-div')) return false;
+
+            let targetSentence = '';
+            let targetWords = {};
+            let oCount = 0;
+            // SとかVとかのforEach
+            Array.from(element.children).forEach((part) => {
+                let partType = part.getAttribute('class').substring(part.getAttribute('class').length - 1);
+                targetSentence += partType;
+                if (partType == 'o') {
+                    oCount++;
+                    targetWords[partType + oCount] = [];
+                } else targetWords[partType] = [];
+
+                // Sの中の単語のforEach
+                Array.from(part.children).forEach((word) => {
+                    targetWords[partType == 'o' ? partType + oCount : partType].push(word.children[0].textContent);
+                });
+            });
+
+            console.log(targetSentence);
+
+            targetWords.sentence = Math.ceil((this.sentenceCheckList.indexOf(targetSentence) + 1) / 2);
+
+            returnSentences.push(targetWords);
+        });
+
+        return returnSentences;
+    }
+
     /**
      *
      * @param {HTMLElement} targetElement -ドラッグを可能にする要素-
@@ -133,7 +174,7 @@ export class HM {
                 const dragElementCopy = dragElement.cloneNode(true);
                 this._draggedElement = dragElementCopy;
                 this.attachDraggable(this._draggedElement);
-                this.attachDraggabled(this._draggedElement, 'division-div');
+                this.attachDraggabled(this._draggedElement, ['division-div', 'sentence-div']);
             }
             setTimeout(() => (this._draggedElement.style.opacity = '0.25'), 1);
             this._originalParent = this._draggedElement.parentNode; // ドラッグ開始時の親要素を保存
@@ -149,9 +190,9 @@ export class HM {
 
     attachDraggabled(targetElement, excludeClass) {
         targetElement.addEventListener('dragover', (event) => {
-            event.stopPropagation(); //親要素に伝播しないようにする
             event.preventDefault(); //ドロップの可能
-            if (!this._draggedElement || this._draggedElement?.classList.contains(excludeClass)) return;
+            if (!this._draggedElement || excludeClass?.some((value) => this._draggedElement?.classList.contains(value))) return;
+            event.stopPropagation();
 
             const childrenCount = Array.from(targetElement.children).length;
             if (childrenCount == 0 || event.clientX > targetElement.children[childrenCount - 1]?.getBoundingClientRect().right) {
@@ -194,7 +235,7 @@ export class HM {
                     temporarySentence.classList.add('sentence-div');
                     this._draggedElement.parentElement.appendChild(temporarySentence);
                     this.attachDraggable(temporarySentence);
-                    this.attachDraggabled(temporarySentence, 'sentence-div');
+                    this.attachDraggabled(temporarySentence, ['sentence-div', 'border-div']);
                     temporarySentence.appendChild(this._draggedElement);
                 }
 

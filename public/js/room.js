@@ -86,11 +86,11 @@ function createRoom() {
         temporaryList.push(ratio);
     });
     const sendData = JSON.stringify({
-        createRoom: userNameText.textContent,
+        createRoom: userNameText.textContent.replace(/\s+/g, ''),
         ratio: temporaryList,
     });
     socket.send(sendData);
-    window.location.href = `/play/${userNameText.textContent}`;
+    window.location.href = `/play/${userNameText.textContent.replace(/\s+/g, '')}`;
 }
 
 function closeDiv() {
