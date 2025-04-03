@@ -1,15 +1,14 @@
 let loginFlag = 'login';
 const loginHeader = document.getElementsByClassName('login-header')[0];
 
-function changeForm(formName){
-    if(formName == 'login'){
-        loginHeader.children[0].firstChild.style.borderBottom='1px solid white';
-        loginHeader.children[1].firstChild.style.borderBottom='';
+function changeForm(formName) {
+    if (formName == 'login') {
+        loginHeader.children[0].firstChild.style.borderBottom = '1px solid white';
+        loginHeader.children[1].firstChild.style.borderBottom = '';
         loginFlag = 'login';
-    }
-    else{
-        loginHeader.children[1].firstChild.style.borderBottom='1px solid white';
-        loginHeader.children[0].firstChild.style.borderBottom='';
+    } else {
+        loginHeader.children[1].firstChild.style.borderBottom = '1px solid white';
+        loginHeader.children[0].firstChild.style.borderBottom = '';
         loginFlag = 'signin';
     }
 }
@@ -20,21 +19,19 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     const username = document.getElementById('usernameInput').value;
     const password = document.getElementById('passwordInput').value;
 
-    try{
+    try {
         const response = await fetch(`/${loginFlag}`, {
-            method:'POST',
-            headers:{'Content-Type':'application/json'},
-            body: JSON.stringify({username, password})
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password }),
         });
         const data = await response.json();
-        if(data.success){
+        if (data.success) {
             window.location.href = '/room';
-        }
-        else{
+        } else {
             alert('ログイン失敗: ' + data.error);
         }
-    }
-    catch(err){
+    } catch (err) {
         console.log(err);
     }
 });

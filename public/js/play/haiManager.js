@@ -1,235 +1,209 @@
 export class HM {
-  constructor(throwEvent) {
-    this._draggedElement = null;
-    this._originalParent = null;
-    this._movedAnotherParent = false;
-    this._sentencePatterns = Array.from(
-      document.getElementById("sentencePattern").children
-    );
-    this._divisions = document.getElementsByClassName("division-div");
-    this._wordDown = document.getElementById("wordDown");
+    constructor(throwEvent) {
+        this._draggedElement = null;
+        this._originalParent = null;
+        this._movedAnotherParent = false;
+        this._sentencePatterns = Array.from(document.getElementById('sentencePattern').children);
+        this._divisions = document.getElementsByClassName('division-div');
+        this._wordDown = document.getElementById('wordDown');
 
-    this._isMyTurn = false;
-    this._isBark = false;
-
-    this._sentencePatterns.forEach((value) => {
-      const temporaryDiv = document.createElement("div");
-      temporaryDiv.classList.add("division-div");
-      temporaryDiv.classList.add(`division-${value.textContent.toLowerCase()}`);
-      this.attachDraggable(value, temporaryDiv);
-    });
-
-    Array.from(document.getElementsByClassName("hai-table")).forEach(
-      (value) => {
-        this.attachDraggabled(value);
-      }
-    );
-
-    //捨てる
-    document.addEventListener("drop", (event) => {
-      console.log(this._draggedElement);
-      event.preventDefault();
-      if (this._draggedElement.classList.contains("border-div") && (this._isMyTurn || this._isBark)) {
-        throwEvent(this._draggedElement.outerHTML, this._isBark);
-        this._draggedElement.remove();
         this._isMyTurn = false;
         this._isBark = false;
-      } 
-      else {
-        let words = this._draggedElement.getElementsByClassName('border-div');
-        Array.from(words).forEach((value) => {
-          this._wordDown.appendChild(value);
+
+        this._sentencePatterns.forEach((value) => {
+            const temporaryDiv = document.createElement('div');
+            temporaryDiv.classList.add('division-div');
+            temporaryDiv.classList.add(`division-${value.textContent.toLowerCase()}`);
+            this.attachDraggable(value, temporaryDiv);
         });
-        this._draggedElement.remove();
-        
-        const sentenceDivs = document.getElementsByClassName('sentence-div');
-        Array.from(sentenceDivs).forEach((value) => {
-          console.log(value);
-          if(!value.children[0])value.remove();
+
+        Array.from(document.getElementsByClassName('hai-table')).forEach((value) => {
+            this.attachDraggabled(value);
         });
-      }
-    });
 
-    document.addEventListener("dragover", (event) => {
-      event.preventDefault();
-    });
-  }
+        //捨てる
+        document.addEventListener('drop', (event) => {
+            console.log(this._draggedElement);
+            event.preventDefault();
+            if (this._draggedElement.classList.contains('border-div') && (this._isMyTurn || this._isBark)) {
+                throwEvent(this._draggedElement.outerHTML, this._isBark);
+                this._draggedElement.remove();
+                this._isMyTurn = false;
+                this._isBark = false;
+            } else {
+                let words = this._draggedElement.getElementsByClassName('border-div');
+                Array.from(words).forEach((value) => {
+                    this._wordDown.appendChild(value);
+                });
+                this._draggedElement.remove();
 
-  get divisions() {
-    return this._divisions;
-  }
+                const sentenceDivs = document.getElementsByClassName('sentence-div');
+                Array.from(sentenceDivs).forEach((value) => {
+                    console.log(value);
+                    if (!value.children[0]) value.remove();
+                });
+            }
+        });
 
-  /**
-   * @param {string[]} targetPOS
-   */
-  showDivision(targetPOS) {
-    let numOfO = 0;
-    this.changeCondition(this._divisions[0]);
-    this.changeCondition(this._divisions[1]);
-    targetPOS.forEach((value) => {
-      switch (value) {
-        case "C":
-          this.changeCondition(this._divisions[2]);
-          break;
-        case "O":
-          this.changeCondition(this._divisions[3 + numOfO]);
-          numOfO++;
-          break;
-      }
-    });
-  }
-
-  changeCondition(element, dontChangePosition = false) {
-    if (element.style.opacity == "0") {
-      element.style.opacity = "1";
-      if (!dontChangePosition) element.style.position = "relative";
-      element.style.pointerEvents = "all";
-      element.style.zIndex = "0";
-    } else {
-      element.style.opacity = "0";
-      if (!dontChangePosition) element.style.position = "absolute";
-      element.style.pointerEvents = "none";
-      element.style.zIndex = "-1";
+        document.addEventListener('dragover', (event) => {
+            event.preventDefault();
+        });
     }
-  }
 
-  set isMyTurn(value) {
-    this._isMyTurn = value;
-  }
+    get divisions() {
+        return this._divisions;
+    }
 
-  set isBark(value) {
-    this._isBark = value;
-  }
+    /**
+     * @param {string[]} targetPOS
+     */
+    showDivision(targetPOS) {
+        let numOfO = 0;
+        this.changeCondition(this._divisions[0]);
+        this.changeCondition(this._divisions[1]);
+        targetPOS.forEach((value) => {
+            switch (value) {
+                case 'C':
+                    this.changeCondition(this._divisions[2]);
+                    break;
+                case 'O':
+                    this.changeCondition(this._divisions[3 + numOfO]);
+                    numOfO++;
+                    break;
+            }
+        });
+    }
 
-  showHai(word, partOfSpeech) {
-    const borderDiv = document.createElement("div");
-    const wordP = document.createElement("p");
-    borderDiv.classList.add("border-div");
+    changeCondition(element, dontChangePosition = false) {
+        if (element.style.opacity == '0') {
+            element.style.opacity = '1';
+            if (!dontChangePosition) element.style.position = 'relative';
+            element.style.pointerEvents = 'all';
+            element.style.zIndex = '0';
+        } else {
+            element.style.opacity = '0';
+            if (!dontChangePosition) element.style.position = 'absolute';
+            element.style.pointerEvents = 'none';
+            element.style.zIndex = '-1';
+        }
+    }
 
-    wordP.textContent = word;
+    set isMyTurn(value) {
+        this._isMyTurn = value;
+    }
 
-    // ドラッグアンドドロップを有効にする
-    this.attachDraggable(borderDiv);
+    set isBark(value) {
+        this._isBark = value;
+    }
 
-    //画像
-    borderDiv.style.backgroundImage = `url(/img/partOfSpeech/${partOfSpeech}.png)`;
+    showHai(word, partOfSpeech) {
+        const borderDiv = document.createElement('div');
+        const wordP = document.createElement('p');
+        borderDiv.classList.add('border-div');
 
-    borderDiv.appendChild(wordP);
-    document.getElementById("wordDown").appendChild(borderDiv);
+        wordP.textContent = word;
 
-    return borderDiv;
-  }
+        // ドラッグアンドドロップを有効にする
+        this.attachDraggable(borderDiv);
 
-  /**
-   *
-   * @param {HTMLElement} targetElement -ドラッグを可能にする要素-
-   * @param {HTMLElement} dragElement -ドラッグしているときマウスポインターについてくる要素(省略可)-
-   */
-  attachDraggable(targetElement, dragElement = null) {
-    targetElement.setAttribute("draggable", "true");
+        //画像
+        borderDiv.style.backgroundImage = `url(/img/partOfSpeech/${partOfSpeech}.png)`;
 
-    targetElement.addEventListener("dragstart", (event) => {
-      event.stopPropagation(); //親要素に伝播しないようにする
-      this._movedAnotherParent = false;
+        borderDiv.appendChild(wordP);
+        document.getElementById('wordDown').appendChild(borderDiv);
 
-      if (dragElement == null) {
-        this._draggedElement = event.target;
-      } else {
-        const dragElementCopy = dragElement.cloneNode(true);
-        this._draggedElement = dragElementCopy;
-        this.attachDraggable(this._draggedElement);
-        this.attachDraggabled(this._draggedElement, 'division-div');
-      }
-      setTimeout(() => (this._draggedElement.style.opacity = "0.25"), 1);
-      this._originalParent = this._draggedElement.parentNode; // ドラッグ開始時の親要素を保存
-    });
+        return borderDiv;
+    }
 
-    targetElement.addEventListener("dragend", (event) => {
-      event.stopPropagation(); //親要素に伝播しないようにする
-      if (!this._draggedElement) return;
-      this._draggedElement.style.opacity = "1"; // ドラッグ終了時に元に戻す
-      this._draggedElement = null;
-    });
-  }
+    /**
+     *
+     * @param {HTMLElement} targetElement -ドラッグを可能にする要素-
+     * @param {HTMLElement} dragElement -ドラッグしているときマウスポインターについてくる要素(省略可)-
+     */
+    attachDraggable(targetElement, dragElement = null) {
+        targetElement.setAttribute('draggable', 'true');
 
-  attachDraggabled(targetElement, excludeClass) {
-    targetElement.addEventListener("dragover", (event) => {
-      event.stopPropagation(); //親要素に伝播しないようにする
-      event.preventDefault(); //ドロップの可能
-      if (!this._draggedElement ||this._draggedElement?.classList.contains(excludeClass))return;
+        targetElement.addEventListener('dragstart', (event) => {
+            event.stopPropagation(); //親要素に伝播しないようにする
+            this._movedAnotherParent = false;
 
-      const childrenCount = Array.from(targetElement.children).length;
-      if (childrenCount == 0 || event.clientX > targetElement.children[childrenCount - 1]?.getBoundingClientRect().right) {
-        targetElement.appendChild(this._draggedElement);
-      }
+            if (dragElement == null) {
+                this._draggedElement = event.target;
+            } else {
+                const dragElementCopy = dragElement.cloneNode(true);
+                this._draggedElement = dragElementCopy;
+                this.attachDraggable(this._draggedElement);
+                this.attachDraggabled(this._draggedElement, 'division-div');
+            }
+            setTimeout(() => (this._draggedElement.style.opacity = '0.25'), 1);
+            this._originalParent = this._draggedElement.parentNode; // ドラッグ開始時の親要素を保存
+        });
 
-      Array.from(targetElement.children).forEach((hai) => {
-        if (hai !== this._draggedElement) {
-          //自分はチェックしない
-          let rect = hai.getBoundingClientRect();
-          if (
-            event.clientX > rect.left &&
-            event.clientX < rect.right &&
-            event.clientY > rect.top &&
-            event.clientY < rect.bottom
-          ) {
-            /*
+        targetElement.addEventListener('dragend', (event) => {
+            event.stopPropagation(); //親要素に伝播しないようにする
+            if (!this._draggedElement) return;
+            this._draggedElement.style.opacity = '1'; // ドラッグ終了時に元に戻す
+            this._draggedElement = null;
+        });
+    }
+
+    attachDraggabled(targetElement, excludeClass) {
+        targetElement.addEventListener('dragover', (event) => {
+            event.stopPropagation(); //親要素に伝播しないようにする
+            event.preventDefault(); //ドロップの可能
+            if (!this._draggedElement || this._draggedElement?.classList.contains(excludeClass)) return;
+
+            const childrenCount = Array.from(targetElement.children).length;
+            if (childrenCount == 0 || event.clientX > targetElement.children[childrenCount - 1]?.getBoundingClientRect().right) {
+                targetElement.appendChild(this._draggedElement);
+            }
+            Array.from(targetElement.children).forEach((hai) => {
+                if (hai !== this._draggedElement) {
+                    //自分はチェックしない
+                    let rect = hai.getBoundingClientRect();
+                    if (event.clientX > rect.left && event.clientX < rect.right && event.clientY > rect.top && event.clientY < rect.bottom) {
+                        /*
 								event.clientがマウスのX,Y
 								重なっているかの判定
 								*/
-            const idx = Array.from(targetElement.children).indexOf(hai);
-            console.log(idx);
-            console.log(
-              Array.from(targetElement.children).indexOf(this._draggedElement)
-            );
-            if (
-              !this._movedAnotherParent &&
-              this._originalParent != hai.parentNode
-            ) {
-              hai.parentNode.insertBefore(this._draggedElement, hai);
-            } else if (
-              idx >
-              Array.from(targetElement.children).indexOf(this._draggedElement)
-            ) {
-              hai.parentNode.insertBefore(
-                this._draggedElement,
-                hai.nextSibling
-              );
-            } else {
-              hai.parentNode.insertBefore(this._draggedElement, hai);
+                        const idx = Array.from(targetElement.children).indexOf(hai);
+                        console.log(idx);
+                        console.log(Array.from(targetElement.children).indexOf(this._draggedElement));
+                        if (!this._movedAnotherParent && this._originalParent != hai.parentNode) {
+                            hai.parentNode.insertBefore(this._draggedElement, hai);
+                        } else if (idx > Array.from(targetElement.children).indexOf(this._draggedElement)) {
+                            hai.parentNode.insertBefore(this._draggedElement, hai.nextSibling);
+                        } else {
+                            hai.parentNode.insertBefore(this._draggedElement, hai);
+                        }
+
+                        if (this._originalParent != hai.parentNode) this._movedAnotherParent = true;
+                    }
+                }
+            });
+        });
+        targetElement.addEventListener('drop', (event) => {
+            event.stopPropagation(); //親要素に伝播しないようにする
+            event.preventDefault();
+            if (this._draggedElement) {
+                this._draggedElement.style.opacity = '1';
+
+                //くくりを作る
+                if (this._draggedElement.classList.contains('division-div') && this._draggedElement.parentElement.classList.contains('hai-table')) {
+                    const temporarySentence = document.createElement('div');
+                    temporarySentence.classList.add('sentence-div');
+                    this._draggedElement.parentElement.appendChild(temporarySentence);
+                    this.attachDraggable(temporarySentence);
+                    this.attachDraggabled(temporarySentence, 'sentence-div');
+                    temporarySentence.appendChild(this._draggedElement);
+                }
+
+                this._draggedElement = null;
             }
+        });
 
-            if (this._originalParent != hai.parentNode)
-              this._movedAnotherParent = true;
-          }
-        }
-      });
-    });
-    targetElement.addEventListener("drop", (event) => {
-      event.stopPropagation(); //親要素に伝播しないようにする
-      event.preventDefault();
-      if (this._draggedElement) {
-        this._draggedElement.style.opacity = "1";
-
-        //くくりを作る
-        if (
-          this._draggedElement.classList.contains("division-div") &&
-          this._draggedElement.parentElement.classList.contains("hai-table")
-        ) {
-          const temporarySentence = document.createElement("div");
-          temporarySentence.classList.add("sentence-div");
-          this._draggedElement.parentElement.appendChild(temporarySentence);
-          this.attachDraggable(temporarySentence);
-          this.attachDraggabled(temporarySentence, "sentence-div");
-          temporarySentence.appendChild(this._draggedElement);
-        }
-
-        this._draggedElement = null;
-      }
-    });
-
-    targetElement.addEventListener("dragover", (event) => {
-      event.preventDefault();
-    });
-  }
+        targetElement.addEventListener('dragover', (event) => {
+            event.preventDefault();
+        });
+    }
 }
