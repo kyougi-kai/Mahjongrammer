@@ -47,3 +47,14 @@ npm install
 poo.queryで出した値は必ず何もそうさせず変数に入れる
 〇 const result = pool.query('なんか');
 ✕ const result = pool.query('なんか')[0];
+
+//フォーマッタの設定
+拡張機能 「prettier code formatter」をインストール
+設定から
+・format on save を適用
+・default fromatter をprettierにする
+・detect indentation を外す
+・tab size を4にする
+
+//配分
+5,4,2,2,2,2,2,1
