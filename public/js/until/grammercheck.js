@@ -1,4 +1,4 @@
-export let tango = {
+let tango = {
     apple: {
         //名詞
         hinsi: ['名詞'],
@@ -825,14 +825,16 @@ const DaimeisicanCArray = ['主格', '所有代名詞', '再帰代名詞', '指�
 const DaimeisicanOArray = ['目的格', '再帰代名詞', '指示代名詞', '不定代名詞', '疑問代名詞'];
 
 let checkGrammerTestArray = {
-    sentence: '1',
-    S: ['you', 'a'],
-    V: ['can', 'play'],
+    sentence: '4',
+    s: ['Amazon'],
+    v: ['should', 'give'],
+    o1: ['someone'],
+    o2: ['Tokyo'],
 };
 
-// checkGrammer(checkGrammerTestArray);
+console.log(checkGrammer(checkGrammerTestArray));
 
-export function checkGrammer(targetArray) {
+function checkGrammer(targetArray) {
     console.log('checkGrammer');
     console.log(targetArray);
 
@@ -881,6 +883,7 @@ export function checkGrammer(targetArray) {
             if (!checkO(targetArray.o2)) {
                 grammerTF = false;
             }
+            break;
         case '5': //第五文型SVOC
             if (!checkS(targetArray.s)) {
                 grammerTF = false;
@@ -894,6 +897,7 @@ export function checkGrammer(targetArray) {
             if (!checkC(targetArray.c)) {
                 grammerTF = false;
             }
+            break;
     }
 
     return grammerTF;
