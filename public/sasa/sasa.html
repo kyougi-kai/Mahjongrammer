@@ -7,10 +7,34 @@
     <script src="../../nagaya/grammercheck.js"></script>
 </head>
 <body>
-    
+    <h1 id="test"></h1>
     <script>
+        let hozon = '';
+        const test = document.getElementById('test');
         console.log(tango);
+        let tan = {
+            名詞:[],
+            代名詞:[],
+            動詞:[],
+            形容詞:[],
+            副詞:[],
+            助動詞:[],
+            前置詞:[],
+            冠詞:[],
+            接続詞:[],
+        }
+        let tan2 = {
+
+        }
         
+        Object.keys(tango).forEach((value) => {
+            console.log(tango[value].hinsi);
+            if(Object.keys(tan2).indexOf(tango[value].hinsi[0]) == -1){
+                tan2[tango[value].hinsi[0]] = [];
+            }
+                tan2[tango[value].hinsi[0]].push(value);
+        });
+        console.log(tan2);
     </script>
 </body>
 </html>
