@@ -876,21 +876,29 @@ function checkGrammer(targetArray) {
     console.log('結果：' + grammerTF);
 }
 
-function checkS(targetSentence) {
-    //＜S＞済
+function checkS(targetSentence) /*＜S＞*/ {
     if (checkMeisiRoot(targetSentence) || checkDaimeisiCanS(targetSentence)) {
         return true;
     }
     return false;
 }
 
-function checkJidousiRoot() {
-    //＜自動詞根＞
-    let;
+function checkJidousiRoot(targetSentence) /*＜自動詞根＞*/ {
+    let targetIndex = checkJodousiRoot(targetSentence);
+    targetIndex += checkTHJRoot(targetSentence, targetIndex);
+    if (!tango[targetSentence[targetIndex]].tags.includes('自動詞')) {
+        return false;
+    } else {
+        targetIndex += 1;
+    }
+    targetIndex += checkYBJRoot(targetSentence, targetIndex);
+    if (targetIndex == targetSentence.length) return true;
+    return false;
 }
 
-function checkMeisiRoot(targetSentence) {
-    //＜名詞根＞済
+console.log(checkJidousiRoot(['run', 'quickly']));
+
+function checkMeisiRoot(targetSentence) /*＜名詞根＞*/ {
     let meisiIndex = targetSentence.length - 1;
     if (!tango[targetSentence[meisiIndex]].hinsi.includes('名詞')) return false;
     let targetIndex = checkKeiyousiRoot(targetSentence, checkKansiRoot(targetSentence));
@@ -898,8 +906,7 @@ function checkMeisiRoot(targetSentence) {
     return false;
 }
 
-function checkKansiRoot(targetSentence) {
-    //＜冠詞根＞済
+function checkKansiRoot(targetSentence) /*＜冠詞根＞*/ {
     if (
         targetSentence.length > 0 &&
         (tango[targetSentence[0]].hinsi.includes('冠詞') ||
@@ -911,8 +918,7 @@ function checkKansiRoot(targetSentence) {
     return 0;
 }
 
-function checkKeiyousiRoot(targetSentence, kansiCount) {
-    //＜形容詞根＞済
+function checkKeiyousiRoot(targetSentence, kansiCount) /*＜形用詞根＞*/ {
     let targetIndex = kansiCount;
     while (targetIndex < targetSentence.length && tango[targetSentence[targetIndex]].hinsi.includes('形容詞')) {
         targetIndex++;
@@ -920,27 +926,45 @@ function checkKeiyousiRoot(targetSentence, kansiCount) {
     return targetIndex;
 }
 
-function checkJodousiRoot(targetSentence) {
-    //＜助動詞根＞
+function checkTHJRoot(targetSentence, targetIndex) /*＜程度頻度時間副詞根＞*/ {
+    if (
+        targetSentence.length > 0 &&
+        (tango[targetSentence[targetIndex]].tags.includes('程度') ||
+            tango[targetSentence[targetIndex]].tags.includes('頻度') ||
+            targetSentence[targetIndex] == 'still' ||
+            targetSentence[targetIndex] == 'already')
+    ) {
+        return 1;
+    }
+    return 0;
+}
+
+function checkYBJRoot(targetSentence, targetIndex) /*＜様態場所時間副詞根＞*/ {
+    if (
+        targetSentence.length > 0 &&
+        targetIndex < targetSentence.length &&
+        (tango[targetSentence[targetIndex]].tags.includes('様態') ||
+            tango[targetSentence[targetIndex]].tags.includes('場所') ||
+            tango[targetSentence[targetIndex]].tags.includes('時間'))
+    ) {
+        return 1;
+    }
+    return 0;
+}
+
+function checkJodousiRoot(targetSentence) /*＜助動詞根＞*/ {
     if (targetSentence.length > 0 && tango[targetSentence[0]].hinsi.includes('助動詞')) {
         return 1;
     }
     return 0;
 }
 
-function checkDaimeisiCanS(targetSentence) {
-    //＜主語に使える代名詞＞済
+function checkDaimeisiCanS(targetSentence) /*＜主語に使える代名詞＞*/ {
     if (targetSentence.length != 1) return false;
-    let TF = false;
-    DaimeisicanSArray.forEach(function (DaimeisiCanS) {
-        if (tango[targetSentence].tags.includes(DaimeisiCanS)) {
-            TF = true;
-        }
-    });
-    return TF;
+    return DaimeisicanSArray.some((value) => tango[targetSentence].tags.includes(value));
 }
 
-console.log(checkS(['I']));
+console.log(checkDaimeisiCanS(['I']));
 
 // CheckSentencePattern(CheckSentencePatternTestArray);//文型が正しいか判断
 // function CheckSentencePattern(TargetArray){
