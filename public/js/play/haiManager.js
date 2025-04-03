@@ -148,7 +148,7 @@ export class HM {
 
             console.log(targetSentence);
 
-            targetWords.sentence = Math.ceil((this.sentenceCheckList.indexOf(targetSentence) + 1) / 2);
+            targetWords.sentence = Math.ceil((this.sentenceCheckList.indexOf(targetSentence) + 1) / 2).toString();
 
             returnSentences.push(targetWords);
         });
@@ -240,6 +240,12 @@ export class HM {
                 }
 
                 this._draggedElement = null;
+
+                const sentenceDivs = document.getElementsByClassName('sentence-div');
+                Array.from(sentenceDivs).forEach((value) => {
+                    console.log(value);
+                    if (!value.children[0]) value.remove();
+                });
             }
         });
 
