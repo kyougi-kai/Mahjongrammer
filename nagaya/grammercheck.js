@@ -910,7 +910,7 @@ function checkDaimeisiCanS(targetSentence){//＜主語に使える代名詞＞
 }
 
 // console.log(checkDaimeisiCanS(['I']));
-console.log(checkS(['a','apple']));
+console.log(checkS(['an', 'happy', 'happy', 'happy', 'apple']));
 
 
 
