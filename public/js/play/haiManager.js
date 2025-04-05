@@ -30,6 +30,7 @@ export class HM {
             console.log(this._draggedElement);
             event.preventDefault();
             if (this._draggedElement.classList.contains('border-div') && (this._isMyTurn || this._isBark)) {
+                console.log('捨てたよ');
                 throwEvent(this._draggedElement.outerHTML, this._isBark);
                 this._draggedElement.remove();
                 this._isMyTurn = false;
@@ -39,7 +40,8 @@ export class HM {
                 Array.from(words).forEach((value) => {
                     this._wordDown.appendChild(value);
                 });
-                this._draggedElement.remove();
+
+                if (!this._draggedElement.classList.contains('border-div')) this._draggedElement.remove();
 
                 const sentenceDivs = document.getElementsByClassName('sentence-div');
                 Array.from(sentenceDivs).forEach((value) => {
@@ -96,8 +98,16 @@ export class HM {
         this._isMyTurn = value;
     }
 
+    get isMyTurn() {
+        return this._isMyTurn;
+    }
+
     set isBark(value) {
         this._isBark = value;
+    }
+
+    get isBark() {
+        return this._isBark;
     }
 
     showHai(word, partOfSpeech) {

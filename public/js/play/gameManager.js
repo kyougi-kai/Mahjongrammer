@@ -130,7 +130,7 @@ export default class gameManager {
                 targetElement.children[0].style.opacity = '1';
                 targetElement.style.opacity = '1';
                 this._scoreBord.children[this.phaseToPlayerNumber(message.targetNumber)].style.animation = '';
-                message.isBark ? this.nextPhase() : this.barkPhase();
+                this.barkPhase();
             } else if (message.hasOwnProperty('bark')) {
                 clearInterval(this._barkInterval);
                 this._barkDiv.style.display = 'none';
@@ -164,6 +164,14 @@ export default class gameManager {
         this._finishButton = document.getElementById('finishButton');
         this._finishButton.addEventListener('click', (event) => {
             this.complete();
+        });
+
+        //デバッグ用
+        document.addEventListener('keydown', (event) => {
+            if (event.key == 'a') {
+                console.log(this._hm.isBark);
+                console.log(this._hm.isMyTurn);
+            }
         });
     }
 
@@ -203,6 +211,9 @@ export default class gameManager {
         if (this._ownNumber == this._nowPhase) {
             this._barkDiv.children[0].style.display = 'none';
             this._barkDiv.children[1].style.display = 'none';
+        } else {
+            this._barkDiv.children[0].style.display = 'block';
+            this._barkDiv.children[1].style.display = 'block';
         }
 
         this._barkDiv.style.display = 'block';
@@ -233,9 +244,6 @@ export default class gameManager {
     }
 
     nextPhase() {
-        this._barkDiv.children[0].style.display = 'block';
-        this._barkDiv.children[1].style.display = 'block';
-
         //点滅削除
         if (this._nowPhase != -1) this._scoreBord.children[this.phaseToPlayerNumber(this._nowPhase)].style.animation = '';
 
