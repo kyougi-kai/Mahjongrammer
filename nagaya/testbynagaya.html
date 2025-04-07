@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<style>
-    .example4 {
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <style>
+        /* .example4 {
         background: linear-gradient(90deg, #e60000, #f39800, #fff100, #009944, #0068b7, #1d2088, #920783, #e60000) 0 / 200%;
         height: 100%;
         animation: 5s example4 linear infinite;
@@ -17,71 +16,27 @@
         100% {
             background-position: 200%;
         }
-    }
-</style>
+    } */
+    </style>
 
-<body class="example4">
-    <script src="grammercheck.js"></script>
-    <button onclick="tangoviews();"></button>
-    <form name="textofSV">
-        <input type="text" placeholder="S">
-        <input type="text" placeholder="V">
-        <input type="button" value="SV判定" onclick="checkSV()">
-    </form>
-    <form name="textofSVC">
-        <input type="text" placeholder="S">
-        <input type="text" placeholder="V">
-        <input type="text" placeholder="C">
-        <input type="button" value="SVC判定" onclick="checkSVC()">
-    </form>
-    <form name="textofSVO">
-        <input type="text" placeholder="S">
-        <input type="text" placeholder="V">
-        <input type="text" placeholder="O">
-        <input type="button" value="SVO判定" onclick="checkSVO()">
-    </form>
-    <form name="textofSVOC">
-        <input type="text" placeholder="S">
-        <input type="text" placeholder="V">
-        <input type="text" placeholder="O">
-        <input type="text" placeholder="C">
-        <input type="button" value="SVOC判定" onclick="checkSVOC()">
-    </form>
-    <form name="textofSVOO">
-        <input type="text" placeholder="S">
-        <input type="text" placeholder="V">
-        <input type="text" placeholder="O">
-        <input typr="text" placeholder="O">
-        <input type="button" value="SVOO判定" onclick="checkSVOO()">
-    </form>
-    <form name="textofS" id="S">
-        <input type="text" placeholder="S">
-        <input type="text" placeholder="S">
-        <input type="text" placeholder="S">
-        <input typr="text" placeholder="S">
-        <input type="button" value="S判定" onclick="checkS()">
-    </form>
-    <form name="textofV">
-        <input type="text" placeholder="V">
-        <input type="text" placeholder="V">
-        <input type="text" placeholder="V">
-        <input typr="text" placeholder="V">
-        <input type="button" value="V判定" onclick="checkV()">
-    </form>
-    <form name="textofC">
-        <input type="text" placeholder="C">
-        <input type="text" placeholder="C">
-        <input type="text" placeholder="C">
-        <input typr="text" placeholder="C">
-        <input type="button" value="C判定" onclick="checkC()">
-    </form>
-    <form name="textofO">
-        <input type="text" placeholder="O">
-        <input type="text" placeholder="O">
-        <input type="text" placeholder="O">
-        <input typr="text" placeholder="O">
-        <input type="button" value="O判定" onclick="checkO()">
-    </form>
-</body>
-
+    <body class="example4">
+        <script src="grammercheck.js"></script>
+        <button onclick="tangoviews();"></button>
+        <form name="textofS">
+            <input type="text" placeholder="S" id="S" />
+            <input type="button" value="S判定" onclick="checkByHTML('S')" />
+        </form>
+        <form name="textofV">
+            <input type="text" placeholder="V" id="V" />
+            <input type="button" value="V判定" onclick="checkByHTML('V')" />
+        </form>
+        <form name="textofC">
+            <input type="text" placeholder="C" id="C" />
+            <input type="button" value="C判定" onclick="checkByHTML('C')" />
+        </form>
+        <form name="textofO">
+            <input typr="text" placeholder="O" id="O" />
+            <input type="button" value="O判定" onclick="checkByHTML('O')" />
+        </form>
+    </body>
 </html>

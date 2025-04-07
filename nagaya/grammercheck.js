@@ -1,4 +1,4 @@
-tango = {
+let tango = {
     apple: {
         //名詞
         hinsi: ['名詞'],
@@ -825,75 +825,120 @@ const DaimeisicanCArray = ['主格', '所有代名詞', '再帰代名詞', '指�
 const DaimeisicanOArray = ['目的格', '再帰代名詞', '指示代名詞', '不定代名詞', '疑問代名詞'];
 
 let checkGrammerTestArray = {
-    sentence: '1',
-    S: ['they'],
-    V: ['take', 'be'],
+    sentence: 1,
+    s: ['many'],
+    v: ['eat'],
+};
+/*
+let a = {
+    v: ['play', ['at', 'school']],
 };
 
-console.log(checkGrammer(checkGrammerTestArray));
+console.log(checkJidousiRoot(a.v));
+*/
+function tangoviews() {
+    console.log(['apple,an'].split(','));
+}
+
+function wordsChangeToArray(targetWords) {
+    let targetWordsArray = targetWords.split(',');
+
+    for (let i = 0; i < targetWordsArray.length; i++) {
+        if (targetWordsArray[i].startsWith('[') && targetWordsArray[i].endsWith(']')) {
+            targetWordsArray[i] = [targetWordsArray[i].slice(1, -1)];
+        }
+    }
+
+    return targetWordsArray;
+}
+
+function checkByHTML(targetPart) {
+    targetWords = document.getElementById(targetPart).value;
+    console.log(targetWords);
+    targetWords = wordsChangeToArray(targetWords);
+    console.log(targetWords);
+    switch (targetPart) {
+        case 'S':
+            console.log(checkS(targetWords));
+            break;
+        case 'V':
+            console.log(checkS(targetWords));
+            break;
+        case 'C':
+            console.log(checkC(targetWords));
+            break;
+        case 'O':
+            console.log(checkO(targetWords));
+            break;
+    }
+}
 
 function checkGrammer(targetArray) {
-    //形が適合しているか
+    console.log('checkGrammer');
+    console.log(targetArray);
+    targetArray.sentence = targetArray.sentence.toString();
+
     let grammerTF = true;
     switch (targetArray.sentence) {
         case '1': //第一文型SV
-            if (!checkS(targetArray.S)) {
+            if (!checkS(targetArray.s)) {
                 grammerTF = false;
             }
-            if (!checkJidousiRoot(targetArray.V) && !checkBedousiRoot(targetArray.V)) {
+            if (!checkJidousiRoot(targetArray.v) && !checkBedousiRoot(targetArray.v)) {
                 grammerTF = false;
             }
             break;
         case '2': //第二文型SVC
-            if (!checkS(targetArray.S)) {
+            if (!checkS(targetArray.s)) {
                 grammerTF = false;
             }
-            if (!checkRenketuRoot(targetArray.V) && !checkBedousiRoot(targetArray.V)) {
+            if (!checkRenketuRoot(targetArray.v) && !checkBedousiRoot(targetArray.v)) {
                 grammerTF = false;
             }
-            if (!checkC(targetArray.C)) {
+            if (!checkC(targetArray.c)) {
                 grammerTF = false;
             }
             break;
         case '3': //第三文型SVO
-            if (!checkS(targetArray.S)) {
+            if (!checkS(targetArray.s)) {
                 grammerTF = false;
             }
-            if (!checkTadousiRoot(targetArray.V)) {
+            if (!checkTadousiRoot(targetArray.v)) {
                 grammerTF = false;
             }
-            if (!checkO(targetArray.O1)) {
+            if (!checkO(targetArray.o1)) {
                 grammerTF = false;
             }
             break;
         case '4': //第四文型SVOO
-            if (!checkS(targetArray.S)) {
+            if (!checkS(targetArray.s)) {
                 grammerTF = false;
             }
-            if (!checkVOfSVOORoot(targetArray.V)) {
+            if (!checkVOfSVOORoot(targetArray.v)) {
                 grammerTF = false;
             }
-            if (!checkO(targetArray.O1)) {
+            if (!checkO(targetArray.o1)) {
                 grammerTF = false;
             }
-            if (!checkO(targetArray.O2)) {
+            if (!checkO(targetArray.o2)) {
                 grammerTF = false;
             }
+            break;
         case '5': //第五文型SVOC
-            if (!checkS(targetArray.S)) {
+            if (!checkS(targetArray.s)) {
                 grammerTF = false;
             }
-            if (!checkVOfSVOCRoot(targetArray.V)) {
+            if (!checkVOfSVOCRoot(targetArray.v)) {
                 grammerTF = false;
             }
-            if (!checkO(targetArray.O1)) {
+            if (!checkO(targetArray.o1)) {
                 grammerTF = false;
             }
-            if (!checkC(targetArray.C)) {
+            if (!checkC(targetArray.c)) {
                 grammerTF = false;
             }
+            break;
     }
-
     return grammerTF;
 }
 
@@ -910,22 +955,26 @@ function checkS(targetSentence) /*＜S＞*/ {
 
 function checkJidousiRoot(targetSentence) /*＜自動詞根＞*/ {
     let targetIndex = checkJodousiRoot(targetSentence);
+    // targetIndex += checkTHJRoot(targetSentence, targetIndex);
     if (!tango[targetSentence[targetIndex]].tags.includes('自動詞')) {
         return false;
     } else {
         targetIndex += 1;
     }
+    // targetIndex += checkYBJRoot(targetSentence, targetIndex);
     if (targetIndex == targetSentence.length) return true;
     return false;
 }
 
 function checkTadousiRoot(targetSentence) /*他動詞根*/ {
     let targetIndex = checkJodousiRoot(targetSentence);
+    // targetIndex += checkTHJRoot(targetSentence, targetIndex);
     if (!tango[targetSentence[targetIndex]].tags.includes('他動詞')) {
         return false;
     } else {
         targetIndex += 1;
     }
+    // targetIndex += checkYBJRoot(targetSentence, targetIndex);
     if (targetIndex == targetSentence.length) return true;
     return false;
 }
@@ -1000,7 +1049,6 @@ function checkO(targetSentence) /*＜O＞*/ {
 
 function checkMeisiRoot(targetSentence) /*＜名詞根＞*/ {
     let meisiIndex = targetSentence.length - 1;
-    if (!tango[targetSentence[meisiIndex]].hinsi.includes('名詞')) return false;
     let targetIndex = checkKeiyousiRoot(targetSentence, checkKansiRoot(targetSentence));
     if (meisiIndex == targetIndex) return true;
     return false;
@@ -1070,5 +1118,5 @@ function checkDaimeisiCanC(targetSentence) /*＜補語に使える代名詞＞*/
 
 function checkDaimeisiCanO(targetSentence) /*＜目的語に使える代名詞＞*/ {
     if (targetSentence.length != 1) return false;
-    return DaimeisicanCArray.some((value) => tango[targetSentence].tags.includes(value));
+    return DaimeisicanOArray.some((value) => tango[targetSentence].tags.includes(value));
 }

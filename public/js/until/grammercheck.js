@@ -1015,7 +1015,6 @@ function checkO(targetSentence) /*＜O＞*/ {
 
 function checkMeisiRoot(targetSentence) /*＜名詞根＞*/ {
     let meisiIndex = targetSentence.length - 1;
-    if (!tango[targetSentence[meisiIndex]].hinsi.includes('名詞')) return false;
     let targetIndex = checkKeiyousiRoot(targetSentence, checkKansiRoot(targetSentence));
     if (meisiIndex == targetIndex) return true;
     return false;
