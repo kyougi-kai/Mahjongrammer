@@ -197,7 +197,11 @@ export default class gameManager {
         )
             return;
 
-        console.log(checkResult);
+        checkResult.forEach((value) => {
+            console.log(value);
+            console.log(checkGrammer(value));
+        });
+
         if (checkResult.every((value) => checkGrammer(value))) {
             const targetHais = Array.from(this._hm._divisions).filter((value) => value.style.opacity == '1');
             console.log(targetHais);

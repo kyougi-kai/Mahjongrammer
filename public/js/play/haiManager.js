@@ -177,8 +177,7 @@ export class HM {
                             temporaryList.push(wwww.children[0].textContent);
                         });
                         targetWords[partType == 'o' ? partType + oCount : partType].push(temporaryList);
-                    }
-                    targetWords[partType == 'o' ? partType + oCount : partType].push(word.children[0].textContent);
+                    } else targetWords[partType == 'o' ? partType + oCount : partType].push(word.children[0].textContent);
                 });
             });
 

@@ -824,16 +824,12 @@ const DaimeisicanSArray = ['主格', '指示代名詞', '不定代名詞', '疑�
 const DaimeisicanCArray = ['主格', '所有代名詞', '再帰代名詞', '指示代名詞', '不定代名詞', '疑問代名詞'];
 const DaimeisicanOArray = ['目的格', '再帰代名詞', '指示代名詞', '不定代名詞', '疑問代名詞'];
 
-/*
 let checkGrammerTestArray = {
-    sentence: '4',
-    s: ['Amazon'],
-    v: ['should', 'give', 'at', 'school'],
-    o1: ['someone'],
-    o2: ['Tokyo'],
-    m1:['happy']`
+    sentence: 1,
+    s: ['many'],
+    v: ['eat'],
 };
-
+/*
 let a = {
     v: ['play', ['at', 'school']],
 };
@@ -841,11 +837,12 @@ let a = {
 console.log(checkJidousiRoot(a.v));
 */
 
-// console.log(checkGrammer(checkGrammerTestArray));
+console.log(checkGrammer(checkGrammerTestArray));
 
 export function checkGrammer(targetArray) {
     console.log('checkGrammer');
     console.log(targetArray);
+    targetArray.sentence = targetArray.sentence.toString();
 
     let grammerTF = true;
     switch (targetArray.sentence) {
