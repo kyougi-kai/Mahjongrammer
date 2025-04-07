@@ -92,13 +92,17 @@ p {
     box-sizing: border-box;
 }
 
+.division-div.division-m {
+    background: rgb(255, 145, 77);
+}
+
 .division-s::before {
     content: 'S';
     position: absolute;
     left: 0;
     top: 0;
     transform: translateY(-100%);
-    width: 60px;
+    width: 40px;
     height: 20px;
     background: #ffbd59;
 }
@@ -109,7 +113,7 @@ p {
     left: 0;
     top: 0;
     transform: translateY(-100%);
-    width: 60px;
+    width: 40px;
     height: 20px;
     background: #ffbd59;
 }
@@ -120,7 +124,7 @@ p {
     left: 0;
     top: 0;
     transform: translateY(-100%);
-    width: 60px;
+    width: 40px;
     height: 20px;
     background: #ffbd59;
 }
@@ -131,9 +135,25 @@ p {
     left: 0;
     top: 0;
     transform: translateY(-100%);
-    width: 60px;
+    width: 40px;
     height: 20px;
     background: #ffbd59;
+}
+
+.division-m::before {
+    content: 'M';
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateY(-100%);
+    width: 40px;
+    height: 20px;
+    background: rgb(255, 145, 77);
+}
+
+.division-div .division-m {
+    margin: 0 40px 0 40px;
+    height: 100%;
 }
 
 .sentence-div {

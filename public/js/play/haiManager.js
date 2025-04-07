@@ -2,6 +2,7 @@ export class HM {
     _draggedElement;
     _originalParent;
     _movedAnotherParent;
+    _idCount;
 
     constructor(throwEvent) {
         this._sentencePatterns = Array.from(document.getElementById('sentencePattern').children);
@@ -11,6 +12,7 @@ export class HM {
 
         this._isMyTurn = false;
         this._isBark = false;
+        this._idCount = 0;
 
         this._sentencePatterns.forEach((value) => {
             const temporaryDiv = document.createElement('div');
@@ -23,7 +25,18 @@ export class HM {
             this.attachDraggabled(value);
         });
 
-        this.sentenceCheckList = ['sv', 'svm', 'svc', 'svcm', 'svo', 'svom', 'svoo', 'svoom', 'svoc', 'svocm'];
+        this.sentenceList = {
+            sv: 1,
+            svm: 1,
+            svc: 2,
+            svcm: 2,
+            svo: 3,
+            svom: 3,
+            svoo: 4,
+            svoom: 4,
+            svoc: 5,
+            svocm: 5,
+        };
 
         //捨てる
         document.addEventListener('drop', (event) => {
@@ -123,11 +136,16 @@ export class HM {
         //画像
         borderDiv.style.backgroundImage = `url(/img/partOfSpeech/${partOfSpeech}.png)`;
 
+        //原型id
+        borderDiv.id = `${this._idCount}-${word}`;
+
         borderDiv.appendChild(wordP);
         document.getElementById('wordDown').appendChild(borderDiv);
 
         return borderDiv;
     }
+
+    attachDetailButton() {}
 
     sentenceCheck() {
         const targetElements = Array.from(this._haiTables[0].children);
@@ -152,13 +170,21 @@ export class HM {
 
                 // Sの中の単語のforEach
                 Array.from(part.children).forEach((word) => {
+                    // mの中のforEach
+                    if (word.classList.contains('division-m')) {
+                        let temporaryList = [];
+                        Array.from(word.children).forEach((wwww) => {
+                            temporaryList.push(wwww.children[0].textContent);
+                        });
+                        targetWords[partType == 'o' ? partType + oCount : partType].push(temporaryList);
+                    }
                     targetWords[partType == 'o' ? partType + oCount : partType].push(word.children[0].textContent);
                 });
             });
 
             console.log(targetSentence);
 
-            targetWords.sentence = Math.ceil((this.sentenceCheckList.indexOf(targetSentence) + 1) / 2).toString();
+            targetWords.sentence = this.sentenceList.hasOwnProperty(targetSentence) ? this.sentenceList[targetSentence] : -1;
 
             returnSentences.push(targetWords);
         });
@@ -184,7 +210,9 @@ export class HM {
                 const dragElementCopy = dragElement.cloneNode(true);
                 this._draggedElement = dragElementCopy;
                 this.attachDraggable(this._draggedElement);
-                this.attachDraggabled(this._draggedElement, ['division-div', 'sentence-div']);
+                dragElement.classList.contains('division-m')
+                    ? this.attachDraggabled(this._draggedElement, ['division-div', 'sentence-div'])
+                    : this.attachDraggabled(this._draggedElement, ['division-s', 'division-v', 'division-c', 'division-o', 'sentence-div']);
             }
             setTimeout(() => (this._draggedElement.style.opacity = '0.25'), 1);
             this._originalParent = this._draggedElement.parentNode; // ドラッグ開始時の親要素を保存
