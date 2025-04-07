@@ -905,8 +905,11 @@ export function checkGrammer(targetArray) {
             }
             break;
     }
-
     return grammerTF;
+}
+
+function checkGrammerPoint(targetArray) {
+    //文法事項に則っているか
 }
 
 function checkS(targetSentence) /*＜S＞*/ {
