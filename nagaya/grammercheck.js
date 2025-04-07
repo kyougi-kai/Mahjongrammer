@@ -833,6 +833,7 @@ let checkGrammerTestArray = {
 console.log(checkGrammer(checkGrammerTestArray));
 
 function checkGrammer(targetArray) {
+    //形が適合しているか
     let grammerTF = true;
     switch (targetArray.sentence) {
         case '1': //第一文型SV
@@ -896,6 +897,10 @@ function checkGrammer(targetArray) {
     return grammerTF;
 }
 
+function checkGrammerPoint(targetArray) {
+    //文法事項に則っているか
+}
+
 function checkS(targetSentence) /*＜S＞*/ {
     if (checkMeisiRoot(targetSentence) || checkDaimeisiCanS(targetSentence)) {
         return true;
@@ -905,26 +910,22 @@ function checkS(targetSentence) /*＜S＞*/ {
 
 function checkJidousiRoot(targetSentence) /*＜自動詞根＞*/ {
     let targetIndex = checkJodousiRoot(targetSentence);
-    // targetIndex += checkTHJRoot(targetSentence, targetIndex);
     if (!tango[targetSentence[targetIndex]].tags.includes('自動詞')) {
         return false;
     } else {
         targetIndex += 1;
     }
-    // targetIndex += checkYBJRoot(targetSentence, targetIndex);
     if (targetIndex == targetSentence.length) return true;
     return false;
 }
 
 function checkTadousiRoot(targetSentence) /*他動詞根*/ {
     let targetIndex = checkJodousiRoot(targetSentence);
-    // targetIndex += checkTHJRoot(targetSentence, targetIndex);
     if (!tango[targetSentence[targetIndex]].tags.includes('他動詞')) {
         return false;
     } else {
         targetIndex += 1;
     }
-    // targetIndex += checkYBJRoot(targetSentence, targetIndex);
     if (targetIndex == targetSentence.length) return true;
     return false;
 }
