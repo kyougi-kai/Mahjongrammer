@@ -62,3 +62,40 @@ poo.queryで出した値は必ず何もそうさせず変数に入れる
 //後で直す
 品詞が複数あるやつはランダムに切り替える
 
+//コードを書く時の原則
+単一責任原則
+
+function startGame() {
+  // プレイヤー初期化
+  players = createPlayers();
+
+  // カードをシャッフル
+  shuffleDeck();
+
+  // WebSocket接続
+  connectToServer();
+
+  // UIを更新
+  renderStartScreen();
+}
+
+↓
+
+function startGame() {
+  initializeGameLogic();
+  initializeConnection();
+  initializeUI();
+}
+
+function initializeGameLogic() {
+  players = createPlayers();
+  shuffleDeck();
+}
+
+function initializeConnection() {
+  connectToServer();
+}
+
+function initializeUI() {
+  renderStartScreen();
+}
