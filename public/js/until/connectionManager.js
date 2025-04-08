@@ -5,8 +5,7 @@
 ・決められた形式でメッセージを送ることができる
 */
 export class connectionManager {
-    constructor(url) {
-        this.url = url;
+    constructor() {
         this.openHandlers = [];
         this.messageHandlers = [];
     }
@@ -22,8 +21,8 @@ export class connectionManager {
     }
 
     //websocketのセットアップをする
-    connect() {
-        this.ws = new WebSocket(this.url);
+    connect(url) {
+        this.ws = new WebSocket(url);
         this._setUpEventListeners();
     }
 

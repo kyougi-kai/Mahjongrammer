@@ -2,31 +2,8 @@ import { HM } from '/js/play/haiManager.js';
 import { DM } from '/js/until/dataManager.js';
 import { checkGrammer } from '/js/until/grammercheck.js';
 
-import { gameSession } from '/js/play/gameSession';
-import { connectionManager } from '/js/until/connectionManager';
-import { messageDispatcher } from '/js/until/messageDispatcher';
-
 export default class gameManager {
     constructor() {
-        this.connection = new connectionManager(url);
-        this.gameSession = new gameSession(this.connection);
-        this.messageDispatcher = new messageDispatcher();
-        const url = this.gameSession.getConnectionUrl();
-
-        this._setUpDispacher();
-
-        this.connection.onOpen(() => {
-            console.log('サーバーに接続しました');
-            this.connection.send({
-                type: 'entoryRoom',
-                payload: { roomName: parentName, username: username },
-                entryRoom: parentName,
-                username: this._username,
-            });
-        });
-
-        this.connection.connect();
-
         this._dm = new DM();
         /**
          * @type {boolean} 親がルーム内にいるかどうか
