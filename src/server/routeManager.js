@@ -1,6 +1,6 @@
+import { cookieManager } from '../utils/cookieManager.js';
 import { serverManager } from './serverManager.js';
-import { usersRepository } from '../db/repositories/usersRepository.js';
-const usersrepository = new usersRepository();
+import { usersManager } from './usersManager.js';
 
 export class routeManager {
     /**
@@ -17,11 +17,8 @@ export class routeManager {
     setUpRoutingGet() {
         this.serverManager.onGet('/', async (req, res) => {
             const userId = req.cookies.userId;
-            try {
-                (await usersrepository.isNull('user_id', userId)) ? res.render('pages/index') : res.redirect('/room');
-            } catch (err) {
-                res.render('pages/index');
-            }
+            if (userId === undefined) res.render('pages/index');
+            (await usersManager.isUserById(userId)) ? res.render('pages/index') : res.redirect('/room');
         });
 
         /*
@@ -108,21 +105,28 @@ export class routeManager {
             }
         });
 
+        */
+
         this.serverManager.onPost('/signin', async (req, res) => {
             const { username, password } = req.body;
+            const addUserResult = await usersManager.addUser(username, password);
+            if(addUserResult){
+                const userId = await usersManager
+                cookieManager.saveCookie(res, 'userId', )
+            }
             try {
-                if ((await checkValue('users', 'username', username)) == 1) {
-                    res.json({ success: false, error: 'ユーザー名が既に使われています' });
-                } else {
+                if (await usersManager.isUserByUsername(username)) {
                     await addUser(username, password);
                     await savelogin(res, username);
                     res.json({ success: true });
-                }
+                } else res.json({ success: false, error: 'ユーザー名が既に使われています' });
             } catch (err) {
                 console.log(`Error :${err}`);
                 res.json({ success: false, error: err });
             }
         });
+
+        /*
 
         this.serverManager.onPost('/play/:parentName', async (req, res) => {
             if (req.body.hasOwnProperty('roomClose')) {

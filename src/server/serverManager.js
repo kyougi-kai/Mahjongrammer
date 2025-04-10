@@ -23,7 +23,7 @@ export class serverManager {
         const dirname = __dirname.split('\\');
         dirname.pop();
         dirname.pop();
-        this.app.set('views', path.join(dirname, 'views'));
+        this.app.set('views', path.join(dirname.join('\\'), 'views'));
     }
 
     onGet(route, handler) {

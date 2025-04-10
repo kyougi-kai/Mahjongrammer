@@ -16,9 +16,24 @@ export class baseRepository {
     async isNull(filterName, filterValue) {
         const sql = `select count(*) from ${this.tableName} where ${filterName} = ?`;
         const params = [filterValue];
-        console.log(sql);
-        console.log(params);
         const result = await db.query(sql, params);
         return result[0]['count(*)'] == 0;
+    }
+
+    /**
+     *
+     * @param {Object} data -オブジェクト型で追加したい値を設定-
+     * {username:'ei', password:'hi'}
+     */
+    async insert(data) {
+        const keys = Object.keys(data);
+        const values = Object.values(data);
+        const placeholders = keys.map(() => '?').join(', ');
+        const sql = `insert into ${this.tableName} (${keys.join(', ')}) values (${placeholders})`;
+        await db.query(sql, values);
+    }
+
+    async query(sql, params) {
+        await db.query(sql, params);
     }
 }
