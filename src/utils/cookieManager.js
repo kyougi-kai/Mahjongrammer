@@ -8,4 +8,8 @@ export class cookieManager {
             path: '/',
         });
     }
+
+    static deleteCookie(res, key) {
+        res.clearCookie(key, { path: '/' });
+    }
 }

@@ -5,11 +5,11 @@ export class usersManager {
     constructor() {}
 
     static async isUserById(userId) {
-        return await !usersrepository.isNull('user_id', userId);
+        return (await usersrepository.isNull('user_id', userId)) == false;
     }
 
     static async isUserByUsername(username) {
-        return await !usersrepository.isNull('user_id', username);
+        return (await usersrepository.isNull('user_id', username)) == false;
     }
 
     static async addUser(username, password) {
@@ -24,5 +24,27 @@ export class usersManager {
                 console.error(err);
             }
         }
+    }
+
+    static async nameToId(username) {
+        return await usersrepository.getRow('user_id', 'username', username);
+    }
+
+    static async idToName(userId) {
+        return await usersrepository.getRow('username', 'user_id', userId);
+    }
+
+    static async loginCheck(username, password) {
+        return (await usersrepository.isNull(['username', 'password'], [username, password])) == false;
+    }
+
+    static async isLogin(req, res) {
+        const userId = req.cookies.userId;
+        if (userId === undefined) res.render('pages/index');
+        (await usersManager.isUserById(userId)) ? res.render('pages/index') : res.redirect('/room');
+    }
+
+    static async deleteUser(userId) {
+        await usersrepository.delete('user_id', userId);
     }
 }

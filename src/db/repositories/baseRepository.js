@@ -13,9 +13,23 @@ export class baseRepository {
         return result[0][fieldName];
     }
 
+    /**
+     *
+     * @param {*} filterName -配列でもいいよ-
+     * @param {*} filterValue -配列でもいいよ-
+     * @returns true/false
+     */
     async isNull(filterName, filterValue) {
-        const sql = `select count(*) from ${this.tableName} where ${filterName} = ?`;
-        const params = [filterValue];
+        let sql;
+        let params;
+        if (Array.isArray(filterName)) {
+            let filters = filterName.map((fName) => `${fName} = ?`);
+            sql = `select count(*) from ${this.tableName} where ${filters.join(' and ')}`;
+            params = filterValue;
+        } else {
+            sql = `select count(*) from ${this.tableName} where ${filterName} = ?`;
+            params = [filterValue];
+        }
         const result = await db.query(sql, params);
         return result[0]['count(*)'] == 0;
     }
@@ -31,6 +45,12 @@ export class baseRepository {
         const placeholders = keys.map(() => '?').join(', ');
         const sql = `insert into ${this.tableName} (${keys.join(', ')}) values (${placeholders})`;
         await db.query(sql, values);
+    }
+
+    async delete(filterName, filterValue) {
+        const sql = `delete from ${this.tableName} where ${filterName} = ?`;
+        const params = [filterValue];
+        await db.query(sql, params);
     }
 
     async query(sql, params) {

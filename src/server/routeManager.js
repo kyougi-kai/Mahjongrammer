@@ -18,33 +18,21 @@ export class routeManager {
         this.serverManager.onGet('/', async (req, res) => {
             const userId = req.cookies.userId;
             if (userId === undefined) res.render('pages/index');
-            (await usersManager.isUserById(userId)) ? res.render('pages/index') : res.redirect('/room');
+            else (await usersManager.isUserById(userId)) ? res.render('pages/index') : res.redirect('/room');
         });
 
-        /*
         this.serverManager.onGet('/room', async (req, res) => {
-            loginCheck(req, res);
+            await usersManager.isLogin(req, res);
             try {
                 res.render('pages/room', {
-                    name: await getRow('users', 'username', 'user_id', req.cookies.userId),
+                    name: await usersManager.idToName(req.cookies.userId),
                 });
             } catch (err) {
                 console.log(`Error : ${err}`);
             }
         });
 
-        this.serverManager.onGet('/play/:parentName', async (req, res) => {
-            try {
-                const parentId = await nameToId(req.params.parentName);
-                if ((await checkValue('rooms', 'parent_id', parentId)) == 0) res.redirect('/room');
-
-                const username = await idToName(req.cookies.userId);
-                res.render('pages/play', { username: username });
-            } catch (err) {
-                console.log(`Error :${err}`);
-                res.redirect('/room');
-            }
-        });
+        /*
 
         this.serverManager.onGet('/play/:parentName', async (req, res) => {
             try {
@@ -58,14 +46,13 @@ export class routeManager {
                 res.redirect('/room');
             }
         });
-
+        */
         this.serverManager.onGet('/deleteUser', async (req, res) => {
-            await loginCheck(req, res);
+            await usersManager.isLogin(req, res);
 
             try {
-                await deleteUser(req.cookies.userId);
-
-                res.clearCookie('userId', { path: '/' });
+                await usersManager.deleteUser(req.cookies.userId);
+                cookieManager.deleteCookie(res, 'userId');
                 res.redirect('/');
             } catch (err) {
                 console.log(`Error :${err}`);
@@ -73,25 +60,24 @@ export class routeManager {
         });
 
         this.serverManager.onGet('/logout', async (req, res) => {
-            await loginCheck(req, res);
+            await usersManager.isLogin(req, res);
 
             try {
-                res.clearCookie('userId', { path: '/' });
+                cookieManager.deleteCookie(res, 'userId');
                 res.redirect('/');
             } catch (err) {
                 console.log(`Error :${err}`);
             }
         });
-        */
     }
 
     setUpRoutingPost() {
-        /*
         this.serverManager.onPost('/login', async (req, res) => {
             const { username, password } = req.body;
             try {
-                if ((await checkValue('users', 'username', username)) == 1 && (await checkValue('users', 'password', password)) == 1) {
-                    await savelogin(res, username);
+                if (await usersManager.loginCheck(username, password)) {
+                    const userId = await usersManager.nameToId(username);
+                    await cookieManager.saveCookie(res, 'userId', userId);
                     res.json({ success: true });
                 } else {
                     res.json({
@@ -105,23 +91,16 @@ export class routeManager {
             }
         });
 
-        */
-
         this.serverManager.onPost('/signin', async (req, res) => {
             const { username, password } = req.body;
-            const addUserResult = await usersManager.addUser(username, password);
-            if(addUserResult){
-                const userId = await usersManager
-                cookieManager.saveCookie(res, 'userId', )
-            }
             try {
-                if (await usersManager.isUserByUsername(username)) {
-                    await addUser(username, password);
-                    await savelogin(res, username);
+                const addUserResult = await usersManager.addUser(username, password);
+                if (addUserResult) {
+                    const userId = await usersManager.nameToId(username);
+                    cookieManager.saveCookie(res, 'userId', userId);
                     res.json({ success: true });
                 } else res.json({ success: false, error: 'ユーザー名が既に使われています' });
             } catch (err) {
-                console.log(`Error :${err}`);
                 res.json({ success: false, error: err });
             }
         });
