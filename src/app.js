@@ -9,20 +9,13 @@ servermanager.start(() => {
 });
 
 /*
-
-const WebSocket = require('ws');
 const { v4: uuidv4 } = require('uuid');
-const wss = new WebSocket.Server({ server });
 
 pool.query('delete from rooms');
 
 const roomClients = new Map();
 const playClients = {};
 const playDatas = {};
-
-server.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
 
 wss.on('connection', async (ws, req) => {
     const url = req.url;

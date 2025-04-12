@@ -41,7 +41,6 @@ export class usersManager {
     static async isLogin(req, res) {
         const userId = req.cookies.userId;
         if (userId === undefined) res.render('pages/index');
-        (await usersManager.isUserById(userId)) ? res.render('pages/index') : res.redirect('/room');
     }
 
     static async deleteUser(userId) {
