@@ -9,11 +9,8 @@ servermanager.start(() => {
 });
 
 /*
-const { v4: uuidv4 } = require('uuid');
 
 pool.query('delete from rooms');
-
-const roomClients = new Map();
 const playClients = {};
 const playDatas = {};
 
@@ -21,15 +18,6 @@ wss.on('connection', async (ws, req) => {
     const url = req.url;
 
     if (url === '/room') {
-        const uuid = uuidv4();
-        roomClients.set(uuid, ws);
-        console.log(`roomClients : ${roomClients.size}`);
-
-        ws.on('close', () => {
-            roomClients.delete(uuid);
-            console.log(`roomClients : ${roomClients.size}`);
-        });
-
         const data = await pool.query(
             '\
             select username, count(*) as room_member_counts \

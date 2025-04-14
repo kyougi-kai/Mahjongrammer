@@ -4,13 +4,17 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import { connectionManager } from '../ws/connectionManager.js';
+import { roomManager } from '../pages/roomManager.js';
 const __dirname = import.meta.dirname;
 
 export class serverManager {
     constructor() {
         this._expressSetUp();
         this.server = http.createServer(this.app);
-        this.ws = new connectionManager();
+        this.wss = new connectionManager();
+
+        // ページごと
+        this.roommanager = new roomManager(this.wss);
     }
 
     _expressSetUp() {

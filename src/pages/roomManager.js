@@ -1,3 +1,8 @@
+import { roomClientsManager } from '../ws/roomClientsManager';
+
 export class roomManager {
-    constructor() {}
+    constructor(wss) {
+        this.wss = wss;
+        this.roomclientsmanager = new roomClientsManager(this.wss);
+    }
 }
