@@ -836,20 +836,47 @@ let a = {
 
 console.log(checkJidousiRoot(a.v));
 */
+
 function tangoviews() {
     console.log(['apple,an'].split(','));
 }
 
 function wordsChangeToArray(targetWords) {
-    let targetWordsArray = targetWords.split(',');
+    const result = [];
+    let buffer = '';
+    let insideBracket = false;
 
-    for (let i = 0; i < targetWordsArray.length; i++) {
-        if (targetWordsArray[i].startsWith('[') && targetWordsArray[i].endsWith(']')) {
-            targetWordsArray[i] = [targetWordsArray[i].slice(1, -1)];
+    for (let i = 0; i < targetWords.length; i++) {
+        const char = targetWords[i];
+
+        if (char === '[') {
+            insideBracket = true;
+            buffer += char;
+        } else if (char === ']') {
+            insideBracket = false;
+            buffer += char;
+        } else if (char === ',' && !insideBracket) {
+            result.push(buffer);
+            buffer = '';
+        } else {
+            buffer += char;
         }
     }
 
-    return targetWordsArray;
+    if (buffer) result.push(buffer);
+
+    return result.map((item) => {
+        item = item.trim();
+        if (item.startsWith('[') && item.endsWith(']')) {
+            const inner = item
+                .slice(1, -1)
+                .split(',')
+                .map((str) => str.trim());
+            return inner;
+        } else {
+            return item;
+        }
+    });
 }
 
 function checkByHTML(targetPart) {
@@ -938,12 +965,28 @@ function checkGrammer(targetArray) {
                 grammerTF = false;
             }
             break;
+        default:
+            console.log('存在しない文型を指定しています');
+            break;
     }
     return grammerTF;
 }
 
 function checkGrammerPoint(targetArray) {
     //文法事項に則っているか
+}
+
+function checkM(targetSentence, targetIndex, KorH) {
+    switch (KorH) {
+        case keiyousi:
+            checkKeiyousiRoot(targetSentence, targetIndex);
+            break;
+        case hukusi:
+            break;
+        default:
+            console.log('error');
+            break;
+    }
 }
 
 function checkS(targetSentence) /*＜S＞*/ {
@@ -1047,14 +1090,37 @@ function checkO(targetSentence) /*＜O＞*/ {
     return false;
 }
 
-function checkMeisiRoot(targetSentence) /*＜名詞根＞*/ {
-    let meisiIndex = targetSentence.length - 1;
-    let targetIndex = checkKeiyousiRoot(targetSentence, checkKansiRoot(targetSentence));
-    if (meisiIndex == targetIndex) return true;
+function checkMeisiRoot(targetSentence) /*＜名詞根＞要改善*/ {
+    let truenum = targetSentence.flat(Infinity).length;
+    let wordsCount = 0;
+    let targetIndex = 0;
+    console.log('単語数：' + truenum);
+    wordsCount += checkKansiRoot(targetSentence);
+    if (wordsCount != 0) targetIndex += 1;
+    console.log('冠詞経過時wordsConut：' + wordsCount);
+    console.log('冠詞経過時targetIndex：' + targetIndex);
+    wordsCount += checkKeiyousiRoot(targetSentence, targetIndex);
+    if (checkKeiyousiRoot(targetSentence, targetIndex) > 0) targetIndex += 1;
+    console.log('形容詞経過時wordsConut：' + wordsCount);
+    console.log('形容詞経過時targetIndex：' + targetIndex);
+    console.log(targetSentence[targetIndex]);
+    console.log(tango[targetSentence[targetIndex]]);
+    if (!Array.isArray(targetSentence[targetIndex]) && tango[targetSentence[targetIndex]].hinsi.includes('名詞')) {
+        wordsCount += 1;
+    }
+    targetIndex += 1;
+    if (truenum == wordsCount) return true;
     return false;
 }
 
+function checkMeisiTF(targetSentence) {
+    if (Array.isArray(targetSentence[targetIndex])) {
+        //kokokara
+    }
+}
+
 function checkKansiRoot(targetSentence) /*＜冠詞根＞*/ {
+    if (Array.isArray(targetSentence[0])) return 0;
     if (
         targetSentence.length > 0 &&
         (tango[targetSentence[0]].hinsi.includes('冠詞') ||
@@ -1066,11 +1132,18 @@ function checkKansiRoot(targetSentence) /*＜冠詞根＞*/ {
     return 0;
 }
 
+console.log(checkMeisiRoot(['an', ['happy', 'happy'], 'apple']));
+
 function checkKeiyousiRoot(targetSentence, targetIndex) /*＜形用詞根＞*/ {
-    while (targetIndex < targetSentence.length && tango[targetSentence[targetIndex]].hinsi.includes('形容詞')) {
-        targetIndex++;
+    if (Array.isArray(targetSentence[targetIndex])) {
+        let i = 0;
+        while (i < targetSentence[targetIndex].length && tango[targetSentence[targetIndex][i]].hinsi.includes('形容詞')) {
+            i++;
+        }
+        return i;
+    } else {
+        return 0;
     }
-    return targetIndex;
 }
 
 function checkTHJRoot(targetSentence, targetIndex) /*＜程度頻度時間副詞根＞*/ {
