@@ -1,4 +1,4 @@
-import { WebSocket } from 'ws';
+import { WebSocketServer } from 'ws';
 
 /*
 接続のことだけ考える
@@ -10,12 +10,13 @@ export class connectionManager {
     constructor() {
         this.getHandlers = new Map();
         this.closeHandlers = new Map();
+        this.messageHandlers = new Map();
     }
 
     // websocketのセットアップをする
     connect(server) {
         this.server = server;
-        const wss = new WebSocket.Server({ server });
+        const wss = new WebSocketServer({ server });
 
         wss.on('connection', async (ws, req) => {
             const url = req.url;
@@ -43,6 +44,15 @@ export class connectionManager {
      */
     onClose(url, handler) {
         this.closeHandlers.get(url) === undefined ? this.closeHandlers.set(url, [handler]) : this.closeHandlers.get(url).push(handler);
+    }
+
+    /**
+     *
+     * @param {string} url -受け取るurl-
+     * @param {Function} handler -行う処理-
+     */
+    onClose(url, handler) {
+        this.messageHandlers.get(url) === undefined ? this.messageHandlers.set(url, [handler]) : this.messageHandlers.get(url).push(handler);
     }
 
     _doHanlders(handlers, ws) {
