@@ -1,3 +1,5 @@
+import { connectionManager } from '../utils/connectionManager';
+
 const mainDiv = document.getElementsByClassName('main-div')[0];
 const userNameText = document.getElementById('userName');
 const backgroundDiv = document.getElementsByClassName('background-div')[0];
@@ -8,9 +10,10 @@ let startFlg = false;
 let rooms = [];
 
 window.onload = () => {
-    socket = new WebSocket(`${protocol}://${window.location.host}/room`);
+    const connectionmanager = new connectionManager();
+    connectionmanager.connect(`${protocol}://${window.location.host}/room`);
 
-    socket.addEventListener('open', (event) => {
+    connectionmanager.onOpen(() => {
         console.log('サーバーに接続しました');
     });
 

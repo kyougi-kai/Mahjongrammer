@@ -55,6 +55,7 @@ export class baseRepository {
 
     async query(sql, params) {
         const result = await db.query(sql, params);
+        console.log(result);
         return result[0];
     }
 }
