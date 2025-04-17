@@ -23,7 +23,7 @@ export class connectionManager {
             // urlに対応した処理を実行
             this._doHanlders(this.getHandlers.get(url), ws);
             ws.on('close', () => {
-                this._doHanlders(this.closeHandlers.get);
+                this._doHanlders(this.closeHandlers.get(url));
             });
         });
     }
@@ -55,7 +55,8 @@ export class connectionManager {
         this.messageHandlers.get(url) === undefined ? this.messageHandlers.set(url, [handler]) : this.messageHandlers.get(url).push(handler);
     }
 
-    _doHanlders(handlers, ws) {
+    _doHanlders(handlers, ws = null) {
+        if (handlers === undefined) return;
         typeof handlers == String ? handlers(ws) : handlers.forEach((hanlder) => hanlder(ws));
     }
 }

@@ -1,4 +1,4 @@
-import { connectionManager } from '../utils/connectionManager';
+import { connectionManager } from '/js/utils/connectionManager.js';
 
 const mainDiv = document.getElementsByClassName('main-div')[0];
 const userNameText = document.getElementById('userName');
@@ -17,6 +17,11 @@ window.onload = () => {
         console.log('サーバーに接続しました');
     });
 
+    connectionmanager.onMessage('getRoomData', (data) => {
+        console.log(data);
+    });
+
+    /*
     socket.addEventListener('message', (event) => {
         let message = JSON.parse(event.data);
         if (startFlg) {
@@ -43,6 +48,7 @@ window.onload = () => {
             });
         }
     });
+    */
 
     console.log(document.cookie);
 };
