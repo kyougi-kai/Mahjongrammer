@@ -7,7 +7,7 @@
 export class connectionManager {
     constructor() {
         this.openHandlers = [];
-        this.messageHandlers = [];
+        this.messageHandlers = new Map();
     }
 
     // openした時に行う処理を登録
@@ -16,8 +16,8 @@ export class connectionManager {
     }
 
     //messageを受け取ったときに行う処理を登録
-    onMessage(handler) {
-        this.messageHandlers.push(handler);
+    onMessage(type, handler) {
+        this.messageHandlers.get(type) === undefined ? this.messageHandlers.set(type, [handler]) : this.messageHandlers.get(type).push(handler);
     }
 
     //websocketのセットアップをする
@@ -32,7 +32,7 @@ export class connectionManager {
 
         this.ws.onmessage = (event) => {
             const data = JSON.parse(event.data);
-            this._doHandlers(this.openHandlers, data);
+            this._doHandlers(this.messageHandlers.get(data.type), data);
         };
     }
 

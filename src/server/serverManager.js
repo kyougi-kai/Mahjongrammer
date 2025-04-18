@@ -12,6 +12,7 @@ export class serverManager {
         this._expressSetUp();
         this.server = http.createServer(this.app);
         this.wss = new connectionManager();
+        this.wss.connect(this.server);
 
         // ページごと
         this.roommanager = new roomManager(this.wss);
