@@ -32,7 +32,7 @@ export class connectionManager {
 
         this.ws.onmessage = (event) => {
             const data = JSON.parse(event.data);
-            this._doHandlers(this.messageHandlers.get(data.type), data);
+            this._doHandlers(this.messageHandlers.get(data.type), data.payload);
         };
     }
 

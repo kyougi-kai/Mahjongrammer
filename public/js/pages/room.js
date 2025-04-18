@@ -18,7 +18,9 @@ window.onload = () => {
     });
 
     connectionmanager.onMessage('getRoomData', (data) => {
-        console.log(data);
+        data.forEach((mono) => {
+            createNewRoom(mono.username, mono.room_member_counts);
+        });
     });
 
     /*
