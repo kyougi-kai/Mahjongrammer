@@ -830,372 +830,75 @@ let checkGrammerTestArray = {
     v: ['run'],
 };
 
-// let a = {
-//     v: ['play', ['at', 'school']],
-// };
+const errorTemplete = {
+    part: "",
+    index: 0,
+    type: "",
+    reason: "",
+    suggestion: ""
+};
 
 console.log(checkGrammer(checkGrammerTestArray));
-
-
-function tangoviews() {
-    console.log(['apple,an'].split(','));
-}
-
-function wordsChangeToArray(targetWords) {
-    const result = [];
-    let buffer = '';
-    let insideBracket = false;
-
-    for (let i = 0; i < targetWords.length; i++) {
-        const char = targetWords[i];
-
-        if (char === '[') {
-            insideBracket = true;
-            buffer += char;
-        } else if (char === ']') {
-            insideBracket = false;
-            buffer += char;
-        } else if (char === ',' && !insideBracket) {
-            result.push(buffer);
-            buffer = '';
-        } else {
-            buffer += char;
-        }
-    }
-
-    if (buffer) result.push(buffer);
-
-    return result.map((item) => {
-        item = item.trim();
-        if (item.startsWith('[') && item.endsWith(']')) {
-            const inner = item
-                .slice(1, -1)
-                .split(',')
-                .map((str) => str.trim());
-            return inner;
-        } else {
-            return item;
-        }
-    });
-}
-
-function checkByHTML(targetPart) {
-    targetWords = document.getElementById(targetPart).value;
-    targetWords = wordsChangeToArray(targetWords);
-    switch (targetPart) {
-        case 'S':
-            console.log(checkS(targetWords));
-            break;
-        case 'V':
-            console.log(checkS(targetWords));
-            break;
-        case 'C':
-            console.log(checkC(targetWords));
-            break;
-        case 'O':
-            console.log(checkO(targetWords));
-            break;
-    }
-}
 
 function checkGrammer(targetArray) {
     targetArray.sentence = targetArray.sentence.toString();
 
-    let grammerCheckResult = {
+    /**
+     * @typedef {Object} gcr
+     * @property {boolean} success -成功-
+     */
+
+    /** @type {gcr} 文法チェックの結果を代入（旧grammerCheckResult）*/
+    let GCR = {
         success:true,
         successes:[],
+        successesNum:0,
         message:"",
         errors:[]
-    };//判定結果の文章を代入
+    };
 
     switch (targetArray.sentence) {
         case '1': //第一文型SV
-            if (!checkS(targetArray.s,grammerCheckResult)) {
-                grammerCheckResult.message.push("Sにエラー,");
-                grammerCheckResult.success = false;
-            }
-            if (!checkJidousiRoot(targetArray.v) && !checkBedousiRoot(targetArray.v)) {
-                grammerTF += "Vにエラー,";
-                grammerCheckresult.success = false;
-            }
-            break;
-        case '2': //第二文型SVC
-            if (!checkS(targetArray.s)) {
-                grammerTF += "Sにエラー,";
-                grammerCheckresult.success = false;
-            }
-            if (!checkRenketuRoot(targetArray.v) && !checkBedousiRoot(targetArray.v)) {
-                grammerTF += "Vにエラー,";
-                grammerCheckresult.success = false;
-            }
-            if (!checkC(targetArray.c)) {
-                grammerTF += "Cにエラー,";
-                grammerCheckresult.success = false;
-            }
-            break;
-        case '3': //第三文型SVO
-            if (!checkS(targetArray.s)) {
-                grammerTF += "Sにエラー,";
-                grammerCheckresult.success = false;
-            }
-            if (!checkTadousiRoot(targetArray.v)) {
-                grammerTF += "Vにエラー,";
-                grammerCheckresult.success = false;
-            }
-            if (!checkO(targetArray.o1)) {
-                grammerTF += "Oにエラー,";
-                grammerCheckresult.success = false;
-            }
-            break;
-        case '4': //第四文型SVOO
-            if (!checkS(targetArray.s)) {
-                grammerTF += "Sにエラー,";
-                grammerCheckresult.success = false;
-            }
-            if (!checkVOfSVOORoot(targetArray.v)) {
-                grammerTF += "Vにエラー,";
-                grammerCheckresult.success = false;
-            }
-            if (!checkO(targetArray.o1)) {
-                grammerTF += "O1にエラー,";
-                grammerCheckresult.success = false;
-            }
-            if (!checkO(targetArray.o2)) {
-                grammerTF += "O2にエラー,";
-                grammerCheckresult.success = false;
-            }
-            break;
-        case '5': //第五文型SVOC
-            if (!checkS(targetArray.s)) {
-                grammerTF += "Sにエラー,";
-                grammerCheckresult.success = false;
-            }
-            if (!checkVOfSVOCRoot(targetArray.v)) {
-                grammerTF += "Vにエラー,";
-                grammerCheckresult.success = false;
-            }
-            if (!checkO(targetArray.o1)) {
-                grammerTF += "Oにエラー,";
-                grammerCheckresult.success = false;
-            }
-            if (!checkC(targetArray.c)) {
-                grammerTF += "Cにエラー,";
-                grammerCheckresult.success = false;
-            }
+            GCR.successes.push({S:errorTemplete,V:[]});
+            GCR.successes[GCR.successesNum].S.message = "ぶうううううううん";
+            console.log(GCR);
+            // GCR.successes[GCR.successesNum].S.push("ぶうううううううん");
+            console.log(GCR.successes[GCR.successesNum].S);
+            checkS(targetArray.s,GCR);
+            GCR.successesNum++;
+            checkV(targetArray.v,GCR,targetArray.sentence);
+            GCR.successesNum++;
             break;
         default:
-            grammerCheckresult.message.push("存在しない文型を指定しています");
+            GCR.message.push("存在しない文型を指定しています");
             break;
     }
-    return grammerCheckresult;
+    return GCR;
 }
 
-function checkGrammerPoint(targetArray) {
-    //文法事項に則っているか
+function checkS(targetSentence,GCR) /*＜S＞*/ {
+    // GCR = checkMeisiRoot(targetSentence,GCR);
+    // GCR = checkDaimeisiCanS(targetSentence,GCR);
+    GCR 
+    return GCR;
 }
 
-function checkS(targetSentence,grammerCheckresult) /*＜S＞*/ {
-    if (checkMeisiRoot(targetSentence,grammerCheckresult) || checkDaimeisiCanS(targetSentence,grammerCheckresult)) {
-        grammerCheckresult.
-        return true;
-    }
-    return false;
+function checkV(targetSentence,GCR,sentenceType)/*＜V＞*/{
+
 }
 
-function checkJidousiRoot(targetSentence) /*＜自動詞根＞*/ {
-    let targetIndex = checkJodousiRoot(targetSentence);
-    // targetIndex += checkTHJRoot(targetSentence, targetIndex);
-    if (!tango[targetSentence[targetIndex]].tags.includes('自動詞')) {
-        return false;
-    } else {
-        targetIndex += 1;
-    }
-    // targetIndex += checkYBJRoot(targetSentence, targetIndex);
-    if (targetIndex == targetSentence.length) return true;
-    return false;
+function checkMeisiRoot(targetSentence,GCR)/*＜名詞根＞*/{
+
 }
 
-function checkTadousiRoot(targetSentence) /*他動詞根*/ {
-    let targetIndex = checkJodousiRoot(targetSentence);
-    // targetIndex += checkTHJRoot(targetSentence, targetIndex);
-    if (!tango[targetSentence[targetIndex]].tags.includes('他動詞')) {
-        return false;
-    } else {
-        targetIndex += 1;
-    }
-    // targetIndex += checkYBJRoot(targetSentence, targetIndex);
-    if (targetIndex == targetSentence.length) return true;
-    return false;
-}
-
-function checkBedousiRoot(targetSentence) /*＜be動詞根＞*/ {
-    let targetIndex = checkJodousiRoot(targetSentence);
-    if (!tango[targetSentence[targetIndex]].tags.includes('be動詞')) {
-        return false;
-    } else {
-        targetIndex += 1;
-    }
-    if (targetIndex == targetSentence.length) return true;
-    return false;
-}
-
-function checkRenketuRoot(targetSentence) /*＜連結動詞根*/ {
-    let targetIndex = checkJodousiRoot(targetSentence);
-    // targetIndex += checkTHJRoot(targetSentence, targetIndex);
-    if (!tango[targetSentence[targetIndex]].tags.includes('連結動詞')) {
-        return false;
-    } else {
-        targetIndex += 1;
-    }
-    // targetIndex += checkYBJRoot(targetSentence, targetIndex);
-    if (targetIndex == targetSentence.length) return true;
-    return false;
-}
-
-function checkVOfSVOORoot(targetSentence) /*＜SVOOがとれる動詞根＞*/ {
-    let targetIndex = checkJodousiRoot(targetSentence);
-    // targetIndex += checkTHJRoot(targetSentence, targetIndex);
-    if (!tango[targetSentence[targetIndex]].tags.includes('SVOOがとれる動詞')) {
-        return false;
-    } else {
-        targetIndex += 1;
-    }
-    // targetIndex += checkYBJRoot(targetSentence, targetIndex);
-    if (targetIndex == targetSentence.length) return true;
-    return false;
-}
-
-function checkVOfSVOCRoot(targetSentence) /*＜SVOCがとれる動詞根＞*/ {
-    let targetIndex = checkJodousiRoot(targetSentence);
-    // targetIndex += checkTHJRoot(targetSentence, targetIndex);
-    if (!tango[targetSentence[targetIndex]].tags.includes('SVOCがとれる動詞')) {
-        return false;
-    } else {
-        targetIndex += 1;
-    }
-    // targetIndex += checkYBJRoot(targetSentence, targetIndex);
-    if (targetIndex == targetSentence.length) return true;
-    return false;
-}
-
-function checkC(targetSentence) /*＜C＞*/ {
-    if (
-        checkMeisiRoot(targetSentence) ||
-        checkDaimeisiCanC(targetSentence) ||
-        (targetSentence.length == 1 && tango[targetSentence[0]].hinsi.includes('形容詞'))
-    ) {
-        return true;
-    }
-    return false;
-}
-
-function checkO(targetSentence) /*＜O＞*/ {
-    if (checkMeisiRoot(targetSentence) || checkDaimeisiCanO(targetSentence)) {
-        return true;
-    }
-    return false;
-}
-
-function checkMeisiRoot(targetSentence) /*＜名詞根＞要改善*/ {
-    let truenum = targetSentence.flat(Infinity).length;
-    let wordsCount = 0;
-    let targetIndex = 0;
-    console.log('単語数：' + truenum);
-    wordsCount += checkKansiRoot(targetSentence);
-    if (wordsCount != 0) targetIndex += 1;
-    console.log('冠詞経過時wordsConut：' + wordsCount);
-    console.log('冠詞経過時targetIndex：' + targetIndex);
-    wordsCount += checkZentiKeiyousiRoot(targetSentence, targetIndex);
-    if (checkZentiKeiyousiRoot(targetSentence, targetIndex) > 0) targetIndex += 1;
-    console.log('形容詞経過時wordsConut：' + wordsCount);
-    console.log('形容詞経過時targetIndex：' + targetIndex);
-    console.log(targetSentence[targetIndex]);
-    console.log(tango[targetSentence[targetIndex]]);
-    if (!Array.isArray(targetSentence[targetIndex]) && tango[targetSentence[targetIndex]].hinsi.includes('名詞')) {
-        wordsCount += 1;
-    }
-    targetIndex += 1;
-    if (truenum == wordsCount) return true;
-    return false;
-}
-
-function checkMeisiTF(targetSentence) {
-    if (Array.isArray(targetSentence[targetIndex])) {
-        //kokokara
-    }
-}
-
-function checkKansiRoot(targetSentence) /*＜冠詞根＞*/ {
-    if (Array.isArray(targetSentence[0])) return 0;
-    if (
-        targetSentence.length > 0 &&
-        (tango[targetSentence[0]].hinsi.includes('冠詞') ||
-            tango[targetSentence[0]].tags.includes('所有格') ||
-            tango[targetSentence[0]].tags.includes('指示代名詞'))
-    ) {
-        return 1;
-    }
-    return 0;
-}
-
-// console.log(checkMeisiRoot(['an', ['happy', 'happy'], 'apple']));
-
-function checkZentiKeiyousiRoot(targetSentence, targetIndex) /*＜前置形用詞根＞*/ {
-    if (Array.isArray(targetSentence[targetIndex])) {
-        let i = 0;
-        while (i < targetSentence[targetIndex].length && tango[targetSentence[targetIndex][i]].hinsi.includes('形容詞')) {
-            i++;
+function checkDaimeisiCanS(targetSentence,GCR)/*＜主語に使える代名詞＞*/{
+    if (targetSentence.length = 1 && tango[targetSentence[0]].hinsi.includes('代名詞')) {
+        if(DaimeisicanSArray.some((value) => tango[targetSentence].tags.includes(value))){
+            GCR.successes[GCR.successesNum].S.push 
+        } else {
+            GCR.errors.push({S:errorTemplete});
+            
         }
-        return i;
-    } else {
-        return 0;
     }
-}
-
-function checkTHJRoot(targetSentence, targetIndex) /*＜程度頻度時間副詞根＞*/ {
-    if (
-        targetSentence.length > 0 &&
-        (tango[targetSentence[targetIndex]].tags.includes('程度') ||
-            tango[targetSentence[targetIndex]].tags.includes('頻度') ||
-            targetSentence[targetIndex] == 'still' ||
-            targetSentence[targetIndex] == 'already')
-    ) {
-        return 1;
-    }
-    return 0;
-}
-
-function checkYBJRoot(targetSentence, targetIndex) /*＜様態場所時間副詞根＞*/ {
-    if (
-        targetSentence.length > 0 &&
-        targetIndex < targetSentence.length &&
-        (tango[targetSentence[targetIndex]].tags.includes('様態') ||
-            tango[targetSentence[targetIndex]].tags.includes('場所') ||
-            tango[targetSentence[targetIndex]].tags.includes('時間'))
-    ) {
-        return 1;
-    }
-    return 0;
-}
-
-function checkJodousiRoot(targetSentence) /*＜助動詞根＞*/ {
-    if (targetSentence.length > 1 && tango[targetSentence[0]].hinsi.includes('助動詞')) {
-        return 1;
-    }
-    return 0;
-}
-
-function checkDaimeisiCanS(targetSentence) /*＜主語に使える代名詞＞*/ {
-    if (targetSentence.length != 1) return false;
-    return DaimeisicanSArray.some((value) => tango[targetSentence].tags.includes(value));
-}
-
-function checkDaimeisiCanC(targetSentence) /*＜補語に使える代名詞＞*/ {
-    if (targetSentence.length != 1) return false;
-    return DaimeisicanCArray.some((value) => tango[targetSentence].tags.includes(value));
-}
-
-function checkDaimeisiCanO(targetSentence) /*＜目的語に使える代名詞＞*/ {
-    if (targetSentence.length != 1) return false;
-    return DaimeisicanOArray.some((value) => tango[targetSentence].tags.includes(value));
+    return GCR;
 }
