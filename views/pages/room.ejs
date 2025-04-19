@@ -17,11 +17,11 @@
     <button style="margin: 0 auto;" onclick="window.location.href = '/logout'">ログアウト</button>
     <br>
     <br>
-    <button style="margin: 0 auto;" onclick="showCreateRoom();">部屋作成</button>
+    <button style="margin: 0 auto;" id="showCreateBtn">部屋作成</button>
     <div class="main-div">
 
     </div>
-    <div class="background-div" style="opacity: 0;" onclick="closeDiv();">
+    <div class="background-div" style="opacity: 0;" id="backgroundDiv" onclick="closeDiv();">
 
     </div>
     <div style="position: absolute;width:100%;height:100%;display:flex;top:0;pointer-events:none;">
@@ -68,7 +68,7 @@
             </div>
             <div></div>
             <div style="display: flex;">
-                <button onclick="createRoom();" style="width: 80%;height:80%;margin:auto;">作成</button>
+                <button id="createBtn" style="width: 80%;height:80%;margin:auto;">作成</button>
             </div>
         </div>
     </div>

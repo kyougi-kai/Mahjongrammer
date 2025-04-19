@@ -6,6 +6,10 @@ export class baseRepository {
         this.tableName = tableName;
     }
 
+    initializeTable() {
+        db.query(`delete from ${this.tableName}`, []);
+    }
+
     async getRow(fieldName, filterName, filterValue) {
         const sql = `select ${fieldName} from ${this.tableName} where ${filterName} = ?`;
         const params = [filterValue];

@@ -2,7 +2,7 @@ import { connectionManager } from '/js/utils/connectionManager.js';
 
 const mainDiv = document.getElementsByClassName('main-div')[0];
 const userNameText = document.getElementById('userName');
-const backgroundDiv = document.getElementsByClassName('background-div')[0];
+const backgroundDiv = document.getElementById('backgroundDiv');
 const createRoomDiv = document.getElementsByClassName('create-room-div')[0];
 const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
 let socket;
@@ -13,54 +13,65 @@ window.onload = () => {
     const connectionmanager = new connectionManager();
     connectionmanager.connect(`${protocol}://${window.location.host}/room`);
 
+    // サーバーに接続時
     connectionmanager.onOpen(() => {
         console.log('サーバーに接続しました');
     });
 
+    // 部屋のデータを取得
     connectionmanager.onMessage('getRoomData', (data) => {
         data.forEach((mono) => {
+            rooms.push(mono.username);
             createNewRoom(mono.username, mono.room_member_counts);
         });
     });
 
-    /*
-    socket.addEventListener('message', (event) => {
-        let message = JSON.parse(event.data);
-        if (startFlg) {
-            const key = Object.keys(message)[0];
-            if (key === 'newRoom') {
-                rooms.push(message[key]);
-                createNewRoom(message[key]);
-            } else if (key === 'deleteRoom') {
-                const idx = rooms.indexOf(message[key]);
-                if (idx != -1) {
-                    rooms.splice(idx, 1);
-                    mainDiv.children[idx].remove();
-                }
-            } else if (key === 'entryRoom') {
-                updateRoomMemberCounts(message.entryRoom, parseInt(message.roomMemberCounts));
-            } else if (key === 'outRoom') {
-                updateRoomMemberCounts(message.outRoom, parseInt(message.roomMemberCounts));
-            }
-        } else {
-            startFlg = true;
-            message.forEach((value) => {
-                rooms.push(value.username);
-                createNewRoom(value.username, parseInt(value.room_member_counts));
-            });
+    // 削除された部屋を非表示
+    connectionmanager.onMessage('deleteRoom', (data) => {
+        const idx = rooms.indexOf(data.roomName);
+        if (idx != -1) {
+            rooms.splice(idx, 1);
+            mainDiv.children[idx].remove();
         }
     });
-    */
 
-    console.log(document.cookie);
+    // 部屋のデータの変更を取得
+    connectionmanager.onMessage('changeRoomData', (data) => {
+        updateRoomMemberCounts(data.roomName, parseInt(data.roomMemberCounts));
+    });
+
+    document.getElementById('showCreateBtn').addEventListener('click', () => {
+        backgroundDiv.style.opacity = '1';
+        createRoomDiv.style.opacity = '1';
+        backgroundDiv.style.pointerEvents = 'all';
+        createRoomDiv.style.pointerEvents = 'all';
+    });
+
+    backgroundDiv.addEventListener('click', () => {
+        backgroundDiv.style.opacity = '0';
+        createRoomDiv.style.opacity = '0';
+        backgroundDiv.style.pointerEvents = 'none';
+        createRoomDiv.style.pointerEvents = 'none';
+    });
+
+    document.getElementById('createButton').addEventListener('click', () => {
+        let temporaryList = [];
+        Array.from(createRoomDiv.children).forEach((value) => {
+            if (Array.from(value.children).length != 2) return;
+            const ratio = parseInt(value.children[1].value);
+            temporaryList.push(ratio);
+        });
+        const sendData = JSON.stringify({
+            type: 'createRoom',
+            payload: {
+                roomName: userNameText.textContent.replace(/\s+/g, ''),
+                ratio: temporaryList,
+            },
+        });
+        socket.send(sendData);
+        window.location.href = `/play/${userNameText.textContent.replace(/\s+/g, '')}`;
+    });
 };
-
-function showCreateRoom() {
-    backgroundDiv.style.opacity = '1';
-    createRoomDiv.style.opacity = '1';
-    backgroundDiv.style.pointerEvents = 'all';
-    createRoomDiv.style.pointerEvents = 'all';
-}
 
 function createNewRoom(roomName, roomMemberCounts = 0) {
     let temporaryDiv = document.createElement('div');
@@ -75,10 +86,6 @@ function createNewRoom(roomName, roomMemberCounts = 0) {
     if (roomMemberCounts != 4) temporaryDiv.setAttribute('onclick', `entryRoom('${roomName}');`);
 }
 
-function entryRoom(roomName) {
-    window.location.href = `/play/${roomName}`;
-}
-
 function updateRoomMemberCounts(roomName, roomMemberCounts) {
     const idx = rooms.indexOf(roomName);
     console.log(mainDiv.children[idx].children);
@@ -86,27 +93,5 @@ function updateRoomMemberCounts(roomName, roomMemberCounts) {
 
     roomMemberCounts == 4
         ? mainDiv.children[idx].setAttribute('onclick', '')
-        : mainDiv.children[idx].setAttribute('onclick', `entryRoom('${roomName}');`);
-}
-
-function createRoom() {
-    let temporaryList = [];
-    Array.from(createRoomDiv.children).forEach((value) => {
-        if (Array.from(value.children).length != 2) return;
-        const ratio = parseInt(value.children[1].value);
-        temporaryList.push(ratio);
-    });
-    const sendData = JSON.stringify({
-        createRoom: userNameText.textContent.replace(/\s+/g, ''),
-        ratio: temporaryList,
-    });
-    socket.send(sendData);
-    window.location.href = `/play/${userNameText.textContent.replace(/\s+/g, '')}`;
-}
-
-function closeDiv() {
-    backgroundDiv.style.opacity = '0';
-    createRoomDiv.style.opacity = '0';
-    backgroundDiv.style.pointerEvents = 'none';
-    createRoomDiv.style.pointerEvents = 'none';
+        : mainDiv.children[idx].setAttribute('onclick', `window.location.href = '/play/${roomName}';`);
 }
