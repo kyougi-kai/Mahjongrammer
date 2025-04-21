@@ -882,6 +882,28 @@ function checkGrammer(targetArray) {
             checkV(targetArray.v,GCR,targetArray.sentence);
             GCR.currentTypeNum++;
             break;
+        case '2': //第二文型SVC
+            checkS(targetArray.s,GCR);
+            checkV(targetArray.v,GCR,targetArray.sentence);
+            checkC(targetArray.c,GCR);
+            break;
+        case '3': //第三文型SVO
+            checkS(targetArray.s,GCR);
+            checkV(targetArray.v,GCR,targetArray.sentence);
+            checkO(targetArray.o1,GCR);
+            break;
+        case '4': //第四文型SVOO
+            checkS(targetArray.s,GCR);
+            checkV(targetArray.v,GCR,targetArray.sentence);
+            checkO(targetArray.o1,GCR);
+            checkO(targetArray.o2,GCR);
+            break;
+        case '5': //第五文型SVOC
+            checkS(targetArray.s,GCR);
+            checkV(targetArray.v,GCR,targetArray.sentence);
+            checkO(targetArray.o1,GCR);
+            checkC(targetArray.c,GCR);
+            break;
         default:
             GCR.message.push("存在しない文型を指定しています");
             break;
