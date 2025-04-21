@@ -21,9 +21,14 @@ export class connectionManager {
         wss.on('connection', async (ws, req) => {
             const url = req.url;
             // urlに対応した処理を実行
-            this._doHanlders(this.getHandlers.get(url), ws);
+            this._doHanlders(this.getHandlers.get(url), ws, null);
             ws.on('close', () => {
-                this._doHanlders(this.closeHandlers.get(url));
+                this._doHanlders(this.closeHandlers.get(url), ws, null);
+            });
+
+            ws.on('message', (data) => {
+                data = JSON.parse(data);
+                this._doHanlders(this.messageHandlers, ws, data.payload);
             });
         });
     }
@@ -48,15 +53,15 @@ export class connectionManager {
 
     /**
      *
-     * @param {string} url -受け取るurl-
+     * @param {string} type -受け取るメッセージタイプ-
      * @param {Function} handler -行う処理-
      */
-    onClose(url, handler) {
-        this.messageHandlers.get(url) === undefined ? this.messageHandlers.set(url, [handler]) : this.messageHandlers.get(url).push(handler);
+    onMessage(type, handler) {
+        this.messageHandlers.get(type) === undefined ? this.messageHandlers.set(type, [handler]) : this.messageHandlers.get(type).push(handler);
     }
 
-    _doHanlders(handlers, ws = null) {
+    _doHanlders(handlers, ws, sendData = null) {
         if (handlers === undefined) return;
-        typeof handlers == String ? handlers(ws) : handlers.forEach((hanlder) => hanlder(ws));
+        typeof handlers == String ? handlers(ws, sendData) : handlers.forEach((hanlder) => hanlder(ws, sendData));
     }
 }

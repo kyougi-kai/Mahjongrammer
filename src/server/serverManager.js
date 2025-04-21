@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import { connectionManager } from '../ws/connectionManager.js';
 import { roomManager } from '../pages/roomManager.js';
+import { playManager } from '../pages/playManager.js';
 const __dirname = import.meta.dirname;
 
 export class serverManager {
@@ -16,6 +17,7 @@ export class serverManager {
 
         // ページごと
         this.roommanager = new roomManager(this.wss);
+        this.playmanager = new playManager(this.wss, this.roommanager);
     }
 
     _expressSetUp() {

@@ -9,17 +9,57 @@ export class roomClientsManager {
     constructor(wss) {
         this.wss = wss;
         this.roomClients = new Map();
+
+        this._setup();
+    }
+
+    get roomClients() {
+        return this.roomClients;
+    }
+
+    set roomClients(value) {
+        this.roomClients = value;
     }
 
     _setup() {
-        const uuid = uuidv4();
-
         this.wss.onGet('/room', (ws) => {
+            const uuid = uuidv4();
             this.roomClients.set(uuid, ws);
+
+            ws.on('close', () => {
+                this.roomClients.delete(uuid);
+            });
         });
 
-        this.wss.onClose('/room', () => {
-            this.roomClients.delete(uuid);
+        this.wss.onMessage('outRoom', (ws, data) => {
+            const username = data.username;
+            const parentName = data.parentName;
+            if (username == parentName) {
+                this.roomClients.values().forEach((client) => {
+                    client.send(
+                        JSON.stringify({
+                            type: 'deleteRoom',
+                            payload: {
+                                roomName: data.username,
+                            },
+                        })
+                    );
+                });
+            }
+        });
+    }
+
+    noticeOutRoom(roomName, roomMemberCounts) {
+        this.roomClients.values().forEach((client) => {
+            client.send(
+                JSON.stringify({
+                    type: 'changeRoomData',
+                    payload: {
+                        roomName: roomName,
+                        roomMemberCounts: roomMemberCounts,
+                    },
+                })
+            );
         });
     }
 }

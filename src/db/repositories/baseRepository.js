@@ -6,6 +6,10 @@ export class baseRepository {
         this.tableName = tableName;
     }
 
+    initializeTable() {
+        db.query(`delete from ${this.tableName}`, []);
+    }
+
     async getRow(fieldName, filterName, filterValue) {
         const sql = `select ${fieldName} from ${this.tableName} where ${filterName} = ?`;
         const params = [filterValue];
@@ -55,7 +59,6 @@ export class baseRepository {
 
     async query(sql, params) {
         const result = await db.query(sql, params);
-        console.log(result);
-        return result[0];
+        return result;
     }
 }
