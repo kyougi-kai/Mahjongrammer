@@ -38,7 +38,7 @@ create table room_member(
 );
 
 //ローカルでのサーバー起動
-node --env-file=.env-local server.js
+node --env-file=.env-local src/app.js
 
 //誰かが新しいライブラリを入れたら
 npm install
