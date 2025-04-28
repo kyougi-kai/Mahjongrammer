@@ -6,6 +6,11 @@ let tango = {
         hinsi: ['名詞'],
         tags: ['可算名詞'],
     },
+    apples:{
+        原形:'apple',
+        hinsi: ['名詞'],
+        tags: ['可算名詞'],
+    }
     desk: {
         hinsi: ['名詞'],
         tags: ['可算名詞'],
