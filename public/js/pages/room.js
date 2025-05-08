@@ -54,7 +54,7 @@ window.onload = () => {
         createRoomDiv.style.pointerEvents = 'none';
     });
 
-    document.getElementById('createButton').addEventListener('click', () => {
+    document.getElementById('createBtn').addEventListener('click', () => {
         let temporaryList = [];
         Array.from(createRoomDiv.children).forEach((value) => {
             if (Array.from(value.children).length != 2) return;

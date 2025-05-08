@@ -3,12 +3,13 @@ const loginHeader = document.getElementsByClassName('login-header')[0];
 
 function changeForm(formName) {
     if (formName == 'login') {
-        loginHeader.children[0].firstChild.style.borderBottom = '1px solid white';
-        loginHeader.children[1].firstChild.style.borderBottom = '';
+        loginHeader.children[0].children[0].style.borderBottom = '1px solid white';
+        loginHeader.children[1].children[0].style.borderBottom = '';
         loginFlag = 'login';
     } else {
-        loginHeader.children[1].firstChild.style.borderBottom = '1px solid white';
-        loginHeader.children[0].firstChild.style.borderBottom = '';
+        console.log(loginHeader.children[1]);
+        loginHeader.children[1].children[0].style.borderBottom = '1px solid white';
+        loginHeader.children[0].children[0].style.borderBottom = '';
         loginFlag = 'signin';
     }
 }
