@@ -13,7 +13,7 @@ export class roomClientsManager {
         this._setup();
     }
 
-    get roomClients() {
+    get roomC() {
         return this.roomClients;
     }
 

@@ -37,6 +37,9 @@ create table room_member(
     foreign key (user_id) references users(user_id) on delete cascade
 );
 
+// データベース起動
+mysqld --console
+
 //ローカルでのサーバー起動
 node --env-file=.env-local src/app.js
 

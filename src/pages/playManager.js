@@ -14,7 +14,7 @@ export class playManager {
         this.playclientsmanager = new playClientsManager(wss);
         this.roommanager = roommanager;
 
-        _setup();
+        this._setup();
     }
 
     _setup() {

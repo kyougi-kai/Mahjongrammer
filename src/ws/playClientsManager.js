@@ -18,7 +18,7 @@ export class playClientsManager {
         this._setup();
     }
 
-    get playClients() {
+    get playC() {
         return this.playClients;
     }
 
