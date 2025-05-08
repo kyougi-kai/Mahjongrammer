@@ -850,7 +850,7 @@ const DaimeisicanOArray = ['目的格', '再帰代名詞', '指示代名詞', '�
 
 let checkGrammerTestArray = {
     sentence: 1,
-    s: ['an',['happy'],'apple'],
+    s: ['apple'],
     v: ['run'],
 };
 
@@ -864,7 +864,7 @@ const errorTemplete = {
 
 const testGCR = {
     success:true,
-    successes:[{S:[],V:[]}],
+    successes:{S:[],V:[]},
     currentType:["S","V"],
     currentTypeNum:0,
     currentIndex:0,
@@ -873,8 +873,6 @@ const testGCR = {
     message:"",
     errors:[],
 }
-
-console.log(checkMeisiRoot(checkGrammerTestArray.s,testGCR).successes[0].S);
 
 function checkGrammer(targetArray) {
     targetArray.sentence = targetArray.sentence.toString();
@@ -887,14 +885,14 @@ function checkGrammer(targetArray) {
     /** @type {gcr} 文法チェックの結果を代入（旧grammerCheckResult）*/
     let GCR = {
         success:true,
-        successes:[],
+        successes,
         currentType:[],
         currentTypeNum:0,
         currentIndex:0,
         flagsNum:100,
         temporaryWordsNum:0,
         message:"",
-        errors:[],
+        errors,
     };
 
     switch (targetArray.sentence) {
@@ -905,6 +903,7 @@ function checkGrammer(targetArray) {
             GCR.currentTypeNum++;
             checkV(targetArray.v,GCR,targetArray.sentence);
             GCR.currentTypeNum++;
+            // if(GCR.successes.)
             break;
         case '2': //第二文型SVC
             checkS(targetArray.s,GCR);
@@ -937,24 +936,29 @@ function checkGrammer(targetArray) {
 
 function checkS(targetSentence,GCR) /*＜S＞*/ {
     GCR = checkMeisiRoot(targetSentence,GCR);
+    console.log("名詞根通過！");
     GCR = checkDaimeisi(targetSentence,GCR);
+
     return GCR;
 }
+
+console.log(43434343,checkS(checkGrammerTestArray.s,testGCR).successes.S);
 
 function checkV(targetSentence,GCR,sentenceType)/*＜V＞*/{
 
 }
 
 function checkMeisiRoot(targetSentence,GCR)/*＜名詞根＞*/{
-    console.log(targetSentence,GCR);
+    console.log(1,targetSentence,GCR);
     GCR[GCR.flagsNum] = [];
     GCR[GCR.flagsNum].push({kansi:[],zentiKeiyousi:[],meisi:[],koutiKeiyousi:[],wordsCount:0,targetIndex:0});
+    console.log(2,targetSentence,GCR);
     let truenum = targetSentence.flat(Infinity).length;
     if (targetSentence.length > GCR[GCR.flagsNum].targetIndex)GCR = checkKansiRoot(targetSentence,GCR);
     if (targetSentence.length > GCR[GCR.flagsNum].targetIndex)GCR = checkZentiKeiyousiRoot(targetSentence,GCR);
     if (targetSentence.length > GCR[GCR.flagsNum].targetIndex)GCR = checkMeisi(targetSentence,GCR);
     if (targetSentence.length > GCR[GCR.flagsNum].targetIndex)GCR = checkKoutiKeiyousiRoot(targetSentence,GCR);
-    if(truenum != GCR[GCR.flagsNum].wordsCount) GCR.successes[GCR.currentTypeNum][GCR.currentType[GCR.currentTypeNum]].push("false");
+    if(truenum == GCR[GCR.flagsNum].wordsCount) GCR.successes[GCR.currentType[GCR.currentTypeNum]].push("true");
     GCR.temporaryWordsNum = GCR[GCR.flagsNum].wordsCount;
     delete GCR[GCR.flagsNum];
     return GCR;
@@ -1039,9 +1043,9 @@ function checkKoutiKeiyousiRoot(targetSentence,GCR){
 
         if(tango[targetSentence[GCR[GCR.flagsNum].targetIndex][keiyousiCount]].hinsi.includes('前置詞')){
             GCR.flagsNum = GCR.flagsNum + 1;
-            GCR = checkMeisiRoot(targetSentence,GCR);
+            GCR = checkMeisiRoot(targetSentence,GCR);//仮のGCRを引数にする。本当のGCRは渡さない
             keiyousiCount = GCR.temporaryWordsNum + 1;
-            GCR.flagsNum = GCR.flagsNum + 1;
+            GCR.flagsNum = GCR.flagsNum - 1;
         }
 
         if(true_M_Num != keiyousiCount){
@@ -1061,15 +1065,19 @@ function checkKoutiKeiyousiRoot(targetSentence,GCR){
 
 function checkDaimeisi(targetSentence,GCR)/*＜代名詞根＞*/{
     let DaimeisiTypeArray;
+    let typeText = "";
     switch (GCR.currentType[GCR.currentTypeNum]){
         case "S":
             DaimeisiTypeArray = ['主格', '指示代名詞', '不定代名詞', '疑問代名詞'];
+            typeText = "主語";
             break;
         case "C":
             DaimeisiTypeArray = ['主格', '所有代名詞', '再帰代名詞', '指示代名詞', '不定代名詞', '疑問代名詞'];
+            typeText = "補語";
             break;
         case "O":
             DaimeisiTypeArray = ['目的格', '再帰代名詞', '指示代名詞', '不定代名詞', '疑問代名詞'];
+            typeText = "目的語";
             break;
         default:
             DaimeisiTypeArray = [];
@@ -1077,14 +1085,14 @@ function checkDaimeisi(targetSentence,GCR)/*＜代名詞根＞*/{
         }
     if (targetSentence.length = 1 && tango[targetSentence[0]].hinsi.includes('代名詞')) {
         if(DaimeisiTypeArray.some((value) => tango[targetSentence].tags.includes(value))){
-            GCR.successes[GCR.currentTypeNum].S.push("true");
+            GCR.successes[GCR.currentType[GCR.currentTypeNum]].push("true");
         } else {
             let keyName = GCR.currentType[GCR.currentTypeNum] + "Daimeisi"
             GCR.errors.push({[keyName]:errorTemplete});
             GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
             GCR.errors[keyName].index = GCR.currentIndex;
             GCR.errors[keyName].type = "代名詞ミス！";
-            GCR.errors[keyName].reason = "主語に使えない代名詞が入っています";
+            GCR.errors[keyName].reason = typeText + "に使えない代名詞が入っています";
             GCR.errors[keyName].suggestion = "別の代名詞に変えてみましょう";
         }
     }

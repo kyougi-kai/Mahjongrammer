@@ -7,8 +7,8 @@ const errorTemplete = {
 };
 
  let GCR = {
-        success:true,
-        successes:[],
+        success:true,------successesのすべてにtrueが含まれているならtrue,そうでなければfalse
+        successes:[],------S,Vなど　trueならばtrueを入れる
         currentType:[],
         currentTypeNum:0,
         currentIndex:0,
@@ -43,3 +43,5 @@ GCR.flags.wordsCount += true_M_Num;
             GCR.errors[keyName].type = "名詞修飾ミス！";
             GCR.errors[keyName].reason = "修飾のやり方が間違っています";
             GCR.errors[keyName].suggestion = "";
+
+
