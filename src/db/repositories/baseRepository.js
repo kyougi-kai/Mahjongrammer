@@ -13,7 +13,10 @@ export class baseRepository {
     async getRow(fieldName, filterName, filterValue) {
         const sql = `select ${fieldName} from ${this.tableName} where ${filterName} = ?`;
         const params = [filterValue];
+        console.log(sql);
+        console.log(params);
         const result = await db.query(sql, params);
+        console.log(result);
         return result[0][fieldName];
     }
 

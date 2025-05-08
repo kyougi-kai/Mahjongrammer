@@ -15,11 +15,11 @@ export class roomsRepository extends baseRepository {
     async createRoom(parentId, ratio) {
         const sql = 'insert into rooms (parent_id, ratio) values(?, ?)';
         const param = [parentId, ratio];
-        await this.query(sql, []);
+        await this.query(sql, param);
     }
 
-    static async getRoomId(parentId) {
-        const result = this.getRow('room_id', 'parent_id', parentId);
+    async getRoomId(parentId) {
+        const result = super.getRow('room_id', 'parent_id', parentId);
         return result;
     }
 

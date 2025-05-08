@@ -27,8 +27,8 @@ export class connectionManager {
             });
 
             ws.on('message', (data) => {
-                data = JSON.parse(data);
-                this._doHanlders(this.messageHandlers, ws, data.payload);
+                const  parseData = JSON.parse(data);
+                this._doHanlders(this.messageHandlers.get(parseData['type']), ws, parseData['payload']);
             });
         });
     }
@@ -62,6 +62,6 @@ export class connectionManager {
 
     _doHanlders(handlers, ws, sendData = null) {
         if (handlers === undefined) return;
-        typeof handlers == String ? handlers(ws, sendData) : handlers.forEach((hanlder) => hanlder(ws, sendData));
+        typeof handlers == String ? handlers(ws, sendData) : handlers.forEach(async (hanlder) => await hanlder(ws, sendData));
     }
 }

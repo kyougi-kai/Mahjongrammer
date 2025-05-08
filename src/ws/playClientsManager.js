@@ -14,6 +14,7 @@ export class playClientsManager {
          */
         this.wss = wss;
         this.playClients = new Map();
+        this.roomsrepository = new roomsRepository();
 
         this._setup();
     }
@@ -24,7 +25,9 @@ export class playClientsManager {
 
     _setup() {
         this.wss.onMessage('createRoom', async (ws, data) => {
-            const roomId = roomsRepository.getRoomId(data.roomName);
+            const parentName = data.roomName;
+            const parentId = await usersManager.nameToId(parentName);
+            const roomId = await this.roomsrepository.getRoomId(parentId);
             this.playClients.set(roomId, { skip: 0 });
         });
 
@@ -32,7 +35,7 @@ export class playClientsManager {
             const parentName = data.parentName;
             const username = data.username;
             const parentId = await usersManager.nameToId(parentName);
-            const roomId = await roomsRepository.getRoomId(parentId);
+            const roomId = await this.roomsrepository.getRoomId(parentId);
             this.playClients[roomId].delete(username);
 
             if (username == parentName) {
