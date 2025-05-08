@@ -2,19 +2,43 @@ let tango = {
     apple: {
         //名詞
         hinsi: ['名詞'],
-        tags: ['可算名詞'],
+        tags: ['可算名詞','単数型'],
+        katuyou: ['apples'],
+    },
+    apples: {
+        hinsi: ['名詞'],
+        tags: ['可算名詞','複数型'],
+        katuyou: ['apples'],
     },
     desk: {
         hinsi: ['名詞'],
-        tags: ['可算名詞'],
+        tags: ['可算名詞','単数型'],
+        katuyou: ['desks'],
+    },
+    desks: {
+        hinsi: ['名詞'],
+        tags: ['可算名詞','複数型'],
+        katuyou: ['desk'],
     },
     cat: {
         hinsi: ['名詞'],
-        tags: ['可算名詞'],
+        tags: ['可算名詞','単数型'],
+        katuyou: ['cats'],
+    },
+    cats: {
+        hinsi: ['名詞'],
+        tags: ['可算名詞','複数型'],
+        katuyou: ['cat'],
     },
     book: {
         hinsi: ['名詞'],
-        tags: ['可算名詞'],
+        tags: ['可算名詞','単数型'],
+        katuyou: ['books'],
+    },
+    books: {
+        hinsi: ['名詞'],
+        tags: ['可算名詞','複数型'],
+        katuyou: ['book'],
     },
     water: {
         hinsi: ['名詞'],
@@ -826,7 +850,7 @@ const DaimeisicanOArray = ['目的格', '再帰代名詞', '指示代名詞', '�
 
 let checkGrammerTestArray = {
     sentence: 1,
-    s: ['I'],
+    s: ['an',['happy'],'apple'],
     v: ['run'],
 };
 
@@ -850,7 +874,7 @@ const testGCR = {
     errors:[],
 }
 
-console.log(checkMeisiRoot(checkGrammerTestArray.s),testGCR);
+console.log(checkMeisiRoot(checkGrammerTestArray.s,testGCR).successes[0].S);
 
 function checkGrammer(targetArray) {
     targetArray.sentence = targetArray.sentence.toString();
@@ -922,6 +946,7 @@ function checkV(targetSentence,GCR,sentenceType)/*＜V＞*/{
 }
 
 function checkMeisiRoot(targetSentence,GCR)/*＜名詞根＞*/{
+    console.log(targetSentence,GCR);
     GCR[GCR.flagsNum] = [];
     GCR[GCR.flagsNum].push({kansi:[],zentiKeiyousi:[],meisi:[],koutiKeiyousi:[],wordsCount:0,targetIndex:0});
     let truenum = targetSentence.flat(Infinity).length;
@@ -929,7 +954,7 @@ function checkMeisiRoot(targetSentence,GCR)/*＜名詞根＞*/{
     if (targetSentence.length > GCR[GCR.flagsNum].targetIndex)GCR = checkZentiKeiyousiRoot(targetSentence,GCR);
     if (targetSentence.length > GCR[GCR.flagsNum].targetIndex)GCR = checkMeisi(targetSentence,GCR);
     if (targetSentence.length > GCR[GCR.flagsNum].targetIndex)GCR = checkKoutiKeiyousiRoot(targetSentence,GCR);
-    if(truenum != GCR[GCR.flagsNum].wordsCount) GCR.successes[GCR.currentTypeNum][GCR.currentType[currentTypeNum]].push("false");
+    if(truenum != GCR[GCR.flagsNum].wordsCount) GCR.successes[GCR.currentTypeNum][GCR.currentType[GCR.currentTypeNum]].push("false");
     GCR.temporaryWordsNum = GCR[GCR.flagsNum].wordsCount;
     delete GCR[GCR.flagsNum];
     return GCR;
@@ -1013,10 +1038,10 @@ function checkKoutiKeiyousiRoot(targetSentence,GCR){
         let keiyousiCount = 0;
 
         if(tango[targetSentence[GCR[GCR.flagsNum].targetIndex][keiyousiCount]].hinsi.includes('前置詞')){
-            GCR.flagsNum += 1;
+            GCR.flagsNum = GCR.flagsNum + 1;
             GCR = checkMeisiRoot(targetSentence,GCR);
             keiyousiCount = GCR.temporaryWordsNum + 1;
-            GCR.flagsNum -= 1;
+            GCR.flagsNum = GCR.flagsNum + 1;
         }
 
         if(true_M_Num != keiyousiCount){
