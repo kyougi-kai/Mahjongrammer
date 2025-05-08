@@ -46,6 +46,7 @@ export class connectionManager {
     }
 
     send(data) {
-        this.ws.send(JSON.stringify(data));
+        // this.ws.send(JSON.stringify(data))
+        this.ws.send(data);
     }
 }

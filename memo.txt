@@ -102,3 +102,6 @@ function initializeConnection() {
 function initializeUI() {
   renderStartScreen();
 }
+
+次やること
+部屋を作成するタイミングで部屋の情報とろうとしてるから部屋作ってからやる

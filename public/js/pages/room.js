@@ -5,7 +5,6 @@ const userNameText = document.getElementById('userName');
 const backgroundDiv = document.getElementById('backgroundDiv');
 const createRoomDiv = document.getElementsByClassName('create-room-div')[0];
 const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
-let socket;
 let startFlg = false;
 let rooms = [];
 
@@ -68,8 +67,8 @@ window.onload = () => {
                 ratio: temporaryList,
             },
         });
-        socket.send(sendData);
-        window.location.href = `/play/${userNameText.textContent.replace(/\s+/g, '')}`;
+        connectionmanager.send(sendData);
+        // window.location.href = `/play/${userNameText.textContent.replace(/\s+/g, '')}`;
     });
 };
 
