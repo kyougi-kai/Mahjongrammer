@@ -45,3 +45,6 @@ GCR.flags.wordsCount += true_M_Num;
             GCR.errors[keyName].suggestion = "";
 
 
+ GCR[GCR.flagsNum] = {kansi:[],zentiKeiyousi:[],meisi:[],koutiKeiyousi:[],wordsCount:0,targetIndex:0};
+
+ kansi,meisi等にはtagsを入れ、単数/複数や三単現Sの判定を行う
