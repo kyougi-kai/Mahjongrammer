@@ -28,7 +28,7 @@ export class roomManager {
         this.wss.onMessage('createRoom', async (ws, data) => {
             const userId = await usersManager.nameToId(data.roomName);
             await this.roomsrepository.createRoom(userId, data.ratio);
-            this.roomclientsmanager.roomC.forEach((client) => {
+            this.roomclientsmanager.roomC.values().forEach((client) => {
                 const sendData = {
                     type: 'getRoomData',
                     payload: {
@@ -36,7 +36,8 @@ export class roomManager {
                         room_member_counts: 0,
                     },
                 };
-                client.send(sendData);
+                const stringSendData = JSON.stringify(sendData);
+                client.send(stringSendData);
             });
         });
 

@@ -103,5 +103,8 @@ function initializeUI() {
   renderStartScreen();
 }
 
+// エラーの原因
+・forEachで非同期処理を行うと上手く動作しない
+
 次やること
 部屋を作成するタイミングで部屋の情報とろうとしてるから部屋作ってからやる

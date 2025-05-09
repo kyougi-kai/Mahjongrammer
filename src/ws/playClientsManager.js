@@ -24,9 +24,12 @@ export class playClientsManager {
     }
 
     _setup() {
+        console.log('部屋のデータを取得する処理を登録');
+
         this.wss.onMessage('createRoom', async (ws, data) => {
             const parentName = data.roomName;
             const parentId = await usersManager.nameToId(parentName);
+            console.log('部屋をのデータを取得');
             const roomId = await this.roomsrepository.getRoomId(parentId);
             this.playClients.set(roomId, { skip: 0 });
         });
