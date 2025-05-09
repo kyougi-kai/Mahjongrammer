@@ -19,10 +19,17 @@ window.onload = () => {
 
     // 部屋のデータを取得
     connectionmanager.onMessage('getRoomData', (data) => {
-        data.forEach((mono) => {
+        console.log(typeof data);
+        if(data == Object){
             rooms.push(mono.username);
             createNewRoom(mono.username, mono.room_member_counts);
-        });
+        }
+        else{
+            data.forEach((mono) => {
+                rooms.push(mono.username);
+                createNewRoom(mono.username, mono.room_member_counts);
+            });
+        }
     });
 
     // 削除された部屋を非表示

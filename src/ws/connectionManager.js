@@ -60,8 +60,13 @@ export class connectionManager {
         this.messageHandlers.get(type) === undefined ? this.messageHandlers.set(type, [handler]) : this.messageHandlers.get(type).push(handler);
     }
 
-    _doHanlders(handlers, ws, sendData = null) {
+    async _doHanlders(handlers, ws, sendData = null) {
         if (handlers === undefined) return;
-        typeof handlers == String ? handlers(ws, sendData) : handlers.forEach(async (hanlder) => await hanlder(ws, sendData));
+        if(typeof handlers == String)handlers(ws, sendData);
+        else{
+            for(let i = 0; i < handlers.length; i++){
+                await handlers[i](ws, sendData);
+            }
+        }
     }
 }
