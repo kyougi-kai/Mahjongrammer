@@ -2,42 +2,42 @@ let tango = {
     apple: {
         //名詞
         hinsi: ['名詞'],
-        tags: ['可算名詞','単数型'],
+        tags: ['可算名詞', '単数型'],
         katuyou: ['apples'],
     },
     apples: {
         hinsi: ['名詞'],
-        tags: ['可算名詞','複数型'],
+        tags: ['可算名詞', '複数型'],
         katuyou: ['apples'],
     },
     desk: {
         hinsi: ['名詞'],
-        tags: ['可算名詞','単数型'],
+        tags: ['可算名詞', '単数型'],
         katuyou: ['desks'],
     },
     desks: {
         hinsi: ['名詞'],
-        tags: ['可算名詞','複数型'],
+        tags: ['可算名詞', '複数型'],
         katuyou: ['desk'],
     },
     cat: {
         hinsi: ['名詞'],
-        tags: ['可算名詞','単数型'],
+        tags: ['可算名詞', '単数型'],
         katuyou: ['cats'],
     },
     cats: {
         hinsi: ['名詞'],
-        tags: ['可算名詞','複数型'],
+        tags: ['可算名詞', '複数型'],
         katuyou: ['cat'],
     },
     book: {
         hinsi: ['名詞'],
-        tags: ['可算名詞','単数型'],
+        tags: ['可算名詞', '単数型'],
         katuyou: ['books'],
     },
     books: {
         hinsi: ['名詞'],
-        tags: ['可算名詞','複数型'],
+        tags: ['可算名詞', '複数型'],
         katuyou: ['book'],
     },
     water: {
@@ -855,24 +855,24 @@ let checkGrammerTestArray = {
 };
 
 const errorTemplete = {
-    part: "",
+    part: '',
     index: 0,
-    type: "",
-    reason: "",
-    suggestion: ""
+    type: '',
+    reason: '',
+    suggestion: '',
 };
 
 const testGCR = {
-    success:false,
-    successes:{S:[],V:[]},
-    currentType:["S","V"],
-    currentTypeNum:0,
-    currentIndex:0,
-    flagsNum:100,
-    temporaryWordsNum:0,
-    message:"",
-    errors:{},
-}
+    success: false,
+    successes: { S: [], V: [] },
+    currentType: ['S', 'V'],
+    currentTypeNum: 0,
+    currentIndex: 0,
+    flagsNum: 100,
+    temporaryWordsNum: 0,
+    message: '',
+    errors: {},
+};
 
 function checkGrammer(targetArray) {
     targetArray.sentence = targetArray.sentence.toString();
@@ -884,93 +884,90 @@ function checkGrammer(targetArray) {
 
     /** @type {gcr} 文法チェックの結果を代入（旧grammerCheckResult）*/
     let GCR = {
-        success:false,
+        success: false,
         successes,
-        currentType:[],
-        currentTypeNum:0,
-        currentIndex:0,
-        flagsNum:100,
-        temporaryWordsNum:0,
-        message:"",
+        currentType: [],
+        currentTypeNum: 0,
+        currentIndex: 0,
+        flagsNum: 100,
+        temporaryWordsNum: 0,
+        message: '',
         errors,
     };
 
     switch (targetArray.sentence) {
         case '1': //第一文型SV
-            GCR.successes.push({S:[],V:[]});
-            GCR.currentType.push("S","V");
-            checkS(targetArray.s,GCR);
+            GCR.successes.push({ S: [], V: [] });
+            GCR.currentType.push('S', 'V');
+            checkS(targetArray.s, GCR);
             GCR.currentTypeNum++;
-            checkV(targetArray.v,GCR,targetArray.sentence);
+            checkV(targetArray.v, GCR, targetArray.sentence);
             GCR.currentTypeNum++;
-            if(GCR.successes.S.includes("true") &&
-                GCR.successes.V.includes("true") ){
-                    GCR.success = true;
-                }
+            if (GCR.successes.S.includes('true') && GCR.successes.V.includes('true')) {
+                GCR.success = true;
+            }
             break;
         case '2': //第二文型SVC
-            checkS(targetArray.s,GCR);
-            checkV(targetArray.v,GCR,targetArray.sentence);
-            checkC(targetArray.c,GCR);
+            checkS(targetArray.s, GCR);
+            checkV(targetArray.v, GCR, targetArray.sentence);
+            checkC(targetArray.c, GCR);
             break;
         case '3': //第三文型SVO
-            checkS(targetArray.s,GCR);
-            checkV(targetArray.v,GCR,targetArray.sentence);
-            checkO(targetArray.o1,GCR);
+            checkS(targetArray.s, GCR);
+            checkV(targetArray.v, GCR, targetArray.sentence);
+            checkO(targetArray.o1, GCR);
             break;
         case '4': //第四文型SVOO
-            checkS(targetArray.s,GCR);
-            checkV(targetArray.v,GCR,targetArray.sentence);
-            checkO(targetArray.o1,GCR);
-            checkO(targetArray.o2,GCR);
+            checkS(targetArray.s, GCR);
+            checkV(targetArray.v, GCR, targetArray.sentence);
+            checkO(targetArray.o1, GCR);
+            checkO(targetArray.o2, GCR);
             break;
         case '5': //第五文型SVOC
-            checkS(targetArray.s,GCR);
-            checkV(targetArray.v,GCR,targetArray.sentence);
-            checkO(targetArray.o1,GCR);
-            checkC(targetArray.c,GCR);
+            checkS(targetArray.s, GCR);
+            checkV(targetArray.v, GCR, targetArray.sentence);
+            checkO(targetArray.o1, GCR);
+            checkC(targetArray.c, GCR);
             break;
         default:
-            GCR.message.push("存在しない文型を指定しています");
+            GCR.message.push('存在しない文型を指定しています');
             break;
     }
     return GCR;
 }
 
-function checkS(targetSentence,GCR) /*＜S＞*/ {
-    GCR = checkMeisiRoot(targetSentence,GCR);
-    GCR = checkDaimeisi(targetSentence,GCR);
+function checkS(targetSentence, GCR) /*＜S＞*/ {
+    GCR = checkMeisiRoot(targetSentence, GCR);
+    GCR = checkDaimeisi(targetSentence, GCR);
 
     return GCR;
 }
 
-console.log("checkS結果：",checkS(checkGrammerTestArray.s,testGCR).successes.S);
+console.log('checkS結果：', checkS(checkGrammerTestArray.s, testGCR).successes.S);
 
-function checkV(targetSentence,GCR,sentenceType)/*＜V＞*/{
+function checkV(targetSentence, GCR, sentenceType) /*＜V＞*/ {}
 
-}
-
-function checkMeisiRoot(targetSentence,GCR)/*＜名詞根＞*/{
-    console.log(1,targetSentence,GCR);
+function checkMeisiRoot(targetSentence, GCR) /*＜名詞根＞*/ {
+    console.log(1, targetSentence, GCR);
     GCR[GCR.flagsNum] = {};
-    GCR[GCR.flagsNum] = {kansi:[],zentiKeiyousi:[],meisi:[],koutiKeiyousi:[],wordsCount:0,targetIndex:0};
-    console.log("フラットなGCR",targetSentence,GCR);
+    GCR[GCR.flagsNum] = { kansi: [], zentiKeiyousi: [], meisi: [], koutiKeiyousi: [], wordsCount: 0, targetIndex: 0 };
+    console.log('フラットなGCR', targetSentence, GCR);
     let truenum = targetSentence.flat(Infinity).length;
-    if (targetSentence.length > GCR[GCR.flagsNum].targetIndex)GCR = checkKansiRoot(targetSentence,GCR);
-    console.log("checkKansiroot通過後GCR",targetSentence,GCR);
-    if (targetSentence.length > GCR[GCR.flagsNum].targetIndex)GCR = checkZentiKeiyousiRoot(targetSentence,GCR);
-    console.log("checkZentiKeiyousiroot通過後GCR",targetSentence,GCR);
-    if (targetSentence.length > GCR[GCR.flagsNum].targetIndex)GCR = checkMeisi(targetSentence,GCR);
-    console.log("checkMeisiroot通過後GCR",targetSentence,GCR);
-    if (targetSentence.length > GCR[GCR.flagsNum].targetIndex)GCR = checkKoutiKeiyousiRoot(targetSentence,GCR);
-    console.log("checkKoutiKeiyousiroot通過後GCR",targetSentence,GCR);
-    if(truenum == GCR[GCR.flagsNum].wordsCount) GCR.successes[GCR.currentType[GCR.currentTypeNum]].push("true");
+    if (targetSentence.length > GCR[GCR.flagsNum].targetIndex) GCR = checkKansiRoot(targetSentence, GCR);
+    console.log('checkKansiroot通過後GCR', targetSentence, GCR);
+    if (targetSentence.length > GCR[GCR.flagsNum].targetIndex) GCR = checkZentiKeiyousiRoot(targetSentence, GCR);
+    console.log('checkZentiKeiyousiroot通過後GCR', targetSentence, GCR);
+    if (targetSentence.length > GCR[GCR.flagsNum].targetIndex) GCR = checkMeisi(targetSentence, GCR);
+    console.log('checkMeisiroot通過後GCR', targetSentence, GCR);
+    if (targetSentence.length > GCR[GCR.flagsNum].targetIndex) GCR = checkKoutiKeiyousiRoot(targetSentence, GCR);
+    console.log('checkKoutiKeiyousiroot通過後GCR', targetSentence, GCR);
+    if (truenum == GCR[GCR.flagsNum].wordsCount) GCR.successes[GCR.currentType[GCR.currentTypeNum]].push('true');
     GCR.temporaryWordsNum = GCR[GCR.flagsNum].wordsCount;
     delete GCR[GCR.flagsNum];
     return GCR;
 }
 
-function checkKansiRoot(targetSentence,GCR){
+function checkKansiRoot(targetSentence, GCR) {
     if (Array.isArray(targetSentence[0])) return GCR;
     if (
         targetSentence.length > 0 &&
@@ -978,7 +975,7 @@ function checkKansiRoot(targetSentence,GCR){
             tango[targetSentence[0]].tags.includes('所有格') ||
             tango[targetSentence[0]].tags.includes('指示代名詞') ||
             tango[targetSentence[0]].tags.includes('数詞'))
-    )   {
+    ) {
         GCR[GCR.flagsNum].wordsCount += 1;
         GCR[GCR.flagsNum].targetIndex += 1;
         GCR[GCR.flagsNum].kansi.push(tango[targetSentence[0]].tags);
@@ -986,29 +983,33 @@ function checkKansiRoot(targetSentence,GCR){
     return GCR;
 }
 
-function checkZentiKeiyousiRoot(targetSentence,GCR){
-    if (Array.isArray(targetSentence[GCR[GCR.flagsNum].targetIndex])){
+function checkZentiKeiyousiRoot(targetSentence, GCR) {
+    if (Array.isArray(targetSentence[GCR[GCR.flagsNum].targetIndex])) {
         let true_M_Num = targetSentence[GCR[GCR.flagsNum].targetIndex].length - 1;
         let keiyousiCount = 0;
-        
-        if(tango[targetSentence[GCR[GCR.flagsNum].targetIndex][keiyousiCount]].tags.includes('過去分詞') || 
-           tango[targetSentence[GCR[GCR.flagsNum].targetIndex][keiyousiCount]].tags.includes('現在分詞')){
+
+        if (
+            tango[targetSentence[GCR[GCR.flagsNum].targetIndex][keiyousiCount]].tags.includes('過去分詞') ||
+            tango[targetSentence[GCR[GCR.flagsNum].targetIndex][keiyousiCount]].tags.includes('現在分詞')
+        ) {
             keiyousiCount += 1;
-           } else {
-            while (keiyousiCount < targetSentence[GCR[GCR.flagsNum].targetIndex].length && 
-                    tango[targetSentence[GCR[GCR.flagsNum].targetIndex][keiyousiCount]].hinsi.includes('形容詞')) {
+        } else {
+            while (
+                keiyousiCount < targetSentence[GCR[GCR.flagsNum].targetIndex].length &&
+                tango[targetSentence[GCR[GCR.flagsNum].targetIndex][keiyousiCount]].hinsi.includes('形容詞')
+            ) {
                 keiyousiCount++;
             }
-           }
+        }
 
-        if(true_M_Num != keiyousiCount){
-            let keyName = GCR.currentType[GCR.currentTypeNum] + "ZentiKeiyousi"
+        if (true_M_Num != keiyousiCount) {
+            let keyName = GCR.currentType[GCR.currentTypeNum] + 'ZentiKeiyousi';
             GCR.errors[keyName] = errorTemplete;
             GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
             GCR.errors[keyName].index = currentIndex;
-            GCR.errors[keyName].type = "名詞修飾ミス！";
-            GCR.errors[keyName].reason = "修飾のやり方が間違っています";
-            GCR.errors[keyName].suggestion = "";
+            GCR.errors[keyName].type = '名詞修飾ミス！';
+            GCR.errors[keyName].reason = '修飾のやり方が間違っています';
+            GCR.errors[keyName].suggestion = '';
         }
         GCR[GCR.flagsNum].wordsCount += true_M_Num;
         GCR[GCR.flagsNum].targetIndex += 1;
@@ -1016,52 +1017,52 @@ function checkZentiKeiyousiRoot(targetSentence,GCR){
     return GCR;
 }
 
-function checkMeisi(targetSentence,GCR){
-    if (Array.isArray(targetSentence[GCR[GCR.flagsNum].targetIndex])){
-        let keyName = GCR.currentType[GCR.currentTypeNum] + "Meisi"
-            GCR.errors[keyName] = errorTemplete;
-            GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
-            GCR.errors[keyName].index = currentIndex;
-            GCR.errors[keyName].type = "名詞ミス！";
-            GCR.errors[keyName].reason = "名詞が存在しません";
-            GCR.errors[keyName].suggestion = "名詞を入れましょう";
+function checkMeisi(targetSentence, GCR) {
+    if (Array.isArray(targetSentence[GCR[GCR.flagsNum].targetIndex])) {
+        let keyName = GCR.currentType[GCR.currentTypeNum] + 'Meisi';
+        GCR.errors[keyName] = errorTemplete;
+        GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
+        GCR.errors[keyName].index = currentIndex;
+        GCR.errors[keyName].type = '名詞ミス！';
+        GCR.errors[keyName].reason = '名詞が存在しません';
+        GCR.errors[keyName].suggestion = '名詞を入れましょう';
     }
-    if(tango[targetSentence[GCR[GCR.flagsNum].targetIndex]].hinsi.includes("名詞")){
+    if (tango[targetSentence[GCR[GCR.flagsNum].targetIndex]].hinsi.includes('名詞')) {
         GCR[GCR.flagsNum].wordsCount += 1;
         GCR[GCR.flagsNum].targetIndex += 1;
     } else {
         GCR[GCR.flagsNum].targetIndex += 1;
-        let keyName = GCR.currentType[GCR.currentTypeNum] + "Meisi"
-            GCR.errors[keyName] = errorTemplete;
-            GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
-            GCR.errors[keyName].index = currentIndex;
-            GCR.errors[keyName].type = "名詞ミス！";
-            GCR.errors[keyName].reason = "名詞が存在しません";
-            GCR.errors[keyName].suggestion = "名詞を入れましょう";
+        let keyName = GCR.currentType[GCR.currentTypeNum] + 'Meisi';
+        GCR.errors[keyName] = errorTemplete;
+        GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
+        GCR.errors[keyName].index = currentIndex;
+        GCR.errors[keyName].type = '名詞ミス！';
+        GCR.errors[keyName].reason = '名詞が存在しません';
+        GCR.errors[keyName].suggestion = '名詞を入れましょう';
     }
     return GCR;
 }
 
-function checkKoutiKeiyousiRoot(targetSentence,GCR){
-    if (Array.isArray(targetSentence[GCR[GCR.flagsNum].targetIndex])){
+function checkKoutiKeiyousiRoot(targetSentence, GCR) {
+    if (Array.isArray(targetSentence[GCR[GCR.flagsNum].targetIndex])) {
         let true_M_Num = targetSentence[GCR[GCR.flagsNum].targetIndex].length - 1;
         let keiyousiCount = 0;
 
-        if(tango[targetSentence[GCR[GCR.flagsNum].targetIndex][keiyousiCount]].hinsi.includes('前置詞')){
+        if (tango[targetSentence[GCR[GCR.flagsNum].targetIndex][keiyousiCount]].hinsi.includes('前置詞')) {
             GCR.flagsNum = GCR.flagsNum + 1;
-            GCR = checkMeisiRoot(targetSentence,GCR);//仮のGCRを引数にする。本当のGCRは渡さない
+            GCR = checkMeisiRoot(targetSentence, GCR); //仮のGCRを引数にする。本当のGCRは渡さない
             keiyousiCount = GCR.temporaryWordsNum + 1;
             GCR.flagsNum = GCR.flagsNum - 1;
         }
 
-        if(true_M_Num != keiyousiCount){
-            let keyName = GCR.currentType[GCR.currentTypeNum] + "KoutiKeiyousi"
+        if (true_M_Num != keiyousiCount) {
+            let keyName = GCR.currentType[GCR.currentTypeNum] + 'KoutiKeiyousi';
             GCR.errors[keyName] = errorTemplete;
             GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
             GCR.errors[keyName].index = currentIndex;
-            GCR.errors[keyName].type = "名詞修飾ミス！";
-            GCR.errors[keyName].reason = "後置修飾のやり方が間違っています";
-            GCR.errors[keyName].suggestion = "";
+            GCR.errors[keyName].type = '名詞修飾ミス！';
+            GCR.errors[keyName].reason = '後置修飾のやり方が間違っています';
+            GCR.errors[keyName].suggestion = '';
         }
         GCR[GCR.flagsNum].wordsCount += true_M_Num;
         GCR[GCR.flagsNum].targetIndex += 1;
@@ -1069,38 +1070,38 @@ function checkKoutiKeiyousiRoot(targetSentence,GCR){
     return GCR;
 }
 
-function checkDaimeisi(targetSentence,GCR)/*＜代名詞根＞*/{
+function checkDaimeisi(targetSentence, GCR) /*＜代名詞根＞*/ {
     let DaimeisiTypeArray;
-    let typeText = "";
-    switch (GCR.currentType[GCR.currentTypeNum]){
-        case "S":
+    let typeText = '';
+    switch (GCR.currentType[GCR.currentTypeNum]) {
+        case 'S':
             DaimeisiTypeArray = ['主格', '指示代名詞', '不定代名詞', '疑問代名詞'];
-            typeText = "主語";
+            typeText = '主語';
             break;
-        case "C":
+        case 'C':
             DaimeisiTypeArray = ['主格', '所有代名詞', '再帰代名詞', '指示代名詞', '不定代名詞', '疑問代名詞'];
-            typeText = "補語";
+            typeText = '補語';
             break;
-        case "O":
+        case 'O':
             DaimeisiTypeArray = ['目的格', '再帰代名詞', '指示代名詞', '不定代名詞', '疑問代名詞'];
-            typeText = "目的語";
+            typeText = '目的語';
             break;
         default:
             DaimeisiTypeArray = [];
             break;
-        }
-    if (targetSentence.length = 1 && tango[targetSentence[0]].hinsi.includes('代名詞')) {
-        if(DaimeisiTypeArray.some((value) => tango[targetSentence].tags.includes(value))){
-            GCR.successes[GCR.currentType[GCR.currentTypeNum]].push("true");
+    }
+    if ((targetSentence.length = 1 && tango[targetSentence[0]].hinsi.includes('代名詞'))) {
+        if (DaimeisiTypeArray.some((value) => tango[targetSentence].tags.includes(value))) {
+            GCR.successes[GCR.currentType[GCR.currentTypeNum]].push('true');
         } else {
-            let keyName = GCR.currentType[GCR.currentTypeNum] + "Daimeisi"
+            let keyName = GCR.currentType[GCR.currentTypeNum] + 'Daimeisi';
             GCR.errors[keyName] = errorTemplete;
             GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
             GCR.errors[keyName].index = GCR.currentIndex;
-            GCR.errors[keyName].type = "代名詞ミス！";
-            GCR.errors[keyName].reason = typeText + "に使えない代名詞が入っています";
-            GCR.errors[keyName].suggestion = "別の代名詞に変えてみましょう";
-            console.log("代名詞エラー：",GCR.errors);
+            GCR.errors[keyName].type = '代名詞ミス！';
+            GCR.errors[keyName].reason = typeText + 'に使えない代名詞が入っています';
+            GCR.errors[keyName].suggestion = '別の代名詞に変えてみましょう';
+            console.log('代名詞エラー：', GCR.errors);
         }
     }
     return GCR;
