@@ -21,17 +21,19 @@ export class playManager {
         this.wss.onMessage('entryRoom', async (ws, data) => {
             const parentName = data.parentName;
             const username = data.username;
-            const parentId = usersManager.nameToId(parentName);
+            const parentId = await usersManager.nameToId(parentName);
             const ratio = await roomsRepository.getRow('ratio', 'parent_id', parentId);
             const roomId = await roomsRepository.getRoomId(parentId);
-            const userId = usersManager.nameToId(username);
+            const userId = await usersManager.nameToId(username);
+            const roomMembersData = await roomMemberRepository.getRoomMembers(roomId);
 
             // 割合送信
             ws.send(
                 JSON.stringify({
-                    type: 'getRatio',
+                    type: 'getRoomMemberData',
                     payload: {
                         ratio: JSON.parse(ratio),
+                        roomMembers: roomMembersData,
                     },
                 })
             );
@@ -40,7 +42,10 @@ export class playManager {
             this.playclientsmanager.entryRoom(roomId, username);
 
             // room_member に追加
-            roomMemberRepository.addRoomMember(roomId, userId);
+            await roomMemberRepository.addRoomMember(roomId, userId);
+
+            const roomMemberCounts = await roomMemberRepository.roomMemberCounts(roomId);
+            this.roommanager.noticeEntryRoom(parentName, roomMemberCounts);
         });
 
         this.wss.onMessage('outRoom', async (ws, data) => {

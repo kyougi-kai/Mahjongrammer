@@ -40,13 +40,6 @@ export class roomManager {
                 client.send(stringSendData);
             });
         });
-
-        this.wss.onMessage('entryRoom', async (ws, data) => {
-            const parentId = usersManager.nameToId(parentName);
-            const roomId = await roomsRepository.getRoomId(parentId);
-            const roomMemberCounts = await roomMemberRepository.roomMemberCounts(roomId);
-            this.noticeEntryRoom(data.parentName, roomMemberCounts);
-        });
     }
 
     noticeEntryRoom(roomName, roomMemberCounts) {
