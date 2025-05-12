@@ -1,6 +1,12 @@
 export class playerManager{
     constructor(wss){
         this.wss = wss;
+        this.playerMembers = [];
+        const pageName = location.href;
+        console.log(pageName);
+        const parentName = pageName.split('/')[4];
+        console.log(parentName);
+        this.parentName = this.PageName.substr()
         /* this.wss.send(送りたいデータ);
         送るデータの形式
         const sendData = {
@@ -22,8 +28,7 @@ export class playerManager{
                 username : 'ユーザーネーム'
             }
         */
-        this.wss.onMessage('entryRoom', (data) => {
-
+        this.wss?.onMessage('entryRoom', (data) => {
         });
 
         /*
@@ -31,8 +36,8 @@ export class playerManager{
                 username : 'ユーザーネーム'
             }
         */
-        this.wss.onMessage('outRoom', (data) => {
-            
+        this.wss?.onMessage('outRoom', (data) => {
+
         });
 
         /*
@@ -40,7 +45,7 @@ export class playerManager{
                 roomMembers:['1人目の名前', '二人目の名前', '三']
             }
         */
-        this.wss.onMessage('getRoomMemberData', (data) => {
+        this.wss?.onMessage('getRoomMemberData', (data) => {
 
         });
     }
