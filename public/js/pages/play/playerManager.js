@@ -3,10 +3,16 @@ export class playerManager{
         this.wss = wss;
         this.playerMembers = [];
         const pageName = location.href;
-        console.log(pageName);
         const parentName = pageName.split('/')[4];
-        console.log(parentName);
-        this.parentName = this.PageName.substr()
+        this.playerMembers.push(parentName);
+        console.log(this.playerMembers);
+        const sendparent ={
+            type:'entryRoom',
+            payload:{
+                parentName:this.playerMembers[0]
+            }
+        }
+        console.log(sendparent);
         /* this.wss.send(送りたいデータ);
         送るデータの形式
         const sendData = {
