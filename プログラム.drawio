@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36" version="27.0.1">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36" version="27.0.3">
   <diagram name="ページ1" id="gwst1a2DxKdk7zVmhHp6">
     <mxGraphModel dx="2066" dy="1145" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="4681" math="0" shadow="0">
       <root>
@@ -124,8 +124,29 @@
         <mxCell id="VSUEKThK-QnD745A-PjU-40" value="&lt;span style=&quot;font-size: 24px;&quot;&gt;cookieManager.js&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="230" y="750" width="340" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="9IOTnyxZ-YVvT_nCl2b5-1" value="&lt;font style=&quot;font-size: 22px;&quot;&gt;・routeManager → URLを受け取って特定のページを返す処理&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;・serverManager → サーバーの起動とかセットアップ&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;・connectionManager → WebSocket(※1)を管理&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;・roomManager → roomっていうページを管理&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;・playManager →&amp;nbsp; playっていうページを管理&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;・roomClientsManager → roomページに入ったクライアントを管理&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;・playClientsManager 同じ&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;・dbClients → データベースに接続&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;・baseRepository → テーブルを管理するクラスの型&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;・usersRepository, roomRepository, roomMemberRepository → baseRepositoryを使ってそれぞれ一つのテーブルを管理&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 22px;&quot;&gt;※1 リアルタイム通信を行うAPI&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="9IOTnyxZ-YVvT_nCl2b5-1" value="&lt;font style=&quot;font-size: 22px;&quot;&gt;・routeManager → URLを受け取って特定のページを返す処理&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;・serverManager → サーバーの起動とかセットアップ&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;・connectionManager → WebSocket(※1)を管理&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;・roomManager → roomっていうページを管理&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;・playManager →&amp;nbsp; playっていうページを管理&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;・roomClientsManager → roomページに入ったクライアントを管理&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;・playClientsManager 同じ&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;・dbClients → データベースに接続&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;・baseRepository → テーブルを管理するクラスの型&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;・usersRepository, roomRepository, roomMemberRepository → baseRepositoryを使ってそれぞれ一つのテーブルを管理&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 22px;&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-size: 22px;&quot;&gt;※1 リアルタイム通信を行うAPI&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="100" y="890" width="1720" height="530" as="geometry" />
+        </mxCell>
+        <mxCell id="s57Ek5u3isT1F0ClFr8g-1" value="&lt;font style=&quot;font-size: 27px;&quot;&gt;GameManager.js&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="1360" width="770" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="s57Ek5u3isT1F0ClFr8g-2" value="&lt;font style=&quot;font-size: 27px;&quot;&gt;playerManager.js&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="140" y="1490" width="770" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="s57Ek5u3isT1F0ClFr8g-3" value="&lt;font style=&quot;font-size: 27px;&quot;&gt;blockManager.js&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1190" y="1480" width="770" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="s57Ek5u3isT1F0ClFr8g-4" value="&lt;font style=&quot;font-size: 27px;&quot;&gt;hai.js&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1190" y="1610" width="390" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="s57Ek5u3isT1F0ClFr8g-5" value="&lt;font style=&quot;font-size: 27px;&quot;&gt;grammer.js&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1680" y="1610" width="390" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="s57Ek5u3isT1F0ClFr8g-6" value="&lt;font style=&quot;font-size: 27px;&quot;&gt;flow.js&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="140" y="1620" width="770" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="s57Ek5u3isT1F0ClFr8g-7" value="&lt;font style=&quot;font-size: 27px;&quot;&gt;connectionManager.js&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="150" y="1710" width="770" height="50" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

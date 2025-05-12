@@ -19,10 +19,12 @@ window.onload = () => {
 
     // 部屋のデータを取得
     connectionmanager.onMessage('getRoomData', (data) => {
-        console.log(typeof data);
-        if(data == Object){
-            rooms.push(mono.username);
-            createNewRoom(mono.username, mono.room_member_counts);
+        if(data.length == 0)return;
+        console.log('message : getRoomData');
+        console.log(data);
+        if(typeof data == 'object'){
+            rooms.push(data.username);
+            createNewRoom(data.username, data.room_member_counts);
         }
         else{
             data.forEach((mono) => {
@@ -75,7 +77,7 @@ window.onload = () => {
             },
         });
         connectionmanager.send(sendData);
-        // window.location.href = `/play/${userNameText.textContent.replace(/\s+/g, '')}`;
+        window.location.href = `/play/${userNameText.textContent.replace(/\s+/g, '')}`;
     });
 };
 
