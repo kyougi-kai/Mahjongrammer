@@ -42,11 +42,12 @@ export class connectionManager {
      * @param {*} payload -送るデータ-
      */
     _doHandlers(handlers, data) {
-        handlers.forEach((handler) => handler(data));
+        for (let i = 0; i < handlers.length; i++) {
+            handlers[i](data);
+        }
     }
 
     send(data) {
-        // this.ws.send(JSON.stringify(data))
         this.ws.send(data);
     }
 }
