@@ -1,3 +1,4 @@
+import { roomManager } from '../pages/roomManager.js';
 import { cookieManager } from '../utils/cookieManager.js';
 import { serverManager } from './serverManager.js';
 import { usersManager } from './usersManager.js';
@@ -32,21 +33,20 @@ export class routeManager {
             }
         });
 
-        /*
-
         this.serverManager.onGet('/play/:parentName', async (req, res) => {
             try {
-                const parentId = await nameToId(req.params.parentName);
-                if ((await checkValue('rooms', 'parent_id', parentId)) == 0) res.redirect('/room');
+                await usersManager.isLogin(req, res);
+                const parentId = await usersManager.nameToId(req.params.parentName);
+                if (await !roomManager.isRoomByParentId(parentId)) res.redirect('/room');
 
-                const username = await idToName(req.cookies.userId);
+                const username = await usersManager.idToName(req.cookies.userId);
                 res.render('pages/play', { username: username });
             } catch (err) {
                 console.log(`Error :${err}`);
                 res.redirect('/room');
             }
         });
-        */
+        
         this.serverManager.onGet('/deleteUser', async (req, res) => {
             await usersManager.isLogin(req, res);
 

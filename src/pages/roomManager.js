@@ -2,6 +2,7 @@ import { connectionManager } from '../ws/connectionManager.js';
 import { roomClientsManager } from '../ws/roomClientsManager.js';
 import { roomsRepository } from '../db/repositories/roomsRepository.js';
 import { usersManager } from '../server/usersManager.js';
+const roomsrepository = new roomsRepository();
 
 export class roomManager {
     /**
@@ -11,23 +12,22 @@ export class roomManager {
     constructor(wss) {
         this.wss = wss;
         this.roomclientsmanager = new roomClientsManager(this.wss);
-        this.roomsrepository = new roomsRepository();
 
         // ルームテーブル初期化
-        this.roomsrepository.initializeTable();
+        roomsrepository.initializeTable();
 
         this._setup();
     }
 
     _setup() {
         this.wss.onGet('/room', async (ws) => {
-            const roomData = await this.roomsrepository.getRoomMemberCountData();
+            const roomData = await roomsrepository.getRoomMemberCountData();
             ws.send(JSON.stringify({ type: 'getRoomData', payload: roomData }));
         });
 
         this.wss.onMessage('createRoom', async (ws, data) => {
             const userId = await usersManager.nameToId(data.roomName);
-            await this.roomsrepository.createRoom(userId, data.ratio);
+            await roomsrepository.createRoom(userId, data.ratio);
             this.roomclientsmanager.roomC.values().forEach((client) => {
                 const sendData = {
                     type: 'getRoomData',
@@ -65,5 +65,9 @@ export class roomManager {
 
     noticeOutRoom(roomName, roomMemberCounts) {
         this.roomclientsmanager.noticeOutRoom(roomName, roomMemberCounts);
+    }
+
+    static async isRoomByParentId(parentId) {
+        return (await roomsrepository.isNull('parent_id', parentId)) == false;
     }
 }
