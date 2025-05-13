@@ -1,4 +1,5 @@
 // import { connectionManager } from "../../utils/connectionManager.js";
+import { functions } from "/js/utils/functions.js";
 
 export class playerManager{
 
@@ -13,8 +14,6 @@ export class playerManager{
         this.parentName = pageName.split('/')[4];
         this.playerMembers.push(this.parentName);
         console.log(this.playerMembers);
-        
-        console.log(sendparent);
         /* this.wss.send(送りたいデータ);
         送るデータの形式
         const sendData = {
@@ -30,17 +29,14 @@ export class playerManager{
         this._setup();
     }
 
-    get parentName(){
+    get parentname(){
         return this.parentName;
-    }
-
-    set parentName(value){
-        this.parentName = value;
     }
 
     _setup(){
         this.wss.onOpen(() => {
-            this.playername = document.getElementById('usernameText');
+            this.playername = document.getElementById('usernameText').innerHTML;
+            this.playername = functions.sN(this.playername);
             const sendparent ={
                 type:'entryRoom',
                 payload:{
@@ -48,6 +44,7 @@ export class playerManager{
                     username:this.playername,
                 }
             }
+            this.wss.send(sendparent);
         });
 
         /*

@@ -12,7 +12,7 @@ export class gameManager {
     }
 
     getConnectUrl() {
-        return `${this.protocol}://${window.location.host}/play/${this.playermanager.parentName}`;
+        return `${this.protocol}://${window.location.host}/play/${this.playermanager.parentname}`;
     }
 }
 
