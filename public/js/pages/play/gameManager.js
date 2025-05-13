@@ -4,13 +4,11 @@ import { playerManager } from '/js/pages/play/playerManager.js';
 export class gameManager {
     constructor() {
         this.protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
-        const connectUrl = this.getConnectUrl();
-        this.connectionmanager = new connectionManager(connectUrl);
-
-        /**
-         *  @param {playerManager} playermanager
-         */
+        this.connectionmanager = new connectionManager();
         this.playermanager = new playerManager(this.connectionmanager);
+
+        const connectUrl = this.getConnectUrl();
+        this.connectionmanager.connect(connectUrl);
     }
 
     getConnectUrl() {
