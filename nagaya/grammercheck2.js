@@ -2,42 +2,42 @@ let tango = {
     apple: {
         //名詞
         hinsi: ['名詞'],
-        tags: ['可算名詞', '単数型'],
+        tags: ['可算名詞', '単数形'],
         katuyou: ['apples'],
     },
     apples: {
         hinsi: ['名詞'],
-        tags: ['可算名詞', '複数型'],
+        tags: ['可算名詞', '複数形'],
         katuyou: ['apples'],
     },
     desk: {
         hinsi: ['名詞'],
-        tags: ['可算名詞', '単数型'],
+        tags: ['可算名詞', '単数形'],
         katuyou: ['desks'],
     },
     desks: {
         hinsi: ['名詞'],
-        tags: ['可算名詞', '複数型'],
+        tags: ['可算名詞', '複数形'],
         katuyou: ['desk'],
     },
     cat: {
         hinsi: ['名詞'],
-        tags: ['可算名詞', '単数型'],
+        tags: ['可算名詞', '単数形'],
         katuyou: ['cats'],
     },
     cats: {
         hinsi: ['名詞'],
-        tags: ['可算名詞', '複数型'],
+        tags: ['可算名詞', '複数形'],
         katuyou: ['cat'],
     },
     book: {
         hinsi: ['名詞'],
-        tags: ['可算名詞', '単数型'],
+        tags: ['可算名詞', '単数形'],
         katuyou: ['books'],
     },
     books: {
         hinsi: ['名詞'],
-        tags: ['可算名詞', '複数型'],
+        tags: ['可算名詞', '複数形'],
         katuyou: ['book'],
     },
     water: {
@@ -941,7 +941,7 @@ function checkS(targetSentence, GCR) /*＜S＞*/ {
 
 let checkGrammerTestArray = {
     sentence: 1,
-    s: ['an', ['happy'], 'apple', ['in', 'the', 'box']],
+    s: ['an', ['happy'], 'apple', ['in', 'the']],
     v: ['run'],
 };
 
@@ -958,7 +958,8 @@ function checkMeisiRoot(targetSentence, GCR) /*＜名詞根＞*/ {
     if (targetSentence.length > GCR[GCR.flagsNum].targetIndex) GCR = checkMeisi(targetSentence, GCR);
     if (targetSentence.length > GCR[GCR.flagsNum].targetIndex) GCR = checkKoutiKeiyousiRoot(targetSentence, GCR);
     if (truenum == GCR[GCR.flagsNum].wordsCount) GCR.successes[GCR.currentType[GCR.currentTypeNum]].push('true');
-    //三単現s、単数形/複数形の処理
+    console.log('checkMeisiRoot通過後GCR', targetSentence, GCR);
+    GCR = checkMeisiGrammerMatters(targetSentence, GCR); //三単現s、単数形/複数形の処理を入れる
     GCR.temporaryWordsNum = GCR[GCR.flagsNum].wordsCount;
     delete GCR[GCR.flagsNum];
     return GCR;
@@ -1011,7 +1012,7 @@ function checkZentiKeiyousiRoot(targetSentence, GCR) {
             GCR.errors[keyName].reason = '修飾のやり方が間違っています';
             GCR.errors[keyName].suggestion = '';
         }
-        GCR[GCR.flagsNum].wordsCount += true_M_Num;
+        GCR[GCR.flagsNum].wordsCount += keiyousiCount;
         GCR[GCR.flagsNum].targetIndex += 1;
     }
     console.log('checkZentiKeiyousiroot通過後GCR', targetSentence, GCR);
@@ -1054,14 +1055,16 @@ function checkKoutiKeiyousiRoot(targetSentence, GCR) {
         console.log(targetSentence[GCR[GCR.flagsNum].targetIndex]);
         //ここから　if文の中身がうまくうごかない
         if (tango[targetSentence[GCR[GCR.flagsNum].targetIndex][keiyousiCount]].hinsi.includes('前置詞')) {
-            console.log(GCR.flagsNum);
-            console.log(targetSentence, GCR[GCR.flagsNum].targetIndex);
-            console.log(targetSentence[GCR[GCR.flagsNum].targetIndex]);
-            let temporaryTargetSentence = targetSentence[GCR[GCR.flagsNum].targetIndex];
+            // console.log(GCR.flagsNum);
+            // console.log(targetSentence, GCR[GCR.flagsNum].targetIndex);
+            // console.log(targetSentence[GCR[GCR.flagsNum].targetIndex]);
+            let temporaryTargetSentence = JSON.parse(JSON.stringify(targetSentence[GCR[GCR.flagsNum].targetIndex])); // ディープコピー
             GCR.flagsNum = GCR.flagsNum + 1;
             temporaryTargetSentence.shift();
-            let temporaryGCR = checkMeisiRoot(temporaryTargetSentence, GCR); //仮のGCRを引数にする。本当のGCRは渡さない←何で？いみわからん
-            keiyousiCount = temporaryGCR.temporaryWordsNum + 1;
+            let temporaryGCR = JSON.parse(JSON.stringify(GCR)); // GCRをディープコピー
+            temporaryGCR = checkMeisiRoot(temporaryTargetSentence, temporaryGCR); //仮のGCRを引数にする。本当のGCRは渡さない←何で？いみわからん←trueが2個返ってくるから
+            if (temporaryGCR.temporaryWordsNum > 0) keiyousiCount = temporaryGCR.temporaryWordsNum + 1; //名詞がある場合
+            GCR.errors = temporaryGCR.errors;
             GCR.flagsNum = GCR.flagsNum - 1;
         }
 
@@ -1074,7 +1077,7 @@ function checkKoutiKeiyousiRoot(targetSentence, GCR) {
             GCR.errors[keyName].reason = '後置修飾のやり方が間違っています';
             GCR.errors[keyName].suggestion = '';
         }
-        GCR[GCR.flagsNum].wordsCount += true_M_Num;
+        GCR[GCR.flagsNum].wordsCount += keiyousiCount;
         GCR[GCR.flagsNum].targetIndex += 1;
     }
     console.log('checkKoutiKeiyousiroot通過後GCR', targetSentence, GCR);
@@ -1117,3 +1120,5 @@ function checkDaimeisi(targetSentence, GCR) /*＜代名詞根＞*/ {
     }
     return GCR;
 }
+
+function checkMeisiGrammerMatters(targetSentence, GCR) {}
