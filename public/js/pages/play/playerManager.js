@@ -1,4 +1,11 @@
+import { connectionManager } from "../../utils/connectionManager";
+
 export class playerManager{
+
+    /**
+     * 
+     * @param {connectionManager} wss 
+     */
     constructor(wss){
         this.wss = wss;
         this.playerMembers = [];
@@ -6,12 +13,7 @@ export class playerManager{
         const parentName = pageName.split('/')[4];
         this.playerMembers.push(parentName);
         console.log(this.playerMembers);
-        const sendparent ={
-            type:'entryRoom',
-            payload:{
-                parentName:this.playerMembers[0]
-            }
-        }
+        
         console.log(sendparent);
         /* this.wss.send(送りたいデータ);
         送るデータの形式
@@ -29,12 +31,23 @@ export class playerManager{
     }
 
     _setup(){
+        this.wss.onOpen(() => {
+const sendparent ={
+            type:'entryRoom',
+            payload:{
+                parentName:this.playerMembers[0],
+
+            }
+        }
+        });
+
         /*
             data = {
                 username : 'ユーザーネーム'
             }
         */
         this.wss?.onMessage('entryRoom', (data) => {
+            
         });
 
         /*
