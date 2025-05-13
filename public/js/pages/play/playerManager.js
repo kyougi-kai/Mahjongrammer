@@ -10,8 +10,8 @@ export class playerManager{
         this.wss = wss;
         this.playerMembers = [];
         const pageName = location.href;
-        const parentName = pageName.split('/')[4];
-        this.playerMembers.push(parentName);
+        this.parentName = pageName.split('/')[4];
+        this.playerMembers.push(this.parentName);
         console.log(this.playerMembers);
         
         console.log(sendparent);
@@ -30,15 +30,18 @@ export class playerManager{
         this._setup();
     }
 
+    get parentName(){
+        return this.parentName;
+    }
+
     _setup(){
         this.wss.onOpen(() => {
-const sendparent ={
-            type:'entryRoom',
-            payload:{
-                parentName:this.playerMembers[0],
-
+            const sendparent ={
+                type:'entryRoom',
+                payload:{
+                    parentName:this.playerMembers[0],
+                }
             }
-        }
         });
 
         /*
