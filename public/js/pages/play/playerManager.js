@@ -36,10 +36,12 @@ export class playerManager{
 
     _setup(){
         this.wss.onOpen(() => {
+            this.playername = document.getElementById('usernameText');
             const sendparent ={
                 type:'entryRoom',
                 payload:{
                     parentName:this.playerMembers[0],
+                    username:this.playername,
                 }
             }
         });
