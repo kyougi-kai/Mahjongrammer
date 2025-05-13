@@ -5,11 +5,11 @@ export class usersManager {
     constructor() {}
 
     static async isUserById(userId) {
-        return (await usersrepository.isNull('user_id', userId)) == false;
+        return await !usersrepository.isNull('user_id', userId);
     }
 
     static async isUserByUsername(username) {
-        return (await usersrepository.isNull('user_id', username)) == false;
+        return await !usersrepository.isNull('user_id', username);
     }
 
     static async addUser(username, password) {
