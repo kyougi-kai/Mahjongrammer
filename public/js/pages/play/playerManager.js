@@ -34,6 +34,10 @@ export class playerManager{
         return this.parentName;
     }
 
+    set parentName(value){
+        this.parentName = value;
+    }
+
     _setup(){
         this.wss.onOpen(() => {
             this.playername = document.getElementById('usernameText');
