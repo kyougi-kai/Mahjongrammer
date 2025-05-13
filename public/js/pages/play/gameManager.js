@@ -6,11 +6,15 @@ export class gameManager {
         this.protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
         const connectUrl = this.getConnectUrl();
         this.connectionmanager = new connectionManager(connectUrl);
+
+        /**
+         *  @param {playerManager} playermanager
+         */
         this.playermanager = new playerManager(this.connectionmanager);
     }
 
     getConnectUrl() {
-        return `${this.protocol}://${window.location.host}/play/${this.parentName}`;
+        return `${this.protocol}://${window.location.host}/play/${this.playermanager.parentName}`;
     }
 }
 
