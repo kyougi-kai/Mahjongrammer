@@ -27,10 +27,24 @@ export class playerManager{
         */
 
         this._setup();
+
+        document.onkeydown = (e) => {
+            if(e.key == 'p'){
+                const testData = {
+                    username : 'shiro'
+                }
+                this.test_entryRoom(testData);
+            }
+        }
     }
 
     get parentname(){
         return this.parentName;
+    }
+
+    test_entryRoom(data){
+        this.playerMembers[this.playerMembers.length] = data.username;
+        console.log(this.playerMembers);
     }
 
     _setup(){
@@ -54,7 +68,7 @@ export class playerManager{
             }
         */
         this.wss?.onMessage('entryRoom', (data) => {
-            
+            this.playerMembers[this.playerMembers.length] = this.data.username;
         });
 
         /*
