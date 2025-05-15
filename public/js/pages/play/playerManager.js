@@ -35,6 +35,13 @@ export class playerManager{
                 }
                 this.test_entryRoom(testData);
             }
+
+            if(e.key == 'q'){
+                const testData2 = {
+                    username : 'shiro'
+                }
+                this.test_outRoom(testData2);
+            }
         }
     }
 
@@ -44,6 +51,18 @@ export class playerManager{
 
     test_entryRoom(data){
         this.playerMembers[this.playerMembers.length] = data.username;
+        console.log(this.playerMembers);
+    }
+    test_outRoom(data){
+        let i = 0;
+        let j = 0;
+        while(i = 1, i < this.playerMembers.length,i++){
+            if(this.playerMembers[i] == data)return;
+        }
+        this.playerMembers[i] = "";
+        while(j = i, i < this.playerMembers.length,j++){
+            this.playerMembers[j] = this.playerMembers[j+1];
+        }
         console.log(this.playerMembers);
     }
 
@@ -68,7 +87,7 @@ export class playerManager{
             }
         */
         this.wss?.onMessage('entryRoom', (data) => {
-            this.playerMembers[this.playerMembers.length] = this.data.username;
+            this.playerMembers[this.playerMembers.length] = data.username;
         });
 
         /*
@@ -77,7 +96,12 @@ export class playerManager{
             }
         */
         this.wss?.onMessage('outRoom', (data) => {
-
+            while(i = 1, i < this.playerMembers.length && this.playerMembers[i] != data,i++){}
+            this.playerMembers[i] = "";
+            while(j = i, i < this.playerMembers.length,j++){
+                this.playerMembers[j] = this.playerMembers[j+1];
+            }
+            console.log(this.playerMembers);
         });
 
         /*
