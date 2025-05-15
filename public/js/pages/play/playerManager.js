@@ -45,6 +45,7 @@ export class playerManager{
                 }
             }
             this.wss.send(sendparent);
+            console.log(sendparent);
         });
 
         /*
