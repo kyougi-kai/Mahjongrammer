@@ -941,13 +941,29 @@ function checkS(targetSentence, GCR) /*＜S＞*/ {
 
 let checkGrammerTestArray = {
     sentence: 1,
-    s: ['an', ['happy'], 'apple', ['in', 'the']],
+    s: ['an', ['happy'], 'apple', ['in', 'the', 'apple']],
     v: ['run'],
 };
 
 console.log('checkS結果：', checkS(checkGrammerTestArray.s, testGCR).successes.S);
 
-function checkV(targetSentence, GCR, sentenceType) /*＜V＞*/ {}
+function checkC(targetSentence, GCR) /*＜C＞*/ {
+    if (targetSentence.length == 1 && tango[targetSentence[0]].hinsi.includes('代名詞')) {
+        GCR = checkDaimeisi(targetSentence, GCR);
+    } else {
+        GCR = checkMeisiRoot(targetSentence, GCR);
+    }
+    return GCR;
+}
+
+function checkO(targetSentence, GCR) /*＜O＞*/ {
+    if (targetSentence.length == 1 && tango[targetSentence[0]].hinsi.includes('代名詞')) {
+        GCR = checkDaimeisi(targetSentence, GCR);
+    } else {
+        GCR = checkMeisiRoot(targetSentence, GCR);
+    }
+    return GCR;
+}
 
 function checkMeisiRoot(targetSentence, GCR) /*＜名詞根＞*/ {
     GCR[GCR.flagsNum] = { kansi: [], zentiKeiyousi: [], meisi: [], koutiKeiyousi: [], wordsCount: 0, targetIndex: 0 };
@@ -959,7 +975,7 @@ function checkMeisiRoot(targetSentence, GCR) /*＜名詞根＞*/ {
     if (targetSentence.length > GCR[GCR.flagsNum].targetIndex) GCR = checkKoutiKeiyousiRoot(targetSentence, GCR);
     if (truenum == GCR[GCR.flagsNum].wordsCount) GCR.successes[GCR.currentType[GCR.currentTypeNum]].push('true');
     console.log('checkMeisiRoot通過後GCR', targetSentence, GCR);
-    GCR = checkMeisiGrammerMatters(targetSentence, GCR); //三単現s、単数形/複数形の処理を入れる
+    // GCR = checkMeisiGrammerMatters(targetSentence, GCR); //三単現s、単数形/複数形の処理を入れる
     GCR.temporaryWordsNum = GCR[GCR.flagsNum].wordsCount;
     delete GCR[GCR.flagsNum];
     return GCR;
@@ -1032,6 +1048,7 @@ function checkMeisi(targetSentence, GCR) {
     if (tango[targetSentence[GCR[GCR.flagsNum].targetIndex]].hinsi.includes('名詞')) {
         GCR[GCR.flagsNum].wordsCount += 1;
         GCR[GCR.flagsNum].targetIndex += 1;
+        GCR[GCR.flagsNum].meisi.push(tango[targetSentence[0]].tags);
     } else {
         GCR[GCR.flagsNum].targetIndex += 1;
         let keyName = GCR.currentType[GCR.currentTypeNum] + 'Meisi';
@@ -1121,4 +1138,13 @@ function checkDaimeisi(targetSentence, GCR) /*＜代名詞根＞*/ {
     return GCR;
 }
 
-function checkMeisiGrammerMatters(targetSentence, GCR) {}
+function checkMeisiGrammerMatters(targetSentence, GCR) {
+    if (GCR[GCR.flagsNum].kansi.includes('false') && GCR[GCR.flagsNum].meisi.includes('false')) {
+    }
+}
+
+function checkV(targetSentence, GCR, sentenceType) /*＜V＞*/ {
+    GCR['allOfVTags'] = { jodousi: [], zentiHukusi: [], dousi: [], koutiHukusi: [], wordsCount: 0, targetIndex: 0 };
+    delete GCR['allOfVTags'];
+    return GCR;
+}
