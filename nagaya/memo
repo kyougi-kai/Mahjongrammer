@@ -65,10 +65,16 @@ GCR.flags.wordsCount += true_M_Num;
 
 
 checkMeisiGrammerMatters{
-    単数/複数や三単現Sの判定を行う
+    単数/複数の判定
+    三単現Sの判定を行う
     冠詞オンリーでもとおってしまう→冠詞オンリーでは通らないようにする
     冠詞があれば、名詞は単数/複数の判定を行う
     冠詞がなければ、名詞は単数/複数の判定を行う
 }
+
+checkVテストケース
+
+["can","run"]...true
+["can",[""],""]
 
 次回・・・動詞の登録、checkMeisiGrammerMattersの設計、プログラミング
