@@ -17,36 +17,38 @@ export class playManager {
         this._setup();
     }
 
+    async onMessageEntryRoom(ws, data) {
+        const parentName = data.parentName;
+        const username = data.username;
+        const parentId = await usersManager.nameToId(parentName);
+        const ratio = await roomsRepository.getRow('ratio', 'parent_id', parentId);
+        const roomId = await roomsRepository.getRoomId(parentId);
+        const userId = await usersManager.nameToId(username);
+        const roomMembersData = await roomMemberRepository.getRoomMembers(roomId);
+
+        // 割合送信
+        ws.send(
+            JSON.stringify({
+                type: 'getRoomMemberData',
+                payload: {
+                    ratio: JSON.parse(ratio),
+                    roomMembers: roomMembersData,
+                },
+            })
+        );
+
+        // playClientsに保存
+        this.playclientsmanager.entryRoom(roomId, username);
+
+        // room_member に追加
+        await roomMemberRepository.addRoomMember(roomId, userId);
+
+        const roomMemberCounts = await roomMemberRepository.roomMemberCounts(roomId);
+        this.roommanager.noticeEntryRoom(parentName, roomMemberCounts);
+    }
+
     _setup() {
-        this.wss.onMessage('entryRoom', async (ws, data) => {
-            const parentName = data.parentName;
-            const username = data.username;
-            const parentId = await usersManager.nameToId(parentName);
-            const ratio = await roomsRepository.getRow('ratio', 'parent_id', parentId);
-            const roomId = await roomsRepository.getRoomId(parentId);
-            const userId = await usersManager.nameToId(username);
-            const roomMembersData = await roomMemberRepository.getRoomMembers(roomId);
-
-            // 割合送信
-            ws.send(
-                JSON.stringify({
-                    type: 'getRoomMemberData',
-                    payload: {
-                        ratio: JSON.parse(ratio),
-                        roomMembers: roomMembersData,
-                    },
-                })
-            );
-
-            // playClientsに保存
-            this.playclientsmanager.entryRoom(roomId, username);
-
-            // room_member に追加
-            await roomMemberRepository.addRoomMember(roomId, userId);
-
-            const roomMemberCounts = await roomMemberRepository.roomMemberCounts(roomId);
-            this.roommanager.noticeEntryRoom(parentName, roomMemberCounts);
-        });
+        this.wss.onMessage('entryRoom', async (ws, data) => this.onMessageEntryRoom(ws, data), 1);
 
         this.wss.onMessage('outRoom', async (ws, data) => {
             const username = data.username;

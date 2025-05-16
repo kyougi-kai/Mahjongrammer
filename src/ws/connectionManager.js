@@ -22,16 +22,19 @@ export class connectionManager {
             const url = req.url;
             // urlに対応した処理を実行
             this._doHanlders(this.getHandlers.get(url), ws, null);
+
             ws.on('close', () => {
                 this._doHanlders(this.closeHandlers.get(url), ws, null);
             });
 
             ws.on('message', (data) => {
-                const  parseData = JSON.parse(data);
+                const parseData = JSON.parse(data);
                 this._doHanlders(this.messageHandlers.get(parseData['type']), ws, parseData['payload']);
             });
         });
     }
+
+    // ここでメッセージが遅れたことを送る
 
     /**
      *
@@ -56,16 +59,33 @@ export class connectionManager {
      * @param {string} type -受け取るメッセージタイプ-
      * @param {Function} handler -行う処理-
      */
-    onMessage(type, handler) {
-        this.messageHandlers.get(type) === undefined ? this.messageHandlers.set(type, [handler]) : this.messageHandlers.get(type).push(handler);
+    onMessage(type, handler, priority = 0) {
+        if (this.messageHandlers.get(type) === undefined) {
+            const setData = {};
+            setData[priority] = [handler];
+            this.messageHandlers.set(type, setData);
+        } else {
+            this.messageHandlers.get(type).hasOwnProperty(priority)
+                ? this.messageHandlers.get(type)[priority].push(handler)
+                : (this.messageHandlers.get(type)[priority] = [handler]);
+        }
     }
 
     async _doHanlders(handlers, ws, sendData = null) {
         if (handlers === undefined) return;
-        if(typeof handlers == String)handlers(ws, sendData);
-        else{
-            for(let i = 0; i < handlers.length; i++){
-                await handlers[i](ws, sendData);
+        if (typeof handlers == String) handlers(ws, sendData);
+        else {
+            if (Array.isArray(handlers)) {
+                for (let i = 0; i < handlers.length; i++) {
+                    await handlers[i](ws, sendData);
+                }
+            } else {
+                const keys = Object.keys(handlers);
+                for (let i = 0; i < keys.length; i++) {
+                    for (let j = 0; j < keys[i].length; j++) {
+                        await handlers[keys[i]][j](ws, sendData);
+                    }
+                }
             }
         }
     }
