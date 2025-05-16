@@ -77,4 +77,9 @@ checkVテストケース
 ["can","run"]...true
 ["can",[""],""]
 
-次回・・・動詞の登録、checkMeisiGrammerMattersの設計、プログラミング
+次回・・・動詞の登録、checkMeisiGrammerMattersの設計、プログラミング、errorManeger
+
+errorManeger・・・エラーを一元的に管理する関数　エラーを
+
+
+

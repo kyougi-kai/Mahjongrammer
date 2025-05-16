@@ -941,7 +941,7 @@ function checkS(targetSentence, GCR) /*＜S＞*/ {
 
 let checkGrammerTestArray = {
     sentence: 1,
-    s: ['an', ['happy'], 'apple', ['in', 'the', 'apple']],
+    s: [],
     v: ['run'],
 };
 
@@ -969,9 +969,24 @@ function checkMeisiRoot(targetSentence, GCR) /*＜名詞根＞*/ {
     GCR[GCR.flagsNum] = { kansi: [], zentiKeiyousi: [], meisi: [], koutiKeiyousi: [], wordsCount: 0, targetIndex: 0 };
     console.log('フラットなGCR', targetSentence, GCR);
     let truenum = targetSentence.flat(Infinity).length;
+    if(truenum == 0)/*何も入っていない場合*/{
+
+        let keyName = GCR.currentType[GCR.currentTypeNum] + 'ZentiKeiyousi';
+            GCR.errors[keyName] = errorTemplete;
+            GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '名詞修飾ミス！';
+            GCR.errors[keyName].reason = '修飾のやり方が間違っています';
+            GCR.errors[keyName].suggestion = '';
+        return GCR;
+    }
     if (targetSentence.length > GCR[GCR.flagsNum].targetIndex) GCR = checkKansiRoot(targetSentence, GCR);
     if (targetSentence.length > GCR[GCR.flagsNum].targetIndex) GCR = checkZentiKeiyousiRoot(targetSentence, GCR);
-    if (targetSentence.length > GCR[GCR.flagsNum].targetIndex) GCR = checkMeisi(targetSentence, GCR);
+    if (targetSentence.length > GCR[GCR.flagsNum].targetIndex) {
+        GCR = checkMeisi(targetSentence, GCR);
+    } else {
+        GCR[GCR.flagsNum].meisi.push('false');
+    }
     if (targetSentence.length > GCR[GCR.flagsNum].targetIndex) GCR = checkKoutiKeiyousiRoot(targetSentence, GCR);
     if (truenum == GCR[GCR.flagsNum].wordsCount) GCR.successes[GCR.currentType[GCR.currentTypeNum]].push('true');
     console.log('checkMeisiRoot通過後GCR', targetSentence, GCR);
@@ -1139,7 +1154,14 @@ function checkDaimeisi(targetSentence, GCR) /*＜代名詞根＞*/ {
 }
 
 function checkMeisiGrammerMatters(targetSentence, GCR) {
-    if (GCR[GCR.flagsNum].kansi.includes('false') && GCR[GCR.flagsNum].meisi.includes('false')) {
+    if (GCR[GCR.flagsNum].kansi.length > 0 && !GCR[GCR.flagsNum].kansi.includes('false') && GCR[GCR.flagsNum].meisi.includes('false')) {
+        let keyName = GCR.currentType[GCR.currentTypeNum] + 'GrammerMatters';
+            GCR.errors[keyName] = errorTemplete;
+            GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '文法事項ミス！';
+            GCR.errors[keyName].reason = '名詞がありません';
+            GCR.errors[keyName].suggestion = '';
     }
 }
 
