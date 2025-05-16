@@ -945,7 +945,7 @@ let checkGrammerTestArray = {
     v: ['run'],
 };
 
-console.log('checkS結果：', checkS(checkGrammerTestArray.s, testGCR).successes.S);
+console.log('checkS結果：', checkS(checkGrammerTestArray.s, testGCR));
 
 function checkC(targetSentence, GCR) /*＜C＞*/ {
     if (targetSentence.length == 1 && tango[targetSentence[0]].hinsi.includes('代名詞')) {
@@ -969,15 +969,9 @@ function checkMeisiRoot(targetSentence, GCR) /*＜名詞根＞*/ {
     GCR[GCR.flagsNum] = { kansi: [], zentiKeiyousi: [], meisi: [], koutiKeiyousi: [], wordsCount: 0, targetIndex: 0 };
     console.log('フラットなGCR', targetSentence, GCR);
     let truenum = targetSentence.flat(Infinity).length;
-    if(truenum == 0)/*何も入っていない場合*/{
-
-        let keyName = GCR.currentType[GCR.currentTypeNum] + 'ZentiKeiyousi';
-            GCR.errors[keyName] = errorTemplete;
-            GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
-            GCR.errors[keyName].index = GCR.currentIndex;
-            GCR.errors[keyName].type = '名詞修飾ミス！';
-            GCR.errors[keyName].reason = '修飾のやり方が間違っています';
-            GCR.errors[keyName].suggestion = '';
+    console.log('truenum', truenum);
+    if (truenum == 0) {
+        GCR = errorManager(GCR, '', 'AllNotExist'); /*何も入っていない場合*/
         return GCR;
     }
     if (targetSentence.length > GCR[GCR.flagsNum].targetIndex) GCR = checkKansiRoot(targetSentence, GCR);
@@ -1035,13 +1029,7 @@ function checkZentiKeiyousiRoot(targetSentence, GCR) {
         }
 
         if (true_M_Num != keiyousiCount) {
-            let keyName = GCR.currentType[GCR.currentTypeNum] + 'ZentiKeiyousi';
-            GCR.errors[keyName] = errorTemplete;
-            GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
-            GCR.errors[keyName].index = GCR.currentIndex;
-            GCR.errors[keyName].type = '名詞修飾ミス！';
-            GCR.errors[keyName].reason = '修飾のやり方が間違っています';
-            GCR.errors[keyName].suggestion = '';
+            GCR = errorManager(GCR, '', 'ZentiKeiyousi');
         }
         GCR[GCR.flagsNum].wordsCount += keiyousiCount;
         GCR[GCR.flagsNum].targetIndex += 1;
@@ -1052,13 +1040,7 @@ function checkZentiKeiyousiRoot(targetSentence, GCR) {
 
 function checkMeisi(targetSentence, GCR) {
     if (Array.isArray(targetSentence[GCR[GCR.flagsNum].targetIndex])) {
-        let keyName = GCR.currentType[GCR.currentTypeNum] + 'Meisi';
-        GCR.errors[keyName] = errorTemplete;
-        GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
-        GCR.errors[keyName].index = GCR.currentIndex;
-        GCR.errors[keyName].type = '名詞ミス！';
-        GCR.errors[keyName].reason = '名詞が存在しません';
-        GCR.errors[keyName].suggestion = '名詞を入れましょう';
+        GCR = errorManager(GCR, '', 'MeisiNotExist');
     }
     if (tango[targetSentence[GCR[GCR.flagsNum].targetIndex]].hinsi.includes('名詞')) {
         GCR[GCR.flagsNum].wordsCount += 1;
@@ -1066,13 +1048,7 @@ function checkMeisi(targetSentence, GCR) {
         GCR[GCR.flagsNum].meisi.push(tango[targetSentence[0]].tags);
     } else {
         GCR[GCR.flagsNum].targetIndex += 1;
-        let keyName = GCR.currentType[GCR.currentTypeNum] + 'Meisi';
-        GCR.errors[keyName] = errorTemplete;
-        GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
-        GCR.errors[keyName].index = GCR.currentIndex;
-        GCR.errors[keyName].type = '名詞ミス！';
-        GCR.errors[keyName].reason = '名詞が存在しません';
-        GCR.errors[keyName].suggestion = '名詞を入れましょう';
+        GCR = errorManager(GCR, '', 'MeisiNotExist'); //名詞が存在しない
     }
     console.log('checkMeisiroot通過後GCR', targetSentence, GCR);
     return GCR;
@@ -1101,13 +1077,7 @@ function checkKoutiKeiyousiRoot(targetSentence, GCR) {
         }
 
         if (true_M_Num != keiyousiCount) {
-            let keyName = GCR.currentType[GCR.currentTypeNum] + 'KoutiKeiyousi';
-            GCR.errors[keyName] = errorTemplete;
-            GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
-            GCR.errors[keyName].index = GCR.currentIndex;
-            GCR.errors[keyName].type = '名詞修飾ミス！';
-            GCR.errors[keyName].reason = '後置修飾のやり方が間違っています';
-            GCR.errors[keyName].suggestion = '';
+            GCR = errorManager(GCR, '', 'KoutiKeiyousi');
         }
         GCR[GCR.flagsNum].wordsCount += keiyousiCount;
         GCR[GCR.flagsNum].targetIndex += 1;
@@ -1140,14 +1110,7 @@ function checkDaimeisi(targetSentence, GCR) /*＜代名詞根＞*/ {
         if (DaimeisiTypeArray.some((value) => tango[targetSentence].tags.includes(value))) {
             GCR.successes[GCR.currentType[GCR.currentTypeNum]].push('true');
         } else {
-            let keyName = GCR.currentType[GCR.currentTypeNum] + 'Daimeisi';
-            GCR.errors[keyName] = errorTemplete;
-            GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
-            GCR.errors[keyName].index = GCR.currentIndex;
-            GCR.errors[keyName].type = '代名詞ミス！';
-            GCR.errors[keyName].reason = typeText + 'に使えない代名詞が入っています';
-            GCR.errors[keyName].suggestion = '別の代名詞に変えてみましょう';
-            console.log('代名詞エラー：', GCR.errors);
+            GCR = errorManager(GCR, typeText, 'Daimeisi');
         }
     }
     return GCR;
@@ -1156,17 +1119,70 @@ function checkDaimeisi(targetSentence, GCR) /*＜代名詞根＞*/ {
 function checkMeisiGrammerMatters(targetSentence, GCR) {
     if (GCR[GCR.flagsNum].kansi.length > 0 && !GCR[GCR.flagsNum].kansi.includes('false') && GCR[GCR.flagsNum].meisi.includes('false')) {
         let keyName = GCR.currentType[GCR.currentTypeNum] + 'GrammerMatters';
-            GCR.errors[keyName] = errorTemplete;
-            GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
-            GCR.errors[keyName].index = GCR.currentIndex;
-            GCR.errors[keyName].type = '文法事項ミス！';
-            GCR.errors[keyName].reason = '名詞がありません';
-            GCR.errors[keyName].suggestion = '';
+        GCR.errors[keyName] = errorTemplete;
+        GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
+        GCR.errors[keyName].index = GCR.currentIndex;
+        GCR.errors[keyName].type = '文法事項ミス！';
+        GCR.errors[keyName].reason = '名詞がありません';
+        GCR.errors[keyName].suggestion = '';
     }
 }
 
 function checkV(targetSentence, GCR, sentenceType) /*＜V＞*/ {
     GCR['allOfVTags'] = { jodousi: [], zentiHukusi: [], dousi: [], koutiHukusi: [], wordsCount: 0, targetIndex: 0 };
     delete GCR['allOfVTags'];
+    return GCR;
+}
+
+function errorManager(GCR, typeText, errorID) {
+    let keyName;
+    switch (errorID) {
+        case 'AllNotExist': //何も入っていない
+            keyName = GCR.currentType[GCR.currentTypeNum] + 'All';
+            GCR.errors[keyName] = errorTemplete;
+            GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '名詞ミス！';
+            GCR.errors[keyName].reason = '何も入っていません';
+            GCR.errors[keyName].suggestion = '何か入れましょう';
+            break;
+        case 'ZentiKeiyousi': //前置修飾ミス
+            keyName = GCR.currentType[GCR.currentTypeNum] + 'ZentiKeiyousi';
+            GCR.errors[keyName] = errorTemplete;
+            GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '名詞修飾ミス！';
+            GCR.errors[keyName].reason = '修飾のやり方が間違っています';
+            GCR.errors[keyName].suggestion = '';
+            break;
+        case 'MeisiNotExist': //名詞が存在しない
+            keyName = GCR.currentType[GCR.currentTypeNum] + 'Meisi';
+            GCR.errors[keyName] = errorTemplete;
+            GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '名詞ミス！';
+            GCR.errors[keyName].reason = '名詞が存在しません';
+            GCR.errors[keyName].suggestion = '名詞を入れましょう';
+            break;
+        case 'KoutiKeiyousi': //後置修飾ミス
+            keyName = GCR.currentType[GCR.currentTypeNum] + 'KoutiKeiyousi';
+            GCR.errors[keyName] = errorTemplete;
+            GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '名詞修飾ミス！';
+            GCR.errors[keyName].reason = '後置修飾のやり方が間違っています';
+            GCR.errors[keyName].suggestion = '';
+            break;
+        case 'Daimeisi': //代名詞ミス
+            keyName = GCR.currentType[GCR.currentTypeNum] + 'Daimeisi';
+            GCR.errors[keyName] = errorTemplete;
+            GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '代名詞ミス！';
+            GCR.errors[keyName].reason = typeText + 'に使えない代名詞が入っています';
+            GCR.errors[keyName].suggestion = '別の代名詞に変えてみましょう';
+            console.log('代名詞エラー：', GCR.errors);
+            break;
+    }
     return GCR;
 }

@@ -77,9 +77,18 @@ checkVテストケース
 ["can","run"]...true
 ["can",[""],""]
 
-次回・・・動詞の登録、checkMeisiGrammerMattersの設計、プログラミング、errorManeger
+次回・・・動詞の登録、checkMeisiGrammerMattersの設計、プログラミング、errorManeger、currentIndex
 
-errorManeger・・・エラーを一元的に管理する関数　エラーを
+errorManeger・・・エラーを一元的に管理する関数
+function errorManager(GCR,errorID){
+    switch (errorID) {
+        case 'AllNotExist': //何も入っていない
+        case 'ZentiKeiyousi': //前置修飾ミス
+        case 'MeisiNotExist': //名詞が存在しない
+        case 'KoutiKeiyousi': //後置修飾ミス
+        case 'Daimeisi': //代名詞ミス
+    }
+}
 
 
 
