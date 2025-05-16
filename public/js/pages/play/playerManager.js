@@ -36,11 +36,39 @@ export class playerManager{
                 this.test_entryRoom(testData);
             }
 
-            if(e.key == 'q'){
+            if(e.key == 'o'){
+                const testData1 = {
+                    username : 'sasa'
+                }
+                this.test_entryRoom(testData1);
+            }
+            
+            if(e.key == 'i'){
                 const testData2 = {
+                    username : 'suga'
+                }
+                this.test_entryRoom(testData2);
+            }
+
+            if(e.key == 'q'){
+                const testData3 = {
                     username : 'shiro'
                 }
-                this.test_outRoom(testData2);
+                this.test_outRoom(testData3);
+            }
+
+            if(e.key == 'w'){
+                const testData4 = {
+                    username : 'sasa'
+                }
+                this.test_outRoom(testData4);
+            }
+            
+            if(e.key == 'e'){
+                const testData5 = {
+                    username : 'suga'
+                }
+                this.test_outRoom(testData5);
             }
         }
     }
@@ -54,14 +82,12 @@ export class playerManager{
         console.log(this.playerMembers);
     }
     test_outRoom(data){
-        let i = 0;
-        let j = 0;
-        while(i = 1, i < this.playerMembers.length,i++){
-            if(this.playerMembers[i] == data)return;
-        }
-        this.playerMembers[i] = "";
-        while(j = i, i < this.playerMembers.length,j++){
-            this.playerMembers[j] = this.playerMembers[j+1];
+        let i = 1;
+        while (i < this.playerMembers.length) {
+            if(this.playerMembers[i] == data.username){
+                this.playerMembers.splice(i,1);
+            }
+            i++
         }
         console.log(this.playerMembers);
     }
@@ -96,10 +122,12 @@ export class playerManager{
             }
         */
         this.wss?.onMessage('outRoom', (data) => {
-            while(i = 1, i < this.playerMembers.length && this.playerMembers[i] != data,i++){}
-            this.playerMembers[i] = "";
-            while(j = i, i < this.playerMembers.length,j++){
-                this.playerMembers[j] = this.playerMembers[j+1];
+            let i = 1;
+            while (i < this.playerMembers.length) {
+                if(this.playerMembers[i] == data.username){
+                    this.playerMembers.splice(i,1);
+                }
+                i++
             }
             console.log(this.playerMembers);
         });
@@ -110,7 +138,7 @@ export class playerManager{
             }
         */
         this.wss?.onMessage('getRoomMemberData', (data) => {
-
+            
         });
     }
 }
