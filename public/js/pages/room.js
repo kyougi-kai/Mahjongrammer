@@ -19,18 +19,23 @@ window.onload = () => {
 
     // 部屋のデータを取得
     connectionmanager.onMessage('getRoomData', (data) => {
-        if(data.length == 0)return;
+        if (data.length == 0) return;
         console.log('message : getRoomData');
         console.log(data);
-        if(typeof data == 'object'){
+        if (typeof data == 'object') {
             rooms.push(data.username);
             createNewRoom(data.username, data.room_member_counts);
-        }
-        else{
+        } else {
             data.forEach((mono) => {
                 rooms.push(mono.username);
                 createNewRoom(mono.username, mono.room_member_counts);
             });
+        }
+    });
+
+    connectionmanager.onMessage('success', (data) => {
+        if (data.type == 'createRoom') {
+            window.location.href = `/play/${userNameText.textContent.replace(/\s+/g, '')}`;
         }
     });
 
@@ -69,15 +74,14 @@ window.onload = () => {
             const ratio = parseInt(value.children[1].value);
             temporaryList.push(ratio);
         });
-        const sendData = JSON.stringify({
+        const sendData = {
             type: 'createRoom',
             payload: {
                 roomName: userNameText.textContent.replace(/\s+/g, ''),
                 ratio: temporaryList,
             },
-        });
+        };
         connectionmanager.send(sendData);
-        window.location.href = `/play/${userNameText.textContent.replace(/\s+/g, '')}`;
     });
 };
 
