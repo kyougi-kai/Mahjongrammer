@@ -1,6 +1,6 @@
 import { connectionManager } from './connectionManager.js';
-import { roomsRepository } from '../db/repositories/roomsRepository.js';
-import { roomMemberRepository } from '../db/repositories/roomMemberRepository.js';
+import roomsDB from '../db/repositories/roomsRepository.js';
+import roomMemberDB from '../db/repositories/roomMemberRepository.js';
 import { usersManager } from '../server/usersManager.js';
 
 export class playClientsManager {
@@ -13,8 +13,7 @@ export class playClientsManager {
          *  @param {connectionManager} this.wss
          */
         this.wss = wss;
-        this.playClients = new Map();
-        this.roomsrepository = new roomsRepository();
+        this.playClients = {};
 
         this._setup();
     }
@@ -24,25 +23,17 @@ export class playClientsManager {
     }
 
     _setup() {
-        console.log('部屋のデータを取得する処理を登録');
-
-        this.wss.onMessage('createRoom', async (ws, data) => {
-            const parentName = data.roomName;
-            const parentId = await usersManager.nameToId(parentName);
-            console.log('部屋をのデータを取得');
-            const roomId = await this.roomsrepository.getRoomId(parentId);
-            this.playClients.set(roomId, { skip: 0 });
-        });
-
         this.wss.onMessage('outRoom', async (ws, data) => {
             const parentName = data.parentName;
             const username = data.username;
             const parentId = await usersManager.nameToId(parentName);
-            const roomId = await this.roomsrepository.getRoomId(parentId);
-            this.playClients[roomId].delete(username);
+            const roomId = await roomsDB.getRoomId(parentId);
+            delete this.playClients[roomId][username];
 
             if (username == parentName) {
-                this.playClients[roomId].values().forEach((client) => {
+                Object.values(this.playClients[roomId]).forEach((client, index) => {
+                    if (index == 0) return;
+
                     const sendData = {
                         type: 'forcedFinish',
                         payload: {
@@ -53,19 +44,25 @@ export class playClientsManager {
                 });
 
                 // playClients削除
-                this.playClients.delete(roomId);
+                delete this.playClients[roomId];
             }
         });
     }
 
     async entryRoom(roomId, username, ws) {
+        if (await !roomsDB.isNull('room_id', roomId)) {
+            this.playClients[roomId] = { skip: 0 };
+        }
+        console.log(this.playClients);
         this.playClients[roomId][username] = ws;
         await this.sendRoomData(roomId);
     }
 
     async sendRoomData(roomId) {
-        const roomMembers = await roomMemberRepository.getRoomMembers(roomId);
-        this.playClients[roomId].values().forEach((client) => {
+        const roomMembers = await roomMemberDB.getRoomMembers(roomId);
+        Object.values(this.playClients[roomId]).forEach((client, index) => {
+            if (index == 0) return;
+
             client.send(
                 JSON.stringify({
                     type: 'getRoomMembers',

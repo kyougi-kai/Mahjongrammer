@@ -27,9 +27,16 @@ export class connectionManager {
                 this._doHanlders(this.closeHandlers.get(url), ws, null);
             });
 
-            ws.on('message', (data) => {
+            ws.on('message', async (data) => {
                 const parseData = JSON.parse(data);
-                this._doHanlders(this.messageHandlers.get(parseData['type']), ws, parseData['payload']);
+                await this._doHanlders(this.messageHandlers.get(parseData['type']), ws, parseData['payload']);
+                const sendSuccess = {
+                    type: 'success',
+                    payload: {
+                        type: parseData['type'],
+                    },
+                };
+                ws.send(JSON.stringify(sendSuccess));
             });
         });
     }

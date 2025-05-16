@@ -1,8 +1,8 @@
 import { connectionManager } from '../ws/connectionManager.js';
 import { playClientsManager } from '../ws/playClientsManager.js';
-import { roomsRepository } from '../db/repositories/roomsRepository.js';
 import { usersManager } from '../server/usersManager.js';
-import { roomMemberRepository } from '../db/repositories/roomMemberRepository.js';
+import roomMemberDB from '../db/repositories/roomMemberRepository.js';
+import roomsDB from '../db/repositories/roomsRepository.js';
 
 export class playManager {
     /**
@@ -21,10 +21,10 @@ export class playManager {
         const parentName = data.parentName;
         const username = data.username;
         const parentId = await usersManager.nameToId(parentName);
-        const ratio = await roomsRepository.getRow('ratio', 'parent_id', parentId);
-        const roomId = await roomsRepository.getRoomId(parentId);
+        const ratio = await roomsDB.getRow('ratio', 'parent_id', parentId);
+        const roomId = await roomsDB.getRoomId(parentId);
         const userId = await usersManager.nameToId(username);
-        const roomMembersData = await roomMemberRepository.getRoomMembers(roomId);
+        const roomMembersData = await roomMemberDB.getRoomMembers(roomId);
 
         // 割合送信
         ws.send(
@@ -41,9 +41,9 @@ export class playManager {
         this.playclientsmanager.entryRoom(roomId, username);
 
         // room_member に追加
-        await roomMemberRepository.addRoomMember(roomId, userId);
+        await roomMemberDB.addRoomMember(roomId, userId);
 
-        const roomMemberCounts = await roomMemberRepository.roomMemberCounts(roomId);
+        const roomMemberCounts = await roomMemberDB.roomMemberCounts(roomId);
         this.roommanager.noticeEntryRoom(parentName, roomMemberCounts);
     }
 
@@ -55,13 +55,13 @@ export class playManager {
             const userId = await usersManager.nameToId(username);
             const parentName = data.parentName;
             const parentId = await usersManager.nameToId(parentName);
-            const roomId = await roomsRepository.getRoomId(parentId);
+            const roomId = await roomsDB.getRoomId(parentId);
 
             if (username == parentName) {
-                await roomsRepository.deleteRoom(roomId);
+                await roomsDB.deleteRoom(roomId);
             } else {
-                await roomMemberRepository.exitRoom(userId);
-                const roomMemberCounts = await roomMemberRepository.getRoomMembers(roomId);
+                await roomMemberDB.exitRoom(userId);
+                const roomMemberCounts = await roomMemberDB.getRoomMembers(roomId);
                 this.roommanager.noticeOutRoom(parentName, roomMemberCounts);
                 this.playclientsmanager.sendRoomData(roomId);
             }

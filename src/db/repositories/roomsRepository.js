@@ -27,3 +27,6 @@ export class roomsRepository extends baseRepository {
         this.query('delete from rooms where room_id = ?', [roomId]);
     }
 }
+
+const instance = new roomsRepository();
+export default instance;
