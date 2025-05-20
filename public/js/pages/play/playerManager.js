@@ -138,7 +138,11 @@ export class playerManager{
             }
         */
         this.wss?.onMessage('getRoomMemberData', (data) => {
-            
+            this.playerMembers = data.roomMembers;
         });
+    }
+
+    // playerMembersの値を使って名前を表示する
+    updatePlayerName(){
     }
 }
