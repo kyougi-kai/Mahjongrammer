@@ -42,6 +42,7 @@ export class connectionManager {
      * @param {*} payload -送るデータ-
      */
     _doHandlers(handlers, data) {
+        if (handlers === undefined) return;
         for (let i = 0; i < handlers.length; i++) {
             handlers[i](data);
         }

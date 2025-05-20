@@ -24,7 +24,13 @@ export class playManager {
         const ratio = await roomsDB.getRow('ratio', 'parent_id', parentId);
         const roomId = await roomsDB.getRoomId(parentId);
         const userId = await usersManager.nameToId(username);
-        const roomMembersData = await roomMemberDB.getRoomMembers(roomId);
+
+        let roomMembersData = await roomMemberDB.getRoomMembers(roomId);
+        roomMembersData = roomMembersData.map((value) => value.username);
+        roomMembersData.push(username);
+
+        // room_member に追加
+        await roomMemberDB.addRoomMember(roomId, userId);
 
         // 割合送信
         ws.send(
@@ -38,13 +44,8 @@ export class playManager {
         );
 
         // playClientsに保存
-        this.playclientsmanager.entryRoom(roomId, username);
-
-        // room_member に追加
-        await roomMemberDB.addRoomMember(roomId, userId);
-
-        const roomMemberCounts = await roomMemberDB.roomMemberCounts(roomId);
-        this.roommanager.noticeEntryRoom(parentName, roomMemberCounts);
+        this.playclientsmanager.entryRoom(roomId, username, ws);
+        this.roommanager.noticeEntryRoom(parentName, roomMembersData.length);
     }
 
     _setup() {

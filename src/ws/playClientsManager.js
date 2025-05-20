@@ -50,15 +50,16 @@ export class playClientsManager {
     }
 
     async entryRoom(roomId, username, ws) {
-        if (await !roomsDB.isNull('room_id', roomId)) {
+        const isRoom = await roomsDB.isNull('room_id', roomId);
+        if (!isRoom && !this.playClients.hasOwnProperty(roomId)) {
             this.playClients[roomId] = { skip: 0 };
         }
-        console.log(this.playClients);
-        this.playClients[roomId][username] = ws;
         await this.sendRoomData(roomId);
+        this.playClients[roomId][username] = ws;
     }
 
     async sendRoomData(roomId) {
+        console.log(Object.values(this.playClients[roomId]));
         const roomMembers = await roomMemberDB.getRoomMembers(roomId);
         Object.values(this.playClients[roomId]).forEach((client, index) => {
             if (index == 0) return;
