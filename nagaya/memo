@@ -77,7 +77,7 @@ checkVテストケース
 ["can","run"]...true
 ["can",[""],""]
 
-次回・・・動詞の登録、checkMeisiGrammerMattersの設計、プログラミング、errorManeger、currentIndex
+次回・・・動詞の登録、checkMeisiGrammerMattersの設計、プログラミング、errorManeger、currentIndex、checkV,checkJodousiRoot
 
 errorManeger・・・エラーを一元的に管理する関数
 function errorManager(GCR,errorID){
@@ -90,5 +90,12 @@ function errorManager(GCR,errorID){
     }
 }
 
+呼び出すとき・・・ GCR = errorManager(GCR, typeText(str), errorID(str)); /*何も入っていない場合*/
+        return GCR;
 
 
+
+checkV→後ろからチェックする
+これによって助動詞と動詞の区別をする
+（例）I will have an apple. 
+は前からチェックするとhaveを助動詞と認識する
