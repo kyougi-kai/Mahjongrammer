@@ -886,7 +886,7 @@ function checkGrammer(targetArray) {
         flagsNum: 100,
         temporaryWordsNum: 0,
         message: '',
-        errors,
+        errors: {},
     };
 
     switch (targetArray.sentence) {
@@ -971,7 +971,7 @@ function checkMeisiRoot(targetSentence, GCR) /*＜名詞根＞*/ {
     let truenum = targetSentence.flat(Infinity).length;
     console.log('truenum', truenum);
     if (truenum == 0) {
-        GCR = errorManager(GCR, '', 'AllNotExist'); /*何も入っていない場合*/
+        GCR = errorManager(GCR, '名詞', 'AllNotExist'); /*何も入っていない場合*/
         return GCR;
     }
     if (targetSentence.length > GCR[GCR.flagsNum].targetIndex) GCR = checkKansiRoot(targetSentence, GCR);
@@ -1124,13 +1124,25 @@ function checkMeisiGrammerMatters(targetSentence, GCR) {
         GCR.errors[keyName].index = GCR.currentIndex;
         GCR.errors[keyName].type = '文法事項ミス！';
         GCR.errors[keyName].reason = '名詞がありません';
-        GCR.errors[keyName].suggestion = '';
+        GCR.errors[keyName].suggestion = '名詞を入れましょう';
     }
 }
 
 function checkV(targetSentence, GCR, sentenceType) /*＜V＞*/ {
-    GCR['allOfVTags'] = { jodousi: [], zentiHukusi: [], dousi: [], koutiHukusi: [], wordsCount: 0, targetIndex: 0 };
+    let temporaryIndex = targetSentence.length - 1;
+    GCR['allOfVTags'] = { jodousi: [], zentiHukusi: [], dousi: [], koutiHukusi: [], wordsCount: 0, targetIndex: temporaryIndex };
+    console.log('checkV開始時点のGCR', targetSentence, GCR);
+    let truenum = targetSentence.flat(Infinity).length;
+    if (truenum == 0) {
+        GCR = errorManager(GCR, '動詞', 'AllNotExist'); /*何も入っていない場合*/
+        return GCR;
+    }
+    if (targetSentence.length > GCR[GCR.flagsNum].targetIndex) GCR = checkJodousiRoot(targetSentence, GCR);
     delete GCR['allOfVTags'];
+    return GCR;
+}
+
+function checkJodousiRoot(targetSentence, GCR) {
     return GCR;
 }
 
@@ -1142,7 +1154,7 @@ function errorManager(GCR, typeText, errorID) {
             GCR.errors[keyName] = errorTemplete;
             GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
             GCR.errors[keyName].index = GCR.currentIndex;
-            GCR.errors[keyName].type = '名詞ミス！';
+            GCR.errors[keyName].type = typeText + 'ミス！';
             GCR.errors[keyName].reason = '何も入っていません';
             GCR.errors[keyName].suggestion = '何か入れましょう';
             break;

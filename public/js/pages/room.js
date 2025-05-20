@@ -22,7 +22,7 @@ window.onload = () => {
         if (data.length == 0) return;
         console.log('message : getRoomData');
         console.log(data);
-        if (typeof data == 'object') {
+        if (!Array.isArray(data)) {
             rooms.push(data.username);
             createNewRoom(data.username, data.room_member_counts);
         } else {
@@ -95,7 +95,7 @@ function createNewRoom(roomName, roomMemberCounts = 0) {
     mainDiv.appendChild(temporaryDiv);
     temporaryDiv.appendChild(roomNameText);
     temporaryDiv.appendChild(temporaryText);
-    if (roomMemberCounts != 4) temporaryDiv.setAttribute('onclick', `entryRoom('${roomName}');`);
+    if (roomMemberCounts != 4) temporaryDiv.setAttribute('onclick', `window.location.href = '/play/${roomName}';`);
 }
 
 function updateRoomMemberCounts(roomName, roomMemberCounts) {
