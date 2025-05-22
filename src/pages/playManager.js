@@ -43,6 +43,19 @@ export class playManager {
             })
         );
 
+        if (this.playclientsmanager.playC.hasOwnProperty(roomId)) {
+            const sendData = {
+                type: 'entryRoom',
+                payload: {
+                    username: username,
+                },
+            };
+            Object.values(this.playclientsmanager.playC[roomId]).forEach((client, index) => {
+                if (index == 0) return;
+                client.send(JSON.stringify(sendData));
+            });
+        }
+
         // playClientsに保存
         this.playclientsmanager.entryRoom(roomId, username, ws);
         this.roommanager.noticeEntryRoom(parentName, roomMembersData.length);
@@ -64,6 +77,18 @@ export class playManager {
                 await roomMemberDB.exitRoom(userId);
                 const roomMemberCounts = await roomMemberDB.getRoomMembers(roomId);
                 this.roommanager.noticeOutRoom(parentName, roomMemberCounts);
+
+                const sendData = {
+                    type: 'outRoom',
+                    payload: {
+                        username: username,
+                    },
+                };
+                Object.values(this.playclientsmanager.playC[roomId]).forEach((client) => {
+                    if (index == 0) return;
+                    client.send(JSON.stringify(sendData));
+                });
+
                 this.playclientsmanager.sendRoomData(roomId);
             }
         });
