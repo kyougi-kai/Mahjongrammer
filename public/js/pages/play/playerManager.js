@@ -114,14 +114,13 @@ export class playerManager{
     */
     _setup(){
         window.onbeforeunload = function(){
-            const sendoutRoom ={
-                type:'outRoom',
+            navigator.sendBeacon("/disconnect-log", JSON.stringify({
+                type: "outRoom",
                 payload:{
                     parentName:this.playerMembers[0],
                     username:this.playername,
                 }
-            }
-            this.wss.send(sendoutRoom);
+            }));
         }
     }
 
