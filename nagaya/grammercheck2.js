@@ -2,7 +2,7 @@ let tango = {
     apple: {
         //名詞
         hinsi: ['名詞'],
-        tags: ['可算名詞', '単数形'],
+        tags: ['可算名詞', '単数形', '母音で始まる'],
         katuyou: ['apples'],
     },
     apples: {
@@ -12,7 +12,7 @@ let tango = {
     },
     desk: {
         hinsi: ['名詞'],
-        tags: ['可算名詞', '単数形'],
+        tags: ['可算名詞', '単数形', '子音で始まる'],
         katuyou: ['desks'],
     },
     desks: {
@@ -22,7 +22,7 @@ let tango = {
     },
     cat: {
         hinsi: ['名詞'],
-        tags: ['可算名詞', '単数形'],
+        tags: ['可算名詞', '単数形', '子音で始まる'],
         katuyou: ['cats'],
     },
     cats: {
@@ -32,7 +32,7 @@ let tango = {
     },
     book: {
         hinsi: ['名詞'],
-        tags: ['可算名詞', '単数形'],
+        tags: ['可算名詞', '単数形', '子音で始まる'],
         katuyou: ['books'],
     },
     books: {
@@ -771,11 +771,11 @@ let tango = {
     a: {
         //冠詞
         hinsi: ['冠詞'],
-        tags: ['不定冠詞'],
+        tags: ['不定冠詞', '直後子音'],
     },
     an: {
         hinsi: ['冠詞'],
-        tags: ['不定冠詞'],
+        tags: ['不定冠詞', '直後母音'],
     },
     the: {
         hinsi: ['冠詞'],
@@ -1118,14 +1118,37 @@ function checkDaimeisi(targetSentence, GCR) /*＜代名詞根＞*/ {
 
 function checkMeisiGrammerMatters(targetSentence, GCR) {
     if (GCR[GCR.flagsNum].kansi.length > 0 && !GCR[GCR.flagsNum].kansi.includes('false') && GCR[GCR.flagsNum].meisi.includes('false')) {
-        let keyName = GCR.currentType[GCR.currentTypeNum] + 'GrammerMatters';
-        GCR.errors[keyName] = errorTemplete;
-        GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
-        GCR.errors[keyName].index = GCR.currentIndex;
-        GCR.errors[keyName].type = '文法事項ミス！';
-        GCR.errors[keyName].reason = '名詞がありません';
-        GCR.errors[keyName].suggestion = '名詞を入れましょう';
+        /*名詞が入っていない場合*/ GCR = errorManager(GCR, '', 'MeisiNotExist');
     }
+    if (GCR[GCR.flagsNum].kansi.includes('false') && GCR[GCR.flagsNum].meisi.includes('可算名詞')) {
+        /*冠詞が空で名詞が可算名詞の場合*/ GCR = errorManager(GCR, '', 'KansiNotExist');
+    }
+    if (GCR[GCR.flagsNum].meisi.includes('不可算名詞') && GCR[GCR.flagsNum].kansi.includes('不定冠詞')) {
+        /*不可算名詞に不定冠詞をつけている場合*/ GCR = errorManager(GCR, '', 'KansiMissOfHuteiOnHukasan');
+    }
+    if (GCR[GCR.flagsNum].meisi.includes('可算名詞') && GCR[GCR.flagsNum].meisi.includes('複数形') && GCR[GCR.flagsNum].kansi.includes('不定冠詞')) {
+        /*複数形の名詞に不定冠詞をつけている場合*/ GCR = errorManager(GCR, '', 'KansiMissOfHuteiOnHukusuu');
+    }
+    if (GCR[GCR.flagsNum].meisi.includes('可算名詞') && GCR[GCR.flagsNum].meisi.includes('単数形') && GCR[GCR.flagsNum].kansi.includes('数詞')) {
+        /*単数形の名詞に数詞をつけている場合*/ GCR = errorManager(GCR, '', 'KansiMissOfSuusiOnTansuu');
+    }
+    if (
+        GCR[GCR.flagsNum].meisi.includes('可算名詞') &&
+        GCR[GCR.flagsNum].meisi.includes('単数形') &&
+        GCR[GCR.flagsNum].meisi.includes('母音で始まる') &&
+        GCR[GCR.flagsNum].kansi.includes('直後子音')
+    ) {
+        /*発音が母音で始まる単語にaをつけている場合*/ GCR = errorManager(GCR, '', 'KansiMissOfaOnBoin');
+    }
+    if (
+        GCR[GCR.flagsNum].meisi.includes('可算名詞') &&
+        GCR[GCR.flagsNum].meisi.includes('単数形') &&
+        GCR[GCR.flagsNum].meisi.includes('子音で始まる') &&
+        GCR[GCR.flagsNum].kansi.includes('直後母音')
+    ) {
+        /*発音が子音で始まる単語にanをつけている場合*/ GCR = errorManager(GCR, '', 'KansiMissOfanOnShiin');
+    } //ここから
+    return GCR;
 }
 
 function checkV(targetSentence, GCR, sentenceType) /*＜V＞*/ {
@@ -1157,6 +1180,42 @@ function errorManager(GCR, typeText, errorID) {
             GCR.errors[keyName].type = typeText + 'ミス！';
             GCR.errors[keyName].reason = '何も入っていません';
             GCR.errors[keyName].suggestion = '何か入れましょう';
+            break;
+        case 'KansiNotExist': //冠詞が存在しない
+            keyName = GCR.currentType[GCR.currentTypeNum] + 'Kansi';
+            GCR.errors[keyName] = errorTemplete;
+            GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '冠詞ミス！';
+            GCR.errors[keyName].reason = '可算名詞には冠詞が必要です';
+            GCR.errors[keyName].suggestion = '冠詞を入れましょう';
+            break;
+        case 'KansiMissOfHuteiOnHukasan': //不可算名詞に不定冠詞をつけている
+            keyName = GCR.currentType[GCR.currentTypeNum] + 'Kansi';
+            GCR.errors[keyName] = errorTemplete;
+            GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '冠詞ミス！';
+            GCR.errors[keyName].reason = '不可算名詞には不定冠詞はつけられません';
+            GCR.errors[keyName].suggestion = '冠詞を変えるか、名詞を変えましょう';
+            break;
+        case 'KansiMissOfHuteiOnHukusuu': //複数形の名詞に不定冠詞をつけている
+            keyName = GCR.currentType[GCR.currentTypeNum] + 'Kansi';
+            GCR.errors[keyName] = errorTemplete;
+            GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '冠詞ミス！';
+            GCR.errors[keyName].reason = '複数形の名詞に不定冠詞はつけられません';
+            GCR.errors[keyName].suggestion = '冠詞を変えるか、名詞を変えましょう';
+            break;
+        case 'KansiMissOfSuusiOnTansuu': //単数形の名詞に数詞をつけている
+            keyName = GCR.currentType[GCR.currentTypeNum] + 'Kansi';
+            GCR.errors[keyName] = errorTemplete;
+            GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '冠詞ミス！';
+            GCR.errors[keyName].reason = '単数形の名詞に数詞はつけられません';
+            GCR.errors[keyName].suggestion = '冠詞を変えるか、名詞を変えましょう';
             break;
         case 'ZentiKeiyousi': //前置修飾ミス
             keyName = GCR.currentType[GCR.currentTypeNum] + 'ZentiKeiyousi';
