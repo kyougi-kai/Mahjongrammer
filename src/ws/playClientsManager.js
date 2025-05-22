@@ -55,8 +55,5 @@ export class playClientsManager {
             this.playClients[roomId] = { skip: 0 };
         }
         this.playClients[roomId][username] = ws;
-
-        console.log('playClientsManager:59');
-        console.log(this.playClients[roomId]);
     }
 }
