@@ -54,24 +54,6 @@ export class playClientsManager {
         if (!isRoom && !this.playClients.hasOwnProperty(roomId)) {
             this.playClients[roomId] = { skip: 0 };
         }
-        await this.sendRoomData(roomId);
         this.playClients[roomId][username] = ws;
-    }
-
-    async sendRoomData(roomId) {
-        console.log(Object.values(this.playClients[roomId]));
-        const roomMembers = await roomMemberDB.getRoomMembers(roomId);
-        Object.values(this.playClients[roomId]).forEach((client, index) => {
-            if (index == 0) return;
-
-            client.send(
-                JSON.stringify({
-                    type: 'getRoomMembers',
-                    payload: {
-                        roomMembers: roomMembers,
-                    },
-                })
-            );
-        });
     }
 }

@@ -8,6 +8,7 @@ export class playerManager{
      * @param {connectionManager} wss 
      */
     constructor(wss){
+        this.nameDivs = document.getElementsByClassName('name');
         this.wss = wss;
         this.playerMembers = [];
         const pageName = location.href;
@@ -26,6 +27,7 @@ export class playerManager{
 
         */
 
+        this._setupWebsocket();
         this._setup();
 
         document.onkeydown = (e) => {
@@ -70,6 +72,16 @@ export class playerManager{
                 }
                 this.test_outRoom(testData5);
             }
+
+            if(e.key == 'r'){
+                //this.nameDivs[0].children[0].innerHTML = 'しろー';
+                let i = 1;
+                while(i < this.playerMembers.length){
+                    if(i == 1){
+
+                    }
+                }
+            }
         }
     }
 
@@ -92,7 +104,27 @@ export class playerManager{
         console.log(this.playerMembers);
     }
 
+    /*  送るデータの内容
+        type:'outRoom',
+        payload:{
+            parentName:
+            username:
+        }
+
+    */
     _setup(){
+        window.onbeforeunload = function(){
+            navigator.sendBeacon("/disconnect-log", JSON.stringify({
+                type: "outRoom",
+                payload:{
+                    parentName:this.playerMembers[0],
+                    username:this.playername,
+                }
+            }));
+        }
+    }
+
+    _setupWebsocket(){
         this.wss.onOpen(() => {
             this.playername = document.getElementById('usernameText').innerHTML;
             this.playername = functions.sN(this.playername);
@@ -114,6 +146,7 @@ export class playerManager{
         */
         this.wss?.onMessage('entryRoom', (data) => {
             this.playerMembers[this.playerMembers.length] = data.username;
+            console.log(this.playerMembers);
         });
 
         /*
@@ -140,9 +173,15 @@ export class playerManager{
         this.wss?.onMessage('getRoomMemberData', (data) => {
             this.playerMembers = data.roomMembers;
         });
+
+        this.wss?.onMessage('closeRoom', (data) => {
+            alert('親が退出しました');
+            window.location.href = '/room';
+        });
     }
 
     // playerMembersの値を使って名前を表示する
     updatePlayerName(){
+        
     }
 }

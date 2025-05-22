@@ -46,7 +46,7 @@ export class routeManager {
                 res.redirect('/room');
             }
         });
-        
+
         this.serverManager.onGet('/deleteUser', async (req, res) => {
             await usersManager.isLogin(req, res);
 
@@ -104,6 +104,8 @@ export class routeManager {
                 res.json({ success: false, error: err });
             }
         });
+
+        // onPostを作る
 
         /*
 

@@ -43,6 +43,14 @@ export class playManager {
             })
         );
 
+        const sendData = {
+            type: 'entryRoom',
+            payload: {
+                username: username,
+            },
+        };
+        this.sendToClients(sendData, roomId);
+
         // playClientsに保存
         this.playclientsmanager.entryRoom(roomId, username, ws);
         this.roommanager.noticeEntryRoom(parentName, roomMembersData.length);
@@ -52,6 +60,9 @@ export class playManager {
         this.wss.onMessage('entryRoom', async (ws, data) => this.onMessageEntryRoom(ws, data), 1);
 
         this.wss.onMessage('outRoom', async (ws, data) => {
+            console.log('playManager');
+            console.log('誰かが退出したよ');
+
             const username = data.username;
             const userId = await usersManager.nameToId(username);
             const parentName = data.parentName;
@@ -60,12 +71,36 @@ export class playManager {
 
             if (username == parentName) {
                 await roomsDB.deleteRoom(roomId);
+
+                const sendData = {
+                    type: 'closeRoom',
+                    payload: {},
+                };
+
+                this.sendToClients(sendData, roomId);
             } else {
                 await roomMemberDB.exitRoom(userId);
                 const roomMemberCounts = await roomMemberDB.getRoomMembers(roomId);
                 this.roommanager.noticeOutRoom(parentName, roomMemberCounts);
+
+                const sendData = {
+                    type: 'outRoom',
+                    payload: {
+                        username: username,
+                    },
+                };
+                this.sendToClients(sendData, roomId);
+
                 this.playclientsmanager.sendRoomData(roomId);
             }
+        });
+    }
+
+    sendToClients(sendData, roomId) {
+        if (!this.playclientsmanager.playC.hasOwnProperty(roomId)) return;
+        Object.values(this.playclientsmanager.playC[roomId]).forEach((client, index) => {
+            if (index == 0) return;
+            client.send(JSON.stringify(sendData));
         });
     }
 }
