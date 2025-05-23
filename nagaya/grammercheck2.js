@@ -936,12 +936,15 @@ function checkS(targetSentence, GCR) /*＜S＞*/ {
     } else {
         GCR = checkMeisiRoot(targetSentence, GCR);
     }
+    if (Object.values(GCR.errors).some((error) => error.part === 'S')) {
+        GCR.successes[GCR.currentType[GCR.currentTypeNum]].push('false');
+    }
     return GCR;
 }
 
 let checkGrammerTestArray = {
     sentence: 1,
-    s: [],
+    s: ['a', 'apple'],
     v: ['run'],
 };
 
@@ -982,9 +985,13 @@ function checkMeisiRoot(targetSentence, GCR) /*＜名詞根＞*/ {
         GCR[GCR.flagsNum].meisi.push('false');
     }
     if (targetSentence.length > GCR[GCR.flagsNum].targetIndex) GCR = checkKoutiKeiyousiRoot(targetSentence, GCR);
-    if (truenum == GCR[GCR.flagsNum].wordsCount) GCR.successes[GCR.currentType[GCR.currentTypeNum]].push('true');
+    if (truenum == GCR[GCR.flagsNum].wordsCount) {
+        GCR.successes[GCR.currentType[GCR.currentTypeNum]].push('true');
+    } else {
+        GCR = errorManager(GCR, '', 'MeisiMissOfAny'); //名詞のどこかにミスがある
+    }
     console.log('checkMeisiRoot通過後GCR', targetSentence, GCR);
-    // GCR = checkMeisiGrammerMatters(targetSentence, GCR); //三単現s、単数形/複数形の処理を入れる
+    GCR = checkMeisiGrammerMatters(targetSentence, GCR); //三単現s、単数形/複数形の処理を入れる
     GCR.temporaryWordsNum = GCR[GCR.flagsNum].wordsCount;
     delete GCR[GCR.flagsNum];
     return GCR;
@@ -1002,6 +1009,7 @@ function checkKansiRoot(targetSentence, GCR) {
         GCR[GCR.flagsNum].wordsCount += 1;
         GCR[GCR.flagsNum].targetIndex += 1;
         GCR[GCR.flagsNum].kansi.push(tango[targetSentence[0]].tags);
+        GCR[GCR.flagsNum].kansi = GCR[GCR.flagsNum].kansi.flat(Infinity);
     } else {
         GCR[GCR.flagsNum].kansi.push('false');
     }
@@ -1045,7 +1053,8 @@ function checkMeisi(targetSentence, GCR) {
     if (tango[targetSentence[GCR[GCR.flagsNum].targetIndex]].hinsi.includes('名詞')) {
         GCR[GCR.flagsNum].wordsCount += 1;
         GCR[GCR.flagsNum].targetIndex += 1;
-        GCR[GCR.flagsNum].meisi.push(tango[targetSentence[0]].tags);
+        GCR[GCR.flagsNum].meisi.push(tango[targetSentence[]].tags); //タグを代入ここから
+        GCR[GCR.flagsNum].meisi = GCR[GCR.flagsNum].meisi.flat(Infinity);
     } else {
         GCR[GCR.flagsNum].targetIndex += 1;
         GCR = errorManager(GCR, '', 'MeisiNotExist'); //名詞が存在しない
@@ -1061,11 +1070,7 @@ function checkKoutiKeiyousiRoot(targetSentence, GCR) {
 
         console.log(targetSentence, GCR[GCR.flagsNum].targetIndex);
         console.log(targetSentence[GCR[GCR.flagsNum].targetIndex]);
-        //ここから　if文の中身がうまくうごかない
         if (tango[targetSentence[GCR[GCR.flagsNum].targetIndex][keiyousiCount]].hinsi.includes('前置詞')) {
-            // console.log(GCR.flagsNum);
-            // console.log(targetSentence, GCR[GCR.flagsNum].targetIndex);
-            // console.log(targetSentence[GCR[GCR.flagsNum].targetIndex]);
             let temporaryTargetSentence = JSON.parse(JSON.stringify(targetSentence[GCR[GCR.flagsNum].targetIndex])); // ディープコピー
             GCR.flagsNum = GCR.flagsNum + 1;
             temporaryTargetSentence.shift();
@@ -1117,6 +1122,10 @@ function checkDaimeisi(targetSentence, GCR) /*＜代名詞根＞*/ {
 }
 
 function checkMeisiGrammerMatters(targetSentence, GCR) {
+    console.log('checkMeisiGrammerMatters', targetSentence, GCR);
+    console.log(GCR[GCR.flagsNum].kansi);
+    console.log(GCR[GCR.flagsNum].meisi);
+    if (GCR[GCR.flagsNum].meisi.includes('可算名詞')) console.log('ok');
     if (GCR[GCR.flagsNum].kansi.length > 0 && !GCR[GCR.flagsNum].kansi.includes('false') && GCR[GCR.flagsNum].meisi.includes('false')) {
         /*名詞が入っていない場合*/ GCR = errorManager(GCR, '', 'MeisiNotExist');
     }
@@ -1147,7 +1156,7 @@ function checkMeisiGrammerMatters(targetSentence, GCR) {
         GCR[GCR.flagsNum].kansi.includes('直後母音')
     ) {
         /*発音が子音で始まる単語にanをつけている場合*/ GCR = errorManager(GCR, '', 'KansiMissOfanOnShiin');
-    } //ここから
+    }
     return GCR;
 }
 
@@ -1217,6 +1226,24 @@ function errorManager(GCR, typeText, errorID) {
             GCR.errors[keyName].reason = '単数形の名詞に数詞はつけられません';
             GCR.errors[keyName].suggestion = '冠詞を変えるか、名詞を変えましょう';
             break;
+        case 'KansiMissOfaOnBoin': //発音が母音で始まる単語にaをつけている
+            keyName = GCR.currentType[GCR.currentTypeNum] + 'Kansi';
+            GCR.errors[keyName] = errorTemplete;
+            GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '冠詞ミス！';
+            GCR.errors[keyName].reason = '発音が母音で始まる単語にaはつけられません';
+            GCR.errors[keyName].suggestion = '冠詞を変えるか、名詞を変えましょう';
+            break;
+        case 'KansiMissOfanOnShiin': //発音が子音で始まる単語にanをつけている
+            keyName = GCR.currentType[GCR.currentTypeNum] + 'Kansi';
+            GCR.errors[keyName] = errorTemplete;
+            GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '冠詞ミス！';
+            GCR.errors[keyName].reason = '発音が子音で始まる単語にanはつけられません';
+            GCR.errors[keyName].suggestion = '冠詞を変えるか、名詞を変えましょう';
+            break;
         case 'ZentiKeiyousi': //前置修飾ミス
             keyName = GCR.currentType[GCR.currentTypeNum] + 'ZentiKeiyousi';
             GCR.errors[keyName] = errorTemplete;
@@ -1253,6 +1280,15 @@ function errorManager(GCR, typeText, errorID) {
             GCR.errors[keyName].reason = typeText + 'に使えない代名詞が入っています';
             GCR.errors[keyName].suggestion = '別の代名詞に変えてみましょう';
             console.log('代名詞エラー：', GCR.errors);
+            break;
+        case 'MeisiMissOfAny': //名詞のどこかにミスがある
+            keyName = GCR.currentType[GCR.currentTypeNum] + 'MeisiAny';
+            GCR.errors[keyName] = errorTemplete;
+            GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '名詞ミス！';
+            GCR.errors[keyName].reason = '名詞のどこかにミスがあります';
+            GCR.errors[keyName].suggestion = 'ミスがある箇所を確認してみましょう';
             break;
     }
     return GCR;
