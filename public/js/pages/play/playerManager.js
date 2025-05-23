@@ -78,8 +78,15 @@ export class playerManager{
                 let i = 1;
                 while(i < this.playerMembers.length){
                     if(i == 1){
-
+                        this.nameDivs[3].children[0].innerHTML = this.playerMembers[i];
                     }
+                    if(i == 2){
+                        this.nameDivs[0].children[0].innerHTML = this.playerMembers[i];
+                    }
+                    if(i == 3){
+                        this.nameDivs[1].children[0].innerHTML = this.playerMembers[i];
+                    }
+
                 }
             }
         }
