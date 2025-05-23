@@ -1,5 +1,6 @@
 import { connectionManager } from '/js/utils/connectionManager.js';
 import { playerManager } from '/js/pages/play/playerManager.js';
+import { hai } from '/js/pages/play/hai.js';
 
 export class gameManager {
     constructor() {
@@ -9,6 +10,10 @@ export class gameManager {
 
         const connectUrl = this.getConnectUrl();
         this.connectionmanager.connect(connectUrl);
+
+        //テスト
+        this.appleHai = new hai('apple');
+        document.getElementById('wordDown').appendChild(this.appleHai.createHai());
     }
 
     getConnectUrl() {

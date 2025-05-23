@@ -11,8 +11,29 @@ export class routeManager {
     constructor(serverManager) {
         this.serverManager = serverManager;
 
+        this.getHandlers = new Map();
+        this.postHandlers = new Map();
+
         this.setUpRoutingGet();
         this.setUpRoutingPost();
+    }
+
+    /**
+     *
+     * @param {string} url -受け取るurl-
+     * @param {Function} handler -行う処理-
+     */
+    onGet(url, handler) {
+        this.getHandlers.get(url) === undefined ? this.getHandlers.set(url, [handler]) : this.getHandlers.get(url).push(handler);
+    }
+
+    /**
+     *
+     * @param {string} url -受け取るurl-
+     * @param {Function} handler -行う処理-
+     */
+    onPost(url, handler) {
+        this.postHandlers.get(url) === undefined ? this.postHandlers.set(url, [handler]) : this.postHandlers.get(url).push(handler);
     }
 
     setUpRoutingGet() {
@@ -104,8 +125,6 @@ export class routeManager {
                 res.json({ success: false, error: err });
             }
         });
-
-        // onPostを作る
 
         /*
 
