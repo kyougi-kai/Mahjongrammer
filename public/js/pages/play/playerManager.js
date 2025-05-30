@@ -35,6 +35,7 @@ export class playerManager{
                 const testData = {
                     username : 'shiro'
                 }
+                console.log(testData);
                 this.test_entryRoom(testData);
             }
 
