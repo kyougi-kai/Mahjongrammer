@@ -75,6 +75,13 @@ export class playerManager{
 
             if(e.key == 'r'){
                 //this.nameDivs[0].children[0].innerHTML = 'しろー';
+                let j = 0;
+                while(j < 4){
+                    if(j !== 2){
+                        this.nameDivs[j].children[0].innerHTML = ''
+                    }
+                    j++
+                }
                 let i = 1;
                 while(i < this.playerMembers.length){
                     if(i == 1){
@@ -85,8 +92,10 @@ export class playerManager{
                     }
                     if(i == 3){
                         this.nameDivs[1].children[0].innerHTML = this.playerMembers[i];
+                    }else{
+                        this.nameDivs[2].children[0].style.setProperty('color', 'red', 'important');
                     }
-
+                    i++;
                 }
             }
         }
