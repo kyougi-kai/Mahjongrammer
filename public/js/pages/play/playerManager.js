@@ -9,12 +9,14 @@ export class playerManager{
      */
     constructor(wss){
         this.nameDivs = document.getElementsByClassName('name');
+        console.log(this.nameDivs);
         this.wss = wss;
         this.playerMembers = [];
         const pageName = location.href;
         this.parentName = pageName.split('/')[4];
         this.playerMembers.push(this.parentName);
         console.log(this.playerMembers);
+
         /* this.wss.send(送りたいデータ);
         送るデータの形式
         const sendData = {
@@ -27,14 +29,12 @@ export class playerManager{
 
         */
 
-        this._setupWebsocket();
-        this._setup();
-
-        document.onkeydown = (e) => {
+        document.addEventListener('keydown', (e) => {
             if(e.key == 'p'){
                 const testData = {
                     username : 'shiro'
                 }
+                console.log(testData);
                 this.test_entryRoom(testData);
             }
 
@@ -75,6 +75,19 @@ export class playerManager{
 
             if(e.key == 'r'){
                 //this.nameDivs[0].children[0].innerHTML = 'しろー';
+                const nanka = this.playerMembers.indexOf(this.playername);
+                let j = 0;
+                while(j < 4){
+                    if(j !== 2){
+                        this.nameDivs[j].children[0].innerHTML = ''
+                    }
+                    j++
+                }
+
+                this.playerMembers.forEach((value, index) => {
+                    this.nameDivs[(index + 2 - nanka) % 4].children[0].innerHTML = value;
+                });
+                /*
                 let i = 1;
                 while(i < this.playerMembers.length){
                     if(i == 1){
@@ -85,11 +98,16 @@ export class playerManager{
                     }
                     if(i == 3){
                         this.nameDivs[1].children[0].innerHTML = this.playerMembers[i];
+                    }else{
+                        this.nameDivs[2].children[0].style.setProperty('color', 'red', 'important');
                     }
-
+                    i++;
                 }
+                    */
             }
-        }
+        })
+        this._setupWebsocket();
+        this._setup();
     }
 
     get parentname(){
