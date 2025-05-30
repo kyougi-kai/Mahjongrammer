@@ -948,7 +948,7 @@ let checkGrammerTestArray = {
     v: ['run'],
 };
 
-console.log('checkS結果：', checkS(checkGrammerTestArray.s, testGCR));
+console.log('checkS結果：', checkGrammerTestArray.s, checkS(checkGrammerTestArray.s, testGCR));
 
 function checkC(targetSentence, GCR) /*＜C＞*/ {
     if (targetSentence.length == 1 && tango[targetSentence[0]].hinsi.includes('代名詞')) {
@@ -1008,6 +1008,7 @@ function checkKansiRoot(targetSentence, GCR) {
     ) {
         GCR[GCR.flagsNum].wordsCount += 1;
         GCR[GCR.flagsNum].targetIndex += 1;
+        GCR.currentIndex += 1;
         GCR[GCR.flagsNum].kansi.push(tango[targetSentence[0]].tags);
         GCR[GCR.flagsNum].kansi = GCR[GCR.flagsNum].kansi.flat(Infinity);
     } else {
@@ -1040,6 +1041,7 @@ function checkZentiKeiyousiRoot(targetSentence, GCR) {
             GCR = errorManager(GCR, '', 'ZentiKeiyousi');
         }
         GCR[GCR.flagsNum].wordsCount += keiyousiCount;
+        GCR.currentIndex += keiyousiCount;
         GCR[GCR.flagsNum].targetIndex += 1;
     }
     console.log('checkZentiKeiyousiroot通過後GCR', targetSentence, GCR);
@@ -1051,10 +1053,11 @@ function checkMeisi(targetSentence, GCR) {
         GCR = errorManager(GCR, '', 'MeisiNotExist');
     }
     if (tango[targetSentence[GCR[GCR.flagsNum].targetIndex]].hinsi.includes('名詞')) {
-        GCR[GCR.flagsNum].wordsCount += 1;
-        GCR[GCR.flagsNum].targetIndex += 1;
-        GCR[GCR.flagsNum].meisi.push(tango[targetSentence[]].tags); //タグを代入ここから
+        GCR[GCR.flagsNum].meisi.push(tango[targetSentence[GCR[GCR.flagsNum].targetIndex]].tags); //タグを代入ここから
         GCR[GCR.flagsNum].meisi = GCR[GCR.flagsNum].meisi.flat(Infinity);
+        GCR[GCR.flagsNum].wordsCount += 1;
+        GCR.currentIndex += 1;
+        GCR[GCR.flagsNum].targetIndex += 1;
     } else {
         GCR[GCR.flagsNum].targetIndex += 1;
         GCR = errorManager(GCR, '', 'MeisiNotExist'); //名詞が存在しない
@@ -1085,6 +1088,7 @@ function checkKoutiKeiyousiRoot(targetSentence, GCR) {
             GCR = errorManager(GCR, '', 'KoutiKeiyousi');
         }
         GCR[GCR.flagsNum].wordsCount += keiyousiCount;
+        GCR.currentIndex += keiyousiCount;
         GCR[GCR.flagsNum].targetIndex += 1;
     }
     console.log('checkKoutiKeiyousiroot通過後GCR', targetSentence, GCR);
