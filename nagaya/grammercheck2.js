@@ -944,19 +944,53 @@ function checkS(targetSentence, GCR) /*＜S＞*/ {
 
 let checkGrammerTestArray = {
     sentence: 1,
-    s: ['an', ['happy'], 'apple', ['in', 'the']],
+    s: ['happy', ['very']],
     v: ['run'],
 };
 
-console.log('checkS結果：', checkGrammerTestArray.s, checkS(checkGrammerTestArray.s, testGCR));
+console.log('checkC結果：', checkGrammerTestArray.s, checkC(checkGrammerTestArray.s, testGCR));
 
 function checkC(targetSentence, GCR) /*＜C＞*/ {
     if (targetSentence.length == 1 && tango[targetSentence[0]].hinsi.includes('代名詞')) {
         GCR = checkDaimeisi(targetSentence, GCR);
-    } else {
+    } else if (targetSentence.flat(Infinity).some((value) => tango[value].hinsi.includes('名詞'))) {
         GCR = checkMeisiRoot(targetSentence, GCR);
+    } else {
+        GCR = checkKeiyousiRoot(targetSentence, GCR);
     }
     return GCR;
+}
+
+function checkKeiyousiRoot(targetSentence, GCR) /*＜形容詞根＞*/ {
+    let truenum = targetSentence.flat(Infinity).length;
+    let keiyousiCount = 0;
+    let targetIndex = 0;
+    if (Array.isArray(targetSentence[targetIndex])) {
+        keiyousiCount += checkHukusiOfCKeiyousi(targetSentence, GCR);
+        targetIndex++;
+    }
+    if (tango[targetSentence[targetIndex]].hinsi.includes('形容詞')) keiyousiCount++;
+    if (truenum == keiyousiCount) {
+        GCR.successes[GCR.currentType[GCR.currentTypeNum]].push('true');
+    } else {
+        GCR = errorManager(GCR, '', 'HogoMissOfAny'); //補語のどこかにミスがある
+    }
+    return GCR;
+}
+
+function checkHukusiOfCKeiyousi(targetSentence, GCR) {
+    let hukusiCount = 0;
+    while (
+        hukusiCount < targetSentence[0].length &&
+        tango[targetSentence[0][hukusiCount]].hinsi.includes('副詞') &&
+        (tango[targetSentence[0][hukusiCount]].tags.includes('程度') ||
+            tango[targetSentence[0][hukusiCount]].tags.includes('強調') ||
+            tango[targetSentence[0][hukusiCount]].tags.includes('様態') ||
+            tango[targetSentence[0][hukusiCount]].tags.includes('否定'))
+    ) {
+        hukusiCount++;
+    }
+    return hukusiCount;
 }
 
 function checkO(targetSentence, GCR) /*＜O＞*/ {
@@ -964,6 +998,9 @@ function checkO(targetSentence, GCR) /*＜O＞*/ {
         GCR = checkDaimeisi(targetSentence, GCR);
     } else {
         GCR = checkMeisiRoot(targetSentence, GCR);
+    }
+    if (Object.values(GCR.errors).some((error) => error.part === 'O')) {
+        GCR.successes[GCR.currentType[GCR.currentTypeNum]].push('false');
     }
     return GCR;
 }
@@ -1030,6 +1067,7 @@ function checkZentiKeiyousiRoot(targetSentence, GCR) {
         ) {
             keiyousiCount += 1;
         } else {
+            keiyousiCount += checkHukusiOfKeiyousi(targetSentence, GCR); //形容詞の前に副詞があるかどうか
             while (
                 keiyousiCount < targetSentence[GCR[GCR.flagsNum].targetIndex].length &&
                 tango[targetSentence[GCR[GCR.flagsNum].targetIndex][keiyousiCount]].hinsi.includes('形容詞')
@@ -1048,6 +1086,22 @@ function checkZentiKeiyousiRoot(targetSentence, GCR) {
     console.log('checkZentiKeiyousiroot通過後GCR', targetSentence, GCR);
     return GCR;
 }
+
+function checkHukusiOfKeiyousi(targetSentence, GCR) {
+    let hukusiCount = 0;
+
+    while (
+        hukusiCount < targetSentence[GCR[GCR.flagsNum].targetIndex].length &&
+        tango[targetSentence[GCR[GCR.flagsNum].targetIndex][hukusiCount]].hinsi.includes('副詞') &&
+        (tango[targetSentence[GCR[GCR.flagsNum].targetIndex][hukusiCount]].tags.includes('程度') ||
+            tango[targetSentence[GCR[GCR.flagsNum].targetIndex][hukusiCount]].tags.includes('強調') ||
+            tango[targetSentence[GCR[GCR.flagsNum].targetIndex][hukusiCount]].tags.includes('様態') ||
+            tango[targetSentence[GCR[GCR.flagsNum].targetIndex][hukusiCount]].tags.includes('否定'))
+    ) {
+        hukusiCount++;
+    }
+    return hukusiCount;
+} //形容詞の前に副詞があるかどうか
 
 function checkMeisi(targetSentence, GCR) {
     if (Array.isArray(targetSentence[GCR[GCR.flagsNum].targetIndex])) {
@@ -1072,8 +1126,6 @@ function checkKoutiKeiyousiRoot(targetSentence, GCR) {
         let true_M_Num = targetSentence[GCR[GCR.flagsNum].targetIndex].length;
         let keiyousiCount = 0;
 
-        console.log(targetSentence, GCR[GCR.flagsNum].targetIndex);
-        console.log(targetSentence[GCR[GCR.flagsNum].targetIndex]);
         if (tango[targetSentence[GCR[GCR.flagsNum].targetIndex][keiyousiCount]].hinsi.includes('前置詞')) {
             let temporaryTargetSentence = JSON.parse(JSON.stringify(targetSentence[GCR[GCR.flagsNum].targetIndex])); // ディープコピー
             GCR.flagsNum = GCR.flagsNum + 1;
@@ -1081,7 +1133,6 @@ function checkKoutiKeiyousiRoot(targetSentence, GCR) {
             let temporaryGCR = JSON.parse(JSON.stringify(GCR)); // GCRをディープコピー
             temporaryGCR = checkMeisiRoot(temporaryTargetSentence, temporaryGCR); //仮のGCRを引数にする。本当のGCRは渡さない←何で？いみわからん←trueが2個返ってくるから
             if (temporaryGCR.temporaryWordsNum > 0) keiyousiCount = temporaryGCR.temporaryWordsNum + 1; //名詞がある場合
-            GCR.currentIndex = temporaryGCR.currentIndex; //現在のインデックスを更新
             GCR.errors = temporaryGCR.errors;
             GCR.flagsNum = GCR.flagsNum - 1;
         }
@@ -1129,9 +1180,6 @@ function checkDaimeisi(targetSentence, GCR) /*＜代名詞根＞*/ {
 
 function checkMeisiGrammerMatters(targetSentence, GCR) {
     console.log('checkMeisiGrammerMatters', targetSentence, GCR);
-    console.log(GCR[GCR.flagsNum].kansi);
-    console.log(GCR[GCR.flagsNum].meisi);
-    if (GCR[GCR.flagsNum].meisi.includes('可算名詞')) console.log('ok');
     if (GCR[GCR.flagsNum].kansi.length > 0 && !GCR[GCR.flagsNum].kansi.includes('false') && GCR[GCR.flagsNum].meisi.includes('false')) {
         /*名詞が入っていない場合*/ GCR = errorManager(GCR, '', 'MeisiNotExist');
     }
@@ -1165,6 +1213,8 @@ function checkMeisiGrammerMatters(targetSentence, GCR) {
     }
     return GCR;
 }
+
+//console.log('checkV結果：', checkGrammerTestArray.v, checkV(checkGrammerTestArray.v, testGCR, checkGrammerTestArray.sentence));
 
 function checkV(targetSentence, GCR, sentenceType) /*＜V＞*/ {
     let temporaryIndex = targetSentence.length - 1;
@@ -1293,6 +1343,15 @@ function errorManager(GCR, typeText, errorID) {
             GCR.errors[keyName].index = GCR.currentIndex;
             GCR.errors[keyName].type = '名詞ミス！';
             GCR.errors[keyName].reason = '名詞のどこかにミスがあります';
+            GCR.errors[keyName].suggestion = 'ミスがある箇所を確認してみましょう';
+            break;
+        case 'HogoMissOfAny': //補語のどこかにミスがある
+            keyName = GCR.currentType[GCR.currentTypeNum] + 'HogoAny';
+            GCR.errors[keyName] = errorTemplete;
+            GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '補語ミス！';
+            GCR.errors[keyName].reason = '補語のどこかにミスがあります';
             GCR.errors[keyName].suggestion = 'ミスがある箇所を確認してみましょう';
             break;
     }
