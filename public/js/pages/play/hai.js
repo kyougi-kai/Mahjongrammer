@@ -5,33 +5,24 @@
 ・/publicがルートディレクトリ
 */
 
+import { tango } from '/js/utils/wordData.js';
+
 export class hai {
-    constructor(word) {
+    constructor(word, hinsi = null) {
         this.word = word;
+        hinsi == null ? (this.hinsi = tango[word]['hinsi'][0]) : (this.hinsi = hinsi);
 
-        // wordData.js と wordで品詞とる
-        // this.hinsi =
-
-        document.onkeydown = (e) => {
-            if (e.key == 'a') {
-                this.createHai();
-            }
-        };
+        this.createHai();
     }
 
-    // 牌ができる！戻り値牌の要素
-    // バックグラウンドに画像を貼る
-    // 文字を真ん中に見やすいように表示する
     createHai() {
         const hai = document.createElement('div');
         hai.innerHTML = this.word;
         hai.classList.add('border-div');
-        // haiの見た目を牌にする haiManager.js showHai観ながら
 
-        // 後ろに画像表示
-
-        // 文字をいい感じに表示
-
+        // 後ろに画像表示 名詞はとりあえず1番目のやつ
+        hai.style.backgroundImage = `url(/img/partOfSpeech/${this.hinsi}.png)`;
+        console.log("f");
         return hai;
     }
 }
@@ -46,4 +37,3 @@ function name(){}
 
 
 */
-
