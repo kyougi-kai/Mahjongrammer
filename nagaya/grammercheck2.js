@@ -944,7 +944,7 @@ function checkS(targetSentence, GCR) /*＜S＞*/ {
 
 let checkGrammerTestArray = {
     sentence: 1,
-    s: ['a', 'apple'],
+    s: ['an', ['happy'], 'apple', ['in', 'the']],
     v: ['run'],
 };
 
@@ -1054,6 +1054,9 @@ function checkMeisi(targetSentence, GCR) {
     }
     if (tango[targetSentence[GCR[GCR.flagsNum].targetIndex]].hinsi.includes('名詞')) {
         GCR[GCR.flagsNum].meisi.push(tango[targetSentence[GCR[GCR.flagsNum].targetIndex]].tags); //タグを代入ここから
+        GCR[GCR.flagsNum].wordsCount += 1;
+        GCR[GCR.flagsNum].targetIndex += 1;
+        GCR[GCR.flagsNum].meisi.push(tango[targetSentence[0]].tags); //タグを代入ここから
         GCR[GCR.flagsNum].meisi = GCR[GCR.flagsNum].meisi.flat(Infinity);
         GCR[GCR.flagsNum].wordsCount += 1;
         GCR.currentIndex += 1;
@@ -1199,7 +1202,7 @@ function errorManager(GCR, typeText, errorID) {
             GCR.errors[keyName] = errorTemplete;
             GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
             GCR.errors[keyName].index = GCR.currentIndex;
-            GCR.errors[keyName].type = '冠詞ミス！';
+            GCR.errors[keyName].type = '冠詞ミスmiss！';
             GCR.errors[keyName].reason = '可算名詞には冠詞が必要です';
             GCR.errors[keyName].suggestion = '冠詞を入れましょう';
             break;
