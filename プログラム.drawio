@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0" version="27.1.1">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36" version="27.1.1">
   <diagram name="ページ1" id="gwst1a2DxKdk7zVmhHp6">
-    <mxGraphModel dx="2058" dy="1124" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="4681" math="0" shadow="0">
+    <mxGraphModel dx="2066" dy="1145" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="4681" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -154,7 +154,7 @@
             <mxPoint x="930" y="1460" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="T6opjoUF-Snj-wVWMXmV-2" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;・GameManager.js →　すべてを統括&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;・playerManager.js →　プレイヤーの管理　入退出の検知とか名前の表示とか　親の取得とか&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;・flow.js →　ゲームの流れを管理　ゲーム開始　次の人に番を回す&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+        <mxCell id="T6opjoUF-Snj-wVWMXmV-2" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;・GameManager.js →　すべてを統括&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;・playerManager.js →　プレイヤーの管理　入退出の検知とか名前の表示とか　親の取得とか&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;・flow.js →　ゲームの流れを管理　ゲーム開始　次の人に番を回す　牌を引くとか　捨てた牌を表示　ポンの処理&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;・connectionManager.js → websocketの通信を行う&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;・blockManager.js → 持ち場を自由に動ける要素を作成&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;・hai.js → 実際に牌を作る&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;font-size: 24px;&quot;&gt;・grammer.js → SとかVとかの箱を作る&lt;/font&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="100" y="1820" width="1540" height="410" as="geometry" />
         </mxCell>
       </root>
