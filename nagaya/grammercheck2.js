@@ -984,6 +984,7 @@ function checkMeisiRoot(targetSentence, GCR) /*＜名詞根＞*/ {
     } else {
         GCR[GCR.flagsNum].meisi.push('false');
     }
+    console.log('checkKoutiKeiyousiRoot前', targetSentence.length, GCR[GCR.flagsNum].targetIndex);
     if (targetSentence.length > GCR[GCR.flagsNum].targetIndex) GCR = checkKoutiKeiyousiRoot(targetSentence, GCR);
     if (truenum == GCR[GCR.flagsNum].wordsCount) {
         GCR.successes[GCR.currentType[GCR.currentTypeNum]].push('true');
@@ -1054,18 +1055,15 @@ function checkMeisi(targetSentence, GCR) {
     }
     if (tango[targetSentence[GCR[GCR.flagsNum].targetIndex]].hinsi.includes('名詞')) {
         GCR[GCR.flagsNum].meisi.push(tango[targetSentence[GCR[GCR.flagsNum].targetIndex]].tags); //タグを代入ここから
-        GCR[GCR.flagsNum].wordsCount += 1;
-        GCR[GCR.flagsNum].targetIndex += 1;
-        GCR[GCR.flagsNum].meisi.push(tango[targetSentence[0]].tags); //タグを代入ここから
         GCR[GCR.flagsNum].meisi = GCR[GCR.flagsNum].meisi.flat(Infinity);
         GCR[GCR.flagsNum].wordsCount += 1;
-        GCR.currentIndex += 1;
         GCR[GCR.flagsNum].targetIndex += 1;
+        GCR.currentIndex += 1;
     } else {
         GCR[GCR.flagsNum].targetIndex += 1;
         GCR = errorManager(GCR, '', 'MeisiNotExist'); //名詞が存在しない
     }
-    console.log('checkMeisiroot通過後GCR', targetSentence, GCR);
+    console.log('checkMeisi通過後GCR', targetSentence, GCR);
     return GCR;
 }
 
@@ -1083,6 +1081,7 @@ function checkKoutiKeiyousiRoot(targetSentence, GCR) {
             let temporaryGCR = JSON.parse(JSON.stringify(GCR)); // GCRをディープコピー
             temporaryGCR = checkMeisiRoot(temporaryTargetSentence, temporaryGCR); //仮のGCRを引数にする。本当のGCRは渡さない←何で？いみわからん←trueが2個返ってくるから
             if (temporaryGCR.temporaryWordsNum > 0) keiyousiCount = temporaryGCR.temporaryWordsNum + 1; //名詞がある場合
+            GCR.currentIndex = temporaryGCR.currentIndex; //現在のインデックスを更新
             GCR.errors = temporaryGCR.errors;
             GCR.flagsNum = GCR.flagsNum - 1;
         }
@@ -1202,7 +1201,7 @@ function errorManager(GCR, typeText, errorID) {
             GCR.errors[keyName] = errorTemplete;
             GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
             GCR.errors[keyName].index = GCR.currentIndex;
-            GCR.errors[keyName].type = '冠詞ミスmiss！';
+            GCR.errors[keyName].type = '冠詞ミス！';
             GCR.errors[keyName].reason = '可算名詞には冠詞が必要です';
             GCR.errors[keyName].suggestion = '冠詞を入れましょう';
             break;
@@ -1286,7 +1285,6 @@ function errorManager(GCR, typeText, errorID) {
             GCR.errors[keyName].type = '代名詞ミス！';
             GCR.errors[keyName].reason = typeText + 'に使えない代名詞が入っています';
             GCR.errors[keyName].suggestion = '別の代名詞に変えてみましょう';
-            console.log('代名詞エラー：', GCR.errors);
             break;
         case 'MeisiMissOfAny': //名詞のどこかにミスがある
             keyName = GCR.currentType[GCR.currentTypeNum] + 'MeisiAny';
