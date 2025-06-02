@@ -33,7 +33,19 @@ export class routeManager {
      * @param {Function} handler -行う処理-
      */
     onPost(url, handler) {
-        this.postHandlers.get(url) === undefined ? this.postHandlers.set(url, [handler]) : this.postHandlers.get(url).push(handler);
+        this.serverManager.onPost(url, async (req, res) => handler(req, res));
+    }
+
+    /**
+     * ハンドラーを全てデータ付きで実行
+     * @param {Array<Function>} handlers -実行する関数の配列-
+     * @param {*} payload -送るデータ-
+     */
+    _doHandlers(handlers, data) {
+        if (handlers === undefined) return;
+        for (let i = 0; i < handlers.length; i++) {
+            handlers[i](data);
+        }
     }
 
     setUpRoutingGet() {

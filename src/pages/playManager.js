@@ -3,6 +3,7 @@ import { playClientsManager } from '../ws/playClientsManager.js';
 import { usersManager } from '../server/usersManager.js';
 import roomMemberDB from '../db/repositories/roomMemberRepository.js';
 import roomsDB from '../db/repositories/roomsRepository.js';
+import { routemanager } from '../app.js';
 
 export class playManager {
     /**
@@ -59,13 +60,17 @@ export class playManager {
     _setup() {
         this.wss.onMessage('entryRoom', async (ws, data) => this.onMessageEntryRoom(ws, data), 1);
 
-        this.wss.onMessage('outRoom', async (ws, data) => {
-            console.log('playManager');
-            console.log('誰かが退出したよ');
+        setTimeout(() => {
+            routemanager.onPost('/disconnect-log', async (req, res) => {
+            console.log('誰か退出したよ');
+            console.log(req);
+            console.log(req.body);
+            const { type, payload} = req.body;
+            console.log(payload);
 
-            const username = data.username;
+            const username = payload.username;
             const userId = await usersManager.nameToId(username);
-            const parentName = data.parentName;
+            const parentName = payload.parentName;
             const parentId = await usersManager.nameToId(parentName);
             const roomId = await roomsDB.getRoomId(parentId);
 
@@ -94,6 +99,7 @@ export class playManager {
                 this.playclientsmanager.sendRoomData(roomId);
             }
         });
+        }, 1000);
     }
 
     sendToClients(sendData, roomId) {
