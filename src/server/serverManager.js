@@ -22,11 +22,12 @@ export class serverManager {
 
     _expressSetUp() {
         this.app = express();
+        this.app.use(cors());
 
         this.app.use(cookieParser());
+        this.app.use(express.text({ type: '*/*' }));
+
         this.app.use(express.static('public'));
-        this.app.use(cors());
-        this.app.use(express.json());
 
         this.app.set('view engine', 'ejs');
         const dirname = __dirname.split('\\');

@@ -1,13 +1,12 @@
 // import { connectionManager } from "../../utils/connectionManager.js";
-import { functions } from "/js/utils/functions.js";
+import { functions } from '/js/utils/functions.js';
 
-export class playerManager{
-
+export class playerManager {
     /**
-     * 
-     * @param {connectionManager} wss 
+     *
+     * @param {connectionManager} wss
      */
-    constructor(wss){
+    constructor(wss) {
         this.nameDivs = document.getElementsByClassName('name');
         console.log(this.nameDivs);
         this.wss = wss;
@@ -30,63 +29,63 @@ export class playerManager{
         */
 
         document.addEventListener('keydown', (e) => {
-            if(e.key == 'p'){
+            if (e.key == 'p') {
                 const testData = {
-                    username : 'shiro'
-                }
+                    username: 'shiro',
+                };
                 console.log(testData);
                 this.test_entryRoom(testData);
             }
 
-            if(e.key == 'o'){
+            if (e.key == 'o') {
                 const testData1 = {
-                    username : 'sasa'
-                }
+                    username: 'sasa',
+                };
                 this.test_entryRoom(testData1);
             }
-            
-            if(e.key == 'i'){
+
+            if (e.key == 'i') {
                 const testData2 = {
-                    username : 'suga'
-                }
+                    username: 'suga',
+                };
                 this.test_entryRoom(testData2);
             }
 
-            if(e.key == 'q'){
+            if (e.key == 'q') {
                 const testData3 = {
-                    username : 'shiro'
-                }
+                    username: 'shiro',
+                };
                 this.test_outRoom(testData3);
             }
 
-            if(e.key == 'w'){
+            if (e.key == 'w') {
                 const testData4 = {
-                    username : 'sasa'
-                }
+                    username: 'sasa',
+                };
                 this.test_outRoom(testData4);
             }
-            
-            if(e.key == 'e'){
+
+            if (e.key == 'e') {
                 const testData5 = {
-                    username : 'suga'
-                }
+                    username: 'suga',
+                };
                 this.test_outRoom(testData5);
             }
 
-            if(e.key == 'r'){
+            if (e.key == 'r') {
                 //this.nameDivs[0].children[0].innerHTML = 'しろー';
                 const nanka = this.playerMembers.indexOf(this.playername);
                 let j = 0;
-                while(j < 4){
-                    if(j !== 2){
-                        this.nameDivs[j].children[0].innerHTML = ''
+                while (j < 4) {
+                    if (j !== 2) {
+                        this.nameDivs[j].children[0].innerHTML = '';
                     }
-                    j++
+                    j++;
                 }
 
                 this.playerMembers.forEach((value, index) => {
                     this.nameDivs[(index + 2 - nanka) % 4].children[0].innerHTML = value;
-                    if(value == this.playerMembers[0]){
+                    if (value == this.playerMembers[0]) {
                         this.nameDivs[(index + 2 - nanka) % 4].children[0].style.color = 'red';
                     }
                 });
@@ -108,26 +107,26 @@ export class playerManager{
                 }
                     */
             }
-        })
+        });
         this._setupWebsocket();
         this._setup();
     }
 
-    get parentname(){
+    get parentname() {
         return this.parentName;
     }
 
-    test_entryRoom(data){
+    test_entryRoom(data) {
         this.playerMembers[this.playerMembers.length] = data.username;
         console.log(this.playerMembers);
     }
-    test_outRoom(data){
+    test_outRoom(data) {
         let i = 1;
         while (i < this.playerMembers.length) {
-            if(this.playerMembers[i] == data.username){
-                this.playerMembers.splice(i,1);
+            if (this.playerMembers[i] == data.username) {
+                this.playerMembers.splice(i, 1);
             }
-            i++
+            i++;
         }
         console.log(this.playerMembers);
     }
@@ -140,30 +139,23 @@ export class playerManager{
         }
 
     */
-    _setup(){
-        window.addEventListener('DOMContentLoaded', () => {
-            const sendData = {
-                type: "outRoom",
-                payload:{
-                    parentName:this.playerMembers[0],
-                    username:this.playername,
-                }
-            }
-            navigator.sendBeacon("/disconnect-log", JSON.stringify(sendData), true);
-        })
+    _setup() {
+        window.addEventListener('beforeunload', () => {
+            navigator.sendBeacon(`/post?type=outRoom&username=${this.playername}&parentName=${this.playerMembers[0]}`, JSON.stringify(sendData));
+        });
     }
 
-    _setupWebsocket(){
+    _setupWebsocket() {
         this.wss.onOpen(() => {
             this.playername = document.getElementById('usernameText').innerHTML;
             this.playername = functions.sN(this.playername);
-            const sendparent ={
-                type:'entryRoom',
-                payload:{
-                    parentName:this.playerMembers[0],
-                    username:this.playername,
-                }
-            }
+            const sendparent = {
+                type: 'entryRoom',
+                payload: {
+                    parentName: this.playerMembers[0],
+                    username: this.playername,
+                },
+            };
             this.wss.send(sendparent);
             console.log(sendparent);
         });
@@ -186,10 +178,10 @@ export class playerManager{
         this.wss?.onMessage('outRoom', (data) => {
             let i = 1;
             while (i < this.playerMembers.length) {
-                if(this.playerMembers[i] == data.username){
-                    this.playerMembers.splice(i,1);
+                if (this.playerMembers[i] == data.username) {
+                    this.playerMembers.splice(i, 1);
                 }
-                i++
+                i++;
             }
             console.log(this.playerMembers);
         });
@@ -210,7 +202,5 @@ export class playerManager{
     }
 
     // playerMembersの値を使って名前を表示する
-    updatePlayerName(){
-        
-    }
+    updatePlayerName() {}
 }

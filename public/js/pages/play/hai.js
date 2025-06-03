@@ -22,7 +22,7 @@ export class hai {
 
         // 後ろに画像表示 名詞はとりあえず1番目のやつ
         hai.style.backgroundImage = `url(/img/partOfSpeech/${this.hinsi}.png)`;
-        console.log("f");
+        console.log('f');
         return hai;
     }
 }
