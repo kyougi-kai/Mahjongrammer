@@ -944,11 +944,11 @@ function checkS(targetSentence, GCR) /*＜S＞*/ {
 
 let checkGrammerTestArray = {
     sentence: 1,
-    s: ['happy', ['very']],
+    s: ['apple'],
     v: ['run'],
 };
 
-console.log('checkC結果：', checkGrammerTestArray.s, checkC(checkGrammerTestArray.s, testGCR));
+console.log('checkS結果：', checkGrammerTestArray.s, checkS(checkGrammerTestArray.s, testGCR));
 
 function checkC(targetSentence, GCR) /*＜C＞*/ {
     if (targetSentence.length == 1 && tango[targetSentence[0]].hinsi.includes('代名詞')) {
@@ -1031,6 +1031,7 @@ function checkMeisiRoot(targetSentence, GCR) /*＜名詞根＞*/ {
     console.log('checkMeisiRoot通過後GCR', targetSentence, GCR);
     GCR = checkMeisiGrammerMatters(targetSentence, GCR); //三単現s、単数形/複数形の処理を入れる
     GCR.temporaryWordsNum = GCR[GCR.flagsNum].wordsCount;
+    GCR['allOf' + GCR.currentType[GCR.currentTypeNum] + 'Tags'] = GCR[GCR.flagsNum];
     delete GCR[GCR.flagsNum];
     return GCR;
 }
@@ -1221,6 +1222,16 @@ function checkV(targetSentence, GCR, sentenceType) /*＜V＞*/ {
     GCR['allOfVTags'] = { jodousi: [], zentiHukusi: [], dousi: [], koutiHukusi: [], wordsCount: 0, targetIndex: temporaryIndex };
     console.log('checkV開始時点のGCR', targetSentence, GCR);
     let truenum = targetSentence.flat(Infinity).length;
+    if (truenum == 0) {
+        GCR = errorManager(GCR, '動詞', 'AllNotExist'); /*何も入っていない場合*/
+        return GCR;
+    }
+
+    GCR = checkKoutiHukusiOfV(targetSentence, GCR, sentenceType); //動詞の後に副詞があるかどうか
+    GCR = checkDousi(targetSentence, GCR, sentenceType); //動詞が存在するかどうか
+    GCR = checkZentiHukusiOfV(targetSentence, GCR, sentenceType); //動詞の前に副詞があるかどうか
+    GCR = checkJodousiRoot(targetSentence, GCR, sentenceType); //助動詞が存在するかどうか
+
     if (truenum == 0) {
         GCR = errorManager(GCR, '動詞', 'AllNotExist'); /*何も入っていない場合*/
         return GCR;
