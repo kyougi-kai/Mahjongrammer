@@ -16,15 +16,17 @@ export class hai {
     }
 
     createHai() {
-        const hai = document.createElement('div');
-        hai.innerHTML = this.word;
-        hai.classList.add('border-div');
+        this.hai = document.createElement('div');
+        this.createHaihai.innerHTML = this.word;
+        this.hai.classList.add('border-div');
 
         // 後ろに画像表示 名詞はとりあえず1番目のやつ
-        hai.style.backgroundImage = `url(/img/partOfSpeech/${this.hinsi}.png)`;
-        console.log("f");
+        this.hai.style.backgroundImage = `url(/img/partOfSpeech/${this.hinsi}.png)`;
+        console.log(this.word, this.hinsi);
         return hai;
     }
+    get getHai() {
+        return this.hai
 }
 
 /*
