@@ -58,4 +58,17 @@ export class roomClientsManager {
             );
         });
     }
+
+    noticeDeleteRoom(roomName) {
+        this.roomClients.values().forEach((client) => {
+            client.send(
+                JSON.stringify({
+                    type: 'deleteRoom',
+                    payload: {
+                        roomName: roomName,
+                    },
+                })
+            );
+        });
+    }
 }

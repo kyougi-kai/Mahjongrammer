@@ -61,44 +61,44 @@ export class playManager {
         this.wss.onMessage('entryRoom', async (ws, data) => this.onMessageEntryRoom(ws, data), 1);
 
         setTimeout(() => {
-            routemanager.onPost('/disconnect-log', async (req, res) => {
-            console.log('誰か退出したよ');
-            console.log(req);
-            console.log(req.body);
-            const { type, payload} = req.body;
-            console.log(payload);
+            routemanager.onPost('outRoom', async (data) => {
+                console.log('誰か退出したよ');
+                const payload = data;
+                console.log(payload);
 
-            const username = payload.username;
-            const userId = await usersManager.nameToId(username);
-            const parentName = payload.parentName;
-            const parentId = await usersManager.nameToId(parentName);
-            const roomId = await roomsDB.getRoomId(parentId);
+                const username = payload.username;
+                const userId = await usersManager.nameToId(username);
+                const parentName = payload.parentName;
+                const parentId = await usersManager.nameToId(parentName);
+                const roomId = await roomsDB.getRoomId(parentId);
 
-            if (username == parentName) {
-                await roomsDB.deleteRoom(roomId);
+                if (username == parentName) {
+                    await roomsDB.deleteRoom(roomId);
 
-                const sendData = {
-                    type: 'closeRoom',
-                    payload: {},
-                };
+                    const sendData = {
+                        type: 'closeRoom',
+                        payload: {},
+                    };
 
-                this.sendToClients(sendData, roomId);
-            } else {
-                await roomMemberDB.exitRoom(userId);
-                const roomMemberCounts = await roomMemberDB.getRoomMembers(roomId);
-                this.roommanager.noticeOutRoom(parentName, roomMemberCounts);
+                    this.sendToClients(sendData, roomId);
+                    this.roommanager.noticeDeleteRoom(parentName);
+                } else {
+                    await roomMemberDB.exitRoom(userId);
+                    const roomMemberCounts = await roomMemberDB.getRoomMembers(roomId);
+                    this.roommanager.noticeOutRoom(parentName, roomMemberCounts);
 
-                const sendData = {
-                    type: 'outRoom',
-                    payload: {
-                        username: username,
-                    },
-                };
-                this.sendToClients(sendData, roomId);
+                    const sendData = {
+                        type: 'outRoom',
+                        payload: {
+                            username: username,
+                        },
+                    };
+                    this.sendToClients(sendData, roomId);
 
-                this.playclientsmanager.sendRoomData(roomId);
-            }
-        });
+                    this.playclientsmanager.sendRoomData(roomId);
+                    // 適切にルームメンバーカウントを受け取る
+                }
+            });
         }, 1000);
     }
 
