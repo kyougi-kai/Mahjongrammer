@@ -1237,7 +1237,6 @@ function checkV(targetSentence, GCR, sentenceType) /*＜V＞*/ {
         return GCR;
     }
     if (targetSentence.length > GCR[GCR.flagsNum].targetIndex) GCR = checkJodousiRoot(targetSentence, GCR);
-    delete GCR['allOfVTags'];
     return GCR;
 }
 
