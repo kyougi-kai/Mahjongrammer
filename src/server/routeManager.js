@@ -11,7 +11,6 @@ export class routeManager {
     constructor(serverManager) {
         this.serverManager = serverManager;
 
-        this.getHandlers = new Map();
         this.postHandlers = new Map();
 
         this.setUpRoutingGet();
@@ -20,20 +19,11 @@ export class routeManager {
 
     /**
      *
-     * @param {string} url -受け取るurl-
+     * @param {string} type -postのタイプ-
      * @param {Function} handler -行う処理-
      */
-    onGet(url, handler) {
-        this.getHandlers.get(url) === undefined ? this.getHandlers.set(url, [handler]) : this.getHandlers.get(url).push(handler);
-    }
-
-    /**
-     *
-     * @param {string} url -受け取るurl-
-     * @param {Function} handler -行う処理-
-     */
-    onPost(url, handler) {
-        this.serverManager.onPost(url, async (req, res) => handler(req, res));
+    onPost(type, handler) {
+        this.postHandlers.get(type) === undefined ? this.postHandlers.set(type, [handler]) : this.postHandlers.get(type).push(handler);
     }
 
     /**
@@ -41,10 +31,10 @@ export class routeManager {
      * @param {Array<Function>} handlers -実行する関数の配列-
      * @param {*} payload -送るデータ-
      */
-    _doHandlers(handlers, data) {
+    async _doHandlers(handlers, data) {
         if (handlers === undefined) return;
         for (let i = 0; i < handlers.length; i++) {
-            handlers[i](data);
+            await handlers[i](data);
         }
     }
 
@@ -105,6 +95,13 @@ export class routeManager {
     }
 
     setUpRoutingPost() {
+        this.serverManager.onPost('/post', async (req, res) => {
+            console.log(req.query);
+            await this._doHandlers(this.postHandlers.get(req.query.type), payload);
+
+            res.sendStatus(204);
+        });
+
         this.serverManager.onPost('/login', async (req, res) => {
             const { username, password } = req.body;
             try {
