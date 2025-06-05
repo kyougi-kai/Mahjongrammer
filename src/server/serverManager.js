@@ -25,7 +25,7 @@ export class serverManager {
         this.app.use(cors());
 
         this.app.use(cookieParser());
-        this.app.use(express.text({ type: '*/*' }));
+        this.app.use(express.json());
 
         this.app.use(express.static('public'));
 
