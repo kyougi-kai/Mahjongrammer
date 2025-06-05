@@ -29,13 +29,4 @@ export class hai {
         return this.hai
 }
 
-/*
-
-関数の省略形
-
-function name(){}
-
-() => {}
-
-
-*/
+}
