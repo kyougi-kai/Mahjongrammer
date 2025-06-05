@@ -17,7 +17,7 @@ export class hai {
 
     createHai() {
         this.hai = document.createElement('div');
-        this.createHaihai.innerHTML = this.word;
+        this.hai.innerHTML = this.word;
         this.hai.classList.add('border-div');
 
         // 後ろに画像表示 名詞はとりあえず1番目のやつ
@@ -27,6 +27,5 @@ export class hai {
     }
     get getHai() {
         return this.hai
-}
-
+    }
 }
