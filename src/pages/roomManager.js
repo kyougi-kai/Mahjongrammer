@@ -61,6 +61,10 @@ export class roomManager {
         this.roomclientsmanager.noticeOutRoom(roomName, roomMemberCounts);
     }
 
+    noticeDeleteRoom(roomName) {
+        this.roomclientsmanager.noticeDeleteRoom(roomName);
+    }
+
     static async isRoomByParentId(parentId) {
         return (await roomsrepository.isNull('parent_id', parentId)) == false;
     }

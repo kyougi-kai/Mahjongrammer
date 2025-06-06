@@ -105,6 +105,7 @@ function initializeUI() {
 
 // エラーの原因
 ・forEachで非同期処理を行うと上手く動作しない
+・サーバーの設定にthis.app.use(express.json());以外を入れるとreq.bodyの中身が上手く受け取れない
 
 次やること
 部屋を作成するタイミングで部屋の情報とろうとしてるから部屋作ってからやる

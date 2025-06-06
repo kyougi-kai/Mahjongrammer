@@ -140,8 +140,19 @@ export class playerManager {
 
     */
     _setup() {
+        let sendBeaconFlag = false;
         window.addEventListener('beforeunload', () => {
-            navigator.sendBeacon(`/post?type=outRoom&username=${this.playername}&parentName=${this.playerMembers[0]}`, JSON.stringify(sendData));
+            if (!sendBeaconFlag) {
+                let sendData = {
+                    type: 'outRoom',
+                    payload: {
+                        username: this.playername,
+                        parentName: this.parentName,
+                    },
+                };
+                sendBeaconFlag = true;
+                navigator.sendBeacon(`/post?type=outRoom&username=${this.playername}&parentName=${this.playerMembers[0]}`, JSON.stringify(sendData));
+            }
         });
     }
 

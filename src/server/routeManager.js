@@ -96,8 +96,9 @@ export class routeManager {
 
     setUpRoutingPost() {
         this.serverManager.onPost('/post', async (req, res) => {
-            console.log(req.query);
-            await this._doHandlers(this.postHandlers.get(req.query.type), payload);
+            console.log('post通信が呼ばれました');
+            const payload = req.query;
+            await this._doHandlers(this.postHandlers.get(payload.type), payload);
 
             res.sendStatus(204);
         });

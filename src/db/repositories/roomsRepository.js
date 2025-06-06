@@ -23,7 +23,7 @@ export class roomsRepository extends baseRepository {
         return result;
     }
 
-    static async deleteRoom(roomId) {
+    async deleteRoom(roomId) {
         this.query('delete from rooms where room_id = ?', [roomId]);
     }
 }
