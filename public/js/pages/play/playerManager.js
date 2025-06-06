@@ -214,4 +214,10 @@ export class playerManager {
 
     // playerMembersの値を使って名前を表示する
     updatePlayerName() {}
+
+    isParent() {
+        if(this.parentname == this.playerMembers[0]){
+            
+        }
+    }
 }
