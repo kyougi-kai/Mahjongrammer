@@ -36,3 +36,4 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         console.log(err);
     }
 });
+
