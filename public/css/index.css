@@ -48,6 +48,7 @@ html{
 .nanka{
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 10px;
     height: 700px;
 }
