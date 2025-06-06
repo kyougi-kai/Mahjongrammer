@@ -18,6 +18,7 @@ html{
     width: 90%;
     max-width: 300px;
     background-color: white;
+    display: none;
 }
 
 .login-header{
@@ -51,4 +52,9 @@ html{
     align-items: center;
     width: 10px;
     height: 700px;
+}
+
+.hoyuji-style{
+    justify-content: center;
+    display: flex;
 }
