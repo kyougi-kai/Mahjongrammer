@@ -16,14 +16,15 @@ export class hai {
     }
 
     createHai() {
+
         this.hai = document.createElement('div');
         this.hai.innerHTML = this.word;
         this.hai.classList.add('border-div');
 
         // 後ろに画像表示 名詞はとりあえず1番目のやつ
         this.hai.style.backgroundImage = `url(/img/partOfSpeech/${this.hinsi}.png)`;
-        console.log(this.word, this.hinsi);
-        return hai;
+
+        return this.hai;
     }
     get getHai() {
         return this.hai

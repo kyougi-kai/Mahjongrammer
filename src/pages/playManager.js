@@ -18,6 +18,10 @@ export class playManager {
         this._setup();
     }
 
+    isPanret(){
+        
+    }
+
     async onMessageEntryRoom(ws, data) {
         const parentName = data.parentName;
         const username = data.username;

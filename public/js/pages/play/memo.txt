@@ -17,3 +17,8 @@
    type:'entryRoom',
    payload:{username:"なんか"}
 }
+
+
+伊藤君
+・親だけスタートボタン表示
+スタートボタンおしたらflowのスタート関数を呼ぶ
