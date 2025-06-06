@@ -70,33 +70,36 @@ export class playManager {
                 const userId = await usersManager.nameToId(username);
                 const parentName = payload.parentName;
                 const parentId = await usersManager.nameToId(parentName);
-                const roomId = await roomsDB.getRoomId(parentId);
+                try {
+                    const roomId = await roomsDB.getRoomId(parentId);
 
-                if (username == parentName) {
-                    await roomsDB.deleteRoom(roomId);
+                    if (username == parentName) {
+                        await roomsDB.deleteRoom(roomId);
 
-                    const sendData = {
-                        type: 'closeRoom',
-                        payload: {},
-                    };
+                        const sendData = {
+                            type: 'closeRoom',
+                            payload: {},
+                        };
 
-                    this.sendToClients(sendData, roomId);
-                    this.roommanager.noticeDeleteRoom(parentName);
-                } else {
-                    await roomMemberDB.exitRoom(userId);
-                    const roomMemberCounts = await roomMemberDB.getRoomMembers(roomId);
-                    this.roommanager.noticeOutRoom(parentName, roomMemberCounts);
+                        this.sendToClients(sendData, roomId);
+                        this.roommanager.noticeDeleteRoom(parentName);
+                    } else {
+                        await roomMemberDB.exitRoom(userId);
+                        const roomMemberCounts = await roomMemberDB.roomMemberCounts(roomId);
+                        console.log('getRoomMemberCounts');
+                        console.log(roomMemberCounts);
+                        this.roommanager.noticeOutRoom(parentName, roomMemberCounts);
 
-                    const sendData = {
-                        type: 'outRoom',
-                        payload: {
-                            username: username,
-                        },
-                    };
-                    this.sendToClients(sendData, roomId);
-
-                    this.playclientsmanager.sendRoomData(roomId);
-                    // 適切にルームメンバーカウントを受け取る
+                        const sendData = {
+                            type: 'outRoom',
+                            payload: {
+                                username: username,
+                            },
+                        };
+                        this.sendToClients(sendData, roomId);
+                    }
+                } catch (err) {
+                    console.log('部屋が存在しません');
                 }
             });
         }, 1000);
