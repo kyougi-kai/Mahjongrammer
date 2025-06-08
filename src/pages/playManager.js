@@ -67,10 +67,11 @@ export class playManager {
                 console.log(payload);
 
                 const username = payload.username;
-                const userId = await usersManager.nameToId(username);
-                const parentName = payload.parentName;
-                const parentId = await usersManager.nameToId(parentName);
+
                 try {
+                    const userId = await usersManager.nameToId(username);
+                    const parentName = payload.parentName;
+                    const parentId = await usersManager.nameToId(parentName);
                     const roomId = await roomsDB.getRoomId(parentId);
 
                     if (username == parentName) {
@@ -99,6 +100,7 @@ export class playManager {
                         this.sendToClients(sendData, roomId);
                     }
                 } catch (err) {
+                    console.log('playerManager.js');
                     console.log('部屋が存在しません');
                 }
             });
