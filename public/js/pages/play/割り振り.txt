@@ -45,7 +45,6 @@ this.wss でメッセージを送る
 ・uiManager.js の showThrowHai　を作る
 　hai を this.throwHaiTableの子要素の position の位置に .innerHTML を使って埋め込む positionはthrowHaiTalbeの子要素の添え字
 ・playerManagerにgetPlayerNumberを追加 あなたがplayerMembersで何番目かが帰ってくる
-・playerManagerにgetPlayerPositionを追加　あなたが　上　右　下　左　のどこに座っているかが 0 ~ 3 の数字で帰ってくる
 ・playerManagerにphaseToPositionとpositionToPhaseを作る　フェーズナンバーをポジションナンバーにして返す　逆のやつ フェーズは親を0とした数 positionは上の位置を0とした数
 
 【Osu!ガチ勢】♦富岡パーフェクト士郎♦♡がやること
