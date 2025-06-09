@@ -138,10 +138,30 @@ export class playerManager {
 
     isParent() {
         if (this.parentname == this.playerMembers[0]) {
+            return true;
         }
+        else return false;
     }
 
     phaseToPosition() {}
 
     positionToPhase() {}
+
+    get getParent () {
+        return this.parentName;
+    }
+
+    getPlayerNumber() {
+        const number = this.playerMembers.indexOf(this.parentName);
+        return number;
+    }
+
+    phaseToPosition(phase){
+
+    }
+
+    positonToPhase(position){
+        const phasenumber = this.playerMembers.indexOf(this.playerMembers[position]);
+        return phasenumber;
+    }
 }
