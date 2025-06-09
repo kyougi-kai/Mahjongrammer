@@ -31,6 +31,7 @@
 haiのdraggableの属性を削除する
 メッセージタイプ throwHai
 データ hai : hai.innerHTML
+       parentName: this.playermanager.getParent
 
 _setupWebsocket内でthis.wssを使って throwHaiを受け取ったら
 uimanagerのshowThrowHaiを呼ぶ　引数は　牌の要素, 上右下左を 0 ~ 3で表した数字　nowPhaseNumber と phaseToPositionを使って
@@ -48,6 +49,18 @@ this.wss でメッセージを送る
 ・playerManagerにgetPlayerPositionを追加　あなたが　上　右　下　左　のどこに座っているかが 0 ~ 3 の数字で帰ってくる
 ・playerManagerにphaseToPositionとpositionToPhaseを作る　フェーズナンバーをポジションナンバーにして返す　逆のやつ フェーズは親を0とした数 positionは上の位置を0とした数
 
-【Osu!ガチ勢】♦富岡パーフェクト士郎♦♡がやること
-startGameを受け取ったら startGameを送信
-throwHaiを受け取ったら他の人にthrowHaiと haiのデータを送る
+これから必要な機能
+uiManager
+showThrowHai が呼ばれたら 3, 2, 1 と1秒ごとにテキストを変えて表示する
+showThrowHai が呼ばれたら親以外ポンButtonを表示する
+
+throw で親だけ ３秒後に メッセージタイプ next を parentName　と nowPhaseNumber : this.nowPhaseNumber 付きで送る
+
+next を 受け取ったら nextPhaseNumberを+1して parentName を付けて nextPhaseを全員に送る
+nextPhaseを受け取ったら自分自身なら1個引くしnowPhaseNumberを更新するしスコアボードの色も変える
+
+ポンを押したら メッセージタイプ pon を parentName と playerNumber:playermanagerのgetPlayerNumber付きで送る
+
+ponを受け取ったら pon username:username　playerを送る
+
+pon を 受け取ったら直ちにカウントダウンとthrowの中で3秒後にnextを送る処理を止めて
