@@ -58,6 +58,26 @@ export class playManager {
     }
 
     _setup() {
+        this.wss.onMessage('startGame', async (ws, data) => {
+            const parentId = await usersManager.nameToId(data.parentName);
+            const roomId = await roomsDB.getRoomId(parent);
+            const sendData = {
+                type: 'startGame',
+                payload: {},
+            };
+            this.sendToClients(sendData, roomId);
+        });
+
+        this.wss.onMessage('throwHai', async (ws, data) => {
+            const parentId = await usersManager.nameToId(data.parentName);
+            const roomId = await roomsDB.getRoomId(parent);
+            const sendData = {
+                type: 'throwHai',
+                payload: { hai: data.hai },
+            };
+            this.sendToClients(sendData, roomId);
+        });
+
         this.wss.onMessage('entryRoom', async (ws, data) => this.onMessageEntryRoom(ws, data), 1);
 
         setTimeout(() => {
