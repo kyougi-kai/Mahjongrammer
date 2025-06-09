@@ -11,7 +11,7 @@ export class gameManager {
         this.playermanager = new playerManager(this.connectionmanager);
         this.blockmanager = new blockManager();
         this.uimanager = new uiManager(this.playermanager);
-        this.flow = new flow(this.connectionmanager, this.blockmanager, this.uimanager);
+        this.flow = new flow(this.connectionmanager, this.blockmanager, this.uimanager, this.playermanager);
 
         this.blockmanager.setFlow(this.flow);
 

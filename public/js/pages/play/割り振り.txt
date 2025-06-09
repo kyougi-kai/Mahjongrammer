@@ -24,7 +24,7 @@
 ・setupWebsocketでメッセージタイプ"startGame"を受け取ったらstart関数を呼ぶ
 ・start関数でdrawHaiを使ってプレイヤーに牌を7個配る
 ・start関数で id "scoreBord"の要素を表示する
-・start関数で 親の点数が表示されている要素を取得し　その要素.style.animation = "blinking 2s infinite ease"; とかく
+・start関数で 親の点数が表示されている要素を取得し　その要素.style.animation =  とかく
 ・start関数であなたが親ならもう1個牌を引く
 
 ・throwであなたの番なら this.wss で throwHaiを送る 
