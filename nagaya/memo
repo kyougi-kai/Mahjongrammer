@@ -77,7 +77,7 @@ checkVテストケース
 ["can","run"]...true
 ["can",[""],""]
 
-次回・・・動詞の登録、checkV,checkJodousiRoot
+次回・・・ダウンロードしたスプレッドシートから動詞の登録、checkV,checkJodousiRoot
 
 errorManeger・・・エラーを一元的に管理する関数
 function errorManager(GCR,errorID){

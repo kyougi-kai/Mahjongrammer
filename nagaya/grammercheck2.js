@@ -1,6 +1,5 @@
 let tango = {
     apple: {
-        //名詞
         hinsi: ['名詞'],
         tags: ['可算名詞', '単数形', '母音で始まる'],
         katuyou: ['apples'],
@@ -1244,6 +1243,18 @@ function checkDousi(targetSentence, GCR, sentenceType) {
         GCR = errorManager(GCR, '', 'DousiNotExist');
         console.log('checkDousi通過後GCR', targetSentence, GCR);
     }
+    switch (sentenceType) {
+        case '1': //第一文型SV
+            break;
+        case '2': //第二文型SVC
+            break;
+        case '3': //第三文型SVO
+            break;
+        case '4': //第四文型SVOO
+            break;
+        case '5': //第五文型SVOC
+            break;
+    }
     return GCR;
 }
 
@@ -1256,7 +1267,7 @@ function errorManager(GCR, typeText, errorID) {
     switch (errorID) {
         case 'AllNotExist': //何も入っていない
             keyName = GCR.currentType[GCR.currentTypeNum] + 'All';
-            GCR.errors[keyName] = errorTemplete;
+            GCR.errors[keyName] = { ...errorTemplete };
             GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
             GCR.errors[keyName].index = GCR.currentIndex;
             GCR.errors[keyName].type = typeText + 'ミス！';
@@ -1265,7 +1276,7 @@ function errorManager(GCR, typeText, errorID) {
             break;
         case 'KansiNotExist': //冠詞が存在しない
             keyName = GCR.currentType[GCR.currentTypeNum] + 'Kansi';
-            GCR.errors[keyName] = errorTemplete;
+            GCR.errors[keyName] = { ...errorTemplete };
             GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
             GCR.errors[keyName].index = GCR.currentIndex;
             GCR.errors[keyName].type = '冠詞ミス！';
@@ -1274,7 +1285,7 @@ function errorManager(GCR, typeText, errorID) {
             break;
         case 'KansiMissOfHuteiOnHukasan': //不可算名詞に不定冠詞をつけている
             keyName = GCR.currentType[GCR.currentTypeNum] + 'Kansi';
-            GCR.errors[keyName] = errorTemplete;
+            GCR.errors[keyName] = { ...errorTemplete };
             GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
             GCR.errors[keyName].index = GCR.currentIndex;
             GCR.errors[keyName].type = '冠詞ミス！';
@@ -1283,7 +1294,7 @@ function errorManager(GCR, typeText, errorID) {
             break;
         case 'KansiMissOfHuteiOnHukusuu': //複数形の名詞に不定冠詞をつけている
             keyName = GCR.currentType[GCR.currentTypeNum] + 'Kansi';
-            GCR.errors[keyName] = errorTemplete;
+            GCR.errors[keyName] = { ...errorTemplete };
             GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
             GCR.errors[keyName].index = GCR.currentIndex;
             GCR.errors[keyName].type = '冠詞ミス！';
@@ -1292,7 +1303,7 @@ function errorManager(GCR, typeText, errorID) {
             break;
         case 'KansiMissOfSuusiOnTansuu': //単数形の名詞に数詞をつけている
             keyName = GCR.currentType[GCR.currentTypeNum] + 'Kansi';
-            GCR.errors[keyName] = errorTemplete;
+            GCR.errors[keyName] = { ...errorTemplete };
             GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
             GCR.errors[keyName].index = GCR.currentIndex;
             GCR.errors[keyName].type = '冠詞ミス！';
@@ -1301,7 +1312,7 @@ function errorManager(GCR, typeText, errorID) {
             break;
         case 'KansiMissOfaOnBoin': //発音が母音で始まる単語にaをつけている
             keyName = GCR.currentType[GCR.currentTypeNum] + 'Kansi';
-            GCR.errors[keyName] = errorTemplete;
+            GCR.errors[keyName] = { ...errorTemplete };
             GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
             GCR.errors[keyName].index = GCR.currentIndex;
             GCR.errors[keyName].type = '冠詞ミス！';
@@ -1310,7 +1321,7 @@ function errorManager(GCR, typeText, errorID) {
             break;
         case 'KansiMissOfanOnShiin': //発音が子音で始まる単語にanをつけている
             keyName = GCR.currentType[GCR.currentTypeNum] + 'Kansi';
-            GCR.errors[keyName] = errorTemplete;
+            GCR.errors[keyName] = { ...errorTemplete };
             GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
             GCR.errors[keyName].index = GCR.currentIndex;
             GCR.errors[keyName].type = '冠詞ミス！';
@@ -1319,7 +1330,7 @@ function errorManager(GCR, typeText, errorID) {
             break;
         case 'ZentiKeiyousi': //前置修飾ミス
             keyName = GCR.currentType[GCR.currentTypeNum] + 'ZentiKeiyousi';
-            GCR.errors[keyName] = errorTemplete;
+            GCR.errors[keyName] = { ...errorTemplete };
             GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
             GCR.errors[keyName].index = GCR.currentIndex;
             GCR.errors[keyName].type = '名詞修飾ミス！';
@@ -1328,7 +1339,7 @@ function errorManager(GCR, typeText, errorID) {
             break;
         case 'MeisiNotExist': //名詞が存在しない
             keyName = GCR.currentType[GCR.currentTypeNum] + 'Meisi';
-            GCR.errors[keyName] = errorTemplete;
+            GCR.errors[keyName] = { ...errorTemplete };
             GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
             GCR.errors[keyName].index = GCR.currentIndex;
             GCR.errors[keyName].type = '名詞ミス！';
@@ -1337,7 +1348,7 @@ function errorManager(GCR, typeText, errorID) {
             break;
         case 'KoutiKeiyousi': //後置修飾ミス
             keyName = GCR.currentType[GCR.currentTypeNum] + 'KoutiKeiyousi';
-            GCR.errors[keyName] = errorTemplete;
+            GCR.errors[keyName] = { ...errorTemplete };
             GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
             GCR.errors[keyName].index = GCR.currentIndex;
             GCR.errors[keyName].type = '名詞修飾ミス！';
@@ -1346,7 +1357,7 @@ function errorManager(GCR, typeText, errorID) {
             break;
         case 'Daimeisi': //代名詞ミス
             keyName = GCR.currentType[GCR.currentTypeNum] + 'Daimeisi';
-            GCR.errors[keyName] = errorTemplete;
+            GCR.errors[keyName] = { ...errorTemplete };
             GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
             GCR.errors[keyName].index = GCR.currentIndex;
             GCR.errors[keyName].type = '代名詞ミス！';
@@ -1355,7 +1366,7 @@ function errorManager(GCR, typeText, errorID) {
             break;
         case 'MeisiMissOfAny': //名詞のどこかにミスがある
             keyName = GCR.currentType[GCR.currentTypeNum] + 'MeisiAny';
-            GCR.errors[keyName] = errorTemplete;
+            GCR.errors[keyName] = { ...errorTemplete };
             GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
             GCR.errors[keyName].index = GCR.currentIndex;
             GCR.errors[keyName].type = '名詞ミス！';
@@ -1364,7 +1375,7 @@ function errorManager(GCR, typeText, errorID) {
             break;
         case 'HogoMissOfAny': //補語のどこかにミスがある
             keyName = GCR.currentType[GCR.currentTypeNum] + 'HogoAny';
-            GCR.errors[keyName] = errorTemplete;
+            GCR.errors[keyName] = { ...errorTemplete };
             GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
             GCR.errors[keyName].index = GCR.currentIndex;
             GCR.errors[keyName].type = '補語ミス！';
@@ -1374,7 +1385,7 @@ function errorManager(GCR, typeText, errorID) {
         case 'DousiNotExist': //動詞が存在しない
             keyName = GCR.currentType[GCR.currentTypeNum] + 'DousiNotExist';
             console.log(keyName);
-            GCR.errors[keyName] = errorTemplete;
+            GCR.errors[keyName] = { ...errorTemplete };
             GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
             GCR.errors[keyName].index = GCR.currentIndex;
             GCR.errors[keyName].type = '動詞ミス！';
@@ -1384,7 +1395,7 @@ function errorManager(GCR, typeText, errorID) {
         case 'DousiMissOfAny': //動詞のどこかにミスがある
             keyName = GCR.currentType[GCR.currentTypeNum] + 'DousiMissOfAny';
             console.log(keyName);
-            GCR.errors[keyName] = errorTemplete;
+            GCR.errors[keyName] = { ...errorTemplete };
             GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
             GCR.errors[keyName].index = GCR.currentIndex;
             GCR.errors[keyName].type = '動詞ミス！';
