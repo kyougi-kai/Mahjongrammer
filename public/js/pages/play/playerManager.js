@@ -138,10 +138,16 @@ export class playerManager {
 
     isParent() {
         if (this.parentname == this.playerMembers[0]) {
+            return true;
         }
+        else return false;
     }
 
     phaseToPosition() {}
 
     positionToPhase() {}
+
+    get getParent () {
+        return this.parentName;
+    }
 }

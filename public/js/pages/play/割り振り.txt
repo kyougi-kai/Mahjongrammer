@@ -39,8 +39,9 @@ this.wss でメッセージを送る
 
 
 笹森君
-・playerManagerにisParentを追加
 ・isParentを使ってuiManagerのconstructorで親だけスタートボタン表示
+スタートボタンを押したら flow.js の sendStartを読んでボタンは消す
+
 ・uiManager.js の showThrowHai　を作る
 　hai を this.throwHaiTableの子要素の position の位置に .innerHTML を使って埋め込む positionはthrowHaiTalbeの子要素の添え字
 ・playerManagerにgetPlayerNumberを追加 あなたがplayerMembersで何番目かが帰ってくる
