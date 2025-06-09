@@ -945,10 +945,8 @@ function checkS(targetSentence, GCR) /*＜S＞*/ {
 let checkGrammerTestArray = {
     sentence: 1,
     s: ['apple'],
-    v: ['run'],
+    v: [['run']],
 };
-
-console.log('checkS結果：', checkGrammerTestArray.s, checkS(checkGrammerTestArray.s, testGCR));
 
 function checkC(targetSentence, GCR) /*＜C＞*/ {
     if (targetSentence.length == 1 && tango[targetSentence[0]].hinsi.includes('代名詞')) {
@@ -1227,16 +1225,25 @@ function checkV(targetSentence, GCR, sentenceType) /*＜V＞*/ {
         return GCR;
     }
 
-    GCR = checkKoutiHukusiOfV(targetSentence, GCR, sentenceType); //動詞の後に副詞があるかどうか
-    GCR = checkDousi(targetSentence, GCR, sentenceType); //動詞が存在するかどうか
-    GCR = checkZentiHukusiOfV(targetSentence, GCR, sentenceType); //動詞の前に副詞があるかどうか
-    GCR = checkJodousiRoot(targetSentence, GCR, sentenceType); //助動詞が存在するかどうか
+    if (GCR['allOfVTags'].targetIndex >= 0) GCR = checkDousi(targetSentence, GCR, sentenceType); //動詞が存在するかどうか
+    if (GCR['allOfVTags'].targetIndex >= 0) GCR = checkJodousiRoot(targetSentence, GCR, sentenceType); //助動詞が存在するかどうか
 
-    if (truenum == 0) {
-        GCR = errorManager(GCR, '動詞', 'AllNotExist'); /*何も入っていない場合*/
-        return GCR;
+    if (truenum == GCR['allOfVTags'].wordsCount) {
+        GCR.successes[GCR.currentType[GCR.currentTypeNum]].push('true');
+    } else {
+        console.log('checkDousiRoot通過後GCR', targetSentence, GCR);
+        GCR = errorManager(GCR, '', 'DousiMissOfAny'); //動詞のどこかにミスがある
     }
-    if (targetSentence.length > GCR[GCR.flagsNum].targetIndex) GCR = checkJodousiRoot(targetSentence, GCR);
+    return GCR;
+}
+
+console.log('checkV結果：', checkGrammerTestArray.v, checkV(checkGrammerTestArray.v, testGCR, 2));
+
+function checkDousi(targetSentence, GCR, sentenceType) {
+    if (Array.isArray(targetSentence[GCR['allOfVTags'].targetIndex])) {
+        GCR = errorManager(GCR, '', 'DousiNotExist');
+        console.log('checkDousi通過後GCR', targetSentence, GCR);
+    }
     return GCR;
 }
 
@@ -1362,6 +1369,26 @@ function errorManager(GCR, typeText, errorID) {
             GCR.errors[keyName].index = GCR.currentIndex;
             GCR.errors[keyName].type = '補語ミス！';
             GCR.errors[keyName].reason = '補語のどこかにミスがあります';
+            GCR.errors[keyName].suggestion = 'ミスがある箇所を確認してみましょう';
+            break;
+        case 'DousiNotExist': //動詞が存在しない
+            keyName = GCR.currentType[GCR.currentTypeNum] + 'DousiNotExist';
+            console.log(keyName);
+            GCR.errors[keyName] = errorTemplete;
+            GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '動詞ミス！';
+            GCR.errors[keyName].reason = '動詞が存在しません';
+            GCR.errors[keyName].suggestion = '動詞を入れましょう';
+            break;
+        case 'DousiMissOfAny': //動詞のどこかにミスがある
+            keyName = GCR.currentType[GCR.currentTypeNum] + 'DousiMissOfAny';
+            console.log(keyName);
+            GCR.errors[keyName] = errorTemplete;
+            GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '動詞ミス！';
+            GCR.errors[keyName].reason = '動詞のどこかにミスがあります';
             GCR.errors[keyName].suggestion = 'ミスがある箇所を確認してみましょう';
             break;
     }
