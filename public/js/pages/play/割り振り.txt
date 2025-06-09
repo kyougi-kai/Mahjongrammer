@@ -24,7 +24,7 @@
 ・setupWebsocketでメッセージタイプ"startGame"を受け取ったらstart関数を呼ぶ
 ・start関数でdrawHaiを使ってプレイヤーに牌を7個配る
 ・start関数で id "scoreBord"の要素を表示する
-・start関数で 親の点数が表示されている要素を取得し　その要素.style.animation = "blinking 2s infinite ease"; とかく
+・start関数で 親の点数が表示されている要素を取得し　その要素.style.animation =  とかく
 ・start関数であなたが親ならもう1個牌を引く
 
 ・throwであなたの番なら this.wss で throwHaiを送る 
@@ -46,7 +46,6 @@ this.wss でメッセージを送る
 ・uiManager.js の showThrowHai　を作る
 　hai を this.throwHaiTableの子要素の position の位置に .innerHTML を使って埋め込む positionはthrowHaiTalbeの子要素の添え字
 ・playerManagerにgetPlayerNumberを追加 あなたがplayerMembersで何番目かが帰ってくる
-・playerManagerにgetPlayerPositionを追加　あなたが　上　右　下　左　のどこに座っているかが 0 ~ 3 の数字で帰ってくる
 ・playerManagerにphaseToPositionとpositionToPhaseを作る　フェーズナンバーをポジションナンバーにして返す　逆のやつ フェーズは親を0とした数 positionは上の位置を0とした数
 
 これから必要な機能

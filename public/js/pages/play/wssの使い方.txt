@@ -17,6 +17,8 @@ this.wss.onMessage('startGame', () => {
     
 });
 
+this.wss.onMessage('startGame', startGame );
+
 startGame(){
 
 }

@@ -28,5 +28,9 @@ export class uiManager {
         this.startButton.addEventListener('click', this.flow.sendStart);
     }
 
-    showThrowHai(hai, position) {}
+    showThrowHai(hai, position) {
+        this.throwhai = document.getElementsByClassName('throw-hai-table');
+        this.throwhai[0].children[position].style.opacity = '1';
+        this.throwhai[0].children[position].innerHTML = hai;
+    }
 }
