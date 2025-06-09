@@ -1,16 +1,31 @@
 import { hai } from '/js/pages/play/hai.js';
 import { tango } from '/js/utils/wordData.js';
 export class flow {
-    constructor(wss, blockmanager, uimanager) {
+    constructor(wss, blockmanager, uimanager, playermanager) {
         this.wss = wss;
         this.blockmanager = blockmanager;
         this.uimanager = uimanager;
+        this.playermanager = playermanager;
 
         // 親を添え字0としたときの番
         this.nowPhaseNumber = 0;
+
+        document.addEventListener('keydown', (e) => {
+            if(e.key == 'x'){
+                this.start();
+            }
+        })
+        document.addEventListener('keydown', (e) => {
+            if(e.key == 'l'){
+                this.throw();
+            }
+        })
     }
 
-    _setupWebsocket() {}
+    _setupWebsocket() {
+        this.wss.onMessage('startgame',this.start);
+        this.wss.onMessage('throwHai',this.start);
+    }
 
     drawHai() {
         var i = Math.floor(Math.random() * Object.keys(tango).length);
@@ -22,15 +37,57 @@ export class flow {
         document.getElementById('wordDown').appendChild(temporaryHai.getHai);
     }
 
-    sendStart() {}
+    sendStart() {
+        this.uimanager.removeStartButton();
+        let startData = {
+            type: 'startGame',
+            payload:{
+                parentName:this.playermanager.getParent
+            }
+        }
+        this.wss.send(startData);
+
+
+        
+    }
 
     start() {
         // プレイヤーにはいを配る
+        for(let i = 0; i < 7; i++){
+            this.drawHai();
+        }
+        var scoreBord = document.getElementById('scoreBord')
+        scoreBord.style.opacity = 1;
+
+        try{
+            scoreBord.children[this.playermanager.phaseToPosition(0)].style.animation = "blinking 2s infinite ease";
+        }
+        catch(err){
+            scoreBord.children[2].style.animation = "blinking 2s infinite ease";
+        }
+
+         let isparent = this.playermanager.isParent();
+         if(isparent){
+            this.drawHai();
+         }
+
     }
 
     nextPhase() {}
 
     throw(hai) {
         console.log('flow.js haiを捨てようとしている');
+        let phasenumber = this.playermanager.getPlayerNumber();
+
+        if(this.nowPhaseNumber == phasenumber){
+            hai.removeAtribute('draggable');
+            let throwData= {
+            type: 'throwHai',
+            data: hai.innerHTML
+            }
+
+            this.wss.send(throwData);  
+        }
+
     }
 }

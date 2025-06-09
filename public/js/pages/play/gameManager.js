@@ -11,9 +11,10 @@ export class gameManager {
         this.playermanager = new playerManager(this.connectionmanager);
         this.blockmanager = new blockManager();
         this.uimanager = new uiManager(this.playermanager);
-        this.flow = new flow(this.connectionmanager, this.blockmanager, this.uimanager);
+        this.flow = new flow(this.connectionmanager, this.blockmanager, this.uimanager, this.playermanager);
 
         this.blockmanager.setFlow(this.flow);
+        this.uimanager.setFlow(this.flow);
 
         const connectUrl = this.getConnectUrl();
         this.connectionmanager.connect(connectUrl);

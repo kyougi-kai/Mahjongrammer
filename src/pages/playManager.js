@@ -58,6 +58,40 @@ export class playManager {
     }
 
     _setup() {
+        this.wss.onMessage('startGame', async (ws, data) => {
+            const parentId = await usersManager.nameToId(data.parentName);
+            const roomId = await roomsDB.getRoomId(parentId);
+            const sendData = {
+                type: 'startGame',
+                payload: {},
+            };
+            this.sendToClients(sendData, roomId);
+        });
+
+        this.wss.onMessage('next', async (ws, data) => {
+            const parentId = await usersManager.nameToId(data.parentName);
+            const roomId = await roomsDB.getRoomId(parentId);
+            const roomMemberCounts = await roomMemberDB.roomMemberCounts(roomId);
+            const nextPhaseNumber = (data.nowPhaseNumber + 1) % roomMemberCounts;
+            const sendData = {
+                type: 'nextPhase',
+                payload: { nextPhaseNumber: nextPhaseNumber },
+            };
+            this.sendToClients(sendData, roomId);
+        });
+
+        this.wss.onMessage('pon', async (ws, data) => {});
+
+        this.wss.onMessage('throwHai', async (ws, data) => {
+            const parentId = await usersManager.nameToId(data.parentName);
+            const roomId = await roomsDB.getRoomId(parentId);
+            const sendData = {
+                type: 'throwHai',
+                payload: { hai: data.hai },
+            };
+            this.sendToClients(sendData, roomId);
+        });
+
         this.wss.onMessage('entryRoom', async (ws, data) => this.onMessageEntryRoom(ws, data), 1);
 
         setTimeout(() => {

@@ -2,7 +2,6 @@
 ・牌ができる
 ・持ち場を移動
 ・wordData.js参照してwordから品詞をだしてなんか変数に保存する
-・/publicがルートディレクトリ
 */
 
 import { tango } from '/js/utils/wordData.js';

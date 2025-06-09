@@ -27,108 +27,12 @@ export class playerManager {
         }
 
         */
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key == 'p') {
-                const testData = {
-                    username: 'shiro',
-                };
-                console.log(testData);
-                this.test_entryRoom(testData);
-            }
-
-            if (e.key == 'o') {
-                const testData1 = {
-                    username: 'sasa',
-                };
-                this.test_entryRoom(testData1);
-            }
-
-            if (e.key == 'i') {
-                const testData2 = {
-                    username: 'suga',
-                };
-                this.test_entryRoom(testData2);
-            }
-
-            if (e.key == 'q') {
-                const testData3 = {
-                    username: 'shiro',
-                };
-                this.test_outRoom(testData3);
-            }
-
-            if (e.key == 'w') {
-                const testData4 = {
-                    username: 'sasa',
-                };
-                this.test_outRoom(testData4);
-            }
-
-            if (e.key == 'e') {
-                const testData5 = {
-                    username: 'suga',
-                };
-                this.test_outRoom(testData5);
-            }
-
-            if (e.key == 'r') {
-                //this.nameDivs[0].children[0].innerHTML = 'しろー';
-                const nanka = this.playerMembers.indexOf(this.playername);
-                let j = 0;
-                while (j < 4) {
-                    if (j !== 2) {
-                        this.nameDivs[j].children[0].innerHTML = '';
-                    }
-                    j++;
-                }
-
-                this.playerMembers.forEach((value, index) => {
-                    this.nameDivs[(index + 2 - nanka) % 4].children[0].innerHTML = value;
-                    if (value == this.playerMembers[0]) {
-                        this.nameDivs[(index + 2 - nanka) % 4].children[0].style.color = 'red';
-                    }
-                });
-                /*
-                let i = 1;
-                while(i < this.playerMembers.length){
-                    if(i == 1){
-                        this.nameDivs[3].children[0].innerHTML = this.playerMembers[i];
-                    }
-                    if(i == 2){
-                        this.nameDivs[0].children[0].innerHTML = this.playerMembers[i];
-                    }
-                    if(i == 3){
-                        this.nameDivs[1].children[0].innerHTML = this.playerMembers[i];
-                    }else{
-                        this.nameDivs[2].children[0].style.setProperty('color', 'red', 'important');
-                    }
-                    i++;
-                }
-                    */
-            }
-        });
         this._setupWebsocket();
         this._setup();
     }
 
     get parentname() {
         return this.parentName;
-    }
-
-    test_entryRoom(data) {
-        this.playerMembers[this.playerMembers.length] = data.username;
-        console.log(this.playerMembers);
-    }
-    test_outRoom(data) {
-        let i = 1;
-        while (i < this.playerMembers.length) {
-            if (this.playerMembers[i] == data.username) {
-                this.playerMembers.splice(i, 1);
-            }
-            i++;
-        }
-        console.log(this.playerMembers);
     }
 
     /*  送るデータの内容
@@ -234,10 +138,30 @@ export class playerManager {
 
     isParent() {
         if (this.parentname == this.playerMembers[0]) {
+            return true;
         }
+        else return false;
     }
 
     phaseToPosition() {}
 
     positionToPhase() {}
+
+    get getParent () {
+        return this.parentName;
+    }
+
+    getPlayerNumber() {
+        const number = this.playerMembers.indexOf(this.parentName);
+        return number;
+    }
+
+    phaseToPosition(phase){
+
+    }
+
+    positonToPhase(position){
+        const phasenumber = this.playerMembers.indexOf(this.playerMembers[position]);
+        return phasenumber;
+    }
 }
