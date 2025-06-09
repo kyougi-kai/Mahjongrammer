@@ -1,0 +1,22 @@
+・メッセージを送る
+
+this.wss.send(送りたいデータ);
+
+※送りたいデータの形式
+let sendData = {
+    type:'どいうデータかの情報',
+    payload:{
+        実際に送るデータ
+    }
+}
+
+・メッセージを受け取る
+this.wss.onMessage('メッセージのタイプ', 実行したい関数);
+
+this.wss.onMessage('startGame', () => {
+    
+});
+
+startGame(){
+
+}

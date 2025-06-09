@@ -177,8 +177,9 @@ export class playerManager {
             }
         */
         this.wss?.onMessage('entryRoom', (data) => {
-            this.playerMembers[this.playerMembers.length] = data.username;
+            this.playerMembers.push(data.username);
             console.log(this.playerMembers);
+            this.updatePlayerName();
         });
 
         /*
@@ -187,14 +188,11 @@ export class playerManager {
             }
         */
         this.wss?.onMessage('outRoom', (data) => {
-            let i = 1;
-            while (i < this.playerMembers.length) {
-                if (this.playerMembers[i] == data.username) {
-                    this.playerMembers.splice(i, 1);
-                }
-                i++;
-            }
+            const idx = this.playerMembers.indexOf(data.username);
+            this.playerMembers.splice(idx, 1);
+            console.log(`${data.username}が退出しました`);
             console.log(this.playerMembers);
+            this.updatePlayerName();
         });
 
         /*
@@ -204,6 +202,9 @@ export class playerManager {
         */
         this.wss?.onMessage('getRoomMemberData', (data) => {
             this.playerMembers = data.roomMembers;
+            console.log('getRoomMemberData');
+            console.log(this.playerMembers);
+            this.updatePlayerName();
         });
 
         this.wss?.onMessage('closeRoom', (data) => {
@@ -213,5 +214,30 @@ export class playerManager {
     }
 
     // playerMembersの値を使って名前を表示する
-    updatePlayerName() {}
+    updatePlayerName() {
+        const nanka = this.playerMembers.indexOf(this.playername);
+        let j = 0;
+        while (j < 4) {
+            if (j !== 2) {
+                this.nameDivs[j].children[0].innerHTML = '';
+            }
+            j++;
+        }
+
+        this.playerMembers.forEach((value, index) => {
+            this.nameDivs[(index + 2 - nanka) % 4].children[0].innerHTML = value;
+            if (value == this.playerMembers[0]) {
+                this.nameDivs[(index + 2 - nanka) % 4].children[0].style.color = 'red';
+            }
+        });
+    }
+
+    isParent() {
+        if (this.parentname == this.playerMembers[0]) {
+        }
+    }
+
+    phaseToPosition() {}
+
+    positionToPhase() {}
 }

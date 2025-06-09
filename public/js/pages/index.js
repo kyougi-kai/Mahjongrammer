@@ -36,3 +36,11 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         console.log(err);
     }
 });
+
+const hyoujis = document.getElementById('hyouji');
+const hyoujis2 =document.getElementById('hyoujis');
+
+hyoujis.addEventListener('click', () => {
+     hyoujis.style.display = 'none';
+     hyoujis2.style.display = 'inline';
+});

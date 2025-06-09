@@ -67,36 +67,41 @@ export class playManager {
                 console.log(payload);
 
                 const username = payload.username;
-                const userId = await usersManager.nameToId(username);
-                const parentName = payload.parentName;
-                const parentId = await usersManager.nameToId(parentName);
-                const roomId = await roomsDB.getRoomId(parentId);
 
-                if (username == parentName) {
-                    await roomsDB.deleteRoom(roomId);
+                try {
+                    const userId = await usersManager.nameToId(username);
+                    const parentName = payload.parentName;
+                    const parentId = await usersManager.nameToId(parentName);
+                    const roomId = await roomsDB.getRoomId(parentId);
 
-                    const sendData = {
-                        type: 'closeRoom',
-                        payload: {},
-                    };
+                    if (username == parentName) {
+                        await roomsDB.deleteRoom(roomId);
 
-                    this.sendToClients(sendData, roomId);
-                    this.roommanager.noticeDeleteRoom(parentName);
-                } else {
-                    await roomMemberDB.exitRoom(userId);
-                    const roomMemberCounts = await roomMemberDB.getRoomMembers(roomId);
-                    this.roommanager.noticeOutRoom(parentName, roomMemberCounts);
+                        const sendData = {
+                            type: 'closeRoom',
+                            payload: {},
+                        };
 
-                    const sendData = {
-                        type: 'outRoom',
-                        payload: {
-                            username: username,
-                        },
-                    };
-                    this.sendToClients(sendData, roomId);
+                        this.sendToClients(sendData, roomId);
+                        this.roommanager.noticeDeleteRoom(parentName);
+                    } else {
+                        await roomMemberDB.exitRoom(userId);
+                        const roomMemberCounts = await roomMemberDB.roomMemberCounts(roomId);
+                        console.log('getRoomMemberCounts');
+                        console.log(roomMemberCounts);
+                        this.roommanager.noticeOutRoom(parentName, roomMemberCounts);
 
-                    this.playclientsmanager.sendRoomData(roomId);
-                    // 適切にルームメンバーカウントを受け取る
+                        const sendData = {
+                            type: 'outRoom',
+                            payload: {
+                                username: username,
+                            },
+                        };
+                        this.sendToClients(sendData, roomId);
+                    }
+                } catch (err) {
+                    console.log('playerManager.js');
+                    console.log('部屋が存在しません');
                 }
             });
         }, 1000);
