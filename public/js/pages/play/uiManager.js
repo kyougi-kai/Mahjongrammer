@@ -5,7 +5,7 @@ export class uiManager {
         this.flow = null;
 
         // あなたが親なら真ん中にスタートボタン表示
-        if(this.playermanager.isParent()){
+        if (this.playermanager.isParent()) {
             const startbutto = document.createElement('button');
             startbutto.textContent = 'スタート';
             startbutto.style.position = 'absolute';
@@ -13,19 +13,19 @@ export class uiManager {
             startbutto.style.top = '50%';
             startbutto.style.transform = 'translateX(-50%) translateY(-50%)';
 
-            startbutto.addEventListener('click', this.flow.sendStart);
             document.body.appendChild(startbutto);
 
             this.startButton = startbutto;
         }
     }
 
-    removeStartButton(){
+    removeStartButton() {
         this.startButton.remove();
     }
 
-    setFlow(flow){
+    setFlow(flow) {
         this.flow = flow;
+        this.startButton.addEventListener('click', this.flow.sendStart);
     }
 
     showThrowHai(hai, position) {}
