@@ -1,5 +1,5 @@
 let tango = {
-    apple: {
+    apple: {//名詞
         hinsi: ['名詞'],
         tags: ['可算名詞', '単数形', '母音で始まる'],
         katuyou: ['apples'],
