@@ -13,12 +13,16 @@ let sendData = {
 ・メッセージを受け取る
 this.wss.onMessage('メッセージのタイプ', 実行したい関数);
 
-this.wss.onMessage('startGame', () => {
+
+dataの中にpayloadの中身が入る
+例 payload = { username: 'shiro'};
+data.username　のなかにshiroがある
+this.wss.onMessage('startGame', (data) => {
     
 });
 
 this.wss.onMessage('startGame', startGame );
 
-startGame(){
+startGame(data){
 
 }

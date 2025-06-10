@@ -7,19 +7,21 @@ export class flow {
         this.uimanager = uimanager;
         this.playermanager = playermanager;
 
+        this.youCanThrow = false;
+
         // 親を添え字0としたときの番
         this.nowPhaseNumber = 0;
 
         document.addEventListener('keydown', (e) => {
-            if(e.key == 'x'){
+            if (e.key == 'x') {
                 this.start();
             }
-        })
+        });
         document.addEventListener('keydown', (e) => {
-            if(e.key == 'l'){
+            if (e.key == 'l') {
                 this.throw();
             }
-        })
+        });
 
         this._setupWebsocket();
     }
@@ -29,9 +31,13 @@ export class flow {
             console.log('ゲームスタート');
             this.start();
         });
-         this.wss.onMessage('throwHai',() => {
-            this.uimanager.showThrowHai();
-         });
+        this.wss.onMessage('throwHai', (data) => {
+            try {
+                this.uimanager.showThrowHai(data.hai, this.playermanager.phaseToPosition(this.nowPhaseNumber));
+            } catch (err) {
+                this.uimanager.showThrowHai(data.hai, 2);
+            }
+        });
     }
 
     drawHai() {
@@ -44,72 +50,70 @@ export class flow {
         document.getElementById('wordDown').appendChild(temporaryHai.getHai);
     }
 
-    sajldafj(){
+    sajldafj() {
         console.log('jdaosfjaosfjda');
     }
 
-    setStartButton(element){
+    setStartButton(element) {
         element.addEventListener('click', (e) => {
             let startData = {
                 type: 'startGame',
-                payload:{
-                    parentName:this.playermanager.getParent
-                }
-            }
+                payload: {
+                    parentName: this.playermanager.getParent,
+                },
+            };
             this.wss.send(startData);
-        })
+        });
     }
 
     sendStart() {
         let startData = {
             type: 'startGame',
-            payload:{
-                parentName:this.playermanager.getParent
-            }
-        }
+            payload: {
+                parentName: this.playermanager.getParent,
+            },
+        };
         this.wss.send(startData);
     }
 
     start() {
         // プレイヤーにはいを配る
-        for(let i = 0; i < 7; i++){
+        for (let i = 0; i < 7; i++) {
             this.drawHai();
         }
-        var scoreBord = document.getElementById('scoreBord')
+        var scoreBord = document.getElementById('scoreBord');
         scoreBord.style.opacity = 1;
 
-        try{
-            scoreBord.children[this.playermanager.phaseToPosition(0)].style.animation = "blinking 2s infinite ease";
-        }
-        catch(err){
-            scoreBord.children[2].style.animation = "blinking 2s infinite ease";
+        try {
+            scoreBord.children[this.playermanager.phaseToPosition(0)].style.animation = 'blinking 2s infinite ease';
+        } catch (err) {
+            scoreBord.children[2].style.animation = 'blinking 2s infinite ease';
         }
 
-         let isparent = this.playermanager.isParent();
-         if(isparent){
+        let isparent = this.playermanager.isParent();
+        if (isparent) {
             this.drawHai();
-         }
-
+        }
     }
 
     nextPhase() {}
 
     throw(hai) {
         console.log('flow.js haiを捨てようとしている');
+        console.log(hai);
         let phasenumber = this.playermanager.getPlayerNumber();
 
-        if(this.nowPhaseNumber == phasenumber){
-            hai.removeAtribute('draggable');
+        if (this.nowPhaseNumber == phasenumber) {
+            hai.removeAttribute('draggable');
             let throwData = {
                 type: 'throwHai',
-                data: hai.innerHTML,
-                payload:{
-                    parentName:this.playermanager.getParent
-                }
-            }
+                payload: {
+                    hai: hai.outerHTML,
+                    parentName: this.playermanager.getParent,
+                },
+            };
 
-            this.wss.send(throwData);  
+            this.wss.send(throwData);
         }
-
     }
 }
