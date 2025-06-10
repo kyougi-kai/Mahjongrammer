@@ -60,6 +60,9 @@ nextPhaseを受け取ったら自分自身なら1個引くしnowPhaseNumberを�
 
 ポンを押したら メッセージタイプ pon を parentName と playerNumber:playermanagerのgetPlayerNumber付きで送る
 
-ponを受け取ったら pon username:username　playerを送る
+ponを受け取ったら pon playerNumberを送る
 
-pon を 受け取ったら直ちにカウントダウンとthrowの中で3秒後にnextを送る処理を止めて
+pon を受け取ったらカウントダウンをなくす。ポンのボタンも消す。
+ポンされた牌を非表示にする。ポンした人のスコアボードを点滅させる。
+
+自分自身がポンした人ならポンした牌を場に追加するその灰はちゃんと属性draggabledを付ける

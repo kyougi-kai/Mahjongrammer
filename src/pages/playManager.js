@@ -80,7 +80,15 @@ export class playManager {
             this.sendToClients(sendData, roomId);
         });
 
-        this.wss.onMessage('pon', async (ws, data) => {});
+        this.wss.onMessage('pon', async (ws, data) => {
+            const parentId = await usersManager.nameToId(data.parentName);
+            const roomId = await roomsDB.getRoomId(parentId);
+            const sendData = {
+                type: 'pon',
+                payload: { playerNumber: data.playerNumber },
+            };
+            this.sendToClients(sendData, roomId);
+        });
 
         this.wss.onMessage('throwHai', async (ws, data) => {
             const parentId = await usersManager.nameToId(data.parentName);
