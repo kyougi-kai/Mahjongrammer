@@ -22,13 +22,12 @@ export class uiManager {
 
     setFlow(flow) {
         this.flow = flow;
-        if(this.startButton != null)this.flow.setStartButton(this.startButton);
+        if (this.startButton != null) this.flow.setStartButton(this.startButton);
     }
 
     showThrowHai(hai, position) {
         console.log('捨てた牌を表示するよ！');
-        this.throwhai = document.getElementsByClassName('throw-hai-table');
-        this.throwhai[0].children[position].style.opacity = '1';
-        this.throwhai[0].children[position].innerHTML = hai;
+        this.throwHaiTable.children[position].style.opacity = '1';
+        this.throwHaiTable.children[position].innerHTML = hai;
     }
 }
