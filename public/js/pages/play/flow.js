@@ -7,6 +7,8 @@ export class flow {
         this.uimanager = uimanager;
         this.playermanager = playermanager;
 
+        this.youCanThrow = false;
+
         // 親を添え字0としたときの番
         this.nowPhaseNumber = 0;
 
@@ -30,7 +32,11 @@ export class flow {
             this.start();
         });
         this.wss.onMessage('throwHai', (data) => {
-            this.uimanager.showThrowHai(data.hai, this.nowPhaseNumber);
+            try {
+                this.uimanager.showThrowHai(data.hai, this.playermanager.phaseToPosition(this.nowPhaseNumber));
+            } catch (err) {
+                this.uimanager.showThrowHai(data.hai, 2);
+            }
         });
     }
 

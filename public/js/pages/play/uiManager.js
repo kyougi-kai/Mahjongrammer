@@ -29,5 +29,6 @@ export class uiManager {
         console.log('捨てた牌を表示するよ！');
         this.throwHaiTable.children[position].style.opacity = '1';
         this.throwHaiTable.children[position].innerHTML = hai;
+        this.throwHaiTable.children[position].children[0].style.opacity = '1';
     }
 }
