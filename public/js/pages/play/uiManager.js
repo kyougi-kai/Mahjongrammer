@@ -25,7 +25,13 @@ export class uiManager {
 
     setFlow(flow) {
         this.flow = flow;
-        this.startButton.addEventListener('click', this.flow.sendStart);
+        try{
+            this.startButton.addEventListener('click', this.flow.sendStart);
+        }
+        catch(err){
+
+        }
+        
     }
 
     showThrowHai(hai, position) {

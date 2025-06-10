@@ -137,7 +137,7 @@ export class playerManager {
     }
 
     isParent() {
-        if (this.parentname == this.playerMembers[0]) {
+        if (this.playername == this.playerMembers[0]) {
             return true;
         }
         else return false;
@@ -161,7 +161,7 @@ export class playerManager {
     }
 
     positonToPhase(position){
-        const phasenumber = this.playerMembers.indexOf(this.playerMembers[position]);
+        const phasenumber = this.playerMembers.indexOf(this.nameDivs[position].children[0].innerHTML);
         return phasenumber;
     }
 }
