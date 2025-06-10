@@ -150,10 +150,6 @@ export class playerManager {
         else return false;
     }
 
-    phaseToPosition() {}
-
-    positionToPhase() {}
-
     get getParent () {
         return this.parentName;
     }

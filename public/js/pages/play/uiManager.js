@@ -2,6 +2,7 @@ export class uiManager {
     constructor(playermanager) {
         this.playermanager = playermanager;
         this.throwHaiTable = document.getElementsByClassName('throw-hai-table')[0];
+        this.ponskip = document.getElementsByClassName('bark-div')[0];
         this.flow = null;
         this.startButton = null;
 
@@ -30,9 +31,34 @@ export class uiManager {
         this.throwHaiTable.children[position].style.opacity = '1';
         this.throwHaiTable.children[position].innerHTML = hai;
         this.throwHaiTable.children[position].children[0].style.opacity = '1';
+        this.showCountDown();
     }
 
     showCountDown(){
-        
+        console.log(this.ponskip);
+        this.ponskip.style.display = 'block';
+        console.log(this.flow.nowPhaseNumber);
+        if(this.playermanager.getPlayerNumber() == this.flow.nowPhaseNumber){
+            console.log('ya');
+            this.ponskip.children[0].style.display = 'none'
+            this.ponskip.children[1].style.display = 'none'
+        }
+        else{
+            this.ponskip.children[0].style.display = 'block'
+            this.ponskip.children[1].style.display = 'block'
+        }
+        this.count = 3;
+        const countDown = () =>{
+            this.ponskip.children[2].innerHTML = this.count;
+            this.count--;
+        }
+        this.time = setInterval(() =>{
+            countDown();
+            if(this.count < 0){
+                clearInterval(this.time);
+                this.ponskip.children[2].innerHTML = '';
+                this.ponskip.style.display = 'none';
+            }
+        },1000);
     }
 }
