@@ -24,7 +24,7 @@ export class flow {
 
     _setupWebsocket() {
         this.wss.onMessage('startgame',this.start);
-        this.wss.onMessage('throwHai',this.start);
+        this.wss.onMessage('throwHai',this.uimanager.showThrowHai());
     }
 
     drawHai() {
@@ -84,9 +84,12 @@ export class flow {
 
         if(this.nowPhaseNumber == phasenumber){
             hai.removeAtribute('draggable');
-            let throwData= {
-            type: 'throwHai',
-            data: hai.innerHTML
+            let throwData = {
+                type: 'throwHai',
+                data: hai.innerHTML,
+                payload:{
+                    parentName:this.playermanager.getParent
+                }
             }
 
             this.wss.send(throwData);  
