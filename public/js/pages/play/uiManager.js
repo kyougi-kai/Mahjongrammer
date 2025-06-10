@@ -3,6 +3,7 @@ export class uiManager {
         this.playermanager = playermanager;
         this.throwHaiTable = document.getElementsByClassName('throw-hai-table')[0];
         this.flow = null;
+        this.startButton = null;
 
         // あなたが親なら真ん中にスタートボタン表示
         if (this.playermanager.isParent()) {
@@ -21,13 +22,7 @@ export class uiManager {
 
     setFlow(flow) {
         this.flow = flow;
-        try{
-            this.startButton.addEventListener('click', this.flow.sendStart);
-        }
-        catch(err){
-
-        }
-        
+        if(this.startButton != null)this.flow.setStartButton(this.startButton);
     }
 
     showThrowHai(hai, position) {

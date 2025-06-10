@@ -23,8 +23,11 @@ export class flow {
     }
 
     _setupWebsocket() {
-        this.wss.onMessage('startgame',this.start);
-        this.wss.onMessage('throwHai',this.uimanager.showThrowHai());
+        this.wss.onMessage('startGame', () => {
+            console.log('ゲームスタート');
+            this.start();
+        });
+         this.wss.onMessage('throwHai',this.uimanager.showThrowHai());
     }
 
     drawHai() {
@@ -41,6 +44,18 @@ export class flow {
         console.log('jdaosfjaosfjda');
     }
 
+    setStartButton(element){
+        element.addEventListener('click', (e) => {
+            let startData = {
+                type: 'startGame',
+                payload:{
+                    parentName:this.playermanager.getParent
+                }
+            }
+            this.wss.send(startData);
+        })
+    }
+
     sendStart() {
         let startData = {
             type: 'startGame',
@@ -49,9 +64,6 @@ export class flow {
             }
         }
         this.wss.send(startData);
-
-
-        
     }
 
     start() {
