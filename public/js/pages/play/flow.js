@@ -20,6 +20,8 @@ export class flow {
                 this.throw();
             }
         })
+
+        this._setupWebsocket();
     }
 
     _setupWebsocket() {
@@ -27,7 +29,9 @@ export class flow {
             console.log('ゲームスタート');
             this.start();
         });
-         this.wss.onMessage('throwHai',this.uimanager.showThrowHai());
+         this.wss.onMessage('throwHai',() => {
+            this.uimanager.showThrowHai();
+         });
     }
 
     drawHai() {

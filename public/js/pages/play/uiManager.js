@@ -26,6 +26,7 @@ export class uiManager {
     }
 
     showThrowHai(hai, position) {
+        console.log('捨てた牌を表示するよ！');
         this.throwhai = document.getElementsByClassName('throw-hai-table');
         this.throwhai[0].children[position].style.opacity = '1';
         this.throwhai[0].children[position].innerHTML = hai;
