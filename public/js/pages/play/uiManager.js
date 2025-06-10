@@ -19,10 +19,6 @@ export class uiManager {
         }
     }
 
-    removeStartButton() {
-        this.startButton.remove();
-    }
-
     setFlow(flow) {
         this.flow = flow;
         try{

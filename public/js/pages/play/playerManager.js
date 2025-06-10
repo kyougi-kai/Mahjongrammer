@@ -7,6 +7,8 @@ export class playerManager {
      * @param {connectionManager} wss
      */
     constructor(wss) {
+        this.playername = document.getElementById('usernameText').innerHTML;
+        this.playername = this.ds(this.playername);
         this.nameDivs = document.getElementsByClassName('name');
         console.log(this.nameDivs);
         this.wss = wss;
@@ -29,6 +31,10 @@ export class playerManager {
         */
         this._setupWebsocket();
         this._setup();
+    }
+
+    ds(target){
+        return target.replace(/\s+/g, '');
     }
 
     get parentname() {
@@ -62,7 +68,6 @@ export class playerManager {
 
     _setupWebsocket() {
         this.wss.onOpen(() => {
-            this.playername = document.getElementById('usernameText').innerHTML;
             this.playername = functions.sN(this.playername);
             const sendparent = {
                 type: 'entryRoom',
@@ -137,7 +142,9 @@ export class playerManager {
     }
 
     isParent() {
-        if (this.playername == this.playerMembers[0]) {
+        console.log('isParent');
+        console.log(`playerName : ${this.playername} --- parentName : ${this.parentName}`)
+        if (this.playername == this.parentName) {
             return true;
         }
         else return false;

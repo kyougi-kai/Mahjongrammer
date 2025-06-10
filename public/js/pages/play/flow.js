@@ -37,8 +37,11 @@ export class flow {
         document.getElementById('wordDown').appendChild(temporaryHai.getHai);
     }
 
+    sajldafj(){
+        console.log('jdaosfjaosfjda');
+    }
+
     sendStart() {
-        this.uimanager.removeStartButton();
         let startData = {
             type: 'startGame',
             payload:{
