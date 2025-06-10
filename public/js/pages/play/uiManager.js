@@ -5,6 +5,7 @@ export class uiManager {
         this.ponskip = document.getElementsByClassName('bark-div')[0];
         this.flow = null;
         this.startButton = null;
+        this.scoreBord = document.getElementById('scoreBord');
 
         // あなたが親なら真ん中にスタートボタン表示
         if (this.playermanager.isParent()) {
@@ -60,5 +61,13 @@ export class uiManager {
                 this.ponskip.style.display = 'none';
             }
         },1000);
+    }
+
+    hideNowBlink(){
+
+    }
+
+    showBlink(position){
+        this.scoreBord.children[position].style.animation = 'blinking 2s infinite ease';
     }
 }

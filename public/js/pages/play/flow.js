@@ -100,12 +100,7 @@ export class flow {
         }
         var scoreBord = document.getElementById('scoreBord');
         scoreBord.style.opacity = 1;
-
-        try {
-            scoreBord.children[this.playermanager.phaseToPosition(0)].style.animation = 'blinking 2s infinite ease';
-        } catch (err) {
-            scoreBord.children[2].style.animation = 'blinking 2s infinite ease';
-        }
+        this.uimanager.showBlink(this.playermanager.phaseToPosition(0));
 
         let isparent = this.playermanager.isParent();
         if (isparent) {
