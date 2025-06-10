@@ -31,4 +31,8 @@ export class uiManager {
         this.throwHaiTable.children[position].innerHTML = hai;
         this.throwHaiTable.children[position].children[0].style.opacity = '1';
     }
+
+    showCountDown(){
+        
+    }
 }

@@ -19,35 +19,6 @@
 }
 
 
-伊藤君
-・flow.jsのsendStart関数で メッセージタイプ startGame を this.wssで送る
-・setupWebsocketでメッセージタイプ"startGame"を受け取ったらstart関数を呼ぶ
-・start関数でdrawHaiを使ってプレイヤーに牌を7個配る
-・start関数で id "scoreBord"の要素を表示する
-・start関数で 親の点数が表示されている要素を取得し　その要素.style.animation =  とかく
-・start関数であなたが親ならもう1個牌を引く
-
-・throwであなたの番なら this.wss で throwHaiを送る 
-haiのdraggableの属性を削除する
-メッセージタイプ throwHai
-データ hai : hai.innerHTML
-       parentName: this.playermanager.getParent
-
-_setupWebsocket内でthis.wssを使って throwHaiを受け取ったら
-uimanagerのshowThrowHaiを呼ぶ　引数は　牌の要素, 上右下左を 0 ~ 3で表した数字　nowPhaseNumber と phaseToPositionを使って
-this.wss でメッセージを送る
-
-
-
-笹森君
-・isParentを使ってuiManagerのconstructorで親だけスタートボタン表示
-スタートボタンを押したら flow.js の sendStartを読んでボタンは消す
-
-・uiManager.js の showThrowHai　を作る
-　hai を this.throwHaiTableの子要素の position の位置に .innerHTML を使って埋め込む positionはthrowHaiTalbeの子要素の添え字
-・playerManagerにgetPlayerNumberを追加 あなたがplayerMembersで何番目かが帰ってくる
-・playerManagerにphaseToPositionとpositionToPhaseを作る　フェーズナンバーをポジションナンバーにして返す　逆のやつ フェーズは親を0とした数 positionは上の位置を0とした数
-
 これから必要な機能
 uiManager
 showThrowHai が呼ばれたら 3, 2, 1 と1秒ごとにテキストを変えて表示する

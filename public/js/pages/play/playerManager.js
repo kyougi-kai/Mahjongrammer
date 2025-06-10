@@ -164,7 +164,9 @@ export class playerManager {
     }
 
     phaseToPosition(phase){
-
+        const wa = this.playerMembers.indexOf(this.playername);
+        const positionnumber = (phase + 2 - wa) % 4;
+        return positionnumber;
     }
 
     positonToPhase(position){
