@@ -71,13 +71,26 @@ export class playManager {
         this.wss.onMessage('next', async (ws, data) => {
             const parentId = await usersManager.nameToId(data.parentName);
             const roomId = await roomsDB.getRoomId(parentId);
-            const roomMemberCounts = await roomMemberDB.roomMemberCounts(roomId);
-            const nextPhaseNumber = (data.nowPhaseNumber + 1) % roomMemberCounts;
             const sendData = {
                 type: 'nextPhase',
-                payload: { nextPhaseNumber: nextPhaseNumber },
+                payload: {},
             };
             this.sendToClients(sendData, roomId);
+        });
+
+        this.wss.onMessage('skip', async (ws, data) => {
+            const parentId = await usersManager.nameToId(data.parentName);
+            const roomId = await roomsDB.getRoomId(parentId);
+            this.playclientsmanager.playC[roomId].skip++;
+            const roomMemberCounts = await roomMemberDB.roomMemberCounts(roomId);
+            if (this.playclientsmanager.playC[roomId].skip == roomMemberCounts - 1) {
+                const sendData = {
+                    type: 'nextPhase',
+                    payload: {},
+                };
+                this.sendToClients(sendData, roomId);
+                this.playclientsmanager.playC[roomId].skip = 0;
+            }
         });
 
         this.wss.onMessage('pon', async (ws, data) => {
@@ -85,8 +98,9 @@ export class playManager {
             const roomId = await roomsDB.getRoomId(parentId);
             const sendData = {
                 type: 'pon',
-                payload: { playerNumber: data.playerNumber },
+                payload: { ponPlayerNumber: data.playerNumber },
             };
+            this.playclientsmanager.playC[roomId].skip = 0;
             this.sendToClients(sendData, roomId);
         });
 
