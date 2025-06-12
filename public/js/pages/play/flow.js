@@ -13,6 +13,8 @@ export class flow {
         // 親を添え字0としたときの番
         this.nowPhaseNumber = 0;
 
+        this.barkdiv = document.getElementById('barkDiv');
+
         document.addEventListener('keydown', (e) => {
             if (e.key == 'x') {
                 this.start();
@@ -28,6 +30,16 @@ export class flow {
     }
 
     _setupWebsocket() {
+        this.barkdiv.children[0].addEventListener('click', (e) => {
+            let ponData = {
+                type: 'pon',
+                payload: {
+                    playerNumber : this.playermanager.getPlayerNumber()
+                },
+            };
+            this.wss.send(ponData);
+        });
+
         this.wss.onMessage('startGame', () => {
             console.log('ゲームスタート');
             this.start();
@@ -51,9 +63,20 @@ export class flow {
 
             this.throwElement = data.hai;
         });
+
         this.wss.onMessage('nextPhase', () => {
             this.nowPhaseNumber = (this.nowPhaseNumber + 1) % this.playermanager.playerMembers.length;
             this.nextPhase();
+        });
+
+        this.wss.onMessage('pon', (data) => {
+            this.nowPhaseNumber = data.ponPlayerNumber;
+            this.nextPhase();
+            this.uimanager.pon();
+            if(data.ponPlayerNumber == this.playermanager.getPlayerNumber()){
+                document.getElementById('wordDown').appendChild(temporaryHai.getHai);
+                
+            };
         });
     }
 
@@ -113,7 +136,8 @@ export class flow {
         if ((this.nowPhaseNumber = this.playermanager.getPlayerNumber())) {
             this.drawHai();
             this.uimanager.hideNowBlink();
-            this.uimanager.showBlink();
+            this.uimanager.showBlink(this.uimanager.phaseToPosition(phasenumber));
+            this.youCanThrow = true;
         }
     }
 
@@ -133,6 +157,7 @@ export class flow {
             };
             this.youCanThrow = false;
             this.wss.send(throwData);
+            hai.remove();
         }
     }
 }
