@@ -155,7 +155,7 @@ export class playerManager {
     }
 
     getPlayerNumber() {
-        const number = this.playerMembers.indexOf(this.parentName);
+        const number = this.playerMembers.indexOf(this.playername);
         return number;
     }
 

@@ -39,6 +39,7 @@ export class uiManager {
         console.log(this.ponskip);
         this.ponskip.style.display = 'block';
         console.log(this.flow.nowPhaseNumber);
+        console.log(this.playermanager.getPlayerNumber());
         if(this.playermanager.getPlayerNumber() == this.flow.nowPhaseNumber){
             console.log('ya');
             this.ponskip.children[0].style.display = 'none'
@@ -48,7 +49,8 @@ export class uiManager {
             this.ponskip.children[0].style.display = 'block'
             this.ponskip.children[1].style.display = 'block'
         }
-        this.count = 3;
+        this.count = 2;
+        this.ponskip.children[2].innerHTML = this.count + 1;
         const countDown = () =>{
             this.ponskip.children[2].innerHTML = this.count;
             this.count--;
@@ -64,10 +66,11 @@ export class uiManager {
     }
 
     hideNowBlink(){
-
+        this.oldBord.style.animation = "";
     }
 
     showBlink(position){
+        this.oldBord = this.scoreBord.children[position];
         this.scoreBord.children[position].style.animation = 'blinking 2s infinite ease';
     }
 }
