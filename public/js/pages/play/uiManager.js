@@ -73,4 +73,8 @@ export class uiManager {
         this.oldBord = this.scoreBord.children[position];
         this.scoreBord.children[position].style.animation = 'blinking 2s infinite ease';
     }
+
+    pon(){
+        
+    }
 }

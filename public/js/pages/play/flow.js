@@ -34,6 +34,7 @@ export class flow {
             let ponData = {
                 type: 'pon',
                 payload: {
+                    parentName: this.playermanager.parentname,
                     playerNumber : this.playermanager.getPlayerNumber()
                 },
             };
@@ -55,7 +56,9 @@ export class flow {
                             parentName: this.playermanager.getParent,
                         },
                     };
-                    setTimeout(this.wss.send(nextData), 3000);
+                    setTimeout(() => {
+                        this.wss.send(nextData);
+                    }, 3000);
                 }
             } catch (err) {
                 this.uimanager.showThrowHai(data.hai, 2);
@@ -74,8 +77,9 @@ export class flow {
             this.nextPhase();
             this.uimanager.pon();
             if(data.ponPlayerNumber == this.playermanager.getPlayerNumber()){
-                document.getElementById('wordDown').appendChild(temporaryHai.getHai);
-                
+                console.log(this.throwElement);
+                this.throwElement.setAttribute('draggable', 'true');
+                document.getElementById('wordDown').appendChild(this.throwElement);
             };
         });
     }
@@ -133,10 +137,11 @@ export class flow {
     }
 
     nextPhase() {
-        if ((this.nowPhaseNumber = this.playermanager.getPlayerNumber())) {
+        console.log('nextPhase()');
+        this.uimanager.hideNowBlink();
+        this.uimanager.showBlink(this.playermanager.phaseToPosition(this.nowPhaseNumber));
+        if (this.nowPhaseNumber == this.playermanager.getPlayerNumber()) {
             this.drawHai();
-            this.uimanager.hideNowBlink();
-            this.uimanager.showBlink(this.uimanager.phaseToPosition(phasenumber));
             this.youCanThrow = true;
         }
     }
