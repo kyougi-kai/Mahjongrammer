@@ -57,7 +57,7 @@ export class flow {
                         },
                     };
                     setTimeout(() => {
-                        this.wss.send(nextData);
+                        // this.wss.send(nextData);
                     }, 3000);
                 }
             } catch (err) {
@@ -73,13 +73,16 @@ export class flow {
         });
 
         this.wss.onMessage('pon', (data) => {
-            this.nowPhaseNumber = data.ponPlayerNumber;
-            this.nextPhase();
             this.uimanager.pon();
+            this.nowPhaseNumber = data.ponPlayerNumber;
+            data.ponPlayerNumber == this.playermanager.getPlayerNumber() ? this.nextPhase(true) : this.nextPhase();
             if(data.ponPlayerNumber == this.playermanager.getPlayerNumber()){
-                console.log(this.throwElement);
-                this.throwElement.setAttribute('draggable', 'true');
-                document.getElementById('wordDown').appendChild(this.throwElement);
+                let nanka = document.createElement('div');
+                nanka.innerHTML = this.throwElement;
+                nanka.children[0].setAttribute('draggable', 'true');
+                nanka.children[0].style.opacity = '1';
+                document.getElementById('wordDown').appendChild(nanka.children[0]);
+                nanka.remove();
             };
         });
     }
@@ -136,12 +139,12 @@ export class flow {
         }
     }
 
-    nextPhase() {
+    nextPhase(isPon = false) {
         console.log('nextPhase()');
         this.uimanager.hideNowBlink();
         this.uimanager.showBlink(this.playermanager.phaseToPosition(this.nowPhaseNumber));
         if (this.nowPhaseNumber == this.playermanager.getPlayerNumber()) {
-            this.drawHai();
+            if(!isPon)this.drawHai();
             this.youCanThrow = true;
         }
     }
