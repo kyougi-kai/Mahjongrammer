@@ -9,7 +9,7 @@ export class flow {
 
         this.youCanThrow = false;
         this.throwElement = null;
-        this.score-
+        this.scorebords = document.getElementById('scoreBord');
 
         // 親を添え字0としたときの番
         this.nowPhaseNumber = 0;
@@ -107,6 +107,8 @@ export class flow {
         if (isparent) {
             this.youCanThrow = true;
             this.drawHai();
+            console.log(this.scorebords.children[4]);
+            this.scorebords.children[4].style.opacity = 1;
         }
     }
 
