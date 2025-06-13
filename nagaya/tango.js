@@ -1526,6 +1526,10 @@ let tango = {
     },
     climate: {
         hinsi: ['名詞'],
+        means: {
+            名詞: '気候',
+        },
         tags: ['不可算名詞'],
     },
+
 };
