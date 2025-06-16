@@ -6,7 +6,7 @@ export class flow {
         this.blockmanager = blockmanager;
         this.uimanager = uimanager;
         this.playermanager = playermanager;
-
+        this.scorebords = document.getElementById('scoreBord');
         this.youCanThrow = false;
         this.throwElement = null;
 
@@ -147,6 +147,8 @@ export class flow {
         if (isparent) {
             this.youCanThrow = true;
             this.drawHai();
+            this.scorebords.children[4].style.opacity = 1;
+            this.scorebords.children[4].style.pointerEvents = 'all';
         }
     }
 
