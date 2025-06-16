@@ -1,5 +1,6 @@
 let tango = {
-    apple: {//名詞
+    apple: {
+        //名詞
         hinsi: ['名詞'],
         tags: ['可算名詞', '単数形', '母音で始まる'],
         katuyou: ['apples'],
@@ -262,10 +263,6 @@ let tango = {
         tags: ['他動詞', '動作動詞'],
         katuyou: ['eat', 'eats', 'ate', 'eaten', 'eating'],
     },
-    今度からは、動詞の登録をします
-accept	受け入れる
-act	（役を） 演じる
-のように入力するため、
     run: {
         hinsi: ['動詞'],
         tags: ['自動詞', '動作動詞'],
