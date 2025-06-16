@@ -35,7 +35,7 @@ export class flow {
                 type: 'pon',
                 payload: {
                     parentName: this.playermanager.parentname,
-                    playerNumber : this.playermanager.getPlayerNumber()
+                    playerNumber: this.playermanager.getPlayerNumber(),
                 },
             };
             this.wss.send(ponData);
@@ -87,14 +87,14 @@ export class flow {
             this.uimanager.pon();
             this.nowPhaseNumber = data.ponPlayerNumber;
             data.ponPlayerNumber == this.playermanager.getPlayerNumber() ? this.nextPhase(true) : this.nextPhase();
-            if(data.ponPlayerNumber == this.playermanager.getPlayerNumber()){
+            if (data.ponPlayerNumber == this.playermanager.getPlayerNumber()) {
                 let nanka = document.createElement('div');
                 nanka.innerHTML = this.throwElement;
-                nanka.children[0].setAttribute('draggable', 'true');
+                this.blockmanager.attachDraggable(nanka.children[0]);
                 nanka.children[0].style.opacity = '1';
                 document.getElementById('wordDown').appendChild(nanka.children[0]);
                 nanka.remove();
-            };
+            }
         });
     }
 
@@ -157,7 +157,7 @@ export class flow {
         this.uimanager.hideNowBlink();
         this.uimanager.showBlink(this.playermanager.phaseToPosition(this.nowPhaseNumber));
         if (this.nowPhaseNumber == this.playermanager.getPlayerNumber()) {
-            if(!isPon)this.drawHai();
+            if (!isPon) this.drawHai();
             this.youCanThrow = true;
         }
     }
