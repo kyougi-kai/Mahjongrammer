@@ -41,6 +41,17 @@ export class flow {
             this.wss.send(ponData);
         });
 
+        this.barkdiv.children[1].addEventListener('click', (e) => {
+            let skipData = {
+                type: 'skip',
+                payload: {
+                    parentName: this.playermanager.parentname,
+                },
+            };
+            this.uimanager.hideBarkDiv();
+            this.wss.send(skipData);
+        });
+
         this.wss.onMessage('startGame', () => {
             console.log('ゲームスタート');
             this.start();
@@ -136,6 +147,7 @@ export class flow {
         if (isparent) {
             this.youCanThrow = true;
             this.drawHai();
+            this.scorebords.children[4].style.opacity = 1;
         }
     }
 
