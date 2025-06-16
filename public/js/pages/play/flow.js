@@ -147,6 +147,7 @@ export class flow {
         if (isparent) {
             this.youCanThrow = true;
             this.drawHai();
+            this.scorebords.children[4].style.opacity = 1;
         }
     }
 
