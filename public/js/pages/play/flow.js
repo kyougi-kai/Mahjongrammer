@@ -50,7 +50,7 @@ export class flow {
                     parentName: this.playermanager.parentname,
                 },
             };
-            this.uimanager.hideBarkDiv();
+            this.uimanager.hideponskip();
             this.wss.send(skipData);
         });
 
