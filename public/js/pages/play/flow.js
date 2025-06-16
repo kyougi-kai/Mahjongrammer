@@ -1,11 +1,13 @@
 import { hai } from '/js/pages/play/hai.js';
 import { tango } from '/js/utils/wordData.js';
 export class flow {
-    constructor(wss, blockmanager, uimanager, playermanager) {
+    constructor(wss, blockmanager, uimanager, playermanager, togoout) {
         this.wss = wss;
         this.blockmanager = blockmanager;
         this.uimanager = uimanager;
         this.playermanager = playermanager;
+        this.togoout = togoout;
+
         this.scorebords = document.getElementById('scoreBord');
         this.youCanThrow = false;
         this.throwElement = null;
@@ -14,6 +16,11 @@ export class flow {
         this.nowPhaseNumber = 0;
 
         this.barkdiv = document.getElementById('barkDiv');
+
+        // 上がれるようにする
+        document.getElementById('finishButton').addEventListener('click', (e) => {
+            this.togoout.tumoreruka();
+        })
 
         document.addEventListener('keydown', (e) => {
             if (e.key == 'x') {
