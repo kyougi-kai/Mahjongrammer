@@ -83,6 +83,7 @@ export class uiManager {
     }
 
     pon(){
-        
+        this.ponskip.style.display = 'none';
+        clearTimeout(this.time);
     }
 }
