@@ -75,7 +75,7 @@ export class uiManager {
     }
 
     hideBarkDiv(){
-        
+        this.flow.barkDiv.style.display = 'none';
     }
 
     pon(){
