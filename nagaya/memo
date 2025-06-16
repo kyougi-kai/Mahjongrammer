@@ -106,3 +106,84 @@ checkV→後ろからチェックする
 
 
 [単語](https://www.notion.so/1b2aefa5fc6f80d48a57fc25b1ceeffd?pvs=21)
+ let tango = {   
+accept: {
+        means: {
+            動詞:受け入れる
+        },
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['accept', 'accepts', 'accepted', 'accepted', 'accepting'],
+    },
+    act: {
+        means: {
+            動詞:（役を） 演じる
+        },
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['act', 'acts', 'acted', 'acted', 'acting'],
+    },
+}
+
+   accept: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['accept', 'accepts', 'accepted', 'accepted', 'accepting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '受け入れる',
+        },
+    },
+    accepts: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['accept', 'accepts', 'accepted', 'accepted', 'accepting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '受け入れる',
+        },
+    },
+    accepted: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['accept', 'accepts', 'accepted', 'accepted', 'accepting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '受け入れる',
+        },
+    },
+    accepting: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['accept', 'accepts', 'accepted', 'accepted', 'accepting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '受け入れる',
+        },
+    },
+    become: {
+        tags: ['自動詞', '連結動詞', 'SVOCがとれる動詞', '原型','過去分詞'],
+        katuyou: ['become', 'becomes', 'became', 'become', 'becoming'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '〔名詞・形容詞・過去分詞などをあとにつけて〕 ～になる、～に変わる  〔過去分詞形もbecome〕',
+        },
+    },
+    becomes: {
+        tags: ['自動詞', '連結動詞', 'SVOCがとれる動詞','三単現s'],
+        katuyou: ['become', 'becomes', 'became', 'become', 'becoming'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '〔名詞・形容詞・過去分詞などをあとにつけて〕 ～になる、～に変わる  〔過去分詞形もbecome〕',
+        },
+    },
+    became: {
+        tags: ['自動詞', '連結動詞', 'SVOCがとれる動詞','過去形'],
+        katuyou: ['become', 'becomes', 'became', 'become', 'becoming'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '〔名詞・形容詞・過去分詞などをあとにつけて〕 ～になる、～に変わる  〔過去分詞形もbecome〕',
+        },
+    },
+    becoming: {
+        tags: ['自動詞', '連結動詞', 'SVOCがとれる動詞', '現在分詞'],
+        katuyou: ['become', 'becomes', 'became', 'become', 'becoming'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '〔名詞・形容詞・過去分詞などをあとにつけて〕 ～になる、～に変わる  〔過去分詞形もbecome〕',
+        },
+    },
