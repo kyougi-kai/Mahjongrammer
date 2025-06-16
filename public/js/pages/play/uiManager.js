@@ -74,6 +74,10 @@ export class uiManager {
         this.scoreBord.children[position].style.animation = 'blinking 2s infinite ease';
     }
 
+    hideBarkDiv(){
+        
+    }
+
     pon(){
         
     }
