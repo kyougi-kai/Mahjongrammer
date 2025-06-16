@@ -74,8 +74,12 @@ export class uiManager {
         this.scoreBord.children[position].style.animation = 'blinking 2s infinite ease';
     }
 
-    hideBarkDiv(){
-        this.flow.barkDiv.style.display = 'none';
+    hideponskip(){
+        this.ponDiv = this.ponskip.children[0];
+        this.skipDiv = this.ponskip.children[1];
+        this.ponDiv.style.display = 'none';
+        this.skipDiv.style.display = 'none';
+
     }
 
     pon(){
