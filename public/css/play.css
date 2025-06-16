@@ -201,7 +201,8 @@ p {
     position: relative;
     height: calc(100% - 270px);
     width: 100%;
-    background: rgb(13, 121, 10);
+    background-image: url('/img/background/ゲーム画面背景.png');
+    background-size: auto;
 }
 
 .footer {
