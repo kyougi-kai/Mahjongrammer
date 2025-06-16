@@ -12,6 +12,8 @@ export class flow {
         this.youCanThrow = false;
         this.throwElement = null;
 
+        this.sendInterval = null;
+
         // 親を添え字0としたときの番
         this.nowPhaseNumber = 0;
 
@@ -55,7 +57,7 @@ export class flow {
                     parentName: this.playermanager.parentname,
                 },
             };
-            this.uimanager.hideBarkDiv();
+            this.uimanager.hideponskip();
             this.wss.send(skipData);
         });
 
@@ -74,8 +76,8 @@ export class flow {
                             parentName: this.playermanager.getParent,
                         },
                     };
-                    setTimeout(() => {
-                        // this.wss.send(nextData);
+                    this.sendInterval = setTimeout(() => {
+                        this.wss.send(nextData);
                     }, 3000);
                 }
             } catch (err) {
@@ -91,6 +93,9 @@ export class flow {
         });
 
         this.wss.onMessage('pon', (data) => {
+            if(this.sendInterval != null)clearTimeout(this.sendInterval);
+            this.sendInterval = null;
+            
             this.uimanager.pon();
             this.nowPhaseNumber = data.ponPlayerNumber;
             data.ponPlayerNumber == this.playermanager.getPlayerNumber() ? this.nextPhase(true) : this.nextPhase();
