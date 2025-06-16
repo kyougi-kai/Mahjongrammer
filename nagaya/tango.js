@@ -1531,5 +1531,125 @@ let tango = {
         },
         tags: ['不可算名詞'],
     },
-
+    //動詞編スタート！？
+    accept: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['accept', 'accepts', 'accepted', 'accepted', 'accepting'],
+    },
+    act: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['act', 'acts', 'acted', 'acted', 'acting'],
+    },
+    add: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['add', 'adds', 'added', 'added', 'adding'],
+    },
+    agree: {
+        tags: ['自動詞', '状態動詞', '原型'],
+        katuyou: ['agree', 'agrees', 'agreed', 'agreed', 'agreeing'],
+    },
+    allow: {
+        tags: ['他動詞', '動作動詞', 'SVOCがとれる動詞', '原型'],
+        katuyou: ['allow', 'allows', 'allowed', 'allowed', 'allowing'],
+    },
+    am: {
+        tags: ['be動詞', '状態動詞', '原型'],
+        katuyou: ['am', 'is', 'was', 'been', 'being'],
+    },
+    amaze: {
+        tags: ['他動詞', '感覚動詞', '原型'],
+        katuyou: ['amaze', 'amazes', 'amazed', 'amazed', 'amazing'],
+    },
+    answer: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['answer', 'answers', 'answered', 'answered', 'answering'],
+    },
+    are: {
+        tags: ['be動詞', '状態動詞', '原型'],
+        katuyou: ['are', 'is', 'were', 'been', 'being'],
+    },
+    arrest: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['arrest', 'arrests', 'arrested', 'arrested', 'arresting'],
+    },
+    arrive: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['arrive', 'arrives', 'arrived', 'arrived', 'arriving'],
+    },
+    ask: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞', '原型'],
+        katuyou: ['ask', 'asks', 'asked', 'asked', 'asking'],
+    },
+    assist: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['assist', 'assists', 'assisted', 'assisted', 'assisting'],
+    },
+    attend: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['attend', 'attends', 'attended', 'attended', 'attending'],
+    },
+    attract: {
+        tags: ['他動詞', '感覚動詞', '原型'],
+        katuyou: ['attract', 'attracts', 'attracted', 'attracted', 'attracting'],
+    },
+    bake: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['bake', 'bakes', 'baked', 'baked', 'baking'],
+    },
+    base: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['base', 'bases', 'based', 'based', 'basing'],
+    },
+    be: {
+        tags: ['be動詞', '状態動詞', '原型'],
+        katuyou: ['be', 'is', 'was', 'been', 'being'],
+    },
+    become: {
+        tags: ['自動詞', '連結動詞', 'SVOCがとれる動詞', '原型'],
+        katuyou: ['become', 'becomes', 'became', 'become', 'becoming'],
+    },
+    begin: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型'],
+        katuyou: ['begin', 'begins', 'began', 'begun', 'beginning'],
+    },
+    believe: {
+        tags: ['他動詞', '状態動詞', '原型'],
+        katuyou: ['believe', 'believes', 'believed', 'believed', 'believing'],
+    },
+    belong: {
+        tags: ['自動詞', '状態動詞', '原型'],
+        katuyou: ['belong', 'belongs', 'belonged', 'belonged', 'belonging'],
+    },
+    blow: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型'],
+        katuyou: ['blow', 'blows', 'blew', 'blown', 'blowing'],
+    },
+    blush: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['blush', 'blushes', 'blushed', 'blushed', 'blushing'],
+    },
+    boil: {
+        tags: ['自動詞', '他動詞', '動作動詞', '原型'],
+        katuyou: ['boil', 'boils', 'boiled', 'boiled', 'boiling'],
+    },
+    bear: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['bear', 'bears', 'bore', 'born', 'bearing'],
+    },
+    borrow: {
+        tags: ['他動詞', '他動詞', '動作動詞', '原型'],
+        katuyou: ['borrow', 'borrows', 'borrowed', 'borrowed', 'borrowing'],
+    },
+    bother: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['bother', 'bothers', 'bothered', 'bothered', 'bothering'],
+    },
+    break: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型'],
+        katuyou: ['break', 'breaks', 'broke', 'broken', 'breaking'],
+    },
+    bring: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞', '原型'],
+        katuyou: ['bring', 'brings', 'brought', 'brought', 'bringing'],
+    },
 };
