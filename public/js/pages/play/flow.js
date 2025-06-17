@@ -88,11 +88,16 @@ export class flow {
         });
 
         this.wss.onMessage('nextPhase', () => {
+            this.uimanager.pon();
+            if(this.sendInterval != null)clearTimeout(this.sendInterval);
+            this.sendInterval = null;
             this.nowPhaseNumber = (this.nowPhaseNumber + 1) % this.playermanager.playerMembers.length;
             this.nextPhase();
         });
 
         this.wss.onMessage('pon', (data) => {
+            this.uimanager.hideThrowHai(this.playermanager.phaseToPosition(this.nowPhaseNumber));
+
             if(this.sendInterval != null)clearTimeout(this.sendInterval);
             this.sendInterval = null;
             
@@ -133,6 +138,7 @@ export class flow {
                 },
             };
             this.wss.send(startData);
+            element.remove();
         });
     }
 
@@ -171,6 +177,13 @@ export class flow {
         if (this.nowPhaseNumber == this.playermanager.getPlayerNumber()) {
             if (!isPon) this.drawHai();
             this.youCanThrow = true;
+
+            this.scorebords.children[4].style.opacity = 1;
+            this.scorebords.children[4].style.pointerEvents = 'all';
+        }
+        else{
+            this.scorebords.children[4].style.opacity = 0;
+            this.scorebords.children[4].style.pointerEvents = 'none';
         }
     }
 

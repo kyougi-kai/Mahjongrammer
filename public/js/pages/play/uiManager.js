@@ -35,6 +35,10 @@ export class uiManager {
         this.showCountDown();
     }
 
+    hideThrowHai(position) {
+        this.throwHaiTable.children[position].children[0].remove();
+    }
+
     showCountDown(){
         console.log(this.ponskip);
         this.ponskip.style.display = 'block';
