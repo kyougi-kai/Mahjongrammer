@@ -1,11 +1,13 @@
 import { hai } from '/js/pages/play/hai.js';
 import { tango } from '/js/utils/wordData.js';
 export class flow {
-    constructor(wss, blockmanager, uimanager, playermanager) {
+    constructor(wss, blockmanager, uimanager, playermanager, togoout) {
         this.wss = wss;
         this.blockmanager = blockmanager;
         this.uimanager = uimanager;
         this.playermanager = playermanager;
+        this.togoout = togoout;
+
         this.scorebords = document.getElementById('scoreBord');
         this.youCanThrow = false;
         this.throwElement = null;
@@ -16,6 +18,11 @@ export class flow {
         this.nowPhaseNumber = 0;
 
         this.barkdiv = document.getElementById('barkDiv');
+
+        // 上がれるようにする
+        document.getElementById('finishButton').addEventListener('click', (e) => {
+            this.togoout.tumoreruka();
+        })
 
         document.addEventListener('keydown', (e) => {
             if (e.key == 'x') {
@@ -81,11 +88,16 @@ export class flow {
         });
 
         this.wss.onMessage('nextPhase', () => {
+            this.uimanager.pon();
+            if(this.sendInterval != null)clearTimeout(this.sendInterval);
+            this.sendInterval = null;
             this.nowPhaseNumber = (this.nowPhaseNumber + 1) % this.playermanager.playerMembers.length;
             this.nextPhase();
         });
 
         this.wss.onMessage('pon', (data) => {
+            this.uimanager.hideThrowHai(this.playermanager.phaseToPosition(this.nowPhaseNumber));
+
             if(this.sendInterval != null)clearTimeout(this.sendInterval);
             this.sendInterval = null;
             
@@ -126,6 +138,7 @@ export class flow {
                 },
             };
             this.wss.send(startData);
+            element.remove();
         });
     }
 
@@ -164,6 +177,13 @@ export class flow {
         if (this.nowPhaseNumber == this.playermanager.getPlayerNumber()) {
             if (!isPon) this.drawHai();
             this.youCanThrow = true;
+
+            this.scorebords.children[4].style.opacity = 1;
+            this.scorebords.children[4].style.pointerEvents = 'all';
+        }
+        else{
+            this.scorebords.children[4].style.opacity = 0;
+            this.scorebords.children[4].style.pointerEvents = 'none';
         }
     }
 
