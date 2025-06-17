@@ -135,7 +135,7 @@ export class playerManager {
 
         this.playerMembers.forEach((value, index) => {
             this.nameDivs[(index + 2 - nanka) % 4].children[0].innerHTML = value;
-            if (value == this.playerMembers[0]) {
+            if (value == this.playerMembers[0] && index == 0) {
                 this.nameDivs[(index + 2 - nanka) % 4].children[0].style.color = 'red';
             }
         });
