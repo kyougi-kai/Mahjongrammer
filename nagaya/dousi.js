@@ -1,0 +1,12692 @@
+let prepretango = {
+    accept: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['accept', 'accepts', 'accepted', 'accepted', 'accepting'],
+    },
+    act: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['act', 'acts', 'acted', 'acted', 'acting'],
+    },
+    add: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['add', 'adds', 'added', 'added', 'adding'],
+    },
+    agree: {
+        tags: ['自動詞', '状態動詞'],
+        katuyou: ['agree', 'agrees', 'agreed', 'agreed', 'agreeing'],
+    },
+    allow: {
+        tags: ['他動詞', '動作動詞', 'SVOCがとれる動詞'],
+        katuyou: ['allow', 'allows', 'allowed', 'allowed', 'allowing'],
+    },
+    am: {
+        tags: ['be動詞', '状態動詞'],
+        katuyou: ['am', 'is', 'was', 'been', 'being'],
+    },
+    amaze: {
+        tags: ['他動詞', '感覚動詞'],
+        katuyou: ['amaze', 'amazes', 'amazed', 'amazed', 'amazing'],
+    },
+    answer: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['answer', 'answers', 'answered', 'answered', 'answering'],
+    },
+    are: {
+        tags: ['be動詞', '状態動詞'],
+        katuyou: ['are', 'is', 'were', 'been', 'being'],
+    },
+    arrest: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['arrest', 'arrests', 'arrested', 'arrested', 'arresting'],
+    },
+    arrive: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['arrive', 'arrives', 'arrived', 'arrived', 'arriving'],
+    },
+    ask: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞'],
+        katuyou: ['ask', 'asks', 'asked', 'asked', 'asking'],
+    },
+    assist: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['assist', 'assists', 'assisted', 'assisted', 'assisting'],
+    },
+    attend: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['attend', 'attends', 'attended', 'attended', 'attending'],
+    },
+    attract: {
+        tags: ['他動詞', '感覚動詞'],
+        katuyou: ['attract', 'attracts', 'attracted', 'attracted', 'attracting'],
+    },
+    bake: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['bake', 'bakes', 'baked', 'baked', 'baking'],
+    },
+    base: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['base', 'bases', 'based', 'based', 'basing'],
+    },
+    be: {
+        tags: ['be動詞', '状態動詞'],
+        katuyou: ['be', 'is', 'was', 'been', 'being'],
+    },
+    become: {
+        tags: ['自動詞', '連結動詞', 'SVOCがとれる動詞'],
+        katuyou: ['become', 'becomes', 'became', 'become', 'becoming'],
+    },
+    begin: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['begin', 'begins', 'began', 'begun', 'beginning'],
+    },
+    believe: {
+        tags: ['他動詞', '状態動詞'],
+        katuyou: ['believe', 'believes', 'believed', 'believed', 'believing'],
+    },
+    belong: {
+        tags: ['自動詞', '状態動詞'],
+        katuyou: ['belong', 'belongs', 'belonged', 'belonged', 'belonging'],
+    },
+    blow: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['blow', 'blows', 'blew', 'blown', 'blowing'],
+    },
+    blush: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['blush', 'blushes', 'blushed', 'blushed', 'blushing'],
+    },
+    boil: {
+        tags: ['自動詞', '他動詞', '動作動詞'],
+        katuyou: ['boil', 'boils', 'boiled', 'boiled', 'boiling'],
+    },
+    bear: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['bear', 'bears', 'bore', 'born', 'bearing'],
+    },
+    borrow: {
+        tags: ['他動詞', '他動詞', '動作動詞'],
+        katuyou: ['borrow', 'borrows', 'borrowed', 'borrowed', 'borrowing'],
+    },
+    bother: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['bother', 'bothers', 'bothered', 'bothered', 'bothering'],
+    },
+    break: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['break', 'breaks', 'broke', 'broken', 'breaking'],
+    },
+    bring: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞'],
+        katuyou: ['bring', 'brings', 'brought', 'brought', 'bringing'],
+    },
+    broaden: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['broaden', 'broadens', 'broadened', 'broadened', 'broadening'],
+    },
+    brush: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['brush', 'brushes', 'brushed', 'brushed', 'brushing'],
+    },
+    build: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞'],
+        katuyou: ['build', 'builds', 'built', 'built', 'building'],
+    },
+    burn: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['burn', 'burns', 'burned', 'burned', 'burning'],
+    },
+    bury: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['bury', 'buries', 'buried', 'buried', 'burying'],
+    },
+    buy: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞'],
+        katuyou: ['buy', 'buys', 'bought', 'bought', 'buying'],
+    },
+    call: {
+        tags: ['他動詞', '動作動詞', 'SVOCがとれる動詞'],
+        katuyou: ['call', 'calls', 'called', 'called', 'calling'],
+    },
+    calm: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['calm', 'calms', 'calmed', 'calmed', 'calming'],
+    },
+    camp: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['camp', 'camps', 'camped', 'camped', 'camping'],
+    },
+    care: {
+        tags: ['自動詞', '状態動詞'],
+        katuyou: ['care', 'cares', 'cared', 'cared', 'caring'],
+    },
+    carry: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞'],
+        katuyou: ['carry', 'carries', 'carried', 'carried', 'carrying'],
+    },
+    catch: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['catch', 'catches', 'caught', 'caught', 'catching'],
+    },
+    cause: {
+        tags: ['他動詞', '動作動詞', 'SVOCがとれる動詞'],
+        katuyou: ['cause', 'causes', 'caused', 'caused', 'causing'],
+    },
+    celebrate: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['celebrate', 'celebrates', 'celebrated', 'celebrated', 'celebrating'],
+    },
+    change: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['change', 'changes', 'changed', 'changed', 'changing'],
+    },
+    check: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['check', 'checks', 'checked', 'checked', 'checking'],
+    },
+    cheer: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['cheer', 'cheers', 'cheered', 'cheered', 'cheering'],
+    },
+    choose: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['choose', 'chooses', 'chose', 'chosen', 'choosing'],
+    },
+    clap: {
+        tags: ['自動詞', '他動詞', '動作動詞'],
+        katuyou: ['clap', 'claps', 'clapped', 'clapped', 'clapping'],
+    },
+    clean: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['clean', 'cleans', 'cleaned', 'cleaned', 'cleaning'],
+    },
+    climb: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['climb', 'climbs', 'climbed', 'climbed', 'climbing'],
+    },
+    close: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['close', 'closes', 'closed', 'closed', 'closing'],
+    },
+    collect: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['collect', 'collects', 'collected', 'collected', 'collecting'],
+    },
+    come: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['come', 'comes', 'came', 'come', 'coming'],
+    },
+    communicate: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['communicate', 'communicates', 'communicated', 'communicated', 'communicating'],
+    },
+    compare: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['compare', 'compares', 'compared', 'compared', 'comparing'],
+    },
+    complain: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['complain', 'complains', 'complained', 'complained', 'complaining'],
+    },
+    connect: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['connect', 'connects', 'connected', 'connected', 'connecting'],
+    },
+    contact: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['contact', 'contacts', 'contacted', 'contacted', 'contacting'],
+    },
+    continue: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['continue', 'continues', 'continued', 'continued', 'continuing'],
+    },
+    cook: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['cook', 'cooks', 'cooked', 'cooked', 'cooking'],
+    },
+    cost: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['cost', 'costs', 'cost', 'cost', 'costing'],
+    },
+    count: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['count', 'counts', 'counted', 'counted', 'counting'],
+    },
+    cover: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['cover', 'covers', 'covered', 'covered', 'covering'],
+    },
+    create: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['create', 'creates', 'created', 'created', 'creating'],
+    },
+    cross: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['cross', 'crosses', 'crossed', 'crossed', 'crossing'],
+    },
+    cry: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['cry', 'cries', 'cried', 'cried', 'crying'],
+    },
+    cut: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['cut', 'cuts', 'cut', 'cut', 'cutting'],
+    },
+    dance: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['dance', 'dances', 'danced', 'danced', 'dancing'],
+    },
+    decide: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['decide', 'decides', 'decided', 'decided', 'deciding'],
+    },
+    depend: {
+        tags: ['自動詞', '状態動詞'],
+        katuyou: ['depend', 'depends', 'depended', 'depended', 'depending'],
+    },
+    design: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['design', 'designs', 'designed', 'designed', 'designing'],
+    },
+    despair: {
+        tags: ['自動詞', '状態動詞'],
+        katuyou: ['despair', 'despairs', 'despaired', 'despaired', 'despairing'],
+    },
+    destroy: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['destroy', 'destroys', 'destroyed', 'destroyed', 'destroying'],
+    },
+    did: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['do', 'does', 'did', 'done', 'doing'],
+    },
+    die: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['die', 'dies', 'died', 'died', 'dying'],
+    },
+    direct: {
+        tags: ['他動詞', '動作動詞', 'SVOCがとれる動詞'],
+        katuyou: ['direct', 'directs', 'directed', 'directed', 'directing'],
+    },
+    disagree: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['disagree', 'disagrees', 'disagreed', 'disagreed', 'disagreeing'],
+    },
+    disappear: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['disappear', 'disappears', 'disappeared', 'disappeared', 'disappearing'],
+    },
+    discover: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['discover', 'discovers', 'discovered', 'discovered', 'discovering'],
+    },
+    do: {
+        tags: ['他動詞', '自動詞', '動作動詞', '使役動詞'],
+        katuyou: ['do', 'does', 'did', 'done', 'doing'],
+    },
+    done: {
+        tags: ['他動詞', '自動詞', '動作動詞', '使役動詞'], // 同上の活用形
+        katuyou: ['do', 'does', 'did', 'done', 'doing'],
+    },
+    drank: {
+        tags: ['他動詞', '自動詞', '動作動詞'], // 過去形の形だが、元は drink
+        katuyou: ['drink', 'drinks', 'drank', 'drunk', 'drinking'],
+    },
+    draw: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['draw', 'draws', 'drew', 'drawn', 'drawing'],
+    },
+    drink: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['drink', 'drinks', 'drank', 'drunk', 'drinking'],
+    },
+    drive: {
+        tags: ['他動詞', '自動詞', '動作動詞', 'SVOCがとれる動詞'],
+        katuyou: ['drive', 'drives', 'drove', 'driven', 'driving'],
+    },
+    drop: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['drop', 'drops', 'dropped', 'dropped', 'dropping'],
+    },
+    eat: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['eat', 'eats', 'ate', 'eaten', 'eating'],
+    },
+    encourage: {
+        tags: ['他動詞', '動作動詞', 'SVOCがとれる動詞'],
+        katuyou: ['encourage', 'encourages', 'encouraged', 'encouraged', 'encouraging'],
+    },
+    end: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['end', 'ends', 'ended', 'ended', 'ending'],
+    },
+    enjoy: {
+        tags: ['他動詞', '状態動詞'],
+        katuyou: ['enjoy', 'enjoys', 'enjoyed', 'enjoyed', 'enjoying'],
+    },
+    enter: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['enter', 'enters', 'entered', 'entered', 'entering'],
+    },
+    excuse: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['excuse', 'excuses', 'excused', 'excused', 'excusing'],
+    },
+    experience: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['experience', 'experiences', 'experienced', 'experienced', 'experiencing'],
+    },
+    explain: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['explain', 'explains', 'explained', 'explained', 'explaining'],
+    },
+    express: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['express', 'expresses', 'expressed', 'expressed', 'expressing'],
+    },
+    face: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['face', 'faces', 'faced', 'faced', 'facing'],
+    },
+    fade: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['fade', 'fades', 'faded', 'faded', 'fading'],
+    },
+    faint: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['faint', 'faints', 'fainted', 'fainted', 'fainting'],
+    },
+    fall: {
+        tags: ['自動詞', '動作動詞', '連結動詞'],
+        katuyou: ['fall', 'falls', 'fell', 'fallen', 'falling'],
+    },
+    fascinate: {
+        tags: ['他動詞', '感覚動詞'],
+        katuyou: ['fascinate', 'fascinates', 'fascinated', 'fascinated', 'fascinating'],
+    },
+    feed: {
+        tags: ['他動詞', 'SVOOがとれる動詞'],
+        katuyou: ['feed', 'feeds', 'fed', 'fed', 'feeding'],
+    },
+    feel: {
+        tags: ['他動詞', '自動詞', '感覚動詞', '連結動詞'],
+        katuyou: ['feel', 'feels', 'felt', 'felt', 'feeling'],
+    },
+    fight: {
+        tags: ['自動詞', '他動詞', '動作動詞'],
+        katuyou: ['fight', 'fights', 'fought', 'fought', 'fighting'],
+    },
+    fill: {
+        tags: ['他動詞'],
+        katuyou: ['fill', 'fills', 'filled', 'filled', 'filling'],
+    },
+    find: {
+        tags: ['他動詞', 'SVOCがとれる動詞'],
+        katuyou: ['find', 'finds', 'found', 'found', 'finding'],
+    },
+    finish: {
+        tags: ['他動詞'],
+        katuyou: ['finish', 'finishes', 'finished', 'finished', 'finishing'],
+    },
+    fish: {
+        tags: ['自動詞', '他動詞'],
+        katuyou: ['fish', 'fishes', 'fished', 'fished', 'fishing'],
+    },
+    fit: {
+        tags: ['他動詞', '自動詞', '連結動詞'],
+        katuyou: ['fit', 'fits', 'fit', 'fit', 'fitting'],
+    },
+    fly: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['fly', 'flies', 'flew', 'flown', 'flying'],
+    },
+    follow: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['follow', 'follows', 'followed', 'followed', 'following'],
+    },
+    force: {
+        tags: ['他動詞', '使役動詞'],
+        katuyou: ['force', 'forces', 'forced', 'forced', 'forcing'],
+    },
+    forget: {
+        tags: ['他動詞'],
+        katuyou: ['forget', 'forgets', 'forgot', 'forgotten', 'forgetting'],
+    },
+    form: {
+        tags: ['他動詞'],
+        katuyou: ['form', 'forms', 'formed', 'formed', 'forming'],
+    },
+    fulfill: {
+        tags: ['他動詞'],
+        katuyou: ['fulfill', 'fulfills', 'fulfilled', 'fulfilled', 'fulfilling'],
+    },
+    gather: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['gather', 'gathers', 'gathered', 'gathered', 'gathering'],
+    },
+    get: {
+        tags: ['他動詞', 'SVOOがとれる動詞', 'SVOCがとれる動詞'],
+        katuyou: ['get', 'gets', 'got', 'gotten', 'getting'],
+    },
+    give: {
+        tags: ['他動詞', 'SVOOがとれる動詞'],
+        katuyou: ['give', 'gives', 'gave', 'given', 'giving'],
+    },
+    go: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['go', 'goes', 'went', 'gone', 'going'],
+    },
+    graduate: {
+        tags: ['自動詞'],
+        katuyou: ['graduate', 'graduates', 'graduated', 'graduated', 'graduating'],
+    },
+    greet: {
+        tags: ['他動詞'],
+        katuyou: ['greet', 'greets', 'greeted', 'greeted', 'greeting'],
+    },
+    grin: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['grin', 'grins', 'grinned', 'grinned', 'grinning'],
+    },
+    grow: {
+        tags: ['自動詞', '連結動詞'],
+        katuyou: ['grow', 'grows', 'grew', 'grown', 'growing'],
+    },
+    guess: {
+        tags: ['他動詞'],
+        katuyou: ['guess', 'guesses', 'guessed', 'guessed', 'guessing'],
+    },
+    happen: {
+        tags: ['自動詞'],
+        katuyou: ['happen', 'happens', 'happened', 'happened', 'happening'],
+    },
+    hate: {
+        tags: ['他動詞', '状態動詞'],
+        katuyou: ['hate', 'hates', 'hated', 'hated', 'hating'],
+    },
+    have: {
+        tags: ['他動詞', '状態動詞', 'SVOOがとれる動詞'],
+        katuyou: ['have', 'has', 'had', 'had', 'having'],
+    },
+    head: {
+        tags: ['自動詞', '他動詞'],
+        katuyou: ['head', 'heads', 'headed', 'headed', 'heading'],
+    },
+    heal: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['heal', 'heals', 'healed', 'healed', 'healing'],
+    },
+    hear: {
+        tags: ['他動詞', '知覚動詞'],
+        katuyou: ['hear', 'hears', 'heard', 'heard', 'hearing'],
+    },
+    heat: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['heat', 'heats', 'heated', 'heated', 'heating'],
+    },
+    help: {
+        tags: ['他動詞', 'SVOOがとれる動詞', '使役動詞'],
+        katuyou: ['help', 'helps', 'helped', 'helped', 'helping'],
+    },
+    hit: {
+        tags: ['他動詞'],
+        katuyou: ['hit', 'hits', 'hit', 'hit', 'hitting'],
+    },
+    hold: {
+        tags: ['他動詞', 'SVOOがとれる動詞'],
+        katuyou: ['hold', 'holds', 'held', 'held', 'holding'],
+    },
+    hope: {
+        tags: ['他動詞', '状態動詞'],
+        katuyou: ['hope', 'hopes', 'hoped', 'hoped', 'hoping'],
+    },
+    hug: {
+        tags: ['他動詞'],
+        katuyou: ['hug', 'hugs', 'hugged', 'hugged', 'hugging'],
+    },
+    hunt: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['hunt', 'hunts', 'hunted', 'hunted', 'hunting'],
+    },
+    hurry: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['hurry', 'hurries', 'hurried', 'hurried', 'hurrying'],
+    },
+    hurt: {
+        tags: ['他動詞'],
+        katuyou: ['hurt', 'hurts', 'hurt', 'hurt', 'hurting'],
+    },
+    imagine: {
+        tags: ['他動詞'],
+        katuyou: ['imagine', 'imagines', 'imagined', 'imagined', 'imagining'],
+    },
+    impress: {
+        tags: ['他動詞', '感覚動詞'],
+        katuyou: ['impress', 'impresses', 'impressed', 'impressed', 'impressing'],
+    },
+    improve: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['improve', 'improves', 'improved', 'improved', 'improving'],
+    },
+    increase: {
+        tags: ['自動詞', '他動詞'],
+        katuyou: ['increase', 'increases', 'increased', 'increased', 'increasing'],
+    },
+    influence: {
+        tags: ['他動詞'],
+        katuyou: ['influence', 'influences', 'influenced', 'influenced', 'influencing'],
+    },
+    injure: {
+        tags: ['他動詞'],
+        katuyou: ['injure', 'injures', 'injured', 'injured', 'injuring'],
+    },
+    interview: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['interview', 'interviews', 'interviewed', 'interviewed', 'interviewing'],
+    },
+    introduce: {
+        tags: ['他動詞'],
+        katuyou: ['introduce', 'introduces', 'introduced', 'introduced', 'introducing'],
+    },
+    invite: {
+        tags: ['他動詞'],
+        katuyou: ['invite', 'invites', 'invited', 'invited', 'inviting'],
+    },
+    is: {
+        tags: ['be動詞', '状態動詞', '連結動詞'],
+        katuyou: ['be', 'is', 'was', 'been', 'being'],
+    },
+    join: {
+        tags: ['他動詞'],
+        katuyou: ['join', 'joins', 'joined', 'joined', 'joining'],
+    },
+    judge: {
+        tags: ['他動詞'],
+        katuyou: ['judge', 'judges', 'judged', 'judged', 'judging'],
+    },
+    jump: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['jump', 'jumps', 'jumped', 'jumped', 'jumping'],
+    },
+    keep: {
+        tags: ['他動詞', 'SVOCがとれる動詞'],
+        katuyou: ['keep', 'keeps', 'kept', 'kept', 'keeping'],
+    },
+    kick: {
+        tags: ['他動詞'],
+        katuyou: ['kick', 'kicks', 'kicked', 'kicked', 'kicking'],
+    },
+    kid: {
+        tags: ['他動詞'],
+        katuyou: ['kid', 'kids', 'kidded', 'kidded', 'kidding'],
+    },
+    kill: {
+        tags: ['他動詞'],
+        katuyou: ['kill', 'kills', 'killed', 'killed', 'killing'],
+    },
+    knit: {
+        tags: ['他動詞'],
+        katuyou: ['knit', 'knits', 'knitted', 'knitted', 'knitting'],
+    },
+    knock: {
+        tags: ['自動詞', '他動詞', '動作動詞'],
+        katuyou: ['knock', 'knocks', 'knocked', 'knocked', 'knocking'],
+    },
+    know: {
+        tags: ['他動詞', '状態動詞'],
+        katuyou: ['know', 'knows', 'knew', 'known', 'knowing'],
+    },
+    land: {
+        tags: ['自動詞', '他動詞'],
+        katuyou: ['land', 'lands', 'landed', 'landed', 'landing'],
+    },
+    last: {
+        tags: ['自動詞', '状態動詞'],
+        katuyou: ['last', 'lasts', 'lasted', 'lasted', 'lasting'],
+    },
+    laugh: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['laugh', 'laughs', 'laughed', 'laughed', 'laughing'],
+    },
+    lay: {
+        tags: ['他動詞'],
+        katuyou: ['lay', 'lays', 'laid', 'laid', 'laying'],
+    },
+    lead: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['lead', 'leads', 'led', 'led', 'leading'],
+    },
+    learn: {
+        tags: ['他動詞'],
+        katuyou: ['learn', 'learns', 'learned', 'learned', 'learning'],
+    },
+    leave: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['leave', 'leaves', 'left', 'left', 'leaving'],
+    },
+    lend: {
+        tags: ['他動詞', 'SVOOがとれる動詞'],
+        katuyou: ['lend', 'lends', 'lent', 'lent', 'lending'],
+    },
+    lie: {
+        tags: ['自動詞', '状態動詞'],
+        katuyou: ['lie', 'lies', 'lay', 'lain', 'lying'],
+    },
+    lift: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['lift', 'lifts', 'lifted', 'lifted', 'lifting'],
+    },
+    like: {
+        tags: ['他動詞', '状態動詞'],
+        katuyou: ['like', 'likes', 'liked', 'liked', 'liking'],
+    },
+    listen: {
+        tags: ['自動詞', '感覚動詞', '動作動詞'],
+        katuyou: ['listen', 'listens', 'listened', 'listened', 'listening'],
+    },
+    live: {
+        tags: ['自動詞', '状態動詞'],
+        katuyou: ['live', 'lives', 'lived', 'lived', 'living'],
+    },
+    locate: {
+        tags: ['他動詞'],
+        katuyou: ['locate', 'locates', 'located', 'located', 'locating'],
+    },
+    lock: {
+        tags: ['他動詞'],
+        katuyou: ['lock', 'locks', 'locked', 'locked', 'locking'],
+    },
+    look: {
+        tags: ['自動詞', '感覚動詞', '連結動詞', '動作動詞'],
+        katuyou: ['look', 'looks', 'looked', 'looked', 'looking'],
+    },
+    lose: {
+        tags: ['他動詞'],
+        katuyou: ['lose', 'loses', 'lost', 'lost', 'losing'],
+    },
+    love: {
+        tags: ['他動詞', '状態動詞'],
+        katuyou: ['love', 'loves', 'loved', 'loved', 'loving'],
+    },
+    make: {
+        tags: ['他動詞', '使役動詞', 'SVOCがとれる動詞'],
+        katuyou: ['make', 'makes', 'made', 'made', 'making'],
+    },
+    manage: {
+        tags: ['他動詞'],
+        katuyou: ['manage', 'manages', 'managed', 'managed', 'managing'],
+    },
+    marry: {
+        tags: ['他動詞'],
+        katuyou: ['marry', 'marries', 'married', 'married', 'marrying'],
+    },
+    mean: {
+        tags: ['他動詞', '状態動詞'],
+        katuyou: ['mean', 'means', 'meant', 'meant', 'meaning'],
+    },
+    meet: {
+        tags: ['他動詞'],
+        katuyou: ['meet', 'meets', 'met', 'met', 'meeting'],
+    },
+    melt: {
+        tags: ['自動詞', '他動詞'],
+        katuyou: ['melt', 'melts', 'melted', 'melted', 'melting'],
+    },
+    miss: {
+        tags: ['他動詞'],
+        katuyou: ['miss', 'misses', 'missed', 'missed', 'missing'],
+    },
+    mistake: {
+        tags: ['他動詞'],
+        katuyou: ['mistake', 'mistakes', 'mistook', 'mistaken', 'mistaking'],
+    },
+    mix: {
+        tags: ['他動詞'],
+        katuyou: ['mix', 'mixes', 'mixed', 'mixed', 'mixing'],
+    },
+    move: {
+        tags: ['自動詞', '他動詞', '動作動詞'],
+        katuyou: ['move', 'moves', 'moved', 'moved', 'moving'],
+    },
+    name: {
+        tags: ['他動詞', 'SVOCがとれる動詞'],
+        katuyou: ['name', 'names', 'named', 'named', 'naming'],
+    },
+    need: {
+        tags: ['他動詞', '状態動詞'],
+        katuyou: ['need', 'needs', 'needed', 'needed', 'needing'],
+    },
+    nod: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['nod', 'nods', 'nodded', 'nodded', 'nodding'],
+    },
+    notice: {
+        tags: ['他動詞', '知覚動詞'],
+        katuyou: ['notice', 'notices', 'noticed', 'noticed', 'noticing'],
+    },
+    open: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['open', 'opens', 'opened', 'opened', 'opening'],
+    },
+    order: {
+        tags: ['他動詞'],
+        katuyou: ['order', 'orders', 'ordered', 'ordered', 'ordering'],
+    },
+    organize: {
+        tags: ['他動詞'],
+        katuyou: ['organize', 'organizes', 'organized', 'organized', 'organizing'],
+    },
+    overcome: {
+        tags: ['他動詞'],
+        katuyou: ['overcome', 'overcomes', 'overcame', 'overcome', 'overcoming'],
+    },
+    package: {
+        tags: ['他動詞'],
+        katuyou: ['package', 'packages', 'packaged', 'packaged', 'packaging'],
+    },
+    paint: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['paint', 'paints', 'painted', 'painted', 'painting'],
+    },
+    panic: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['panic', 'panics', 'panicked', 'panicked', 'panicking'],
+    },
+    pardon: {
+        tags: ['他動詞'],
+        katuyou: ['pardon', 'pardons', 'pardoned', 'pardoned', 'pardoning'],
+    },
+    park: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['park', 'parks', 'parked', 'parked', 'parking'],
+    },
+    pass: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['pass', 'passes', 'passed', 'passed', 'passing'],
+    },
+    pay: {
+        tags: ['他動詞', '自動詞', 'SVOOがとれる動詞'],
+        katuyou: ['pay', 'pays', 'paid', 'paid', 'paying'],
+    },
+    perform: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['perform', 'performs', 'performed', 'performed', 'performing'],
+    },
+    photograph: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['photograph', 'photographs', 'photographed', 'photographed', 'photographing'],
+    },
+    pick: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['pick', 'picks', 'picked', 'picked', 'picking'],
+    },
+    place: {
+        tags: ['他動詞'],
+        katuyou: ['place', 'places', 'placed', 'placed', 'placing'],
+    },
+    plan: {
+        tags: ['他動詞'],
+        katuyou: ['plan', 'plans', 'planned', 'planned', 'planning'],
+    },
+    plant: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['plant', 'plants', 'planted', 'planted', 'planting'],
+    },
+    play: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['play', 'plays', 'played', 'played', 'playing'],
+    },
+    point: {
+        tags: ['自動詞', '他動詞'],
+        katuyou: ['point', 'points', 'pointed', 'pointed', 'pointing'],
+    },
+    post: {
+        tags: ['他動詞'],
+        katuyou: ['post', 'posts', 'posted', 'posted', 'posting'],
+    },
+    practice: {
+        tags: ['他動詞'],
+        katuyou: ['practice', 'practices', 'practiced', 'practiced', 'practicing'],
+    },
+    pray: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['pray', 'prays', 'prayed', 'prayed', 'praying'],
+    },
+    prefer: {
+        tags: ['他動詞', '状態動詞'],
+        katuyou: ['prefer', 'prefers', 'preferred', 'preferred', 'preferring'],
+    },
+    prepare: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['prepare', 'prepares', 'prepared', 'prepared', 'preparing'],
+    },
+    produce: {
+        tags: ['他動詞'],
+        katuyou: ['produce', 'produces', 'produced', 'produced', 'producing'],
+    },
+    protect: {
+        tags: ['他動詞'],
+        katuyou: ['protect', 'protects', 'protected', 'protected', 'protecting'],
+    },
+    pull: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['pull', 'pulls', 'pulled', 'pulled', 'pulling'],
+    },
+    punish: {
+        tags: ['他動詞'],
+        katuyou: ['punish', 'punishes', 'punished', 'punished', 'punishing'],
+    },
+    push: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['push', 'pushes', 'pushed', 'pushed', 'pushing'],
+    },
+    put: {
+        tags: ['他動詞', 'SVOCがとれる動詞'],
+        katuyou: ['put', 'puts', 'put', 'put', 'putting'],
+    },
+    quit: {
+        tags: ['他動詞'],
+        katuyou: ['quit', 'quits', 'quit', 'quit', 'quitting'],
+    },
+    quiz: {
+        tags: ['他動詞'],
+        katuyou: ['quiz', 'quizzes', 'quizzed', 'quizzed', 'quizzing'],
+    },
+    rain: {
+        tags: ['自動詞'],
+        katuyou: ['rain', 'rains', 'rained', 'rained', 'raining'],
+    },
+    raise: {
+        tags: ['他動詞'],
+        katuyou: ['raise', 'raises', 'raised', 'raised', 'raising'],
+    },
+    read: {
+        tags: ['他動詞'],
+        katuyou: ['read', 'reads', 'read', 'read', 'reading'],
+    },
+    realize: {
+        tags: ['他動詞', '状態動詞'],
+        katuyou: ['realize', 'realizes', 'realized', 'realized', 'realizing'],
+    },
+    receive: {
+        tags: ['他動詞', 'SVOOがとれる動詞'],
+        katuyou: ['receive', 'receives', 'received', 'received', 'receiving'],
+    },
+    recognize: {
+        tags: ['他動詞', '状態動詞'],
+        katuyou: ['recognize', 'recognizes', 'recognized', 'recognized', 'recognizing'],
+    },
+    recycle: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['recycle', 'recycles', 'recycled', 'recycled', 'recycling'],
+    },
+    reduce: {
+        tags: ['他動詞'],
+        katuyou: ['reduce', 'reduces', 'reduced', 'reduced', 'reducing'],
+    },
+    relax: {
+        tags: ['自動詞', '状態動詞'],
+        katuyou: ['relax', 'relaxes', 'relaxed', 'relaxed', 'relaxing'],
+    },
+    release: {
+        tags: ['他動詞'],
+        katuyou: ['release', 'releases', 'released', 'released', 'releasing'],
+    },
+    remain: {
+        tags: ['自動詞', '状態動詞', '連結動詞'],
+        katuyou: ['remain', 'remains', 'remained', 'remained', 'remaining'],
+    },
+    remember: {
+        tags: ['他動詞', '状態動詞'],
+        katuyou: ['remember', 'remembers', 'remembered', 'remembered', 'remembering'],
+    },
+    remind: {
+        tags: ['他動詞', 'SVOOがとれる動詞', 'SVOCがとれる動詞'],
+        katuyou: ['remind', 'reminds', 'reminded', 'reminded', 'reminding'],
+    },
+    remove: {
+        tags: ['他動詞'],
+        katuyou: ['remove', 'removes', 'removed', 'removed', 'removing'],
+    },
+    reply: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['reply', 'replies', 'replied', 'replied', 'replying'],
+    },
+    report: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['report', 'reports', 'reported', 'reported', 'reporting'],
+    },
+    rescue: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['rescue', 'rescues', 'rescued', 'rescued', 'rescuing'],
+    },
+    respect: {
+        tags: ['他動詞', '状態動詞'],
+        katuyou: ['respect', 'respects', 'respected', 'respected', 'respecting'],
+    },
+    respond: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['respond', 'responds', 'responded', 'responded', 'responding'],
+    },
+    rest: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['rest', 'rests', 'rested', 'rested', 'resting'],
+    },
+    return: {
+        tags: ['自動詞', '他動詞'],
+        katuyou: ['return', 'returns', 'returned', 'returned', 'returning'],
+    },
+    reuse: {
+        tags: ['他動詞'],
+        katuyou: ['reuse', 'reuses', 'reused', 'reused', 'reusing'],
+    },
+    ride: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['ride', 'rides', 'rode', 'ridden', 'riding'],
+    },
+    ring: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['ring', 'rings', 'rang', 'rung', 'ringing'],
+    },
+    rise: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['rise', 'rises', 'rose', 'risen', 'rising'],
+    },
+    roll: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['roll', 'rolls', 'rolled', 'rolled', 'rolling'],
+    },
+    rule: {
+        tags: ['自動詞', '状態動詞'],
+        katuyou: ['rule', 'rules', 'ruled', 'ruled', 'ruling'],
+    },
+    run: {
+        tags: ['自動詞', '他動詞', '動作動詞'],
+        katuyou: ['run', 'runs', 'ran', 'run', 'running'],
+    },
+    save: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['save', 'saves', 'saved', 'saved', 'saving'],
+    },
+    say: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['say', 'says', 'said', 'said', 'saying'],
+    },
+    scare: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['scare', 'scares', 'scared', 'scared', 'scaring'],
+    },
+    score: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['score', 'scores', 'scored', 'scored', 'scoring'],
+    },
+    search: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['search', 'searches', 'searched', 'searched', 'searching'],
+    },
+    see: {
+        tags: ['他動詞', '知覚動詞'],
+        katuyou: ['see', 'sees', 'saw', 'seen', 'seeing'],
+    },
+    seem: {
+        tags: ['連結動詞', '状態動詞'],
+        katuyou: ['seem', 'seems', 'seemed', 'seemed', 'seeming'],
+    },
+    select: {
+        tags: ['他動詞'],
+        katuyou: ['select', 'selects', 'selected', 'selected', 'selecting'],
+    },
+    sell: {
+        tags: ['他動詞'],
+        katuyou: ['sell', 'sells', 'sold', 'sold', 'selling'],
+    },
+    send: {
+        tags: ['他動詞'],
+        katuyou: ['send', 'sends', 'sent', 'sent', 'sending'],
+    },
+    sent: {
+        tags: [], // 「sent」は過去形なので単独登録不要です。動詞は原型で管理します。
+        katuyou: [],
+    },
+    separate: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['separate', 'separates', 'separated', 'separated', 'separating'],
+    },
+    set: {
+        tags: ['他動詞'],
+        katuyou: ['set', 'sets', 'set', 'set', 'setting'],
+    },
+    shake: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['shake', 'shakes', 'shook', 'shaken', 'shaking'],
+    },
+    share: {
+        tags: ['他動詞'],
+        katuyou: ['share', 'shares', 'shared', 'shared', 'sharing'],
+    },
+    she: {
+        tags: [], // 代名詞なので動詞ではありません。登録不要です。
+        katuyou: [],
+    },
+    shine: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['shine', 'shines', 'shone', 'shone', 'shining'],
+    },
+    shock: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['shock', 'shocks', 'shocked', 'shocked', 'shocking'],
+    },
+    shoot: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['shoot', 'shoots', 'shot', 'shot', 'shooting'],
+    },
+    shop: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['shop', 'shops', 'shopped', 'shopped', 'shopping'],
+    },
+    shout: {
+        tags: ['自動詞', '他動詞', '動作動詞'],
+        katuyou: ['shout', 'shouts', 'shouted', 'shouted', 'shouting'],
+    },
+    show: {
+        tags: ['他動詞', 'SVOCがとれる動詞'],
+        katuyou: ['show', 'shows', 'showed', 'shown', 'showing'],
+    },
+    shut: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['shut', 'shuts', 'shut', 'shut', 'shutting'],
+    },
+    sigh: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['sigh', 'sighs', 'sighed', 'sighed', 'sighing'],
+    },
+    sing: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['sing', 'sings', 'sang', 'sung', 'singing'],
+    },
+    sit: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['sit', 'sits', 'sat', 'sat', 'sitting'],
+    },
+    skate: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['skate', 'skates', 'skated', 'skated', 'skating'],
+    },
+    sleep: {
+        tags: ['自動詞', '状態動詞'],
+        katuyou: ['sleep', 'sleeps', 'slept', 'slept', 'sleeping'],
+    },
+    smell: {
+        tags: ['自動詞', '他動詞', '感覚動詞'],
+        katuyou: ['smell', 'smells', 'smelled', 'smelled', 'smelling'],
+    },
+    smile: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['smile', 'smiles', 'smiled', 'smiled', 'smiling'],
+    },
+    solve: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['solve', 'solves', 'solved', 'solved', 'solving'],
+    },
+    sort: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['sort', 'sorts', 'sorted', 'sorted', 'sorting'],
+    },
+    sound: {
+        tags: ['自動詞', '連結動詞'],
+        katuyou: ['sound', 'sounds', 'sounded', 'sounded', 'sounding'],
+    },
+    speak: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['speak', 'speaks', 'spoke', 'spoken', 'speaking'],
+    },
+    spell: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['spell', 'spells', 'spelled', 'spelled', 'spelling'],
+    },
+    spend: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['spend', 'spends', 'spent', 'spent', 'spending'],
+    },
+    spread: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['spread', 'spreads', 'spread', 'spread', 'spreading'],
+    },
+    stand: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['stand', 'stands', 'stood', 'stood', 'standing'],
+    },
+    start: {
+        tags: ['自動詞', '他動詞', '動作動詞'],
+        katuyou: ['start', 'starts', 'started', 'started', 'starting'],
+    },
+    stay: {
+        tags: ['自動詞', '状態動詞'],
+        katuyou: ['stay', 'stays', 'stayed', 'stayed', 'staying'],
+    },
+    step: {
+        tags: ['自動詞', '他動詞', '動作動詞'],
+        katuyou: ['step', 'steps', 'stepped', 'stepped', 'stepping'],
+    },
+    stop: {
+        tags: ['自動詞', '他動詞', '動作動詞'],
+        katuyou: ['stop', 'stops', 'stopped', 'stopped', 'stopping'],
+    },
+    strive: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['strive', 'strives', 'strove', 'striven', 'striving'],
+    },
+    study: {
+        tags: ['自動詞', '他動詞', '動作動詞'],
+        katuyou: ['study', 'studies', 'studied', 'studied', 'studying'],
+    },
+    suffer: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['suffer', 'suffers', 'suffered', 'suffered', 'suffering'],
+    },
+    suggest: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['suggest', 'suggests', 'suggested', 'suggested', 'suggesting'],
+    },
+    support: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['support', 'supports', 'supported', 'supported', 'supporting'],
+    },
+    surf: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['surf', 'surfs', 'surfed', 'surfed', 'surfing'],
+    },
+    surprise: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['surprise', 'surprises', 'surprised', 'surprised', 'surprising'],
+    },
+    surround: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['surround', 'surrounds', 'surrounded', 'surrounded', 'surrounding'],
+    },
+    survive: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['survive', 'survives', 'survived', 'survived', 'surviving'],
+    },
+    swallow: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['swallow', 'swallows', 'swallowed', 'swallowed', 'swallowing'],
+    },
+    swim: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['swim', 'swims', 'swam', 'swum', 'swimming'],
+    },
+    take: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞', 'SVOCがとれる動詞'],
+        katuyou: ['take', 'takes', 'took', 'taken', 'taking'],
+    },
+    talk: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['talk', 'talks', 'talked', 'talked', 'talking'],
+    },
+    taste: {
+        tags: ['自動詞', '他動詞', '感覚動詞', '連結動詞'],
+        katuyou: ['taste', 'tastes', 'tasted', 'tasted', 'tasting'],
+    },
+    teach: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['teach', 'teaches', 'taught', 'taught', 'teaching'],
+    },
+    tell: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['tell', 'tells', 'told', 'told', 'telling'],
+    },
+    thank: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['thank', 'thanks', 'thanked', 'thanked', 'thanking'],
+    },
+    think: {
+        tags: ['他動詞', '自動詞', '状態動詞'],
+        katuyou: ['think', 'thinks', 'thought', 'thought', 'thinking'],
+    },
+    touch: {
+        tags: ['他動詞', '感覚動詞', '動作動詞'],
+        katuyou: ['touch', 'touches', 'touched', 'touched', 'touching'],
+    },
+    train: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['train', 'trains', 'trained', 'trained', 'training'],
+    },
+    translate: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['translate', 'translates', 'translated', 'translated', 'translating'],
+    },
+    trap: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['trap', 'traps', 'trapped', 'trapped', 'trapping'],
+    },
+    travel: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['travel', 'travels', 'traveled', 'traveled', 'traveling'],
+    },
+    trust: {
+        tags: ['他動詞', '状態動詞'],
+        katuyou: ['trust', 'trusts', 'trusted', 'trusted', 'trusting'],
+    },
+    try: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['try', 'tries', 'tried', 'tried', 'trying'],
+    },
+    turn: {
+        tags: ['自動詞', '他動詞', '動作動詞'],
+        katuyou: ['turn', 'turns', 'turned', 'turned', 'turning'],
+    },
+    understand: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['understand', 'understands', 'understood', 'understood', 'understanding'],
+    },
+    unplug: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['unplug', 'unplugs', 'unplugged', 'unplugged', 'unplugging'],
+    },
+    upset: {
+        tags: ['他動詞', '形容詞的用法もある', '動作動詞', '状態動詞'],
+        katuyou: ['upset', 'upsets', 'upset', 'upset', 'upsetting'],
+    },
+    use: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['use', 'uses', 'used', 'used', 'using'],
+    },
+    visit: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['visit', 'visits', 'visited', 'visited', 'visiting'],
+    },
+    wait: {
+        tags: ['自動詞', '状態動詞'],
+        katuyou: ['wait', 'waits', 'waited', 'waited', 'waiting'],
+    },
+    wake: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['wake', 'wakes', 'woke', 'woken', 'waking'],
+    },
+    walk: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['walk', 'walks', 'walked', 'walked', 'walking'],
+    },
+    want: {
+        tags: ['他動詞', '状態動詞'],
+        katuyou: ['want', 'wants', 'wanted', 'wanted', 'wanting'],
+    },
+    wash: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['wash', 'washes', 'washed', 'washed', 'washing'],
+    },
+    watch: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['watch', 'watches', 'watched', 'watched', 'watching'],
+    },
+    water: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['water', 'waters', 'watered', 'watered', 'watering'],
+    },
+    wear: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['wear', 'wears', 'wore', 'worn', 'wearing'],
+    },
+    welcome: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['welcome', 'welcomes', 'welcomed', 'welcomed', 'welcoming'],
+    },
+    whisper: {
+        tags: ['自動詞', '他動詞', '動作動詞'],
+        katuyou: ['whisper', 'whispers', 'whispered', 'whispered', 'whispering'],
+    },
+    whistle: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['whistle', 'whistles', 'whistled', 'whistled', 'whistling'],
+    },
+    win: {
+        tags: ['自動詞', '他動詞', '動作動詞'],
+        katuyou: ['win', 'wins', 'won', 'won', 'winning'],
+    },
+    wish: {
+        tags: ['他動詞', '状態動詞'],
+        katuyou: ['wish', 'wishes', 'wished', 'wished', 'wishing'],
+    },
+    wonder: {
+        tags: ['自動詞', '状態動詞'],
+        katuyou: ['wonder', 'wonders', 'wondered', 'wondered', 'wondering'],
+    },
+    work: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['work', 'works', 'worked', 'worked', 'working'],
+    },
+    worry: {
+        tags: ['自動詞', '他動詞', '状態動詞'],
+        katuyou: ['worry', 'worries', 'worried', 'worried', 'worrying'],
+    },
+    wrap: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['wrap', 'wraps', 'wrapped', 'wrapped', 'wrapping'],
+    },
+    write: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['write', 'writes', 'wrote', 'written', 'writing'],
+    },
+};
+
+// function addMeansToTango(csvLines) {
+//     for (const line of csvLines) {
+//         // 1行をカンマで分割
+//         const [word, meaning] = line.split(',');
+
+//         if (word && meaning && tango[word]) {
+//             tango[word].hinsi = ['動詞'];
+//             tango[word].means = { 動詞: meaning.trim() };
+//         }
+//     }
+// }
+
+const rawCsvText = `
+accept,受け入れる,
+act,（役を） 演じる,
+add,加える,
+agree,賛成する、同意する、意見が一致する　〔agree with ～の形で〕 ～に賛成する,
+allow,～を許可する,
+am,〔必ず I とともに使って〕 ～です、～だ、～である、（～に）いる,
+amaze,～を驚嘆させる、びっくりさせる,
+answer,～に答える、応答する　〔answer the phone の形で〕 電話に出る　  ,
+are,"1. 〔you, we, they や複数名詞とともに使って〕 ～です
+2. 〔there, here とともに使って〕 （～に）…がいる［ある］",
+arrest,逮捕する,
+arrive,"着く、到着する　〔たとえば arrive at school, arrive in New York などの形で〕 学校に到着する、ニューヨークに到着する",
+ask,"1. ～をたずねる、問う
+2. 求める 〔ask A for B の形で〕 A［人］にB［ものごと］を求める
+3. たのむ　〔May I ask you a favor? の形で〕 あなたに一つお願いしてもよろしいですか
+4. 〔ask A to do ～ の形で〕　Ａ［人］に～するように頼む",
+assist,（人を）助ける、手伝う,
+attend,出席する、参加する,
+attract,"1.（人を）ひきつける
+2.（注意などを）ひく",
+bake,～を焼く,
+base,基礎［根拠］を置く　〔be based on ～で〕～に基づく,
+be,"1. ～になる、～である
+2. 〔Be ～の形で命令文を作る〕 ～で［て］いなさい 
+3. ～にいる、～にある",
+become,〔名詞・形容詞・過去分詞などをあとにつけて〕 ～になる、～に変わる  〔過去分詞形もbecome〕,
+begin,"1. はじまる〔自動詞〕 
+2. ～をはじめる〔他動詞〕 ",
+believe,～を信じる,
+belong,〔belong to～の形で〕～の一員である,
+blow,"1. （風が）ふく
+2. （人・動物などが息・水など）を吐く",
+blush,顔を赤らめる,
+boil,～をゆでる、沸騰させる,
+born,〔be bornの形で〕 誕生する、生まれる,
+borrow,～を借りる,
+bother,じゃまをする,
+break,～をこわす、折る、破る,
+bring,《向こうからこちらへ》 ～を持ってくる、つれてくる   ,
+broaden,～を広くする、広げる,
+brush,（ブラシで）みがく,
+build,～を建てる、～を築き上げる,
+burn,～を燃やす,
+bury,埋める,
+buy,～を買う,
+call,"1. （大声で）呼ぶ
+2. ～を呼び寄せる 　
+3. 電話をかける
+4. 〔call A B の形で〕 ＡをＢと呼ぶ、名づける
+5. [call ～ backの形で] ～におりかえし電話する",
+calm,静まる、落ち着く,
+camp,キャンプ（生活）する,
+care,[care for ～の形で]　～の世話をする,
+carry,運ぶ、持って行く、持ち歩く,
+catch,～をとらえる、つかまえる,
+cause,～を引き起こす、～の原因となる,
+celebrate,～を祝う,
+change,"1. 変わる〔自動詞〕
+2. ～を変える 〔他動詞〕 
+3. （電車など） を乗り換える",
+check,～を調べる、チェックする、確認する、照合する,
+cheer,～を元気づける、声援を送る、応援する、励ます,
+choose,～を選ぶ,
+clap,（手を）たたく、拍手する,
+clean,～をきれいにする、そうじする,
+climb,（高いところ） に登る、よじ登る,
+close,（窓、ドアなど） を閉める、閉じる、閉まる,
+collect,（～を）集める、収集する,
+come,"1. 来る　〔come and ～ の形で〕 ～しに来る  〔come to school の形で〕 学校に来る  〔come back の形で〕 戻ってくる
+2. (相手のいる所へ・相手と同方向へ) 行く
+3. (時・季節などが) 巡ってくる
+4. 〔Come on.の形で〕 さあ急げ、さあ
+5. 〔come from～ の形で〕 ～から来ている、～出身である　  〔過去分詞形もcome〕
+6. [～の状態に]なる　〔come trueの形で〕実現する",
+communicate,(知識・情報・人の気持ちなど) を伝える、意思を伝え合う,
+compare,比較する、比べる,
+complain,不平を言う,
+connect,結びつける、つながる,
+contact,（人と）連絡をとる、接続する,
+continue,～を続ける、続く,
+cook,（～を）料理する,
+cost,（金額・費用）がかかる,
+count,（～を）数える,
+cover,（物の外側）をおおう,
+create,～をつくり出す,
+cross,～を横切る,
+cry,"1. （大声で）叫ぶ、大声で言う
+2. （声をあげて）泣く",
+cut,～を切る 　〔過去形、過去分詞形も cut〕,
+dance,踊る、ダンスをする,
+decide,決める　〔decide to ～〕 ～しようと決心する,
+depend,～による、～しだいである,
+design,～をデザインする、設計する,
+despair,絶望する,
+destroy,破壊する、こわす,
+did,〔do （する) の過去形〕,
+die,（人や動物が） 死ぬ、亡くなる、（植物が） 枯れる,
+direct,(映画などを)監督する、演出する,
+disagree,意見が合わない、賛成しない、反対する,
+disappear,消える、なくなる、消滅する、存在しなくなる、見えなくなる,
+discover,～を見つける、～を見いだす,
+do,～をする,
+done,〔doの過去分詞形〕,
+drank,drinkの過去形,
+draw,"1. （鉛筆、ペンなどで絵など）をかく、（線）を引く
+2. ～を引く、引っ張る",
+drink,～を飲む,
+drive,(自動車)を運転する,
+drop,～を落とす、落ちる,
+eat,～を食べる、食事をする,
+encourage,勇気づける、はげます、激励する,
+end,終わる、終える,
+enjoy,～を楽しむ、～を楽しんでいる,
+enter,（建物・部屋・場所など）に入る,
+excuse,許す　〔Excuse me.の形で〕 失礼ですが、すみませんが,
+experience,経験する,
+explain,～を説明する,
+express,～を表現する、言い表す,
+face,（危険・困難などに)立ち向かう、直面する,
+fade,消えていく,
+faint,気をうしなう、気絶する,
+fall,落ちる,
+fascinate,魅了する、うっとりさせる,
+feed,えさをやる、食物を与える,
+feel,"1. ～と感じる、～と思う
+2. ～を感じる　　",
+fight,戦う,
+fill,いっぱいになる,
+find, ～を見つける、見いだす,
+finish,～を終える、終わらせる、終わる,
+fish,魚釣りをする,
+fit,（サイズ、形が）合う,
+fly,飛ぶ、（飛行機で）行く,
+follow,～についていく、（～と一緒に）異動する、～に従う,
+force,強制する、無理に～させる[する],
+forget,～を忘れる、思い出せない,
+form,（人がもの）を形作る,
+fulfill,（望みなどを）実現する,
+gather,～を集める、集まる,
+get,"1. ～を得る、手に入れる
+2. ～（の状態）になる
+3. わかる、理解する
+4. 着く、到着する　〔たとえばget to Shiriyazaki, get home の形で〕 尻屋崎に着く、家に着く
+5. 〔get up の形で〕起きる
+6. (タクシーなどを)ひろう、利用する
+7. 〔get together の形で〕集まる",
+give,"1. ～を与える、贈る　〔give A B, give B to A の形で〕ＡにＢを与える
+2. (会などを)開く、もよおす、演ずる、行う",
+go,"1. 行く　〔たとえばgo to school の形で〕学校へ行く
+2. 〔be going to do ～ の形で〕 ～するつもりである
+3. 〔go doing ～ の形で〕～しに行く",
+graduate,卒業する,
+greet,～に挨拶する、～をむかえる,
+grin,にこっと笑う、にやっと笑う,
+grow,"1. 成長する、大きくなる、育つ
+2. ～を栽培する、育てる
+3. （しだいに）～になる",
+guess,～をあてる、推測する,
+happen,(事件などが) 起こる、生じる,
+hate,～するのが嫌いだ、～したくはない,
+have,"1. ～をもっている、～がある、～がいる
+2. ～を食べる、飲む
+3. ～を過ごす、経験する
+4. (病気)にかかっている、～が痛む
+5. 〔have to do ～ の形で〕 ～しなければならない
+6. ～を飼っている              　                                       　 　                                        　                       　                                                                                                          ",
+head,～向かう,
+heal,～をいやす,
+hear,"1. ～を聞く、～が聞こえる
+2. 《情報・うわさなど》を耳にする
+3. 〔hear from～の形で〕 ～から返信［便り］をもらう",
+heat,熱する、あたためる,
+help,"1. ～を助ける、援助する
+2. （～を）手伝う、助ける　〔May I help you? の形で〕 《店員が客に対して》 いらっしゃいませ　〔help A with B の形で〕 ＡのＢを手伝う　
+3.〔Please help yourself. の形で〕 どうぞご自由にとって食べて（飲んで）ください　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　  　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　 ",
+hit,～に当たる、ぶつかる　〔過去形、過去分詞形もhit〕,
+hold,"1. (手などでしっかりと）持つ、にぎる、抱く、抱きかかえる
+2. 開催する、催す
+3.（電話を）切らないで待つ　　　　　　　　　　　",
+hope,～を望む、～だとよいと思う,
+hug,（愛情を込めて）抱きしめる,
+hunt,狩りをする,
+hurry,急ぐ,
+hurt,"1. 痛む 〔過去形、過去分詞形もhurt〕
+2. ～を傷つける、～にケガをさせる　　　　　　　　　　　　　　　　　　　　　　　　　　　 ",
+imagine,想像する,
+impress,感銘を与える、印象づける,
+improve,よくなる、改善される,
+increase,増やす,
+influence,～に影響を与える,
+injure,傷つける、けがをさせる,
+interview,インタビューする、面接する,
+introduce,～を紹介する、～を取り入れる、導入する,
+invite,～を招く,
+is,"〔he, she, it や単数名詞等とともに使って〕 1. ～です、～だ、～である
+2. 〔there, here とともに使って〕（～に）…がいる［ある］",
+join,"1. ～に加わる、参加する
+2. ～をつなぐ",
+judge,(物のよしあしを)判断する,
+jump,とぶ、とび超える、はねる,
+keep,"1. (法律・慣習・命令など)を守る、保存する、保つ、しまっておく
+2. ～をもち続ける、ずっと～である、～している",
+kick,～を蹴る,
+kid,からかう、冗談を言う,
+kill,～を殺す,
+knit,編む、編み物をする,
+knock,ノックする、たたく,
+know,～を知っている、わかる　　  ,
+land,着陸する,
+last,続く,
+laugh,笑う,
+lay,(卵を)産む,
+lead,指揮をする、先頭に立つ,
+learn,"1. ～を学ぶ、習う、覚える
+2. 知る、聞く",
+leave,"1. ～を出発する、出る、去る
+2. ～を残す、～を置いていく
+3. （学校・仕事など）をやめる",
+lend,～を貸す,
+let's,（let us を短くした形）～しましょう,
+lie,（人・動物が）横たわる、横になる,
+lift,持ち上げる,
+like,～を好む、～が好きだ,
+listen,〔listen to ～ の形で〕 ～を聞く、耳を傾ける,
+live,"1. 住んでいる、暮らしている、生活する
+2. 生きる、生きている",
+locate,(何かをある場所に)置く、be　located in ～で　～に位置する、、～にある　,
+lock,lock up~で　～を閉じ込める、監禁する,
+look,"1. （意識的に）見る 〔look at ～ の形で〕～を見る
+2. 〔look + 形容詞の形で〕　（外見が）～に見える
+3. 〔look for ～ の形で〕～をさがす
+4. 《人の注意をひくときに使って》 ねぇ、ほら見て",
+lose,"1. ～を失う　[lose one's wayの形で]道に迷う
+2. (勝負に）負ける",
+love,"1. ～を愛する、～が大好きである
+2.　〔I would love to do ～の形で〕～したいと思う",
+make,"1. ～を作る
+2. ～を…にする　〔make A B の形で〕 Ａ［人・ものなど］をＢにする　〔ただし A＝B の関係が成り立たない場合は、「ＡにＢを作ってあげる」の意味になる〕
+3. 〔動作を表す名詞を目的語として〕～をする　〔たとえば make a wish の形で〕 願いごとをする
+4. ～を得る、作る　〔たとえば make friends （with ～) の形で〕 (～と）仲良しになる
+5. ～を整える、用意する  〔たとえば make tea の形で〕 お茶を入れる
+6.［たとえばmake A of Bの形で］BでAを作る
+7.［たとえばmake A from Bの形で］BからAを作る
+8.［たとえばmake A into Bの形で］AでBを作る
+9.～をもたらす、生じさせる",
+manage,どうにかやっていく、なんとかうまく～する,
+marry,結婚する,
+mean,"1. ～を意味する、表す
+2. ～のつもりで言う、～をさして言う",
+meet,"1.～に会う、面会する
+2.～と知り合いになる",
+melt,溶ける,
+miss,"1.　乗りそこなう、取り［見・聞き］そこなう､欠席する
+2.　～がいなくてさびしく思う",
+mistake,～を間違える　［mistake A for Bの形で］AをBと間違える,
+mix,～を混ぜる,
+move,"1. 動く、移動する
+2. ～を感動させる
+3.引っ越す",
+name,〔name A B の形で〕ＡをＢと名づける、呼ぶ,
+need,～が必要である　　[need to～の形で］～する必要がある,
+nod,うなずく,
+notice,気がつく,
+open,"1. あける、広げる
+2. 開く、あく
+3. 開始する",
+order,命ずる、注文する,
+organize,組織する、準備する,
+overcome,打ち勝つ、乗り越える,
+package,(製品など)(…で）包装する,
+paint,(絵の具で絵)をかく,
+panic,うろたえる、あわてふためく,
+pardon,～を許す  〔Pardon me?の形で〕 すみませんが、もう一度言ってください。,
+park,(自動車）をとめておく､駐車する,
+pass,"1. ～を手渡す､回す
+2. ～経過する
+3. 通り過ぎる、通る",
+pay,支払う、払う,
+perform,演じる、演奏する,
+photograph,写真を撮る,
+pick,"1. ～を摘む、つみ取る
+2. ～を選ぶ
+3. 〔pick up ～ の形で〕～を拾い上げる、～を車で迎えに行く",
+place,置く、並べる,
+plan,～を計画する,
+plant,～を植える,
+play,"1. (スポーツ・ゲームなど)をする
+2. (曲・楽器など)を演奏する
+3. 遊ぶ
+4. ～（の役）を演じる　",
+point,指さす､さし示す,
+post,（ウエブ上に写真などを）投稿する、投函する,
+practice,（～を）練習する,
+pray,祈る,
+prefer,（～のほうを）好む、選ぶ,
+prepare,準備をする,
+produce,～を産み出す、生産する,
+protect,～を守る、保護する,
+pull,～を引く,
+punish,罰する,
+push,～を押す,
+put,～を置く、つける　 　〔過去形、過去分詞形も put〕,
+quit,やめる、去る　〔過去形、過去分詞形もquit〕,
+quiz,～に簡単なテストを行う、～に質問する,
+rain,雨が降る 　〔it が主語になる〕,
+raise,"1.～を上げる　 　〔たとえば Raise your hand. の形で〕 手を上げなさい
+2. （子どもを）育てる",
+read,～を読む   〔発音は ［ri:d］〕,
+realize,実感する、理解する,
+receive,～を受け取る、もらう,
+recognize,～を認める、評価する,
+recycle,～を再生する、～を再利用する,
+reduce,～を小さくする、下げる、減らす,
+relax,くつろぐ、リラックスする,
+release,〔ＣＤ／レコードを〕発売する,
+remain,残る、とどまる,
+remember,～を思い出す、覚えている、忘れない,
+remind,思い出させる、気づかせる,
+remove,～を取りはずす、～を取り除く、～をかたづける,
+reply,～と答える,
+report,～を報告する、報道する,
+rescue,救い出す、救助する,
+respect,～を尊敬する、～を大切にする,
+respond,こたえる,
+rest,休む、横になる,
+return,帰る、戻る,
+reuse,～を再利用する,
+ride,～に乗る,
+ring,鳴る　〔過去形rang〕,
+rise,（太陽などが）のぼる,
+roll,巻く、くるむ,
+rule,～を支配する、統治する,
+run,"1. (人・動物が）走る　　〔過去分詞もrun〕
+2. ～を経営する
+3. （川などが）流れる",
+save,"1. (危害・困難などから人・物・自然など)を救う
+2. (エネルギー･時間など)を節約する、無駄にしない",
+say,"1. 〔人が主語で〕～と言う
+2. 〔物が主語で〕～と書いてある、示している",
+scare,～を怖がらせる,
+score,〔競技、試験などで～点を〕取る、得点する,
+search,さがす 〔search for ～で〕～をさがす,
+see,"1. ～を見る、見物する
+2. ～が見える
+3. ～が分かる、理解する
+4. ～に会う",
+seem,～のように見える、～のように思われる,
+select,選ぶ、選択する,
+sell,～を売る,
+send,～を送る,
+sent,〔sendの過去形、過去分詞形〕,
+separate,～を分ける,
+set,～を準備する,
+shake,～を振る,
+share,いっしょに使う、共有する、互いに分け合う,
+she,彼女は［が］、あの女の人は［が］、あの女の子は［が］,
+shine,光る、輝く,
+shock,ショックを与える,
+shoot,～を撃つ,
+shop,買い物をする　〔例えば go shopping の形で〕 買い物に行く,
+shout,～と叫ぶ、大声で言う,
+show,"1. ～を見せる、示す、教える  〔show A B の形で〕ＡにＢを見せる
+2. ～を案内する",
+shut,～を閉める、閉まる 　〔過去形、過去分詞形もshut〕,
+sigh,ため息をつく,
+sing,（～を）歌う,
+sit,すわる、腰をおろす,
+skate,スケートですべる、スケートをする,
+sleep,眠る,
+smell,～のにおいがする,
+smile,ほほえむ、にっこり笑う、微笑する,
+solve,～を解決する,
+sort,～を分類する、えり分ける,
+sound,～に聞こえる、～に思われる,
+speak,(ことば)を話す、話をする,
+spell,(文字など)をつづる,
+spend,"1. (お金）を使う、費やす
+2. (時間・日など) を過ごす、送る",
+spread,広がる,
+stand,"1. 立っている
+2. 立つ
+3.我慢する､耐える",
+start,"1. 始まる  〔自動詞〕
+2. ～を始める  〔他動詞〕",
+stay,"1. (場所に)とどまる
+2. 滞在する、泊まる",
+step,（一歩・少し）歩む,
+stop,"1. とまる  〔自動詞〕
+2. ～をやめる、とめる  〔他動詞〕",
+strive,懸命に努力する,
+study,～を勉強する、調べる、研究する,
+suffer,苦しむ,
+suggest,提案する,
+support,(人や考え)を支持する、支援する,
+surf,サーフィン〔波乗り〕をする,
+surprise,～を驚かす、びっくりさせる　 〔be surprised at ～ の形で〕 (知らせなど)に驚いている,
+surround,～を囲む、取り巻く,
+survive,生き残る,
+swallow,～をごくりと飲み込む,
+swim,泳ぐ,
+take,"1.  (時間、労力)がかかる
+2.  ～を持っていく、連れて行く
+3.  (乗り物)に乗る、乗っていく
+4.  (写真)をとる
+5. 買う
+6. 服用する
+7. ～をする、行う　〔take a bathの形で〕風呂に入る
+8. （試験、授業などを）受ける
+9. 持って行く、持ち去る
+10. 受け取る",
+talk,話す、話をする,
+taste,"1. 味わう、食べる
+2. （～の）味がする",
+teach,～を教える　 〔teach A B の形で〕 ＡにＢを教える　,
+tell,"1. ～に話す、～を話す、教える　〔tell Ａ Ｂの形で〕 Ａ［人］にＢ［ものごとなど］を話す
+2. 〔tell Ａ to do ～の形で〕 Ａ［人］に～するように言う",
+thank,～に感謝する,
+think,～と考える、思う,
+touch,～にさわる、触れる,
+train,"1. ～を訓練する
+2. 練習する",
+translate,～を翻訳する、訳す,
+trap,～をわなで捕まえる、閉じこめる,
+travel,旅する、移動する,
+trust,～を信頼する,
+try,～をやってみる、挑戦する、ためしてみる、(try to～の形で）～しようとする,
+turn,"1. 曲がる、向きを変える
+2. 回る、回転する
+3. 回す、ひねる",
+understand,～を理解する、～がわかる,
+unplug,（～の）プラグを（コンセントから）抜く,
+upset,気を動転させる、うろたえさせる,
+use,～を使う,
+visit,"1. (場所、人など)をおとずれる
+2. (ウェブサイトなど)をおとずれる",
+wait,待つ　　〔wait for ～の形で〕～を待つ,
+wake,〔wake you up〕あなたを起こす,
+walk,"1. 歩く、歩いて行く［来る］
+2. 散歩させる",
+want,"1. ～がほしい
+2. 〔want to do ～の形で〕 ～したい
+3. 〔want A to do ～の形で〕 Ａ［人］に～してほしい",
+wash,～を洗う,
+watch,"1. (注意して、動いているもの)を見る
+2. ～見はる",
+water,～に水をやる,
+wear,～を着ている、身につけている,
+welcome,歓迎する,
+whisper,（～と）ささやく、ひそひそ声でで言う,
+whistle,口笛を吹く、口笛を吹くように鳴く,
+win,勝つ、～を勝ち取る,
+wish,～を願う、望む　〔たとえば I wish you a happy new year.の形で〕新年おめでとう,
+wonder,（～する）かしら（と思う）、～かどうかを知りたいと思う,
+work,"1. 働く、勉強する
+2. うまくいく、機能する、作動する、動く",
+worry,心配する、悩む,
+wrap,包む、包装する,
+write,～を書く,
+`.trim();
+
+// 改行で分割し、1行ずつをクォーテーションで囲う配列に変換
+// const csvData = rawCsvText.split('\n').map((line) => `${line.trim()}`);
+
+// console.log(csvData);
+
+// addMeansToTango(csvData);
+
+// console.log(JSON.stringify(tango, null, 2));
+
+let pretango = {
+    accept: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['accept', 'accepts', 'accepted', 'accepted', 'accepting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '受け入れる',
+        },
+    },
+    act: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['act', 'acts', 'acted', 'acted', 'acting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '（役を） 演じる',
+        },
+    },
+    add: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['add', 'adds', 'added', 'added', 'adding'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '加える',
+        },
+    },
+    agree: {
+        tags: ['自動詞', '状態動詞'],
+        katuyou: ['agree', 'agrees', 'agreed', 'agreed', 'agreeing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '賛成する、同意する、意見が一致する　〔agree with ～の形で〕 ～に賛成する',
+        },
+    },
+    allow: {
+        tags: ['他動詞', '動作動詞', 'SVOCがとれる動詞'],
+        katuyou: ['allow', 'allows', 'allowed', 'allowed', 'allowing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を許可する',
+        },
+    },
+    amaze: {
+        tags: ['他動詞', '感覚動詞'],
+        katuyou: ['amaze', 'amazes', 'amazed', 'amazed', 'amazing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を驚嘆させる、びっくりさせる',
+        },
+    },
+    answer: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['answer', 'answers', 'answered', 'answered', 'answering'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～に答える、応答する　〔answer the phone の形で〕 電話に出る',
+        },
+    },
+    arrest: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['arrest', 'arrests', 'arrested', 'arrested', 'arresting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '逮捕する',
+        },
+    },
+    arrive: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['arrive', 'arrives', 'arrived', 'arrived', 'arriving'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"着く、到着する　〔たとえば arrive at school',
+        },
+    },
+    ask: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞'],
+        katuyou: ['ask', 'asks', 'asked', 'asked', 'asking'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. ～をたずねる、問う',
+        },
+    },
+    assist: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['assist', 'assists', 'assisted', 'assisted', 'assisting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '（人を）助ける、手伝う',
+        },
+    },
+    attend: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['attend', 'attends', 'attended', 'attended', 'attending'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '出席する、参加する',
+        },
+    },
+    attract: {
+        tags: ['他動詞', '感覚動詞'],
+        katuyou: ['attract', 'attracts', 'attracted', 'attracted', 'attracting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1.（人を）ひきつける',
+        },
+    },
+    bake: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['bake', 'bakes', 'baked', 'baked', 'baking'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を焼く',
+        },
+    },
+    base: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['base', 'bases', 'based', 'based', 'basing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '基礎［根拠］を置く　〔be based on ～で〕～に基づく',
+        },
+    },
+    become: {
+        tags: ['自動詞', '連結動詞', 'SVOCがとれる動詞'],
+        katuyou: ['become', 'becomes', 'became', 'become', 'becoming'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '〔名詞・形容詞・過去分詞などをあとにつけて〕 ～になる、～に変わる  〔過去分詞形もbecome〕',
+        },
+    },
+    begin: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['begin', 'begins', 'began', 'begun', 'beginning'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. はじまる〔自動詞〕',
+        },
+    },
+    believe: {
+        tags: ['他動詞', '状態動詞'],
+        katuyou: ['believe', 'believes', 'believed', 'believed', 'believing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を信じる',
+        },
+    },
+    belong: {
+        tags: ['自動詞', '状態動詞'],
+        katuyou: ['belong', 'belongs', 'belonged', 'belonged', 'belonging'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '〔belong to～の形で〕～の一員である',
+        },
+    },
+    blow: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['blow', 'blows', 'blew', 'blown', 'blowing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. （風が）ふく',
+        },
+    },
+    blush: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['blush', 'blushes', 'blushed', 'blushed', 'blushing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '顔を赤らめる',
+        },
+    },
+    boil: {
+        tags: ['自動詞', '他動詞', '動作動詞'],
+        katuyou: ['boil', 'boils', 'boiled', 'boiled', 'boiling'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～をゆでる、沸騰させる',
+        },
+    },
+    bear: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['bear', 'bears', 'bore', 'born', 'bearing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '誕生する、生まれる',
+        },
+    },
+    borrow: {
+        tags: ['他動詞', '他動詞', '動作動詞'],
+        katuyou: ['borrow', 'borrows', 'borrowed', 'borrowed', 'borrowing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を借りる',
+        },
+    },
+    bother: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['bother', 'bothers', 'bothered', 'bothered', 'bothering'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: 'じゃまをする',
+        },
+    },
+    break: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['break', 'breaks', 'broke', 'broken', 'breaking'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～をこわす、折る、破る',
+        },
+    },
+    bring: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞'],
+        katuyou: ['bring', 'brings', 'brought', 'brought', 'bringing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '《向こうからこちらへ》 ～を持ってくる、つれてくる',
+        },
+    },
+    broaden: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['broaden', 'broadens', 'broadened', 'broadened', 'broadening'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を広くする、広げる',
+        },
+    },
+    brush: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['brush', 'brushes', 'brushed', 'brushed', 'brushing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '（ブラシで）みがく',
+        },
+    },
+    build: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞'],
+        katuyou: ['build', 'builds', 'built', 'built', 'building'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を建てる、～を築き上げる',
+        },
+    },
+    burn: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['burn', 'burns', 'burned', 'burned', 'burning'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を燃やす',
+        },
+    },
+    bury: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['bury', 'buries', 'buried', 'buried', 'burying'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '埋める',
+        },
+    },
+    buy: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞'],
+        katuyou: ['buy', 'buys', 'bought', 'bought', 'buying'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を買う',
+        },
+    },
+    call: {
+        tags: ['他動詞', '動作動詞', 'SVOCがとれる動詞'],
+        katuyou: ['call', 'calls', 'called', 'called', 'calling'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. （大声で）呼ぶ',
+        },
+    },
+    calm: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['calm', 'calms', 'calmed', 'calmed', 'calming'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '静まる、落ち着く',
+        },
+    },
+    camp: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['camp', 'camps', 'camped', 'camped', 'camping'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: 'キャンプ（生活）する',
+        },
+    },
+    care: {
+        tags: ['自動詞', '状態動詞'],
+        katuyou: ['care', 'cares', 'cared', 'cared', 'caring'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '[care for ～の形で]　～の世話をする',
+        },
+    },
+    carry: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞'],
+        katuyou: ['carry', 'carries', 'carried', 'carried', 'carrying'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '運ぶ、持って行く、持ち歩く',
+        },
+    },
+    catch: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['catch', 'catches', 'caught', 'caught', 'catching'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～をとらえる、つかまえる',
+        },
+    },
+    cause: {
+        tags: ['他動詞', '動作動詞', 'SVOCがとれる動詞'],
+        katuyou: ['cause', 'causes', 'caused', 'caused', 'causing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を引き起こす、～の原因となる',
+        },
+    },
+    celebrate: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['celebrate', 'celebrates', 'celebrated', 'celebrated', 'celebrating'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を祝う',
+        },
+    },
+    change: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['change', 'changes', 'changed', 'changed', 'changing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. 変わる〔自動詞〕',
+        },
+    },
+    check: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['check', 'checks', 'checked', 'checked', 'checking'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を調べる、チェックする、確認する、照合する',
+        },
+    },
+    cheer: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['cheer', 'cheers', 'cheered', 'cheered', 'cheering'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を元気づける、声援を送る、応援する、励ます',
+        },
+    },
+    choose: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['choose', 'chooses', 'chose', 'chosen', 'choosing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を選ぶ',
+        },
+    },
+    clap: {
+        tags: ['自動詞', '他動詞', '動作動詞'],
+        katuyou: ['clap', 'claps', 'clapped', 'clapped', 'clapping'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '（手を）たたく、拍手する',
+        },
+    },
+    clean: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['clean', 'cleans', 'cleaned', 'cleaned', 'cleaning'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～をきれいにする、そうじする',
+        },
+    },
+    climb: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['climb', 'climbs', 'climbed', 'climbed', 'climbing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '（高いところ） に登る、よじ登る',
+        },
+    },
+    close: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['close', 'closes', 'closed', 'closed', 'closing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '（窓、ドアなど） を閉める、閉じる、閉まる',
+        },
+    },
+    collect: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['collect', 'collects', 'collected', 'collected', 'collecting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '（～を）集める、収集する',
+        },
+    },
+    come: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['come', 'comes', 'came', 'come', 'coming'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. 来る　〔come and ～ の形で〕 ～しに来る  〔come to school の形で〕 学校に来る  〔come back の形で〕 戻ってくる',
+        },
+    },
+    communicate: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['communicate', 'communicates', 'communicated', 'communicated', 'communicating'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '(知識・情報・人の気持ちなど) を伝える、意思を伝え合う',
+        },
+    },
+    compare: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['compare', 'compares', 'compared', 'compared', 'comparing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '比較する、比べる',
+        },
+    },
+    complain: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['complain', 'complains', 'complained', 'complained', 'complaining'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '不平を言う',
+        },
+    },
+    connect: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['connect', 'connects', 'connected', 'connected', 'connecting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '結びつける、つながる',
+        },
+    },
+    contact: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['contact', 'contacts', 'contacted', 'contacted', 'contacting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '（人と）連絡をとる、接続する',
+        },
+    },
+    continue: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['continue', 'continues', 'continued', 'continued', 'continuing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を続ける、続く',
+        },
+    },
+    cook: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['cook', 'cooks', 'cooked', 'cooked', 'cooking'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '（～を）料理する',
+        },
+    },
+    cost: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['cost', 'costs', 'cost', 'cost', 'costing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '（金額・費用）がかかる',
+        },
+    },
+    count: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['count', 'counts', 'counted', 'counted', 'counting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '（～を）数える',
+        },
+    },
+    cover: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['cover', 'covers', 'covered', 'covered', 'covering'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '（物の外側）をおおう',
+        },
+    },
+    create: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['create', 'creates', 'created', 'created', 'creating'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～をつくり出す',
+        },
+    },
+    cross: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['cross', 'crosses', 'crossed', 'crossed', 'crossing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を横切る',
+        },
+    },
+    cry: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['cry', 'cries', 'cried', 'cried', 'crying'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. （大声で）叫ぶ、大声で言う',
+        },
+    },
+    cut: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['cut', 'cuts', 'cut', 'cut', 'cutting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を切る 　〔過去形、過去分詞形も cut〕',
+        },
+    },
+    dance: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['dance', 'dances', 'danced', 'danced', 'dancing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '踊る、ダンスをする',
+        },
+    },
+    decide: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['decide', 'decides', 'decided', 'decided', 'deciding'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '決める　〔decide to ～〕 ～しようと決心する',
+        },
+    },
+    depend: {
+        tags: ['自動詞', '状態動詞'],
+        katuyou: ['depend', 'depends', 'depended', 'depended', 'depending'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～による、～しだいである',
+        },
+    },
+    design: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['design', 'designs', 'designed', 'designed', 'designing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～をデザインする、設計する',
+        },
+    },
+    despair: {
+        tags: ['自動詞', '状態動詞'],
+        katuyou: ['despair', 'despairs', 'despaired', 'despaired', 'despairing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '絶望する',
+        },
+    },
+    destroy: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['destroy', 'destroys', 'destroyed', 'destroyed', 'destroying'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '破壊する、こわす',
+        },
+    },
+    die: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['die', 'dies', 'died', 'died', 'dying'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '（人や動物が） 死ぬ、亡くなる、（植物が） 枯れる',
+        },
+    },
+    direct: {
+        tags: ['他動詞', '動作動詞', 'SVOCがとれる動詞'],
+        katuyou: ['direct', 'directs', 'directed', 'directed', 'directing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '(映画などを)監督する、演出する',
+        },
+    },
+    disagree: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['disagree', 'disagrees', 'disagreed', 'disagreed', 'disagreeing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '意見が合わない、賛成しない、反対する',
+        },
+    },
+    disappear: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['disappear', 'disappears', 'disappeared', 'disappeared', 'disappearing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '消える、なくなる、消滅する、存在しなくなる、見えなくなる',
+        },
+    },
+    discover: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['discover', 'discovers', 'discovered', 'discovered', 'discovering'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を見つける、～を見いだす',
+        },
+    },
+    do: {
+        tags: ['他動詞', '自動詞', '動作動詞', '使役動詞'],
+        katuyou: ['do', 'does', 'did', 'done', 'doing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～をする',
+        },
+    },
+    draw: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['draw', 'draws', 'drew', 'drawn', 'drawing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. （鉛筆、ペンなどで絵など）をかく、（線）を引く',
+        },
+    },
+    drink: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['drink', 'drinks', 'drank', 'drunk', 'drinking'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を飲む',
+        },
+    },
+    drive: {
+        tags: ['他動詞', '自動詞', '動作動詞', 'SVOCがとれる動詞'],
+        katuyou: ['drive', 'drives', 'drove', 'driven', 'driving'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '(自動車)を運転する',
+        },
+    },
+    drop: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['drop', 'drops', 'dropped', 'dropped', 'dropping'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を落とす、落ちる',
+        },
+    },
+    eat: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['eat', 'eats', 'ate', 'eaten', 'eating'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を食べる、食事をする',
+        },
+    },
+    encourage: {
+        tags: ['他動詞', '動作動詞', 'SVOCがとれる動詞'],
+        katuyou: ['encourage', 'encourages', 'encouraged', 'encouraged', 'encouraging'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '勇気づける、はげます、激励する',
+        },
+    },
+    end: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['end', 'ends', 'ended', 'ended', 'ending'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '終わる、終える',
+        },
+    },
+    enjoy: {
+        tags: ['他動詞', '状態動詞'],
+        katuyou: ['enjoy', 'enjoys', 'enjoyed', 'enjoyed', 'enjoying'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を楽しむ、～を楽しんでいる',
+        },
+    },
+    enter: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['enter', 'enters', 'entered', 'entered', 'entering'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '（建物・部屋・場所など）に入る',
+        },
+    },
+    excuse: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['excuse', 'excuses', 'excused', 'excused', 'excusing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '許す　〔Excuse me.の形で〕 失礼ですが、すみませんが',
+        },
+    },
+    experience: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['experience', 'experiences', 'experienced', 'experienced', 'experiencing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '経験する',
+        },
+    },
+    explain: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['explain', 'explains', 'explained', 'explained', 'explaining'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を説明する',
+        },
+    },
+    express: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['express', 'expresses', 'expressed', 'expressed', 'expressing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を表現する、言い表す',
+        },
+    },
+    face: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['face', 'faces', 'faced', 'faced', 'facing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '（危険・困難などに)立ち向かう、直面する',
+        },
+    },
+    fade: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['fade', 'fades', 'faded', 'faded', 'fading'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '消えていく',
+        },
+    },
+    faint: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['faint', 'faints', 'fainted', 'fainted', 'fainting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '気をうしなう、気絶する',
+        },
+    },
+    fall: {
+        tags: ['自動詞', '動作動詞', '連結動詞'],
+        katuyou: ['fall', 'falls', 'fell', 'fallen', 'falling'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '落ちる',
+        },
+    },
+    fascinate: {
+        tags: ['他動詞', '感覚動詞'],
+        katuyou: ['fascinate', 'fascinates', 'fascinated', 'fascinated', 'fascinating'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '魅了する、うっとりさせる',
+        },
+    },
+    feed: {
+        tags: ['他動詞', 'SVOOがとれる動詞'],
+        katuyou: ['feed', 'feeds', 'fed', 'fed', 'feeding'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: 'えさをやる、食物を与える',
+        },
+    },
+    feel: {
+        tags: ['他動詞', '自動詞', '感覚動詞', '連結動詞'],
+        katuyou: ['feel', 'feels', 'felt', 'felt', 'feeling'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. ～と感じる、～と思う',
+        },
+    },
+    fight: {
+        tags: ['自動詞', '他動詞', '動作動詞'],
+        katuyou: ['fight', 'fights', 'fought', 'fought', 'fighting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '戦う',
+        },
+    },
+    fill: {
+        tags: ['他動詞'],
+        katuyou: ['fill', 'fills', 'filled', 'filled', 'filling'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: 'いっぱいになる',
+        },
+    },
+    find: {
+        tags: ['他動詞', 'SVOCがとれる動詞'],
+        katuyou: ['find', 'finds', 'found', 'found', 'finding'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を見つける、見いだす',
+        },
+    },
+    finish: {
+        tags: ['他動詞'],
+        katuyou: ['finish', 'finishes', 'finished', 'finished', 'finishing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を終える、終わらせる、終わる',
+        },
+    },
+    fish: {
+        tags: ['自動詞', '他動詞'],
+        katuyou: ['fish', 'fishes', 'fished', 'fished', 'fishing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '魚釣りをする',
+        },
+    },
+    fit: {
+        tags: ['他動詞', '自動詞', '連結動詞'],
+        katuyou: ['fit', 'fits', 'fit', 'fit', 'fitting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '（サイズ、形が）合う',
+        },
+    },
+    fly: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['fly', 'flies', 'flew', 'flown', 'flying'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '飛ぶ、（飛行機で）行く',
+        },
+    },
+    follow: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['follow', 'follows', 'followed', 'followed', 'following'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～についていく、（～と一緒に）異動する、～に従う',
+        },
+    },
+    force: {
+        tags: ['他動詞', '使役動詞'],
+        katuyou: ['force', 'forces', 'forced', 'forced', 'forcing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '強制する、無理に～させる[する]',
+        },
+    },
+    forget: {
+        tags: ['他動詞'],
+        katuyou: ['forget', 'forgets', 'forgot', 'forgotten', 'forgetting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を忘れる、思い出せない',
+        },
+    },
+    form: {
+        tags: ['他動詞'],
+        katuyou: ['form', 'forms', 'formed', 'formed', 'forming'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '（人がもの）を形作る',
+        },
+    },
+    fulfill: {
+        tags: ['他動詞'],
+        katuyou: ['fulfill', 'fulfills', 'fulfilled', 'fulfilled', 'fulfilling'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '（望みなどを）実現する',
+        },
+    },
+    gather: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['gather', 'gathers', 'gathered', 'gathered', 'gathering'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を集める、集まる',
+        },
+    },
+    get: {
+        tags: ['他動詞', 'SVOOがとれる動詞', 'SVOCがとれる動詞'],
+        katuyou: ['get', 'gets', 'got', 'gotten', 'getting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. ～を得る、手に入れる',
+        },
+    },
+    give: {
+        tags: ['他動詞', 'SVOOがとれる動詞'],
+        katuyou: ['give', 'gives', 'gave', 'given', 'giving'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. ～を与える、贈る　〔give A B',
+        },
+    },
+    go: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['go', 'goes', 'went', 'gone', 'going'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. 行く　〔たとえばgo to school の形で〕学校へ行く',
+        },
+    },
+    graduate: {
+        tags: ['自動詞'],
+        katuyou: ['graduate', 'graduates', 'graduated', 'graduated', 'graduating'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '卒業する',
+        },
+    },
+    greet: {
+        tags: ['他動詞'],
+        katuyou: ['greet', 'greets', 'greeted', 'greeted', 'greeting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～に挨拶する、～をむかえる',
+        },
+    },
+    grin: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['grin', 'grins', 'grinned', 'grinned', 'grinning'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: 'にこっと笑う、にやっと笑う',
+        },
+    },
+    grow: {
+        tags: ['自動詞', '連結動詞'],
+        katuyou: ['grow', 'grows', 'grew', 'grown', 'growing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. 成長する、大きくなる、育つ',
+        },
+    },
+    guess: {
+        tags: ['他動詞'],
+        katuyou: ['guess', 'guesses', 'guessed', 'guessed', 'guessing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～をあてる、推測する',
+        },
+    },
+    happen: {
+        tags: ['自動詞'],
+        katuyou: ['happen', 'happens', 'happened', 'happened', 'happening'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '(事件などが) 起こる、生じる',
+        },
+    },
+    hate: {
+        tags: ['他動詞', '状態動詞'],
+        katuyou: ['hate', 'hates', 'hated', 'hated', 'hating'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～するのが嫌いだ、～したくはない',
+        },
+    },
+    have: {
+        tags: ['他動詞', '状態動詞', 'SVOOがとれる動詞'],
+        katuyou: ['have', 'has', 'had', 'had', 'having'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. ～をもっている、～がある、～がいる',
+        },
+    },
+    head: {
+        tags: ['自動詞', '他動詞'],
+        katuyou: ['head', 'heads', 'headed', 'headed', 'heading'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～向かう',
+        },
+    },
+    heal: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['heal', 'heals', 'healed', 'healed', 'healing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～をいやす',
+        },
+    },
+    hear: {
+        tags: ['他動詞', '知覚動詞'],
+        katuyou: ['hear', 'hears', 'heard', 'heard', 'hearing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. ～を聞く、～が聞こえる',
+        },
+    },
+    heat: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['heat', 'heats', 'heated', 'heated', 'heating'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '熱する、あたためる',
+        },
+    },
+    help: {
+        tags: ['他動詞', 'SVOOがとれる動詞', '使役動詞'],
+        katuyou: ['help', 'helps', 'helped', 'helped', 'helping'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. ～を助ける、援助する',
+        },
+    },
+    hit: {
+        tags: ['他動詞'],
+        katuyou: ['hit', 'hits', 'hit', 'hit', 'hitting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～に当たる、ぶつかる　〔過去形、過去分詞形もhit〕',
+        },
+    },
+    hold: {
+        tags: ['他動詞', 'SVOOがとれる動詞'],
+        katuyou: ['hold', 'holds', 'held', 'held', 'holding'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. (手などでしっかりと）持つ、にぎる、抱く、抱きかかえる',
+        },
+    },
+    hope: {
+        tags: ['他動詞', '状態動詞'],
+        katuyou: ['hope', 'hopes', 'hoped', 'hoped', 'hoping'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を望む、～だとよいと思う',
+        },
+    },
+    hug: {
+        tags: ['他動詞'],
+        katuyou: ['hug', 'hugs', 'hugged', 'hugged', 'hugging'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '（愛情を込めて）抱きしめる',
+        },
+    },
+    hunt: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['hunt', 'hunts', 'hunted', 'hunted', 'hunting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '狩りをする',
+        },
+    },
+    hurry: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['hurry', 'hurries', 'hurried', 'hurried', 'hurrying'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '急ぐ',
+        },
+    },
+    hurt: {
+        tags: ['他動詞'],
+        katuyou: ['hurt', 'hurts', 'hurt', 'hurt', 'hurting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. 痛む 〔過去形、過去分詞形もhurt〕',
+        },
+    },
+    imagine: {
+        tags: ['他動詞'],
+        katuyou: ['imagine', 'imagines', 'imagined', 'imagined', 'imagining'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '想像する',
+        },
+    },
+    impress: {
+        tags: ['他動詞', '感覚動詞'],
+        katuyou: ['impress', 'impresses', 'impressed', 'impressed', 'impressing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '感銘を与える、印象づける',
+        },
+    },
+    improve: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['improve', 'improves', 'improved', 'improved', 'improving'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: 'よくなる、改善される',
+        },
+    },
+    increase: {
+        tags: ['自動詞', '他動詞'],
+        katuyou: ['increase', 'increases', 'increased', 'increased', 'increasing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '増やす',
+        },
+    },
+    influence: {
+        tags: ['他動詞'],
+        katuyou: ['influence', 'influences', 'influenced', 'influenced', 'influencing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～に影響を与える',
+        },
+    },
+    injure: {
+        tags: ['他動詞'],
+        katuyou: ['injure', 'injures', 'injured', 'injured', 'injuring'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '傷つける、けがをさせる',
+        },
+    },
+    interview: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['interview', 'interviews', 'interviewed', 'interviewed', 'interviewing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: 'インタビューする、面接する',
+        },
+    },
+    introduce: {
+        tags: ['他動詞'],
+        katuyou: ['introduce', 'introduces', 'introduced', 'introduced', 'introducing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を紹介する、～を取り入れる、導入する',
+        },
+    },
+    invite: {
+        tags: ['他動詞'],
+        katuyou: ['invite', 'invites', 'invited', 'invited', 'inviting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を招く',
+        },
+    },
+    join: {
+        tags: ['他動詞'],
+        katuyou: ['join', 'joins', 'joined', 'joined', 'joining'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. ～に加わる、参加する',
+        },
+    },
+    judge: {
+        tags: ['他動詞'],
+        katuyou: ['judge', 'judges', 'judged', 'judged', 'judging'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '(物のよしあしを)判断する',
+        },
+    },
+    jump: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['jump', 'jumps', 'jumped', 'jumped', 'jumping'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: 'とぶ、とび超える、はねる',
+        },
+    },
+    keep: {
+        tags: ['他動詞', 'SVOCがとれる動詞'],
+        katuyou: ['keep', 'keeps', 'kept', 'kept', 'keeping'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. (法律・慣習・命令など)を守る、保存する、保つ、しまっておく',
+        },
+    },
+    kick: {
+        tags: ['他動詞'],
+        katuyou: ['kick', 'kicks', 'kicked', 'kicked', 'kicking'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を蹴る',
+        },
+    },
+    kid: {
+        tags: ['他動詞'],
+        katuyou: ['kid', 'kids', 'kidded', 'kidded', 'kidding'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: 'からかう、冗談を言う',
+        },
+    },
+    kill: {
+        tags: ['他動詞'],
+        katuyou: ['kill', 'kills', 'killed', 'killed', 'killing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を殺す',
+        },
+    },
+    knit: {
+        tags: ['他動詞'],
+        katuyou: ['knit', 'knits', 'knitted', 'knitted', 'knitting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '編む、編み物をする',
+        },
+    },
+    knock: {
+        tags: ['自動詞', '他動詞', '動作動詞'],
+        katuyou: ['knock', 'knocks', 'knocked', 'knocked', 'knocking'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: 'ノックする、たたく',
+        },
+    },
+    know: {
+        tags: ['他動詞', '状態動詞'],
+        katuyou: ['know', 'knows', 'knew', 'known', 'knowing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を知っている、わかる',
+        },
+    },
+    land: {
+        tags: ['自動詞', '他動詞'],
+        katuyou: ['land', 'lands', 'landed', 'landed', 'landing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '着陸する',
+        },
+    },
+    last: {
+        tags: ['自動詞', '状態動詞'],
+        katuyou: ['last', 'lasts', 'lasted', 'lasted', 'lasting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '続く',
+        },
+    },
+    laugh: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['laugh', 'laughs', 'laughed', 'laughed', 'laughing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '笑う',
+        },
+    },
+    lay: {
+        tags: ['他動詞'],
+        katuyou: ['lay', 'lays', 'laid', 'laid', 'laying'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '(卵を)産む',
+        },
+    },
+    lead: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['lead', 'leads', 'led', 'led', 'leading'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '指揮をする、先頭に立つ',
+        },
+    },
+    learn: {
+        tags: ['他動詞'],
+        katuyou: ['learn', 'learns', 'learned', 'learned', 'learning'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. ～を学ぶ、習う、覚える',
+        },
+    },
+    leave: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['leave', 'leaves', 'left', 'left', 'leaving'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. ～を出発する、出る、去る',
+        },
+    },
+    lend: {
+        tags: ['他動詞', 'SVOOがとれる動詞'],
+        katuyou: ['lend', 'lends', 'lent', 'lent', 'lending'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を貸す',
+        },
+    },
+    lie: {
+        tags: ['自動詞', '状態動詞'],
+        katuyou: ['lie', 'lies', 'lay', 'lain', 'lying'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '（人・動物が）横たわる、横になる',
+        },
+    },
+    lift: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['lift', 'lifts', 'lifted', 'lifted', 'lifting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '持ち上げる',
+        },
+    },
+    like: {
+        tags: ['他動詞', '状態動詞'],
+        katuyou: ['like', 'likes', 'liked', 'liked', 'liking'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を好む、～が好きだ',
+        },
+    },
+    listen: {
+        tags: ['自動詞', '感覚動詞', '動作動詞'],
+        katuyou: ['listen', 'listens', 'listened', 'listened', 'listening'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '〔listen to ～ の形で〕 ～を聞く、耳を傾ける',
+        },
+    },
+    live: {
+        tags: ['自動詞', '状態動詞'],
+        katuyou: ['live', 'lives', 'lived', 'lived', 'living'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. 住んでいる、暮らしている、生活する',
+        },
+    },
+    locate: {
+        tags: ['他動詞'],
+        katuyou: ['locate', 'locates', 'located', 'located', 'locating'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '(何かをある場所に)置く、be　located in ～で　～に位置する、、～にある',
+        },
+    },
+    lock: {
+        tags: ['他動詞'],
+        katuyou: ['lock', 'locks', 'locked', 'locked', 'locking'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: 'lock up~で　～を閉じ込める、監禁する',
+        },
+    },
+    look: {
+        tags: ['自動詞', '感覚動詞', '連結動詞', '動作動詞'],
+        katuyou: ['look', 'looks', 'looked', 'looked', 'looking'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. （意識的に）見る 〔look at ～ の形で〕～を見る',
+        },
+    },
+    lose: {
+        tags: ['他動詞'],
+        katuyou: ['lose', 'loses', 'lost', 'lost', 'losing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. ～を失う　[lose one\'s wayの形で]道に迷う',
+        },
+    },
+    love: {
+        tags: ['他動詞', '状態動詞'],
+        katuyou: ['love', 'loves', 'loved', 'loved', 'loving'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. ～を愛する、～が大好きである',
+        },
+    },
+    make: {
+        tags: ['他動詞', '使役動詞', 'SVOCがとれる動詞'],
+        katuyou: ['make', 'makes', 'made', 'made', 'making'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. ～を作る',
+        },
+    },
+    manage: {
+        tags: ['他動詞'],
+        katuyou: ['manage', 'manages', 'managed', 'managed', 'managing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: 'どうにかやっていく、なんとかうまく～する',
+        },
+    },
+    marry: {
+        tags: ['他動詞'],
+        katuyou: ['marry', 'marries', 'married', 'married', 'marrying'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '結婚する',
+        },
+    },
+    mean: {
+        tags: ['他動詞', '状態動詞'],
+        katuyou: ['mean', 'means', 'meant', 'meant', 'meaning'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. ～を意味する、表す',
+        },
+    },
+    meet: {
+        tags: ['他動詞'],
+        katuyou: ['meet', 'meets', 'met', 'met', 'meeting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1.～に会う、面会する',
+        },
+    },
+    melt: {
+        tags: ['自動詞', '他動詞'],
+        katuyou: ['melt', 'melts', 'melted', 'melted', 'melting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '溶ける',
+        },
+    },
+    miss: {
+        tags: ['他動詞'],
+        katuyou: ['miss', 'misses', 'missed', 'missed', 'missing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1.　乗りそこなう、取り［見・聞き］そこなう､欠席する',
+        },
+    },
+    mistake: {
+        tags: ['他動詞'],
+        katuyou: ['mistake', 'mistakes', 'mistook', 'mistaken', 'mistaking'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を間違える　［mistake A for Bの形で］AをBと間違える',
+        },
+    },
+    mix: {
+        tags: ['他動詞'],
+        katuyou: ['mix', 'mixes', 'mixed', 'mixed', 'mixing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を混ぜる',
+        },
+    },
+    move: {
+        tags: ['自動詞', '他動詞', '動作動詞'],
+        katuyou: ['move', 'moves', 'moved', 'moved', 'moving'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. 動く、移動する',
+        },
+    },
+    name: {
+        tags: ['他動詞', 'SVOCがとれる動詞'],
+        katuyou: ['name', 'names', 'named', 'named', 'naming'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '〔name A B の形で〕ＡをＢと名づける、呼ぶ',
+        },
+    },
+    need: {
+        tags: ['他動詞', '状態動詞'],
+        katuyou: ['need', 'needs', 'needed', 'needed', 'needing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～が必要である　　[need to～の形で］～する必要がある',
+        },
+    },
+    nod: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['nod', 'nods', 'nodded', 'nodded', 'nodding'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: 'うなずく',
+        },
+    },
+    notice: {
+        tags: ['他動詞', '知覚動詞'],
+        katuyou: ['notice', 'notices', 'noticed', 'noticed', 'noticing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '気がつく',
+        },
+    },
+    open: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['open', 'opens', 'opened', 'opened', 'opening'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. あける、広げる',
+        },
+    },
+    order: {
+        tags: ['他動詞'],
+        katuyou: ['order', 'orders', 'ordered', 'ordered', 'ordering'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '命ずる、注文する',
+        },
+    },
+    organize: {
+        tags: ['他動詞'],
+        katuyou: ['organize', 'organizes', 'organized', 'organized', 'organizing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '組織する、準備する',
+        },
+    },
+    overcome: {
+        tags: ['他動詞'],
+        katuyou: ['overcome', 'overcomes', 'overcame', 'overcome', 'overcoming'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '打ち勝つ、乗り越える',
+        },
+    },
+    package: {
+        tags: ['他動詞'],
+        katuyou: ['package', 'packages', 'packaged', 'packaged', 'packaging'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '(製品など)(…で）包装する',
+        },
+    },
+    paint: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['paint', 'paints', 'painted', 'painted', 'painting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '(絵の具で絵)をかく',
+        },
+    },
+    panic: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['panic', 'panics', 'panicked', 'panicked', 'panicking'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: 'うろたえる、あわてふためく',
+        },
+    },
+    pardon: {
+        tags: ['他動詞'],
+        katuyou: ['pardon', 'pardons', 'pardoned', 'pardoned', 'pardoning'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を許す  〔Pardon me?の形で〕 すみませんが、もう一度言ってください。',
+        },
+    },
+    park: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['park', 'parks', 'parked', 'parked', 'parking'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '(自動車）をとめておく､駐車する',
+        },
+    },
+    pass: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['pass', 'passes', 'passed', 'passed', 'passing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. ～を手渡す､回す',
+        },
+    },
+    pay: {
+        tags: ['他動詞', '自動詞', 'SVOOがとれる動詞'],
+        katuyou: ['pay', 'pays', 'paid', 'paid', 'paying'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '支払う、払う',
+        },
+    },
+    perform: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['perform', 'performs', 'performed', 'performed', 'performing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '演じる、演奏する',
+        },
+    },
+    photograph: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['photograph', 'photographs', 'photographed', 'photographed', 'photographing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '写真を撮る',
+        },
+    },
+    pick: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['pick', 'picks', 'picked', 'picked', 'picking'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. ～を摘む、つみ取る',
+        },
+    },
+    place: {
+        tags: ['他動詞'],
+        katuyou: ['place', 'places', 'placed', 'placed', 'placing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '置く、並べる',
+        },
+    },
+    plan: {
+        tags: ['他動詞'],
+        katuyou: ['plan', 'plans', 'planned', 'planned', 'planning'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を計画する',
+        },
+    },
+    plant: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['plant', 'plants', 'planted', 'planted', 'planting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を植える',
+        },
+    },
+    play: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['play', 'plays', 'played', 'played', 'playing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. (スポーツ・ゲームなど)をする',
+        },
+    },
+    point: {
+        tags: ['自動詞', '他動詞'],
+        katuyou: ['point', 'points', 'pointed', 'pointed', 'pointing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '指さす､さし示す',
+        },
+    },
+    post: {
+        tags: ['他動詞'],
+        katuyou: ['post', 'posts', 'posted', 'posted', 'posting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '（ウエブ上に写真などを）投稿する、投函する',
+        },
+    },
+    practice: {
+        tags: ['他動詞'],
+        katuyou: ['practice', 'practices', 'practiced', 'practiced', 'practicing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '（～を）練習する',
+        },
+    },
+    pray: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['pray', 'prays', 'prayed', 'prayed', 'praying'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '祈る',
+        },
+    },
+    prefer: {
+        tags: ['他動詞', '状態動詞'],
+        katuyou: ['prefer', 'prefers', 'preferred', 'preferred', 'preferring'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '（～のほうを）好む、選ぶ',
+        },
+    },
+    prepare: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['prepare', 'prepares', 'prepared', 'prepared', 'preparing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '準備をする',
+        },
+    },
+    produce: {
+        tags: ['他動詞'],
+        katuyou: ['produce', 'produces', 'produced', 'produced', 'producing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を産み出す、生産する',
+        },
+    },
+    protect: {
+        tags: ['他動詞'],
+        katuyou: ['protect', 'protects', 'protected', 'protected', 'protecting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を守る、保護する',
+        },
+    },
+    pull: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['pull', 'pulls', 'pulled', 'pulled', 'pulling'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を引く',
+        },
+    },
+    punish: {
+        tags: ['他動詞'],
+        katuyou: ['punish', 'punishes', 'punished', 'punished', 'punishing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '罰する',
+        },
+    },
+    push: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['push', 'pushes', 'pushed', 'pushed', 'pushing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を押す',
+        },
+    },
+    put: {
+        tags: ['他動詞', 'SVOCがとれる動詞'],
+        katuyou: ['put', 'puts', 'put', 'put', 'putting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を置く、つける　 　〔過去形、過去分詞形も put〕',
+        },
+    },
+    quit: {
+        tags: ['他動詞'],
+        katuyou: ['quit', 'quits', 'quit', 'quit', 'quitting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: 'やめる、去る　〔過去形、過去分詞形もquit〕',
+        },
+    },
+    quiz: {
+        tags: ['他動詞'],
+        katuyou: ['quiz', 'quizzes', 'quizzed', 'quizzed', 'quizzing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～に簡単なテストを行う、～に質問する',
+        },
+    },
+    rain: {
+        tags: ['自動詞'],
+        katuyou: ['rain', 'rains', 'rained', 'rained', 'raining'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '雨が降る 　〔it が主語になる〕',
+        },
+    },
+    raise: {
+        tags: ['他動詞'],
+        katuyou: ['raise', 'raises', 'raised', 'raised', 'raising'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1.～を上げる　 　〔たとえば Raise your hand. の形で〕 手を上げなさい',
+        },
+    },
+    read: {
+        tags: ['他動詞'],
+        katuyou: ['read', 'reads', 'read', 'read', 'reading'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を読む   〔発音は ［ri:d］〕',
+        },
+    },
+    realize: {
+        tags: ['他動詞', '状態動詞'],
+        katuyou: ['realize', 'realizes', 'realized', 'realized', 'realizing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '実感する、理解する',
+        },
+    },
+    receive: {
+        tags: ['他動詞', 'SVOOがとれる動詞'],
+        katuyou: ['receive', 'receives', 'received', 'received', 'receiving'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を受け取る、もらう',
+        },
+    },
+    recognize: {
+        tags: ['他動詞', '状態動詞'],
+        katuyou: ['recognize', 'recognizes', 'recognized', 'recognized', 'recognizing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を認める、評価する',
+        },
+    },
+    recycle: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['recycle', 'recycles', 'recycled', 'recycled', 'recycling'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を再生する、～を再利用する',
+        },
+    },
+    reduce: {
+        tags: ['他動詞'],
+        katuyou: ['reduce', 'reduces', 'reduced', 'reduced', 'reducing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を小さくする、下げる、減らす',
+        },
+    },
+    relax: {
+        tags: ['自動詞', '状態動詞'],
+        katuyou: ['relax', 'relaxes', 'relaxed', 'relaxed', 'relaxing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: 'くつろぐ、リラックスする',
+        },
+    },
+    release: {
+        tags: ['他動詞'],
+        katuyou: ['release', 'releases', 'released', 'released', 'releasing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '〔ＣＤ／レコードを〕発売する',
+        },
+    },
+    remain: {
+        tags: ['自動詞', '状態動詞', '連結動詞'],
+        katuyou: ['remain', 'remains', 'remained', 'remained', 'remaining'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '残る、とどまる',
+        },
+    },
+    remember: {
+        tags: ['他動詞', '状態動詞'],
+        katuyou: ['remember', 'remembers', 'remembered', 'remembered', 'remembering'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を思い出す、覚えている、忘れない',
+        },
+    },
+    remind: {
+        tags: ['他動詞', 'SVOOがとれる動詞', 'SVOCがとれる動詞'],
+        katuyou: ['remind', 'reminds', 'reminded', 'reminded', 'reminding'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '思い出させる、気づかせる',
+        },
+    },
+    remove: {
+        tags: ['他動詞'],
+        katuyou: ['remove', 'removes', 'removed', 'removed', 'removing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を取りはずす、～を取り除く、～をかたづける',
+        },
+    },
+    reply: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['reply', 'replies', 'replied', 'replied', 'replying'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～と答える',
+        },
+    },
+    report: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['report', 'reports', 'reported', 'reported', 'reporting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を報告する、報道する',
+        },
+    },
+    rescue: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['rescue', 'rescues', 'rescued', 'rescued', 'rescuing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '救い出す、救助する',
+        },
+    },
+    respect: {
+        tags: ['他動詞', '状態動詞'],
+        katuyou: ['respect', 'respects', 'respected', 'respected', 'respecting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を尊敬する、～を大切にする',
+        },
+    },
+    respond: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['respond', 'responds', 'responded', 'responded', 'responding'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: 'こたえる',
+        },
+    },
+    rest: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['rest', 'rests', 'rested', 'rested', 'resting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '休む、横になる',
+        },
+    },
+    return: {
+        tags: ['自動詞', '他動詞'],
+        katuyou: ['return', 'returns', 'returned', 'returned', 'returning'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '帰る、戻る',
+        },
+    },
+    reuse: {
+        tags: ['他動詞'],
+        katuyou: ['reuse', 'reuses', 'reused', 'reused', 'reusing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を再利用する',
+        },
+    },
+    ride: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['ride', 'rides', 'rode', 'ridden', 'riding'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～に乗る',
+        },
+    },
+    ring: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['ring', 'rings', 'rang', 'rung', 'ringing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '鳴る　〔過去形rang〕',
+        },
+    },
+    rise: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['rise', 'rises', 'rose', 'risen', 'rising'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '（太陽などが）のぼる',
+        },
+    },
+    roll: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['roll', 'rolls', 'rolled', 'rolled', 'rolling'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '巻く、くるむ',
+        },
+    },
+    rule: {
+        tags: ['自動詞', '状態動詞'],
+        katuyou: ['rule', 'rules', 'ruled', 'ruled', 'ruling'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を支配する、統治する',
+        },
+    },
+    run: {
+        tags: ['自動詞', '他動詞', '動作動詞'],
+        katuyou: ['run', 'runs', 'ran', 'run', 'running'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. (人・動物が）走る　　〔過去分詞もrun〕',
+        },
+    },
+    save: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['save', 'saves', 'saved', 'saved', 'saving'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. (危害・困難などから人・物・自然など)を救う',
+        },
+    },
+    say: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['say', 'says', 'said', 'said', 'saying'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. 〔人が主語で〕～と言う',
+        },
+    },
+    scare: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['scare', 'scares', 'scared', 'scared', 'scaring'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を怖がらせる',
+        },
+    },
+    score: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['score', 'scores', 'scored', 'scored', 'scoring'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '〔競技、試験などで～点を〕取る、得点する',
+        },
+    },
+    search: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['search', 'searches', 'searched', 'searched', 'searching'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: 'さがす 〔search for ～で〕～をさがす',
+        },
+    },
+    see: {
+        tags: ['他動詞', '知覚動詞'],
+        katuyou: ['see', 'sees', 'saw', 'seen', 'seeing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. ～を見る、見物する',
+        },
+    },
+    seem: {
+        tags: ['連結動詞', '状態動詞'],
+        katuyou: ['seem', 'seems', 'seemed', 'seemed', 'seeming'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～のように見える、～のように思われる',
+        },
+    },
+    select: {
+        tags: ['他動詞'],
+        katuyou: ['select', 'selects', 'selected', 'selected', 'selecting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '選ぶ、選択する',
+        },
+    },
+    sell: {
+        tags: ['他動詞'],
+        katuyou: ['sell', 'sells', 'sold', 'sold', 'selling'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を売る',
+        },
+    },
+    send: {
+        tags: ['他動詞'],
+        katuyou: ['send', 'sends', 'sent', 'sent', 'sending'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を送る',
+        },
+    },
+    sent: {
+        tags: [],
+        katuyou: [],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '〔sendの過去形、過去分詞形〕',
+        },
+    },
+    separate: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['separate', 'separates', 'separated', 'separated', 'separating'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を分ける',
+        },
+    },
+    set: {
+        tags: ['他動詞'],
+        katuyou: ['set', 'sets', 'set', 'set', 'setting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を準備する',
+        },
+    },
+    shake: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['shake', 'shakes', 'shook', 'shaken', 'shaking'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を振る',
+        },
+    },
+    share: {
+        tags: ['他動詞'],
+        katuyou: ['share', 'shares', 'shared', 'shared', 'sharing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: 'いっしょに使う、共有する、互いに分け合う',
+        },
+    },
+    shine: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['shine', 'shines', 'shone', 'shone', 'shining'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '光る、輝く',
+        },
+    },
+    shock: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['shock', 'shocks', 'shocked', 'shocked', 'shocking'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: 'ショックを与える',
+        },
+    },
+    shoot: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['shoot', 'shoots', 'shot', 'shot', 'shooting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を撃つ',
+        },
+    },
+    shop: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['shop', 'shops', 'shopped', 'shopped', 'shopping'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '買い物をする　〔例えば go shopping の形で〕 買い物に行く',
+        },
+    },
+    shout: {
+        tags: ['自動詞', '他動詞', '動作動詞'],
+        katuyou: ['shout', 'shouts', 'shouted', 'shouted', 'shouting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～と叫ぶ、大声で言う',
+        },
+    },
+    show: {
+        tags: ['他動詞', 'SVOCがとれる動詞'],
+        katuyou: ['show', 'shows', 'showed', 'shown', 'showing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. ～を見せる、示す、教える  〔show A B の形で〕ＡにＢを見せる',
+        },
+    },
+    shut: {
+        tags: ['他動詞', '自動詞'],
+        katuyou: ['shut', 'shuts', 'shut', 'shut', 'shutting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を閉める、閉まる 　〔過去形、過去分詞形もshut〕',
+        },
+    },
+    sigh: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['sigh', 'sighs', 'sighed', 'sighed', 'sighing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: 'ため息をつく',
+        },
+    },
+    sing: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['sing', 'sings', 'sang', 'sung', 'singing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '（～を）歌う',
+        },
+    },
+    sit: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['sit', 'sits', 'sat', 'sat', 'sitting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: 'すわる、腰をおろす',
+        },
+    },
+    skate: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['skate', 'skates', 'skated', 'skated', 'skating'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: 'スケートですべる、スケートをする',
+        },
+    },
+    sleep: {
+        tags: ['自動詞', '状態動詞'],
+        katuyou: ['sleep', 'sleeps', 'slept', 'slept', 'sleeping'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '眠る',
+        },
+    },
+    smell: {
+        tags: ['自動詞', '他動詞', '感覚動詞'],
+        katuyou: ['smell', 'smells', 'smelled', 'smelled', 'smelling'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～のにおいがする',
+        },
+    },
+    smile: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['smile', 'smiles', 'smiled', 'smiled', 'smiling'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: 'ほほえむ、にっこり笑う、微笑する',
+        },
+    },
+    solve: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['solve', 'solves', 'solved', 'solved', 'solving'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を解決する',
+        },
+    },
+    sort: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['sort', 'sorts', 'sorted', 'sorted', 'sorting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を分類する、えり分ける',
+        },
+    },
+    sound: {
+        tags: ['自動詞', '連結動詞'],
+        katuyou: ['sound', 'sounds', 'sounded', 'sounded', 'sounding'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～に聞こえる、～に思われる',
+        },
+    },
+    speak: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['speak', 'speaks', 'spoke', 'spoken', 'speaking'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '(ことば)を話す、話をする',
+        },
+    },
+    spell: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['spell', 'spells', 'spelled', 'spelled', 'spelling'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '(文字など)をつづる',
+        },
+    },
+    spend: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['spend', 'spends', 'spent', 'spent', 'spending'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. (お金）を使う、費やす',
+        },
+    },
+    spread: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['spread', 'spreads', 'spread', 'spread', 'spreading'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '広がる',
+        },
+    },
+    stand: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['stand', 'stands', 'stood', 'stood', 'standing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. 立っている',
+        },
+    },
+    start: {
+        tags: ['自動詞', '他動詞', '動作動詞'],
+        katuyou: ['start', 'starts', 'started', 'started', 'starting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. 始まる  〔自動詞〕',
+        },
+    },
+    stay: {
+        tags: ['自動詞', '状態動詞'],
+        katuyou: ['stay', 'stays', 'stayed', 'stayed', 'staying'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. (場所に)とどまる',
+        },
+    },
+    step: {
+        tags: ['自動詞', '他動詞', '動作動詞'],
+        katuyou: ['step', 'steps', 'stepped', 'stepped', 'stepping'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '（一歩・少し）歩む',
+        },
+    },
+    stop: {
+        tags: ['自動詞', '他動詞', '動作動詞'],
+        katuyou: ['stop', 'stops', 'stopped', 'stopped', 'stopping'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. とまる  〔自動詞〕',
+        },
+    },
+    strive: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['strive', 'strives', 'strove', 'striven', 'striving'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '懸命に努力する',
+        },
+    },
+    study: {
+        tags: ['自動詞', '他動詞', '動作動詞'],
+        katuyou: ['study', 'studies', 'studied', 'studied', 'studying'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を勉強する、調べる、研究する',
+        },
+    },
+    suffer: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['suffer', 'suffers', 'suffered', 'suffered', 'suffering'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '苦しむ',
+        },
+    },
+    suggest: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['suggest', 'suggests', 'suggested', 'suggested', 'suggesting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '提案する',
+        },
+    },
+    support: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['support', 'supports', 'supported', 'supported', 'supporting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '(人や考え)を支持する、支援する',
+        },
+    },
+    surf: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['surf', 'surfs', 'surfed', 'surfed', 'surfing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: 'サーフィン〔波乗り〕をする',
+        },
+    },
+    surprise: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['surprise', 'surprises', 'surprised', 'surprised', 'surprising'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を驚かす、びっくりさせる　 〔be surprised at ～ の形で〕 (知らせなど)に驚いている',
+        },
+    },
+    surround: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['surround', 'surrounds', 'surrounded', 'surrounded', 'surrounding'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を囲む、取り巻く',
+        },
+    },
+    survive: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['survive', 'survives', 'survived', 'survived', 'surviving'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '生き残る',
+        },
+    },
+    swallow: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['swallow', 'swallows', 'swallowed', 'swallowed', 'swallowing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～をごくりと飲み込む',
+        },
+    },
+    swim: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['swim', 'swims', 'swam', 'swum', 'swimming'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '泳ぐ',
+        },
+    },
+    take: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞', 'SVOCがとれる動詞'],
+        katuyou: ['take', 'takes', 'took', 'taken', 'taking'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1.  (時間、労力)がかかる',
+        },
+    },
+    talk: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['talk', 'talks', 'talked', 'talked', 'talking'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '話す、話をする',
+        },
+    },
+    taste: {
+        tags: ['自動詞', '他動詞', '感覚動詞', '連結動詞'],
+        katuyou: ['taste', 'tastes', 'tasted', 'tasted', 'tasting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. 味わう、食べる',
+        },
+    },
+    teach: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['teach', 'teaches', 'taught', 'taught', 'teaching'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を教える　 〔teach A B の形で〕 ＡにＢを教える',
+        },
+    },
+    tell: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['tell', 'tells', 'told', 'told', 'telling'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. ～に話す、～を話す、教える　〔tell Ａ Ｂの形で〕 Ａ［人］にＢ［ものごとなど］を話す',
+        },
+    },
+    thank: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['thank', 'thanks', 'thanked', 'thanked', 'thanking'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～に感謝する',
+        },
+    },
+    think: {
+        tags: ['他動詞', '自動詞', '状態動詞'],
+        katuyou: ['think', 'thinks', 'thought', 'thought', 'thinking'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～と考える、思う',
+        },
+    },
+    touch: {
+        tags: ['他動詞', '感覚動詞', '動作動詞'],
+        katuyou: ['touch', 'touches', 'touched', 'touched', 'touching'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～にさわる、触れる',
+        },
+    },
+    train: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['train', 'trains', 'trained', 'trained', 'training'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. ～を訓練する',
+        },
+    },
+    translate: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['translate', 'translates', 'translated', 'translated', 'translating'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を翻訳する、訳す',
+        },
+    },
+    trap: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['trap', 'traps', 'trapped', 'trapped', 'trapping'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～をわなで捕まえる、閉じこめる',
+        },
+    },
+    travel: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['travel', 'travels', 'traveled', 'traveled', 'traveling'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '旅する、移動する',
+        },
+    },
+    trust: {
+        tags: ['他動詞', '状態動詞'],
+        katuyou: ['trust', 'trusts', 'trusted', 'trusted', 'trusting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を信頼する',
+        },
+    },
+    try: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['try', 'tries', 'tried', 'tried', 'trying'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～をやってみる、挑戦する、ためしてみる、(try to～の形で）～しようとする',
+        },
+    },
+    turn: {
+        tags: ['自動詞', '他動詞', '動作動詞'],
+        katuyou: ['turn', 'turns', 'turned', 'turned', 'turning'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. 曲がる、向きを変える',
+        },
+    },
+    understand: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['understand', 'understands', 'understood', 'understood', 'understanding'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を理解する、～がわかる',
+        },
+    },
+    unplug: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['unplug', 'unplugs', 'unplugged', 'unplugged', 'unplugging'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '（～の）プラグを（コンセントから）抜く',
+        },
+    },
+    upset: {
+        tags: ['他動詞', '形容詞的用法もある', '動作動詞', '状態動詞'],
+        katuyou: ['upset', 'upsets', 'upset', 'upset', 'upsetting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '気を動転させる、うろたえさせる',
+        },
+    },
+    use: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['use', 'uses', 'used', 'used', 'using'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を使う',
+        },
+    },
+    visit: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['visit', 'visits', 'visited', 'visited', 'visiting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. (場所、人など)をおとずれる',
+        },
+    },
+    wait: {
+        tags: ['自動詞', '状態動詞'],
+        katuyou: ['wait', 'waits', 'waited', 'waited', 'waiting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '待つ　　〔wait for ～の形で〕～を待つ',
+        },
+    },
+    wake: {
+        tags: ['他動詞', '自動詞', '動作動詞'],
+        katuyou: ['wake', 'wakes', 'woke', 'woken', 'waking'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '〔wake you up〕あなたを起こす',
+        },
+    },
+    walk: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['walk', 'walks', 'walked', 'walked', 'walking'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. 歩く、歩いて行く［来る］',
+        },
+    },
+    want: {
+        tags: ['他動詞', '状態動詞'],
+        katuyou: ['want', 'wants', 'wanted', 'wanted', 'wanting'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. ～がほしい',
+        },
+    },
+    wash: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['wash', 'washes', 'washed', 'washed', 'washing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を洗う',
+        },
+    },
+    watch: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['watch', 'watches', 'watched', 'watched', 'watching'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. (注意して、動いているもの)を見る',
+        },
+    },
+    water: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['water', 'waters', 'watered', 'watered', 'watering'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～に水をやる',
+        },
+    },
+    wear: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['wear', 'wears', 'wore', 'worn', 'wearing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を着ている、身につけている',
+        },
+    },
+    welcome: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['welcome', 'welcomes', 'welcomed', 'welcomed', 'welcoming'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '歓迎する',
+        },
+    },
+    whisper: {
+        tags: ['自動詞', '他動詞', '動作動詞'],
+        katuyou: ['whisper', 'whispers', 'whispered', 'whispered', 'whispering'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '（～と）ささやく、ひそひそ声でで言う',
+        },
+    },
+    whistle: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['whistle', 'whistles', 'whistled', 'whistled', 'whistling'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '口笛を吹く、口笛を吹くように鳴く',
+        },
+    },
+    win: {
+        tags: ['自動詞', '他動詞', '動作動詞'],
+        katuyou: ['win', 'wins', 'won', 'won', 'winning'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '勝つ、～を勝ち取る',
+        },
+    },
+    wish: {
+        tags: ['他動詞', '状態動詞'],
+        katuyou: ['wish', 'wishes', 'wished', 'wished', 'wishing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を願う、望む　〔たとえば I wish you a happy new year.の形で〕新年おめでとう',
+        },
+    },
+    wonder: {
+        tags: ['自動詞', '状態動詞'],
+        katuyou: ['wonder', 'wonders', 'wondered', 'wondered', 'wondering'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '（～する）かしら（と思う）、～かどうかを知りたいと思う',
+        },
+    },
+    work: {
+        tags: ['自動詞', '動作動詞'],
+        katuyou: ['work', 'works', 'worked', 'worked', 'working'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. 働く、勉強する',
+        },
+    },
+    worry: {
+        tags: ['自動詞', '他動詞', '状態動詞'],
+        katuyou: ['worry', 'worries', 'worried', 'worried', 'worrying'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '心配する、悩む',
+        },
+    },
+    wrap: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['wrap', 'wraps', 'wrapped', 'wrapped', 'wrapping'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '包む、包装する',
+        },
+    },
+    write: {
+        tags: ['他動詞', '動作動詞'],
+        katuyou: ['write', 'writes', 'wrote', 'written', 'writing'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '～を書く',
+        },
+    },
+};
+
+// function expandTangoEntries(tango) {
+//     const expanded = {};
+
+//     const tagMap = ['原型', '三単現s', '過去形', '過去分詞', '現在分詞'];
+
+//     for (const key in tango) {
+//         const entry = tango[key];
+//         const { katuyou, tags, hinsi, means } = entry;
+
+//         katuyou.forEach((form, i) => {
+//             // 初めて出た活用形
+//             if (!expanded[form]) {
+//                 expanded[form] = {
+//                     tags: [...tags, tagMap[i]],
+//                     katuyou: [...katuyou],
+//                     hinsi: [...hinsi],
+//                     means: { ...means },
+//                 };
+//             } else {
+//                 // すでに存在する → タグを追加（重複除去）
+//                 const currentTags = new Set(expanded[form].tags);
+//                 currentTags.add(tagMap[i]);
+//                 tags.forEach((t) => currentTags.add(t));
+//                 expanded[form].tags = Array.from(currentTags);
+
+//                 // 他は同じなので上書き不要
+//             }
+//         });
+//     }
+
+//     return expanded;
+// }
+
+// const expanded = expandTangoEntries(tango);
+// console.log(expanded);
+
+let tango = {
+    accept: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['accept', 'accepts', 'accepted', 'accepted', 'accepting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '受け入れる' },
+    },
+    accepts: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['accept', 'accepts', 'accepted', 'accepted', 'accepting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '受け入れる' },
+    },
+    accepted: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['accept', 'accepts', 'accepted', 'accepted', 'accepting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '受け入れる' },
+    },
+    accepting: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['accept', 'accepts', 'accepted', 'accepted', 'accepting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '受け入れる' },
+    },
+    act: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['act', 'acts', 'acted', 'acted', 'acting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（役を） 演じる' },
+    },
+    acts: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['act', 'acts', 'acted', 'acted', 'acting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（役を） 演じる' },
+    },
+    acted: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['act', 'acts', 'acted', 'acted', 'acting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（役を） 演じる' },
+    },
+    acting: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['act', 'acts', 'acted', 'acted', 'acting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（役を） 演じる' },
+    },
+    add: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['add', 'adds', 'added', 'added', 'adding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '加える' },
+    },
+    adds: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['add', 'adds', 'added', 'added', 'adding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '加える' },
+    },
+    added: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['add', 'adds', 'added', 'added', 'adding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '加える' },
+    },
+    adding: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['add', 'adds', 'added', 'added', 'adding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '加える' },
+    },
+    agree: {
+        tags: ['自動詞', '状態動詞', '原型'],
+        katuyou: ['agree', 'agrees', 'agreed', 'agreed', 'agreeing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '賛成する、同意する、意見が一致する　〔agree with ～の形で〕 ～に賛成する' },
+    },
+    agrees: {
+        tags: ['自動詞', '状態動詞', '三単現s'],
+        katuyou: ['agree', 'agrees', 'agreed', 'agreed', 'agreeing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '賛成する、同意する、意見が一致する　〔agree with ～の形で〕 ～に賛成する' },
+    },
+    agreed: {
+        tags: ['自動詞', '状態動詞', '過去形', '過去分詞'],
+        katuyou: ['agree', 'agrees', 'agreed', 'agreed', 'agreeing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '賛成する、同意する、意見が一致する　〔agree with ～の形で〕 ～に賛成する' },
+    },
+    agreeing: {
+        tags: ['自動詞', '状態動詞', '現在分詞'],
+        katuyou: ['agree', 'agrees', 'agreed', 'agreed', 'agreeing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '賛成する、同意する、意見が一致する　〔agree with ～の形で〕 ～に賛成する' },
+    },
+    allow: {
+        tags: ['他動詞', '動作動詞', 'SVOCがとれる動詞', '原型'],
+        katuyou: ['allow', 'allows', 'allowed', 'allowed', 'allowing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を許可する' },
+    },
+    allows: {
+        tags: ['他動詞', '動作動詞', 'SVOCがとれる動詞', '三単現s'],
+        katuyou: ['allow', 'allows', 'allowed', 'allowed', 'allowing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を許可する' },
+    },
+    allowed: {
+        tags: ['他動詞', '動作動詞', 'SVOCがとれる動詞', '過去形', '過去分詞'],
+        katuyou: ['allow', 'allows', 'allowed', 'allowed', 'allowing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を許可する' },
+    },
+    allowing: {
+        tags: ['他動詞', '動作動詞', 'SVOCがとれる動詞', '現在分詞'],
+        katuyou: ['allow', 'allows', 'allowed', 'allowed', 'allowing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を許可する' },
+    },
+    amaze: {
+        tags: ['他動詞', '感覚動詞', '原型'],
+        katuyou: ['amaze', 'amazes', 'amazed', 'amazed', 'amazing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を驚嘆させる、びっくりさせる' },
+    },
+    amazes: {
+        tags: ['他動詞', '感覚動詞', '三単現s'],
+        katuyou: ['amaze', 'amazes', 'amazed', 'amazed', 'amazing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を驚嘆させる、びっくりさせる' },
+    },
+    amazed: {
+        tags: ['他動詞', '感覚動詞', '過去形', '過去分詞'],
+        katuyou: ['amaze', 'amazes', 'amazed', 'amazed', 'amazing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を驚嘆させる、びっくりさせる' },
+    },
+    amazing: {
+        tags: ['他動詞', '感覚動詞', '現在分詞'],
+        katuyou: ['amaze', 'amazes', 'amazed', 'amazed', 'amazing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を驚嘆させる、びっくりさせる' },
+    },
+    answer: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['answer', 'answers', 'answered', 'answered', 'answering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～に答える、応答する　〔answer the phone の形で〕 電話に出る' },
+    },
+    answers: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['answer', 'answers', 'answered', 'answered', 'answering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～に答える、応答する　〔answer the phone の形で〕 電話に出る' },
+    },
+    answered: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['answer', 'answers', 'answered', 'answered', 'answering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～に答える、応答する　〔answer the phone の形で〕 電話に出る' },
+    },
+    answering: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['answer', 'answers', 'answered', 'answered', 'answering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～に答える、応答する　〔answer the phone の形で〕 電話に出る' },
+    },
+    arrest: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['arrest', 'arrests', 'arrested', 'arrested', 'arresting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '逮捕する' },
+    },
+    arrests: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['arrest', 'arrests', 'arrested', 'arrested', 'arresting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '逮捕する' },
+    },
+    arrested: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['arrest', 'arrests', 'arrested', 'arrested', 'arresting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '逮捕する' },
+    },
+    arresting: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['arrest', 'arrests', 'arrested', 'arrested', 'arresting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '逮捕する' },
+    },
+    arrive: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['arrive', 'arrives', 'arrived', 'arrived', 'arriving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"着く、到着する　〔たとえば arrive at school' },
+    },
+    arrives: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['arrive', 'arrives', 'arrived', 'arrived', 'arriving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"着く、到着する　〔たとえば arrive at school' },
+    },
+    arrived: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['arrive', 'arrives', 'arrived', 'arrived', 'arriving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"着く、到着する　〔たとえば arrive at school' },
+    },
+    arriving: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['arrive', 'arrives', 'arrived', 'arrived', 'arriving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"着く、到着する　〔たとえば arrive at school' },
+    },
+    ask: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞', '原型'],
+        katuyou: ['ask', 'asks', 'asked', 'asked', 'asking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～をたずねる、問う' },
+    },
+    asks: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞', '三単現s'],
+        katuyou: ['ask', 'asks', 'asked', 'asked', 'asking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～をたずねる、問う' },
+    },
+    asked: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞', '過去形', '過去分詞'],
+        katuyou: ['ask', 'asks', 'asked', 'asked', 'asking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～をたずねる、問う' },
+    },
+    asking: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞', '現在分詞'],
+        katuyou: ['ask', 'asks', 'asked', 'asked', 'asking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～をたずねる、問う' },
+    },
+    assist: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['assist', 'assists', 'assisted', 'assisted', 'assisting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（人を）助ける、手伝う' },
+    },
+    assists: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['assist', 'assists', 'assisted', 'assisted', 'assisting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（人を）助ける、手伝う' },
+    },
+    assisted: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['assist', 'assists', 'assisted', 'assisted', 'assisting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（人を）助ける、手伝う' },
+    },
+    assisting: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['assist', 'assists', 'assisted', 'assisted', 'assisting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（人を）助ける、手伝う' },
+    },
+    attend: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['attend', 'attends', 'attended', 'attended', 'attending'],
+        hinsi: ['動詞'],
+        means: { 動詞: '出席する、参加する' },
+    },
+    attends: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['attend', 'attends', 'attended', 'attended', 'attending'],
+        hinsi: ['動詞'],
+        means: { 動詞: '出席する、参加する' },
+    },
+    attended: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['attend', 'attends', 'attended', 'attended', 'attending'],
+        hinsi: ['動詞'],
+        means: { 動詞: '出席する、参加する' },
+    },
+    attending: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['attend', 'attends', 'attended', 'attended', 'attending'],
+        hinsi: ['動詞'],
+        means: { 動詞: '出席する、参加する' },
+    },
+    attract: {
+        tags: ['他動詞', '感覚動詞', '原型'],
+        katuyou: ['attract', 'attracts', 'attracted', 'attracted', 'attracting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1.（人を）ひきつける' },
+    },
+    attracts: {
+        tags: ['他動詞', '感覚動詞', '三単現s'],
+        katuyou: ['attract', 'attracts', 'attracted', 'attracted', 'attracting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1.（人を）ひきつける' },
+    },
+    attracted: {
+        tags: ['他動詞', '感覚動詞', '過去形', '過去分詞'],
+        katuyou: ['attract', 'attracts', 'attracted', 'attracted', 'attracting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1.（人を）ひきつける' },
+    },
+    attracting: {
+        tags: ['他動詞', '感覚動詞', '現在分詞'],
+        katuyou: ['attract', 'attracts', 'attracted', 'attracted', 'attracting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1.（人を）ひきつける' },
+    },
+    bake: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['bake', 'bakes', 'baked', 'baked', 'baking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を焼く' },
+    },
+    bakes: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['bake', 'bakes', 'baked', 'baked', 'baking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を焼く' },
+    },
+    baked: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['bake', 'bakes', 'baked', 'baked', 'baking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を焼く' },
+    },
+    baking: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['bake', 'bakes', 'baked', 'baked', 'baking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を焼く' },
+    },
+    base: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['base', 'bases', 'based', 'based', 'basing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '基礎［根拠］を置く　〔be based on ～で〕～に基づく' },
+    },
+    bases: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['base', 'bases', 'based', 'based', 'basing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '基礎［根拠］を置く　〔be based on ～で〕～に基づく' },
+    },
+    based: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['base', 'bases', 'based', 'based', 'basing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '基礎［根拠］を置く　〔be based on ～で〕～に基づく' },
+    },
+    basing: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['base', 'bases', 'based', 'based', 'basing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '基礎［根拠］を置く　〔be based on ～で〕～に基づく' },
+    },
+    become: {
+        tags: ['自動詞', '連結動詞', 'SVOCがとれる動詞', '原型', '過去分詞'],
+        katuyou: ['become', 'becomes', 'became', 'become', 'becoming'],
+        hinsi: ['動詞'],
+        means: { 動詞: '〔名詞・形容詞・過去分詞などをあとにつけて〕 ～になる、～に変わる  〔過去分詞形もbecome〕' },
+    },
+    becomes: {
+        tags: ['自動詞', '連結動詞', 'SVOCがとれる動詞', '三単現s'],
+        katuyou: ['become', 'becomes', 'became', 'become', 'becoming'],
+        hinsi: ['動詞'],
+        means: { 動詞: '〔名詞・形容詞・過去分詞などをあとにつけて〕 ～になる、～に変わる  〔過去分詞形もbecome〕' },
+    },
+    became: {
+        tags: ['自動詞', '連結動詞', 'SVOCがとれる動詞', '過去形'],
+        katuyou: ['become', 'becomes', 'became', 'become', 'becoming'],
+        hinsi: ['動詞'],
+        means: { 動詞: '〔名詞・形容詞・過去分詞などをあとにつけて〕 ～になる、～に変わる  〔過去分詞形もbecome〕' },
+    },
+    becoming: {
+        tags: ['自動詞', '連結動詞', 'SVOCがとれる動詞', '現在分詞'],
+        katuyou: ['become', 'becomes', 'became', 'become', 'becoming'],
+        hinsi: ['動詞'],
+        means: { 動詞: '〔名詞・形容詞・過去分詞などをあとにつけて〕 ～になる、～に変わる  〔過去分詞形もbecome〕' },
+    },
+    begin: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型'],
+        katuyou: ['begin', 'begins', 'began', 'begun', 'beginning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. はじまる〔自動詞〕' },
+    },
+    begins: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s'],
+        katuyou: ['begin', 'begins', 'began', 'begun', 'beginning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. はじまる〔自動詞〕' },
+    },
+    began: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去形'],
+        katuyou: ['begin', 'begins', 'began', 'begun', 'beginning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. はじまる〔自動詞〕' },
+    },
+    begun: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去分詞'],
+        katuyou: ['begin', 'begins', 'began', 'begun', 'beginning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. はじまる〔自動詞〕' },
+    },
+    beginning: {
+        tags: ['他動詞', '自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['begin', 'begins', 'began', 'begun', 'beginning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. はじまる〔自動詞〕' },
+    },
+    believe: {
+        tags: ['他動詞', '状態動詞', '原型'],
+        katuyou: ['believe', 'believes', 'believed', 'believed', 'believing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を信じる' },
+    },
+    believes: {
+        tags: ['他動詞', '状態動詞', '三単現s'],
+        katuyou: ['believe', 'believes', 'believed', 'believed', 'believing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を信じる' },
+    },
+    believed: {
+        tags: ['他動詞', '状態動詞', '過去形', '過去分詞'],
+        katuyou: ['believe', 'believes', 'believed', 'believed', 'believing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を信じる' },
+    },
+    believing: {
+        tags: ['他動詞', '状態動詞', '現在分詞'],
+        katuyou: ['believe', 'believes', 'believed', 'believed', 'believing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を信じる' },
+    },
+    belong: {
+        tags: ['自動詞', '状態動詞', '原型'],
+        katuyou: ['belong', 'belongs', 'belonged', 'belonged', 'belonging'],
+        hinsi: ['動詞'],
+        means: { 動詞: '〔belong to～の形で〕～の一員である' },
+    },
+    belongs: {
+        tags: ['自動詞', '状態動詞', '三単現s'],
+        katuyou: ['belong', 'belongs', 'belonged', 'belonged', 'belonging'],
+        hinsi: ['動詞'],
+        means: { 動詞: '〔belong to～の形で〕～の一員である' },
+    },
+    belonged: {
+        tags: ['自動詞', '状態動詞', '過去形', '過去分詞'],
+        katuyou: ['belong', 'belongs', 'belonged', 'belonged', 'belonging'],
+        hinsi: ['動詞'],
+        means: { 動詞: '〔belong to～の形で〕～の一員である' },
+    },
+    belonging: {
+        tags: ['自動詞', '状態動詞', '現在分詞'],
+        katuyou: ['belong', 'belongs', 'belonged', 'belonged', 'belonging'],
+        hinsi: ['動詞'],
+        means: { 動詞: '〔belong to～の形で〕～の一員である' },
+    },
+    blow: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型'],
+        katuyou: ['blow', 'blows', 'blew', 'blown', 'blowing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. （風が）ふく' },
+    },
+    blows: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s'],
+        katuyou: ['blow', 'blows', 'blew', 'blown', 'blowing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. （風が）ふく' },
+    },
+    blew: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去形'],
+        katuyou: ['blow', 'blows', 'blew', 'blown', 'blowing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. （風が）ふく' },
+    },
+    blown: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去分詞'],
+        katuyou: ['blow', 'blows', 'blew', 'blown', 'blowing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. （風が）ふく' },
+    },
+    blowing: {
+        tags: ['他動詞', '自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['blow', 'blows', 'blew', 'blown', 'blowing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. （風が）ふく' },
+    },
+    blush: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['blush', 'blushes', 'blushed', 'blushed', 'blushing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '顔を赤らめる' },
+    },
+    blushes: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['blush', 'blushes', 'blushed', 'blushed', 'blushing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '顔を赤らめる' },
+    },
+    blushed: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['blush', 'blushes', 'blushed', 'blushed', 'blushing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '顔を赤らめる' },
+    },
+    blushing: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['blush', 'blushes', 'blushed', 'blushed', 'blushing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '顔を赤らめる' },
+    },
+    boil: {
+        tags: ['自動詞', '他動詞', '動作動詞', '原型'],
+        katuyou: ['boil', 'boils', 'boiled', 'boiled', 'boiling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をゆでる、沸騰させる' },
+    },
+    boils: {
+        tags: ['自動詞', '他動詞', '動作動詞', '三単現s'],
+        katuyou: ['boil', 'boils', 'boiled', 'boiled', 'boiling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をゆでる、沸騰させる' },
+    },
+    boiled: {
+        tags: ['自動詞', '他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['boil', 'boils', 'boiled', 'boiled', 'boiling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をゆでる、沸騰させる' },
+    },
+    boiling: {
+        tags: ['自動詞', '他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['boil', 'boils', 'boiled', 'boiled', 'boiling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をゆでる、沸騰させる' },
+    },
+    bear: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['bear', 'bears', 'bore', 'born', 'bearing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '誕生する、生まれる' },
+    },
+    bears: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['bear', 'bears', 'bore', 'born', 'bearing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '誕生する、生まれる' },
+    },
+    bore: {
+        tags: ['自動詞', '動作動詞', '過去形'],
+        katuyou: ['bear', 'bears', 'bore', 'born', 'bearing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '誕生する、生まれる' },
+    },
+    born: {
+        tags: ['自動詞', '動作動詞', '過去分詞'],
+        katuyou: ['bear', 'bears', 'bore', 'born', 'bearing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '誕生する、生まれる' },
+    },
+    bearing: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['bear', 'bears', 'bore', 'born', 'bearing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '誕生する、生まれる' },
+    },
+    borrow: {
+        tags: ['他動詞', '他動詞', '動作動詞', '原型'],
+        katuyou: ['borrow', 'borrows', 'borrowed', 'borrowed', 'borrowing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を借りる' },
+    },
+    borrows: {
+        tags: ['他動詞', '他動詞', '動作動詞', '三単現s'],
+        katuyou: ['borrow', 'borrows', 'borrowed', 'borrowed', 'borrowing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を借りる' },
+    },
+    borrowed: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['borrow', 'borrows', 'borrowed', 'borrowed', 'borrowing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を借りる' },
+    },
+    borrowing: {
+        tags: ['他動詞', '他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['borrow', 'borrows', 'borrowed', 'borrowed', 'borrowing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を借りる' },
+    },
+    bother: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['bother', 'bothers', 'bothered', 'bothered', 'bothering'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'じゃまをする' },
+    },
+    bothers: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['bother', 'bothers', 'bothered', 'bothered', 'bothering'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'じゃまをする' },
+    },
+    bothered: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['bother', 'bothers', 'bothered', 'bothered', 'bothering'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'じゃまをする' },
+    },
+    bothering: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['bother', 'bothers', 'bothered', 'bothered', 'bothering'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'じゃまをする' },
+    },
+    break: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型'],
+        katuyou: ['break', 'breaks', 'broke', 'broken', 'breaking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をこわす、折る、破る' },
+    },
+    breaks: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s'],
+        katuyou: ['break', 'breaks', 'broke', 'broken', 'breaking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をこわす、折る、破る' },
+    },
+    broke: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去形'],
+        katuyou: ['break', 'breaks', 'broke', 'broken', 'breaking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をこわす、折る、破る' },
+    },
+    broken: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去分詞'],
+        katuyou: ['break', 'breaks', 'broke', 'broken', 'breaking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をこわす、折る、破る' },
+    },
+    breaking: {
+        tags: ['他動詞', '自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['break', 'breaks', 'broke', 'broken', 'breaking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をこわす、折る、破る' },
+    },
+    bring: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞', '原型'],
+        katuyou: ['bring', 'brings', 'brought', 'brought', 'bringing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '《向こうからこちらへ》 ～を持ってくる、つれてくる' },
+    },
+    brings: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞', '三単現s'],
+        katuyou: ['bring', 'brings', 'brought', 'brought', 'bringing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '《向こうからこちらへ》 ～を持ってくる、つれてくる' },
+    },
+    brought: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞', '過去形', '過去分詞'],
+        katuyou: ['bring', 'brings', 'brought', 'brought', 'bringing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '《向こうからこちらへ》 ～を持ってくる、つれてくる' },
+    },
+    bringing: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞', '現在分詞'],
+        katuyou: ['bring', 'brings', 'brought', 'brought', 'bringing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '《向こうからこちらへ》 ～を持ってくる、つれてくる' },
+    },
+    broaden: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型'],
+        katuyou: ['broaden', 'broadens', 'broadened', 'broadened', 'broadening'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を広くする、広げる' },
+    },
+    broadens: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s'],
+        katuyou: ['broaden', 'broadens', 'broadened', 'broadened', 'broadening'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を広くする、広げる' },
+    },
+    broadened: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['broaden', 'broadens', 'broadened', 'broadened', 'broadening'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を広くする、広げる' },
+    },
+    broadening: {
+        tags: ['他動詞', '自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['broaden', 'broadens', 'broadened', 'broadened', 'broadening'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を広くする、広げる' },
+    },
+    brush: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['brush', 'brushes', 'brushed', 'brushed', 'brushing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（ブラシで）みがく' },
+    },
+    brushes: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['brush', 'brushes', 'brushed', 'brushed', 'brushing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（ブラシで）みがく' },
+    },
+    brushed: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['brush', 'brushes', 'brushed', 'brushed', 'brushing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（ブラシで）みがく' },
+    },
+    brushing: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['brush', 'brushes', 'brushed', 'brushed', 'brushing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（ブラシで）みがく' },
+    },
+    build: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞', '原型'],
+        katuyou: ['build', 'builds', 'built', 'built', 'building'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を建てる、～を築き上げる' },
+    },
+    builds: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞', '三単現s'],
+        katuyou: ['build', 'builds', 'built', 'built', 'building'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を建てる、～を築き上げる' },
+    },
+    built: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞', '過去形', '過去分詞'],
+        katuyou: ['build', 'builds', 'built', 'built', 'building'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を建てる、～を築き上げる' },
+    },
+    building: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞', '現在分詞'],
+        katuyou: ['build', 'builds', 'built', 'built', 'building'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を建てる、～を築き上げる' },
+    },
+    burn: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型'],
+        katuyou: ['burn', 'burns', 'burned', 'burned', 'burning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を燃やす' },
+    },
+    burns: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s'],
+        katuyou: ['burn', 'burns', 'burned', 'burned', 'burning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を燃やす' },
+    },
+    burned: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['burn', 'burns', 'burned', 'burned', 'burning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を燃やす' },
+    },
+    burning: {
+        tags: ['他動詞', '自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['burn', 'burns', 'burned', 'burned', 'burning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を燃やす' },
+    },
+    bury: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['bury', 'buries', 'buried', 'buried', 'burying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '埋める' },
+    },
+    buries: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['bury', 'buries', 'buried', 'buried', 'burying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '埋める' },
+    },
+    buried: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['bury', 'buries', 'buried', 'buried', 'burying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '埋める' },
+    },
+    burying: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['bury', 'buries', 'buried', 'buried', 'burying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '埋める' },
+    },
+    buy: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞', '原型'],
+        katuyou: ['buy', 'buys', 'bought', 'bought', 'buying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を買う' },
+    },
+    buys: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞', '三単現s'],
+        katuyou: ['buy', 'buys', 'bought', 'bought', 'buying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を買う' },
+    },
+    bought: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞', '過去形', '過去分詞'],
+        katuyou: ['buy', 'buys', 'bought', 'bought', 'buying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を買う' },
+    },
+    buying: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞', '現在分詞'],
+        katuyou: ['buy', 'buys', 'bought', 'bought', 'buying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を買う' },
+    },
+    call: {
+        tags: ['他動詞', '動作動詞', 'SVOCがとれる動詞', '原型'],
+        katuyou: ['call', 'calls', 'called', 'called', 'calling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. （大声で）呼ぶ' },
+    },
+    calls: {
+        tags: ['他動詞', '動作動詞', 'SVOCがとれる動詞', '三単現s'],
+        katuyou: ['call', 'calls', 'called', 'called', 'calling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. （大声で）呼ぶ' },
+    },
+    called: {
+        tags: ['他動詞', '動作動詞', 'SVOCがとれる動詞', '過去形', '過去分詞'],
+        katuyou: ['call', 'calls', 'called', 'called', 'calling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. （大声で）呼ぶ' },
+    },
+    calling: {
+        tags: ['他動詞', '動作動詞', 'SVOCがとれる動詞', '現在分詞'],
+        katuyou: ['call', 'calls', 'called', 'called', 'calling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. （大声で）呼ぶ' },
+    },
+    calm: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['calm', 'calms', 'calmed', 'calmed', 'calming'],
+        hinsi: ['動詞'],
+        means: { 動詞: '静まる、落ち着く' },
+    },
+    calms: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['calm', 'calms', 'calmed', 'calmed', 'calming'],
+        hinsi: ['動詞'],
+        means: { 動詞: '静まる、落ち着く' },
+    },
+    calmed: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['calm', 'calms', 'calmed', 'calmed', 'calming'],
+        hinsi: ['動詞'],
+        means: { 動詞: '静まる、落ち着く' },
+    },
+    calming: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['calm', 'calms', 'calmed', 'calmed', 'calming'],
+        hinsi: ['動詞'],
+        means: { 動詞: '静まる、落ち着く' },
+    },
+    camp: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['camp', 'camps', 'camped', 'camped', 'camping'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'キャンプ（生活）する' },
+    },
+    camps: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['camp', 'camps', 'camped', 'camped', 'camping'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'キャンプ（生活）する' },
+    },
+    camped: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['camp', 'camps', 'camped', 'camped', 'camping'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'キャンプ（生活）する' },
+    },
+    camping: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['camp', 'camps', 'camped', 'camped', 'camping'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'キャンプ（生活）する' },
+    },
+    care: {
+        tags: ['自動詞', '状態動詞', '原型'],
+        katuyou: ['care', 'cares', 'cared', 'cared', 'caring'],
+        hinsi: ['動詞'],
+        means: { 動詞: '[care for ～の形で]　～の世話をする' },
+    },
+    cares: {
+        tags: ['自動詞', '状態動詞', '三単現s'],
+        katuyou: ['care', 'cares', 'cared', 'cared', 'caring'],
+        hinsi: ['動詞'],
+        means: { 動詞: '[care for ～の形で]　～の世話をする' },
+    },
+    cared: {
+        tags: ['自動詞', '状態動詞', '過去形', '過去分詞'],
+        katuyou: ['care', 'cares', 'cared', 'cared', 'caring'],
+        hinsi: ['動詞'],
+        means: { 動詞: '[care for ～の形で]　～の世話をする' },
+    },
+    caring: {
+        tags: ['自動詞', '状態動詞', '現在分詞'],
+        katuyou: ['care', 'cares', 'cared', 'cared', 'caring'],
+        hinsi: ['動詞'],
+        means: { 動詞: '[care for ～の形で]　～の世話をする' },
+    },
+    carry: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞', '原型'],
+        katuyou: ['carry', 'carries', 'carried', 'carried', 'carrying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '運ぶ、持って行く、持ち歩く' },
+    },
+    carries: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞', '三単現s'],
+        katuyou: ['carry', 'carries', 'carried', 'carried', 'carrying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '運ぶ、持って行く、持ち歩く' },
+    },
+    carried: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞', '過去形', '過去分詞'],
+        katuyou: ['carry', 'carries', 'carried', 'carried', 'carrying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '運ぶ、持って行く、持ち歩く' },
+    },
+    carrying: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞', '現在分詞'],
+        katuyou: ['carry', 'carries', 'carried', 'carried', 'carrying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '運ぶ、持って行く、持ち歩く' },
+    },
+    catch: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['catch', 'catches', 'caught', 'caught', 'catching'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をとらえる、つかまえる' },
+    },
+    catches: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['catch', 'catches', 'caught', 'caught', 'catching'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をとらえる、つかまえる' },
+    },
+    caught: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['catch', 'catches', 'caught', 'caught', 'catching'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をとらえる、つかまえる' },
+    },
+    catching: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['catch', 'catches', 'caught', 'caught', 'catching'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をとらえる、つかまえる' },
+    },
+    cause: {
+        tags: ['他動詞', '動作動詞', 'SVOCがとれる動詞', '原型'],
+        katuyou: ['cause', 'causes', 'caused', 'caused', 'causing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を引き起こす、～の原因となる' },
+    },
+    causes: {
+        tags: ['他動詞', '動作動詞', 'SVOCがとれる動詞', '三単現s'],
+        katuyou: ['cause', 'causes', 'caused', 'caused', 'causing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を引き起こす、～の原因となる' },
+    },
+    caused: {
+        tags: ['他動詞', '動作動詞', 'SVOCがとれる動詞', '過去形', '過去分詞'],
+        katuyou: ['cause', 'causes', 'caused', 'caused', 'causing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を引き起こす、～の原因となる' },
+    },
+    causing: {
+        tags: ['他動詞', '動作動詞', 'SVOCがとれる動詞', '現在分詞'],
+        katuyou: ['cause', 'causes', 'caused', 'caused', 'causing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を引き起こす、～の原因となる' },
+    },
+    celebrate: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型'],
+        katuyou: ['celebrate', 'celebrates', 'celebrated', 'celebrated', 'celebrating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を祝う' },
+    },
+    celebrates: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s'],
+        katuyou: ['celebrate', 'celebrates', 'celebrated', 'celebrated', 'celebrating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を祝う' },
+    },
+    celebrated: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['celebrate', 'celebrates', 'celebrated', 'celebrated', 'celebrating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を祝う' },
+    },
+    celebrating: {
+        tags: ['他動詞', '自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['celebrate', 'celebrates', 'celebrated', 'celebrated', 'celebrating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を祝う' },
+    },
+    change: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型'],
+        katuyou: ['change', 'changes', 'changed', 'changed', 'changing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 変わる〔自動詞〕' },
+    },
+    changes: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s'],
+        katuyou: ['change', 'changes', 'changed', 'changed', 'changing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 変わる〔自動詞〕' },
+    },
+    changed: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['change', 'changes', 'changed', 'changed', 'changing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 変わる〔自動詞〕' },
+    },
+    changing: {
+        tags: ['他動詞', '自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['change', 'changes', 'changed', 'changed', 'changing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 変わる〔自動詞〕' },
+    },
+    check: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['check', 'checks', 'checked', 'checked', 'checking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を調べる、チェックする、確認する、照合する' },
+    },
+    checks: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['check', 'checks', 'checked', 'checked', 'checking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を調べる、チェックする、確認する、照合する' },
+    },
+    checked: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['check', 'checks', 'checked', 'checked', 'checking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を調べる、チェックする、確認する、照合する' },
+    },
+    checking: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['check', 'checks', 'checked', 'checked', 'checking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を調べる、チェックする、確認する、照合する' },
+    },
+    cheer: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型'],
+        katuyou: ['cheer', 'cheers', 'cheered', 'cheered', 'cheering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を元気づける、声援を送る、応援する、励ます' },
+    },
+    cheers: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s'],
+        katuyou: ['cheer', 'cheers', 'cheered', 'cheered', 'cheering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を元気づける、声援を送る、応援する、励ます' },
+    },
+    cheered: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['cheer', 'cheers', 'cheered', 'cheered', 'cheering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を元気づける、声援を送る、応援する、励ます' },
+    },
+    cheering: {
+        tags: ['他動詞', '自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['cheer', 'cheers', 'cheered', 'cheered', 'cheering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を元気づける、声援を送る、応援する、励ます' },
+    },
+    choose: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['choose', 'chooses', 'chose', 'chosen', 'choosing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を選ぶ' },
+    },
+    chooses: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['choose', 'chooses', 'chose', 'chosen', 'choosing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を選ぶ' },
+    },
+    chose: {
+        tags: ['他動詞', '動作動詞', '過去形'],
+        katuyou: ['choose', 'chooses', 'chose', 'chosen', 'choosing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を選ぶ' },
+    },
+    chosen: {
+        tags: ['他動詞', '動作動詞', '過去分詞'],
+        katuyou: ['choose', 'chooses', 'chose', 'chosen', 'choosing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を選ぶ' },
+    },
+    choosing: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['choose', 'chooses', 'chose', 'chosen', 'choosing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を選ぶ' },
+    },
+    clap: {
+        tags: ['自動詞', '他動詞', '動作動詞', '原型'],
+        katuyou: ['clap', 'claps', 'clapped', 'clapped', 'clapping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（手を）たたく、拍手する' },
+    },
+    claps: {
+        tags: ['自動詞', '他動詞', '動作動詞', '三単現s'],
+        katuyou: ['clap', 'claps', 'clapped', 'clapped', 'clapping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（手を）たたく、拍手する' },
+    },
+    clapped: {
+        tags: ['自動詞', '他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['clap', 'claps', 'clapped', 'clapped', 'clapping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（手を）たたく、拍手する' },
+    },
+    clapping: {
+        tags: ['自動詞', '他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['clap', 'claps', 'clapped', 'clapped', 'clapping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（手を）たたく、拍手する' },
+    },
+    clean: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型'],
+        katuyou: ['clean', 'cleans', 'cleaned', 'cleaned', 'cleaning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をきれいにする、そうじする' },
+    },
+    cleans: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s'],
+        katuyou: ['clean', 'cleans', 'cleaned', 'cleaned', 'cleaning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をきれいにする、そうじする' },
+    },
+    cleaned: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['clean', 'cleans', 'cleaned', 'cleaned', 'cleaning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をきれいにする、そうじする' },
+    },
+    cleaning: {
+        tags: ['他動詞', '自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['clean', 'cleans', 'cleaned', 'cleaned', 'cleaning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をきれいにする、そうじする' },
+    },
+    climb: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型'],
+        katuyou: ['climb', 'climbs', 'climbed', 'climbed', 'climbing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（高いところ） に登る、よじ登る' },
+    },
+    climbs: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s'],
+        katuyou: ['climb', 'climbs', 'climbed', 'climbed', 'climbing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（高いところ） に登る、よじ登る' },
+    },
+    climbed: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['climb', 'climbs', 'climbed', 'climbed', 'climbing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（高いところ） に登る、よじ登る' },
+    },
+    climbing: {
+        tags: ['他動詞', '自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['climb', 'climbs', 'climbed', 'climbed', 'climbing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（高いところ） に登る、よじ登る' },
+    },
+    close: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型'],
+        katuyou: ['close', 'closes', 'closed', 'closed', 'closing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（窓、ドアなど） を閉める、閉じる、閉まる' },
+    },
+    closes: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s'],
+        katuyou: ['close', 'closes', 'closed', 'closed', 'closing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（窓、ドアなど） を閉める、閉じる、閉まる' },
+    },
+    closed: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['close', 'closes', 'closed', 'closed', 'closing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（窓、ドアなど） を閉める、閉じる、閉まる' },
+    },
+    closing: {
+        tags: ['他動詞', '自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['close', 'closes', 'closed', 'closed', 'closing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（窓、ドアなど） を閉める、閉じる、閉まる' },
+    },
+    collect: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['collect', 'collects', 'collected', 'collected', 'collecting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～を）集める、収集する' },
+    },
+    collects: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['collect', 'collects', 'collected', 'collected', 'collecting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～を）集める、収集する' },
+    },
+    collected: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['collect', 'collects', 'collected', 'collected', 'collecting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～を）集める、収集する' },
+    },
+    collecting: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['collect', 'collects', 'collected', 'collected', 'collecting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～を）集める、収集する' },
+    },
+    come: {
+        tags: ['自動詞', '動作動詞', '原型', '過去分詞'],
+        katuyou: ['come', 'comes', 'came', 'come', 'coming'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. 来る　〔come and ～ の形で〕 ～しに来る  〔come to school の形で〕 学校に来る  〔come back の形で〕 戻ってくる',
+        },
+    },
+    comes: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['come', 'comes', 'came', 'come', 'coming'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. 来る　〔come and ～ の形で〕 ～しに来る  〔come to school の形で〕 学校に来る  〔come back の形で〕 戻ってくる',
+        },
+    },
+    came: {
+        tags: ['自動詞', '動作動詞', '過去形'],
+        katuyou: ['come', 'comes', 'came', 'come', 'coming'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. 来る　〔come and ～ の形で〕 ～しに来る  〔come to school の形で〕 学校に来る  〔come back の形で〕 戻ってくる',
+        },
+    },
+    coming: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['come', 'comes', 'came', 'come', 'coming'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '"1. 来る　〔come and ～ の形で〕 ～しに来る  〔come to school の形で〕 学校に来る  〔come back の形で〕 戻ってくる',
+        },
+    },
+    communicate: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['communicate', 'communicates', 'communicated', 'communicated', 'communicating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(知識・情報・人の気持ちなど) を伝える、意思を伝え合う' },
+    },
+    communicates: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['communicate', 'communicates', 'communicated', 'communicated', 'communicating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(知識・情報・人の気持ちなど) を伝える、意思を伝え合う' },
+    },
+    communicated: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['communicate', 'communicates', 'communicated', 'communicated', 'communicating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(知識・情報・人の気持ちなど) を伝える、意思を伝え合う' },
+    },
+    communicating: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['communicate', 'communicates', 'communicated', 'communicated', 'communicating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(知識・情報・人の気持ちなど) を伝える、意思を伝え合う' },
+    },
+    compare: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['compare', 'compares', 'compared', 'compared', 'comparing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '比較する、比べる' },
+    },
+    compares: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['compare', 'compares', 'compared', 'compared', 'comparing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '比較する、比べる' },
+    },
+    compared: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['compare', 'compares', 'compared', 'compared', 'comparing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '比較する、比べる' },
+    },
+    comparing: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['compare', 'compares', 'compared', 'compared', 'comparing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '比較する、比べる' },
+    },
+    complain: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['complain', 'complains', 'complained', 'complained', 'complaining'],
+        hinsi: ['動詞'],
+        means: { 動詞: '不平を言う' },
+    },
+    complains: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['complain', 'complains', 'complained', 'complained', 'complaining'],
+        hinsi: ['動詞'],
+        means: { 動詞: '不平を言う' },
+    },
+    complained: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['complain', 'complains', 'complained', 'complained', 'complaining'],
+        hinsi: ['動詞'],
+        means: { 動詞: '不平を言う' },
+    },
+    complaining: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['complain', 'complains', 'complained', 'complained', 'complaining'],
+        hinsi: ['動詞'],
+        means: { 動詞: '不平を言う' },
+    },
+    connect: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型'],
+        katuyou: ['connect', 'connects', 'connected', 'connected', 'connecting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '結びつける、つながる' },
+    },
+    connects: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s'],
+        katuyou: ['connect', 'connects', 'connected', 'connected', 'connecting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '結びつける、つながる' },
+    },
+    connected: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['connect', 'connects', 'connected', 'connected', 'connecting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '結びつける、つながる' },
+    },
+    connecting: {
+        tags: ['他動詞', '自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['connect', 'connects', 'connected', 'connected', 'connecting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '結びつける、つながる' },
+    },
+    contact: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['contact', 'contacts', 'contacted', 'contacted', 'contacting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（人と）連絡をとる、接続する' },
+    },
+    contacts: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['contact', 'contacts', 'contacted', 'contacted', 'contacting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（人と）連絡をとる、接続する' },
+    },
+    contacted: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['contact', 'contacts', 'contacted', 'contacted', 'contacting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（人と）連絡をとる、接続する' },
+    },
+    contacting: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['contact', 'contacts', 'contacted', 'contacted', 'contacting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（人と）連絡をとる、接続する' },
+    },
+    continue: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型'],
+        katuyou: ['continue', 'continues', 'continued', 'continued', 'continuing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を続ける、続く' },
+    },
+    continues: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s'],
+        katuyou: ['continue', 'continues', 'continued', 'continued', 'continuing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を続ける、続く' },
+    },
+    continued: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['continue', 'continues', 'continued', 'continued', 'continuing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を続ける、続く' },
+    },
+    continuing: {
+        tags: ['他動詞', '自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['continue', 'continues', 'continued', 'continued', 'continuing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を続ける、続く' },
+    },
+    cook: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型'],
+        katuyou: ['cook', 'cooks', 'cooked', 'cooked', 'cooking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～を）料理する' },
+    },
+    cooks: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s'],
+        katuyou: ['cook', 'cooks', 'cooked', 'cooked', 'cooking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～を）料理する' },
+    },
+    cooked: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['cook', 'cooks', 'cooked', 'cooked', 'cooking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～を）料理する' },
+    },
+    cooking: {
+        tags: ['他動詞', '自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['cook', 'cooks', 'cooked', 'cooked', 'cooking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～を）料理する' },
+    },
+    cost: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型', '過去形', '過去分詞'],
+        katuyou: ['cost', 'costs', 'cost', 'cost', 'costing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（金額・費用）がかかる' },
+    },
+    costs: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s'],
+        katuyou: ['cost', 'costs', 'cost', 'cost', 'costing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（金額・費用）がかかる' },
+    },
+    costing: {
+        tags: ['他動詞', '自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['cost', 'costs', 'cost', 'cost', 'costing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（金額・費用）がかかる' },
+    },
+    count: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型'],
+        katuyou: ['count', 'counts', 'counted', 'counted', 'counting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～を）数える' },
+    },
+    counts: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s'],
+        katuyou: ['count', 'counts', 'counted', 'counted', 'counting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～を）数える' },
+    },
+    counted: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['count', 'counts', 'counted', 'counted', 'counting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～を）数える' },
+    },
+    counting: {
+        tags: ['他動詞', '自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['count', 'counts', 'counted', 'counted', 'counting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～を）数える' },
+    },
+    cover: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['cover', 'covers', 'covered', 'covered', 'covering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（物の外側）をおおう' },
+    },
+    covers: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['cover', 'covers', 'covered', 'covered', 'covering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（物の外側）をおおう' },
+    },
+    covered: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['cover', 'covers', 'covered', 'covered', 'covering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（物の外側）をおおう' },
+    },
+    covering: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['cover', 'covers', 'covered', 'covered', 'covering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（物の外側）をおおう' },
+    },
+    create: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['create', 'creates', 'created', 'created', 'creating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をつくり出す' },
+    },
+    creates: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['create', 'creates', 'created', 'created', 'creating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をつくり出す' },
+    },
+    created: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['create', 'creates', 'created', 'created', 'creating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をつくり出す' },
+    },
+    creating: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['create', 'creates', 'created', 'created', 'creating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をつくり出す' },
+    },
+    cross: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型'],
+        katuyou: ['cross', 'crosses', 'crossed', 'crossed', 'crossing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を横切る' },
+    },
+    crosses: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s'],
+        katuyou: ['cross', 'crosses', 'crossed', 'crossed', 'crossing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を横切る' },
+    },
+    crossed: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['cross', 'crosses', 'crossed', 'crossed', 'crossing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を横切る' },
+    },
+    crossing: {
+        tags: ['他動詞', '自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['cross', 'crosses', 'crossed', 'crossed', 'crossing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を横切る' },
+    },
+    cry: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['cry', 'cries', 'cried', 'cried', 'crying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. （大声で）叫ぶ、大声で言う' },
+    },
+    cries: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['cry', 'cries', 'cried', 'cried', 'crying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. （大声で）叫ぶ、大声で言う' },
+    },
+    cried: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['cry', 'cries', 'cried', 'cried', 'crying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. （大声で）叫ぶ、大声で言う' },
+    },
+    crying: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['cry', 'cries', 'cried', 'cried', 'crying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. （大声で）叫ぶ、大声で言う' },
+    },
+    cut: {
+        tags: ['他動詞', '動作動詞', '原型', '過去形', '過去分詞'],
+        katuyou: ['cut', 'cuts', 'cut', 'cut', 'cutting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を切る 　〔過去形、過去分詞形も cut〕' },
+    },
+    cuts: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['cut', 'cuts', 'cut', 'cut', 'cutting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を切る 　〔過去形、過去分詞形も cut〕' },
+    },
+    cutting: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['cut', 'cuts', 'cut', 'cut', 'cutting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を切る 　〔過去形、過去分詞形も cut〕' },
+    },
+    dance: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['dance', 'dances', 'danced', 'danced', 'dancing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '踊る、ダンスをする' },
+    },
+    dances: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['dance', 'dances', 'danced', 'danced', 'dancing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '踊る、ダンスをする' },
+    },
+    danced: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['dance', 'dances', 'danced', 'danced', 'dancing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '踊る、ダンスをする' },
+    },
+    dancing: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['dance', 'dances', 'danced', 'danced', 'dancing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '踊る、ダンスをする' },
+    },
+    decide: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['decide', 'decides', 'decided', 'decided', 'deciding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '決める　〔decide to ～〕 ～しようと決心する' },
+    },
+    decides: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['decide', 'decides', 'decided', 'decided', 'deciding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '決める　〔decide to ～〕 ～しようと決心する' },
+    },
+    decided: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['decide', 'decides', 'decided', 'decided', 'deciding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '決める　〔decide to ～〕 ～しようと決心する' },
+    },
+    deciding: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['decide', 'decides', 'decided', 'decided', 'deciding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '決める　〔decide to ～〕 ～しようと決心する' },
+    },
+    depend: {
+        tags: ['自動詞', '状態動詞', '原型'],
+        katuyou: ['depend', 'depends', 'depended', 'depended', 'depending'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～による、～しだいである' },
+    },
+    depends: {
+        tags: ['自動詞', '状態動詞', '三単現s'],
+        katuyou: ['depend', 'depends', 'depended', 'depended', 'depending'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～による、～しだいである' },
+    },
+    depended: {
+        tags: ['自動詞', '状態動詞', '過去形', '過去分詞'],
+        katuyou: ['depend', 'depends', 'depended', 'depended', 'depending'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～による、～しだいである' },
+    },
+    depending: {
+        tags: ['自動詞', '状態動詞', '現在分詞'],
+        katuyou: ['depend', 'depends', 'depended', 'depended', 'depending'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～による、～しだいである' },
+    },
+    design: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['design', 'designs', 'designed', 'designed', 'designing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をデザインする、設計する' },
+    },
+    designs: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['design', 'designs', 'designed', 'designed', 'designing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をデザインする、設計する' },
+    },
+    designed: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['design', 'designs', 'designed', 'designed', 'designing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をデザインする、設計する' },
+    },
+    designing: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['design', 'designs', 'designed', 'designed', 'designing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をデザインする、設計する' },
+    },
+    despair: {
+        tags: ['自動詞', '状態動詞', '原型'],
+        katuyou: ['despair', 'despairs', 'despaired', 'despaired', 'despairing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '絶望する' },
+    },
+    despairs: {
+        tags: ['自動詞', '状態動詞', '三単現s'],
+        katuyou: ['despair', 'despairs', 'despaired', 'despaired', 'despairing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '絶望する' },
+    },
+    despaired: {
+        tags: ['自動詞', '状態動詞', '過去形', '過去分詞'],
+        katuyou: ['despair', 'despairs', 'despaired', 'despaired', 'despairing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '絶望する' },
+    },
+    despairing: {
+        tags: ['自動詞', '状態動詞', '現在分詞'],
+        katuyou: ['despair', 'despairs', 'despaired', 'despaired', 'despairing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '絶望する' },
+    },
+    destroy: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['destroy', 'destroys', 'destroyed', 'destroyed', 'destroying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '破壊する、こわす' },
+    },
+    destroys: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['destroy', 'destroys', 'destroyed', 'destroyed', 'destroying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '破壊する、こわす' },
+    },
+    destroyed: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['destroy', 'destroys', 'destroyed', 'destroyed', 'destroying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '破壊する、こわす' },
+    },
+    destroying: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['destroy', 'destroys', 'destroyed', 'destroyed', 'destroying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '破壊する、こわす' },
+    },
+    die: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['die', 'dies', 'died', 'died', 'dying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（人や動物が） 死ぬ、亡くなる、（植物が） 枯れる' },
+    },
+    dies: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['die', 'dies', 'died', 'died', 'dying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（人や動物が） 死ぬ、亡くなる、（植物が） 枯れる' },
+    },
+    died: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['die', 'dies', 'died', 'died', 'dying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（人や動物が） 死ぬ、亡くなる、（植物が） 枯れる' },
+    },
+    dying: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['die', 'dies', 'died', 'died', 'dying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（人や動物が） 死ぬ、亡くなる、（植物が） 枯れる' },
+    },
+    direct: {
+        tags: ['他動詞', '動作動詞', 'SVOCがとれる動詞', '原型'],
+        katuyou: ['direct', 'directs', 'directed', 'directed', 'directing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(映画などを)監督する、演出する' },
+    },
+    directs: {
+        tags: ['他動詞', '動作動詞', 'SVOCがとれる動詞', '三単現s'],
+        katuyou: ['direct', 'directs', 'directed', 'directed', 'directing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(映画などを)監督する、演出する' },
+    },
+    directed: {
+        tags: ['他動詞', '動作動詞', 'SVOCがとれる動詞', '過去形', '過去分詞'],
+        katuyou: ['direct', 'directs', 'directed', 'directed', 'directing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(映画などを)監督する、演出する' },
+    },
+    directing: {
+        tags: ['他動詞', '動作動詞', 'SVOCがとれる動詞', '現在分詞'],
+        katuyou: ['direct', 'directs', 'directed', 'directed', 'directing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(映画などを)監督する、演出する' },
+    },
+    disagree: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['disagree', 'disagrees', 'disagreed', 'disagreed', 'disagreeing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '意見が合わない、賛成しない、反対する' },
+    },
+    disagrees: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['disagree', 'disagrees', 'disagreed', 'disagreed', 'disagreeing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '意見が合わない、賛成しない、反対する' },
+    },
+    disagreed: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['disagree', 'disagrees', 'disagreed', 'disagreed', 'disagreeing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '意見が合わない、賛成しない、反対する' },
+    },
+    disagreeing: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['disagree', 'disagrees', 'disagreed', 'disagreed', 'disagreeing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '意見が合わない、賛成しない、反対する' },
+    },
+    disappear: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['disappear', 'disappears', 'disappeared', 'disappeared', 'disappearing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '消える、なくなる、消滅する、存在しなくなる、見えなくなる' },
+    },
+    disappears: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['disappear', 'disappears', 'disappeared', 'disappeared', 'disappearing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '消える、なくなる、消滅する、存在しなくなる、見えなくなる' },
+    },
+    disappeared: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['disappear', 'disappears', 'disappeared', 'disappeared', 'disappearing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '消える、なくなる、消滅する、存在しなくなる、見えなくなる' },
+    },
+    disappearing: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['disappear', 'disappears', 'disappeared', 'disappeared', 'disappearing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '消える、なくなる、消滅する、存在しなくなる、見えなくなる' },
+    },
+    discover: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['discover', 'discovers', 'discovered', 'discovered', 'discovering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を見つける、～を見いだす' },
+    },
+    discovers: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['discover', 'discovers', 'discovered', 'discovered', 'discovering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を見つける、～を見いだす' },
+    },
+    discovered: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['discover', 'discovers', 'discovered', 'discovered', 'discovering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を見つける、～を見いだす' },
+    },
+    discovering: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['discover', 'discovers', 'discovered', 'discovered', 'discovering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を見つける、～を見いだす' },
+    },
+    do: {
+        tags: ['他動詞', '自動詞', '動作動詞', '使役動詞', '原型'],
+        katuyou: ['do', 'does', 'did', 'done', 'doing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をする' },
+    },
+    does: {
+        tags: ['他動詞', '自動詞', '動作動詞', '使役動詞', '三単現s'],
+        katuyou: ['do', 'does', 'did', 'done', 'doing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をする' },
+    },
+    did: {
+        tags: ['他動詞', '自動詞', '動作動詞', '使役動詞', '過去形'],
+        katuyou: ['do', 'does', 'did', 'done', 'doing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をする' },
+    },
+    done: {
+        tags: ['他動詞', '自動詞', '動作動詞', '使役動詞', '過去分詞'],
+        katuyou: ['do', 'does', 'did', 'done', 'doing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をする' },
+    },
+    doing: {
+        tags: ['他動詞', '自動詞', '動作動詞', '使役動詞', '現在分詞'],
+        katuyou: ['do', 'does', 'did', 'done', 'doing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をする' },
+    },
+    draw: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['draw', 'draws', 'drew', 'drawn', 'drawing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. （鉛筆、ペンなどで絵など）をかく、（線）を引く' },
+    },
+    draws: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['draw', 'draws', 'drew', 'drawn', 'drawing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. （鉛筆、ペンなどで絵など）をかく、（線）を引く' },
+    },
+    drew: {
+        tags: ['他動詞', '動作動詞', '過去形'],
+        katuyou: ['draw', 'draws', 'drew', 'drawn', 'drawing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. （鉛筆、ペンなどで絵など）をかく、（線）を引く' },
+    },
+    drawn: {
+        tags: ['他動詞', '動作動詞', '過去分詞'],
+        katuyou: ['draw', 'draws', 'drew', 'drawn', 'drawing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. （鉛筆、ペンなどで絵など）をかく、（線）を引く' },
+    },
+    drawing: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['draw', 'draws', 'drew', 'drawn', 'drawing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. （鉛筆、ペンなどで絵など）をかく、（線）を引く' },
+    },
+    drink: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型'],
+        katuyou: ['drink', 'drinks', 'drank', 'drunk', 'drinking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を飲む' },
+    },
+    drinks: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s'],
+        katuyou: ['drink', 'drinks', 'drank', 'drunk', 'drinking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を飲む' },
+    },
+    drank: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去形'],
+        katuyou: ['drink', 'drinks', 'drank', 'drunk', 'drinking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を飲む' },
+    },
+    drunk: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去分詞'],
+        katuyou: ['drink', 'drinks', 'drank', 'drunk', 'drinking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を飲む' },
+    },
+    drinking: {
+        tags: ['他動詞', '自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['drink', 'drinks', 'drank', 'drunk', 'drinking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を飲む' },
+    },
+    drive: {
+        tags: ['他動詞', '自動詞', '動作動詞', 'SVOCがとれる動詞', '原型'],
+        katuyou: ['drive', 'drives', 'drove', 'driven', 'driving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(自動車)を運転する' },
+    },
+    drives: {
+        tags: ['他動詞', '自動詞', '動作動詞', 'SVOCがとれる動詞', '三単現s'],
+        katuyou: ['drive', 'drives', 'drove', 'driven', 'driving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(自動車)を運転する' },
+    },
+    drove: {
+        tags: ['他動詞', '自動詞', '動作動詞', 'SVOCがとれる動詞', '過去形'],
+        katuyou: ['drive', 'drives', 'drove', 'driven', 'driving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(自動車)を運転する' },
+    },
+    driven: {
+        tags: ['他動詞', '自動詞', '動作動詞', 'SVOCがとれる動詞', '過去分詞'],
+        katuyou: ['drive', 'drives', 'drove', 'driven', 'driving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(自動車)を運転する' },
+    },
+    driving: {
+        tags: ['他動詞', '自動詞', '動作動詞', 'SVOCがとれる動詞', '現在分詞'],
+        katuyou: ['drive', 'drives', 'drove', 'driven', 'driving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(自動車)を運転する' },
+    },
+    drop: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型'],
+        katuyou: ['drop', 'drops', 'dropped', 'dropped', 'dropping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を落とす、落ちる' },
+    },
+    drops: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s'],
+        katuyou: ['drop', 'drops', 'dropped', 'dropped', 'dropping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を落とす、落ちる' },
+    },
+    dropped: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['drop', 'drops', 'dropped', 'dropped', 'dropping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を落とす、落ちる' },
+    },
+    dropping: {
+        tags: ['他動詞', '自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['drop', 'drops', 'dropped', 'dropped', 'dropping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を落とす、落ちる' },
+    },
+    eat: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['eat', 'eats', 'ate', 'eaten', 'eating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を食べる、食事をする' },
+    },
+    eats: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['eat', 'eats', 'ate', 'eaten', 'eating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を食べる、食事をする' },
+    },
+    ate: {
+        tags: ['他動詞', '動作動詞', '過去形'],
+        katuyou: ['eat', 'eats', 'ate', 'eaten', 'eating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を食べる、食事をする' },
+    },
+    eaten: {
+        tags: ['他動詞', '動作動詞', '過去分詞'],
+        katuyou: ['eat', 'eats', 'ate', 'eaten', 'eating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を食べる、食事をする' },
+    },
+    eating: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['eat', 'eats', 'ate', 'eaten', 'eating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を食べる、食事をする' },
+    },
+    encourage: {
+        tags: ['他動詞', '動作動詞', 'SVOCがとれる動詞', '原型'],
+        katuyou: ['encourage', 'encourages', 'encouraged', 'encouraged', 'encouraging'],
+        hinsi: ['動詞'],
+        means: { 動詞: '勇気づける、はげます、激励する' },
+    },
+    encourages: {
+        tags: ['他動詞', '動作動詞', 'SVOCがとれる動詞', '三単現s'],
+        katuyou: ['encourage', 'encourages', 'encouraged', 'encouraged', 'encouraging'],
+        hinsi: ['動詞'],
+        means: { 動詞: '勇気づける、はげます、激励する' },
+    },
+    encouraged: {
+        tags: ['他動詞', '動作動詞', 'SVOCがとれる動詞', '過去形', '過去分詞'],
+        katuyou: ['encourage', 'encourages', 'encouraged', 'encouraged', 'encouraging'],
+        hinsi: ['動詞'],
+        means: { 動詞: '勇気づける、はげます、激励する' },
+    },
+    encouraging: {
+        tags: ['他動詞', '動作動詞', 'SVOCがとれる動詞', '現在分詞'],
+        katuyou: ['encourage', 'encourages', 'encouraged', 'encouraged', 'encouraging'],
+        hinsi: ['動詞'],
+        means: { 動詞: '勇気づける、はげます、激励する' },
+    },
+    end: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型'],
+        katuyou: ['end', 'ends', 'ended', 'ended', 'ending'],
+        hinsi: ['動詞'],
+        means: { 動詞: '終わる、終える' },
+    },
+    ends: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s'],
+        katuyou: ['end', 'ends', 'ended', 'ended', 'ending'],
+        hinsi: ['動詞'],
+        means: { 動詞: '終わる、終える' },
+    },
+    ended: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['end', 'ends', 'ended', 'ended', 'ending'],
+        hinsi: ['動詞'],
+        means: { 動詞: '終わる、終える' },
+    },
+    ending: {
+        tags: ['他動詞', '自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['end', 'ends', 'ended', 'ended', 'ending'],
+        hinsi: ['動詞'],
+        means: { 動詞: '終わる、終える' },
+    },
+    enjoy: {
+        tags: ['他動詞', '状態動詞', '原型'],
+        katuyou: ['enjoy', 'enjoys', 'enjoyed', 'enjoyed', 'enjoying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を楽しむ、～を楽しんでいる' },
+    },
+    enjoys: {
+        tags: ['他動詞', '状態動詞', '三単現s'],
+        katuyou: ['enjoy', 'enjoys', 'enjoyed', 'enjoyed', 'enjoying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を楽しむ、～を楽しんでいる' },
+    },
+    enjoyed: {
+        tags: ['他動詞', '状態動詞', '過去形', '過去分詞'],
+        katuyou: ['enjoy', 'enjoys', 'enjoyed', 'enjoyed', 'enjoying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を楽しむ、～を楽しんでいる' },
+    },
+    enjoying: {
+        tags: ['他動詞', '状態動詞', '現在分詞'],
+        katuyou: ['enjoy', 'enjoys', 'enjoyed', 'enjoyed', 'enjoying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を楽しむ、～を楽しんでいる' },
+    },
+    enter: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['enter', 'enters', 'entered', 'entered', 'entering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（建物・部屋・場所など）に入る' },
+    },
+    enters: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['enter', 'enters', 'entered', 'entered', 'entering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（建物・部屋・場所など）に入る' },
+    },
+    entered: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['enter', 'enters', 'entered', 'entered', 'entering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（建物・部屋・場所など）に入る' },
+    },
+    entering: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['enter', 'enters', 'entered', 'entered', 'entering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（建物・部屋・場所など）に入る' },
+    },
+    excuse: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['excuse', 'excuses', 'excused', 'excused', 'excusing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '許す　〔Excuse me.の形で〕 失礼ですが、すみませんが' },
+    },
+    excuses: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['excuse', 'excuses', 'excused', 'excused', 'excusing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '許す　〔Excuse me.の形で〕 失礼ですが、すみませんが' },
+    },
+    excused: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['excuse', 'excuses', 'excused', 'excused', 'excusing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '許す　〔Excuse me.の形で〕 失礼ですが、すみませんが' },
+    },
+    excusing: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['excuse', 'excuses', 'excused', 'excused', 'excusing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '許す　〔Excuse me.の形で〕 失礼ですが、すみませんが' },
+    },
+    experience: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['experience', 'experiences', 'experienced', 'experienced', 'experiencing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '経験する' },
+    },
+    experiences: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['experience', 'experiences', 'experienced', 'experienced', 'experiencing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '経験する' },
+    },
+    experienced: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['experience', 'experiences', 'experienced', 'experienced', 'experiencing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '経験する' },
+    },
+    experiencing: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['experience', 'experiences', 'experienced', 'experienced', 'experiencing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '経験する' },
+    },
+    explain: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['explain', 'explains', 'explained', 'explained', 'explaining'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を説明する' },
+    },
+    explains: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['explain', 'explains', 'explained', 'explained', 'explaining'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を説明する' },
+    },
+    explained: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['explain', 'explains', 'explained', 'explained', 'explaining'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を説明する' },
+    },
+    explaining: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['explain', 'explains', 'explained', 'explained', 'explaining'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を説明する' },
+    },
+    express: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['express', 'expresses', 'expressed', 'expressed', 'expressing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を表現する、言い表す' },
+    },
+    expresses: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['express', 'expresses', 'expressed', 'expressed', 'expressing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を表現する、言い表す' },
+    },
+    expressed: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['express', 'expresses', 'expressed', 'expressed', 'expressing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を表現する、言い表す' },
+    },
+    expressing: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['express', 'expresses', 'expressed', 'expressed', 'expressing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を表現する、言い表す' },
+    },
+    face: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['face', 'faces', 'faced', 'faced', 'facing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（危険・困難などに)立ち向かう、直面する' },
+    },
+    faces: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['face', 'faces', 'faced', 'faced', 'facing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（危険・困難などに)立ち向かう、直面する' },
+    },
+    faced: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['face', 'faces', 'faced', 'faced', 'facing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（危険・困難などに)立ち向かう、直面する' },
+    },
+    facing: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['face', 'faces', 'faced', 'faced', 'facing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（危険・困難などに)立ち向かう、直面する' },
+    },
+    fade: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['fade', 'fades', 'faded', 'faded', 'fading'],
+        hinsi: ['動詞'],
+        means: { 動詞: '消えていく' },
+    },
+    fades: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['fade', 'fades', 'faded', 'faded', 'fading'],
+        hinsi: ['動詞'],
+        means: { 動詞: '消えていく' },
+    },
+    faded: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['fade', 'fades', 'faded', 'faded', 'fading'],
+        hinsi: ['動詞'],
+        means: { 動詞: '消えていく' },
+    },
+    fading: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['fade', 'fades', 'faded', 'faded', 'fading'],
+        hinsi: ['動詞'],
+        means: { 動詞: '消えていく' },
+    },
+    faint: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['faint', 'faints', 'fainted', 'fainted', 'fainting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '気をうしなう、気絶する' },
+    },
+    faints: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['faint', 'faints', 'fainted', 'fainted', 'fainting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '気をうしなう、気絶する' },
+    },
+    fainted: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['faint', 'faints', 'fainted', 'fainted', 'fainting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '気をうしなう、気絶する' },
+    },
+    fainting: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['faint', 'faints', 'fainted', 'fainted', 'fainting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '気をうしなう、気絶する' },
+    },
+    fall: {
+        tags: ['自動詞', '動作動詞', '連結動詞', '原型'],
+        katuyou: ['fall', 'falls', 'fell', 'fallen', 'falling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '落ちる' },
+    },
+    falls: {
+        tags: ['自動詞', '動作動詞', '連結動詞', '三単現s'],
+        katuyou: ['fall', 'falls', 'fell', 'fallen', 'falling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '落ちる' },
+    },
+    fell: {
+        tags: ['自動詞', '動作動詞', '連結動詞', '過去形'],
+        katuyou: ['fall', 'falls', 'fell', 'fallen', 'falling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '落ちる' },
+    },
+    fallen: {
+        tags: ['自動詞', '動作動詞', '連結動詞', '過去分詞'],
+        katuyou: ['fall', 'falls', 'fell', 'fallen', 'falling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '落ちる' },
+    },
+    falling: {
+        tags: ['自動詞', '動作動詞', '連結動詞', '現在分詞'],
+        katuyou: ['fall', 'falls', 'fell', 'fallen', 'falling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '落ちる' },
+    },
+    fascinate: {
+        tags: ['他動詞', '感覚動詞', '原型'],
+        katuyou: ['fascinate', 'fascinates', 'fascinated', 'fascinated', 'fascinating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '魅了する、うっとりさせる' },
+    },
+    fascinates: {
+        tags: ['他動詞', '感覚動詞', '三単現s'],
+        katuyou: ['fascinate', 'fascinates', 'fascinated', 'fascinated', 'fascinating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '魅了する、うっとりさせる' },
+    },
+    fascinated: {
+        tags: ['他動詞', '感覚動詞', '過去形', '過去分詞'],
+        katuyou: ['fascinate', 'fascinates', 'fascinated', 'fascinated', 'fascinating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '魅了する、うっとりさせる' },
+    },
+    fascinating: {
+        tags: ['他動詞', '感覚動詞', '現在分詞'],
+        katuyou: ['fascinate', 'fascinates', 'fascinated', 'fascinated', 'fascinating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '魅了する、うっとりさせる' },
+    },
+    feed: {
+        tags: ['他動詞', 'SVOOがとれる動詞', '原型'],
+        katuyou: ['feed', 'feeds', 'fed', 'fed', 'feeding'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'えさをやる、食物を与える' },
+    },
+    feeds: {
+        tags: ['他動詞', 'SVOOがとれる動詞', '三単現s'],
+        katuyou: ['feed', 'feeds', 'fed', 'fed', 'feeding'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'えさをやる、食物を与える' },
+    },
+    fed: {
+        tags: ['他動詞', 'SVOOがとれる動詞', '過去形', '過去分詞'],
+        katuyou: ['feed', 'feeds', 'fed', 'fed', 'feeding'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'えさをやる、食物を与える' },
+    },
+    feeding: {
+        tags: ['他動詞', 'SVOOがとれる動詞', '現在分詞'],
+        katuyou: ['feed', 'feeds', 'fed', 'fed', 'feeding'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'えさをやる、食物を与える' },
+    },
+    feel: {
+        tags: ['他動詞', '自動詞', '感覚動詞', '連結動詞', '原型'],
+        katuyou: ['feel', 'feels', 'felt', 'felt', 'feeling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～と感じる、～と思う' },
+    },
+    feels: {
+        tags: ['他動詞', '自動詞', '感覚動詞', '連結動詞', '三単現s'],
+        katuyou: ['feel', 'feels', 'felt', 'felt', 'feeling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～と感じる、～と思う' },
+    },
+    felt: {
+        tags: ['他動詞', '自動詞', '感覚動詞', '連結動詞', '過去形', '過去分詞'],
+        katuyou: ['feel', 'feels', 'felt', 'felt', 'feeling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～と感じる、～と思う' },
+    },
+    feeling: {
+        tags: ['他動詞', '自動詞', '感覚動詞', '連結動詞', '現在分詞'],
+        katuyou: ['feel', 'feels', 'felt', 'felt', 'feeling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～と感じる、～と思う' },
+    },
+    fight: {
+        tags: ['自動詞', '他動詞', '動作動詞', '原型'],
+        katuyou: ['fight', 'fights', 'fought', 'fought', 'fighting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '戦う' },
+    },
+    fights: {
+        tags: ['自動詞', '他動詞', '動作動詞', '三単現s'],
+        katuyou: ['fight', 'fights', 'fought', 'fought', 'fighting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '戦う' },
+    },
+    fought: {
+        tags: ['自動詞', '他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['fight', 'fights', 'fought', 'fought', 'fighting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '戦う' },
+    },
+    fighting: {
+        tags: ['自動詞', '他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['fight', 'fights', 'fought', 'fought', 'fighting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '戦う' },
+    },
+    fill: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['fill', 'fills', 'filled', 'filled', 'filling'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'いっぱいになる' },
+    },
+    fills: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['fill', 'fills', 'filled', 'filled', 'filling'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'いっぱいになる' },
+    },
+    filled: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['fill', 'fills', 'filled', 'filled', 'filling'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'いっぱいになる' },
+    },
+    filling: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['fill', 'fills', 'filled', 'filled', 'filling'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'いっぱいになる' },
+    },
+    find: {
+        tags: ['他動詞', 'SVOCがとれる動詞', '原型'],
+        katuyou: ['find', 'finds', 'found', 'found', 'finding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を見つける、見いだす' },
+    },
+    finds: {
+        tags: ['他動詞', 'SVOCがとれる動詞', '三単現s'],
+        katuyou: ['find', 'finds', 'found', 'found', 'finding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を見つける、見いだす' },
+    },
+    found: {
+        tags: ['他動詞', 'SVOCがとれる動詞', '過去形', '過去分詞'],
+        katuyou: ['find', 'finds', 'found', 'found', 'finding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を見つける、見いだす' },
+    },
+    finding: {
+        tags: ['他動詞', 'SVOCがとれる動詞', '現在分詞'],
+        katuyou: ['find', 'finds', 'found', 'found', 'finding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を見つける、見いだす' },
+    },
+    finish: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['finish', 'finishes', 'finished', 'finished', 'finishing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を終える、終わらせる、終わる' },
+    },
+    finishes: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['finish', 'finishes', 'finished', 'finished', 'finishing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を終える、終わらせる、終わる' },
+    },
+    finished: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['finish', 'finishes', 'finished', 'finished', 'finishing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を終える、終わらせる、終わる' },
+    },
+    finishing: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['finish', 'finishes', 'finished', 'finished', 'finishing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を終える、終わらせる、終わる' },
+    },
+    fish: {
+        tags: ['自動詞', '他動詞', '原型'],
+        katuyou: ['fish', 'fishes', 'fished', 'fished', 'fishing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '魚釣りをする' },
+    },
+    fishes: {
+        tags: ['自動詞', '他動詞', '三単現s'],
+        katuyou: ['fish', 'fishes', 'fished', 'fished', 'fishing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '魚釣りをする' },
+    },
+    fished: {
+        tags: ['自動詞', '他動詞', '過去形', '過去分詞'],
+        katuyou: ['fish', 'fishes', 'fished', 'fished', 'fishing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '魚釣りをする' },
+    },
+    fishing: {
+        tags: ['自動詞', '他動詞', '現在分詞'],
+        katuyou: ['fish', 'fishes', 'fished', 'fished', 'fishing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '魚釣りをする' },
+    },
+    fit: {
+        tags: ['他動詞', '自動詞', '連結動詞', '原型', '過去形', '過去分詞'],
+        katuyou: ['fit', 'fits', 'fit', 'fit', 'fitting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（サイズ、形が）合う' },
+    },
+    fits: {
+        tags: ['他動詞', '自動詞', '連結動詞', '三単現s'],
+        katuyou: ['fit', 'fits', 'fit', 'fit', 'fitting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（サイズ、形が）合う' },
+    },
+    fitting: {
+        tags: ['他動詞', '自動詞', '連結動詞', '現在分詞'],
+        katuyou: ['fit', 'fits', 'fit', 'fit', 'fitting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（サイズ、形が）合う' },
+    },
+    fly: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['fly', 'flies', 'flew', 'flown', 'flying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '飛ぶ、（飛行機で）行く' },
+    },
+    flies: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['fly', 'flies', 'flew', 'flown', 'flying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '飛ぶ、（飛行機で）行く' },
+    },
+    flew: {
+        tags: ['自動詞', '動作動詞', '過去形'],
+        katuyou: ['fly', 'flies', 'flew', 'flown', 'flying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '飛ぶ、（飛行機で）行く' },
+    },
+    flown: {
+        tags: ['自動詞', '動作動詞', '過去分詞'],
+        katuyou: ['fly', 'flies', 'flew', 'flown', 'flying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '飛ぶ、（飛行機で）行く' },
+    },
+    flying: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['fly', 'flies', 'flew', 'flown', 'flying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '飛ぶ、（飛行機で）行く' },
+    },
+    follow: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['follow', 'follows', 'followed', 'followed', 'following'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～についていく、（～と一緒に）異動する、～に従う' },
+    },
+    follows: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['follow', 'follows', 'followed', 'followed', 'following'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～についていく、（～と一緒に）異動する、～に従う' },
+    },
+    followed: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['follow', 'follows', 'followed', 'followed', 'following'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～についていく、（～と一緒に）異動する、～に従う' },
+    },
+    following: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['follow', 'follows', 'followed', 'followed', 'following'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～についていく、（～と一緒に）異動する、～に従う' },
+    },
+    force: {
+        tags: ['他動詞', '使役動詞', '原型'],
+        katuyou: ['force', 'forces', 'forced', 'forced', 'forcing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '強制する、無理に～させる[する]' },
+    },
+    forces: {
+        tags: ['他動詞', '使役動詞', '三単現s'],
+        katuyou: ['force', 'forces', 'forced', 'forced', 'forcing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '強制する、無理に～させる[する]' },
+    },
+    forced: {
+        tags: ['他動詞', '使役動詞', '過去形', '過去分詞'],
+        katuyou: ['force', 'forces', 'forced', 'forced', 'forcing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '強制する、無理に～させる[する]' },
+    },
+    forcing: {
+        tags: ['他動詞', '使役動詞', '現在分詞'],
+        katuyou: ['force', 'forces', 'forced', 'forced', 'forcing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '強制する、無理に～させる[する]' },
+    },
+    forget: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['forget', 'forgets', 'forgot', 'forgotten', 'forgetting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を忘れる、思い出せない' },
+    },
+    forgets: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['forget', 'forgets', 'forgot', 'forgotten', 'forgetting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を忘れる、思い出せない' },
+    },
+    forgot: {
+        tags: ['他動詞', '過去形'],
+        katuyou: ['forget', 'forgets', 'forgot', 'forgotten', 'forgetting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を忘れる、思い出せない' },
+    },
+    forgotten: {
+        tags: ['他動詞', '過去分詞'],
+        katuyou: ['forget', 'forgets', 'forgot', 'forgotten', 'forgetting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を忘れる、思い出せない' },
+    },
+    forgetting: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['forget', 'forgets', 'forgot', 'forgotten', 'forgetting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を忘れる、思い出せない' },
+    },
+    form: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['form', 'forms', 'formed', 'formed', 'forming'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（人がもの）を形作る' },
+    },
+    forms: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['form', 'forms', 'formed', 'formed', 'forming'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（人がもの）を形作る' },
+    },
+    formed: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['form', 'forms', 'formed', 'formed', 'forming'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（人がもの）を形作る' },
+    },
+    forming: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['form', 'forms', 'formed', 'formed', 'forming'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（人がもの）を形作る' },
+    },
+    fulfill: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['fulfill', 'fulfills', 'fulfilled', 'fulfilled', 'fulfilling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（望みなどを）実現する' },
+    },
+    fulfills: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['fulfill', 'fulfills', 'fulfilled', 'fulfilled', 'fulfilling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（望みなどを）実現する' },
+    },
+    fulfilled: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['fulfill', 'fulfills', 'fulfilled', 'fulfilled', 'fulfilling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（望みなどを）実現する' },
+    },
+    fulfilling: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['fulfill', 'fulfills', 'fulfilled', 'fulfilled', 'fulfilling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（望みなどを）実現する' },
+    },
+    gather: {
+        tags: ['他動詞', '自動詞', '原型'],
+        katuyou: ['gather', 'gathers', 'gathered', 'gathered', 'gathering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を集める、集まる' },
+    },
+    gathers: {
+        tags: ['他動詞', '自動詞', '三単現s'],
+        katuyou: ['gather', 'gathers', 'gathered', 'gathered', 'gathering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を集める、集まる' },
+    },
+    gathered: {
+        tags: ['他動詞', '自動詞', '過去形', '過去分詞'],
+        katuyou: ['gather', 'gathers', 'gathered', 'gathered', 'gathering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を集める、集まる' },
+    },
+    gathering: {
+        tags: ['他動詞', '自動詞', '現在分詞'],
+        katuyou: ['gather', 'gathers', 'gathered', 'gathered', 'gathering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を集める、集まる' },
+    },
+    get: {
+        tags: ['他動詞', 'SVOOがとれる動詞', 'SVOCがとれる動詞', '原型'],
+        katuyou: ['get', 'gets', 'got', 'gotten', 'getting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を得る、手に入れる' },
+    },
+    gets: {
+        tags: ['他動詞', 'SVOOがとれる動詞', 'SVOCがとれる動詞', '三単現s'],
+        katuyou: ['get', 'gets', 'got', 'gotten', 'getting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を得る、手に入れる' },
+    },
+    got: {
+        tags: ['他動詞', 'SVOOがとれる動詞', 'SVOCがとれる動詞', '過去形'],
+        katuyou: ['get', 'gets', 'got', 'gotten', 'getting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を得る、手に入れる' },
+    },
+    gotten: {
+        tags: ['他動詞', 'SVOOがとれる動詞', 'SVOCがとれる動詞', '過去分詞'],
+        katuyou: ['get', 'gets', 'got', 'gotten', 'getting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を得る、手に入れる' },
+    },
+    getting: {
+        tags: ['他動詞', 'SVOOがとれる動詞', 'SVOCがとれる動詞', '現在分詞'],
+        katuyou: ['get', 'gets', 'got', 'gotten', 'getting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を得る、手に入れる' },
+    },
+    give: {
+        tags: ['他動詞', 'SVOOがとれる動詞', '原型'],
+        katuyou: ['give', 'gives', 'gave', 'given', 'giving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を与える、贈る　〔give A B' },
+    },
+    gives: {
+        tags: ['他動詞', 'SVOOがとれる動詞', '三単現s'],
+        katuyou: ['give', 'gives', 'gave', 'given', 'giving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を与える、贈る　〔give A B' },
+    },
+    gave: {
+        tags: ['他動詞', 'SVOOがとれる動詞', '過去形'],
+        katuyou: ['give', 'gives', 'gave', 'given', 'giving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を与える、贈る　〔give A B' },
+    },
+    given: {
+        tags: ['他動詞', 'SVOOがとれる動詞', '過去分詞'],
+        katuyou: ['give', 'gives', 'gave', 'given', 'giving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を与える、贈る　〔give A B' },
+    },
+    giving: {
+        tags: ['他動詞', 'SVOOがとれる動詞', '現在分詞'],
+        katuyou: ['give', 'gives', 'gave', 'given', 'giving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を与える、贈る　〔give A B' },
+    },
+    go: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['go', 'goes', 'went', 'gone', 'going'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 行く　〔たとえばgo to school の形で〕学校へ行く' },
+    },
+    goes: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['go', 'goes', 'went', 'gone', 'going'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 行く　〔たとえばgo to school の形で〕学校へ行く' },
+    },
+    went: {
+        tags: ['自動詞', '動作動詞', '過去形'],
+        katuyou: ['go', 'goes', 'went', 'gone', 'going'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 行く　〔たとえばgo to school の形で〕学校へ行く' },
+    },
+    gone: {
+        tags: ['自動詞', '動作動詞', '過去分詞'],
+        katuyou: ['go', 'goes', 'went', 'gone', 'going'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 行く　〔たとえばgo to school の形で〕学校へ行く' },
+    },
+    going: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['go', 'goes', 'went', 'gone', 'going'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 行く　〔たとえばgo to school の形で〕学校へ行く' },
+    },
+    graduate: {
+        tags: ['自動詞', '原型'],
+        katuyou: ['graduate', 'graduates', 'graduated', 'graduated', 'graduating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '卒業する' },
+    },
+    graduates: {
+        tags: ['自動詞', '三単現s'],
+        katuyou: ['graduate', 'graduates', 'graduated', 'graduated', 'graduating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '卒業する' },
+    },
+    graduated: {
+        tags: ['自動詞', '過去形', '過去分詞'],
+        katuyou: ['graduate', 'graduates', 'graduated', 'graduated', 'graduating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '卒業する' },
+    },
+    graduating: {
+        tags: ['自動詞', '現在分詞'],
+        katuyou: ['graduate', 'graduates', 'graduated', 'graduated', 'graduating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '卒業する' },
+    },
+    greet: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['greet', 'greets', 'greeted', 'greeted', 'greeting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～に挨拶する、～をむかえる' },
+    },
+    greets: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['greet', 'greets', 'greeted', 'greeted', 'greeting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～に挨拶する、～をむかえる' },
+    },
+    greeted: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['greet', 'greets', 'greeted', 'greeted', 'greeting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～に挨拶する、～をむかえる' },
+    },
+    greeting: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['greet', 'greets', 'greeted', 'greeted', 'greeting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～に挨拶する、～をむかえる' },
+    },
+    grin: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['grin', 'grins', 'grinned', 'grinned', 'grinning'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'にこっと笑う、にやっと笑う' },
+    },
+    grins: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['grin', 'grins', 'grinned', 'grinned', 'grinning'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'にこっと笑う、にやっと笑う' },
+    },
+    grinned: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['grin', 'grins', 'grinned', 'grinned', 'grinning'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'にこっと笑う、にやっと笑う' },
+    },
+    grinning: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['grin', 'grins', 'grinned', 'grinned', 'grinning'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'にこっと笑う、にやっと笑う' },
+    },
+    grow: {
+        tags: ['自動詞', '連結動詞', '原型'],
+        katuyou: ['grow', 'grows', 'grew', 'grown', 'growing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 成長する、大きくなる、育つ' },
+    },
+    grows: {
+        tags: ['自動詞', '連結動詞', '三単現s'],
+        katuyou: ['grow', 'grows', 'grew', 'grown', 'growing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 成長する、大きくなる、育つ' },
+    },
+    grew: {
+        tags: ['自動詞', '連結動詞', '過去形'],
+        katuyou: ['grow', 'grows', 'grew', 'grown', 'growing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 成長する、大きくなる、育つ' },
+    },
+    grown: {
+        tags: ['自動詞', '連結動詞', '過去分詞'],
+        katuyou: ['grow', 'grows', 'grew', 'grown', 'growing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 成長する、大きくなる、育つ' },
+    },
+    growing: {
+        tags: ['自動詞', '連結動詞', '現在分詞'],
+        katuyou: ['grow', 'grows', 'grew', 'grown', 'growing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 成長する、大きくなる、育つ' },
+    },
+    guess: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['guess', 'guesses', 'guessed', 'guessed', 'guessing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をあてる、推測する' },
+    },
+    guesses: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['guess', 'guesses', 'guessed', 'guessed', 'guessing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をあてる、推測する' },
+    },
+    guessed: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['guess', 'guesses', 'guessed', 'guessed', 'guessing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をあてる、推測する' },
+    },
+    guessing: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['guess', 'guesses', 'guessed', 'guessed', 'guessing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をあてる、推測する' },
+    },
+    happen: {
+        tags: ['自動詞', '原型'],
+        katuyou: ['happen', 'happens', 'happened', 'happened', 'happening'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(事件などが) 起こる、生じる' },
+    },
+    happens: {
+        tags: ['自動詞', '三単現s'],
+        katuyou: ['happen', 'happens', 'happened', 'happened', 'happening'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(事件などが) 起こる、生じる' },
+    },
+    happened: {
+        tags: ['自動詞', '過去形', '過去分詞'],
+        katuyou: ['happen', 'happens', 'happened', 'happened', 'happening'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(事件などが) 起こる、生じる' },
+    },
+    happening: {
+        tags: ['自動詞', '現在分詞'],
+        katuyou: ['happen', 'happens', 'happened', 'happened', 'happening'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(事件などが) 起こる、生じる' },
+    },
+    hate: {
+        tags: ['他動詞', '状態動詞', '原型'],
+        katuyou: ['hate', 'hates', 'hated', 'hated', 'hating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～するのが嫌いだ、～したくはない' },
+    },
+    hates: {
+        tags: ['他動詞', '状態動詞', '三単現s'],
+        katuyou: ['hate', 'hates', 'hated', 'hated', 'hating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～するのが嫌いだ、～したくはない' },
+    },
+    hated: {
+        tags: ['他動詞', '状態動詞', '過去形', '過去分詞'],
+        katuyou: ['hate', 'hates', 'hated', 'hated', 'hating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～するのが嫌いだ、～したくはない' },
+    },
+    hating: {
+        tags: ['他動詞', '状態動詞', '現在分詞'],
+        katuyou: ['hate', 'hates', 'hated', 'hated', 'hating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～するのが嫌いだ、～したくはない' },
+    },
+    have: {
+        tags: ['他動詞', '状態動詞', 'SVOOがとれる動詞', '原型'],
+        katuyou: ['have', 'has', 'had', 'had', 'having'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～をもっている、～がある、～がいる' },
+    },
+    has: {
+        tags: ['他動詞', '状態動詞', 'SVOOがとれる動詞', '三単現s'],
+        katuyou: ['have', 'has', 'had', 'had', 'having'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～をもっている、～がある、～がいる' },
+    },
+    had: {
+        tags: ['他動詞', '状態動詞', 'SVOOがとれる動詞', '過去形', '過去分詞'],
+        katuyou: ['have', 'has', 'had', 'had', 'having'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～をもっている、～がある、～がいる' },
+    },
+    having: {
+        tags: ['他動詞', '状態動詞', 'SVOOがとれる動詞', '現在分詞'],
+        katuyou: ['have', 'has', 'had', 'had', 'having'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～をもっている、～がある、～がいる' },
+    },
+    head: {
+        tags: ['自動詞', '他動詞', '原型'],
+        katuyou: ['head', 'heads', 'headed', 'headed', 'heading'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～向かう' },
+    },
+    heads: {
+        tags: ['自動詞', '他動詞', '三単現s'],
+        katuyou: ['head', 'heads', 'headed', 'headed', 'heading'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～向かう' },
+    },
+    headed: {
+        tags: ['自動詞', '他動詞', '過去形', '過去分詞'],
+        katuyou: ['head', 'heads', 'headed', 'headed', 'heading'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～向かう' },
+    },
+    heading: {
+        tags: ['自動詞', '他動詞', '現在分詞'],
+        katuyou: ['head', 'heads', 'headed', 'headed', 'heading'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～向かう' },
+    },
+    heal: {
+        tags: ['他動詞', '自動詞', '原型'],
+        katuyou: ['heal', 'heals', 'healed', 'healed', 'healing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をいやす' },
+    },
+    heals: {
+        tags: ['他動詞', '自動詞', '三単現s'],
+        katuyou: ['heal', 'heals', 'healed', 'healed', 'healing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をいやす' },
+    },
+    healed: {
+        tags: ['他動詞', '自動詞', '過去形', '過去分詞'],
+        katuyou: ['heal', 'heals', 'healed', 'healed', 'healing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をいやす' },
+    },
+    healing: {
+        tags: ['他動詞', '自動詞', '現在分詞'],
+        katuyou: ['heal', 'heals', 'healed', 'healed', 'healing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をいやす' },
+    },
+    hear: {
+        tags: ['他動詞', '知覚動詞', '原型'],
+        katuyou: ['hear', 'hears', 'heard', 'heard', 'hearing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を聞く、～が聞こえる' },
+    },
+    hears: {
+        tags: ['他動詞', '知覚動詞', '三単現s'],
+        katuyou: ['hear', 'hears', 'heard', 'heard', 'hearing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を聞く、～が聞こえる' },
+    },
+    heard: {
+        tags: ['他動詞', '知覚動詞', '過去形', '過去分詞'],
+        katuyou: ['hear', 'hears', 'heard', 'heard', 'hearing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を聞く、～が聞こえる' },
+    },
+    hearing: {
+        tags: ['他動詞', '知覚動詞', '現在分詞'],
+        katuyou: ['hear', 'hears', 'heard', 'heard', 'hearing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を聞く、～が聞こえる' },
+    },
+    heat: {
+        tags: ['他動詞', '自動詞', '原型'],
+        katuyou: ['heat', 'heats', 'heated', 'heated', 'heating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '熱する、あたためる' },
+    },
+    heats: {
+        tags: ['他動詞', '自動詞', '三単現s'],
+        katuyou: ['heat', 'heats', 'heated', 'heated', 'heating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '熱する、あたためる' },
+    },
+    heated: {
+        tags: ['他動詞', '自動詞', '過去形', '過去分詞'],
+        katuyou: ['heat', 'heats', 'heated', 'heated', 'heating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '熱する、あたためる' },
+    },
+    heating: {
+        tags: ['他動詞', '自動詞', '現在分詞'],
+        katuyou: ['heat', 'heats', 'heated', 'heated', 'heating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '熱する、あたためる' },
+    },
+    help: {
+        tags: ['他動詞', 'SVOOがとれる動詞', '使役動詞', '原型'],
+        katuyou: ['help', 'helps', 'helped', 'helped', 'helping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を助ける、援助する' },
+    },
+    helps: {
+        tags: ['他動詞', 'SVOOがとれる動詞', '使役動詞', '三単現s'],
+        katuyou: ['help', 'helps', 'helped', 'helped', 'helping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を助ける、援助する' },
+    },
+    helped: {
+        tags: ['他動詞', 'SVOOがとれる動詞', '使役動詞', '過去形', '過去分詞'],
+        katuyou: ['help', 'helps', 'helped', 'helped', 'helping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を助ける、援助する' },
+    },
+    helping: {
+        tags: ['他動詞', 'SVOOがとれる動詞', '使役動詞', '現在分詞'],
+        katuyou: ['help', 'helps', 'helped', 'helped', 'helping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を助ける、援助する' },
+    },
+    hit: {
+        tags: ['他動詞', '原型', '過去形', '過去分詞'],
+        katuyou: ['hit', 'hits', 'hit', 'hit', 'hitting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～に当たる、ぶつかる　〔過去形、過去分詞形もhit〕' },
+    },
+    hits: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['hit', 'hits', 'hit', 'hit', 'hitting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～に当たる、ぶつかる　〔過去形、過去分詞形もhit〕' },
+    },
+    hitting: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['hit', 'hits', 'hit', 'hit', 'hitting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～に当たる、ぶつかる　〔過去形、過去分詞形もhit〕' },
+    },
+    hold: {
+        tags: ['他動詞', 'SVOOがとれる動詞', '原型'],
+        katuyou: ['hold', 'holds', 'held', 'held', 'holding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. (手などでしっかりと）持つ、にぎる、抱く、抱きかかえる' },
+    },
+    holds: {
+        tags: ['他動詞', 'SVOOがとれる動詞', '三単現s'],
+        katuyou: ['hold', 'holds', 'held', 'held', 'holding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. (手などでしっかりと）持つ、にぎる、抱く、抱きかかえる' },
+    },
+    held: {
+        tags: ['他動詞', 'SVOOがとれる動詞', '過去形', '過去分詞'],
+        katuyou: ['hold', 'holds', 'held', 'held', 'holding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. (手などでしっかりと）持つ、にぎる、抱く、抱きかかえる' },
+    },
+    holding: {
+        tags: ['他動詞', 'SVOOがとれる動詞', '現在分詞'],
+        katuyou: ['hold', 'holds', 'held', 'held', 'holding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. (手などでしっかりと）持つ、にぎる、抱く、抱きかかえる' },
+    },
+    hope: {
+        tags: ['他動詞', '状態動詞', '原型'],
+        katuyou: ['hope', 'hopes', 'hoped', 'hoped', 'hoping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を望む、～だとよいと思う' },
+    },
+    hopes: {
+        tags: ['他動詞', '状態動詞', '三単現s'],
+        katuyou: ['hope', 'hopes', 'hoped', 'hoped', 'hoping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を望む、～だとよいと思う' },
+    },
+    hoped: {
+        tags: ['他動詞', '状態動詞', '過去形', '過去分詞'],
+        katuyou: ['hope', 'hopes', 'hoped', 'hoped', 'hoping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を望む、～だとよいと思う' },
+    },
+    hoping: {
+        tags: ['他動詞', '状態動詞', '現在分詞'],
+        katuyou: ['hope', 'hopes', 'hoped', 'hoped', 'hoping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を望む、～だとよいと思う' },
+    },
+    hug: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['hug', 'hugs', 'hugged', 'hugged', 'hugging'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（愛情を込めて）抱きしめる' },
+    },
+    hugs: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['hug', 'hugs', 'hugged', 'hugged', 'hugging'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（愛情を込めて）抱きしめる' },
+    },
+    hugged: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['hug', 'hugs', 'hugged', 'hugged', 'hugging'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（愛情を込めて）抱きしめる' },
+    },
+    hugging: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['hug', 'hugs', 'hugged', 'hugged', 'hugging'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（愛情を込めて）抱きしめる' },
+    },
+    hunt: {
+        tags: ['他動詞', '自動詞', '原型'],
+        katuyou: ['hunt', 'hunts', 'hunted', 'hunted', 'hunting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '狩りをする' },
+    },
+    hunts: {
+        tags: ['他動詞', '自動詞', '三単現s'],
+        katuyou: ['hunt', 'hunts', 'hunted', 'hunted', 'hunting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '狩りをする' },
+    },
+    hunted: {
+        tags: ['他動詞', '自動詞', '過去形', '過去分詞'],
+        katuyou: ['hunt', 'hunts', 'hunted', 'hunted', 'hunting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '狩りをする' },
+    },
+    hunting: {
+        tags: ['他動詞', '自動詞', '現在分詞'],
+        katuyou: ['hunt', 'hunts', 'hunted', 'hunted', 'hunting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '狩りをする' },
+    },
+    hurry: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['hurry', 'hurries', 'hurried', 'hurried', 'hurrying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '急ぐ' },
+    },
+    hurries: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['hurry', 'hurries', 'hurried', 'hurried', 'hurrying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '急ぐ' },
+    },
+    hurried: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['hurry', 'hurries', 'hurried', 'hurried', 'hurrying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '急ぐ' },
+    },
+    hurrying: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['hurry', 'hurries', 'hurried', 'hurried', 'hurrying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '急ぐ' },
+    },
+    hurt: {
+        tags: ['他動詞', '原型', '過去形', '過去分詞'],
+        katuyou: ['hurt', 'hurts', 'hurt', 'hurt', 'hurting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 痛む 〔過去形、過去分詞形もhurt〕' },
+    },
+    hurts: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['hurt', 'hurts', 'hurt', 'hurt', 'hurting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 痛む 〔過去形、過去分詞形もhurt〕' },
+    },
+    hurting: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['hurt', 'hurts', 'hurt', 'hurt', 'hurting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 痛む 〔過去形、過去分詞形もhurt〕' },
+    },
+    imagine: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['imagine', 'imagines', 'imagined', 'imagined', 'imagining'],
+        hinsi: ['動詞'],
+        means: { 動詞: '想像する' },
+    },
+    imagines: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['imagine', 'imagines', 'imagined', 'imagined', 'imagining'],
+        hinsi: ['動詞'],
+        means: { 動詞: '想像する' },
+    },
+    imagined: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['imagine', 'imagines', 'imagined', 'imagined', 'imagining'],
+        hinsi: ['動詞'],
+        means: { 動詞: '想像する' },
+    },
+    imagining: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['imagine', 'imagines', 'imagined', 'imagined', 'imagining'],
+        hinsi: ['動詞'],
+        means: { 動詞: '想像する' },
+    },
+    impress: {
+        tags: ['他動詞', '感覚動詞', '原型'],
+        katuyou: ['impress', 'impresses', 'impressed', 'impressed', 'impressing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '感銘を与える、印象づける' },
+    },
+    impresses: {
+        tags: ['他動詞', '感覚動詞', '三単現s'],
+        katuyou: ['impress', 'impresses', 'impressed', 'impressed', 'impressing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '感銘を与える、印象づける' },
+    },
+    impressed: {
+        tags: ['他動詞', '感覚動詞', '過去形', '過去分詞'],
+        katuyou: ['impress', 'impresses', 'impressed', 'impressed', 'impressing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '感銘を与える、印象づける' },
+    },
+    impressing: {
+        tags: ['他動詞', '感覚動詞', '現在分詞'],
+        katuyou: ['impress', 'impresses', 'impressed', 'impressed', 'impressing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '感銘を与える、印象づける' },
+    },
+    improve: {
+        tags: ['他動詞', '自動詞', '原型'],
+        katuyou: ['improve', 'improves', 'improved', 'improved', 'improving'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'よくなる、改善される' },
+    },
+    improves: {
+        tags: ['他動詞', '自動詞', '三単現s'],
+        katuyou: ['improve', 'improves', 'improved', 'improved', 'improving'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'よくなる、改善される' },
+    },
+    improved: {
+        tags: ['他動詞', '自動詞', '過去形', '過去分詞'],
+        katuyou: ['improve', 'improves', 'improved', 'improved', 'improving'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'よくなる、改善される' },
+    },
+    improving: {
+        tags: ['他動詞', '自動詞', '現在分詞'],
+        katuyou: ['improve', 'improves', 'improved', 'improved', 'improving'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'よくなる、改善される' },
+    },
+    increase: {
+        tags: ['自動詞', '他動詞', '原型'],
+        katuyou: ['increase', 'increases', 'increased', 'increased', 'increasing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '増やす' },
+    },
+    increases: {
+        tags: ['自動詞', '他動詞', '三単現s'],
+        katuyou: ['increase', 'increases', 'increased', 'increased', 'increasing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '増やす' },
+    },
+    increased: {
+        tags: ['自動詞', '他動詞', '過去形', '過去分詞'],
+        katuyou: ['increase', 'increases', 'increased', 'increased', 'increasing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '増やす' },
+    },
+    increasing: {
+        tags: ['自動詞', '他動詞', '現在分詞'],
+        katuyou: ['increase', 'increases', 'increased', 'increased', 'increasing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '増やす' },
+    },
+    influence: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['influence', 'influences', 'influenced', 'influenced', 'influencing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～に影響を与える' },
+    },
+    influences: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['influence', 'influences', 'influenced', 'influenced', 'influencing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～に影響を与える' },
+    },
+    influenced: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['influence', 'influences', 'influenced', 'influenced', 'influencing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～に影響を与える' },
+    },
+    influencing: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['influence', 'influences', 'influenced', 'influenced', 'influencing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～に影響を与える' },
+    },
+    injure: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['injure', 'injures', 'injured', 'injured', 'injuring'],
+        hinsi: ['動詞'],
+        means: { 動詞: '傷つける、けがをさせる' },
+    },
+    injures: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['injure', 'injures', 'injured', 'injured', 'injuring'],
+        hinsi: ['動詞'],
+        means: { 動詞: '傷つける、けがをさせる' },
+    },
+    injured: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['injure', 'injures', 'injured', 'injured', 'injuring'],
+        hinsi: ['動詞'],
+        means: { 動詞: '傷つける、けがをさせる' },
+    },
+    injuring: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['injure', 'injures', 'injured', 'injured', 'injuring'],
+        hinsi: ['動詞'],
+        means: { 動詞: '傷つける、けがをさせる' },
+    },
+    interview: {
+        tags: ['他動詞', '自動詞', '原型'],
+        katuyou: ['interview', 'interviews', 'interviewed', 'interviewed', 'interviewing'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'インタビューする、面接する' },
+    },
+    interviews: {
+        tags: ['他動詞', '自動詞', '三単現s'],
+        katuyou: ['interview', 'interviews', 'interviewed', 'interviewed', 'interviewing'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'インタビューする、面接する' },
+    },
+    interviewed: {
+        tags: ['他動詞', '自動詞', '過去形', '過去分詞'],
+        katuyou: ['interview', 'interviews', 'interviewed', 'interviewed', 'interviewing'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'インタビューする、面接する' },
+    },
+    interviewing: {
+        tags: ['他動詞', '自動詞', '現在分詞'],
+        katuyou: ['interview', 'interviews', 'interviewed', 'interviewed', 'interviewing'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'インタビューする、面接する' },
+    },
+    introduce: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['introduce', 'introduces', 'introduced', 'introduced', 'introducing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を紹介する、～を取り入れる、導入する' },
+    },
+    introduces: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['introduce', 'introduces', 'introduced', 'introduced', 'introducing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を紹介する、～を取り入れる、導入する' },
+    },
+    introduced: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['introduce', 'introduces', 'introduced', 'introduced', 'introducing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を紹介する、～を取り入れる、導入する' },
+    },
+    introducing: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['introduce', 'introduces', 'introduced', 'introduced', 'introducing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を紹介する、～を取り入れる、導入する' },
+    },
+    invite: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['invite', 'invites', 'invited', 'invited', 'inviting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を招く' },
+    },
+    invites: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['invite', 'invites', 'invited', 'invited', 'inviting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を招く' },
+    },
+    invited: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['invite', 'invites', 'invited', 'invited', 'inviting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を招く' },
+    },
+    inviting: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['invite', 'invites', 'invited', 'invited', 'inviting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を招く' },
+    },
+    join: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['join', 'joins', 'joined', 'joined', 'joining'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～に加わる、参加する' },
+    },
+    joins: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['join', 'joins', 'joined', 'joined', 'joining'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～に加わる、参加する' },
+    },
+    joined: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['join', 'joins', 'joined', 'joined', 'joining'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～に加わる、参加する' },
+    },
+    joining: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['join', 'joins', 'joined', 'joined', 'joining'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～に加わる、参加する' },
+    },
+    judge: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['judge', 'judges', 'judged', 'judged', 'judging'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(物のよしあしを)判断する' },
+    },
+    judges: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['judge', 'judges', 'judged', 'judged', 'judging'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(物のよしあしを)判断する' },
+    },
+    judged: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['judge', 'judges', 'judged', 'judged', 'judging'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(物のよしあしを)判断する' },
+    },
+    judging: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['judge', 'judges', 'judged', 'judged', 'judging'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(物のよしあしを)判断する' },
+    },
+    jump: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['jump', 'jumps', 'jumped', 'jumped', 'jumping'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'とぶ、とび超える、はねる' },
+    },
+    jumps: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['jump', 'jumps', 'jumped', 'jumped', 'jumping'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'とぶ、とび超える、はねる' },
+    },
+    jumped: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['jump', 'jumps', 'jumped', 'jumped', 'jumping'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'とぶ、とび超える、はねる' },
+    },
+    jumping: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['jump', 'jumps', 'jumped', 'jumped', 'jumping'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'とぶ、とび超える、はねる' },
+    },
+    keep: {
+        tags: ['他動詞', 'SVOCがとれる動詞', '原型'],
+        katuyou: ['keep', 'keeps', 'kept', 'kept', 'keeping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. (法律・慣習・命令など)を守る、保存する、保つ、しまっておく' },
+    },
+    keeps: {
+        tags: ['他動詞', 'SVOCがとれる動詞', '三単現s'],
+        katuyou: ['keep', 'keeps', 'kept', 'kept', 'keeping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. (法律・慣習・命令など)を守る、保存する、保つ、しまっておく' },
+    },
+    kept: {
+        tags: ['他動詞', 'SVOCがとれる動詞', '過去形', '過去分詞'],
+        katuyou: ['keep', 'keeps', 'kept', 'kept', 'keeping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. (法律・慣習・命令など)を守る、保存する、保つ、しまっておく' },
+    },
+    keeping: {
+        tags: ['他動詞', 'SVOCがとれる動詞', '現在分詞'],
+        katuyou: ['keep', 'keeps', 'kept', 'kept', 'keeping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. (法律・慣習・命令など)を守る、保存する、保つ、しまっておく' },
+    },
+    kick: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['kick', 'kicks', 'kicked', 'kicked', 'kicking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を蹴る' },
+    },
+    kicks: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['kick', 'kicks', 'kicked', 'kicked', 'kicking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を蹴る' },
+    },
+    kicked: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['kick', 'kicks', 'kicked', 'kicked', 'kicking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を蹴る' },
+    },
+    kicking: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['kick', 'kicks', 'kicked', 'kicked', 'kicking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を蹴る' },
+    },
+    kid: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['kid', 'kids', 'kidded', 'kidded', 'kidding'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'からかう、冗談を言う' },
+    },
+    kids: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['kid', 'kids', 'kidded', 'kidded', 'kidding'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'からかう、冗談を言う' },
+    },
+    kidded: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['kid', 'kids', 'kidded', 'kidded', 'kidding'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'からかう、冗談を言う' },
+    },
+    kidding: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['kid', 'kids', 'kidded', 'kidded', 'kidding'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'からかう、冗談を言う' },
+    },
+    kill: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['kill', 'kills', 'killed', 'killed', 'killing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を殺す' },
+    },
+    kills: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['kill', 'kills', 'killed', 'killed', 'killing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を殺す' },
+    },
+    killed: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['kill', 'kills', 'killed', 'killed', 'killing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を殺す' },
+    },
+    killing: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['kill', 'kills', 'killed', 'killed', 'killing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を殺す' },
+    },
+    knit: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['knit', 'knits', 'knitted', 'knitted', 'knitting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '編む、編み物をする' },
+    },
+    knits: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['knit', 'knits', 'knitted', 'knitted', 'knitting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '編む、編み物をする' },
+    },
+    knitted: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['knit', 'knits', 'knitted', 'knitted', 'knitting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '編む、編み物をする' },
+    },
+    knitting: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['knit', 'knits', 'knitted', 'knitted', 'knitting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '編む、編み物をする' },
+    },
+    knock: {
+        tags: ['自動詞', '他動詞', '動作動詞', '原型'],
+        katuyou: ['knock', 'knocks', 'knocked', 'knocked', 'knocking'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'ノックする、たたく' },
+    },
+    knocks: {
+        tags: ['自動詞', '他動詞', '動作動詞', '三単現s'],
+        katuyou: ['knock', 'knocks', 'knocked', 'knocked', 'knocking'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'ノックする、たたく' },
+    },
+    knocked: {
+        tags: ['自動詞', '他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['knock', 'knocks', 'knocked', 'knocked', 'knocking'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'ノックする、たたく' },
+    },
+    knocking: {
+        tags: ['自動詞', '他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['knock', 'knocks', 'knocked', 'knocked', 'knocking'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'ノックする、たたく' },
+    },
+    know: {
+        tags: ['他動詞', '状態動詞', '原型'],
+        katuyou: ['know', 'knows', 'knew', 'known', 'knowing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を知っている、わかる' },
+    },
+    knows: {
+        tags: ['他動詞', '状態動詞', '三単現s'],
+        katuyou: ['know', 'knows', 'knew', 'known', 'knowing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を知っている、わかる' },
+    },
+    knew: {
+        tags: ['他動詞', '状態動詞', '過去形'],
+        katuyou: ['know', 'knows', 'knew', 'known', 'knowing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を知っている、わかる' },
+    },
+    known: {
+        tags: ['他動詞', '状態動詞', '過去分詞'],
+        katuyou: ['know', 'knows', 'knew', 'known', 'knowing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を知っている、わかる' },
+    },
+    knowing: {
+        tags: ['他動詞', '状態動詞', '現在分詞'],
+        katuyou: ['know', 'knows', 'knew', 'known', 'knowing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を知っている、わかる' },
+    },
+    land: {
+        tags: ['自動詞', '他動詞', '原型'],
+        katuyou: ['land', 'lands', 'landed', 'landed', 'landing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '着陸する' },
+    },
+    lands: {
+        tags: ['自動詞', '他動詞', '三単現s'],
+        katuyou: ['land', 'lands', 'landed', 'landed', 'landing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '着陸する' },
+    },
+    landed: {
+        tags: ['自動詞', '他動詞', '過去形', '過去分詞'],
+        katuyou: ['land', 'lands', 'landed', 'landed', 'landing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '着陸する' },
+    },
+    landing: {
+        tags: ['自動詞', '他動詞', '現在分詞'],
+        katuyou: ['land', 'lands', 'landed', 'landed', 'landing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '着陸する' },
+    },
+    last: {
+        tags: ['自動詞', '状態動詞', '原型'],
+        katuyou: ['last', 'lasts', 'lasted', 'lasted', 'lasting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '続く' },
+    },
+    lasts: {
+        tags: ['自動詞', '状態動詞', '三単現s'],
+        katuyou: ['last', 'lasts', 'lasted', 'lasted', 'lasting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '続く' },
+    },
+    lasted: {
+        tags: ['自動詞', '状態動詞', '過去形', '過去分詞'],
+        katuyou: ['last', 'lasts', 'lasted', 'lasted', 'lasting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '続く' },
+    },
+    lasting: {
+        tags: ['自動詞', '状態動詞', '現在分詞'],
+        katuyou: ['last', 'lasts', 'lasted', 'lasted', 'lasting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '続く' },
+    },
+    laugh: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['laugh', 'laughs', 'laughed', 'laughed', 'laughing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '笑う' },
+    },
+    laughs: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['laugh', 'laughs', 'laughed', 'laughed', 'laughing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '笑う' },
+    },
+    laughed: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['laugh', 'laughs', 'laughed', 'laughed', 'laughing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '笑う' },
+    },
+    laughing: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['laugh', 'laughs', 'laughed', 'laughed', 'laughing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '笑う' },
+    },
+    lay: {
+        tags: ['他動詞', '原型', '過去形', '自動詞', '状態動詞'],
+        katuyou: ['lay', 'lays', 'laid', 'laid', 'laying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(卵を)産む' },
+    },
+    lays: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['lay', 'lays', 'laid', 'laid', 'laying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(卵を)産む' },
+    },
+    laid: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['lay', 'lays', 'laid', 'laid', 'laying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(卵を)産む' },
+    },
+    laying: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['lay', 'lays', 'laid', 'laid', 'laying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(卵を)産む' },
+    },
+    lead: {
+        tags: ['他動詞', '自動詞', '原型'],
+        katuyou: ['lead', 'leads', 'led', 'led', 'leading'],
+        hinsi: ['動詞'],
+        means: { 動詞: '指揮をする、先頭に立つ' },
+    },
+    leads: {
+        tags: ['他動詞', '自動詞', '三単現s'],
+        katuyou: ['lead', 'leads', 'led', 'led', 'leading'],
+        hinsi: ['動詞'],
+        means: { 動詞: '指揮をする、先頭に立つ' },
+    },
+    led: {
+        tags: ['他動詞', '自動詞', '過去形', '過去分詞'],
+        katuyou: ['lead', 'leads', 'led', 'led', 'leading'],
+        hinsi: ['動詞'],
+        means: { 動詞: '指揮をする、先頭に立つ' },
+    },
+    leading: {
+        tags: ['他動詞', '自動詞', '現在分詞'],
+        katuyou: ['lead', 'leads', 'led', 'led', 'leading'],
+        hinsi: ['動詞'],
+        means: { 動詞: '指揮をする、先頭に立つ' },
+    },
+    learn: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['learn', 'learns', 'learned', 'learned', 'learning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を学ぶ、習う、覚える' },
+    },
+    learns: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['learn', 'learns', 'learned', 'learned', 'learning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を学ぶ、習う、覚える' },
+    },
+    learned: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['learn', 'learns', 'learned', 'learned', 'learning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を学ぶ、習う、覚える' },
+    },
+    learning: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['learn', 'learns', 'learned', 'learned', 'learning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を学ぶ、習う、覚える' },
+    },
+    leave: {
+        tags: ['他動詞', '自動詞', '原型'],
+        katuyou: ['leave', 'leaves', 'left', 'left', 'leaving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を出発する、出る、去る' },
+    },
+    leaves: {
+        tags: ['他動詞', '自動詞', '三単現s'],
+        katuyou: ['leave', 'leaves', 'left', 'left', 'leaving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を出発する、出る、去る' },
+    },
+    left: {
+        tags: ['他動詞', '自動詞', '過去形', '過去分詞'],
+        katuyou: ['leave', 'leaves', 'left', 'left', 'leaving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を出発する、出る、去る' },
+    },
+    leaving: {
+        tags: ['他動詞', '自動詞', '現在分詞'],
+        katuyou: ['leave', 'leaves', 'left', 'left', 'leaving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を出発する、出る、去る' },
+    },
+    lend: {
+        tags: ['他動詞', 'SVOOがとれる動詞', '原型'],
+        katuyou: ['lend', 'lends', 'lent', 'lent', 'lending'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を貸す' },
+    },
+    lends: {
+        tags: ['他動詞', 'SVOOがとれる動詞', '三単現s'],
+        katuyou: ['lend', 'lends', 'lent', 'lent', 'lending'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を貸す' },
+    },
+    lent: {
+        tags: ['他動詞', 'SVOOがとれる動詞', '過去形', '過去分詞'],
+        katuyou: ['lend', 'lends', 'lent', 'lent', 'lending'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を貸す' },
+    },
+    lending: {
+        tags: ['他動詞', 'SVOOがとれる動詞', '現在分詞'],
+        katuyou: ['lend', 'lends', 'lent', 'lent', 'lending'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を貸す' },
+    },
+    lie: {
+        tags: ['自動詞', '状態動詞', '原型'],
+        katuyou: ['lie', 'lies', 'lay', 'lain', 'lying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（人・動物が）横たわる、横になる' },
+    },
+    lies: {
+        tags: ['自動詞', '状態動詞', '三単現s'],
+        katuyou: ['lie', 'lies', 'lay', 'lain', 'lying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（人・動物が）横たわる、横になる' },
+    },
+    lain: {
+        tags: ['自動詞', '状態動詞', '過去分詞'],
+        katuyou: ['lie', 'lies', 'lay', 'lain', 'lying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（人・動物が）横たわる、横になる' },
+    },
+    lying: {
+        tags: ['自動詞', '状態動詞', '現在分詞'],
+        katuyou: ['lie', 'lies', 'lay', 'lain', 'lying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（人・動物が）横たわる、横になる' },
+    },
+    lift: {
+        tags: ['他動詞', '自動詞', '原型'],
+        katuyou: ['lift', 'lifts', 'lifted', 'lifted', 'lifting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '持ち上げる' },
+    },
+    lifts: {
+        tags: ['他動詞', '自動詞', '三単現s'],
+        katuyou: ['lift', 'lifts', 'lifted', 'lifted', 'lifting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '持ち上げる' },
+    },
+    lifted: {
+        tags: ['他動詞', '自動詞', '過去形', '過去分詞'],
+        katuyou: ['lift', 'lifts', 'lifted', 'lifted', 'lifting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '持ち上げる' },
+    },
+    lifting: {
+        tags: ['他動詞', '自動詞', '現在分詞'],
+        katuyou: ['lift', 'lifts', 'lifted', 'lifted', 'lifting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '持ち上げる' },
+    },
+    like: {
+        tags: ['他動詞', '状態動詞', '原型'],
+        katuyou: ['like', 'likes', 'liked', 'liked', 'liking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を好む、～が好きだ' },
+    },
+    likes: {
+        tags: ['他動詞', '状態動詞', '三単現s'],
+        katuyou: ['like', 'likes', 'liked', 'liked', 'liking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を好む、～が好きだ' },
+    },
+    liked: {
+        tags: ['他動詞', '状態動詞', '過去形', '過去分詞'],
+        katuyou: ['like', 'likes', 'liked', 'liked', 'liking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を好む、～が好きだ' },
+    },
+    liking: {
+        tags: ['他動詞', '状態動詞', '現在分詞'],
+        katuyou: ['like', 'likes', 'liked', 'liked', 'liking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を好む、～が好きだ' },
+    },
+    listen: {
+        tags: ['自動詞', '感覚動詞', '動作動詞', '原型'],
+        katuyou: ['listen', 'listens', 'listened', 'listened', 'listening'],
+        hinsi: ['動詞'],
+        means: { 動詞: '〔listen to ～ の形で〕 ～を聞く、耳を傾ける' },
+    },
+    listens: {
+        tags: ['自動詞', '感覚動詞', '動作動詞', '三単現s'],
+        katuyou: ['listen', 'listens', 'listened', 'listened', 'listening'],
+        hinsi: ['動詞'],
+        means: { 動詞: '〔listen to ～ の形で〕 ～を聞く、耳を傾ける' },
+    },
+    listened: {
+        tags: ['自動詞', '感覚動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['listen', 'listens', 'listened', 'listened', 'listening'],
+        hinsi: ['動詞'],
+        means: { 動詞: '〔listen to ～ の形で〕 ～を聞く、耳を傾ける' },
+    },
+    listening: {
+        tags: ['自動詞', '感覚動詞', '動作動詞', '現在分詞'],
+        katuyou: ['listen', 'listens', 'listened', 'listened', 'listening'],
+        hinsi: ['動詞'],
+        means: { 動詞: '〔listen to ～ の形で〕 ～を聞く、耳を傾ける' },
+    },
+    live: {
+        tags: ['自動詞', '状態動詞', '原型'],
+        katuyou: ['live', 'lives', 'lived', 'lived', 'living'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 住んでいる、暮らしている、生活する' },
+    },
+    lives: {
+        tags: ['自動詞', '状態動詞', '三単現s'],
+        katuyou: ['live', 'lives', 'lived', 'lived', 'living'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 住んでいる、暮らしている、生活する' },
+    },
+    lived: {
+        tags: ['自動詞', '状態動詞', '過去形', '過去分詞'],
+        katuyou: ['live', 'lives', 'lived', 'lived', 'living'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 住んでいる、暮らしている、生活する' },
+    },
+    living: {
+        tags: ['自動詞', '状態動詞', '現在分詞'],
+        katuyou: ['live', 'lives', 'lived', 'lived', 'living'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 住んでいる、暮らしている、生活する' },
+    },
+    locate: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['locate', 'locates', 'located', 'located', 'locating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(何かをある場所に)置く、be　located in ～で　～に位置する、、～にある' },
+    },
+    locates: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['locate', 'locates', 'located', 'located', 'locating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(何かをある場所に)置く、be　located in ～で　～に位置する、、～にある' },
+    },
+    located: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['locate', 'locates', 'located', 'located', 'locating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(何かをある場所に)置く、be　located in ～で　～に位置する、、～にある' },
+    },
+    locating: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['locate', 'locates', 'located', 'located', 'locating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(何かをある場所に)置く、be　located in ～で　～に位置する、、～にある' },
+    },
+    lock: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['lock', 'locks', 'locked', 'locked', 'locking'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'lock up~で　～を閉じ込める、監禁する' },
+    },
+    locks: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['lock', 'locks', 'locked', 'locked', 'locking'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'lock up~で　～を閉じ込める、監禁する' },
+    },
+    locked: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['lock', 'locks', 'locked', 'locked', 'locking'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'lock up~で　～を閉じ込める、監禁する' },
+    },
+    locking: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['lock', 'locks', 'locked', 'locked', 'locking'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'lock up~で　～を閉じ込める、監禁する' },
+    },
+    look: {
+        tags: ['自動詞', '感覚動詞', '連結動詞', '動作動詞', '原型'],
+        katuyou: ['look', 'looks', 'looked', 'looked', 'looking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. （意識的に）見る 〔look at ～ の形で〕～を見る' },
+    },
+    looks: {
+        tags: ['自動詞', '感覚動詞', '連結動詞', '動作動詞', '三単現s'],
+        katuyou: ['look', 'looks', 'looked', 'looked', 'looking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. （意識的に）見る 〔look at ～ の形で〕～を見る' },
+    },
+    looked: {
+        tags: ['自動詞', '感覚動詞', '連結動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['look', 'looks', 'looked', 'looked', 'looking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. （意識的に）見る 〔look at ～ の形で〕～を見る' },
+    },
+    looking: {
+        tags: ['自動詞', '感覚動詞', '連結動詞', '動作動詞', '現在分詞'],
+        katuyou: ['look', 'looks', 'looked', 'looked', 'looking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. （意識的に）見る 〔look at ～ の形で〕～を見る' },
+    },
+    lose: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['lose', 'loses', 'lost', 'lost', 'losing'],
+        hinsi: ['動詞'],
+        means: { 動詞: `"1. ～を失う　[lose one's wayの形で]道に迷う` },
+    },
+    loses: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['lose', 'loses', 'lost', 'lost', 'losing'],
+        hinsi: ['動詞'],
+        means: { 動詞: `"1. ～を失う　[lose one's wayの形で]道に迷う` },
+    },
+    lost: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['lose', 'loses', 'lost', 'lost', 'losing'],
+        hinsi: ['動詞'],
+        means: { 動詞: `"1. ～を失う　[lose one's wayの形で]道に迷う` },
+    },
+    losing: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['lose', 'loses', 'lost', 'lost', 'losing'],
+        hinsi: ['動詞'],
+        means: { 動詞: `"1. ～を失う　[lose one's wayの形で]道に迷う` },
+    },
+    love: {
+        tags: ['他動詞', '状態動詞', '原型'],
+        katuyou: ['love', 'loves', 'loved', 'loved', 'loving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を愛する、～が大好きである' },
+    },
+    loves: {
+        tags: ['他動詞', '状態動詞', '三単現s'],
+        katuyou: ['love', 'loves', 'loved', 'loved', 'loving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を愛する、～が大好きである' },
+    },
+    loved: {
+        tags: ['他動詞', '状態動詞', '過去形', '過去分詞'],
+        katuyou: ['love', 'loves', 'loved', 'loved', 'loving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を愛する、～が大好きである' },
+    },
+    loving: {
+        tags: ['他動詞', '状態動詞', '現在分詞'],
+        katuyou: ['love', 'loves', 'loved', 'loved', 'loving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を愛する、～が大好きである' },
+    },
+    make: {
+        tags: ['他動詞', '使役動詞', 'SVOCがとれる動詞', '原型'],
+        katuyou: ['make', 'makes', 'made', 'made', 'making'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を作る' },
+    },
+    makes: {
+        tags: ['他動詞', '使役動詞', 'SVOCがとれる動詞', '三単現s'],
+        katuyou: ['make', 'makes', 'made', 'made', 'making'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を作る' },
+    },
+    made: {
+        tags: ['他動詞', '使役動詞', 'SVOCがとれる動詞', '過去形', '過去分詞'],
+        katuyou: ['make', 'makes', 'made', 'made', 'making'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を作る' },
+    },
+    making: {
+        tags: ['他動詞', '使役動詞', 'SVOCがとれる動詞', '現在分詞'],
+        katuyou: ['make', 'makes', 'made', 'made', 'making'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を作る' },
+    },
+    manage: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['manage', 'manages', 'managed', 'managed', 'managing'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'どうにかやっていく、なんとかうまく～する' },
+    },
+    manages: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['manage', 'manages', 'managed', 'managed', 'managing'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'どうにかやっていく、なんとかうまく～する' },
+    },
+    managed: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['manage', 'manages', 'managed', 'managed', 'managing'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'どうにかやっていく、なんとかうまく～する' },
+    },
+    managing: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['manage', 'manages', 'managed', 'managed', 'managing'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'どうにかやっていく、なんとかうまく～する' },
+    },
+    marry: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['marry', 'marries', 'married', 'married', 'marrying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '結婚する' },
+    },
+    marries: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['marry', 'marries', 'married', 'married', 'marrying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '結婚する' },
+    },
+    married: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['marry', 'marries', 'married', 'married', 'marrying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '結婚する' },
+    },
+    marrying: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['marry', 'marries', 'married', 'married', 'marrying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '結婚する' },
+    },
+    mean: {
+        tags: ['他動詞', '状態動詞', '原型'],
+        katuyou: ['mean', 'means', 'meant', 'meant', 'meaning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を意味する、表す' },
+    },
+    means: {
+        tags: ['他動詞', '状態動詞', '三単現s'],
+        katuyou: ['mean', 'means', 'meant', 'meant', 'meaning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を意味する、表す' },
+    },
+    meant: {
+        tags: ['他動詞', '状態動詞', '過去形', '過去分詞'],
+        katuyou: ['mean', 'means', 'meant', 'meant', 'meaning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を意味する、表す' },
+    },
+    meaning: {
+        tags: ['他動詞', '状態動詞', '現在分詞'],
+        katuyou: ['mean', 'means', 'meant', 'meant', 'meaning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を意味する、表す' },
+    },
+    meet: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['meet', 'meets', 'met', 'met', 'meeting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1.～に会う、面会する' },
+    },
+    meets: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['meet', 'meets', 'met', 'met', 'meeting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1.～に会う、面会する' },
+    },
+    met: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['meet', 'meets', 'met', 'met', 'meeting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1.～に会う、面会する' },
+    },
+    meeting: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['meet', 'meets', 'met', 'met', 'meeting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1.～に会う、面会する' },
+    },
+    melt: {
+        tags: ['自動詞', '他動詞', '原型'],
+        katuyou: ['melt', 'melts', 'melted', 'melted', 'melting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '溶ける' },
+    },
+    melts: {
+        tags: ['自動詞', '他動詞', '三単現s'],
+        katuyou: ['melt', 'melts', 'melted', 'melted', 'melting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '溶ける' },
+    },
+    melted: {
+        tags: ['自動詞', '他動詞', '過去形', '過去分詞'],
+        katuyou: ['melt', 'melts', 'melted', 'melted', 'melting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '溶ける' },
+    },
+    melting: {
+        tags: ['自動詞', '他動詞', '現在分詞'],
+        katuyou: ['melt', 'melts', 'melted', 'melted', 'melting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '溶ける' },
+    },
+    miss: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['miss', 'misses', 'missed', 'missed', 'missing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1.　乗りそこなう、取り［見・聞き］そこなう､欠席する' },
+    },
+    misses: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['miss', 'misses', 'missed', 'missed', 'missing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1.　乗りそこなう、取り［見・聞き］そこなう､欠席する' },
+    },
+    missed: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['miss', 'misses', 'missed', 'missed', 'missing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1.　乗りそこなう、取り［見・聞き］そこなう､欠席する' },
+    },
+    missing: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['miss', 'misses', 'missed', 'missed', 'missing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1.　乗りそこなう、取り［見・聞き］そこなう､欠席する' },
+    },
+    mistake: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['mistake', 'mistakes', 'mistook', 'mistaken', 'mistaking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を間違える　［mistake A for Bの形で］AをBと間違える' },
+    },
+    mistakes: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['mistake', 'mistakes', 'mistook', 'mistaken', 'mistaking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を間違える　［mistake A for Bの形で］AをBと間違える' },
+    },
+    mistook: {
+        tags: ['他動詞', '過去形'],
+        katuyou: ['mistake', 'mistakes', 'mistook', 'mistaken', 'mistaking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を間違える　［mistake A for Bの形で］AをBと間違える' },
+    },
+    mistaken: {
+        tags: ['他動詞', '過去分詞'],
+        katuyou: ['mistake', 'mistakes', 'mistook', 'mistaken', 'mistaking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を間違える　［mistake A for Bの形で］AをBと間違える' },
+    },
+    mistaking: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['mistake', 'mistakes', 'mistook', 'mistaken', 'mistaking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を間違える　［mistake A for Bの形で］AをBと間違える' },
+    },
+    mix: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['mix', 'mixes', 'mixed', 'mixed', 'mixing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を混ぜる' },
+    },
+    mixes: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['mix', 'mixes', 'mixed', 'mixed', 'mixing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を混ぜる' },
+    },
+    mixed: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['mix', 'mixes', 'mixed', 'mixed', 'mixing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を混ぜる' },
+    },
+    mixing: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['mix', 'mixes', 'mixed', 'mixed', 'mixing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を混ぜる' },
+    },
+    move: {
+        tags: ['自動詞', '他動詞', '動作動詞', '原型'],
+        katuyou: ['move', 'moves', 'moved', 'moved', 'moving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 動く、移動する' },
+    },
+    moves: {
+        tags: ['自動詞', '他動詞', '動作動詞', '三単現s'],
+        katuyou: ['move', 'moves', 'moved', 'moved', 'moving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 動く、移動する' },
+    },
+    moved: {
+        tags: ['自動詞', '他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['move', 'moves', 'moved', 'moved', 'moving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 動く、移動する' },
+    },
+    moving: {
+        tags: ['自動詞', '他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['move', 'moves', 'moved', 'moved', 'moving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 動く、移動する' },
+    },
+    name: {
+        tags: ['他動詞', 'SVOCがとれる動詞', '原型'],
+        katuyou: ['name', 'names', 'named', 'named', 'naming'],
+        hinsi: ['動詞'],
+        means: { 動詞: '〔name A B の形で〕ＡをＢと名づける、呼ぶ' },
+    },
+    names: {
+        tags: ['他動詞', 'SVOCがとれる動詞', '三単現s'],
+        katuyou: ['name', 'names', 'named', 'named', 'naming'],
+        hinsi: ['動詞'],
+        means: { 動詞: '〔name A B の形で〕ＡをＢと名づける、呼ぶ' },
+    },
+    named: {
+        tags: ['他動詞', 'SVOCがとれる動詞', '過去形', '過去分詞'],
+        katuyou: ['name', 'names', 'named', 'named', 'naming'],
+        hinsi: ['動詞'],
+        means: { 動詞: '〔name A B の形で〕ＡをＢと名づける、呼ぶ' },
+    },
+    naming: {
+        tags: ['他動詞', 'SVOCがとれる動詞', '現在分詞'],
+        katuyou: ['name', 'names', 'named', 'named', 'naming'],
+        hinsi: ['動詞'],
+        means: { 動詞: '〔name A B の形で〕ＡをＢと名づける、呼ぶ' },
+    },
+    need: {
+        tags: ['他動詞', '状態動詞', '原型'],
+        katuyou: ['need', 'needs', 'needed', 'needed', 'needing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～が必要である　　[need to～の形で］～する必要がある' },
+    },
+    needs: {
+        tags: ['他動詞', '状態動詞', '三単現s'],
+        katuyou: ['need', 'needs', 'needed', 'needed', 'needing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～が必要である　　[need to～の形で］～する必要がある' },
+    },
+    needed: {
+        tags: ['他動詞', '状態動詞', '過去形', '過去分詞'],
+        katuyou: ['need', 'needs', 'needed', 'needed', 'needing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～が必要である　　[need to～の形で］～する必要がある' },
+    },
+    needing: {
+        tags: ['他動詞', '状態動詞', '現在分詞'],
+        katuyou: ['need', 'needs', 'needed', 'needed', 'needing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～が必要である　　[need to～の形で］～する必要がある' },
+    },
+    nod: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['nod', 'nods', 'nodded', 'nodded', 'nodding'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'うなずく' },
+    },
+    nods: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['nod', 'nods', 'nodded', 'nodded', 'nodding'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'うなずく' },
+    },
+    nodded: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['nod', 'nods', 'nodded', 'nodded', 'nodding'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'うなずく' },
+    },
+    nodding: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['nod', 'nods', 'nodded', 'nodded', 'nodding'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'うなずく' },
+    },
+    notice: {
+        tags: ['他動詞', '知覚動詞', '原型'],
+        katuyou: ['notice', 'notices', 'noticed', 'noticed', 'noticing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '気がつく' },
+    },
+    notices: {
+        tags: ['他動詞', '知覚動詞', '三単現s'],
+        katuyou: ['notice', 'notices', 'noticed', 'noticed', 'noticing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '気がつく' },
+    },
+    noticed: {
+        tags: ['他動詞', '知覚動詞', '過去形', '過去分詞'],
+        katuyou: ['notice', 'notices', 'noticed', 'noticed', 'noticing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '気がつく' },
+    },
+    noticing: {
+        tags: ['他動詞', '知覚動詞', '現在分詞'],
+        katuyou: ['notice', 'notices', 'noticed', 'noticed', 'noticing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '気がつく' },
+    },
+    open: {
+        tags: ['他動詞', '自動詞', '原型'],
+        katuyou: ['open', 'opens', 'opened', 'opened', 'opening'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. あける、広げる' },
+    },
+    opens: {
+        tags: ['他動詞', '自動詞', '三単現s'],
+        katuyou: ['open', 'opens', 'opened', 'opened', 'opening'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. あける、広げる' },
+    },
+    opened: {
+        tags: ['他動詞', '自動詞', '過去形', '過去分詞'],
+        katuyou: ['open', 'opens', 'opened', 'opened', 'opening'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. あける、広げる' },
+    },
+    opening: {
+        tags: ['他動詞', '自動詞', '現在分詞'],
+        katuyou: ['open', 'opens', 'opened', 'opened', 'opening'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. あける、広げる' },
+    },
+    order: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['order', 'orders', 'ordered', 'ordered', 'ordering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '命ずる、注文する' },
+    },
+    orders: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['order', 'orders', 'ordered', 'ordered', 'ordering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '命ずる、注文する' },
+    },
+    ordered: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['order', 'orders', 'ordered', 'ordered', 'ordering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '命ずる、注文する' },
+    },
+    ordering: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['order', 'orders', 'ordered', 'ordered', 'ordering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '命ずる、注文する' },
+    },
+    organize: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['organize', 'organizes', 'organized', 'organized', 'organizing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '組織する、準備する' },
+    },
+    organizes: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['organize', 'organizes', 'organized', 'organized', 'organizing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '組織する、準備する' },
+    },
+    organized: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['organize', 'organizes', 'organized', 'organized', 'organizing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '組織する、準備する' },
+    },
+    organizing: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['organize', 'organizes', 'organized', 'organized', 'organizing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '組織する、準備する' },
+    },
+    overcome: {
+        tags: ['他動詞', '原型', '過去分詞'],
+        katuyou: ['overcome', 'overcomes', 'overcame', 'overcome', 'overcoming'],
+        hinsi: ['動詞'],
+        means: { 動詞: '打ち勝つ、乗り越える' },
+    },
+    overcomes: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['overcome', 'overcomes', 'overcame', 'overcome', 'overcoming'],
+        hinsi: ['動詞'],
+        means: { 動詞: '打ち勝つ、乗り越える' },
+    },
+    overcame: {
+        tags: ['他動詞', '過去形'],
+        katuyou: ['overcome', 'overcomes', 'overcame', 'overcome', 'overcoming'],
+        hinsi: ['動詞'],
+        means: { 動詞: '打ち勝つ、乗り越える' },
+    },
+    overcoming: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['overcome', 'overcomes', 'overcame', 'overcome', 'overcoming'],
+        hinsi: ['動詞'],
+        means: { 動詞: '打ち勝つ、乗り越える' },
+    },
+    package: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['package', 'packages', 'packaged', 'packaged', 'packaging'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(製品など)(…で）包装する' },
+    },
+    packages: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['package', 'packages', 'packaged', 'packaged', 'packaging'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(製品など)(…で）包装する' },
+    },
+    packaged: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['package', 'packages', 'packaged', 'packaged', 'packaging'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(製品など)(…で）包装する' },
+    },
+    packaging: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['package', 'packages', 'packaged', 'packaged', 'packaging'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(製品など)(…で）包装する' },
+    },
+    paint: {
+        tags: ['他動詞', '自動詞', '原型'],
+        katuyou: ['paint', 'paints', 'painted', 'painted', 'painting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(絵の具で絵)をかく' },
+    },
+    paints: {
+        tags: ['他動詞', '自動詞', '三単現s'],
+        katuyou: ['paint', 'paints', 'painted', 'painted', 'painting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(絵の具で絵)をかく' },
+    },
+    painted: {
+        tags: ['他動詞', '自動詞', '過去形', '過去分詞'],
+        katuyou: ['paint', 'paints', 'painted', 'painted', 'painting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(絵の具で絵)をかく' },
+    },
+    painting: {
+        tags: ['他動詞', '自動詞', '現在分詞'],
+        katuyou: ['paint', 'paints', 'painted', 'painted', 'painting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(絵の具で絵)をかく' },
+    },
+    panic: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['panic', 'panics', 'panicked', 'panicked', 'panicking'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'うろたえる、あわてふためく' },
+    },
+    panics: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['panic', 'panics', 'panicked', 'panicked', 'panicking'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'うろたえる、あわてふためく' },
+    },
+    panicked: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['panic', 'panics', 'panicked', 'panicked', 'panicking'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'うろたえる、あわてふためく' },
+    },
+    panicking: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['panic', 'panics', 'panicked', 'panicked', 'panicking'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'うろたえる、あわてふためく' },
+    },
+    pardon: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['pardon', 'pardons', 'pardoned', 'pardoned', 'pardoning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を許す  〔Pardon me?の形で〕 すみませんが、もう一度言ってください。' },
+    },
+    pardons: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['pardon', 'pardons', 'pardoned', 'pardoned', 'pardoning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を許す  〔Pardon me?の形で〕 すみませんが、もう一度言ってください。' },
+    },
+    pardoned: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['pardon', 'pardons', 'pardoned', 'pardoned', 'pardoning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を許す  〔Pardon me?の形で〕 すみませんが、もう一度言ってください。' },
+    },
+    pardoning: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['pardon', 'pardons', 'pardoned', 'pardoned', 'pardoning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を許す  〔Pardon me?の形で〕 すみませんが、もう一度言ってください。' },
+    },
+    park: {
+        tags: ['他動詞', '自動詞', '原型'],
+        katuyou: ['park', 'parks', 'parked', 'parked', 'parking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(自動車）をとめておく､駐車する' },
+    },
+    parks: {
+        tags: ['他動詞', '自動詞', '三単現s'],
+        katuyou: ['park', 'parks', 'parked', 'parked', 'parking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(自動車）をとめておく､駐車する' },
+    },
+    parked: {
+        tags: ['他動詞', '自動詞', '過去形', '過去分詞'],
+        katuyou: ['park', 'parks', 'parked', 'parked', 'parking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(自動車）をとめておく､駐車する' },
+    },
+    parking: {
+        tags: ['他動詞', '自動詞', '現在分詞'],
+        katuyou: ['park', 'parks', 'parked', 'parked', 'parking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(自動車）をとめておく､駐車する' },
+    },
+    pass: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型'],
+        katuyou: ['pass', 'passes', 'passed', 'passed', 'passing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を手渡す､回す' },
+    },
+    passes: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s'],
+        katuyou: ['pass', 'passes', 'passed', 'passed', 'passing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を手渡す､回す' },
+    },
+    passed: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['pass', 'passes', 'passed', 'passed', 'passing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を手渡す､回す' },
+    },
+    passing: {
+        tags: ['他動詞', '自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['pass', 'passes', 'passed', 'passed', 'passing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を手渡す､回す' },
+    },
+    pay: {
+        tags: ['他動詞', '自動詞', 'SVOOがとれる動詞', '原型'],
+        katuyou: ['pay', 'pays', 'paid', 'paid', 'paying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '支払う、払う' },
+    },
+    pays: {
+        tags: ['他動詞', '自動詞', 'SVOOがとれる動詞', '三単現s'],
+        katuyou: ['pay', 'pays', 'paid', 'paid', 'paying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '支払う、払う' },
+    },
+    paid: {
+        tags: ['他動詞', '自動詞', 'SVOOがとれる動詞', '過去形', '過去分詞'],
+        katuyou: ['pay', 'pays', 'paid', 'paid', 'paying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '支払う、払う' },
+    },
+    paying: {
+        tags: ['他動詞', '自動詞', 'SVOOがとれる動詞', '現在分詞'],
+        katuyou: ['pay', 'pays', 'paid', 'paid', 'paying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '支払う、払う' },
+    },
+    perform: {
+        tags: ['他動詞', '自動詞', '原型'],
+        katuyou: ['perform', 'performs', 'performed', 'performed', 'performing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '演じる、演奏する' },
+    },
+    performs: {
+        tags: ['他動詞', '自動詞', '三単現s'],
+        katuyou: ['perform', 'performs', 'performed', 'performed', 'performing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '演じる、演奏する' },
+    },
+    performed: {
+        tags: ['他動詞', '自動詞', '過去形', '過去分詞'],
+        katuyou: ['perform', 'performs', 'performed', 'performed', 'performing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '演じる、演奏する' },
+    },
+    performing: {
+        tags: ['他動詞', '自動詞', '現在分詞'],
+        katuyou: ['perform', 'performs', 'performed', 'performed', 'performing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '演じる、演奏する' },
+    },
+    photograph: {
+        tags: ['他動詞', '自動詞', '原型'],
+        katuyou: ['photograph', 'photographs', 'photographed', 'photographed', 'photographing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '写真を撮る' },
+    },
+    photographs: {
+        tags: ['他動詞', '自動詞', '三単現s'],
+        katuyou: ['photograph', 'photographs', 'photographed', 'photographed', 'photographing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '写真を撮る' },
+    },
+    photographed: {
+        tags: ['他動詞', '自動詞', '過去形', '過去分詞'],
+        katuyou: ['photograph', 'photographs', 'photographed', 'photographed', 'photographing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '写真を撮る' },
+    },
+    photographing: {
+        tags: ['他動詞', '自動詞', '現在分詞'],
+        katuyou: ['photograph', 'photographs', 'photographed', 'photographed', 'photographing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '写真を撮る' },
+    },
+    pick: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['pick', 'picks', 'picked', 'picked', 'picking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を摘む、つみ取る' },
+    },
+    picks: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['pick', 'picks', 'picked', 'picked', 'picking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を摘む、つみ取る' },
+    },
+    picked: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['pick', 'picks', 'picked', 'picked', 'picking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を摘む、つみ取る' },
+    },
+    picking: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['pick', 'picks', 'picked', 'picked', 'picking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を摘む、つみ取る' },
+    },
+    place: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['place', 'places', 'placed', 'placed', 'placing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '置く、並べる' },
+    },
+    places: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['place', 'places', 'placed', 'placed', 'placing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '置く、並べる' },
+    },
+    placed: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['place', 'places', 'placed', 'placed', 'placing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '置く、並べる' },
+    },
+    placing: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['place', 'places', 'placed', 'placed', 'placing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '置く、並べる' },
+    },
+    plan: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['plan', 'plans', 'planned', 'planned', 'planning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を計画する' },
+    },
+    plans: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['plan', 'plans', 'planned', 'planned', 'planning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を計画する' },
+    },
+    planned: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['plan', 'plans', 'planned', 'planned', 'planning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を計画する' },
+    },
+    planning: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['plan', 'plans', 'planned', 'planned', 'planning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を計画する' },
+    },
+    plant: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['plant', 'plants', 'planted', 'planted', 'planting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を植える' },
+    },
+    plants: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['plant', 'plants', 'planted', 'planted', 'planting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を植える' },
+    },
+    planted: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['plant', 'plants', 'planted', 'planted', 'planting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を植える' },
+    },
+    planting: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['plant', 'plants', 'planted', 'planted', 'planting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を植える' },
+    },
+    play: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型'],
+        katuyou: ['play', 'plays', 'played', 'played', 'playing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. (スポーツ・ゲームなど)をする' },
+    },
+    plays: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s'],
+        katuyou: ['play', 'plays', 'played', 'played', 'playing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. (スポーツ・ゲームなど)をする' },
+    },
+    played: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['play', 'plays', 'played', 'played', 'playing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. (スポーツ・ゲームなど)をする' },
+    },
+    playing: {
+        tags: ['他動詞', '自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['play', 'plays', 'played', 'played', 'playing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. (スポーツ・ゲームなど)をする' },
+    },
+    point: {
+        tags: ['自動詞', '他動詞', '原型'],
+        katuyou: ['point', 'points', 'pointed', 'pointed', 'pointing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '指さす､さし示す' },
+    },
+    points: {
+        tags: ['自動詞', '他動詞', '三単現s'],
+        katuyou: ['point', 'points', 'pointed', 'pointed', 'pointing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '指さす､さし示す' },
+    },
+    pointed: {
+        tags: ['自動詞', '他動詞', '過去形', '過去分詞'],
+        katuyou: ['point', 'points', 'pointed', 'pointed', 'pointing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '指さす､さし示す' },
+    },
+    pointing: {
+        tags: ['自動詞', '他動詞', '現在分詞'],
+        katuyou: ['point', 'points', 'pointed', 'pointed', 'pointing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '指さす､さし示す' },
+    },
+    post: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['post', 'posts', 'posted', 'posted', 'posting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（ウエブ上に写真などを）投稿する、投函する' },
+    },
+    posts: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['post', 'posts', 'posted', 'posted', 'posting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（ウエブ上に写真などを）投稿する、投函する' },
+    },
+    posted: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['post', 'posts', 'posted', 'posted', 'posting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（ウエブ上に写真などを）投稿する、投函する' },
+    },
+    posting: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['post', 'posts', 'posted', 'posted', 'posting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（ウエブ上に写真などを）投稿する、投函する' },
+    },
+    practice: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['practice', 'practices', 'practiced', 'practiced', 'practicing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～を）練習する' },
+    },
+    practices: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['practice', 'practices', 'practiced', 'practiced', 'practicing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～を）練習する' },
+    },
+    practiced: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['practice', 'practices', 'practiced', 'practiced', 'practicing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～を）練習する' },
+    },
+    practicing: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['practice', 'practices', 'practiced', 'practiced', 'practicing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～を）練習する' },
+    },
+    pray: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['pray', 'prays', 'prayed', 'prayed', 'praying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '祈る' },
+    },
+    prays: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['pray', 'prays', 'prayed', 'prayed', 'praying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '祈る' },
+    },
+    prayed: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['pray', 'prays', 'prayed', 'prayed', 'praying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '祈る' },
+    },
+    praying: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['pray', 'prays', 'prayed', 'prayed', 'praying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '祈る' },
+    },
+    prefer: {
+        tags: ['他動詞', '状態動詞', '原型'],
+        katuyou: ['prefer', 'prefers', 'preferred', 'preferred', 'preferring'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～のほうを）好む、選ぶ' },
+    },
+    prefers: {
+        tags: ['他動詞', '状態動詞', '三単現s'],
+        katuyou: ['prefer', 'prefers', 'preferred', 'preferred', 'preferring'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～のほうを）好む、選ぶ' },
+    },
+    preferred: {
+        tags: ['他動詞', '状態動詞', '過去形', '過去分詞'],
+        katuyou: ['prefer', 'prefers', 'preferred', 'preferred', 'preferring'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～のほうを）好む、選ぶ' },
+    },
+    preferring: {
+        tags: ['他動詞', '状態動詞', '現在分詞'],
+        katuyou: ['prefer', 'prefers', 'preferred', 'preferred', 'preferring'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～のほうを）好む、選ぶ' },
+    },
+    prepare: {
+        tags: ['他動詞', '自動詞', '原型'],
+        katuyou: ['prepare', 'prepares', 'prepared', 'prepared', 'preparing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '準備をする' },
+    },
+    prepares: {
+        tags: ['他動詞', '自動詞', '三単現s'],
+        katuyou: ['prepare', 'prepares', 'prepared', 'prepared', 'preparing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '準備をする' },
+    },
+    prepared: {
+        tags: ['他動詞', '自動詞', '過去形', '過去分詞'],
+        katuyou: ['prepare', 'prepares', 'prepared', 'prepared', 'preparing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '準備をする' },
+    },
+    preparing: {
+        tags: ['他動詞', '自動詞', '現在分詞'],
+        katuyou: ['prepare', 'prepares', 'prepared', 'prepared', 'preparing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '準備をする' },
+    },
+    produce: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['produce', 'produces', 'produced', 'produced', 'producing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を産み出す、生産する' },
+    },
+    produces: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['produce', 'produces', 'produced', 'produced', 'producing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を産み出す、生産する' },
+    },
+    produced: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['produce', 'produces', 'produced', 'produced', 'producing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を産み出す、生産する' },
+    },
+    producing: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['produce', 'produces', 'produced', 'produced', 'producing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を産み出す、生産する' },
+    },
+    protect: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['protect', 'protects', 'protected', 'protected', 'protecting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を守る、保護する' },
+    },
+    protects: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['protect', 'protects', 'protected', 'protected', 'protecting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を守る、保護する' },
+    },
+    protected: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['protect', 'protects', 'protected', 'protected', 'protecting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を守る、保護する' },
+    },
+    protecting: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['protect', 'protects', 'protected', 'protected', 'protecting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を守る、保護する' },
+    },
+    pull: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型'],
+        katuyou: ['pull', 'pulls', 'pulled', 'pulled', 'pulling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を引く' },
+    },
+    pulls: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s'],
+        katuyou: ['pull', 'pulls', 'pulled', 'pulled', 'pulling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を引く' },
+    },
+    pulled: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['pull', 'pulls', 'pulled', 'pulled', 'pulling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を引く' },
+    },
+    pulling: {
+        tags: ['他動詞', '自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['pull', 'pulls', 'pulled', 'pulled', 'pulling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を引く' },
+    },
+    punish: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['punish', 'punishes', 'punished', 'punished', 'punishing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '罰する' },
+    },
+    punishes: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['punish', 'punishes', 'punished', 'punished', 'punishing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '罰する' },
+    },
+    punished: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['punish', 'punishes', 'punished', 'punished', 'punishing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '罰する' },
+    },
+    punishing: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['punish', 'punishes', 'punished', 'punished', 'punishing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '罰する' },
+    },
+    push: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型'],
+        katuyou: ['push', 'pushes', 'pushed', 'pushed', 'pushing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を押す' },
+    },
+    pushes: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s'],
+        katuyou: ['push', 'pushes', 'pushed', 'pushed', 'pushing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を押す' },
+    },
+    pushed: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['push', 'pushes', 'pushed', 'pushed', 'pushing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を押す' },
+    },
+    pushing: {
+        tags: ['他動詞', '自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['push', 'pushes', 'pushed', 'pushed', 'pushing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を押す' },
+    },
+    put: {
+        tags: ['他動詞', 'SVOCがとれる動詞', '原型', '過去形', '過去分詞'],
+        katuyou: ['put', 'puts', 'put', 'put', 'putting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を置く、つける　 　〔過去形、過去分詞形も put〕' },
+    },
+    puts: {
+        tags: ['他動詞', 'SVOCがとれる動詞', '三単現s'],
+        katuyou: ['put', 'puts', 'put', 'put', 'putting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を置く、つける　 　〔過去形、過去分詞形も put〕' },
+    },
+    putting: {
+        tags: ['他動詞', 'SVOCがとれる動詞', '現在分詞'],
+        katuyou: ['put', 'puts', 'put', 'put', 'putting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を置く、つける　 　〔過去形、過去分詞形も put〕' },
+    },
+    quit: {
+        tags: ['他動詞', '原型', '過去形', '過去分詞'],
+        katuyou: ['quit', 'quits', 'quit', 'quit', 'quitting'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'やめる、去る　〔過去形、過去分詞形もquit〕' },
+    },
+    quits: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['quit', 'quits', 'quit', 'quit', 'quitting'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'やめる、去る　〔過去形、過去分詞形もquit〕' },
+    },
+    quitting: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['quit', 'quits', 'quit', 'quit', 'quitting'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'やめる、去る　〔過去形、過去分詞形もquit〕' },
+    },
+    quiz: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['quiz', 'quizzes', 'quizzed', 'quizzed', 'quizzing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～に簡単なテストを行う、～に質問する' },
+    },
+    quizzes: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['quiz', 'quizzes', 'quizzed', 'quizzed', 'quizzing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～に簡単なテストを行う、～に質問する' },
+    },
+    quizzed: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['quiz', 'quizzes', 'quizzed', 'quizzed', 'quizzing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～に簡単なテストを行う、～に質問する' },
+    },
+    quizzing: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['quiz', 'quizzes', 'quizzed', 'quizzed', 'quizzing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～に簡単なテストを行う、～に質問する' },
+    },
+    rain: {
+        tags: ['自動詞', '原型'],
+        katuyou: ['rain', 'rains', 'rained', 'rained', 'raining'],
+        hinsi: ['動詞'],
+        means: { 動詞: '雨が降る 　〔it が主語になる〕' },
+    },
+    rains: {
+        tags: ['自動詞', '三単現s'],
+        katuyou: ['rain', 'rains', 'rained', 'rained', 'raining'],
+        hinsi: ['動詞'],
+        means: { 動詞: '雨が降る 　〔it が主語になる〕' },
+    },
+    rained: {
+        tags: ['自動詞', '過去形', '過去分詞'],
+        katuyou: ['rain', 'rains', 'rained', 'rained', 'raining'],
+        hinsi: ['動詞'],
+        means: { 動詞: '雨が降る 　〔it が主語になる〕' },
+    },
+    raining: {
+        tags: ['自動詞', '現在分詞'],
+        katuyou: ['rain', 'rains', 'rained', 'rained', 'raining'],
+        hinsi: ['動詞'],
+        means: { 動詞: '雨が降る 　〔it が主語になる〕' },
+    },
+    raise: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['raise', 'raises', 'raised', 'raised', 'raising'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1.～を上げる　 　〔たとえば Raise your hand. の形で〕 手を上げなさい' },
+    },
+    raises: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['raise', 'raises', 'raised', 'raised', 'raising'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1.～を上げる　 　〔たとえば Raise your hand. の形で〕 手を上げなさい' },
+    },
+    raised: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['raise', 'raises', 'raised', 'raised', 'raising'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1.～を上げる　 　〔たとえば Raise your hand. の形で〕 手を上げなさい' },
+    },
+    raising: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['raise', 'raises', 'raised', 'raised', 'raising'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1.～を上げる　 　〔たとえば Raise your hand. の形で〕 手を上げなさい' },
+    },
+    read: {
+        tags: ['他動詞', '原型', '過去形', '過去分詞'],
+        katuyou: ['read', 'reads', 'read', 'read', 'reading'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を読む   〔発音は ［ri:d］〕' },
+    },
+    reads: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['read', 'reads', 'read', 'read', 'reading'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を読む   〔発音は ［ri:d］〕' },
+    },
+    reading: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['read', 'reads', 'read', 'read', 'reading'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を読む   〔発音は ［ri:d］〕' },
+    },
+    realize: {
+        tags: ['他動詞', '状態動詞', '原型'],
+        katuyou: ['realize', 'realizes', 'realized', 'realized', 'realizing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '実感する、理解する' },
+    },
+    realizes: {
+        tags: ['他動詞', '状態動詞', '三単現s'],
+        katuyou: ['realize', 'realizes', 'realized', 'realized', 'realizing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '実感する、理解する' },
+    },
+    realized: {
+        tags: ['他動詞', '状態動詞', '過去形', '過去分詞'],
+        katuyou: ['realize', 'realizes', 'realized', 'realized', 'realizing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '実感する、理解する' },
+    },
+    realizing: {
+        tags: ['他動詞', '状態動詞', '現在分詞'],
+        katuyou: ['realize', 'realizes', 'realized', 'realized', 'realizing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '実感する、理解する' },
+    },
+    receive: {
+        tags: ['他動詞', 'SVOOがとれる動詞', '原型'],
+        katuyou: ['receive', 'receives', 'received', 'received', 'receiving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を受け取る、もらう' },
+    },
+    receives: {
+        tags: ['他動詞', 'SVOOがとれる動詞', '三単現s'],
+        katuyou: ['receive', 'receives', 'received', 'received', 'receiving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を受け取る、もらう' },
+    },
+    received: {
+        tags: ['他動詞', 'SVOOがとれる動詞', '過去形', '過去分詞'],
+        katuyou: ['receive', 'receives', 'received', 'received', 'receiving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を受け取る、もらう' },
+    },
+    receiving: {
+        tags: ['他動詞', 'SVOOがとれる動詞', '現在分詞'],
+        katuyou: ['receive', 'receives', 'received', 'received', 'receiving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を受け取る、もらう' },
+    },
+    recognize: {
+        tags: ['他動詞', '状態動詞', '原型'],
+        katuyou: ['recognize', 'recognizes', 'recognized', 'recognized', 'recognizing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を認める、評価する' },
+    },
+    recognizes: {
+        tags: ['他動詞', '状態動詞', '三単現s'],
+        katuyou: ['recognize', 'recognizes', 'recognized', 'recognized', 'recognizing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を認める、評価する' },
+    },
+    recognized: {
+        tags: ['他動詞', '状態動詞', '過去形', '過去分詞'],
+        katuyou: ['recognize', 'recognizes', 'recognized', 'recognized', 'recognizing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を認める、評価する' },
+    },
+    recognizing: {
+        tags: ['他動詞', '状態動詞', '現在分詞'],
+        katuyou: ['recognize', 'recognizes', 'recognized', 'recognized', 'recognizing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を認める、評価する' },
+    },
+    recycle: {
+        tags: ['他動詞', '自動詞', '原型'],
+        katuyou: ['recycle', 'recycles', 'recycled', 'recycled', 'recycling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を再生する、～を再利用する' },
+    },
+    recycles: {
+        tags: ['他動詞', '自動詞', '三単現s'],
+        katuyou: ['recycle', 'recycles', 'recycled', 'recycled', 'recycling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を再生する、～を再利用する' },
+    },
+    recycled: {
+        tags: ['他動詞', '自動詞', '過去形', '過去分詞'],
+        katuyou: ['recycle', 'recycles', 'recycled', 'recycled', 'recycling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を再生する、～を再利用する' },
+    },
+    recycling: {
+        tags: ['他動詞', '自動詞', '現在分詞'],
+        katuyou: ['recycle', 'recycles', 'recycled', 'recycled', 'recycling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を再生する、～を再利用する' },
+    },
+    reduce: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['reduce', 'reduces', 'reduced', 'reduced', 'reducing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を小さくする、下げる、減らす' },
+    },
+    reduces: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['reduce', 'reduces', 'reduced', 'reduced', 'reducing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を小さくする、下げる、減らす' },
+    },
+    reduced: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['reduce', 'reduces', 'reduced', 'reduced', 'reducing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を小さくする、下げる、減らす' },
+    },
+    reducing: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['reduce', 'reduces', 'reduced', 'reduced', 'reducing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を小さくする、下げる、減らす' },
+    },
+    relax: {
+        tags: ['自動詞', '状態動詞', '原型'],
+        katuyou: ['relax', 'relaxes', 'relaxed', 'relaxed', 'relaxing'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'くつろぐ、リラックスする' },
+    },
+    relaxes: {
+        tags: ['自動詞', '状態動詞', '三単現s'],
+        katuyou: ['relax', 'relaxes', 'relaxed', 'relaxed', 'relaxing'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'くつろぐ、リラックスする' },
+    },
+    relaxed: {
+        tags: ['自動詞', '状態動詞', '過去形', '過去分詞'],
+        katuyou: ['relax', 'relaxes', 'relaxed', 'relaxed', 'relaxing'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'くつろぐ、リラックスする' },
+    },
+    relaxing: {
+        tags: ['自動詞', '状態動詞', '現在分詞'],
+        katuyou: ['relax', 'relaxes', 'relaxed', 'relaxed', 'relaxing'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'くつろぐ、リラックスする' },
+    },
+    release: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['release', 'releases', 'released', 'released', 'releasing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '〔ＣＤ／レコードを〕発売する' },
+    },
+    releases: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['release', 'releases', 'released', 'released', 'releasing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '〔ＣＤ／レコードを〕発売する' },
+    },
+    released: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['release', 'releases', 'released', 'released', 'releasing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '〔ＣＤ／レコードを〕発売する' },
+    },
+    releasing: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['release', 'releases', 'released', 'released', 'releasing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '〔ＣＤ／レコードを〕発売する' },
+    },
+    remain: {
+        tags: ['自動詞', '状態動詞', '連結動詞', '原型'],
+        katuyou: ['remain', 'remains', 'remained', 'remained', 'remaining'],
+        hinsi: ['動詞'],
+        means: { 動詞: '残る、とどまる' },
+    },
+    remains: {
+        tags: ['自動詞', '状態動詞', '連結動詞', '三単現s'],
+        katuyou: ['remain', 'remains', 'remained', 'remained', 'remaining'],
+        hinsi: ['動詞'],
+        means: { 動詞: '残る、とどまる' },
+    },
+    remained: {
+        tags: ['自動詞', '状態動詞', '連結動詞', '過去形', '過去分詞'],
+        katuyou: ['remain', 'remains', 'remained', 'remained', 'remaining'],
+        hinsi: ['動詞'],
+        means: { 動詞: '残る、とどまる' },
+    },
+    remaining: {
+        tags: ['自動詞', '状態動詞', '連結動詞', '現在分詞'],
+        katuyou: ['remain', 'remains', 'remained', 'remained', 'remaining'],
+        hinsi: ['動詞'],
+        means: { 動詞: '残る、とどまる' },
+    },
+    remember: {
+        tags: ['他動詞', '状態動詞', '原型'],
+        katuyou: ['remember', 'remembers', 'remembered', 'remembered', 'remembering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を思い出す、覚えている、忘れない' },
+    },
+    remembers: {
+        tags: ['他動詞', '状態動詞', '三単現s'],
+        katuyou: ['remember', 'remembers', 'remembered', 'remembered', 'remembering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を思い出す、覚えている、忘れない' },
+    },
+    remembered: {
+        tags: ['他動詞', '状態動詞', '過去形', '過去分詞'],
+        katuyou: ['remember', 'remembers', 'remembered', 'remembered', 'remembering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を思い出す、覚えている、忘れない' },
+    },
+    remembering: {
+        tags: ['他動詞', '状態動詞', '現在分詞'],
+        katuyou: ['remember', 'remembers', 'remembered', 'remembered', 'remembering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を思い出す、覚えている、忘れない' },
+    },
+    remind: {
+        tags: ['他動詞', 'SVOOがとれる動詞', 'SVOCがとれる動詞', '原型'],
+        katuyou: ['remind', 'reminds', 'reminded', 'reminded', 'reminding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '思い出させる、気づかせる' },
+    },
+    reminds: {
+        tags: ['他動詞', 'SVOOがとれる動詞', 'SVOCがとれる動詞', '三単現s'],
+        katuyou: ['remind', 'reminds', 'reminded', 'reminded', 'reminding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '思い出させる、気づかせる' },
+    },
+    reminded: {
+        tags: ['他動詞', 'SVOOがとれる動詞', 'SVOCがとれる動詞', '過去形', '過去分詞'],
+        katuyou: ['remind', 'reminds', 'reminded', 'reminded', 'reminding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '思い出させる、気づかせる' },
+    },
+    reminding: {
+        tags: ['他動詞', 'SVOOがとれる動詞', 'SVOCがとれる動詞', '現在分詞'],
+        katuyou: ['remind', 'reminds', 'reminded', 'reminded', 'reminding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '思い出させる、気づかせる' },
+    },
+    remove: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['remove', 'removes', 'removed', 'removed', 'removing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を取りはずす、～を取り除く、～をかたづける' },
+    },
+    removes: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['remove', 'removes', 'removed', 'removed', 'removing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を取りはずす、～を取り除く、～をかたづける' },
+    },
+    removed: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['remove', 'removes', 'removed', 'removed', 'removing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を取りはずす、～を取り除く、～をかたづける' },
+    },
+    removing: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['remove', 'removes', 'removed', 'removed', 'removing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を取りはずす、～を取り除く、～をかたづける' },
+    },
+    reply: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['reply', 'replies', 'replied', 'replied', 'replying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～と答える' },
+    },
+    replies: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['reply', 'replies', 'replied', 'replied', 'replying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～と答える' },
+    },
+    replied: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['reply', 'replies', 'replied', 'replied', 'replying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～と答える' },
+    },
+    replying: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['reply', 'replies', 'replied', 'replied', 'replying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～と答える' },
+    },
+    report: {
+        tags: ['他動詞', '自動詞', '原型'],
+        katuyou: ['report', 'reports', 'reported', 'reported', 'reporting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を報告する、報道する' },
+    },
+    reports: {
+        tags: ['他動詞', '自動詞', '三単現s'],
+        katuyou: ['report', 'reports', 'reported', 'reported', 'reporting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を報告する、報道する' },
+    },
+    reported: {
+        tags: ['他動詞', '自動詞', '過去形', '過去分詞'],
+        katuyou: ['report', 'reports', 'reported', 'reported', 'reporting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を報告する、報道する' },
+    },
+    reporting: {
+        tags: ['他動詞', '自動詞', '現在分詞'],
+        katuyou: ['report', 'reports', 'reported', 'reported', 'reporting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を報告する、報道する' },
+    },
+    rescue: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['rescue', 'rescues', 'rescued', 'rescued', 'rescuing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '救い出す、救助する' },
+    },
+    rescues: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['rescue', 'rescues', 'rescued', 'rescued', 'rescuing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '救い出す、救助する' },
+    },
+    rescued: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['rescue', 'rescues', 'rescued', 'rescued', 'rescuing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '救い出す、救助する' },
+    },
+    rescuing: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['rescue', 'rescues', 'rescued', 'rescued', 'rescuing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '救い出す、救助する' },
+    },
+    respect: {
+        tags: ['他動詞', '状態動詞', '原型'],
+        katuyou: ['respect', 'respects', 'respected', 'respected', 'respecting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を尊敬する、～を大切にする' },
+    },
+    respects: {
+        tags: ['他動詞', '状態動詞', '三単現s'],
+        katuyou: ['respect', 'respects', 'respected', 'respected', 'respecting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を尊敬する、～を大切にする' },
+    },
+    respected: {
+        tags: ['他動詞', '状態動詞', '過去形', '過去分詞'],
+        katuyou: ['respect', 'respects', 'respected', 'respected', 'respecting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を尊敬する、～を大切にする' },
+    },
+    respecting: {
+        tags: ['他動詞', '状態動詞', '現在分詞'],
+        katuyou: ['respect', 'respects', 'respected', 'respected', 'respecting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を尊敬する、～を大切にする' },
+    },
+    respond: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['respond', 'responds', 'responded', 'responded', 'responding'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'こたえる' },
+    },
+    responds: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['respond', 'responds', 'responded', 'responded', 'responding'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'こたえる' },
+    },
+    responded: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['respond', 'responds', 'responded', 'responded', 'responding'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'こたえる' },
+    },
+    responding: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['respond', 'responds', 'responded', 'responded', 'responding'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'こたえる' },
+    },
+    rest: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['rest', 'rests', 'rested', 'rested', 'resting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '休む、横になる' },
+    },
+    rests: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['rest', 'rests', 'rested', 'rested', 'resting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '休む、横になる' },
+    },
+    rested: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['rest', 'rests', 'rested', 'rested', 'resting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '休む、横になる' },
+    },
+    resting: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['rest', 'rests', 'rested', 'rested', 'resting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '休む、横になる' },
+    },
+    return: {
+        tags: ['自動詞', '他動詞', '原型'],
+        katuyou: ['return', 'returns', 'returned', 'returned', 'returning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '帰る、戻る' },
+    },
+    returns: {
+        tags: ['自動詞', '他動詞', '三単現s'],
+        katuyou: ['return', 'returns', 'returned', 'returned', 'returning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '帰る、戻る' },
+    },
+    returned: {
+        tags: ['自動詞', '他動詞', '過去形', '過去分詞'],
+        katuyou: ['return', 'returns', 'returned', 'returned', 'returning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '帰る、戻る' },
+    },
+    returning: {
+        tags: ['自動詞', '他動詞', '現在分詞'],
+        katuyou: ['return', 'returns', 'returned', 'returned', 'returning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '帰る、戻る' },
+    },
+    reuse: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['reuse', 'reuses', 'reused', 'reused', 'reusing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を再利用する' },
+    },
+    reuses: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['reuse', 'reuses', 'reused', 'reused', 'reusing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を再利用する' },
+    },
+    reused: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['reuse', 'reuses', 'reused', 'reused', 'reusing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を再利用する' },
+    },
+    reusing: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['reuse', 'reuses', 'reused', 'reused', 'reusing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を再利用する' },
+    },
+    ride: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型'],
+        katuyou: ['ride', 'rides', 'rode', 'ridden', 'riding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～に乗る' },
+    },
+    rides: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s'],
+        katuyou: ['ride', 'rides', 'rode', 'ridden', 'riding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～に乗る' },
+    },
+    rode: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去形'],
+        katuyou: ['ride', 'rides', 'rode', 'ridden', 'riding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～に乗る' },
+    },
+    ridden: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去分詞'],
+        katuyou: ['ride', 'rides', 'rode', 'ridden', 'riding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～に乗る' },
+    },
+    riding: {
+        tags: ['他動詞', '自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['ride', 'rides', 'rode', 'ridden', 'riding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～に乗る' },
+    },
+    ring: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型'],
+        katuyou: ['ring', 'rings', 'rang', 'rung', 'ringing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '鳴る　〔過去形rang〕' },
+    },
+    rings: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s'],
+        katuyou: ['ring', 'rings', 'rang', 'rung', 'ringing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '鳴る　〔過去形rang〕' },
+    },
+    rang: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去形'],
+        katuyou: ['ring', 'rings', 'rang', 'rung', 'ringing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '鳴る　〔過去形rang〕' },
+    },
+    rung: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去分詞'],
+        katuyou: ['ring', 'rings', 'rang', 'rung', 'ringing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '鳴る　〔過去形rang〕' },
+    },
+    ringing: {
+        tags: ['他動詞', '自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['ring', 'rings', 'rang', 'rung', 'ringing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '鳴る　〔過去形rang〕' },
+    },
+    rise: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['rise', 'rises', 'rose', 'risen', 'rising'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（太陽などが）のぼる' },
+    },
+    rises: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['rise', 'rises', 'rose', 'risen', 'rising'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（太陽などが）のぼる' },
+    },
+    rose: {
+        tags: ['自動詞', '動作動詞', '過去形'],
+        katuyou: ['rise', 'rises', 'rose', 'risen', 'rising'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（太陽などが）のぼる' },
+    },
+    risen: {
+        tags: ['自動詞', '動作動詞', '過去分詞'],
+        katuyou: ['rise', 'rises', 'rose', 'risen', 'rising'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（太陽などが）のぼる' },
+    },
+    rising: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['rise', 'rises', 'rose', 'risen', 'rising'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（太陽などが）のぼる' },
+    },
+    roll: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型'],
+        katuyou: ['roll', 'rolls', 'rolled', 'rolled', 'rolling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '巻く、くるむ' },
+    },
+    rolls: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s'],
+        katuyou: ['roll', 'rolls', 'rolled', 'rolled', 'rolling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '巻く、くるむ' },
+    },
+    rolled: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['roll', 'rolls', 'rolled', 'rolled', 'rolling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '巻く、くるむ' },
+    },
+    rolling: {
+        tags: ['他動詞', '自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['roll', 'rolls', 'rolled', 'rolled', 'rolling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '巻く、くるむ' },
+    },
+    rule: {
+        tags: ['自動詞', '状態動詞', '原型'],
+        katuyou: ['rule', 'rules', 'ruled', 'ruled', 'ruling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を支配する、統治する' },
+    },
+    rules: {
+        tags: ['自動詞', '状態動詞', '三単現s'],
+        katuyou: ['rule', 'rules', 'ruled', 'ruled', 'ruling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を支配する、統治する' },
+    },
+    ruled: {
+        tags: ['自動詞', '状態動詞', '過去形', '過去分詞'],
+        katuyou: ['rule', 'rules', 'ruled', 'ruled', 'ruling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を支配する、統治する' },
+    },
+    ruling: {
+        tags: ['自動詞', '状態動詞', '現在分詞'],
+        katuyou: ['rule', 'rules', 'ruled', 'ruled', 'ruling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を支配する、統治する' },
+    },
+    run: {
+        tags: ['自動詞', '他動詞', '動作動詞', '原型', '過去分詞'],
+        katuyou: ['run', 'runs', 'ran', 'run', 'running'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. (人・動物が）走る　　〔過去分詞もrun〕' },
+    },
+    runs: {
+        tags: ['自動詞', '他動詞', '動作動詞', '三単現s'],
+        katuyou: ['run', 'runs', 'ran', 'run', 'running'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. (人・動物が）走る　　〔過去分詞もrun〕' },
+    },
+    ran: {
+        tags: ['自動詞', '他動詞', '動作動詞', '過去形'],
+        katuyou: ['run', 'runs', 'ran', 'run', 'running'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. (人・動物が）走る　　〔過去分詞もrun〕' },
+    },
+    running: {
+        tags: ['自動詞', '他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['run', 'runs', 'ran', 'run', 'running'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. (人・動物が）走る　　〔過去分詞もrun〕' },
+    },
+    save: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['save', 'saves', 'saved', 'saved', 'saving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. (危害・困難などから人・物・自然など)を救う' },
+    },
+    saves: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['save', 'saves', 'saved', 'saved', 'saving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. (危害・困難などから人・物・自然など)を救う' },
+    },
+    saved: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['save', 'saves', 'saved', 'saved', 'saving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. (危害・困難などから人・物・自然など)を救う' },
+    },
+    saving: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['save', 'saves', 'saved', 'saved', 'saving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. (危害・困難などから人・物・自然など)を救う' },
+    },
+    say: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['say', 'says', 'said', 'said', 'saying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 〔人が主語で〕～と言う' },
+    },
+    says: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['say', 'says', 'said', 'said', 'saying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 〔人が主語で〕～と言う' },
+    },
+    said: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['say', 'says', 'said', 'said', 'saying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 〔人が主語で〕～と言う' },
+    },
+    saying: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['say', 'says', 'said', 'said', 'saying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 〔人が主語で〕～と言う' },
+    },
+    scare: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['scare', 'scares', 'scared', 'scared', 'scaring'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を怖がらせる' },
+    },
+    scares: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['scare', 'scares', 'scared', 'scared', 'scaring'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を怖がらせる' },
+    },
+    scared: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['scare', 'scares', 'scared', 'scared', 'scaring'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を怖がらせる' },
+    },
+    scaring: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['scare', 'scares', 'scared', 'scared', 'scaring'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を怖がらせる' },
+    },
+    score: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型'],
+        katuyou: ['score', 'scores', 'scored', 'scored', 'scoring'],
+        hinsi: ['動詞'],
+        means: { 動詞: '〔競技、試験などで～点を〕取る、得点する' },
+    },
+    scores: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s'],
+        katuyou: ['score', 'scores', 'scored', 'scored', 'scoring'],
+        hinsi: ['動詞'],
+        means: { 動詞: '〔競技、試験などで～点を〕取る、得点する' },
+    },
+    scored: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['score', 'scores', 'scored', 'scored', 'scoring'],
+        hinsi: ['動詞'],
+        means: { 動詞: '〔競技、試験などで～点を〕取る、得点する' },
+    },
+    scoring: {
+        tags: ['他動詞', '自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['score', 'scores', 'scored', 'scored', 'scoring'],
+        hinsi: ['動詞'],
+        means: { 動詞: '〔競技、試験などで～点を〕取る、得点する' },
+    },
+    search: {
+        tags: ['他動詞', '自動詞', '原型'],
+        katuyou: ['search', 'searches', 'searched', 'searched', 'searching'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'さがす 〔search for ～で〕～をさがす' },
+    },
+    searches: {
+        tags: ['他動詞', '自動詞', '三単現s'],
+        katuyou: ['search', 'searches', 'searched', 'searched', 'searching'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'さがす 〔search for ～で〕～をさがす' },
+    },
+    searched: {
+        tags: ['他動詞', '自動詞', '過去形', '過去分詞'],
+        katuyou: ['search', 'searches', 'searched', 'searched', 'searching'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'さがす 〔search for ～で〕～をさがす' },
+    },
+    searching: {
+        tags: ['他動詞', '自動詞', '現在分詞'],
+        katuyou: ['search', 'searches', 'searched', 'searched', 'searching'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'さがす 〔search for ～で〕～をさがす' },
+    },
+    see: {
+        tags: ['他動詞', '知覚動詞', '原型'],
+        katuyou: ['see', 'sees', 'saw', 'seen', 'seeing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を見る、見物する' },
+    },
+    sees: {
+        tags: ['他動詞', '知覚動詞', '三単現s'],
+        katuyou: ['see', 'sees', 'saw', 'seen', 'seeing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を見る、見物する' },
+    },
+    saw: {
+        tags: ['他動詞', '知覚動詞', '過去形'],
+        katuyou: ['see', 'sees', 'saw', 'seen', 'seeing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を見る、見物する' },
+    },
+    seen: {
+        tags: ['他動詞', '知覚動詞', '過去分詞'],
+        katuyou: ['see', 'sees', 'saw', 'seen', 'seeing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を見る、見物する' },
+    },
+    seeing: {
+        tags: ['他動詞', '知覚動詞', '現在分詞'],
+        katuyou: ['see', 'sees', 'saw', 'seen', 'seeing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を見る、見物する' },
+    },
+    seem: {
+        tags: ['連結動詞', '状態動詞', '原型'],
+        katuyou: ['seem', 'seems', 'seemed', 'seemed', 'seeming'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～のように見える、～のように思われる' },
+    },
+    seems: {
+        tags: ['連結動詞', '状態動詞', '三単現s'],
+        katuyou: ['seem', 'seems', 'seemed', 'seemed', 'seeming'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～のように見える、～のように思われる' },
+    },
+    seemed: {
+        tags: ['連結動詞', '状態動詞', '過去形', '過去分詞'],
+        katuyou: ['seem', 'seems', 'seemed', 'seemed', 'seeming'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～のように見える、～のように思われる' },
+    },
+    seeming: {
+        tags: ['連結動詞', '状態動詞', '現在分詞'],
+        katuyou: ['seem', 'seems', 'seemed', 'seemed', 'seeming'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～のように見える、～のように思われる' },
+    },
+    select: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['select', 'selects', 'selected', 'selected', 'selecting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '選ぶ、選択する' },
+    },
+    selects: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['select', 'selects', 'selected', 'selected', 'selecting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '選ぶ、選択する' },
+    },
+    selected: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['select', 'selects', 'selected', 'selected', 'selecting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '選ぶ、選択する' },
+    },
+    selecting: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['select', 'selects', 'selected', 'selected', 'selecting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '選ぶ、選択する' },
+    },
+    sell: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['sell', 'sells', 'sold', 'sold', 'selling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を売る' },
+    },
+    sells: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['sell', 'sells', 'sold', 'sold', 'selling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を売る' },
+    },
+    sold: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['sell', 'sells', 'sold', 'sold', 'selling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を売る' },
+    },
+    selling: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['sell', 'sells', 'sold', 'sold', 'selling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を売る' },
+    },
+    send: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['send', 'sends', 'sent', 'sent', 'sending'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を送る' },
+    },
+    sends: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['send', 'sends', 'sent', 'sent', 'sending'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を送る' },
+    },
+    sent: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['send', 'sends', 'sent', 'sent', 'sending'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を送る' },
+    },
+    sending: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['send', 'sends', 'sent', 'sent', 'sending'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を送る' },
+    },
+    separate: {
+        tags: ['他動詞', '自動詞', '原型'],
+        katuyou: ['separate', 'separates', 'separated', 'separated', 'separating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を分ける' },
+    },
+    separates: {
+        tags: ['他動詞', '自動詞', '三単現s'],
+        katuyou: ['separate', 'separates', 'separated', 'separated', 'separating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を分ける' },
+    },
+    separated: {
+        tags: ['他動詞', '自動詞', '過去形', '過去分詞'],
+        katuyou: ['separate', 'separates', 'separated', 'separated', 'separating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を分ける' },
+    },
+    separating: {
+        tags: ['他動詞', '自動詞', '現在分詞'],
+        katuyou: ['separate', 'separates', 'separated', 'separated', 'separating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を分ける' },
+    },
+    set: {
+        tags: ['他動詞', '原型', '過去形', '過去分詞'],
+        katuyou: ['set', 'sets', 'set', 'set', 'setting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を準備する' },
+    },
+    sets: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['set', 'sets', 'set', 'set', 'setting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を準備する' },
+    },
+    setting: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['set', 'sets', 'set', 'set', 'setting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を準備する' },
+    },
+    shake: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型'],
+        katuyou: ['shake', 'shakes', 'shook', 'shaken', 'shaking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を振る' },
+    },
+    shakes: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s'],
+        katuyou: ['shake', 'shakes', 'shook', 'shaken', 'shaking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を振る' },
+    },
+    shook: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去形'],
+        katuyou: ['shake', 'shakes', 'shook', 'shaken', 'shaking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を振る' },
+    },
+    shaken: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去分詞'],
+        katuyou: ['shake', 'shakes', 'shook', 'shaken', 'shaking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を振る' },
+    },
+    shaking: {
+        tags: ['他動詞', '自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['shake', 'shakes', 'shook', 'shaken', 'shaking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を振る' },
+    },
+    share: {
+        tags: ['他動詞', '原型'],
+        katuyou: ['share', 'shares', 'shared', 'shared', 'sharing'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'いっしょに使う、共有する、互いに分け合う' },
+    },
+    shares: {
+        tags: ['他動詞', '三単現s'],
+        katuyou: ['share', 'shares', 'shared', 'shared', 'sharing'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'いっしょに使う、共有する、互いに分け合う' },
+    },
+    shared: {
+        tags: ['他動詞', '過去形', '過去分詞'],
+        katuyou: ['share', 'shares', 'shared', 'shared', 'sharing'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'いっしょに使う、共有する、互いに分け合う' },
+    },
+    sharing: {
+        tags: ['他動詞', '現在分詞'],
+        katuyou: ['share', 'shares', 'shared', 'shared', 'sharing'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'いっしょに使う、共有する、互いに分け合う' },
+    },
+    shine: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['shine', 'shines', 'shone', 'shone', 'shining'],
+        hinsi: ['動詞'],
+        means: { 動詞: '光る、輝く' },
+    },
+    shines: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['shine', 'shines', 'shone', 'shone', 'shining'],
+        hinsi: ['動詞'],
+        means: { 動詞: '光る、輝く' },
+    },
+    shone: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['shine', 'shines', 'shone', 'shone', 'shining'],
+        hinsi: ['動詞'],
+        means: { 動詞: '光る、輝く' },
+    },
+    shining: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['shine', 'shines', 'shone', 'shone', 'shining'],
+        hinsi: ['動詞'],
+        means: { 動詞: '光る、輝く' },
+    },
+    shock: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['shock', 'shocks', 'shocked', 'shocked', 'shocking'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'ショックを与える' },
+    },
+    shocks: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['shock', 'shocks', 'shocked', 'shocked', 'shocking'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'ショックを与える' },
+    },
+    shocked: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['shock', 'shocks', 'shocked', 'shocked', 'shocking'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'ショックを与える' },
+    },
+    shocking: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['shock', 'shocks', 'shocked', 'shocked', 'shocking'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'ショックを与える' },
+    },
+    shoot: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型'],
+        katuyou: ['shoot', 'shoots', 'shot', 'shot', 'shooting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を撃つ' },
+    },
+    shoots: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s'],
+        katuyou: ['shoot', 'shoots', 'shot', 'shot', 'shooting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を撃つ' },
+    },
+    shot: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['shoot', 'shoots', 'shot', 'shot', 'shooting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を撃つ' },
+    },
+    shooting: {
+        tags: ['他動詞', '自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['shoot', 'shoots', 'shot', 'shot', 'shooting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を撃つ' },
+    },
+    shop: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['shop', 'shops', 'shopped', 'shopped', 'shopping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '買い物をする　〔例えば go shopping の形で〕 買い物に行く' },
+    },
+    shops: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['shop', 'shops', 'shopped', 'shopped', 'shopping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '買い物をする　〔例えば go shopping の形で〕 買い物に行く' },
+    },
+    shopped: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['shop', 'shops', 'shopped', 'shopped', 'shopping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '買い物をする　〔例えば go shopping の形で〕 買い物に行く' },
+    },
+    shopping: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['shop', 'shops', 'shopped', 'shopped', 'shopping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '買い物をする　〔例えば go shopping の形で〕 買い物に行く' },
+    },
+    shout: {
+        tags: ['自動詞', '他動詞', '動作動詞', '原型'],
+        katuyou: ['shout', 'shouts', 'shouted', 'shouted', 'shouting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～と叫ぶ、大声で言う' },
+    },
+    shouts: {
+        tags: ['自動詞', '他動詞', '動作動詞', '三単現s'],
+        katuyou: ['shout', 'shouts', 'shouted', 'shouted', 'shouting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～と叫ぶ、大声で言う' },
+    },
+    shouted: {
+        tags: ['自動詞', '他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['shout', 'shouts', 'shouted', 'shouted', 'shouting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～と叫ぶ、大声で言う' },
+    },
+    shouting: {
+        tags: ['自動詞', '他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['shout', 'shouts', 'shouted', 'shouted', 'shouting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～と叫ぶ、大声で言う' },
+    },
+    show: {
+        tags: ['他動詞', 'SVOCがとれる動詞', '原型'],
+        katuyou: ['show', 'shows', 'showed', 'shown', 'showing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を見せる、示す、教える  〔show A B の形で〕ＡにＢを見せる' },
+    },
+    shows: {
+        tags: ['他動詞', 'SVOCがとれる動詞', '三単現s'],
+        katuyou: ['show', 'shows', 'showed', 'shown', 'showing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を見せる、示す、教える  〔show A B の形で〕ＡにＢを見せる' },
+    },
+    showed: {
+        tags: ['他動詞', 'SVOCがとれる動詞', '過去形'],
+        katuyou: ['show', 'shows', 'showed', 'shown', 'showing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を見せる、示す、教える  〔show A B の形で〕ＡにＢを見せる' },
+    },
+    shown: {
+        tags: ['他動詞', 'SVOCがとれる動詞', '過去分詞'],
+        katuyou: ['show', 'shows', 'showed', 'shown', 'showing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を見せる、示す、教える  〔show A B の形で〕ＡにＢを見せる' },
+    },
+    showing: {
+        tags: ['他動詞', 'SVOCがとれる動詞', '現在分詞'],
+        katuyou: ['show', 'shows', 'showed', 'shown', 'showing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を見せる、示す、教える  〔show A B の形で〕ＡにＢを見せる' },
+    },
+    shut: {
+        tags: ['他動詞', '自動詞', '原型', '過去形', '過去分詞'],
+        katuyou: ['shut', 'shuts', 'shut', 'shut', 'shutting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を閉める、閉まる 　〔過去形、過去分詞形もshut〕' },
+    },
+    shuts: {
+        tags: ['他動詞', '自動詞', '三単現s'],
+        katuyou: ['shut', 'shuts', 'shut', 'shut', 'shutting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を閉める、閉まる 　〔過去形、過去分詞形もshut〕' },
+    },
+    shutting: {
+        tags: ['他動詞', '自動詞', '現在分詞'],
+        katuyou: ['shut', 'shuts', 'shut', 'shut', 'shutting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を閉める、閉まる 　〔過去形、過去分詞形もshut〕' },
+    },
+    sigh: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['sigh', 'sighs', 'sighed', 'sighed', 'sighing'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'ため息をつく' },
+    },
+    sighs: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['sigh', 'sighs', 'sighed', 'sighed', 'sighing'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'ため息をつく' },
+    },
+    sighed: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['sigh', 'sighs', 'sighed', 'sighed', 'sighing'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'ため息をつく' },
+    },
+    sighing: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['sigh', 'sighs', 'sighed', 'sighed', 'sighing'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'ため息をつく' },
+    },
+    sing: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['sing', 'sings', 'sang', 'sung', 'singing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～を）歌う' },
+    },
+    sings: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['sing', 'sings', 'sang', 'sung', 'singing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～を）歌う' },
+    },
+    sang: {
+        tags: ['自動詞', '動作動詞', '過去形'],
+        katuyou: ['sing', 'sings', 'sang', 'sung', 'singing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～を）歌う' },
+    },
+    sung: {
+        tags: ['自動詞', '動作動詞', '過去分詞'],
+        katuyou: ['sing', 'sings', 'sang', 'sung', 'singing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～を）歌う' },
+    },
+    singing: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['sing', 'sings', 'sang', 'sung', 'singing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～を）歌う' },
+    },
+    sit: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['sit', 'sits', 'sat', 'sat', 'sitting'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'すわる、腰をおろす' },
+    },
+    sits: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['sit', 'sits', 'sat', 'sat', 'sitting'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'すわる、腰をおろす' },
+    },
+    sat: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['sit', 'sits', 'sat', 'sat', 'sitting'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'すわる、腰をおろす' },
+    },
+    sitting: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['sit', 'sits', 'sat', 'sat', 'sitting'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'すわる、腰をおろす' },
+    },
+    skate: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['skate', 'skates', 'skated', 'skated', 'skating'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'スケートですべる、スケートをする' },
+    },
+    skates: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['skate', 'skates', 'skated', 'skated', 'skating'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'スケートですべる、スケートをする' },
+    },
+    skated: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['skate', 'skates', 'skated', 'skated', 'skating'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'スケートですべる、スケートをする' },
+    },
+    skating: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['skate', 'skates', 'skated', 'skated', 'skating'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'スケートですべる、スケートをする' },
+    },
+    sleep: {
+        tags: ['自動詞', '状態動詞', '原型'],
+        katuyou: ['sleep', 'sleeps', 'slept', 'slept', 'sleeping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '眠る' },
+    },
+    sleeps: {
+        tags: ['自動詞', '状態動詞', '三単現s'],
+        katuyou: ['sleep', 'sleeps', 'slept', 'slept', 'sleeping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '眠る' },
+    },
+    slept: {
+        tags: ['自動詞', '状態動詞', '過去形', '過去分詞'],
+        katuyou: ['sleep', 'sleeps', 'slept', 'slept', 'sleeping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '眠る' },
+    },
+    sleeping: {
+        tags: ['自動詞', '状態動詞', '現在分詞'],
+        katuyou: ['sleep', 'sleeps', 'slept', 'slept', 'sleeping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '眠る' },
+    },
+    smell: {
+        tags: ['自動詞', '他動詞', '感覚動詞', '原型'],
+        katuyou: ['smell', 'smells', 'smelled', 'smelled', 'smelling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～のにおいがする' },
+    },
+    smells: {
+        tags: ['自動詞', '他動詞', '感覚動詞', '三単現s'],
+        katuyou: ['smell', 'smells', 'smelled', 'smelled', 'smelling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～のにおいがする' },
+    },
+    smelled: {
+        tags: ['自動詞', '他動詞', '感覚動詞', '過去形', '過去分詞'],
+        katuyou: ['smell', 'smells', 'smelled', 'smelled', 'smelling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～のにおいがする' },
+    },
+    smelling: {
+        tags: ['自動詞', '他動詞', '感覚動詞', '現在分詞'],
+        katuyou: ['smell', 'smells', 'smelled', 'smelled', 'smelling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～のにおいがする' },
+    },
+    smile: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['smile', 'smiles', 'smiled', 'smiled', 'smiling'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'ほほえむ、にっこり笑う、微笑する' },
+    },
+    smiles: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['smile', 'smiles', 'smiled', 'smiled', 'smiling'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'ほほえむ、にっこり笑う、微笑する' },
+    },
+    smiled: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['smile', 'smiles', 'smiled', 'smiled', 'smiling'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'ほほえむ、にっこり笑う、微笑する' },
+    },
+    smiling: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['smile', 'smiles', 'smiled', 'smiled', 'smiling'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'ほほえむ、にっこり笑う、微笑する' },
+    },
+    solve: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['solve', 'solves', 'solved', 'solved', 'solving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を解決する' },
+    },
+    solves: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['solve', 'solves', 'solved', 'solved', 'solving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を解決する' },
+    },
+    solved: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['solve', 'solves', 'solved', 'solved', 'solving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を解決する' },
+    },
+    solving: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['solve', 'solves', 'solved', 'solved', 'solving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を解決する' },
+    },
+    sort: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['sort', 'sorts', 'sorted', 'sorted', 'sorting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を分類する、えり分ける' },
+    },
+    sorts: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['sort', 'sorts', 'sorted', 'sorted', 'sorting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を分類する、えり分ける' },
+    },
+    sorted: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['sort', 'sorts', 'sorted', 'sorted', 'sorting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を分類する、えり分ける' },
+    },
+    sorting: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['sort', 'sorts', 'sorted', 'sorted', 'sorting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を分類する、えり分ける' },
+    },
+    sound: {
+        tags: ['自動詞', '連結動詞', '原型'],
+        katuyou: ['sound', 'sounds', 'sounded', 'sounded', 'sounding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～に聞こえる、～に思われる' },
+    },
+    sounds: {
+        tags: ['自動詞', '連結動詞', '三単現s'],
+        katuyou: ['sound', 'sounds', 'sounded', 'sounded', 'sounding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～に聞こえる、～に思われる' },
+    },
+    sounded: {
+        tags: ['自動詞', '連結動詞', '過去形', '過去分詞'],
+        katuyou: ['sound', 'sounds', 'sounded', 'sounded', 'sounding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～に聞こえる、～に思われる' },
+    },
+    sounding: {
+        tags: ['自動詞', '連結動詞', '現在分詞'],
+        katuyou: ['sound', 'sounds', 'sounded', 'sounded', 'sounding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～に聞こえる、～に思われる' },
+    },
+    speak: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['speak', 'speaks', 'spoke', 'spoken', 'speaking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(ことば)を話す、話をする' },
+    },
+    speaks: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['speak', 'speaks', 'spoke', 'spoken', 'speaking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(ことば)を話す、話をする' },
+    },
+    spoke: {
+        tags: ['自動詞', '動作動詞', '過去形'],
+        katuyou: ['speak', 'speaks', 'spoke', 'spoken', 'speaking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(ことば)を話す、話をする' },
+    },
+    spoken: {
+        tags: ['自動詞', '動作動詞', '過去分詞'],
+        katuyou: ['speak', 'speaks', 'spoke', 'spoken', 'speaking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(ことば)を話す、話をする' },
+    },
+    speaking: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['speak', 'speaks', 'spoke', 'spoken', 'speaking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(ことば)を話す、話をする' },
+    },
+    spell: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['spell', 'spells', 'spelled', 'spelled', 'spelling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(文字など)をつづる' },
+    },
+    spells: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['spell', 'spells', 'spelled', 'spelled', 'spelling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(文字など)をつづる' },
+    },
+    spelled: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['spell', 'spells', 'spelled', 'spelled', 'spelling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(文字など)をつづる' },
+    },
+    spelling: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['spell', 'spells', 'spelled', 'spelled', 'spelling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(文字など)をつづる' },
+    },
+    spend: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['spend', 'spends', 'spent', 'spent', 'spending'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. (お金）を使う、費やす' },
+    },
+    spends: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['spend', 'spends', 'spent', 'spent', 'spending'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. (お金）を使う、費やす' },
+    },
+    spent: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['spend', 'spends', 'spent', 'spent', 'spending'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. (お金）を使う、費やす' },
+    },
+    spending: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['spend', 'spends', 'spent', 'spent', 'spending'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. (お金）を使う、費やす' },
+    },
+    spread: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型', '過去形', '過去分詞'],
+        katuyou: ['spread', 'spreads', 'spread', 'spread', 'spreading'],
+        hinsi: ['動詞'],
+        means: { 動詞: '広がる' },
+    },
+    spreads: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s'],
+        katuyou: ['spread', 'spreads', 'spread', 'spread', 'spreading'],
+        hinsi: ['動詞'],
+        means: { 動詞: '広がる' },
+    },
+    spreading: {
+        tags: ['他動詞', '自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['spread', 'spreads', 'spread', 'spread', 'spreading'],
+        hinsi: ['動詞'],
+        means: { 動詞: '広がる' },
+    },
+    stand: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['stand', 'stands', 'stood', 'stood', 'standing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 立っている' },
+    },
+    stands: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['stand', 'stands', 'stood', 'stood', 'standing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 立っている' },
+    },
+    stood: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['stand', 'stands', 'stood', 'stood', 'standing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 立っている' },
+    },
+    standing: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['stand', 'stands', 'stood', 'stood', 'standing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 立っている' },
+    },
+    start: {
+        tags: ['自動詞', '他動詞', '動作動詞', '原型'],
+        katuyou: ['start', 'starts', 'started', 'started', 'starting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 始まる  〔自動詞〕' },
+    },
+    starts: {
+        tags: ['自動詞', '他動詞', '動作動詞', '三単現s'],
+        katuyou: ['start', 'starts', 'started', 'started', 'starting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 始まる  〔自動詞〕' },
+    },
+    started: {
+        tags: ['自動詞', '他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['start', 'starts', 'started', 'started', 'starting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 始まる  〔自動詞〕' },
+    },
+    starting: {
+        tags: ['自動詞', '他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['start', 'starts', 'started', 'started', 'starting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 始まる  〔自動詞〕' },
+    },
+    stay: {
+        tags: ['自動詞', '状態動詞', '原型'],
+        katuyou: ['stay', 'stays', 'stayed', 'stayed', 'staying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. (場所に)とどまる' },
+    },
+    stays: {
+        tags: ['自動詞', '状態動詞', '三単現s'],
+        katuyou: ['stay', 'stays', 'stayed', 'stayed', 'staying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. (場所に)とどまる' },
+    },
+    stayed: {
+        tags: ['自動詞', '状態動詞', '過去形', '過去分詞'],
+        katuyou: ['stay', 'stays', 'stayed', 'stayed', 'staying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. (場所に)とどまる' },
+    },
+    staying: {
+        tags: ['自動詞', '状態動詞', '現在分詞'],
+        katuyou: ['stay', 'stays', 'stayed', 'stayed', 'staying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. (場所に)とどまる' },
+    },
+    step: {
+        tags: ['自動詞', '他動詞', '動作動詞', '原型'],
+        katuyou: ['step', 'steps', 'stepped', 'stepped', 'stepping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（一歩・少し）歩む' },
+    },
+    steps: {
+        tags: ['自動詞', '他動詞', '動作動詞', '三単現s'],
+        katuyou: ['step', 'steps', 'stepped', 'stepped', 'stepping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（一歩・少し）歩む' },
+    },
+    stepped: {
+        tags: ['自動詞', '他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['step', 'steps', 'stepped', 'stepped', 'stepping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（一歩・少し）歩む' },
+    },
+    stepping: {
+        tags: ['自動詞', '他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['step', 'steps', 'stepped', 'stepped', 'stepping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（一歩・少し）歩む' },
+    },
+    stop: {
+        tags: ['自動詞', '他動詞', '動作動詞', '原型'],
+        katuyou: ['stop', 'stops', 'stopped', 'stopped', 'stopping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. とまる  〔自動詞〕' },
+    },
+    stops: {
+        tags: ['自動詞', '他動詞', '動作動詞', '三単現s'],
+        katuyou: ['stop', 'stops', 'stopped', 'stopped', 'stopping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. とまる  〔自動詞〕' },
+    },
+    stopped: {
+        tags: ['自動詞', '他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['stop', 'stops', 'stopped', 'stopped', 'stopping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. とまる  〔自動詞〕' },
+    },
+    stopping: {
+        tags: ['自動詞', '他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['stop', 'stops', 'stopped', 'stopped', 'stopping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. とまる  〔自動詞〕' },
+    },
+    strive: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['strive', 'strives', 'strove', 'striven', 'striving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '懸命に努力する' },
+    },
+    strives: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['strive', 'strives', 'strove', 'striven', 'striving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '懸命に努力する' },
+    },
+    strove: {
+        tags: ['自動詞', '動作動詞', '過去形'],
+        katuyou: ['strive', 'strives', 'strove', 'striven', 'striving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '懸命に努力する' },
+    },
+    striven: {
+        tags: ['自動詞', '動作動詞', '過去分詞'],
+        katuyou: ['strive', 'strives', 'strove', 'striven', 'striving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '懸命に努力する' },
+    },
+    striving: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['strive', 'strives', 'strove', 'striven', 'striving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '懸命に努力する' },
+    },
+    study: {
+        tags: ['自動詞', '他動詞', '動作動詞', '原型'],
+        katuyou: ['study', 'studies', 'studied', 'studied', 'studying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を勉強する、調べる、研究する' },
+    },
+    studies: {
+        tags: ['自動詞', '他動詞', '動作動詞', '三単現s'],
+        katuyou: ['study', 'studies', 'studied', 'studied', 'studying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を勉強する、調べる、研究する' },
+    },
+    studied: {
+        tags: ['自動詞', '他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['study', 'studies', 'studied', 'studied', 'studying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を勉強する、調べる、研究する' },
+    },
+    studying: {
+        tags: ['自動詞', '他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['study', 'studies', 'studied', 'studied', 'studying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を勉強する、調べる、研究する' },
+    },
+    suffer: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['suffer', 'suffers', 'suffered', 'suffered', 'suffering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '苦しむ' },
+    },
+    suffers: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['suffer', 'suffers', 'suffered', 'suffered', 'suffering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '苦しむ' },
+    },
+    suffered: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['suffer', 'suffers', 'suffered', 'suffered', 'suffering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '苦しむ' },
+    },
+    suffering: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['suffer', 'suffers', 'suffered', 'suffered', 'suffering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '苦しむ' },
+    },
+    suggest: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['suggest', 'suggests', 'suggested', 'suggested', 'suggesting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '提案する' },
+    },
+    suggests: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['suggest', 'suggests', 'suggested', 'suggested', 'suggesting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '提案する' },
+    },
+    suggested: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['suggest', 'suggests', 'suggested', 'suggested', 'suggesting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '提案する' },
+    },
+    suggesting: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['suggest', 'suggests', 'suggested', 'suggested', 'suggesting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '提案する' },
+    },
+    support: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['support', 'supports', 'supported', 'supported', 'supporting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(人や考え)を支持する、支援する' },
+    },
+    supports: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['support', 'supports', 'supported', 'supported', 'supporting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(人や考え)を支持する、支援する' },
+    },
+    supported: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['support', 'supports', 'supported', 'supported', 'supporting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(人や考え)を支持する、支援する' },
+    },
+    supporting: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['support', 'supports', 'supported', 'supported', 'supporting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '(人や考え)を支持する、支援する' },
+    },
+    surf: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['surf', 'surfs', 'surfed', 'surfed', 'surfing'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'サーフィン〔波乗り〕をする' },
+    },
+    surfs: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['surf', 'surfs', 'surfed', 'surfed', 'surfing'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'サーフィン〔波乗り〕をする' },
+    },
+    surfed: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['surf', 'surfs', 'surfed', 'surfed', 'surfing'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'サーフィン〔波乗り〕をする' },
+    },
+    surfing: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['surf', 'surfs', 'surfed', 'surfed', 'surfing'],
+        hinsi: ['動詞'],
+        means: { 動詞: 'サーフィン〔波乗り〕をする' },
+    },
+    surprise: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['surprise', 'surprises', 'surprised', 'surprised', 'surprising'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を驚かす、びっくりさせる　 〔be surprised at ～ の形で〕 (知らせなど)に驚いている' },
+    },
+    surprises: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['surprise', 'surprises', 'surprised', 'surprised', 'surprising'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を驚かす、びっくりさせる　 〔be surprised at ～ の形で〕 (知らせなど)に驚いている' },
+    },
+    surprised: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['surprise', 'surprises', 'surprised', 'surprised', 'surprising'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を驚かす、びっくりさせる　 〔be surprised at ～ の形で〕 (知らせなど)に驚いている' },
+    },
+    surprising: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['surprise', 'surprises', 'surprised', 'surprised', 'surprising'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を驚かす、びっくりさせる　 〔be surprised at ～ の形で〕 (知らせなど)に驚いている' },
+    },
+    surround: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['surround', 'surrounds', 'surrounded', 'surrounded', 'surrounding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を囲む、取り巻く' },
+    },
+    surrounds: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['surround', 'surrounds', 'surrounded', 'surrounded', 'surrounding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を囲む、取り巻く' },
+    },
+    surrounded: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['surround', 'surrounds', 'surrounded', 'surrounded', 'surrounding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を囲む、取り巻く' },
+    },
+    surrounding: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['surround', 'surrounds', 'surrounded', 'surrounded', 'surrounding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を囲む、取り巻く' },
+    },
+    survive: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['survive', 'survives', 'survived', 'survived', 'surviving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '生き残る' },
+    },
+    survives: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['survive', 'survives', 'survived', 'survived', 'surviving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '生き残る' },
+    },
+    survived: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['survive', 'survives', 'survived', 'survived', 'surviving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '生き残る' },
+    },
+    surviving: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['survive', 'survives', 'survived', 'survived', 'surviving'],
+        hinsi: ['動詞'],
+        means: { 動詞: '生き残る' },
+    },
+    swallow: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['swallow', 'swallows', 'swallowed', 'swallowed', 'swallowing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をごくりと飲み込む' },
+    },
+    swallows: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['swallow', 'swallows', 'swallowed', 'swallowed', 'swallowing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をごくりと飲み込む' },
+    },
+    swallowed: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['swallow', 'swallows', 'swallowed', 'swallowed', 'swallowing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をごくりと飲み込む' },
+    },
+    swallowing: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['swallow', 'swallows', 'swallowed', 'swallowed', 'swallowing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をごくりと飲み込む' },
+    },
+    swim: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['swim', 'swims', 'swam', 'swum', 'swimming'],
+        hinsi: ['動詞'],
+        means: { 動詞: '泳ぐ' },
+    },
+    swims: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['swim', 'swims', 'swam', 'swum', 'swimming'],
+        hinsi: ['動詞'],
+        means: { 動詞: '泳ぐ' },
+    },
+    swam: {
+        tags: ['自動詞', '動作動詞', '過去形'],
+        katuyou: ['swim', 'swims', 'swam', 'swum', 'swimming'],
+        hinsi: ['動詞'],
+        means: { 動詞: '泳ぐ' },
+    },
+    swum: {
+        tags: ['自動詞', '動作動詞', '過去分詞'],
+        katuyou: ['swim', 'swims', 'swam', 'swum', 'swimming'],
+        hinsi: ['動詞'],
+        means: { 動詞: '泳ぐ' },
+    },
+    swimming: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['swim', 'swims', 'swam', 'swum', 'swimming'],
+        hinsi: ['動詞'],
+        means: { 動詞: '泳ぐ' },
+    },
+    take: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞', 'SVOCがとれる動詞', '原型'],
+        katuyou: ['take', 'takes', 'took', 'taken', 'taking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1.  (時間、労力)がかかる' },
+    },
+    takes: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞', 'SVOCがとれる動詞', '三単現s'],
+        katuyou: ['take', 'takes', 'took', 'taken', 'taking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1.  (時間、労力)がかかる' },
+    },
+    took: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞', 'SVOCがとれる動詞', '過去形'],
+        katuyou: ['take', 'takes', 'took', 'taken', 'taking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1.  (時間、労力)がかかる' },
+    },
+    taken: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞', 'SVOCがとれる動詞', '過去分詞'],
+        katuyou: ['take', 'takes', 'took', 'taken', 'taking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1.  (時間、労力)がかかる' },
+    },
+    taking: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞', 'SVOCがとれる動詞', '現在分詞'],
+        katuyou: ['take', 'takes', 'took', 'taken', 'taking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1.  (時間、労力)がかかる' },
+    },
+    talk: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['talk', 'talks', 'talked', 'talked', 'talking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '話す、話をする' },
+    },
+    talks: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['talk', 'talks', 'talked', 'talked', 'talking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '話す、話をする' },
+    },
+    talked: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['talk', 'talks', 'talked', 'talked', 'talking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '話す、話をする' },
+    },
+    talking: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['talk', 'talks', 'talked', 'talked', 'talking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '話す、話をする' },
+    },
+    taste: {
+        tags: ['自動詞', '他動詞', '感覚動詞', '連結動詞', '原型'],
+        katuyou: ['taste', 'tastes', 'tasted', 'tasted', 'tasting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 味わう、食べる' },
+    },
+    tastes: {
+        tags: ['自動詞', '他動詞', '感覚動詞', '連結動詞', '三単現s'],
+        katuyou: ['taste', 'tastes', 'tasted', 'tasted', 'tasting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 味わう、食べる' },
+    },
+    tasted: {
+        tags: ['自動詞', '他動詞', '感覚動詞', '連結動詞', '過去形', '過去分詞'],
+        katuyou: ['taste', 'tastes', 'tasted', 'tasted', 'tasting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 味わう、食べる' },
+    },
+    tasting: {
+        tags: ['自動詞', '他動詞', '感覚動詞', '連結動詞', '現在分詞'],
+        katuyou: ['taste', 'tastes', 'tasted', 'tasted', 'tasting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 味わう、食べる' },
+    },
+    teach: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['teach', 'teaches', 'taught', 'taught', 'teaching'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を教える　 〔teach A B の形で〕 ＡにＢを教える' },
+    },
+    teaches: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['teach', 'teaches', 'taught', 'taught', 'teaching'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を教える　 〔teach A B の形で〕 ＡにＢを教える' },
+    },
+    taught: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['teach', 'teaches', 'taught', 'taught', 'teaching'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を教える　 〔teach A B の形で〕 ＡにＢを教える' },
+    },
+    teaching: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['teach', 'teaches', 'taught', 'taught', 'teaching'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を教える　 〔teach A B の形で〕 ＡにＢを教える' },
+    },
+    tell: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['tell', 'tells', 'told', 'told', 'telling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～に話す、～を話す、教える　〔tell Ａ Ｂの形で〕 Ａ［人］にＢ［ものごとなど］を話す' },
+    },
+    tells: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['tell', 'tells', 'told', 'told', 'telling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～に話す、～を話す、教える　〔tell Ａ Ｂの形で〕 Ａ［人］にＢ［ものごとなど］を話す' },
+    },
+    told: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['tell', 'tells', 'told', 'told', 'telling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～に話す、～を話す、教える　〔tell Ａ Ｂの形で〕 Ａ［人］にＢ［ものごとなど］を話す' },
+    },
+    telling: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['tell', 'tells', 'told', 'told', 'telling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～に話す、～を話す、教える　〔tell Ａ Ｂの形で〕 Ａ［人］にＢ［ものごとなど］を話す' },
+    },
+    thank: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['thank', 'thanks', 'thanked', 'thanked', 'thanking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～に感謝する' },
+    },
+    thanks: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['thank', 'thanks', 'thanked', 'thanked', 'thanking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～に感謝する' },
+    },
+    thanked: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['thank', 'thanks', 'thanked', 'thanked', 'thanking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～に感謝する' },
+    },
+    thanking: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['thank', 'thanks', 'thanked', 'thanked', 'thanking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～に感謝する' },
+    },
+    think: {
+        tags: ['他動詞', '自動詞', '状態動詞', '原型'],
+        katuyou: ['think', 'thinks', 'thought', 'thought', 'thinking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～と考える、思う' },
+    },
+    thinks: {
+        tags: ['他動詞', '自動詞', '状態動詞', '三単現s'],
+        katuyou: ['think', 'thinks', 'thought', 'thought', 'thinking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～と考える、思う' },
+    },
+    thought: {
+        tags: ['他動詞', '自動詞', '状態動詞', '過去形', '過去分詞'],
+        katuyou: ['think', 'thinks', 'thought', 'thought', 'thinking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～と考える、思う' },
+    },
+    thinking: {
+        tags: ['他動詞', '自動詞', '状態動詞', '現在分詞'],
+        katuyou: ['think', 'thinks', 'thought', 'thought', 'thinking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～と考える、思う' },
+    },
+    touch: {
+        tags: ['他動詞', '感覚動詞', '動作動詞', '原型'],
+        katuyou: ['touch', 'touches', 'touched', 'touched', 'touching'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～にさわる、触れる' },
+    },
+    touches: {
+        tags: ['他動詞', '感覚動詞', '動作動詞', '三単現s'],
+        katuyou: ['touch', 'touches', 'touched', 'touched', 'touching'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～にさわる、触れる' },
+    },
+    touched: {
+        tags: ['他動詞', '感覚動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['touch', 'touches', 'touched', 'touched', 'touching'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～にさわる、触れる' },
+    },
+    touching: {
+        tags: ['他動詞', '感覚動詞', '動作動詞', '現在分詞'],
+        katuyou: ['touch', 'touches', 'touched', 'touched', 'touching'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～にさわる、触れる' },
+    },
+    train: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['train', 'trains', 'trained', 'trained', 'training'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を訓練する' },
+    },
+    trains: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['train', 'trains', 'trained', 'trained', 'training'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を訓練する' },
+    },
+    trained: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['train', 'trains', 'trained', 'trained', 'training'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を訓練する' },
+    },
+    training: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['train', 'trains', 'trained', 'trained', 'training'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～を訓練する' },
+    },
+    translate: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['translate', 'translates', 'translated', 'translated', 'translating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を翻訳する、訳す' },
+    },
+    translates: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['translate', 'translates', 'translated', 'translated', 'translating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を翻訳する、訳す' },
+    },
+    translated: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['translate', 'translates', 'translated', 'translated', 'translating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を翻訳する、訳す' },
+    },
+    translating: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['translate', 'translates', 'translated', 'translated', 'translating'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を翻訳する、訳す' },
+    },
+    trap: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['trap', 'traps', 'trapped', 'trapped', 'trapping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をわなで捕まえる、閉じこめる' },
+    },
+    traps: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['trap', 'traps', 'trapped', 'trapped', 'trapping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をわなで捕まえる、閉じこめる' },
+    },
+    trapped: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['trap', 'traps', 'trapped', 'trapped', 'trapping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をわなで捕まえる、閉じこめる' },
+    },
+    trapping: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['trap', 'traps', 'trapped', 'trapped', 'trapping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をわなで捕まえる、閉じこめる' },
+    },
+    travel: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['travel', 'travels', 'traveled', 'traveled', 'traveling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '旅する、移動する' },
+    },
+    travels: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['travel', 'travels', 'traveled', 'traveled', 'traveling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '旅する、移動する' },
+    },
+    traveled: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['travel', 'travels', 'traveled', 'traveled', 'traveling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '旅する、移動する' },
+    },
+    traveling: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['travel', 'travels', 'traveled', 'traveled', 'traveling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '旅する、移動する' },
+    },
+    trust: {
+        tags: ['他動詞', '状態動詞', '原型'],
+        katuyou: ['trust', 'trusts', 'trusted', 'trusted', 'trusting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を信頼する' },
+    },
+    trusts: {
+        tags: ['他動詞', '状態動詞', '三単現s'],
+        katuyou: ['trust', 'trusts', 'trusted', 'trusted', 'trusting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を信頼する' },
+    },
+    trusted: {
+        tags: ['他動詞', '状態動詞', '過去形', '過去分詞'],
+        katuyou: ['trust', 'trusts', 'trusted', 'trusted', 'trusting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を信頼する' },
+    },
+    trusting: {
+        tags: ['他動詞', '状態動詞', '現在分詞'],
+        katuyou: ['trust', 'trusts', 'trusted', 'trusted', 'trusting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を信頼する' },
+    },
+    try: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['try', 'tries', 'tried', 'tried', 'trying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をやってみる、挑戦する、ためしてみる、(try to～の形で）～しようとする' },
+    },
+    tries: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['try', 'tries', 'tried', 'tried', 'trying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をやってみる、挑戦する、ためしてみる、(try to～の形で）～しようとする' },
+    },
+    tried: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['try', 'tries', 'tried', 'tried', 'trying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をやってみる、挑戦する、ためしてみる、(try to～の形で）～しようとする' },
+    },
+    trying: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['try', 'tries', 'tried', 'tried', 'trying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～をやってみる、挑戦する、ためしてみる、(try to～の形で）～しようとする' },
+    },
+    turn: {
+        tags: ['自動詞', '他動詞', '動作動詞', '原型'],
+        katuyou: ['turn', 'turns', 'turned', 'turned', 'turning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 曲がる、向きを変える' },
+    },
+    turns: {
+        tags: ['自動詞', '他動詞', '動作動詞', '三単現s'],
+        katuyou: ['turn', 'turns', 'turned', 'turned', 'turning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 曲がる、向きを変える' },
+    },
+    turned: {
+        tags: ['自動詞', '他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['turn', 'turns', 'turned', 'turned', 'turning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 曲がる、向きを変える' },
+    },
+    turning: {
+        tags: ['自動詞', '他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['turn', 'turns', 'turned', 'turned', 'turning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 曲がる、向きを変える' },
+    },
+    understand: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['understand', 'understands', 'understood', 'understood', 'understanding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を理解する、～がわかる' },
+    },
+    understands: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['understand', 'understands', 'understood', 'understood', 'understanding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を理解する、～がわかる' },
+    },
+    understood: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['understand', 'understands', 'understood', 'understood', 'understanding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を理解する、～がわかる' },
+    },
+    understanding: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['understand', 'understands', 'understood', 'understood', 'understanding'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を理解する、～がわかる' },
+    },
+    unplug: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['unplug', 'unplugs', 'unplugged', 'unplugged', 'unplugging'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～の）プラグを（コンセントから）抜く' },
+    },
+    unplugs: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['unplug', 'unplugs', 'unplugged', 'unplugged', 'unplugging'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～の）プラグを（コンセントから）抜く' },
+    },
+    unplugged: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['unplug', 'unplugs', 'unplugged', 'unplugged', 'unplugging'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～の）プラグを（コンセントから）抜く' },
+    },
+    unplugging: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['unplug', 'unplugs', 'unplugged', 'unplugged', 'unplugging'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～の）プラグを（コンセントから）抜く' },
+    },
+    upset: {
+        tags: ['他動詞', '形容詞的用法もある', '動作動詞', '状態動詞', '原型', '過去形', '過去分詞'],
+        katuyou: ['upset', 'upsets', 'upset', 'upset', 'upsetting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '気を動転させる、うろたえさせる' },
+    },
+    upsets: {
+        tags: ['他動詞', '形容詞的用法もある', '動作動詞', '状態動詞', '三単現s'],
+        katuyou: ['upset', 'upsets', 'upset', 'upset', 'upsetting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '気を動転させる、うろたえさせる' },
+    },
+    upsetting: {
+        tags: ['他動詞', '形容詞的用法もある', '動作動詞', '状態動詞', '現在分詞'],
+        katuyou: ['upset', 'upsets', 'upset', 'upset', 'upsetting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '気を動転させる、うろたえさせる' },
+    },
+    use: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['use', 'uses', 'used', 'used', 'using'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を使う' },
+    },
+    uses: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['use', 'uses', 'used', 'used', 'using'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を使う' },
+    },
+    used: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['use', 'uses', 'used', 'used', 'using'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を使う' },
+    },
+    using: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['use', 'uses', 'used', 'used', 'using'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を使う' },
+    },
+    visit: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['visit', 'visits', 'visited', 'visited', 'visiting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. (場所、人など)をおとずれる' },
+    },
+    visits: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['visit', 'visits', 'visited', 'visited', 'visiting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. (場所、人など)をおとずれる' },
+    },
+    visited: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['visit', 'visits', 'visited', 'visited', 'visiting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. (場所、人など)をおとずれる' },
+    },
+    visiting: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['visit', 'visits', 'visited', 'visited', 'visiting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. (場所、人など)をおとずれる' },
+    },
+    wait: {
+        tags: ['自動詞', '状態動詞', '原型'],
+        katuyou: ['wait', 'waits', 'waited', 'waited', 'waiting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '待つ　　〔wait for ～の形で〕～を待つ' },
+    },
+    waits: {
+        tags: ['自動詞', '状態動詞', '三単現s'],
+        katuyou: ['wait', 'waits', 'waited', 'waited', 'waiting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '待つ　　〔wait for ～の形で〕～を待つ' },
+    },
+    waited: {
+        tags: ['自動詞', '状態動詞', '過去形', '過去分詞'],
+        katuyou: ['wait', 'waits', 'waited', 'waited', 'waiting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '待つ　　〔wait for ～の形で〕～を待つ' },
+    },
+    waiting: {
+        tags: ['自動詞', '状態動詞', '現在分詞'],
+        katuyou: ['wait', 'waits', 'waited', 'waited', 'waiting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '待つ　　〔wait for ～の形で〕～を待つ' },
+    },
+    wake: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型'],
+        katuyou: ['wake', 'wakes', 'woke', 'woken', 'waking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '〔wake you up〕あなたを起こす' },
+    },
+    wakes: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s'],
+        katuyou: ['wake', 'wakes', 'woke', 'woken', 'waking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '〔wake you up〕あなたを起こす' },
+    },
+    woke: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去形'],
+        katuyou: ['wake', 'wakes', 'woke', 'woken', 'waking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '〔wake you up〕あなたを起こす' },
+    },
+    woken: {
+        tags: ['他動詞', '自動詞', '動作動詞', '過去分詞'],
+        katuyou: ['wake', 'wakes', 'woke', 'woken', 'waking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '〔wake you up〕あなたを起こす' },
+    },
+    waking: {
+        tags: ['他動詞', '自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['wake', 'wakes', 'woke', 'woken', 'waking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '〔wake you up〕あなたを起こす' },
+    },
+    walk: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['walk', 'walks', 'walked', 'walked', 'walking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 歩く、歩いて行く［来る］' },
+    },
+    walks: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['walk', 'walks', 'walked', 'walked', 'walking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 歩く、歩いて行く［来る］' },
+    },
+    walked: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['walk', 'walks', 'walked', 'walked', 'walking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 歩く、歩いて行く［来る］' },
+    },
+    walking: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['walk', 'walks', 'walked', 'walked', 'walking'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 歩く、歩いて行く［来る］' },
+    },
+    want: {
+        tags: ['他動詞', '状態動詞', '原型'],
+        katuyou: ['want', 'wants', 'wanted', 'wanted', 'wanting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～がほしい' },
+    },
+    wants: {
+        tags: ['他動詞', '状態動詞', '三単現s'],
+        katuyou: ['want', 'wants', 'wanted', 'wanted', 'wanting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～がほしい' },
+    },
+    wanted: {
+        tags: ['他動詞', '状態動詞', '過去形', '過去分詞'],
+        katuyou: ['want', 'wants', 'wanted', 'wanted', 'wanting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～がほしい' },
+    },
+    wanting: {
+        tags: ['他動詞', '状態動詞', '現在分詞'],
+        katuyou: ['want', 'wants', 'wanted', 'wanted', 'wanting'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. ～がほしい' },
+    },
+    wash: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['wash', 'washes', 'washed', 'washed', 'washing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を洗う' },
+    },
+    washes: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['wash', 'washes', 'washed', 'washed', 'washing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を洗う' },
+    },
+    washed: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['wash', 'washes', 'washed', 'washed', 'washing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を洗う' },
+    },
+    washing: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['wash', 'washes', 'washed', 'washed', 'washing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を洗う' },
+    },
+    watch: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['watch', 'watches', 'watched', 'watched', 'watching'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. (注意して、動いているもの)を見る' },
+    },
+    watches: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['watch', 'watches', 'watched', 'watched', 'watching'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. (注意して、動いているもの)を見る' },
+    },
+    watched: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['watch', 'watches', 'watched', 'watched', 'watching'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. (注意して、動いているもの)を見る' },
+    },
+    watching: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['watch', 'watches', 'watched', 'watched', 'watching'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. (注意して、動いているもの)を見る' },
+    },
+    water: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['water', 'waters', 'watered', 'watered', 'watering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～に水をやる' },
+    },
+    waters: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['water', 'waters', 'watered', 'watered', 'watering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～に水をやる' },
+    },
+    watered: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['water', 'waters', 'watered', 'watered', 'watering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～に水をやる' },
+    },
+    watering: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['water', 'waters', 'watered', 'watered', 'watering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～に水をやる' },
+    },
+    wear: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['wear', 'wears', 'wore', 'worn', 'wearing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を着ている、身につけている' },
+    },
+    wears: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['wear', 'wears', 'wore', 'worn', 'wearing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を着ている、身につけている' },
+    },
+    wore: {
+        tags: ['他動詞', '動作動詞', '過去形'],
+        katuyou: ['wear', 'wears', 'wore', 'worn', 'wearing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を着ている、身につけている' },
+    },
+    worn: {
+        tags: ['他動詞', '動作動詞', '過去分詞'],
+        katuyou: ['wear', 'wears', 'wore', 'worn', 'wearing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を着ている、身につけている' },
+    },
+    wearing: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['wear', 'wears', 'wore', 'worn', 'wearing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を着ている、身につけている' },
+    },
+    welcome: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['welcome', 'welcomes', 'welcomed', 'welcomed', 'welcoming'],
+        hinsi: ['動詞'],
+        means: { 動詞: '歓迎する' },
+    },
+    welcomes: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['welcome', 'welcomes', 'welcomed', 'welcomed', 'welcoming'],
+        hinsi: ['動詞'],
+        means: { 動詞: '歓迎する' },
+    },
+    welcomed: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['welcome', 'welcomes', 'welcomed', 'welcomed', 'welcoming'],
+        hinsi: ['動詞'],
+        means: { 動詞: '歓迎する' },
+    },
+    welcoming: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['welcome', 'welcomes', 'welcomed', 'welcomed', 'welcoming'],
+        hinsi: ['動詞'],
+        means: { 動詞: '歓迎する' },
+    },
+    whisper: {
+        tags: ['自動詞', '他動詞', '動作動詞', '原型'],
+        katuyou: ['whisper', 'whispers', 'whispered', 'whispered', 'whispering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～と）ささやく、ひそひそ声でで言う' },
+    },
+    whispers: {
+        tags: ['自動詞', '他動詞', '動作動詞', '三単現s'],
+        katuyou: ['whisper', 'whispers', 'whispered', 'whispered', 'whispering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～と）ささやく、ひそひそ声でで言う' },
+    },
+    whispered: {
+        tags: ['自動詞', '他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['whisper', 'whispers', 'whispered', 'whispered', 'whispering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～と）ささやく、ひそひそ声でで言う' },
+    },
+    whispering: {
+        tags: ['自動詞', '他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['whisper', 'whispers', 'whispered', 'whispered', 'whispering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～と）ささやく、ひそひそ声でで言う' },
+    },
+    whistle: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['whistle', 'whistles', 'whistled', 'whistled', 'whistling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '口笛を吹く、口笛を吹くように鳴く' },
+    },
+    whistles: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['whistle', 'whistles', 'whistled', 'whistled', 'whistling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '口笛を吹く、口笛を吹くように鳴く' },
+    },
+    whistled: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['whistle', 'whistles', 'whistled', 'whistled', 'whistling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '口笛を吹く、口笛を吹くように鳴く' },
+    },
+    whistling: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['whistle', 'whistles', 'whistled', 'whistled', 'whistling'],
+        hinsi: ['動詞'],
+        means: { 動詞: '口笛を吹く、口笛を吹くように鳴く' },
+    },
+    win: {
+        tags: ['自動詞', '他動詞', '動作動詞', '原型'],
+        katuyou: ['win', 'wins', 'won', 'won', 'winning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '勝つ、～を勝ち取る' },
+    },
+    wins: {
+        tags: ['自動詞', '他動詞', '動作動詞', '三単現s'],
+        katuyou: ['win', 'wins', 'won', 'won', 'winning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '勝つ、～を勝ち取る' },
+    },
+    won: {
+        tags: ['自動詞', '他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['win', 'wins', 'won', 'won', 'winning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '勝つ、～を勝ち取る' },
+    },
+    winning: {
+        tags: ['自動詞', '他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['win', 'wins', 'won', 'won', 'winning'],
+        hinsi: ['動詞'],
+        means: { 動詞: '勝つ、～を勝ち取る' },
+    },
+    wish: {
+        tags: ['他動詞', '状態動詞', '原型'],
+        katuyou: ['wish', 'wishes', 'wished', 'wished', 'wishing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を願う、望む　〔たとえば I wish you a happy new year.の形で〕新年おめでとう' },
+    },
+    wishes: {
+        tags: ['他動詞', '状態動詞', '三単現s'],
+        katuyou: ['wish', 'wishes', 'wished', 'wished', 'wishing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を願う、望む　〔たとえば I wish you a happy new year.の形で〕新年おめでとう' },
+    },
+    wished: {
+        tags: ['他動詞', '状態動詞', '過去形', '過去分詞'],
+        katuyou: ['wish', 'wishes', 'wished', 'wished', 'wishing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を願う、望む　〔たとえば I wish you a happy new year.の形で〕新年おめでとう' },
+    },
+    wishing: {
+        tags: ['他動詞', '状態動詞', '現在分詞'],
+        katuyou: ['wish', 'wishes', 'wished', 'wished', 'wishing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を願う、望む　〔たとえば I wish you a happy new year.の形で〕新年おめでとう' },
+    },
+    wonder: {
+        tags: ['自動詞', '状態動詞', '原型'],
+        katuyou: ['wonder', 'wonders', 'wondered', 'wondered', 'wondering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～する）かしら（と思う）、～かどうかを知りたいと思う' },
+    },
+    wonders: {
+        tags: ['自動詞', '状態動詞', '三単現s'],
+        katuyou: ['wonder', 'wonders', 'wondered', 'wondered', 'wondering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～する）かしら（と思う）、～かどうかを知りたいと思う' },
+    },
+    wondered: {
+        tags: ['自動詞', '状態動詞', '過去形', '過去分詞'],
+        katuyou: ['wonder', 'wonders', 'wondered', 'wondered', 'wondering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～する）かしら（と思う）、～かどうかを知りたいと思う' },
+    },
+    wondering: {
+        tags: ['自動詞', '状態動詞', '現在分詞'],
+        katuyou: ['wonder', 'wonders', 'wondered', 'wondered', 'wondering'],
+        hinsi: ['動詞'],
+        means: { 動詞: '（～する）かしら（と思う）、～かどうかを知りたいと思う' },
+    },
+    work: {
+        tags: ['自動詞', '動作動詞', '原型'],
+        katuyou: ['work', 'works', 'worked', 'worked', 'working'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 働く、勉強する' },
+    },
+    works: {
+        tags: ['自動詞', '動作動詞', '三単現s'],
+        katuyou: ['work', 'works', 'worked', 'worked', 'working'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 働く、勉強する' },
+    },
+    worked: {
+        tags: ['自動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['work', 'works', 'worked', 'worked', 'working'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 働く、勉強する' },
+    },
+    working: {
+        tags: ['自動詞', '動作動詞', '現在分詞'],
+        katuyou: ['work', 'works', 'worked', 'worked', 'working'],
+        hinsi: ['動詞'],
+        means: { 動詞: '"1. 働く、勉強する' },
+    },
+    worry: {
+        tags: ['自動詞', '他動詞', '状態動詞', '原型'],
+        katuyou: ['worry', 'worries', 'worried', 'worried', 'worrying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '心配する、悩む' },
+    },
+    worries: {
+        tags: ['自動詞', '他動詞', '状態動詞', '三単現s'],
+        katuyou: ['worry', 'worries', 'worried', 'worried', 'worrying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '心配する、悩む' },
+    },
+    worried: {
+        tags: ['自動詞', '他動詞', '状態動詞', '過去形', '過去分詞'],
+        katuyou: ['worry', 'worries', 'worried', 'worried', 'worrying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '心配する、悩む' },
+    },
+    worrying: {
+        tags: ['自動詞', '他動詞', '状態動詞', '現在分詞'],
+        katuyou: ['worry', 'worries', 'worried', 'worried', 'worrying'],
+        hinsi: ['動詞'],
+        means: { 動詞: '心配する、悩む' },
+    },
+    wrap: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['wrap', 'wraps', 'wrapped', 'wrapped', 'wrapping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '包む、包装する' },
+    },
+    wraps: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['wrap', 'wraps', 'wrapped', 'wrapped', 'wrapping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '包む、包装する' },
+    },
+    wrapped: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞'],
+        katuyou: ['wrap', 'wraps', 'wrapped', 'wrapped', 'wrapping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '包む、包装する' },
+    },
+    wrapping: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['wrap', 'wraps', 'wrapped', 'wrapped', 'wrapping'],
+        hinsi: ['動詞'],
+        means: { 動詞: '包む、包装する' },
+    },
+    write: {
+        tags: ['他動詞', '動作動詞', '原型'],
+        katuyou: ['write', 'writes', 'wrote', 'written', 'writing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を書く' },
+    },
+    writes: {
+        tags: ['他動詞', '動作動詞', '三単現s'],
+        katuyou: ['write', 'writes', 'wrote', 'written', 'writing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を書く' },
+    },
+    wrote: {
+        tags: ['他動詞', '動作動詞', '過去形'],
+        katuyou: ['write', 'writes', 'wrote', 'written', 'writing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を書く' },
+    },
+    written: {
+        tags: ['他動詞', '動作動詞', '過去分詞'],
+        katuyou: ['write', 'writes', 'wrote', 'written', 'writing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を書く' },
+    },
+    writing: {
+        tags: ['他動詞', '動作動詞', '現在分詞'],
+        katuyou: ['write', 'writes', 'wrote', 'written', 'writing'],
+        hinsi: ['動詞'],
+        means: { 動詞: '～を書く' },
+    },
+};
