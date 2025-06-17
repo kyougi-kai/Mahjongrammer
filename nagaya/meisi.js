@@ -1526,130 +1526,558 @@ let tango = {
     },
     climate: {
         hinsi: ['名詞'],
-        means: {
-            名詞: '気候',
-        },
         tags: ['不可算名詞'],
     },
-    //動詞編スタート！？
-    accept: {
-        tags: ['他動詞', '動作動詞', '原型'],
-        katuyou: ['accept', 'accepts', 'accepted', 'accepted', 'accepting'],
+    /**
+     *
+     *
+     *
+     * ここから別形式
+     *
+     *
+     *
+     */
+    clock: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['clocks'],
     },
-    act: {
-        tags: ['自動詞', '動作動詞', '原型'],
-        katuyou: ['act', 'acts', 'acted', 'acted', 'acting'],
+    cloth: {
+        tags: ['不可算名詞'],
     },
-    add: {
-        tags: ['他動詞', '動作動詞', '原型'],
-        katuyou: ['add', 'adds', 'added', 'added', 'adding'],
+    clothes: {
+        tags: ['可算名詞', '複数形', '子音で始まる'],
     },
-    agree: {
-        tags: ['自動詞', '状態動詞', '原型'],
-        katuyou: ['agree', 'agrees', 'agreed', 'agreed', 'agreeing'],
+    cloud: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['clouds'],
     },
-    allow: {
-        tags: ['他動詞', '動作動詞', 'SVOCがとれる動詞', '原型'],
-        katuyou: ['allow', 'allows', 'allowed', 'allowed', 'allowing'],
+    club: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['clubs'],
     },
-    am: {
-        tags: ['be動詞', '状態動詞', '原型'],
-        katuyou: ['am', 'is', 'was', 'been', 'being'],
+    coach: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['coaches'],
     },
-    amaze: {
-        tags: ['他動詞', '感覚動詞', '原型'],
-        katuyou: ['amaze', 'amazes', 'amazed', 'amazed', 'amazing'],
+    coat: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['coats'],
     },
-    answer: {
-        tags: ['他動詞', '動作動詞', '原型'],
-        katuyou: ['answer', 'answers', 'answered', 'answered', 'answering'],
+    coffee: {
+        tags: ['不可算名詞'],
     },
-    are: {
-        tags: ['be動詞', '状態動詞', '原型'],
-        katuyou: ['are', 'is', 'were', 'been', 'being'],
+    coin: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['coins'],
     },
-    arrest: {
-        tags: ['他動詞', '動作動詞', '原型'],
-        katuyou: ['arrest', 'arrests', 'arrested', 'arrested', 'arresting'],
+    cola: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['colas'],
     },
-    arrive: {
-        tags: ['自動詞', '動作動詞', '原型'],
-        katuyou: ['arrive', 'arrives', 'arrived', 'arrived', 'arriving'],
+    cold: {
+        tags: ['不可算名詞'],
     },
-    ask: {
-        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞', '原型'],
-        katuyou: ['ask', 'asks', 'asked', 'asked', 'asking'],
+    college: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['colleges'],
     },
-    assist: {
-        tags: ['他動詞', '動作動詞', '原型'],
-        katuyou: ['assist', 'assists', 'assisted', 'assisted', 'assisting'],
+    color: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['colors'],
     },
-    attend: {
-        tags: ['他動詞', '動作動詞', '原型'],
-        katuyou: ['attend', 'attends', 'attended', 'attended', 'attending'],
+    comic: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['comics'],
     },
-    attract: {
-        tags: ['他動詞', '感覚動詞', '原型'],
-        katuyou: ['attract', 'attracts', 'attracted', 'attracted', 'attracting'],
+    comment: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['comments'],
     },
-    bake: {
-        tags: ['他動詞', '動作動詞', '原型'],
-        katuyou: ['bake', 'bakes', 'baked', 'baked', 'baking'],
+    communication: {
+        tags: ['不可算名詞'],
     },
-    base: {
-        tags: ['他動詞', '動作動詞', '原型'],
-        katuyou: ['base', 'bases', 'based', 'based', 'basing'],
+    community: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['communities'],
     },
-    be: {
-        tags: ['be動詞', '状態動詞', '原型'],
-        katuyou: ['be', 'is', 'was', 'been', 'being'],
+    company: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['companies'],
     },
-    become: {
-        tags: ['自動詞', '連結動詞', 'SVOCがとれる動詞', '原型'],
-        katuyou: ['become', 'becomes', 'became', 'become', 'becoming'],
+    compartment: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['compartments'],
     },
-    begin: {
-        tags: ['他動詞', '自動詞', '動作動詞', '原型'],
-        katuyou: ['begin', 'begins', 'began', 'begun', 'beginning'],
+    computer: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['computers'],
     },
-    believe: {
-        tags: ['他動詞', '状態動詞', '原型'],
-        katuyou: ['believe', 'believes', 'believed', 'believed', 'believing'],
+    concert: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['concerts'],
     },
-    belong: {
-        tags: ['自動詞', '状態動詞', '原型'],
-        katuyou: ['belong', 'belongs', 'belonged', 'belonged', 'belonging'],
+    conclusion: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['conclusions'],
     },
-    blow: {
-        tags: ['他動詞', '自動詞', '動作動詞', '原型'],
-        katuyou: ['blow', 'blows', 'blew', 'blown', 'blowing'],
+    condition: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['conditions'],
     },
-    blush: {
-        tags: ['自動詞', '動作動詞', '原型'],
-        katuyou: ['blush', 'blushes', 'blushed', 'blushed', 'blushing'],
+    conditioner: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['conditioners'],
     },
-    boil: {
-        tags: ['自動詞', '他動詞', '動作動詞', '原型'],
-        katuyou: ['boil', 'boils', 'boiled', 'boiled', 'boiling'],
+    condominium: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['condominiums'],
     },
-    bear: {
-        tags: ['自動詞', '動作動詞', '原型'],
-        katuyou: ['bear', 'bears', 'bore', 'born', 'bearing'],
+    conference: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['conferences'],
     },
-    borrow: {
-        tags: ['他動詞', '他動詞', '動作動詞', '原型'],
-        katuyou: ['borrow', 'borrows', 'borrowed', 'borrowed', 'borrowing'],
+    connection: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['connections'],
     },
-    bother: {
-        tags: ['他動詞', '動作動詞', '原型'],
-        katuyou: ['bother', 'bothers', 'bothered', 'bothered', 'bothering'],
+    content: {
+        tags: ['不可算名詞'],
     },
-    break: {
-        tags: ['他動詞', '自動詞', '動作動詞', '原型'],
-        katuyou: ['break', 'breaks', 'broke', 'broken', 'breaking'],
+    contest: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['contests'],
     },
-    bring: {
-        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞', '原型'],
-        katuyou: ['bring', 'brings', 'brought', 'brought', 'bringing'],
+    control: {
+        tags: ['不可算名詞'],
+    },
+    convenience: {
+        tags: ['不可算名詞'],
+    },
+    cook: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['cooks'],
+    },
+    cooking: {
+        tags: ['不可算名詞'],
+    },
+    corner: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['corners'],
+    },
+    costume: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['costumes'],
+    },
+    cotton: {
+        tags: ['不可算名詞'],
+    },
+    cough: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['coughs'],
+    },
+    country: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['countries'],
+    },
+    courage: {
+        tags: ['不可算名詞'],
+    },
+    course: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['courses'],
+    },
+    court: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['courts'],
+    },
+    cousin: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['cousins'],
+    },
+    cow: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['cows'],
+    },
+    cracker: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['crackers'],
+    },
+    craftsperson: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['craftspeople'],
+    },
+    crane: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['cranes'],
+    },
+    creativity: {
+        tags: ['不可算名詞'],
+    },
+    culture: {
+        tags: ['不可算名詞'],
+    },
+    cup: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['cups'],
+    },
+    curry: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['curries'],
+    },
+    cushion: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['cushions'],
+    },
+    custom: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['customs'],
+    },
+    customer: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['customers'],
+    },
+    cycling: {
+        tags: ['不可算名詞'],
+    },
+    dad: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['dads'],
+    },
+    dance: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['dances'],
+    },
+    dancer: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['dancers'],
+    },
+    danger: {
+        tags: ['不可算名詞'],
+    },
+    date: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['dates'],
+    },
+    daughter: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['daughters'],
+    },
+    day: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['days'],
+    },
+    death: {
+        tags: ['不可算名詞'],
+    },
+    decade: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['decades'],
+    },
+    December: {
+        tags: ['不可算名詞'],
+    },
+    decision: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['decisions'],
+    },
+    democracy: {
+        tags: ['不可算名詞'],
+    },
+    demonstration: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['demonstrations'],
+    },
+    dentist: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['dentists'],
+    },
+    design: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['designs'],
+    },
+    designer: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['designers'],
+    },
+    desk: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['desks'],
+    },
+    diary: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['diaries'],
+    },
+    dictionary: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['dictionaries'],
+    },
+    difference: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['differences'],
+    },
+    difficulty: {
+        tags: ['不可算名詞'],
+    },
+    dining: {
+        tags: ['不可算名詞'],
+    },
+    dinner: {
+        tags: ['不可算名詞'],
+    },
+    dinosaur: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['dinosaurs'],
+    },
+    director: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['directors'],
+    },
+    disaster: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['disasters'],
+    },
+    discount: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['discounts'],
+    },
+    disease: {
+        tags: ['不可算名詞'],
+    },
+    dish: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['dishes'],
+    },
+    doctor: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['doctors'],
+    },
+    dog: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['dogs'],
+    },
+    dollar: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['dollars'],
+    },
+    dolphin: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['dolphins'],
+    },
+    dome: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['domes'],
+    },
+    donut: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['donuts'],
+    },
+    door: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['doors'],
+    },
+    dot: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['dots'],
+    },
+    drama: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['dramas'],
+    },
+    dream: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['dreams'],
+    },
+    dress: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['dresses'],
+    },
+    driftwood: {
+        tags: ['不可算名詞'],
+    },
+    drill: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['drills'],
+    },
+    drink: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['drinks'],
+    },
+    driver: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['drivers'],
+    },
+    driveway: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['driveways'],
+    },
+    drop: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['drops'],
+    },
+    drugstore: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['drugstores'],
+    },
+    drum: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['drums'],
+    },
+    duck: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['ducks'],
+    },
+    DVD: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['DVDs'],
+    },
+    ear: {
+        tags: ['可算名詞', '単数形', '母音で始まる'],
+        katuyou: ['ears'],
+    },
+    earth: {
+        tags: ['不可算名詞'],
+    },
+    earthquake: {
+        tags: ['可算名詞', '単数形', '母音で始まる'],
+        katuyou: ['earthquakes'],
+    },
+    east: {
+        tags: ['不可算名詞'],
+    },
+    effort: {
+        tags: ['不可算名詞'],
+    },
+    egg: {
+        tags: ['可算名詞', '単数形', '母音で始まる'],
+        katuyou: ['eggs'],
+    },
+    eight: {
+        tags: ['不可算名詞'],
+    },
+    eighteen: {
+        tags: ['不可算名詞'],
+    },
+    eighteenth: {
+        tags: ['不可算名詞'],
+    },
+    eighth: {
+        tags: ['不可算名詞'],
+    },
+    eighty: {
+        tags: ['不可算名詞'],
+    },
+    electricity: {
+        tags: ['不可算名詞'],
+    },
+    elephant: {
+        tags: ['可算名詞', '単数形', '母音で始まる'],
+        katuyou: ['elephants'],
+    },
+    elevator: {
+        tags: ['可算名詞', '単数形', '母音で始まる'],
+        katuyou: ['elevators'],
+    },
+    eleven: {
+        tags: ['不可算名詞'],
+    },
+    eleventh: {
+        tags: ['不可算名詞'],
+    },
+    emergency: {
+        tags: ['可算名詞', '単数形', '母音で始まる'],
+        katuyou: ['emergencies'],
+    },
+    end: {
+        tags: ['可算名詞', '単数形', '母音で始まる'],
+        katuyou: ['ends'],
+    },
+    ending: {
+        tags: ['可算名詞', '単数形', '母音で始まる'],
+        katuyou: ['endings'],
+    },
+    energy: {
+        tags: ['不可算名詞'],
+    },
+    engineer: {
+        tags: ['可算名詞', '単数形', '母音で始まる'],
+        katuyou: ['engineers'],
+    },
+    engineering: {
+        tags: ['不可算名詞'],
+    },
+    England: {
+        tags: ['不可算名詞'],
+    },
+    English: {
+        tags: ['不可算名詞'],
+    },
+    entertainment: {
+        tags: ['不可算名詞'],
+    },
+    entrance: {
+        tags: ['可算名詞', '単数形', '母音で始まる'],
+        katuyou: ['entrances'],
+    },
+    environment: {
+        tags: ['可算名詞', '単数形', '母音で始まる'],
+        katuyou: ['environments'],
+    },
+    era: {
+        tags: ['可算名詞', '単数形', '母音で始まる'],
+        katuyou: ['eras'],
+    },
+    eraser: {
+        tags: ['可算名詞', '単数形', '母音で始まる'],
+        katuyou: ['erasers'],
+    },
+    Europe: {
+        tags: ['不可算名詞'],
+    },
+    evacuation: {
+        tags: ['不可算名詞'],
+    },
+    evening: {
+        tags: ['不可算名詞'],
+    },
+    event: {
+        tags: ['可算名詞', '単数形', '母音で始まる'],
+        katuyou: ['events'],
+    },
+    exam: {
+        tags: ['可算名詞', '単数形', '母音で始まる'],
+        katuyou: ['exams'],
+    },
+    example: {
+        tags: ['可算名詞', '単数形', '母音で始まる'],
+        katuyou: ['examples'],
+    },
+    exhibition: {
+        tags: ['可算名詞', '単数形', '母音で始まる'],
+        katuyou: ['exhibitions'],
+    },
+    experience: {
+        tags: ['不可算名詞'],
+    },
+    expert: {
+        tags: ['可算名詞', '単数形', '母音で始まる'],
+        katuyou: ['experts'],
+    },
+    express: {
+        tags: ['可算名詞', '単数形', '母音で始まる'],
+        katuyou: ['expresses'],
+    },
+    expression: {
+        tags: ['不可算名詞'],
+    },
+    eye: {
+        tags: ['可算名詞', '単数形', '母音で始まる'],
+        katuyou: ['eyes'],
+    },
+    eyesight: {
+        tags: ['不可算名詞'],
+    },
+    face: {
+        tags: ['可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['faces'],
     },
 };
