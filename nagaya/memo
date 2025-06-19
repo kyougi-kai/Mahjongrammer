@@ -77,7 +77,7 @@ checkVテストケース
 ["can","run"]...true
 ["can",[""],""]
 
-次回・・・ダウンロードしたスプレッドシートから動詞の登録、checkV,checkJodousiRoot
+次回・・・ダウンロードしたスプレッドシートから動詞の登録、checkV,checkJodousiRoot→法助動詞、相助動詞、疑似法助動詞
 
 errorManeger・・・エラーを一元的に管理する関数
 function errorManager(GCR,errorID){
@@ -103,7 +103,7 @@ checkV→後ろからチェックする
 数詞、数量詞の区別（形容詞）
 不可算×数詞、数量詞はまだ考慮していない
 
-
+be動詞を使うならMがいる→総合判断
 
 [単語](https://www.notion.so/1b2aefa5fc6f80d48a57fc25b1ceeffd?pvs=21)
  let tango = {   

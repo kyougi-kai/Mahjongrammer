@@ -945,7 +945,7 @@ function checkS(targetSentence, GCR) /*＜S＞*/ {
 let checkGrammerTestArray = {
     sentence: 1,
     s: ['apple'],
-    v: [['run']],
+    v: ['run'],
 };
 
 function checkC(targetSentence, GCR) /*＜C＞*/ {
@@ -1237,7 +1237,7 @@ function checkV(targetSentence, GCR, sentenceType) /*＜V＞*/ {
     return GCR;
 }
 
-console.log('checkV結果：', checkGrammerTestArray.v, checkV(checkGrammerTestArray.v, testGCR, 2));
+console.log('checkV結果：', checkGrammerTestArray.v, checkV(checkGrammerTestArray.v, testGCR, '1'));
 
 function checkDousi(targetSentence, GCR, sentenceType) {
     if (Array.isArray(targetSentence[GCR['allOfVTags'].targetIndex])) {
@@ -1246,16 +1246,58 @@ function checkDousi(targetSentence, GCR, sentenceType) {
     }
     switch (sentenceType) {
         case '1': //第一文型SV
+            if (
+                tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags.includes('自動詞') ||
+                tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags.includes('be動詞')
+            ) {
+                GCR['allOfVTags'].dousi.push(tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags); //タグを代入
+                GCR['allOfVTags'].dousi = GCR['allOfVTags'].dousi.flat(Infinity);
+                GCR['allOfVTags'].wordsCount += 1;
+            } else {
+                GCR = errorManager(GCR, '', 'DousiMissOfBunkei1'); //第一文型ミス！
+            }
             break;
         case '2': //第二文型SVC
+            if (
+                tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags.includes('連結動詞') ||
+                tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags.includes('be動詞')
+            ) {
+                GCR['allOfVTags'].dousi.push(tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags); //タグを代入
+                GCR['allOfVTags'].dousi = GCR['allOfVTags'].dousi.flat(Infinity);
+                GCR['allOfVTags'].wordsCount += 1;
+            } else {
+                GCR = errorManager(GCR, '', 'DousiMissOfBunkei2'); //第二文型ミス！
+            }
             break;
         case '3': //第三文型SVO
+            if (tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags.includes('他動詞')) {
+                GCR['allOfVTags'].dousi.push(tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags); //タグを代入
+                GCR['allOfVTags'].dousi = GCR['allOfVTags'].dousi.flat(Infinity);
+                GCR['allOfVTags'].wordsCount += 1;
+            } else {
+                GCR = errorManager(GCR, '', 'DousiMissOfBunkei3'); //第三文型ミス！
+            }
             break;
         case '4': //第四文型SVOO
+            if (tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags.includes('SVOOがとれる動詞')) {
+                GCR['allOfVTags'].dousi.push(tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags); //タグを代入
+                GCR['allOfVTags'].dousi = GCR['allOfVTags'].dousi.flat(Infinity);
+                GCR['allOfVTags'].wordsCount += 1;
+            } else {
+                GCR = errorManager(GCR, '', 'DousiMissOfBunkei4'); //第四文型ミス！
+            }
             break;
         case '5': //第五文型SVOC
+            if (tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags.includes('SVOCがとれる動詞')) {
+                GCR['allOfVTags'].dousi.push(tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags); //タグを代入
+                GCR['allOfVTags'].dousi = GCR['allOfVTags'].dousi.flat(Infinity);
+                GCR['allOfVTags'].wordsCount += 1;
+            } else {
+                GCR = errorManager(GCR, '', 'DousiMissOfBunkei5'); //第五文型ミス！
+            }
             break;
     }
+    GCR['allOfVTags'].targetIndex -= 1;
     return GCR;
 }
 
@@ -1402,6 +1444,51 @@ function errorManager(GCR, typeText, errorID) {
             GCR.errors[keyName].type = '動詞ミス！';
             GCR.errors[keyName].reason = '動詞のどこかにミスがあります';
             GCR.errors[keyName].suggestion = 'ミスがある箇所を確認してみましょう';
+            break;
+        case 'DousiMissOfBunkei1': //第一文型ミス！
+            keyName = GCR.currentType[GCR.currentTypeNum] + 'DousiMissOfBunkei1';
+            GCR.errors[keyName] = { ...errorTemplete };
+            GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '動詞ミス！';
+            GCR.errors[keyName].reason = '第一文型SVでは自動詞かbe動詞が必要です';
+            GCR.errors[keyName].suggestion = '動詞を変えてみましょう';
+            break;
+        case 'DousiMissOfBunkei2': //第二文型ミス！
+            keyName = GCR.currentType[GCR.currentTypeNum] + 'DousiMissOfBunkei2';
+            GCR.errors[keyName] = { ...errorTemplete };
+            GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '動詞ミス！';
+            GCR.errors[keyName].reason = '第二文型SVCではbe動詞か連結動詞が必要です';
+            GCR.errors[keyName].suggestion = '動詞を変えてみましょう';
+            break;
+        case 'DousiMissOfBunkei3': //第三文型ミス！
+            keyName = GCR.currentType[GCR.currentTypeNum] + 'DousiMissOfBunkei3';
+            GCR.errors[keyName] = { ...errorTemplete };
+            GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '動詞ミス！';
+            GCR.errors[keyName].reason = '第三文型SVOでは他動詞が必要です';
+            GCR.errors[keyName].suggestion = '動詞を変えてみましょう';
+            break;
+        case 'DousiMissOfBunkei4': //第四文型ミス！
+            keyName = GCR.currentType[GCR.currentTypeNum] + 'DousiMissOfBunkei4';
+            GCR.errors[keyName] = { ...errorTemplete };
+            GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '動詞ミス！';
+            GCR.errors[keyName].reason = '第四文型SVOOではSVOOがとれる動詞が必要です';
+            GCR.errors[keyName].suggestion = '動詞を変えてみましょう';
+            break;
+        case 'DousiMissOfBunkei5': //第五文型ミス！
+            keyName = GCR.currentType[GCR.currentTypeNum] + 'DousiMissOfBunkei5';
+            GCR.errors[keyName] = { ...errorTemplete };
+            GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '動詞ミス！';
+            GCR.errors[keyName].reason = '第五文型SVOCではSVOCがとれる動詞が必要です';
+            GCR.errors[keyName].suggestion = '動詞を変えてみましょう';
             break;
     }
     return GCR;
