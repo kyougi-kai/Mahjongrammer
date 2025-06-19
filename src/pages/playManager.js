@@ -104,6 +104,16 @@ export class playManager {
             this.sendToClients(sendData, roomId);
         });
 
+        this.wss.onMessage('tumo', async (ws, data) => {
+            const parentId = await usersManager.nameToId(data.parentName);
+            const roomId = await roomsDB.getRoomId(parentId);
+            const sendData = {
+                type: 'reStart',
+                payload: { tumoPlayerNumber: data.playerNumber },
+            };
+            this.sendToClients(sendData, roomId);
+        });
+
         this.wss.onMessage('throwHai', async (ws, data) => {
             const parentId = await usersManager.nameToId(data.parentName);
             const roomId = await roomsDB.getRoomId(parentId);
