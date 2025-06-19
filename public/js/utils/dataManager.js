@@ -1,4 +1,4 @@
-import { tango } from '/js/until/grammercheck.js';
+import { tango } from '/js/utils/wordData.js';
 
 export class DM {
     constructor() {

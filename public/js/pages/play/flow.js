@@ -1,12 +1,13 @@
 import { hai } from '/js/pages/play/hai.js';
 import { tango } from '/js/utils/wordData.js';
 export class flow {
-    constructor(wss, blockmanager, uimanager, playermanager, togoout) {
+    constructor(wss, blockmanager, uimanager, playermanager, togoout, datamanager) {
         this.wss = wss;
         this.blockmanager = blockmanager;
         this.uimanager = uimanager;
         this.playermanager = playermanager;
         this.togoout = togoout;
+        this.datamanager = datamanager;
 
         this.scorebords = document.getElementById('scoreBord');
         this.youCanThrow = false;
@@ -22,7 +23,7 @@ export class flow {
         // 上がれるようにする
         document.getElementById('finishButton').addEventListener('click', (e) => {
             this.togoout.tumoreruka();
-        })
+        });
 
         document.addEventListener('keydown', (e) => {
             if (e.key == 'x') {
@@ -61,6 +62,10 @@ export class flow {
             this.wss.send(skipData);
         });
 
+        this.wss.onMessage('getRoomMemberData', (data) => {
+            this.datamanager.updateRatio(data.ratio);
+        });
+
         this.wss.onMessage('startGame', () => {
             console.log('ゲームスタート');
             this.start();
@@ -89,7 +94,7 @@ export class flow {
 
         this.wss.onMessage('nextPhase', () => {
             this.uimanager.pon();
-            if(this.sendInterval != null)clearTimeout(this.sendInterval);
+            if (this.sendInterval != null) clearTimeout(this.sendInterval);
             this.sendInterval = null;
             this.nowPhaseNumber = (this.nowPhaseNumber + 1) % this.playermanager.playerMembers.length;
             this.nextPhase();
@@ -98,9 +103,9 @@ export class flow {
         this.wss.onMessage('pon', (data) => {
             this.uimanager.hideThrowHai(this.playermanager.phaseToPosition(this.nowPhaseNumber));
 
-            if(this.sendInterval != null)clearTimeout(this.sendInterval);
+            if (this.sendInterval != null) clearTimeout(this.sendInterval);
             this.sendInterval = null;
-            
+
             this.uimanager.pon();
             this.nowPhaseNumber = data.ponPlayerNumber;
             data.ponPlayerNumber == this.playermanager.getPlayerNumber() ? this.nextPhase(true) : this.nextPhase();
@@ -116,17 +121,11 @@ export class flow {
     }
 
     drawHai() {
-        var i = Math.floor(Math.random() * Object.keys(tango).length);
-        let keys = Object.keys(tango);
-        let key = keys[i];
-        let temporaryHai = new hai(key, null);
+        const tango = this.datamanager.pickTango();
+        let temporaryHai = new hai(tango.word, tango.partOfSpeech);
         this.blockmanager.attachDraggable(temporaryHai.getHai);
 
         document.getElementById('wordDown').appendChild(temporaryHai.getHai);
-    }
-
-    sajldafj() {
-        console.log('jdaosfjaosfjda');
     }
 
     setStartButton(element) {
@@ -180,8 +179,7 @@ export class flow {
 
             this.scorebords.children[4].style.opacity = 1;
             this.scorebords.children[4].style.pointerEvents = 'all';
-        }
-        else{
+        } else {
             this.scorebords.children[4].style.opacity = 0;
             this.scorebords.children[4].style.pointerEvents = 'none';
         }

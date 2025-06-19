@@ -4,6 +4,7 @@ import { flow } from '/js/pages/play/flow.js';
 import { uiManager } from '/js/pages/play/uiManager.js';
 import { blockManager } from '/js/pages/play/blockManager.js';
 import { toGoOut } from '/js/pages/play/toGoOut.js';
+import { DM } from '/js/utils/dataManager.js';
 
 export class gameManager {
     constructor() {
@@ -13,7 +14,8 @@ export class gameManager {
         this.blockmanager = new blockManager();
         this.uimanager = new uiManager(this.playermanager);
         this.togoout = new toGoOut();
-        this.flow = new flow(this.connectionmanager, this.blockmanager, this.uimanager, this.playermanager, this.togoout);
+        this.datamanager = new DM();
+        this.flow = new flow(this.connectionmanager, this.blockmanager, this.uimanager, this.playermanager, this.togoout, this.datamanager);
 
         this.blockmanager.setFlow(this.flow);
         this.uimanager.setFlow(this.flow);
