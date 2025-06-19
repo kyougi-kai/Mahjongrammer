@@ -113,6 +113,9 @@ export class flow {
                 nanka.remove();
             }
         });
+        this.wss.onMessage('reStart', () => {
+            this.reStart()  
+        })
     }
 
     drawHai() {
@@ -154,9 +157,12 @@ export class flow {
 
     start() {
         // プレイヤーにはいを配る
-        for (let i = 0; i < 7; i++) {
+        let count = 0;
+        let nan = setInterval(() => {
+            if(count == 6)clearInterval(nan);
             this.drawHai();
-        }
+            count++;
+        }, 200);
         var scoreBord = document.getElementById('scoreBord');
         scoreBord.style.opacity = 1;
         this.uimanager.showBlink(this.playermanager.phaseToPosition(0));
@@ -168,6 +174,10 @@ export class flow {
             this.scorebords.children[4].style.opacity = 1;
             this.scorebords.children[4].style.pointerEvents = 'all';
         }
+    }
+
+    reStart(nextParent){
+        // やること
     }
 
     nextPhase(isPon = false) {
