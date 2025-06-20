@@ -15,17 +15,25 @@ export class hai {
     }
 
     createHai() {
-
         this.hai = document.createElement('div');
         this.hai.innerHTML = this.word;
         this.hai.classList.add('border-div');
+
+        this.hai.addEventListener('click', () => {
+            this.changeKatuyou();
+        });
 
         // 後ろに画像表示 名詞はとりあえず1番目のやつ
         this.hai.style.backgroundImage = `url(/img/partOfSpeech/${this.hinsi}.png)`;
 
         return this.hai;
     }
+
+    changeKatuyou() {
+        //
+    }
+
     get getHai() {
-        return this.hai
+        return this.hai;
     }
 }
