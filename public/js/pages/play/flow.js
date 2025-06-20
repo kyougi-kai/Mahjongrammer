@@ -119,7 +119,10 @@ export class flow {
             }
         });
         this.wss.onMessage('reStart', () => {
-            this.reStart()  
+            if(tumoplayerNumber <> this.playermanager.isParent()){
+                this.playermanager.parentNumber = (this.playermanager.parentNumber + 1) % this.playermanager.;
+            }
+            this.reStart(this.playermanager.parentNumber);  
         })
     }
 
@@ -177,6 +180,18 @@ export class flow {
 
     reStart(nextParent){
         // やること
+        let haitable = document.getElementById('wordUp');
+        let childcnt = haitable.childElementCount;
+        if(childcnt > 0){
+            for(let i = 0; i < childcnt; i++){
+                haitable.children[i].remove;
+            }
+        }
+        this.nowPhaseNumber = nextParent;
+        for(let i = 0; i < this.playermanager.playerMembers.length;i++){
+            this.uimanager.hideThrowHai(i);
+        }
+        this.start();
     }
 
     nextPhase(isPon = false) {
