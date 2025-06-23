@@ -128,6 +128,9 @@ export class flow {
                 nanka.children[0].style.opacity = '1';
                 document.getElementById('wordDown').appendChild(nanka.children[0]);
                 nanka.remove();
+                nanka.children[0].addEventListener('click', () => {
+                    this.hai.changeKatuyou();
+                });
             }
         });
         this.wss.onMessage('reStart', (data) => {
