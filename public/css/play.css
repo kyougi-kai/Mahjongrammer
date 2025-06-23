@@ -24,7 +24,7 @@ p {
 }
 
 .top-content {
-    top: 10%;
+    top: 4%;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -41,7 +41,7 @@ p {
 
 .right-content {
     top: 50%;
-    right: 5%;
+    right: -5%;
     transform: translateY(-50%);
 }
 
@@ -266,15 +266,14 @@ p {
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
     width: 250px;
-    height: 250px;
-    border: 1px solid black;
-    background: #424242;
+    height: 242px;
+    background-image: url('/img/background/ゲーム画面真ん中.png');
 }
 
 .score-bord p {
     position: absolute;
-    background: #dadada;
     padding: 10px 25px;
+    color: white;
 }
 
 .throw-button {
