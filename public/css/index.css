@@ -1,19 +1,19 @@
-:root{
-    --main-color:rgb(74, 74, 74);
+:root {
+    --main-color: rgb(74, 74, 74);
 }
 
-html{
+html {
     height: 100%;
-    background-image: url("../../img/haikeimoji/haikei.png");
+    background-image: url('../../img/haikeimoji/haikei.png');
 }
 
-.main-content{
+.main-content {
     display: flex;
     justify-content: center;
     height: 100%;
 }
 
-.login-div{
+.login-div {
     box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.47);
     width: 90%;
     max-width: 300px;
@@ -21,12 +21,12 @@ html{
     display: none;
 }
 
-.login-header{
+.login-header {
     display: flex;
     background: var(--main-color);
 }
 
-.login-header button{
+.login-header button {
     color: white;
     width: 50%;
     height: 30px;
@@ -34,27 +34,31 @@ html{
     background: transparent;
 }
 
-.login-header button p{
+.login-header button p {
     margin: auto;
     width: 70%;
 }
 
-.login-footer{
+.login-footer {
     display: flex;
     justify-content: right;
     margin-top: 10px;
     border-top: 1px solid var(--main-color);
 }
 
-.nanka{
+.nanka {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 10px;
+    width: 15vw;
     height: 700px;
 }
 
-.hoyuji-style{
+.nanka img {
+    width: 100%;
+}
+
+.hoyuji-style {
     justify-content: center;
     display: flex;
 }
