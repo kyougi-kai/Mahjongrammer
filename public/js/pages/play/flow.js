@@ -20,11 +20,6 @@ export class flow {
 
         this.barkdiv = document.getElementById('barkDiv');
 
-        // 上がれるようにする
-        document.getElementById('finishButton').addEventListener('click', (e) => {
-            this.togoout.tumoreruka();
-        });
-
         document.addEventListener('keydown', (e) => {
             if (e.key == 'x') {
                 this.start();
@@ -40,6 +35,19 @@ export class flow {
     }
 
     _setupWebsocket() {
+        // 上がれるようにする
+        document.getElementById('finishButton').addEventListener('click', (e) => {
+            let tumoData = {
+                type: 'tumo',
+                payload: {
+                    parentName: this.playermanager.parentname,
+                    playerNumber: this.playermanager.getPlayerNumber(),
+                },
+            };
+            this.wss.send(tumoData);
+            // this.togoout.tumoreruka();
+        });
+
         this.barkdiv.children[0].addEventListener('click', (e) => {
             let ponData = {
                 type: 'pon',
@@ -118,11 +126,13 @@ export class flow {
                 nanka.remove();
             }
         });
-        this.wss.onMessage('reStart', () => {
-            if(tumoplayerNumber <> this.playermanager.isParent()){
-                this.playermanager.parentNumber = (this.playermanager.parentNumber + 1) % this.playermanager.;
+        this.wss.onMessage('reStart', (data) => {
+            this.uimanager.hideNowBlink();
+            if(data.tumoPlayerNumber != this.playermanager.parentNumber){
+                this.playermanager.parentNumber = (this.playermanager.parentNumber + 1) % this.playermanager.playerMembers.length;
+                this.playermanager.parentName = this.playermanager.playerMembers[this.playermanager.parentNumber];
             }
-            this.reStart(this.playermanager.parentNumber);  
+            this.reStart(this.playermanager.parentNumber);
         })
     }
 
@@ -167,7 +177,7 @@ export class flow {
         }, 200);
         var scoreBord = document.getElementById('scoreBord');
         scoreBord.style.opacity = 1;
-        this.uimanager.showBlink(this.playermanager.phaseToPosition(0));
+        this.uimanager.showBlink(this.playermanager.phaseToPosition(this.playermanager.parentNumber));
 
         let isparent = this.playermanager.isParent();
         if (isparent) {
@@ -180,17 +190,19 @@ export class flow {
 
     reStart(nextParent){
         // やること
-        let haitable = document.getElementById('wordUp');
-        let childcnt = haitable.childElementCount;
-        if(childcnt > 0){
-            for(let i = 0; i < childcnt; i++){
-                haitable.children[i].remove;
-            }
-        }
+        this.uimanager.initTable();
         this.nowPhaseNumber = nextParent;
         for(let i = 0; i < this.playermanager.playerMembers.length;i++){
-            this.uimanager.hideThrowHai(i);
+            // そのうちやる
+            try{
+                this.uimanager.hideThrowHai(i);
+            }
+            catch(err){
+                console.log('すてられた牌がないよ');
+            }
+            
         }
+        console.log(this.nowPhaseNumber);
         this.start();
     }
 

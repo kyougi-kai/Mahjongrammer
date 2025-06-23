@@ -35,6 +35,11 @@ export class uiManager {
         this.showCountDown();
     }
 
+    initTable(){
+        document.getElementById('wordUp').innerHTML = '';
+        document.getElementById('wordDown').innerHTML = '';
+    }
+
     hideThrowHai(position) {
         this.throwHaiTable.children[position].children[0].remove();
     }

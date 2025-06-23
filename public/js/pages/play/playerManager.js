@@ -145,7 +145,7 @@ export class playerManager {
     isParent() {
         console.log('isParent');
         console.log(`playerName : ${this.playername} --- parentName : ${this.parentName}`);
-        if (this.playername == this.parentName) {
+        if (this.getPlayerNumber() == this.parentNumber) {
             return true;
         } else return false;
     }
