@@ -205,7 +205,7 @@ export class flow {
         },3000)
 
         this.starts = document.createElement('img');
-        this.starts.src = "../../img/haikeimoji/LET'GRAMMAHJONG2.png";
+        this.starts.src = '../../img/haikeimoji/LETGRAMMAHJONG2.png';
         Object.assign(this.starts.style, {
             position: 'fixed',
             top: '0',
