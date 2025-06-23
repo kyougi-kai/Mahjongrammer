@@ -33,18 +33,20 @@ export class hai {
     changeKatuyou() {
         if(this.hai.style.getPropertyValue('--original-html') == ''){
             this.hai.style.setProperty('--original-html', this.hai.innerHTML);
-            console.log(this.hai.style.getPropertyValue('--original-html'));
         }
         const keys = Object.keys(tango); 
         const values = Object.values(tango);
-        console.log(this.hai.innerHTML);
         const index = keys.indexOf(this.hai.style.getPropertyValue('--original-html'));
-        console.log(values[index].katuyou);
         if (values[index].katuyou != undefined) {
-            console.log(values[index].katuyou.length);
-            const idx2 = (values[index].katuyou.indexOf(this.hai.innerHTML) + 1) % (values[index].katuyou.length);
-            this.hai.innerHTML = values[index].katuyou[idx2];
-            console.log(values[index].katuyou.indexOf(this.hai.innerHTML));
+            if(this.hai.style.getPropertyValue('--original-html-ban') == ''){
+                let idx2 = (values[index].katuyou.indexOf(this.hai.innerHTML) + 1) % (values[index].katuyou.length);
+                this.hai.innerHTML = values[index].katuyou[idx2];
+                this.hai.style.setProperty('--original-html-ban', idx2);
+            }else{
+                let idx2 = (Number(this.hai.style.getPropertyValue('--original-html-ban')) + 1) % (values[index].katuyou.length);
+                this.hai.innerHTML = values[index].katuyou[idx2];
+                this.hai.style.setProperty('--original-html-ban', idx2);
+            }
         };
     }
 

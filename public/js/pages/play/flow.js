@@ -16,7 +16,10 @@ export class flow {
         this.sendInterval = null;
 
         // 親を添え字0としたときの番
-        this.nowPhaseNumber = 0;
+        this.nowPhaseNumber = 1;
+
+        //ラウンド数
+        this.roundcnt = 0;
 
         this.barkdiv = document.getElementById('barkDiv');
 
@@ -128,6 +131,9 @@ export class flow {
                 nanka.children[0].style.opacity = '1';
                 document.getElementById('wordDown').appendChild(nanka.children[0]);
                 nanka.remove();
+                nanka.children[0].addEventListener('click', () => {
+                    this.hai.changeKatuyou();
+                });
             }
         });
         this.wss.onMessage('reStart', (data) => {
@@ -172,6 +178,52 @@ export class flow {
     }
 
     start() {
+        //ラウンド
+        this.roundcnt = this.roundcnt + 1;
+        this.round = document.createElement('div');
+        this.round.textContent = `第${this.roundcnt}ラウンド`;
+        Object.assign(this.round.style, {
+            position: 'fixed',
+            top: '0',
+            left: '0',
+            width: '100vw',
+            height: '100vh',
+            color: 'black',           // 文字色
+            fontSize: '10vw',         // フォントサイズは画面幅に応じて可変
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            zIndex: '9999',           // 他の要素より前面に
+            margin: '0',
+            padding: '0',
+            fontFamily: 'sans-serif',
+        });
+        let rounds = document.body.appendChild(this.round);
+        
+        setInterval(() => {
+            rounds.remove();
+        },3000)
+
+        this.starts = document.createElement('img');
+        this.starts.src = '../../img/haikeimoji/LETGRAMMAHJONG2.png';
+        Object.assign(this.starts.style, {
+            position: 'fixed',
+            top: '0',
+            left: '0',
+            width: '100vw',     
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            zIndex: '9999',           // 他の要素より前面に
+            margin: '0',
+            padding: '0',
+        });
+        let startss = document.body.appendChild(this.starts);
+    
+        setInterval(() => {
+            startss.remove();
+        },3000)
+
         // プレイヤーにはいを配る
         let count = 0;
         let nan = setInterval(() => {
