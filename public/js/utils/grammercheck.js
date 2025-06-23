@@ -524,7 +524,7 @@ function checkJodousiRoot(targetSentence, GCR) {
         GCR['allOfVTags'].targetIndex -= 1;
     }
     //法助動詞の次に法助動詞が続いたらエラー、そのほかの助動詞はOK
-    if (targetIndex < 0) {
+    if (GCR['allOfVTags'].targetIndex < 0) {
         return GCR;
     }
     if (tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags.includes('法助動詞')) {
