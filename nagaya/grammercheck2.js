@@ -1217,7 +1217,7 @@ function checkMeisiGrammerMatters(targetSentence, GCR) {
 
 function checkV(targetSentence, GCR, sentenceType) /*＜V＞*/ {
     let temporaryIndex = targetSentence.length - 1;
-    GCR['allOfVTags'] = { jodousi: [], zentiHukusi: [], dousi: [], koutiHukusi: [], wordsCount: 0, targetIndex: temporaryIndex };
+    GCR['allOfVTags'] = { houjodousi: [], jodousi: [], zentiHukusi: [], dousi: [], koutiHukusi: [], wordsCount: 0, targetIndex: temporaryIndex };
     console.log('checkV開始時点のGCR', targetSentence, GCR);
     let truenum = targetSentence.flat(Infinity).length;
     if (truenum == 0) {
@@ -1302,6 +1302,21 @@ function checkDousi(targetSentence, GCR, sentenceType) {
 }
 
 function checkJodousiRoot(targetSentence, GCR) {
+    if (Array.isArray(targetSentence[GCR['allOfVTags'].targetIndex])) {
+        GCR = errorManager(GCR, '', 'JodousiIsDifferent');
+        console.log('checkDousi通過後GCR', targetSentence, GCR);
+        return GCR;
+    }
+    //疑似法助動詞、法助動詞があるかどうか
+    //法助動詞の次に法助動詞が続いたらエラー、そのほかの助動詞はOK
+
+    if (tango[targetSentence[GCR['allOfVTags'].targetIndex]].hinsi.includes('法助動詞')) {
+        GCR['allOfVTags'].houjodousi.push(tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags); //タグを代入
+        GCR['allOfVTags'].houjodousi = GCR['allOfVTags'].houjodousi.flat(Infinity);
+        GCR['allOfVTags'].wordsCount += 1;
+        GCR['allOfVTags'].targetIndex -= 1;
+    } //法助動詞が存在する場合
+
     return GCR;
 }
 
@@ -1489,6 +1504,15 @@ function errorManager(GCR, typeText, errorID) {
             GCR.errors[keyName].type = '動詞ミス！';
             GCR.errors[keyName].reason = '第五文型SVOCではSVOCがとれる動詞が必要です';
             GCR.errors[keyName].suggestion = '動詞を変えてみましょう';
+            break;
+        case 'JodousiIsDifferent': //助動詞が違う
+            keyName = GCR.currentType[GCR.currentTypeNum] + 'JodousiIsDifferent';
+            GCR.errors[keyName] = { ...errorTemplete };
+            GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '助動詞ミス！';
+            GCR.errors[keyName].reason = 'Vの中にMを入れているかもしれません';
+            GCR.errors[keyName].suggestion = '助動詞を入れ直してみましょう';
             break;
     }
     return GCR;
