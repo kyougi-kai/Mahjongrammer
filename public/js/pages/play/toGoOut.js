@@ -1,5 +1,7 @@
+import { checkGrammer } from '/js/utils/grammercheck.js';
+
 export class toGoOut {
-    constructor(){
+    constructor() {
         this.sentenceList = {
             sv: 1,
             svm: 1,
@@ -12,47 +14,80 @@ export class toGoOut {
             svoc: 5,
             svocm: 5,
         };
-
         this.checkList = Object.keys(this.sentenceList);
 
+        this.table = document.getElementById('wordUp');
         document.addEventListener('keydown', (e) => {
             if (e.key == 'p') {
                 tumoreruka();
             }
         });
     }
-    
-    
-    tumoreruka(){
+
+    tumoreruka() {
         console.log('つもれるか？');
-        let table = document.getElementById("wordUp");
 
         // 白の数を数えて 0ならfalseを返す
-        let wc = table.childElementCount;
+        let wc = this.table.childElementCount;
         if (wc == 0) return false;
 
         // 1個1個白の中を見て sとかvとか 一つの文字列にまとめる  sv svo
-        for(let i = 0;i < wc; i++){
-            let grammerString = "";
-            Array.from(table.children[i].children).forEach(value => {
+        for (let i = 0; i < wc; i++) {
+            let grammerString = '';
+            Array.from(this.table.children[i].children).forEach((value) => {
                 grammerString += this.grammerToString(value);
             });
             console.log(grammerString);
-            // this.checkList.indexOf(table.children[i])
+            // this.checkList.indexOf(this.table.children[i])
         }
     }
 
-    grammerToString(element){
-        const checkList = [['division-s', 's'],['division-v', 'v'], ['division-o', 'o'], ['division-c', 'c'], ['division-m', 'm']];
+    grammerToString(element) {
+        const checkList = [
+            ['division-s', 's'],
+            ['division-v', 'v'],
+            ['division-o', 'o'],
+            ['division-c', 'c'],
+            ['division-m', 'm'],
+        ];
 
-        for(let i = 0; i < checkList.length; i++){
-            if(element.classList.contain(value[0])){
-                return value[1];
+        for (let i = 0; i < checkList.length; i++) {
+            if (element.classList.contains(checkList[i][0])) {
+                return checkList[i][1];
             }
         }
     }
 
-    tumo(){
+    getGrammerData() {
+        let grammerData = [];
+        Array.from(this.table.children).forEach((value, index) => {
+            grammerData.push({});
+            let grammerString = '';
+            let oCount = 1;
+            Array.from(value.children).forEach((val) => {
+                let valString = this.grammerToString(val);
+                grammerString += valString;
+                if (valString == 'o') {
+                    valString += oCount;
+                    grammerData[index][valString] = [];
+                    oCount++;
+                } else grammerData[index][valString] = [];
+                Array.from(val.children).forEach((word) => {
+                    grammerData[index][valString].push(word.innerHTML);
+                });
+            });
+            grammerData[index].sentence = this.sentenceList[grammerString];
+        });
 
+        return grammerData;
+    }
+
+    tumo() {
+        const grammerDatas = this.getGrammerData();
+        grammerDatas.forEach((data) => {
+            console.log('送るデータ');
+            console.log(data);
+            console.log(checkGrammer(data));
+        });
     }
 }

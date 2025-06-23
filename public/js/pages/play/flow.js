@@ -37,6 +37,9 @@ export class flow {
     _setupWebsocket() {
         // 上がれるようにする
         document.getElementById('finishButton').addEventListener('click', (e) => {
+            this.togoout.tumo();
+
+            /*
             let tumoData = {
                 type: 'tumo',
                 payload: {
@@ -45,6 +48,7 @@ export class flow {
                 },
             };
             this.wss.send(tumoData);
+            */
             // this.togoout.tumoreruka();
         });
 
@@ -128,12 +132,12 @@ export class flow {
         });
         this.wss.onMessage('reStart', (data) => {
             this.uimanager.hideNowBlink();
-            if(data.tumoPlayerNumber != this.playermanager.parentNumber){
+            if (data.tumoPlayerNumber != this.playermanager.parentNumber) {
                 this.playermanager.parentNumber = (this.playermanager.parentNumber + 1) % this.playermanager.playerMembers.length;
                 this.playermanager.parentName = this.playermanager.playerMembers[this.playermanager.parentNumber];
             }
             this.reStart(this.playermanager.parentNumber);
-        })
+        });
     }
 
     drawHai() {
@@ -171,7 +175,7 @@ export class flow {
         // プレイヤーにはいを配る
         let count = 0;
         let nan = setInterval(() => {
-            if(count == 6)clearInterval(nan);
+            if (count == 6) clearInterval(nan);
             this.drawHai();
             count++;
         }, 200);
@@ -188,19 +192,17 @@ export class flow {
         }
     }
 
-    reStart(nextParent){
+    reStart(nextParent) {
         // やること
         this.uimanager.initTable();
         this.nowPhaseNumber = nextParent;
-        for(let i = 0; i < this.playermanager.playerMembers.length;i++){
+        for (let i = 0; i < this.playermanager.playerMembers.length; i++) {
             // そのうちやる
-            try{
+            try {
                 this.uimanager.hideThrowHai(i);
-            }
-            catch(err){
+            } catch (err) {
                 console.log('すてられた牌がないよ');
             }
-            
         }
         console.log(this.nowPhaseNumber);
         this.start();
