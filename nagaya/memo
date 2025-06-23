@@ -75,7 +75,9 @@ checkMeisiGrammerMatters{
 checkVテストケース
 
 ["can","run"]...true
-["can",[""],""]
+["can",[""],""]...
+
+法助動詞＋
 
 次回・・・ダウンロードしたスプレッドシートから動詞の登録、checkV,checkJodousiRoot→法助動詞、相助動詞、疑似法助動詞
 
