@@ -879,7 +879,7 @@ function checkGrammer(targetArray) {
     /** @type {gcr} 文法チェックの結果を代入（旧grammerCheckResult）*/
     let GCR = {
         success: false,
-        successes,
+        successes: {},
         currentType: [],
         currentTypeNum: 0,
         currentIndex: 0,
@@ -891,37 +891,108 @@ function checkGrammer(targetArray) {
 
     switch (targetArray.sentence) {
         case '1': //第一文型SV
-            GCR.successes.push({ S: [], V: [] });
+            GCR.successes = { S: [], V: [] };
             GCR.currentType.push('S', 'V');
-            GCR = checkS(targetArray.s, GCR);
+            checkS(targetArray.s, GCR);
             GCR.currentTypeNum++;
             checkV(targetArray.v, GCR, targetArray.sentence);
             GCR.currentTypeNum++;
-            if (GCR.successes.S.includes('true') && GCR.successes.V.includes('true')) {
+            if (
+                GCR.successes.S.includes('true') &&
+                GCR.successes.V.includes('true') &&
+                !GCR.successes.S.includes('false') &&
+                !GCR.successes.V.includes('false')
+            ) {
                 GCR.success = true;
             }
             break;
         case '2': //第二文型SVC
+            GCR.successes = { S: [], V: [], C: [] };
+            GCR.currentType.push('S', 'V', 'C');
             checkS(targetArray.s, GCR);
+            GCR.currentTypeNum++;
             checkV(targetArray.v, GCR, targetArray.sentence);
+            GCR.currentTypeNum++;
             checkC(targetArray.c, GCR);
+            GCR.currentTypeNum++;
+            if (
+                GCR.successes.S.includes('true') &&
+                GCR.successes.V.includes('true') &&
+                !GCR.successes.S.includes('false') &&
+                !GCR.successes.V.includes('false') &&
+                GCR.successes.C.includes('true') &&
+                !GCR.successes.C.includes('false')
+            ) {
+                GCR.success = true;
+            }
             break;
         case '3': //第三文型SVO
+            GCR.successes = { S: [], V: [], O1: [] };
+            GCR.currentType.push('S', 'V', 'O1');
             checkS(targetArray.s, GCR);
+            GCR.currentTypeNum++;
             checkV(targetArray.v, GCR, targetArray.sentence);
+            GCR.currentTypeNum++;
             checkO(targetArray.o1, GCR);
+            GCR.currentTypeNum++;
+            if (
+                GCR.successes.S.includes('true') &&
+                GCR.successes.V.includes('true') &&
+                !GCR.successes.S.includes('false') &&
+                !GCR.successes.V.includes('false') &&
+                GCR.successes.O1.includes('true') &&
+                !GCR.successes.O1.includes('false')
+            ) {
+                GCR.success = true;
+            }
             break;
         case '4': //第四文型SVOO
+            GCR.successes = { S: [], V: [], O1: [], O2: [] };
+            GCR.currentType.push('S', 'V', 'O1', 'O2');
             checkS(targetArray.s, GCR);
+            GCR.currentTypeNum++;
             checkV(targetArray.v, GCR, targetArray.sentence);
+            GCR.currentTypeNum++;
             checkO(targetArray.o1, GCR);
+            GCR.currentTypeNum++;
             checkO(targetArray.o2, GCR);
+            GCR.currentTypeNum++;
+            if (
+                GCR.successes.S.includes('true') &&
+                GCR.successes.V.includes('true') &&
+                !GCR.successes.S.includes('false') &&
+                !GCR.successes.V.includes('false') &&
+                GCR.successes.O1.includes('true') &&
+                !GCR.successes.O1.includes('false') &&
+                GCR.successes.O2.includes('true') &&
+                !GCR.successes.O2.includes('false')
+            ) {
+                GCR.success = true;
+            }
             break;
         case '5': //第五文型SVOC
+            GCR.successes = { S: [], V: [], O1: [], C: [] };
+            GCR.currentType.push('S', 'V', 'O1', 'C');
             checkS(targetArray.s, GCR);
+            GCR.currentTypeNum++;
             checkV(targetArray.v, GCR, targetArray.sentence);
+            GCR.currentTypeNum++;
             checkO(targetArray.o1, GCR);
+            GCR.currentTypeNum++;
             checkC(targetArray.c, GCR);
+            GCR.currentTypeNum++;
+            if (
+                GCR.successes.S.includes('true') &&
+                GCR.successes.V.includes('true') &&
+                !GCR.successes.S.includes('false') &&
+                !GCR.successes.V.includes('false') &&
+                GCR.successes.O1.includes('true') &&
+                !GCR.successes.O1.includes('false') &&
+                GCR.successes.C.includes('true') &&
+                !GCR.successes.C.includes('false')
+            ) {
+                GCR.success = true;
+            }
             break;
         default:
             GCR.message.push('存在しない文型を指定しています');
@@ -943,9 +1014,10 @@ function checkS(targetSentence, GCR) /*＜S＞*/ {
 }
 
 let checkGrammerTestArray = {
-    sentence: 1,
-    s: ['apple'],
-    v: ['run'],
+    sentence: 2,
+    s: ['an', 'apple'],
+    v: ['is'],
+    c: ['happy'],
 };
 
 function checkC(targetSentence, GCR) /*＜C＞*/ {
@@ -1237,7 +1309,7 @@ function checkV(targetSentence, GCR, sentenceType) /*＜V＞*/ {
     return GCR;
 }
 
-console.log('checkV結果：', checkGrammerTestArray.v, checkV(checkGrammerTestArray.v, testGCR, '1'));
+console.log('checkGrammer結果：', checkGrammerTestArray, checkGrammer(checkGrammerTestArray));
 
 function checkDousi(targetSentence, GCR, sentenceType) {
     if (Array.isArray(targetSentence[GCR['allOfVTags'].targetIndex])) {
@@ -1307,10 +1379,16 @@ function checkJodousiRoot(targetSentence, GCR) {
         console.log('checkDousi通過後GCR', targetSentence, GCR);
         return GCR;
     }
-    //疑似法助動詞、法助動詞があるかどうか
+    //相助動詞があるかどうか
+    if (tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags.includes('相助動詞')) {
+        GCR['allOfVTags'].jodousi.push(tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags);
+        GCR['allOfVTags'].jodousi = GCR['allOfVTags'].jodousi.flat(Infinity);
+        GCR['allOfVTags'].wordsCount += 1;
+        GCR['allOfVTags'].targetIndex -= 1;
+    }
     //法助動詞の次に法助動詞が続いたらエラー、そのほかの助動詞はOK
 
-    if (tango[targetSentence[GCR['allOfVTags'].targetIndex]].hinsi.includes('法助動詞')) {
+    if (tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags.includes('法助動詞')) {
         GCR['allOfVTags'].houjodousi.push(tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags); //タグを代入
         GCR['allOfVTags'].houjodousi = GCR['allOfVTags'].houjodousi.flat(Infinity);
         GCR['allOfVTags'].wordsCount += 1;
