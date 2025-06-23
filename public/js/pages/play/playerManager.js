@@ -15,6 +15,7 @@ export class playerManager {
         this.playerMembers = [];
         const pageName = location.href;
         this.parentName = pageName.split('/')[4];
+        this.parentNumber = 0;
         this.playerMembers.push(this.parentName);
         console.log(this.playerMembers);
 
@@ -33,7 +34,7 @@ export class playerManager {
         this._setup();
     }
 
-    ds(target){
+    ds(target) {
         return target.replace(/\s+/g, '');
     }
 
@@ -143,14 +144,13 @@ export class playerManager {
 
     isParent() {
         console.log('isParent');
-        console.log(`playerName : ${this.playername} --- parentName : ${this.parentName}`)
+        console.log(`playerName : ${this.playername} --- parentName : ${this.parentName}`);
         if (this.playername == this.parentName) {
             return true;
-        }
-        else return false;
+        } else return false;
     }
 
-    get getParent () {
+    get getParent() {
         return this.parentName;
     }
 
@@ -159,13 +159,13 @@ export class playerManager {
         return number;
     }
 
-    phaseToPosition(phase){
+    phaseToPosition(phase) {
         const wa = this.playerMembers.indexOf(this.playername);
         const positionnumber = (phase + 2 - wa) % 4;
         return positionnumber;
     }
 
-    positonToPhase(position){
+    positonToPhase(position) {
         const phasenumber = this.playerMembers.indexOf(this.nameDivs[position].children[0].innerHTML);
         return phasenumber;
     }
