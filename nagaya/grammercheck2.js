@@ -856,6 +856,13 @@ const errorTemplete = {
     suggestion: '',
 };
 
+let checkGrammerTestArray = {
+    sentence: 2,
+    s: ['an', 'apple'],
+    v: ['is'],
+    c: ['happy'],
+};
+
 const testGCR = {
     success: false,
     successes: { S: [], V: [] },
@@ -1013,13 +1020,6 @@ function checkS(targetSentence, GCR) /*＜S＞*/ {
     return GCR;
 }
 
-let checkGrammerTestArray = {
-    sentence: 2,
-    s: ['an', 'apple'],
-    v: ['is'],
-    c: ['happy'],
-};
-
 function checkC(targetSentence, GCR) /*＜C＞*/ {
     if (targetSentence.length == 1 && tango[targetSentence[0]].hinsi.includes('代名詞')) {
         GCR = checkDaimeisi(targetSentence, GCR);
@@ -1069,7 +1069,10 @@ function checkO(targetSentence, GCR) /*＜O＞*/ {
     } else {
         GCR = checkMeisiRoot(targetSentence, GCR);
     }
-    if (Object.values(GCR.errors).some((error) => error.part === 'O')) {
+    if (Object.values(GCR.errors).some((error) => error.part === 'O1')) {
+        GCR.successes[GCR.currentType[GCR.currentTypeNum]].push('false');
+    }
+    if (Object.values(GCR.errors).some((error) => error.part === 'O2')) {
         GCR.successes[GCR.currentType[GCR.currentTypeNum]].push('false');
     }
     return GCR;
