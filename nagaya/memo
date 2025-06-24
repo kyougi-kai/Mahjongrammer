@@ -81,6 +81,22 @@ checkVテストケース
 
 次回・・・ダウンロードしたスプレッドシートから動詞の登録、checkV,checkJodousiRoot→法助動詞、相助動詞、疑似法助動詞
 
+
+checkJodousiRoot→法助動詞、相助動詞、疑似法助動詞
+疑似法助動詞の例
+・be going to
+・be able to
+・have to
+↑助動詞が変化する
+・used to
+・had better
+・ought to
+↑助動詞が変化しない
+
+
+
+
+
 errorManeger・・・エラーを一元的に管理する関数
 function errorManager(GCR,errorID){
     switch (errorID) {
