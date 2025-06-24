@@ -16,7 +16,7 @@ export class flow {
         this.sendInterval = null;
 
         // 親を添え字0としたときの番
-        this.nowPhaseNumber = 1;
+        this.nowPhaseNumber = 0;
 
         //ラウンド数
         this.roundcnt = 0;
@@ -246,6 +246,7 @@ export class flow {
 
     reStart(nextParent) {
         // やること
+        console.log('reStart');
         this.uimanager.initTable();
         this.nowPhaseNumber = nextParent;
         for (let i = 0; i < this.playermanager.playerMembers.length; i++) {
@@ -280,6 +281,7 @@ export class flow {
         console.log('flow.js haiを捨てようとしている');
         console.log(hai);
         let phasenumber = this.playermanager.getPlayerNumber();
+        console.log(phasenumber, this.nowPhaseNumber);
 
         if (this.nowPhaseNumber == phasenumber && this.youCanThrow) {
             hai.removeAttribute('draggable');
