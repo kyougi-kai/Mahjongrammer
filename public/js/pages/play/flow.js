@@ -16,7 +16,7 @@ export class flow {
         this.sendInterval = null;
 
         // 親を添え字0としたときの番
-        this.nowPhaseNumber = 1;
+        this.nowPhaseNumber = 0;
 
         //ラウンド数
         this.roundcnt = 0;
@@ -202,11 +202,11 @@ export class flow {
         
         setInterval(() => {
             rounds.remove();
-        },3000)
+        },2000)
 
-        this.starts = document.createElement('img');
-        this.starts.src = '../../img/haikeimoji/LETGRAMMAHJONG2.png';
-        Object.assign(this.starts.style, {
+        this.start_img = document.createElement('img');
+        this.start_img.src = '../img/haikeimoji/LETSGRAMMAHJONG2.png';
+        Object.assign(this.start_img.style, {
             position: 'fixed',
             top: '0',
             left: '0',
@@ -218,11 +218,11 @@ export class flow {
             margin: '0',
             padding: '0',
         });
-        let startss = document.body.appendChild(this.starts);
+        let startss = document.body.appendChild(this.start_img);
     
         setInterval(() => {
             startss.remove();
-        },3000)
+        },2000)
 
         // プレイヤーにはいを配る
         let count = 0;
@@ -246,6 +246,7 @@ export class flow {
 
     reStart(nextParent) {
         // やること
+        console.log('reStart');
         this.uimanager.initTable();
         this.nowPhaseNumber = nextParent;
         for (let i = 0; i < this.playermanager.playerMembers.length; i++) {
@@ -280,6 +281,7 @@ export class flow {
         console.log('flow.js haiを捨てようとしている');
         console.log(hai);
         let phasenumber = this.playermanager.getPlayerNumber();
+        console.log(phasenumber, this.nowPhaseNumber);
 
         if (this.nowPhaseNumber == phasenumber && this.youCanThrow) {
             hai.removeAttribute('draggable');

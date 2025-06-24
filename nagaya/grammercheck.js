@@ -1005,7 +1005,7 @@ function checkGrammerPoint(targetArray) {
 
 function checkS(targetSentence,grammerCheckresult) /*＜S＞*/ {
     if (checkMeisiRoot(targetSentence,grammerCheckresult) || checkDaimeisiCanS(targetSentence,grammerCheckresult)) {
-        grammerCheckresult.
+        grammerCheckresult;
         return true;
     }
     return false;
