@@ -12,7 +12,7 @@ let tango = {
     could: {
         tags: ['法助動詞'],
         hinsi: ['助動詞'],
-        means: { 助動詞: '《ていねいな依頼として》 〔Could you ～? の形で〕 ～していただけませんか' },
+        means: { 助動詞: 'canの過去形 ～できた' },
     },
     did: {
         tags: ['相助動詞'],
