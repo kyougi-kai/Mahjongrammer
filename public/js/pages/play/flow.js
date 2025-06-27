@@ -40,7 +40,7 @@ export class flow {
                 if (tango[key].tags.indexOf(tag) != -1) pickWords.push(key);
             });
 
-            let word = pickWords[Math.random() * pickWords.length];
+            let word = pickWords[Math.floor(Math.random() * pickWords.length)];
             this.drawHai(word);
         } else {
             alert('タグを入力してください');
@@ -158,8 +158,11 @@ export class flow {
 
     drawHai(word = null) {
         let tango = word;
-        if (tango == null) tango = this.datamanager.pickTango();
-        let temporaryHai = new hai(tango.word, tango.partOfSpeech);
+        let temporaryHai = '';
+        if (tango === null) {
+            tango = this.datamanager.pickTango();
+            temporaryHai = new hai(tango.word, tango.partOfSpeech);
+        } else temporaryHai = new hai(tango);
         this.blockmanager.attachDraggable(temporaryHai.getHai);
 
         document.getElementById('wordDown').appendChild(temporaryHai.getHai);
