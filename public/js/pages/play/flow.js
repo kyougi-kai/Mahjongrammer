@@ -24,17 +24,27 @@ export class flow {
         this.barkdiv = document.getElementById('barkDiv');
 
         document.addEventListener('keydown', (e) => {
-            if (e.key == 'x') {
-                this.start();
-            }
-        });
-        document.addEventListener('keydown', (e) => {
-            if (e.key == 'l') {
-                this.throw();
+            if (e.key == 'c') {
+                this.cheatPick();
             }
         });
 
         this._setupWebsocket();
+    }
+
+    cheatPick() {
+        let tag = window.prompt('タグを入力してください');
+        if (tag != '') {
+            let pickWords = [];
+            Object.keys(tango).forEach((key) => {
+                if (tango[key].tags.indexOf(tag) != -1) pickWords.push(key);
+            });
+
+            let word = pickWords[Math.random() * pickWords.length];
+            this.drawHai(word);
+        } else {
+            alert('タグを入力してください');
+        }
     }
 
     _setupWebsocket() {
@@ -146,8 +156,9 @@ export class flow {
         });
     }
 
-    drawHai() {
-        const tango = this.datamanager.pickTango();
+    drawHai(word = null) {
+        let tango = word;
+        if (tango == null) tango = this.datamanager.pickTango();
         let temporaryHai = new hai(tango.word, tango.partOfSpeech);
         this.blockmanager.attachDraggable(temporaryHai.getHai);
 
@@ -188,21 +199,21 @@ export class flow {
             left: '0',
             width: '100vw',
             height: '100vh',
-            color: 'black',           // 文字色
-            fontSize: '10vw',         // フォントサイズは画面幅に応じて可変
+            color: 'black', // 文字色
+            fontSize: '10vw', // フォントサイズは画面幅に応じて可変
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            zIndex: '9999',           // 他の要素より前面に
+            zIndex: '9999', // 他の要素より前面に
             margin: '0',
             padding: '0',
             fontFamily: 'sans-serif',
         });
         let rounds = document.body.appendChild(this.round);
-        
+
         setInterval(() => {
             rounds.remove();
-        },2000)
+        }, 2000);
 
         this.start_img = document.createElement('img');
         this.start_img.src = '../img/haikeimoji/LETSGRAMMAHJONG2.png';
@@ -210,19 +221,19 @@ export class flow {
             position: 'fixed',
             top: '0',
             left: '0',
-            width: '100vw',     
+            width: '100vw',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            zIndex: '9999',           // 他の要素より前面に
+            zIndex: '9999', // 他の要素より前面に
             margin: '0',
             padding: '0',
         });
         let startss = document.body.appendChild(this.start_img);
-    
+
         setInterval(() => {
             startss.remove();
-        },2000)
+        }, 2000);
 
         // プレイヤーにはいを配る
         let count = 0;
