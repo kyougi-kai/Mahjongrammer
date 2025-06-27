@@ -428,11 +428,12 @@ p {
 }
 
 .oyaban{
+    position: 'absolute';
     width: 100px;
     height: 100px;
     background-image: url('/img/background/gameplaymoon.png');
     background-size:82%;
     background-repeat: no-repeat;
     top: 69%;
-    left: -15%;
+    left: -15;
 }

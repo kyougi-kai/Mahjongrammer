@@ -9,6 +9,7 @@ export class flow {
         this.togoout = togoout;
         this.datamanager = datamanager;
 
+
         this.scorebords = document.getElementById('scoreBord');
         this.youCanThrow = false;
         this.throwElement = null;
@@ -137,6 +138,8 @@ export class flow {
             if (data.ponPlayerNumber == this.playermanager.getPlayerNumber()) {
                 let nanka = document.createElement('div');
                 nanka.innerHTML = this.throwElement;
+
+
                 this.blockmanager.attachDraggable(nanka.children[0]);
                 nanka.children[0].style.opacity = '1';
                 document.getElementById('wordDown').appendChild(nanka.children[0]);
@@ -193,6 +196,8 @@ export class flow {
 
     start() {
         //ラウンド
+        this.tops = ['-8%', '69%', '69%', '-8%'];
+        this.lefts = ['61%', '61%', '-15%', '-15%'];
         this.roundcnt = this.roundcnt + 1;
         this.round = document.createElement('div');
         this.round.textContent = `第${this.roundcnt}ラウンド`;
@@ -256,6 +261,12 @@ export class flow {
             this.scorebords.children[4].style.opacity = 1;
             this.scorebords.children[4].style.pointerEvents = 'all';
         }
+        let idx2 = this.playermanager.phaseToPosition(this.playermanager.parentNumber);
+        console.log(idx2);
+        var topleft = document.getElementById('oyaban');
+        console.log(topleft.style.top);
+        topleft.style.top = this.tops[idx2];
+        topleft.style.left = this.lefts[idx2];
     }
 
     reStart(nextParent) {
