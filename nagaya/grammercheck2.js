@@ -1008,6 +1008,8 @@ function checkGrammer(targetArray) {
     return GCR;
 }
 
+console.log('checkGrammer結果：', checkGrammerTestArray, checkGrammer(checkGrammerTestArray));
+
 function checkS(targetSentence, GCR) /*＜S＞*/ {
     if (targetSentence.length == 1 && tango[targetSentence[0]].hinsi.includes('代名詞')) {
         GCR = checkDaimeisi(targetSentence, GCR);
@@ -1312,7 +1314,7 @@ function checkV(targetSentence, GCR, sentenceType) /*＜V＞*/ {
     return GCR;
 }
 
-console.log('checkGrammer結果：', checkGrammerTestArray, checkGrammer(checkGrammerTestArray));
+
 
 function checkDousi(targetSentence, GCR, sentenceType) {
     if (Array.isArray(targetSentence[GCR['allOfVTags'].targetIndex])) {
