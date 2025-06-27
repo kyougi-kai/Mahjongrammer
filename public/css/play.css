@@ -29,12 +29,12 @@ p {
     transform: translateX(-50%);
 }
 
-.score-bord .top-content {
+.score-bord .top-content-ten {
     transform: translateX(-50%) rotateZ(180deg);
 }
 
 .bottom-content {
-    bottom: 10%;
+    bottom: 1%;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -45,7 +45,7 @@ p {
     transform: translateY(-50%);
 }
 
-.score-bord .right-content {
+.score-bord .right-content-ten {
     transform: translateY(-50%) rotateZ(-90deg);
 }
 
@@ -55,7 +55,7 @@ p {
     left: 5%;
 }
 
-.score-bord .left-content {
+.score-bord .left-content-ten {
     transform: translateY(-50%) rotateZ(90deg);
 }
 
@@ -268,6 +268,7 @@ p {
     width: 250px;
     height: 242px;
     background-image: url('/img/background/ゲーム画面真ん中.png');
+    background-size:100%;
 }
 
 .score-bord p {
@@ -400,4 +401,28 @@ p {
     100% {
         background-position: 600%;
     }
+}
+
+.top-content-ten {
+    top: 4%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.right-content-ten {
+    top: 50%;
+    right: -5%;
+    transform: translateY(-50%);
+}
+
+.left-content-ten {
+    transform: translateY(-50%);
+    top: 50%;
+    left: -5%;
+}
+
+.bottom-content-ten {
+    bottom: 1%;
+    left: 50%;
+    transform: translateX(-50%);
 }
