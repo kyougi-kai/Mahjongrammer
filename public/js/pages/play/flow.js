@@ -9,7 +9,6 @@ export class flow {
         this.togoout = togoout;
         this.datamanager = datamanager;
 
-
         this.scorebords = document.getElementById('scoreBord');
         this.youCanThrow = false;
         this.throwElement = null;
@@ -28,23 +27,23 @@ export class flow {
             if (e.key == 'c') {
                 this.cheatPick();
             }
+
+            if (e.key == 'x') {
+                this.uimanager.showCheatDiv();
+            }
         });
 
         this._setupWebsocket();
     }
 
     cheatPick() {
-        let tag = window.prompt('タグを入力してください');
+        let tag = window.prompt('単語を入力してください');
         if (tag != '') {
-            let pickWords = [];
-            Object.keys(tango).forEach((key) => {
-                if (tango[key].tags.indexOf(tag) != -1) pickWords.push(key);
-            });
-
-            let word = pickWords[Math.floor(Math.random() * pickWords.length)];
-            this.drawHai(word);
+            if (tango.hasOwnProperty(tag)) {
+                this.drawHai(tag);
+            }
         } else {
-            alert('タグを入力してください');
+            alert('単語を入力してください');
         }
     }
 
@@ -138,7 +137,6 @@ export class flow {
             if (data.ponPlayerNumber == this.playermanager.getPlayerNumber()) {
                 let nanka = document.createElement('div');
                 nanka.innerHTML = this.throwElement;
-
 
                 this.blockmanager.attachDraggable(nanka.children[0]);
                 nanka.children[0].style.opacity = '1';
@@ -262,13 +260,13 @@ export class flow {
             this.scorebords.children[4].style.opacity = 1;
             this.scorebords.children[4].style.pointerEvents = 'all';
         }
-        if (this.topleft.style.getPropertyValue('--original-html-ban')==''){
-        let idx2 = this.playermanager.phaseToPosition(this.playermanager.parentNumber);
-        console.log(idx2);
-        console.log(this.topleft.style.top);
-        this.topleft.style.top = this.tops[idx2];
-        this.topleft.style.left = this.lefts[idx2];
-        this.topleft.style.setProperty('--original-html-ban', idx2);
+        if (this.topleft.style.getPropertyValue('--original-html-ban') == '') {
+            let idx2 = this.playermanager.phaseToPosition(this.playermanager.parentNumber);
+            console.log(idx2);
+            console.log(this.topleft.style.top);
+            this.topleft.style.top = this.tops[idx2];
+            this.topleft.style.left = this.lefts[idx2];
+            this.topleft.style.setProperty('--original-html-ban', idx2);
         }
     }
 
