@@ -9,7 +9,6 @@ export class flow {
         this.togoout = togoout;
         this.datamanager = datamanager;
 
-
         this.scorebords = document.getElementById('scoreBord');
         this.youCanThrow = false;
         this.throwElement = null;
@@ -28,23 +27,23 @@ export class flow {
             if (e.key == 'c') {
                 this.cheatPick();
             }
+
+            if (e.key == 'x') {
+                this.uimanager.showCheatDiv();
+            }
         });
 
         this._setupWebsocket();
     }
 
     cheatPick() {
-        let tag = window.prompt('タグを入力してください');
+        let tag = window.prompt('単語を入力してください');
         if (tag != '') {
-            let pickWords = [];
-            Object.keys(tango).forEach((key) => {
-                if (tango[key].tags.indexOf(tag) != -1) pickWords.push(key);
-            });
-
-            let word = pickWords[Math.floor(Math.random() * pickWords.length)];
-            this.drawHai(word);
+            if (tango.hasOwnProperty(tag)) {
+                this.drawHai(tag);
+            }
         } else {
-            alert('タグを入力してください');
+            alert('単語を入力してください');
         }
     }
 
@@ -139,7 +138,6 @@ export class flow {
                 let nanka = document.createElement('div');
                 nanka.innerHTML = this.throwElement;
 
-
                 this.blockmanager.attachDraggable(nanka.children[0]);
                 nanka.children[0].style.opacity = '1';
                 document.getElementById('wordDown').appendChild(nanka.children[0]);
@@ -224,18 +222,17 @@ export class flow {
             rounds.remove();
         }, 2000);
 
-        window.setTimeout(() => {
-            this.start_img = document.createElement('img');
-            this.start_img.src = '../img/haikeimoji/LETSGRAMMAHJONG2.png';
-            Object.assign(this.start_img.style, {
-                position: 'fixed',
-                top: '0',
-                left: '0',
-                width: '100vw',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                zIndex: '9999', // 他の要素より前面に
+        this.start_img = document.createElement('img');
+        this.start_img.src = '../img/haikeimoji/LETSGRAMMAHJONG2.png';
+        Object.assign(this.start_img.style, {
+            position: 'fixed',
+            top: '0',
+            left: '0',
+            width: '100vw',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            zIndex: '9999', // 他の要素より前面に
             margin: '0',
             padding: '0',
         });
@@ -245,59 +242,32 @@ export class flow {
             startss.remove();
         }, 2000);
 
-        window.setTimeout(() => {
-            this.start_img = document.createElement('img');
-            this.start_img.src = '../img/haikeimoji/LETSGRAMMAHJONG2.png';
-            Object.assign(this.start_img.style, {
-                position: 'fixed',
-                top: '0',
-                left: '0',
-                width: '100vw',     
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                zIndex: '9999',           // 他の要素より前面に
-                    margin: '0',
-                    padding: '0',
-                });
-                let startss = document.body.appendChild(this.start_img);
-            
-                setInterval(() => {
-                    startss.remove();
-                },2000)
-                
-            window.setTimeout(() => {
-                    window.setTimeout(() => {
-                // プレイヤーにはいを配る
-                        let count = 0;
-                        let nan = setInterval(() => {
-                            if (count == 6) clearInterval(nan);
-                            this.drawHai();
-                            count++;
-                        }, 200);
-                        var scoreBord = document.getElementById('scoreBord');
-                        scoreBord.style.opacity = 1;
-                        this.uimanager.showBlink(this.playermanager.phaseToPosition(this.playermanager.parentNumber));
+        // プレイヤーにはいを配る
+        let count = 0;
+        let nan = setInterval(() => {
+            if (count == 6) clearInterval(nan);
+            this.drawHai();
+            count++;
+        }, 200);
+        var scoreBord = document.getElementById('scoreBord');
+        scoreBord.style.opacity = 1;
+        this.uimanager.showBlink(this.playermanager.phaseToPosition(this.playermanager.parentNumber));
 
-                        let isparent = this.playermanager.isParent();
-                        if (isparent) {
-                            this.youCanThrow = true;
-                            this.drawHai();
-                            this.scorebords.children[4].style.opacity = 1;
-                            this.scorebords.children[4].style.pointerEvents = 'all';
-                        }
-            },2000);
-        },2000);
-        if (this.topleft.style.getPropertyValue('--original-html-ban')==''){
-        let idx2 = this.playermanager.phaseToPosition(this.playermanager.parentNumber);
-        console.log(idx2);
-        console.log(this.topleft.style.top);
-        this.topleft.style.top = this.tops[idx2];
-        this.topleft.style.left = this.lefts[idx2];
-        this.topleft.style.setProperty('--original-html-ban', idx2);
+        let isparent = this.playermanager.isParent();
+        if (isparent) {
+            this.youCanThrow = true;
+            this.drawHai();
+            this.scorebords.children[4].style.opacity = 1;
+            this.scorebords.children[4].style.pointerEvents = 'all';
         }
-            },2000);
-        },2000);
+        if (this.topleft.style.getPropertyValue('--original-html-ban') == '') {
+            let idx2 = this.playermanager.phaseToPosition(this.playermanager.parentNumber);
+            console.log(idx2);
+            console.log(this.topleft.style.top);
+            this.topleft.style.top = this.tops[idx2];
+            this.topleft.style.left = this.lefts[idx2];
+            this.topleft.style.setProperty('--original-html-ban', idx2);
+        }
     }
 
     reStart(nextParent) {
