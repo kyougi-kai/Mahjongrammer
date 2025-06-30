@@ -327,6 +327,30 @@ p {
     pointer-events: none;
 }
 
+.result-page{
+    /*opacity: 0;*/
+    background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80vw;   
+    height: 50vw;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    z-Index: 9999;     
+    margin: 10%;
+    padding: 0;
+}
+
+.result-button{
+    /*opacity: 0;*/
+    align-content: left;
+    aspect-ratio: 2 / 1;
+    padding: 10%;
+    font-size: large;
+
+}
 .finish-button {
     background: rgb(178 178 178);
     position: absolute;
