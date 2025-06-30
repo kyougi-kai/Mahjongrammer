@@ -9,6 +9,7 @@ export class flow {
         this.togoout = togoout;
         this.datamanager = datamanager;
 
+
         this.scorebords = document.getElementById('scoreBord');
         this.youCanThrow = false;
         this.throwElement = null;
@@ -40,7 +41,7 @@ export class flow {
                 if (tango[key].tags.indexOf(tag) != -1) pickWords.push(key);
             });
 
-            let word = pickWords[Math.random() * pickWords.length];
+            let word = pickWords[Math.floor(Math.random() * pickWords.length)];
             this.drawHai(word);
         } else {
             alert('タグを入力してください');
@@ -137,6 +138,8 @@ export class flow {
             if (data.ponPlayerNumber == this.playermanager.getPlayerNumber()) {
                 let nanka = document.createElement('div');
                 nanka.innerHTML = this.throwElement;
+
+
                 this.blockmanager.attachDraggable(nanka.children[0]);
                 nanka.children[0].style.opacity = '1';
                 document.getElementById('wordDown').appendChild(nanka.children[0]);
@@ -158,8 +161,11 @@ export class flow {
 
     drawHai(word = null) {
         let tango = word;
-        if (tango == null) tango = this.datamanager.pickTango();
-        let temporaryHai = new hai(tango.word, tango.partOfSpeech);
+        let temporaryHai = '';
+        if (tango === null) {
+            tango = this.datamanager.pickTango();
+            temporaryHai = new hai(tango.word, tango.partOfSpeech);
+        } else temporaryHai = new hai(tango);
         this.blockmanager.attachDraggable(temporaryHai.getHai);
 
         document.getElementById('wordDown').appendChild(temporaryHai.getHai);
@@ -190,6 +196,9 @@ export class flow {
 
     start() {
         //ラウンド
+        this.topleft = document.getElementById('oyaban');
+        this.tops = ['-8%', '69%', '69%', '-8%'];
+        this.lefts = ['61%', '61%', '-15%', '-15%'];
         this.roundcnt = this.roundcnt + 1;
         this.round = document.createElement('div');
         this.round.textContent = `第${this.roundcnt}ラウンド`;
@@ -215,8 +224,6 @@ export class flow {
             rounds.remove();
         }, 2000);
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
         this.start_img = document.createElement('img');
         this.start_img.src = '../img/haikeimoji/LETSGRAMMAHJONG2.png';
         Object.assign(this.start_img.style, {
@@ -236,9 +243,7 @@ export class flow {
         setInterval(() => {
             startss.remove();
         }, 2000);
-=======
-=======
->>>>>>> Stashed changes
+
         window.setTimeout(() => {
             this.start_img = document.createElement('img');
             this.start_img.src = '../img/haikeimoji/LETSGRAMMAHJONG2.png';
@@ -271,10 +276,6 @@ export class flow {
                 var scoreBord = document.getElementById('scoreBord');
                 scoreBord.style.opacity = 1;
                 this.uimanager.showBlink(this.playermanager.phaseToPosition(this.playermanager.parentNumber));
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
                 let isparent = this.playermanager.isParent();
                 if (isparent) {
@@ -283,6 +284,14 @@ export class flow {
                     this.scorebords.children[4].style.opacity = 1;
                     this.scorebords.children[4].style.pointerEvents = 'all';
                 }
+        if (this.topleft.style.getPropertyValue('--original-html-ban')==''){
+        let idx2 = this.playermanager.phaseToPosition(this.playermanager.parentNumber);
+        console.log(idx2);
+        console.log(this.topleft.style.top);
+        this.topleft.style.top = this.tops[idx2];
+        this.topleft.style.left = this.lefts[idx2];
+        this.topleft.style.setProperty('--original-html-ban', idx2);
+        }
             },2000);
         },2000);
     }
@@ -301,6 +310,10 @@ export class flow {
             }
         }
         console.log(this.nowPhaseNumber);
+        let idx2 = (this.topleft.style.getPropertyValue('--original-html-ban') + 1) % 4;
+        this.topleft.style.top = this.tops[idx2];
+        this.topleft.style.left = this.lefts[idx2];
+        this.topleft.style.setProperty('--original-html-ban', idx2);
         this.start();
     }
 

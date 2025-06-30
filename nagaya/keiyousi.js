@@ -1782,7 +1782,7 @@ let tango = {
     worth: {
         tags: ['限定用法', '原級'],
         hinsi: ['形容詞'],
-        means: { 形容詞: '〔worth ～ing で〕～するだけの価値がある' },
+        means: { 形容詞: '～するだけの価値がある' },
     },
     wrong: {
         tags: ['限定用法', '原級'],
