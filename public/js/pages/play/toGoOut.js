@@ -1,7 +1,9 @@
 import { checkGrammer } from '/js/utils/grammercheck.js';
 
 export class toGoOut {
-    constructor() {
+    constructor(uimanager) {
+        this.uimanager = uimanager;
+
         this.sentenceList = {
             sv: 1,
             svm: 1,
@@ -61,6 +63,7 @@ export class toGoOut {
     getGrammerData() {
         let grammerData = [];
         Array.from(this.table.children).forEach((value, index) => {
+            if(!value.classList.contains('sentence-div'))return false;
             grammerData.push({});
             let grammerString = '';
             let oCount = 1;
@@ -85,15 +88,18 @@ export class toGoOut {
 
     tumo() {
         const grammerDatas = this.getGrammerData();
-        if(grammerDatas == -1){
+        if(grammerDatas == false){
             // 今後
         }
         else{
+            let errorFlag = false;
             grammerDatas.forEach((data) => {
-                console.log('送るデータ');
-                console.log(data);
-                console.log(checkGrammer(data));
+                const checkResult = checkGrammer(data);
+                console.log('checkResult');
+                console.log(checkResult);
+                if(checkResult.success == false)errorFlag = true;
             });
+            if(!errorFlag)this.uimanager.showResetButton();
         }
         if(success){
             let restarts = document.createElement('button');

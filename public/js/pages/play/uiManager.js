@@ -44,6 +44,10 @@ export class uiManager {
         this.throwHaiTable.children[position].children[0].remove();
     }
 
+    showResetButton(){
+        
+    }
+
     showCountDown(){
         console.log(this.ponskip);
         this.ponskip.style.display = 'block';

@@ -13,7 +13,7 @@ export class gameManager {
         this.playermanager = new playerManager(this.connectionmanager);
         this.blockmanager = new blockManager();
         this.uimanager = new uiManager(this.playermanager);
-        this.togoout = new toGoOut();
+        this.togoout = new toGoOut(this.uimanager);
         this.datamanager = new DM();
         this.flow = new flow(this.connectionmanager, this.blockmanager, this.uimanager, this.playermanager, this.togoout, this.datamanager);
 
