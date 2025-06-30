@@ -112,6 +112,15 @@ export class uiManager {
     }
 
     showCountDown() {
+    showRoundResult(){
+        console.log('リセットボタンを表示');
+    }
+
+    hideRoundResult(){
+        
+    }
+
+    showCountDown(){
         console.log(this.ponskip);
         this.ponskip.style.display = 'block';
         console.log(this.flow.nowPhaseNumber);

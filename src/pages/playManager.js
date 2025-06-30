@@ -104,7 +104,7 @@ export class playManager {
             this.sendToClients(sendData, roomId);
         });
 
-        this.wss.onMessage('tumo', async (ws, data) => {
+        this.wss.onMessage('nextRound', async (ws, data) => {
             const parentId = await usersManager.nameToId(data.parentName);
             const roomId = await roomsDB.getRoomId(parentId);
             const sendData = {

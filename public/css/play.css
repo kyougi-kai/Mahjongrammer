@@ -437,3 +437,13 @@ p {
     top: 69%;
     left: -15;
 }
+
+@keyframes hariken {
+    0%{
+        transform: rotateZ(0);
+    }
+
+    100%{
+        transform: rotateZ(360deg);
+    }
+}
