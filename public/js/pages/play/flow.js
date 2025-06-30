@@ -9,6 +9,7 @@ export class flow {
         this.togoout = togoout;
         this.datamanager = datamanager;
 
+
         this.scorebords = document.getElementById('scoreBord');
         this.youCanThrow = false;
         this.throwElement = null;
@@ -24,17 +25,27 @@ export class flow {
         this.barkdiv = document.getElementById('barkDiv');
 
         document.addEventListener('keydown', (e) => {
-            if (e.key == 'x') {
-                this.start();
-            }
-        });
-        document.addEventListener('keydown', (e) => {
-            if (e.key == 'l') {
-                this.throw();
+            if (e.key == 'c') {
+                this.cheatPick();
             }
         });
 
         this._setupWebsocket();
+    }
+
+    cheatPick() {
+        let tag = window.prompt('タグを入力してください');
+        if (tag != '') {
+            let pickWords = [];
+            Object.keys(tango).forEach((key) => {
+                if (tango[key].tags.indexOf(tag) != -1) pickWords.push(key);
+            });
+
+            let word = pickWords[Math.floor(Math.random() * pickWords.length)];
+            this.drawHai(word);
+        } else {
+            alert('タグを入力してください');
+        }
     }
 
     _setupWebsocket() {
@@ -127,6 +138,8 @@ export class flow {
             if (data.ponPlayerNumber == this.playermanager.getPlayerNumber()) {
                 let nanka = document.createElement('div');
                 nanka.innerHTML = this.throwElement;
+
+
                 this.blockmanager.attachDraggable(nanka.children[0]);
                 nanka.children[0].style.opacity = '1';
                 document.getElementById('wordDown').appendChild(nanka.children[0]);
@@ -146,9 +159,13 @@ export class flow {
         });
     }
 
-    drawHai() {
-        const tango = this.datamanager.pickTango();
-        let temporaryHai = new hai(tango.word, tango.partOfSpeech);
+    drawHai(word = null) {
+        let tango = word;
+        let temporaryHai = '';
+        if (tango === null) {
+            tango = this.datamanager.pickTango();
+            temporaryHai = new hai(tango.word, tango.partOfSpeech);
+        } else temporaryHai = new hai(tango);
         this.blockmanager.attachDraggable(temporaryHai.getHai);
 
         document.getElementById('wordDown').appendChild(temporaryHai.getHai);
@@ -179,6 +196,8 @@ export class flow {
 
     start() {
         //ラウンド
+        this.tops = ['-8%', '69%', '69%', '-8%'];
+        this.lefts = ['61%', '61%', '-15%', '-15%'];
         this.roundcnt = this.roundcnt + 1;
         this.round = document.createElement('div');
         this.round.textContent = `第${this.roundcnt}ラウンド`;
@@ -188,21 +207,21 @@ export class flow {
             left: '0',
             width: '100vw',
             height: '100vh',
-            color: 'black',           // 文字色
-            fontSize: '10vw',         // フォントサイズは画面幅に応じて可変
+            color: 'black', // 文字色
+            fontSize: '10vw', // フォントサイズは画面幅に応じて可変
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            zIndex: '9999',           // 他の要素より前面に
+            zIndex: '9999', // 他の要素より前面に
             margin: '0',
             padding: '0',
             fontFamily: 'sans-serif',
         });
         let rounds = document.body.appendChild(this.round);
-        
+
         setInterval(() => {
             rounds.remove();
-        },2000)
+        }, 2000);
 
         this.start_img = document.createElement('img');
         this.start_img.src = '../img/haikeimoji/LETSGRAMMAHJONG2.png';
@@ -210,19 +229,19 @@ export class flow {
             position: 'fixed',
             top: '0',
             left: '0',
-            width: '100vw',     
+            width: '100vw',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            zIndex: '9999',           // 他の要素より前面に
+            zIndex: '9999', // 他の要素より前面に
             margin: '0',
             padding: '0',
         });
         let startss = document.body.appendChild(this.start_img);
-    
+
         setInterval(() => {
             startss.remove();
-        },2000)
+        }, 2000);
 
         // プレイヤーにはいを配る
         let count = 0;
@@ -242,6 +261,12 @@ export class flow {
             this.scorebords.children[4].style.opacity = 1;
             this.scorebords.children[4].style.pointerEvents = 'all';
         }
+        let idx2 = this.playermanager.phaseToPosition(this.playermanager.parentNumber);
+        console.log(idx2);
+        var topleft = document.getElementById('oyaban');
+        console.log(topleft.style.top);
+        topleft.style.top = this.tops[idx2];
+        topleft.style.left = this.lefts[idx2];
     }
 
     reStart(nextParent) {
