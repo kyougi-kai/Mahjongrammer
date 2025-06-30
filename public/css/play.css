@@ -404,7 +404,7 @@ p {
 }
 
 .top-content-ten {
-    top: 4%;
+    top: 7%;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -418,7 +418,7 @@ p {
 .left-content-ten {
     transform: translateY(-50%);
     top: 50%;
-    left: -5%;
+    left: -4%;
 }
 
 .bottom-content-ten {

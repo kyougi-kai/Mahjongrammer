@@ -196,6 +196,7 @@ export class flow {
 
     start() {
         //ラウンド
+        this.topleft = document.getElementById('oyaban');
         this.tops = ['-8%', '69%', '69%', '-8%'];
         this.lefts = ['61%', '61%', '-15%', '-15%'];
         this.roundcnt = this.roundcnt + 1;
@@ -261,12 +262,14 @@ export class flow {
             this.scorebords.children[4].style.opacity = 1;
             this.scorebords.children[4].style.pointerEvents = 'all';
         }
+        if (this.topleft.style.getPropertyValue('--original-html-ban')==''){
         let idx2 = this.playermanager.phaseToPosition(this.playermanager.parentNumber);
         console.log(idx2);
-        var topleft = document.getElementById('oyaban');
-        console.log(topleft.style.top);
-        topleft.style.top = this.tops[idx2];
-        topleft.style.left = this.lefts[idx2];
+        console.log(this.topleft.style.top);
+        this.topleft.style.top = this.tops[idx2];
+        this.topleft.style.left = this.lefts[idx2];
+        this.topleft.style.setProperty('--original-html-ban', idx2);
+        }
     }
 
     reStart(nextParent) {
@@ -283,6 +286,10 @@ export class flow {
             }
         }
         console.log(this.nowPhaseNumber);
+        let idx2 = (this.topleft.style.getPropertyValue('--original-html-ban') + 1) % 4;
+        this.topleft.style.top = this.tops[idx2];
+        this.topleft.style.left = this.lefts[idx2];
+        this.topleft.style.setProperty('--original-html-ban', idx2);
         this.start();
     }
 
