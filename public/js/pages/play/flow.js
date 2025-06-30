@@ -216,6 +216,7 @@ export class flow {
         }, 2000);
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         this.start_img = document.createElement('img');
         this.start_img.src = '../img/haikeimoji/LETSGRAMMAHJONG2.png';
         Object.assign(this.start_img.style, {
@@ -236,6 +237,8 @@ export class flow {
             startss.remove();
         }, 2000);
 =======
+=======
+>>>>>>> Stashed changes
         window.setTimeout(() => {
             this.start_img = document.createElement('img');
             this.start_img.src = '../img/haikeimoji/LETSGRAMMAHJONG2.png';
@@ -268,6 +271,9 @@ export class flow {
                 var scoreBord = document.getElementById('scoreBord');
                 scoreBord.style.opacity = 1;
                 this.uimanager.showBlink(this.playermanager.phaseToPosition(this.playermanager.parentNumber));
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
                 let isparent = this.playermanager.isParent();
