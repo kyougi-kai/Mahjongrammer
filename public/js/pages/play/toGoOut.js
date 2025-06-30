@@ -76,6 +76,7 @@ export class toGoOut {
                     grammerData[index][valString].push(word.innerHTML);
                 });
             });
+            if(Object.keys(this.sentenceList).indexOf(grammerString) == -1)return false;
             grammerData[index].sentence = this.sentenceList[grammerString];
         });
 
@@ -84,10 +85,19 @@ export class toGoOut {
 
     tumo() {
         const grammerDatas = this.getGrammerData();
-        grammerDatas.forEach((data) => {
-            console.log('送るデータ');
-            console.log(data);
-            console.log(checkGrammer(data));
-        });
+        if(grammerDatas == -1){
+            // 今後
+        }
+        else{
+            grammerDatas.forEach((data) => {
+                console.log('送るデータ');
+                console.log(data);
+                console.log(checkGrammer(data));
+            });
+        }
+        if(success){
+            let restarts = document.createElement('button');
+        }
+
     }
 }
