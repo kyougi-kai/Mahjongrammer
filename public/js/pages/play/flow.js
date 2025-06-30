@@ -224,17 +224,18 @@ export class flow {
             rounds.remove();
         }, 2000);
 
-        this.start_img = document.createElement('img');
-        this.start_img.src = '../img/haikeimoji/LETSGRAMMAHJONG2.png';
-        Object.assign(this.start_img.style, {
-            position: 'fixed',
-            top: '0',
-            left: '0',
-            width: '100vw',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            zIndex: '9999', // 他の要素より前面に
+        window.setTimeout(() => {
+            this.start_img = document.createElement('img');
+            this.start_img.src = '../img/haikeimoji/LETSGRAMMAHJONG2.png';
+            Object.assign(this.start_img.style, {
+                position: 'fixed',
+                top: '0',
+                left: '0',
+                width: '100vw',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                zIndex: '9999', // 他の要素より前面に
             margin: '0',
             padding: '0',
         });
@@ -256,34 +257,37 @@ export class flow {
                 justifyContent: 'center',
                 alignItems: 'center',
                 zIndex: '9999',           // 他の要素より前面に
-                margin: '0',
-                padding: '0',
-            });
-            let startss = document.body.appendChild(this.start_img);
-        
-            setInterval(() => {
-                startss.remove();
-            },2000)
-        
+                    margin: '0',
+                    padding: '0',
+                });
+                let startss = document.body.appendChild(this.start_img);
+            
+                setInterval(() => {
+                    startss.remove();
+                },2000)
+                
             window.setTimeout(() => {
+                    window.setTimeout(() => {
                 // プレイヤーにはいを配る
-                let count = 0;
-                let nan = setInterval(() => {
-                    if (count == 6) clearInterval(nan);
-                    this.drawHai();
-                    count++;
-                }, 200);
-                var scoreBord = document.getElementById('scoreBord');
-                scoreBord.style.opacity = 1;
-                this.uimanager.showBlink(this.playermanager.phaseToPosition(this.playermanager.parentNumber));
+                        let count = 0;
+                        let nan = setInterval(() => {
+                            if (count == 6) clearInterval(nan);
+                            this.drawHai();
+                            count++;
+                        }, 200);
+                        var scoreBord = document.getElementById('scoreBord');
+                        scoreBord.style.opacity = 1;
+                        this.uimanager.showBlink(this.playermanager.phaseToPosition(this.playermanager.parentNumber));
 
-                let isparent = this.playermanager.isParent();
-                if (isparent) {
-                    this.youCanThrow = true;
-                    this.drawHai();
-                    this.scorebords.children[4].style.opacity = 1;
-                    this.scorebords.children[4].style.pointerEvents = 'all';
-                }
+                        let isparent = this.playermanager.isParent();
+                        if (isparent) {
+                            this.youCanThrow = true;
+                            this.drawHai();
+                            this.scorebords.children[4].style.opacity = 1;
+                            this.scorebords.children[4].style.pointerEvents = 'all';
+                        }
+            },2000);
+        },2000);
         if (this.topleft.style.getPropertyValue('--original-html-ban')==''){
         let idx2 = this.playermanager.phaseToPosition(this.playermanager.parentNumber);
         console.log(idx2);
