@@ -101,9 +101,5 @@ export class toGoOut {
             });
             if(!errorFlag)this.uimanager.showResetButton();
         }
-        if(success){
-            let restarts = document.createElement('button');
-        }
-
     }
 }

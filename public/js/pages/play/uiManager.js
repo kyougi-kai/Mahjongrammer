@@ -44,7 +44,11 @@ export class uiManager {
         this.throwHaiTable.children[position].children[0].remove();
     }
 
-    showResetButton(){
+    showRoundResult(){
+        console.log('リセットボタンを表示');
+    }
+
+    hideRoundResult(){
         
     }
 
