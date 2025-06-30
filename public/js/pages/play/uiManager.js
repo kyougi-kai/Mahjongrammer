@@ -111,16 +111,13 @@ export class uiManager {
         this.throwHaiTable.children[position].children[0].remove();
     }
 
-    showCountDown() {
-    showRoundResult(){
+    showRoundResult() {
         console.log('リセットボタンを表示');
     }
 
-    hideRoundResult(){
-        
-    }
+    hideRoundResult() {}
 
-    showCountDown(){
+    showCountDown() {
         console.log(this.ponskip);
         this.ponskip.style.display = 'block';
         console.log(this.flow.nowPhaseNumber);
