@@ -54,7 +54,7 @@ export class playManager {
 
         // playClientsに保存
         this.playclientsmanager.entryRoom(roomId, username, ws);
-        this.roommanager.noticeEntryRoom(parentName, roomMembersData.length);
+        this.roommanager.noticeEntryRoom(parentName, roomId, roomMembersData.length);
     }
 
     _setup() {

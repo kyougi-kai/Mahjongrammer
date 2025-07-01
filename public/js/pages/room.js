@@ -24,11 +24,11 @@ window.onload = () => {
         console.log(data);
         if (!Array.isArray(data)) {
             rooms.push(data.username);
-            createNewRoom(data.username, data.room_member_counts);
+            createNewRoom(data.username, data.roomId, data.room_member_counts);
         } else {
             data.forEach((mono) => {
                 rooms.push(mono.username);
-                createNewRoom(mono.username, mono.room_member_counts);
+                createNewRoom(mono.username, mono.room_id, mono.room_member_counts);
             });
         }
     });
@@ -50,7 +50,7 @@ window.onload = () => {
 
     // 部屋のデータの変更を取得
     connectionmanager.onMessage('changeRoomData', (data) => {
-        updateRoomMemberCounts(data.roomName, parseInt(data.roomMemberCounts));
+        updateRoomMemberCounts(data.roomName, data.roomId, parseInt(data.roomMemberCounts));
     });
 
     document.getElementById('showCreateBtn').addEventListener('click', () => {
@@ -85,7 +85,7 @@ window.onload = () => {
     });
 };
 
-function createNewRoom(roomName, roomMemberCounts = 0) {
+function createNewRoom(roomName, roomId, roomMemberCounts = 0) {
     let temporaryDiv = document.createElement('div');
     temporaryDiv.classList.add('room-div');
     let roomNameText = document.createElement('p');
@@ -95,15 +95,15 @@ function createNewRoom(roomName, roomMemberCounts = 0) {
     mainDiv.appendChild(temporaryDiv);
     temporaryDiv.appendChild(roomNameText);
     temporaryDiv.appendChild(temporaryText);
-    if (roomMemberCounts != 4) temporaryDiv.setAttribute('onclick', `window.location.href = '/play/${roomName}';`);
+    if (roomMemberCounts != 4) temporaryDiv.setAttribute('onclick', `window.location.href = '/play/${roomId}';`);
 }
 
-function updateRoomMemberCounts(roomName, roomMemberCounts) {
+function updateRoomMemberCounts(roomName, roomId, roomMemberCounts) {
     const idx = rooms.indexOf(roomName);
     console.log(mainDiv.children[idx].children);
     mainDiv.children[idx].children[1].innerHTML = `${roomMemberCounts}/4`;
 
     roomMemberCounts == 4
         ? mainDiv.children[idx].setAttribute('onclick', '')
-        : mainDiv.children[idx].setAttribute('onclick', `window.location.href = '/play/${roomName}';`);
+        : mainDiv.children[idx].setAttribute('onclick', `window.location.href = '/play/${roomId}';`);
 }

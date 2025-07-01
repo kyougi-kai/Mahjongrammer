@@ -23,13 +23,13 @@ create table users(
     email varchar(255) null
 );
 create table rooms(
-    room_id int auto_increment primary key,
+    room_id char(36) primary key,
     parent_id char(36) not null,
     ratio varchar(255) not null,
     foreign key (parent_id) references users(user_id) on delete cascade
 );
 create table room_member(
-    room_id int,
+    room_id char(36),
     user_id char(36),
     created_at datetime not null default current_timestamp,
     primary key (room_id, user_id),

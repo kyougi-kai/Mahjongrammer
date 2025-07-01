@@ -45,12 +45,13 @@ export class roomManager {
         });
     }
 
-    noticeEntryRoom(roomName, roomMemberCounts) {
+    noticeEntryRoom(roomName, roomId, roomMemberCounts) {
         this.roomclientsmanager.roomC.forEach((client) => {
             const sendData = {
                 type: 'changeRoomData',
                 payload: {
                     roomName: roomName,
+                    roomId: roomId,
                     roomMemberCounts: roomMemberCounts,
                 },
             };
