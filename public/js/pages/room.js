@@ -35,6 +35,7 @@ window.onload = () => {
 
     connectionmanager.onMessage('success', (data) => {
         if (data.type == 'createRoom') {
+            //部屋作った人が行くとこ
             window.location.href = `/play/${userNameText.textContent.replace(/\s+/g, '')}`;
         }
     });
@@ -69,6 +70,8 @@ window.onload = () => {
 
     document.getElementById('createBtn').addEventListener('click', () => {
         let temporaryList = [];
+        const parentID = document.getElementById('userID').innerHTML;
+        const parentid = parentID.trim();
         Array.from(createRoomDiv.children).forEach((value) => {
             if (Array.from(value.children).length != 2) return;
             const ratio = parseInt(value.children[1].value);
@@ -79,6 +82,7 @@ window.onload = () => {
             payload: {
                 roomName: userNameText.textContent.replace(/\s+/g, ''),
                 ratio: temporaryList,
+                userId: parentid,
             },
         };
         connectionmanager.send(sendData);

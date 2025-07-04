@@ -1,4 +1,5 @@
 import { WebSocketServer } from 'ws';
+import roomsDB from '../db/repositories/roomsRepository.js';
 
 /*
 接続のことだけ考える
@@ -29,14 +30,30 @@ export class connectionManager {
 
             ws.on('message', async (data) => {
                 const parseData = JSON.parse(data);
+                console.log(parseData);
                 await this._doHanlders(this.messageHandlers.get(parseData['type']), ws, parseData['payload']);
-                const sendSuccess = {
-                    type: 'success',
-                    payload: {
-                        type: parseData['type'],
-                    },
+
+                if(parseData['type'] == 'createRoom'){
+                    const roomId = await roomsDB.getRoomId()
+                    const sendSuccess = {
+                        type: 'success',
+                        payload: {
+                            type: parseData['type'],
+                            roomId: roomId,
+                        },
+                    };
+                    ws.send(JSON.stringify(sendSuccess));
+                }else{
+                    const roomId = null
+                    const sendSuccess =  {
+                        type: 'success',
+                        payload: {
+                            type: parseData['type'],
+                            roomId: roomId,
+                        },
+                    };
+                    ws.send(JSON.stringify(sendSuccess));
                 };
-                ws.send(JSON.stringify(sendSuccess));
             });
         });
     }

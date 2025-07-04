@@ -50,6 +50,7 @@ export class routeManager {
             try {
                 res.render('pages/room', {
                     name: await usersManager.idToName(req.cookies.userId),
+                    userId: req.cookies.userId,
                 });
             } catch (err) {
                 console.log(`Error : ${err}`);

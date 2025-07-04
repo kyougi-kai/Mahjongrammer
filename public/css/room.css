@@ -43,3 +43,7 @@ p{
     background: rgba(0, 0, 0, 0.337);
     pointer-events: none;
 }
+
+.userID{
+    display: none;
+}
