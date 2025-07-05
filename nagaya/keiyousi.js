@@ -1,18 +1,8 @@
 let tango = {
-    able: {
-        tags: ['限定用法', '叙述用法', '原級'],
-        hinsi: ['形容詞'],
-        means: { 形容詞: '〔be able toの形で〕 ～することができる' },
-    },
     afraid: {
         tags: ['叙述用法', '原級'],
         hinsi: ['形容詞'],
-        means: { 形容詞: '〔be afraid of ～ の形で〕 ～をおそれる、こわがる、心配する' },
-    },
-    AfricanAmerican: {
-        tags: ['限定用法', '原級'],
-        hinsi: ['形容詞'],
-        means: { 形容詞: 'アフリカ系アメリカ人の' },
+        means: { 形容詞: '～をおそれる、こわがる、心配する' },
     },
     all: {
         tags: ['限定用法', '原級'],
@@ -44,16 +34,6 @@ let tango = {
         hinsi: ['形容詞'],
         means: { 形容詞: '怒った、腹を立てた' },
     },
-    another: {
-        tags: ['限定用法', '原級'],
-        hinsi: ['形容詞'],
-        means: { 形容詞: 'もう１つの' },
-    },
-    any: {
-        tags: ['限定用法', '原級'],
-        hinsi: ['形容詞'],
-        means: { 形容詞: '〔疑問文で〕 何か（の）、少しでも' },
-    },
     artificial: {
         tags: ['限定用法', '原級'],
         hinsi: ['形容詞'],
@@ -62,7 +42,7 @@ let tango = {
     atomic: {
         tags: ['限定用法', '原級'],
         hinsi: ['形容詞'],
-        means: { 形容詞: '原子（力）の　〔atomic bombで〕原子爆弾、原爆' },
+        means: { 形容詞: '原子（力）の' },
     },
     bad: {
         tags: ['限定用法', '叙述用法', '原級'],
@@ -73,16 +53,6 @@ let tango = {
         tags: ['限定用法', '叙述用法', '原級'],
         hinsi: ['形容詞'],
         means: { 形容詞: '美しい、きれいな、すばらしい' },
-    },
-    best: {
-        tags: ['最上級'],
-        hinsi: ['形容詞'],
-        means: { 形容詞: '〔goodの最上級〕最もよい' },
-    },
-    better: {
-        tags: ['比較級'],
-        hinsi: ['形容詞'],
-        means: { 形容詞: '〔good, well (具合がよい）の比較級として〕 よりよい、より優れた、より具合［体の状態］がよい、より上手な' },
     },
     big: {
         tags: ['限定用法', '叙述用法', '原級', '比較級'],
@@ -133,11 +103,6 @@ let tango = {
         tags: ['限定用法', '叙述用法', '原級'],
         hinsi: ['形容詞'],
         means: { 形容詞: '茶色の' },
-    },
-    busy: {
-        tags: ['限定用法', '叙述用法', '原級'],
-        hinsi: ['形容詞'],
-        means: { 形容詞: '忙しい' },
     },
     capital: {
         tags: ['限定用法', '原級'],
@@ -198,11 +163,6 @@ let tango = {
         tags: ['限定用法', '叙述用法', '原級'],
         hinsi: ['形容詞'],
         means: { 形容詞: '寒い、冷たい' },
-    },
-    comic: {
-        tags: ['限定用法', '原級'],
-        hinsi: ['形容詞'],
-        means: { 形容詞: '喜劇の　〔comic storytelling で〕話芸' },
     },
     common: {
         tags: ['限定用法', '原級'],
@@ -294,11 +254,6 @@ let tango = {
         hinsi: ['形容詞'],
         means: { 形容詞: '服を着た　〔get dressed で〕服を着る' },
     },
-    each: {
-        tags: ['限定用法', '原級'],
-        hinsi: ['形容詞'],
-        means: { 形容詞: 'それぞれの、各～' },
-    },
     early: {
         tags: ['限定用法', '叙述用法', '原級', '比較級', '最上級'],
         hinsi: ['形容詞'],
@@ -328,11 +283,6 @@ let tango = {
         tags: ['数詞'],
         hinsi: ['形容詞'],
         means: { 形容詞: '１８の' },
-    },
-    eighteenth: {
-        tags: ['数詞'],
-        hinsi: ['形容詞'],
-        means: { 形容詞: '１８番目の' },
     },
     eighth: {
         tags: ['数詞'],
@@ -683,11 +633,6 @@ let tango = {
         tags: ['限定用法', '原級'],
         hinsi: ['形容詞'],
         means: { 形容詞: '激しい、厳しい、強烈な' },
-    },
-    interested: {
-        tags: ['叙述用法', '原級'],
-        hinsi: ['形容詞'],
-        means: { 形容詞: '興味をもった､関心がある　〔be interested in～の形で〕 ～に興味がある' },
     },
     interesting: {
         tags: ['限定用法', '原級'],
@@ -1544,16 +1489,6 @@ let tango = {
         hinsi: ['形容詞'],
         means: { 形容詞: '30の' },
     },
-    this: {
-        tags: ['限定用法', '原級'],
-        hinsi: ['形容詞'],
-        means: { 形容詞: 'この' },
-    },
-    those: {
-        tags: ['限定用法', '原級'],
-        hinsi: ['形容詞'],
-        means: { 形容詞: 'あれらの、それらの' },
-    },
     thousand: {
         tags: ['限定用法', '数詞'],
         hinsi: ['形容詞'],
@@ -1588,71 +1523,6 @@ let tango = {
         tags: ['限定用法', '原級'],
         hinsi: ['形容詞'],
         means: { 形容詞: 'ほんとうの、真実の' },
-    },
-    twelfth: {
-        tags: ['限定用法', '数詞'],
-        hinsi: ['形容詞'],
-        means: { 形容詞: '12番めの' },
-    },
-    twelve: {
-        tags: ['限定用法', '数詞'],
-        hinsi: ['形容詞'],
-        means: { 形容詞: '12の' },
-    },
-    twentieth: {
-        tags: ['限定用法', '数詞'],
-        hinsi: ['形容詞'],
-        means: { 形容詞: '20番目の' },
-    },
-    twenty: {
-        tags: ['限定用法', '数詞'],
-        hinsi: ['形容詞'],
-        means: { 形容詞: '20の' },
-    },
-    twentyeighth: {
-        tags: ['限定用法', '数詞'],
-        hinsi: ['形容詞'],
-        means: { 形容詞: '28番目（の）、28日' },
-    },
-    twentyfifth: {
-        tags: ['限定用法', '数詞'],
-        hinsi: ['形容詞'],
-        means: { 形容詞: '25番目（の）、25日' },
-    },
-    twentyfirst: {
-        tags: ['限定用法', '数詞'],
-        hinsi: ['形容詞'],
-        means: { 形容詞: '21番目（の）、21日' },
-    },
-    twentyfourth: {
-        tags: ['限定用法', '数詞'],
-        hinsi: ['形容詞'],
-        means: { 形容詞: '24番目（の）、24日' },
-    },
-    twentysecond: {
-        tags: ['限定用法', '数詞'],
-        hinsi: ['形容詞'],
-        means: { 形容詞: '22番目（の）、22日' },
-    },
-    twentyninth: {
-        tags: ['限定用法', '数詞'],
-        hinsi: ['形容詞'],
-        means: { 形容詞: '29番目（の）、29日' },
-    },
-    twentyseventh: {
-        tags: ['限定用法', '数詞'],
-        hinsi: ['形容詞'],
-        means: { 形容詞: '27番目（の）、27日' },
-    },
-    twentysixth: {
-        tags: ['限定用法', '数詞'],
-        hinsi: ['形容詞'],
-        means: { 形容詞: '26番目（の）、26日' },
-    },
-    twentythird: {
-        tags: ['限定用法', '数詞'],
-        hinsi: ['形容詞'],
-        means: { 形容詞: '23番目（の）、23日' },
     },
     two: {
         tags: ['限定用法', '数詞'],
@@ -1729,16 +1599,6 @@ let tango = {
         hinsi: ['形容詞'],
         means: { 形容詞: '西の、西部の　(Western で）欧米の' },
     },
-    what: {
-        tags: ['限定用法', '原級'],
-        hinsi: ['形容詞'],
-        means: { 形容詞: '何の、どんな' },
-    },
-    which: {
-        tags: ['限定用法', '原級'],
-        hinsi: ['形容詞'],
-        means: { 形容詞: 'どちらの、どの' },
-    },
     white: {
         tags: ['限定用法', '原級'],
         hinsi: ['形容詞'],
@@ -1768,21 +1628,6 @@ let tango = {
         tags: ['限定用法', '原級'],
         hinsi: ['形容詞'],
         means: { 形容詞: '心配した、不安な' },
-    },
-    worse: {
-        tags: ['限定用法', '比較級'],
-        hinsi: ['形容詞'],
-        means: { 形容詞: 'もっと悪い〔下手な、ひどい〕《 bad の比較級》' },
-    },
-    worst: {
-        tags: ['限定用法', '最上級'],
-        hinsi: ['形容詞'],
-        means: { 形容詞: 'もっとも悪い〔下手な、ひどい〕《 bad の最上級》' },
-    },
-    worth: {
-        tags: ['限定用法', '原級'],
-        hinsi: ['形容詞'],
-        means: { 形容詞: '～するだけの価値がある' },
     },
     wrong: {
         tags: ['限定用法', '原級'],
