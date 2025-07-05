@@ -2,6 +2,7 @@ import { roomManager } from '../pages/roomManager.js';
 import { cookieManager } from '../utils/cookieManager.js';
 import { serverManager } from './serverManager.js';
 import { usersManager } from './usersManager.js';
+import roomsDB from '../db/repositories/roomsRepository.js';
 
 export class routeManager {
     /**
@@ -57,14 +58,15 @@ export class routeManager {
             }
         });
 
-        this.serverManager.onGet('/play/:parentName', async (req, res) => {
+        this.serverManager.onGet('/play/:roomId', async (req, res) => {
             try {
                 await usersManager.isLogin(req, res);
-                const parentId = await usersManager.nameToId(req.params.parentName);
+                const parentId = await roomsDB.getRow('parent_id', 'room_id', req.params.roomId);
+                const parentName = await usersManager.idToName(parentId);
                 if (await !roomManager.isRoomByParentId(parentId)) res.redirect('/room');
 
                 const username = await usersManager.idToName(req.cookies.userId);
-                res.render('pages/play', { username: username });
+                res.render('pages/play', { username: username, parentName: parentName });
             } catch (err) {
                 console.log(`Error :${err}`);
                 res.redirect('/room');

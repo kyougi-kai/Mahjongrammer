@@ -13,8 +13,7 @@ export class playerManager {
         console.log(this.nameDivs);
         this.wss = wss;
         this.playerMembers = [];
-        const pageName = location.href;
-        this.parentName = pageName.split('/')[4];
+        this.parentName = functions.sN(document.getElementById('parentNameText').innerHTML);
         this.parentNumber = 0;
         this.playerMembers.push(this.parentName);
         console.log(this.playerMembers);

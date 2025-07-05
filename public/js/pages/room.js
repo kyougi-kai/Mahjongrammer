@@ -36,7 +36,7 @@ window.onload = () => {
     connectionmanager.onMessage('success', (data) => {
         if (data.type == 'createRoom') {
             //部屋作った人が行くとこ
-            window.location.href = `/play/${userNameText.textContent.replace(/\s+/g, '')}`;
+            window.location.href = `/play/${data.roomId}`;
         }
     });
 
