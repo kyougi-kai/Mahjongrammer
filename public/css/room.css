@@ -1,39 +1,42 @@
-p{
+p {
     margin: 0;
 }
 
-.main-div{
+.main-div {
     border: 1px solid black;
     width: 500px;
     margin: auto;
 }
 
-.room-div{
+.room-div {
     width: 100%;
     height: 60px;
     border: 1px solid black;
 }
 
-.create-room-div{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+.create-room-div {
     box-shadow: 0px 0px 2px 2px black;
     margin: auto;
-    z-index: 2;
+    z-index: 5;
     transition: 0.6s;
     background: rgb(227, 227, 227);
 }
 
-.create-room-div p{
+.wariai-div {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.create-room-div p {
     margin: 0;
     font-size: 16px;
 }
 
-.create-room-div div{
+.create-room-div div {
     margin: 8px 4px;
 }
 
-.background-div{
+.background-div {
     transition: 0.6s;
     position: fixed;
     top: 0;
@@ -44,6 +47,6 @@ p{
     pointer-events: none;
 }
 
-.userID{
+.userID {
     display: none;
 }

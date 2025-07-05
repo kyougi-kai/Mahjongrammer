@@ -54,7 +54,7 @@ export class playManager {
 
         // playClientsに保存
         this.playclientsmanager.entryRoom(roomId, username, ws);
-        this.roommanager.noticeEntryRoom(parentName, roomId, roomMembersData.length);
+        this.roommanager.noticeEntryRoom(roomId, roomMembersData.length);
     }
 
     _setup() {
@@ -164,13 +164,13 @@ export class playManager {
                         };
 
                         this.sendToClients(sendData, roomId);
-                        this.roommanager.noticeDeleteRoom(parentName);
+                        this.roommanager.noticeDeleteRoom(roomId);
                     } else {
                         await roomMemberDB.exitRoom(userId);
                         const roomMemberCounts = await roomMemberDB.roomMemberCounts(roomId);
                         console.log('getRoomMemberCounts');
                         console.log(roomMemberCounts);
-                        this.roommanager.noticeOutRoom(parentName, roomMemberCounts);
+                        this.roommanager.noticeOutRoom(roomId, roomMemberCounts);
 
                         const sendData = {
                             type: 'outRoom',

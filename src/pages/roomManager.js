@@ -26,15 +26,14 @@ export class roomManager {
         });
 
         this.wss.onMessage('createRoom', async (ws, data) => {
-            const userId = await usersManager.nameToId(data.roomName);
-            await roomsrepository.createRoom(userId, data.ratio);
+            const userId = data.userId;
+            await roomsrepository.createRoom(userId, data.roomName, data.ratio);
             const roomId = await roomsrepository.getRoomId(userId);
-            console.log(`${data.roomName}が部屋を作成しました`);
             this.roomclientsmanager.roomC.values().forEach((client) => {
                 const sendData = {
                     type: 'getRoomData',
                     payload: {
-                        username: data.roomName,
+                        roomName: data.roomName,
                         roomId: roomId,
                         room_member_counts: 0,
                     },
@@ -45,12 +44,11 @@ export class roomManager {
         });
     }
 
-    noticeEntryRoom(roomName, roomId, roomMemberCounts) {
+    noticeEntryRoom(roomId, roomMemberCounts) {
         this.roomclientsmanager.roomC.forEach((client) => {
             const sendData = {
                 type: 'changeRoomData',
                 payload: {
-                    roomName: roomName,
                     roomId: roomId,
                     roomMemberCounts: roomMemberCounts,
                 },
@@ -60,12 +58,12 @@ export class roomManager {
         });
     }
 
-    noticeOutRoom(roomName, roomMemberCounts) {
-        this.roomclientsmanager.noticeOutRoom(roomName, roomMemberCounts);
+    noticeOutRoom(roomId, roomMemberCounts) {
+        this.roomclientsmanager.noticeOutRoom(roomId, roomMemberCounts);
     }
 
-    noticeDeleteRoom(roomName) {
-        this.roomclientsmanager.noticeDeleteRoom(roomName);
+    noticeDeleteRoom(roomId) {
+        this.roomclientsmanager.noticeDeleteRoom(roomId);
     }
 
     static async isRoomByParentId(parentId) {

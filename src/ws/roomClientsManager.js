@@ -36,7 +36,7 @@ export class roomClientsManager {
                         JSON.stringify({
                             type: 'deleteRoom',
                             payload: {
-                                roomName: data.username,
+                                roomId: data.roomId,
                             },
                         })
                     );
@@ -45,13 +45,13 @@ export class roomClientsManager {
         });
     }
 
-    noticeOutRoom(roomName, roomMemberCounts) {
+    noticeOutRoom(roomId, roomMemberCounts) {
         this.roomClients.values().forEach((client) => {
             client.send(
                 JSON.stringify({
                     type: 'changeRoomData',
                     payload: {
-                        roomName: roomName,
+                        roomId: roomId,
                         roomMemberCounts: roomMemberCounts,
                     },
                 })
@@ -59,13 +59,13 @@ export class roomClientsManager {
         });
     }
 
-    noticeDeleteRoom(roomName) {
+    noticeDeleteRoom(roomId) {
         this.roomClients.values().forEach((client) => {
             client.send(
                 JSON.stringify({
                     type: 'deleteRoom',
                     payload: {
-                        roomName: roomName,
+                        roomId: roomId,
                     },
                 })
             );

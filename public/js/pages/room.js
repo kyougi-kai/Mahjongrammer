@@ -1,11 +1,11 @@
 import { connectionManager } from '/js/utils/connectionManager.js';
+import { functions } from '/js/utils/functions.js';
 
 const mainDiv = document.getElementsByClassName('main-div')[0];
-const userNameText = document.getElementById('userName');
 const backgroundDiv = document.getElementById('backgroundDiv');
 const createRoomDiv = document.getElementsByClassName('create-room-div')[0];
 const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
-let startFlg = false;
+const userId = functions.sN(document.getElementById('userID').innerHTML);
 let rooms = [];
 
 window.onload = () => {
@@ -23,12 +23,12 @@ window.onload = () => {
         console.log('message : getRoomData');
         console.log(data);
         if (!Array.isArray(data)) {
-            rooms.push(data.username);
-            createNewRoom(data.username, data.roomId, data.room_member_counts);
+            rooms.push(data.roomId);
+            createNewRoom(data.roomName, data.roomId, data.room_member_counts);
         } else {
             data.forEach((mono) => {
-                rooms.push(mono.username);
-                createNewRoom(mono.username, mono.room_id, mono.room_member_counts);
+                rooms.push(mono.roomId);
+                createNewRoom(mono.room_name, mono.room_id, mono.room_member_counts);
             });
         }
     });
@@ -42,7 +42,7 @@ window.onload = () => {
 
     // 削除された部屋を非表示
     connectionmanager.onMessage('deleteRoom', (data) => {
-        const idx = rooms.indexOf(data.roomName);
+        const idx = rooms.indexOf(data.roomId);
         if (idx != -1) {
             rooms.splice(idx, 1);
             mainDiv.children[idx].remove();
@@ -51,28 +51,26 @@ window.onload = () => {
 
     // 部屋のデータの変更を取得
     connectionmanager.onMessage('changeRoomData', (data) => {
-        updateRoomMemberCounts(data.roomName, data.roomId, parseInt(data.roomMemberCounts));
+        updateRoomMemberCounts(data.roomId, parseInt(data.roomMemberCounts));
     });
 
     document.getElementById('showCreateBtn').addEventListener('click', () => {
         backgroundDiv.style.opacity = '1';
-        createRoomDiv.style.opacity = '1';
         backgroundDiv.style.pointerEvents = 'all';
+        createRoomDiv.style.opacity = '1';
         createRoomDiv.style.pointerEvents = 'all';
     });
 
-    backgroundDiv.addEventListener('click', () => {
+    backgroundDiv.addEventListener('click', (e) => {
         backgroundDiv.style.opacity = '0';
-        createRoomDiv.style.opacity = '0';
         backgroundDiv.style.pointerEvents = 'none';
+        createRoomDiv.style.opacity = '0';
         createRoomDiv.style.pointerEvents = 'none';
     });
 
     document.getElementById('createBtn').addEventListener('click', () => {
         let temporaryList = [];
-        const parentID = document.getElementById('userID').innerHTML;
-        const parentid = parentID.trim();
-        Array.from(createRoomDiv.children).forEach((value) => {
+        Array.from(document.getElementsByClassName('wariai-div')[0].children).forEach((value) => {
             if (Array.from(value.children).length != 2) return;
             const ratio = parseInt(value.children[1].value);
             temporaryList.push(ratio);
@@ -80,9 +78,9 @@ window.onload = () => {
         const sendData = {
             type: 'createRoom',
             payload: {
-                roomName: userNameText.textContent.replace(/\s+/g, ''),
+                roomName: document.getElementById('roomName').value,
                 ratio: temporaryList,
-                userId: parentid,
+                userId: userId,
             },
         };
         connectionmanager.send(sendData);
@@ -102,8 +100,9 @@ function createNewRoom(roomName, roomId, roomMemberCounts = 0) {
     if (roomMemberCounts != 4) temporaryDiv.setAttribute('onclick', `window.location.href = '/play/${roomId}';`);
 }
 
-function updateRoomMemberCounts(roomName, roomId, roomMemberCounts) {
-    const idx = rooms.indexOf(roomName);
+function updateRoomMemberCounts(roomId, roomMemberCounts) {
+    if (rooms[0] === undefined) window.location = '/room';
+    const idx = rooms.indexOf(roomId);
     console.log(mainDiv.children[idx].children);
     mainDiv.children[idx].children[1].innerHTML = `${roomMemberCounts}/4`;
 

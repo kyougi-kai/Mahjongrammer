@@ -24,6 +24,7 @@ create table users(
 );
 create table rooms(
     room_id char(36) primary key,
+    room_name varchar(100) not null,
     parent_id char(36) not null,
     ratio varchar(255) not null,
     foreign key (parent_id) references users(user_id) on delete cascade

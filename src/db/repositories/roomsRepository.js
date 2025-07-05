@@ -7,14 +7,14 @@ export class roomsRepository extends baseRepository {
 
     async getRoomMemberCountData() {
         const sql =
-            'select username, rooms.room_id, count(*) as room_member_counts from users, rooms, room_member where users.user_id = rooms.parent_id and rooms.room_id = room_member.room_id group by username, rooms.room_id';
+            'select username, room_name, rooms.room_id, count(*) as room_member_counts from users, rooms, room_member where users.user_id = rooms.parent_id and rooms.room_id = room_member.room_id group by username, rooms.room_id';
         const data = await this.query(sql, []);
         return data;
     }
 
-    async createRoom(parentId, ratio) {
-        const sql = 'insert into rooms (room_id, parent_id, ratio) values(uuid(), ?, ?)';
-        const param = [parentId, ratio];
+    async createRoom(parentId, roomName, ratio) {
+        const sql = 'insert into rooms (room_id, room_name, parent_id, ratio) values(uuid(), ?, ?, ?)';
+        const param = [roomName, parentId, ratio];
         await this.query(sql, param);
     }
 
