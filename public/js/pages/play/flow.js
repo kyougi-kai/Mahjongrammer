@@ -50,19 +50,30 @@ export class flow {
     _setupWebsocket() {
         // 上がれるようにする
         document.getElementById('finishButton').addEventListener('click', (e) => {
-            this.togoout.tumo();
+            if (this.togoout.tumo()) {
+                let tumoData = {
+                    type: 'tumo',
+                    payload: {
+                        roomId: this.playermanager.roomId,
+                        grammerData: document.getElementById('wordUp').innerHTML,
+                        playerNumber: this.playermanager.getPlayerNumber(),
+                    },
+                };
 
-            /*
-            let tumoData = {
-                type: 'tumo',
+                this.wss.send(tumoData);
+            }
+        });
+
+        document.getElementById('resultbutton').addEventListener('click', (e) => {
+            this.uimanager.hideRoundResult();
+            let sendData = {
+                type: 'nextRound',
                 payload: {
-                    parentName: this.playermanager.parentname,
-                    playerNumber: this.playermanager.getPlayerNumber(),
+                    roomId: this.playermanager.roomId,
                 },
             };
-            this.wss.send(tumoData);
-            */
-            // this.togoout.tumoreruka();
+
+            this.wss.send(sendData);
         });
 
         this.barkdiv.children[0].addEventListener('click', (e) => {
@@ -85,6 +96,11 @@ export class flow {
             };
             this.uimanager.hideponskip();
             this.wss.send(skipData);
+        });
+
+        this.wss.onMessage('tumo', (data) => {
+            const isTumoPlayer = data.tumoPlayerNumber == this.playermanager.getPlayerNumber();
+            this.uimanager.showRoundResult(data.grammerData, isTumoPlayer);
         });
 
         this.wss.onMessage('getRoomMemberData', (data) => {

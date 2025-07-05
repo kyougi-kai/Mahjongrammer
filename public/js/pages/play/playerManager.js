@@ -16,6 +16,9 @@ export class playerManager {
         this.parentName = functions.sN(document.getElementById('parentNameText').innerHTML);
         this.parentNumber = 0;
         this.playerMembers.push(this.parentName);
+
+        const pageName = location.href;
+        this.roomId = pageName.split('/')[4];
         console.log(this.playerMembers);
 
         /* this.wss.send(送りたいデータ);

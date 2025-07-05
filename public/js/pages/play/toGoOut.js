@@ -63,7 +63,7 @@ export class toGoOut {
     getGrammerData() {
         let grammerData = [];
         Array.from(this.table.children).forEach((value, index) => {
-            if(!value.classList.contains('sentence-div'))return false;
+            if (!value.classList.contains('sentence-div')) return false;
             grammerData.push({});
             let grammerString = '';
             let oCount = 1;
@@ -79,7 +79,7 @@ export class toGoOut {
                     grammerData[index][valString].push(word.innerHTML);
                 });
             });
-            if(Object.keys(this.sentenceList).indexOf(grammerString) == -1)return false;
+            if (Object.keys(this.sentenceList).indexOf(grammerString) == -1) return false;
             grammerData[index].sentence = this.sentenceList[grammerString];
         });
 
@@ -88,18 +88,18 @@ export class toGoOut {
 
     tumo() {
         const grammerDatas = this.getGrammerData();
-        if(grammerDatas == false){
+        if (grammerDatas == false) {
             // 今後
-        }
-        else{
+        } else {
             let errorFlag = false;
             grammerDatas.forEach((data) => {
                 const checkResult = checkGrammer(data);
                 console.log('checkResult');
                 console.log(checkResult);
-                if(checkResult.success == false)errorFlag = true;
+                if (checkResult.success == false) errorFlag = true;
             });
-            if(!errorFlag)this.uimanager.showResetButton();
+
+            return !errorFlag;
         }
     }
 }

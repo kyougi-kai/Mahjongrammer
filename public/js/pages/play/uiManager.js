@@ -111,11 +111,14 @@ export class uiManager {
         this.throwHaiTable.children[position].children[0].remove();
     }
 
-    showRoundResult() {
-        console.log('リセットボタンを表示');
+    showRoundResult(grammerData) {
+        document.getElementById('resultpage').style.display = 'block';
+        document.getElementById('resultGrammerDiv').innerHTML = grammerData;
     }
 
-    hideRoundResult() {}
+    hideRoundResult() {
+        document.getElementById('resultpage').style.display = 'none';
+    }
 
     showCountDown() {
         console.log(this.ponskip);
