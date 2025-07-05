@@ -1,122 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="/css/play.css" />
+        <script src="/js/pages/play/gameManager.js" type="module" defer></script>
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/play.css">
-    <script src="/js/pages/play/gameManager.js" type="module" defer></script>
-</head>
-
-<body>
-    <div class="background-div" id="backgroundDiv" style="opacity: 0;"></div>
-    <div class="main-content">
-        <div class="main-bord">
-            <div class="result-page"id="resultpage">
-                <div>
-                    <button class="result-button"id="resultbutton">nextround</button>
-                </diV>
-            </div>
-            <div class="complete-div" id="completeDiv" style="opacity: 0;z-index:-1;pointer-events:none;">
-                <h2></h2>
-                <div class="complete-table">
-                </div>
-            </div>
-
-            <div class="top-content name">
-                <p></p>
-                <div style="opacity: 0;">
-                    ポン！
-                </div>
-            </div>
-            <div class="right-content name">
-                <p></p>
-                <div style="opacity: 0;">
-                    ポン！
-                </div>
-            </div>
-            <div class="bottom-content name">
-                <p id="usernameText">
-                    <%= username %>
-                </p>
-                <div style="opacity: 0;">
-                    ポン！
-                </div>
-            </div>
-            <div class="left-content name">
-                <p></p>
-                <div style="opacity: 0;">
-                    ポン！
-                </div>
-            </div>
-
-            <div class="throw-hai-table">
-                <div class="throw-hai top-content" style="opacity: 0;">
-                    word
-                </div>
-                <div class="throw-hai right-content" style="opacity: 0;">
-                    word
-                </div>
-                <div class="throw-hai bottom-content" style="opacity: 0;">
-                    word
-                </div>
-                <div class="throw-hai left-content" style="opacity: 0;">
-                    word
-                </div>
-            </div>
-            <div class="score-bord" style="opacity: 0;" id="scoreBord">
-                <p class="top-content-ten">25000</p>
-                <p class="right-content-ten">25000</p>
-                <p class="bottom-content-ten">25000</p>
-                <p class="left-content-ten">25000</p>
-                <button class="finish-button" style="opacity: 0;pointer-events:none;" id="finishButton">あがる</button>
-                <p class="oyaban" id="oyaban"></p>
-            </div>
-
-            <button class="close-btn" id="closeBtn" style="display: none;">締め切る</button>
-
-            <div class="bark-div" id="barkDiv" style="display: none;">
-                <button>ポン</button>
-                <button>スキップ</button>
-                <h2></h2>
-            </div>
-        </div>
-        <div class="footer">
-            <div style="display: flex;width:100%;">
-                <div class="sentence-pattern" id="sentencePattern">
-                    <div>S</div>
-                    <div>V</div>
-                    <div>C</div>
-                    <div>O</div>
-                    <div style="background: rgb(255, 145, 77);">M</div>
-                </div>
-                <div style="width:100%;overflow:hidden;">
-                    <div class="hai-table" id="wordUp" style="background:rgb(217, 217, 217);">
+    <body>
+        <div class="background-div" id="backgroundDiv" style="opacity: 0"></div>
+        <div class="main-content">
+            <div class="main-bord">
+                <div style="display: none" class="result-page" id="resultpage">
+                    <div style="bottom: 0">
+                        <button style="right: 0" class="result-button" id="resultbutton">nextround</button>
                     </div>
-                    <div class="hai-table" id="wordDown" style="background-image: url(/img/space.png);">
+                </div>
+                <div class="complete-div" id="completeDiv" style="opacity: 0; z-index: -1; pointer-events: none">
+                    <h2></h2>
+                    <div class="complete-table"></div>
+                </div>
+
+                <div class="top-content name">
+                    <p></p>
+                    <div style="opacity: 0">ポン！</div>
+                </div>
+                <div class="right-content name">
+                    <p></p>
+                    <div style="opacity: 0">ポン！</div>
+                </div>
+                <div class="bottom-content name">
+                    <p id="usernameText"><%= username %></p>
+                    <div style="opacity: 0">ポン！</div>
+                </div>
+                <div class="left-content name">
+                    <p></p>
+                    <div style="opacity: 0">ポン！</div>
+                </div>
+
+                <div class="throw-hai-table">
+                    <div class="throw-hai top-content" style="opacity: 0">word</div>
+                    <div class="throw-hai right-content" style="opacity: 0">word</div>
+                    <div class="throw-hai bottom-content" style="opacity: 0">word</div>
+                    <div class="throw-hai left-content" style="opacity: 0">word</div>
+                </div>
+                <div class="score-bord" style="opacity: 0" id="scoreBord">
+                    <p class="top-content-ten">25000</p>
+                    <p class="right-content-ten">25000</p>
+                    <p class="bottom-content-ten">25000</p>
+                    <p class="left-content-ten">25000</p>
+                    <button class="finish-button" style="opacity: 0; pointer-events: none" id="finishButton">あがる</button>
+                    <p class="oyaban" id="oyaban"></p>
+                </div>
+
+                <button class="close-btn" id="closeBtn" style="display: none">締め切る</button>
+
+                <div class="bark-div" id="barkDiv" style="display: none">
+                    <button>ポン</button>
+                    <button>スキップ</button>
+                    <h2></h2>
+                </div>
+            </div>
+            <div class="footer">
+                <div style="display: flex; width: 100%">
+                    <div class="sentence-pattern" id="sentencePattern">
+                        <div>S</div>
+                        <div>V</div>
+                        <div>C</div>
+                        <div>O</div>
+                        <div style="background: rgb(255, 145, 77)">M</div>
+                    </div>
+                    <div style="width: 100%; overflow: hidden">
+                        <div class="hai-table" id="wordUp" style="background: rgb(217, 217, 217)"></div>
+                        <div class="hai-table" id="wordDown" style="background-image: url(/img/space.png)"></div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div id="cheatDiv"
-            style="z-index:4;display:none;position: absolute;padding:20px;top:50%;left:50%;transform:translateX(-50%) translateY(-50%);background:white;">
-            <div style="display: flex;">
-                <div style="padding-right: 20px;">
-                    <label for="hinsiDrop">品詞</label>
-                    <select name="hinsis" id="hinsiDrop"></select>
+            <div
+                id="cheatDiv"
+                style="
+                    z-index: 4;
+                    display: none;
+                    position: absolute;
+                    padding: 20px;
+                    top: 50%;
+                    left: 50%;
+                    transform: translateX(-50%) translateY(-50%);
+                    background: white;
+                ">
+                <div style="display: flex">
+                    <div style="padding-right: 20px">
+                        <label for="hinsiDrop">品詞</label>
+                        <select name="hinsis" id="hinsiDrop"></select>
+                    </div>
+                    <div>
+                        <label for="tagDrop">タグ</label>
+                        <select name="tags" id="tagDrop"></select>
+                    </div>
                 </div>
-                <div>
-                    <label for="tagDrop">タグ</label>
-                    <select name="tags" id="tagDrop"></select>
-                </div>
+
+                <button id="pickButton">決定</button>
             </div>
-
-
-            <button id="pickButton">決定</button>
         </div>
-    </div>
-</body>
-
+    </body>
 </html>

@@ -33,8 +33,8 @@ export class connectionManager {
                 console.log(parseData);
                 await this._doHanlders(this.messageHandlers.get(parseData['type']), ws, parseData['payload']);
 
-                if(parseData['type'] == 'createRoom'){
-                    const roomId = await roomsDB.getRoomId()
+                if (parseData['type'] == 'createRoom') {
+                    const roomId = await roomsDB.getRoomId(parseData['payload']['userId']);
                     const sendSuccess = {
                         type: 'success',
                         payload: {
@@ -43,9 +43,9 @@ export class connectionManager {
                         },
                     };
                     ws.send(JSON.stringify(sendSuccess));
-                }else{
-                    const roomId = null
-                    const sendSuccess =  {
+                } else {
+                    const roomId = null;
+                    const sendSuccess = {
                         type: 'success',
                         payload: {
                             type: parseData['type'],
@@ -53,7 +53,7 @@ export class connectionManager {
                         },
                     };
                     ws.send(JSON.stringify(sendSuccess));
-                };
+                }
             });
         });
     }
