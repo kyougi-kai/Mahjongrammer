@@ -1,3 +1,5 @@
+import { writeFile } from 'fs/promises';
+
 let jodousi = {
     can: {
         tags: ['法助動詞'],
@@ -117,7 +119,7 @@ let daimeisi = {
         means: { 代名詞: '彼は［が］、その（男の）人は［が］' },
     },
     her: {
-        tags: ['三人称', '単数', '人称代名詞', '目的格','所有格'],
+        tags: ['三人称', '単数', '人称代名詞', '目的格', '所有格'],
         hinsi: ['代名詞'],
         means: { 代名詞: ' 彼女を［に］' },
     },
@@ -7934,19 +7936,19 @@ let dousi = {
         means: { 動詞: '（～の）プラグを（コンセントから）抜く' },
     },
     upset: {
-        tags: ['他動詞', '形容詞的用法もある', '動作動詞', '状態動詞', '原型', '過去形', '過去分詞'],
+        tags: ['他動詞', '動作動詞', '状態動詞', '原型', '過去形', '過去分詞'],
         katuyou: ['upset', 'upsets', 'upset', 'upset', 'upsetting'],
         hinsi: ['動詞'],
         means: { 動詞: '気を動転させる、うろたえさせる' },
     },
     upsets: {
-        tags: ['他動詞', '形容詞的用法もある', '動作動詞', '状態動詞', '三単現s'],
+        tags: ['他動詞', '動作動詞', '状態動詞', '三単現s'],
         katuyou: ['upset', 'upsets', 'upset', 'upset', 'upsetting'],
         hinsi: ['動詞'],
         means: { 動詞: '気を動転させる、うろたえさせる' },
     },
     upsetting: {
-        tags: ['他動詞', '形容詞的用法もある', '動作動詞', '状態動詞', '現在分詞'],
+        tags: ['他動詞', '動作動詞', '状態動詞', '現在分詞'],
         katuyou: ['upset', 'upsets', 'upset', 'upset', 'upsetting'],
         hinsi: ['動詞'],
         means: { 動詞: '気を動転させる、うろたえさせる' },
@@ -8452,12 +8454,12 @@ let dousi = {
 };
 let kansi = {
     a: {
-        tags: ['不定冠詞','直後子音'],
+        tags: ['不定冠詞', '直後子音'],
         hinsi: ['冠詞'],
         means: { 冠詞: '1 つの、1 人の〔数えられる名詞の前に置き、ふつう訳さない〕' },
     },
     an: {
-        tags: ['不定冠詞','直後母音'],
+        tags: ['不定冠詞', '直後母音'],
         hinsi: ['冠詞'],
         means: { 冠詞: '1つの、1人の 〔母音ではじまる数えられる名詞の前に置き、ふつう訳さない〕' },
     },
@@ -10329,11185 +10331,12712 @@ let keiyousi = {
     },
 };
 let meisi = {
-     academy: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'academy', 'academies' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '学院、専門学校' }
-  },
-  academies: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'academy', 'academies' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '学院、専門学校' }
-  },
-  accident: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'accident', 'accidents' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '事故' }
-  },
-  accidents: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'accident', 'accidents' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '事故' }
-  },
-  action: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'action', 'actions' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '動き、演技' }
-  },
-  actions: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'action', 'actions' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '動き、演技' }
-  },
-  activity: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'activity', 'activities' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '活動' }
-  },
-  activities: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'activity', 'activities' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '活動' }
-  },
-  actor: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'actor', 'actors' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '俳優' }
-  },
-  actors: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'actor', 'actors' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '俳優' }
-  },
-  address: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'address', 'addresses' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'あて名、住所' }
-  },
-  addresses: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'address', 'addresses' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'あて名、住所' }
-  },
-  adult: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'adult', 'adults' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '大人、成人' }
-  },
-  adults: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'adult', 'adults' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '大人、成人' }
-  },
-  adventure: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'adventure', 'adventures' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '冒険' }
-  },
-  adventures: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'adventure', 'adventures' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '冒険' }
-  },
-  advertisement: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'advertisement', 'advertisements' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '広告、宣伝' }
-  },
-  advertisements: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'advertisement', 'advertisements' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '広告、宣伝' }
-  },
-  advice: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '忠告、助言、アドバイス' }
-  },
-  Africa: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'アフリカ、アフリカ大陸' }
-  },
-  afternoon: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'afternoon', 'afternoons' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '午後' }
-  },
-  afternoons: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'afternoon', 'afternoons' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '午後' }
-  },
-  age: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'age', 'ages' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '年齢、歳' }
-  },
-  ages: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'age', 'ages' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '年齢、歳' }
-  },
-  air: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '空中、空気' }
-  },
-  airport: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'airport', 'airports' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '空港' }
-  },
-  airports: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'airport', 'airports' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '空港' }
-  },
-  album: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'album', 'albums' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '(写真、ＣＤ、レコードなどの) アルバム' }
-  },
-  albums: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'album', 'albums' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '(写真、ＣＤ、レコードなどの) アルバム' }
-  },
-  ambulance: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'ambulance', 'ambulances' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '救急車' }
-  },
-  ambulances: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'ambulance', 'ambulances' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '救急車' }
-  },
-  America: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'アメリカ合衆国' }
-  },
-  American: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'American', 'Americans' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'アメリカ人、米国人' }
-  },
-  Americans: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'American', 'Americans' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'アメリカ人、米国人' }
-  },
-  ancestor: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'ancestor', 'ancestors' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '祖先、先祖' }
-  },
-  ancestors: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'ancestor', 'ancestors' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '祖先、先祖' }
-  },
-  animal: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'animal', 'animals' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '《植物に対して》 動物' }
-  },
-  animals: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'animal', 'animals' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '《植物に対して》 動物' }
-  },
-  animation: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'animation', 'animations' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '動画、アニメーション' }
-  },
-  animations: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'animation', 'animations' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '動画、アニメーション' }
-  },
-  anime: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（日本の）アニメ' }
-  },
-  answer: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'answer', 'answers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '答え、応答、返事' }
-  },
-  answers: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'answer', 'answers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '答え、応答、返事' }
-  },
-  apartment: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'apartment', 'apartments' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'アパート' }
-  },
-  apartments: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'apartment', 'apartments' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'アパート' }
-  },
-  apple: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'apple', 'apples' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'リンゴ' }
-  },
-  apples: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'apple', 'apples' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'リンゴ' }
-  },
-  April: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '4月' }
-  },
-  aquarium: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'aquarium', 'aquariums' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '水族館' }
-  },
-  aquariums: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'aquarium', 'aquariums' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '水族館' }
-  },
-  architect: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'architect', 'architects' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（建物の）建設者、建築家' }
-  },
-  architects: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'architect', 'architects' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（建物の）建設者、建築家' }
-  },
-  area: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'area', 'areas' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（大小さまざまの）場所、区域、地域、地方' }
-  },
-  areas: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'area', 'areas' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（大小さまざまの）場所、区域、地域、地方' }
-  },
-  arena: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'arena', 'arenas' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '競技場、アリーナ' }
-  },
-  arenas: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'arena', 'arenas' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '競技場、アリーナ' }
-  },
-  arm: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'arm', 'arms' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '腕' }
-  },
-  arms: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'arm', 'arms' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '腕' }
-  },
-  arrest: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'arrest', 'arrests' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '逮捕' }
-  },
-  arrests: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'arrest', 'arrests' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '逮捕' }
-  },
-  art: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '美術、芸術' }
-  },
-  artist: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'artist', 'artists' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '芸術家' }
-  },
-  artists: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'artist', 'artists' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '芸術家' }
-  },
-  Asia: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'アジア（大陸）' }
-  },
-  astronaut: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'astronaut', 'astronauts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '宇宙飛行士' }
-  },
-  astronauts: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'astronaut', 'astronauts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '宇宙飛行士' }
-  },
-  attention: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '注意、注目' }
-  },
-  attitude: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'attitude', 'attitudes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '態度、考え方、見方' }
-  },
-  attitudes: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'attitude', 'attitudes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '態度、考え方、見方' }
-  },
-  audience: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'audience', 'audiences' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '聴衆、観客' }
-  },
-  audiences: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'audience', 'audiences' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '聴衆、観客' }
-  },
-  August: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '8月' }
-  },
-  aunt: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'aunt', 'aunts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'おば、おばさん' }
-  },
-  aunts: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'aunt', 'aunts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'おば、おばさん' }
-  },
-  Australia: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'オーストラリア' }
-  },
-  autumn: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '秋' }
-  },
-  baby: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'baby', 'babies' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '赤ちゃん' }
-  },
-  babies: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'baby', 'babies' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '赤ちゃん' }
-  },
-  backyard: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'backyard', 'backyards' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '裏庭' }
-  },
-  backyards: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'backyard', 'backyards' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '裏庭' }
-  },
-  bag: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'bag', 'bags' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'かばん、バッグ、袋' }
-  },
-  bags: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'bag', 'bags' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'かばん、バッグ、袋' }
-  },
-  balance: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'balance', 'balances' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'つり合い、バランス、（からだや心の）安定' }
-  },
-  balances: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'balance', 'balances' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'つり合い、バランス、（からだや心の）安定' }
-  },
-  ball: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'ball', 'balls' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ボール、球' }
-  },
-  balls: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'ball', 'balls' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ボール、球' }
-  },
-  balloon: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'balloon', 'balloons' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '風船' }
-  },
-  balloons: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'balloon', 'balloons' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '風船' }
-  },
-  bamboo: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '竹' }
-  },
-  banana: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'banana', 'bananas' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'バナナ' }
-  },
-  bananas: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'banana', 'bananas' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'バナナ' }
-  },
-  band: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'band', 'bands' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '楽団、バンド' }
-  },
-  bands: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'band', 'bands' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '楽団、バンド' }
-  },
-  bank: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'bank', 'banks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '銀行' }
-  },
-  banks: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'bank', 'banks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '銀行' }
-  },
-  barrier: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'barrier', 'barriers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '壁、障壁' }
-  },
-  barriers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'barrier', 'barriers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '壁、障壁' }
-  },
-  baseball: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '野球' }
-  },
-  basketball: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'バスケットボール' }
-  },
-  bat: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'bat', 'bats' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（野球の）バット' }
-  },
-  bats: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'bat', 'bats' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（野球の）バット' }
-  },
-  bath: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'bath', 'baths' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '入浴　  〔take a bath の形で〕 入浴する' }
-  },
-  baths: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'bath', 'baths' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '入浴　  〔take a bath の形で〕 入浴する' }
-  },
-  bathroom: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'bathroom', 'bathrooms' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'トイレ、浴室' }
-  },
-  bathrooms: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'bathroom', 'bathrooms' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'トイレ、浴室' }
-  },
-  beach: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'beach', 'beaches' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '浜、浜辺、海辺、なぎさ' }
-  },
-  beaches: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'beach', 'beaches' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '浜、浜辺、海辺、なぎさ' }
-  },
-  bear: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'bear', 'bears' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'クマ' }
-  },
-  bears: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'bear', 'bears' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'クマ' }
-  },
-  beauty: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '美しさ' }
-  },
-  bed: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'bed', 'beds' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ベッド 　〔go to bed の形で〕 寝る、床につく' }
-  },
-  beds: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'bed', 'beds' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ベッド 　〔go to bed の形で〕 寝る、床につく' }
-  },
-  bedroom: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'bedroom', 'bedrooms' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '寝室' }
-  },
-  bedrooms: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'bedroom', 'bedrooms' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '寝室' }
-  },
-  beef: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '牛肉' }
-  },
-  bell: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'bell', 'bells' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '鈴、鐘' }
-  },
-  bells: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'bell', 'bells' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '鈴、鐘' }
-  },
-  belt: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'belt', 'belts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ベルト、（ズボンの）バンド、帯' }
-  },
-  belts: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'belt', 'belts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ベルト、（ズボンの）バンド、帯' }
-  },
-  bench: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'bench', 'benches' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '長いす、ベンチ' }
-  },
-  benches: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'bench', 'benches' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '長いす、ベンチ' }
-  },
-  best: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '最高（のもの）' }
-  },
-  bicycle: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'bicycle', 'bicycles' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '自転車' }
-  },
-  bicycles: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'bicycle', 'bicycles' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '自転車' }
-  },
-  bike: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'bike', 'bikes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '自転車　　〔bicycle ともいう〕' }
-  },
-  bikes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'bike', 'bikes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '自転車　　〔bicycle ともいう〕' }
-  },
-  billion: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'billion', 'billions' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '10億' }
-  },
-  billions: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'billion', 'billions' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '10億' }
-  },
-  bird: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'bird', 'birds' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '鳥' }
-  },
-  birds: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'bird', 'birds' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '鳥' }
-  },
-  birthday: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'birthday', 'birthdays' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '誕生日' }
-  },
-  birthdays: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'birthday', 'birthdays' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '誕生日' }
-  },
-  blackboard: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'blackboard', 'blackboards' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '黒板' }
-  },
-  blackboards: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'blackboard', 'blackboards' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '黒板' }
-  },
-  block: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'block', 'blocks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'かたまり、ブロック' }
-  },
-  blocks: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'block', 'blocks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'かたまり、ブロック' }
-  },
-  blog: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'blog', 'blogs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '(コンピュータ)ブログ' }
-  },
-  blogs: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'blog', 'blogs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '(コンピュータ)ブログ' }
-  },
-  blossom: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'blossom', 'blossoms' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '(特に果樹の)花' }
-  },
-  blossoms: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'blossom', 'blossoms' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '(特に果樹の)花' }
-  },
-  blue: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '青' }
-  },
-  blueberry: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'blueberry', 'blueberries' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ブルーベリー' }
-  },
-  blueberries: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'blueberry', 'blueberries' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ブルーベリー' }
-  },
-  board: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'board', 'boards' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '板、掲示板、黒板' }
-  },
-  boards: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'board', 'boards' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '板、掲示板、黒板' }
-  },
-  boat: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'boat', 'boats' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ボート、小舟、船' }
-  },
-  boats: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'boat', 'boats' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ボート、小舟、船' }
-  },
-  body: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'body', 'bodies' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'からだ、肉体' }
-  },
-  bodies: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'body', 'bodies' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'からだ、肉体' }
-  },
-  bomb: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'bomb', 'bombs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '爆弾' }
-  },
-  bombs: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'bomb', 'bombs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '爆弾' }
-  },
-  book: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'book', 'books' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '本、書物' }
-  },
-  books: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'book', 'books' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '本、書物' }
-  },
-  bookcase: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'bookcase', 'bookcases' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '本箱' }
-  },
-  bookcases: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'bookcase', 'bookcases' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '本箱' }
-  },
-  bookstore: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'bookstore', 'bookstores' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '本屋、書店' }
-  },
-  bookstores: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'bookstore', 'bookstores' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '本屋、書店' }
-  },
-  border: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'border', 'borders' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '国境' }
-  },
-  borders: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'border', 'borders' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '国境' }
-  },
-  bottle: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'bottle', 'bottles' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'びん' }
-  },
-  bottles: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'bottle', 'bottles' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'びん' }
-  },
-  box: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'box', 'boxes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '箱' }
-  },
-  boxes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'box', 'boxes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '箱' }
-  },
-  boy: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'boy', 'boys' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '男の子、少年、青年' }
-  },
-  boys: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'boy', 'boys' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '男の子、少年、青年' }
-  },
-  Braille: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '点字' }
-  },
-  branch: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'branch', 'branches' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '支社' }
-  },
-  branches: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'branch', 'branches' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '支社' }
-  },
-  Brazil: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ブラジル' }
-  },
-  bread: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'パン' }
-  },
-  break: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'break', 'breaks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '休けい、中休み、中断' }
-  },
-  breaks: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'break', 'breaks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '休けい、中休み、中断' }
-  },
-  breakfast: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '朝食、朝ごはん' }
-  },
-  bridge: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'bridge', 'bridges' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '橋' }
-  },
-  bridges: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'bridge', 'bridges' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '橋' }
-  },
-  brightness: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '明るさ' }
-  },
-  British: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '英国人、イギリス人' }
-  },
-  brother: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'brother', 'brothers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '兄、弟、兄弟' }
-  },
-  brothers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'brother', 'brothers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '兄、弟、兄弟' }
-  },
-  brush: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'brush', 'brushes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '筆' }
-  },
-  brushes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'brush', 'brushes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '筆' }
-  },
-  bubble: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'bubble', 'bubbles' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '泡、あぶく' }
-  },
-  bubbles: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'bubble', 'bubbles' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '泡、あぶく' }
-  },
-  builder: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'builder', 'builders' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '建造者' }
-  },
-  builders: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'builder', 'builders' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '建造者' }
-  },
-  building: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'building', 'buildings' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '建物、ビル' }
-  },
-  buildings: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'building', 'buildings' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '建物、ビル' }
-  },
-  bump: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'bump', 'bumps' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'でこぼこ' }
-  },
-  bumps: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'bump', 'bumps' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'でこぼこ' }
-  },
-  burn: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'burn', 'burns' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'やけど' }
-  },
-  burns: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'burn', 'burns' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'やけど' }
-  },
-  bus: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'bus', 'buses' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'バス' }
-  },
-  buses: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'bus', 'buses' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'バス' }
-  },
-  business: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '商売、事業' }
-  },
-  butter: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'バター' }
-  },
-  button: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'button', 'buttons' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ボタン' }
-  },
-  buttons: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'button', 'buttons' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ボタン' }
-  },
-  buzzer: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'buzzer', 'buzzers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ブザー' }
-  },
-  buzzers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'buzzer', 'buzzers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ブザー' }
-  },
-  cacao: {
-    tags: [ '不可算名詞', '単数形', '子音で始まる' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'カカオ（の実）' }
-  },
-  cafeteria: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'cafeteria', 'cafeterias' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'カフェテリア、学食' }
-  },
-  cafeterias: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'cafeteria', 'cafeterias' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'カフェテリア、学食' }
-  },
-  cake: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'cake', 'cakes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ケーキ' }
-  },
-  cakes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'cake', 'cakes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ケーキ' }
-  },
-  calendar: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'calendar', 'calendars' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '暦、カレンダー' }
-  },
-  calendars: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'calendar', 'calendars' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '暦、カレンダー' }
-  },
-  call: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'call', 'calls' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '電話(すること)' }
-  },
-  calls: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'call', 'calls' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '電話(すること)' }
-  },
-  calligraphy: {
-    tags: [ '不可算名詞', '単数形', '子音で始まる' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '書道' }
-  },
-  Cambodia: {
-    tags: [ '不可算名詞', '単数形', '子音で始まる' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'カンボジア' }
-  },
-  camera: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'camera', 'cameras' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'カメラ' }
-  },
-  cameras: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'camera', 'cameras' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'カメラ' }
-  },
-  can: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'can', 'cans' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（金属製の）缶' }
-  },
-  cans: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'can', 'cans' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（金属製の）缶' }
-  },
-  Canada: {
-    tags: [ '不可算名詞', '単数形', '子音で始まる' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'カナダ' }
-  },
-  Canberra: {
-    tags: [ '不可算名詞', '単数形', '子音で始まる' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'キャンベラ（オーストラリアの首都）' }
-  },
-  cap: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'cap', 'caps' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ぼうし 《つばがないか、つばが前だけにあるもの》' }
-  },
-  caps: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'cap', 'caps' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ぼうし 《つばがないか、つばが前だけにあるもの》' }
-  },
-  capital: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'capital', 'capitals' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '～の首都、中心地' }
-  },
-  capitals: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'capital', 'capitals' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '～の首都、中心地' }
-  },
-  captain: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'captain', 'captains' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（チームの）キャプテン' }
-  },
-  captains: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'captain', 'captains' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（チームの）キャプテン' }
-  },
-  car: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'car', 'cars' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '自動車、車' }
-  },
-  cars: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'car', 'cars' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '自動車、車' }
-  },
-  card: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'card', 'cards' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'カード、はがき、トランプの札　 〔たとえば play cards の形で〕 トランプをする' }
-  },
-  cards: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'card', 'cards' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'カード、はがき、トランプの札　 〔たとえば play cards の形で〕 トランプをする' }
-  },
-  cardboard: {
-    tags: [ '不可算名詞', '単数形', '子音で始まる' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '段ボール、ボール紙' }
-  },
-  care: {
-    tags: [ '不可算名詞', '単数形', '子音で始まる' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '世話　〔take care of ～の形で〕 ～の面倒をみる' }
-  },
-  career: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'career', 'careers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '職業、経歴' }
-  },
-  careers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'career', 'careers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '職業、経歴' }
-  },
-  carpenter: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'carpenter', 'carpenters' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '大工' }
-  },
-  carpenters: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'carpenter', 'carpenters' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '大工' }
-  },
-  carport: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'carport', 'carports' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '車庫、カーポート' }
-  },
-  carports: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'carport', 'carports' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '車庫、カーポート' }
-  },
-  carrot: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'carrot', 'carrots' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ニンジン' }
-  },
-  carrots: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'carrot', 'carrots' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ニンジン' }
-  },
-  case: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'case', 'cases' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ケース、箱、～入れ' }
-  },
-  cases: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'case', 'cases' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ケース、箱、～入れ' }
-  },
-  castle: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'castle', 'castles' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '城    〔たとえば Hirosaki Castle の形で〕 弘前城' }
-  },
-  castles: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'castle', 'castles' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '城    〔たとえば Hirosaki Castle の形で〕 弘前城' }
-  },
-  cat: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'cat', 'cats' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ネコ' }
-  },
-  cats: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'cat', 'cats' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ネコ' }
-  },
-  catalog: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'catalog', 'catalogs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'カタログ' }
-  },
-  catalogs: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'catalog', 'catalogs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'カタログ' }
-  },
-  catch: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'catch', 'catches' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（ボールなどを）とらえること、キャッチボール　　〔play catch の形で〕　キャッチボールをする' }
-  },
-  catches: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'catch', 'catches' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（ボールなどを）とらえること、キャッチボール　　〔play catch の形で〕　キャッチボールをする' }
-  },
-  cause: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'cause', 'causes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '原因' }
-  },
-  causes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'cause', 'causes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '原因' }
-  },
-  cave: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'cave', 'caves' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '洞窟、ほら穴、横穴' }
-  },
-  caves: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'cave', 'caves' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '洞窟、ほら穴、横穴' }
-  },
-  CD: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'CD', 'CDs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'CD、コンパクトディスク  〔compact disc ［disk］の略〕' }
-  },
-  CDs: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'CD', 'CDs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'CD、コンパクトディスク  〔compact disc ［disk］の略〕' }
-  },
-  ceiling: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'ceiling', 'ceilings' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '天井' }
-  },
-  ceilings: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'ceiling', 'ceilings' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '天井' }
-  },
-  cent: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'cent', 'cents' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'セント（アメリカ合衆国の通貨。100 cents = 1 dollar）' }
-  },
-  cents: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'cent', 'cents' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'セント（アメリカ合衆国の通貨。100 cents = 1 dollar）' }
-  },
-  center: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'center', 'centers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '中心、中央、真ん中' }
-  },
-  centers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'center', 'centers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '中心、中央、真ん中' }
-  },
-  century: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'century', 'centuries' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '世紀、100年' }
-  },
-  centuries: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'century', 'centuries' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '世紀、100年' }
-  },
-  chair: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'chair', 'chairs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（１人用で、背もたれのある） 椅子' }
-  },
-  chairs: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'chair', 'chairs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（１人用で、背もたれのある） 椅子' }
-  },
-  challenge: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'challenge', 'challenges' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '挑戦、やりがい' }
-  },
-  challenges: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'challenge', 'challenges' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '挑戦、やりがい' }
-  },
-  champion: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'champion', 'champions' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '優勝者、選手権保持者、チャンピオン' }
-  },
-  champions: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'champion', 'champions' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '優勝者、選手権保持者、チャンピオン' }
-  },
-  championship: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'championship', 'championships' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '選手権（大会）、優勝' }
-  },
-  championships: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'championship', 'championships' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '選手権（大会）、優勝' }
-  },
-  chance: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'chance', 'chances' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '機会、可能性、チャンス' }
-  },
-  chances: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'chance', 'chances' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '機会、可能性、チャンス' }
-  },
-  change: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'change', 'changes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'おつり、つり銭、小銭' }
-  },
-  changes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'change', 'changes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'おつり、つり銭、小銭' }
-  },
-  character: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'character', 'characters' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '(人の)性格、人格、(物の)特色' }
-  },
-  characters: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'character', 'characters' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '(人の)性格、人格、(物の)特色' }
-  },
-  charity: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'charity', 'charities' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '慈善、チャリティー、慈善団体' }
-  },
-  charities: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'charity', 'charities' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '慈善、チャリティー、慈善団体' }
-  },
-  chart: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'chart', 'charts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '図表' }
-  },
-  charts: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'chart', 'charts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '図表' }
-  },
-  cheese: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'チーズ' }
-  },
-  cheeseburger: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'cheeseburger', 'cheeseburgers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'チーズバーガー' }
-  },
-  cheeseburgers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'cheeseburger', 'cheeseburgers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'チーズバーガー' }
-  },
-  chef: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'chef', 'chefs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'シェフ、コック長' }
-  },
-  chefs: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'chef', 'chefs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'シェフ、コック長' }
-  },
-  cherry: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'cherry', 'cherries' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'サクランボ、サクラ（の木）' }
-  },
-  cherries: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'cherry', 'cherries' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'サクランボ、サクラ（の木）' }
-  },
-  chess: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'チェス' }
-  },
-  chest: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'chest', 'chests' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '胸' }
-  },
-  chests: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'chest', 'chests' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '胸' }
-  },
-  child: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'child', 'children' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '子ども' }
-  },
-  children: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'child', 'children' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '子ども' }
-  },
-  childhood: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '幼少時代' }
-  },
-  chimney: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'chimney', 'chimneys' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '煙突' }
-  },
-  chimneys: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'chimney', 'chimneys' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '煙突' }
-  },
-  China: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '中国' }
-  },
-  Chinese: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '中国語、中国人' }
-  },
-  chocolate: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'チョコレート' }
-  },
-  choice: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'choice', 'choices' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '選ぶこと、選択、選ぶ自由' }
-  },
-  choices: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'choice', 'choices' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '選ぶこと、選択、選ぶ自由' }
-  },
-  chorus: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'chorus', 'choruses' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '合唱' }
-  },
-  choruses: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'chorus', 'choruses' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '合唱' }
-  },
-  Christmas: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'クリスマス' }
-  },
-  church: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'church', 'churches' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '教会' }
-  },
-  churches: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'church', 'churches' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '教会' }
-  },
-  circle: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'circle', 'circles' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '円' }
-  },
-  circles: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'circle', 'circles' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '円' }
-  },
-  city: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'city', 'cities' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '市、都市、都会   〔city hall の形で〕 市役所' }
-  },
-  cities: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'city', 'cities' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '市、都市、都会   〔city hall の形で〕 市役所' }
-  },
-  class: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'class', 'classes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '授業' }
-  },
-  classes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'class', 'classes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '授業' }
-  },
-  classmate: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'classmate', 'classmates' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '同級生、クラスメート、級友' }
-  },
-  classmates: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'classmate', 'classmates' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '同級生、クラスメート、級友' }
-  },
-  classroom: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'classroom', 'classrooms' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '教室' }
-  },
-  classrooms: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'classroom', 'classrooms' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '教室' }
-  },
-  clerk: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'clerk', 'clerks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '係員、店員、係' }
-  },
-  clerks: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'clerk', 'clerks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '係員、店員、係' }
-  },
-  climate: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '気候' }
-  },
-  clock: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'clock', 'clocks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '時計《置時計、掛け時計・柱時計》' }
-  },
-  clocks: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'clock', 'clocks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '時計《置時計、掛け時計・柱時計》' }
-  },
-  cloth: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '布' }
-  },
-  cloud: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'cloud', 'clouds' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '雲' }
-  },
-  clouds: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'cloud', 'clouds' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '雲' }
-  },
-  club: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'club', 'clubs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'クラブ、部' }
-  },
-  clubs: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'club', 'clubs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'クラブ、部' }
-  },
-  coach: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'coach', 'coaches' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'コーチ' }
-  },
-  coaches: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'coach', 'coaches' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'コーチ' }
-  },
-  coat: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'coat', 'coats' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'コート、上着' }
-  },
-  coats: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'coat', 'coats' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'コート、上着' }
-  },
-  coffee: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'コーヒー' }
-  },
-  coin: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'coin', 'coins' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '硬貨、コイン' }
-  },
-  coins: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'coin', 'coins' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '硬貨、コイン' }
-  },
-  cola: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'cola', 'colas' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'コーラ' }
-  },
-  colas: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'cola', 'colas' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'コーラ' }
-  },
-  cold: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'かぜ　〔have a cold の形で〕 かぜをひいている' }
-  },
-  college: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'college', 'colleges' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '大学' }
-  },
-  colleges: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'college', 'colleges' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '大学' }
-  },
-  color: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'color', 'colors' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '色、肌の色' }
-  },
-  colors: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'color', 'colors' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '色、肌の色' }
-  },
-  comic: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'comic', 'comics' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'マンガ' }
-  },
-  comics: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'comic', 'comics' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'マンガ' }
-  },
-  comment: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'comment', 'comments' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'コメント' }
-  },
-  comments: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'comment', 'comments' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'コメント' }
-  },
-  communication: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'コミュニケーション、意思伝達、情報の伝達' }
-  },
-  community: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'community', 'communities' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '地域社会' }
-  },
-  communities: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'community', 'communities' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '地域社会' }
-  },
-  company: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'company', 'companies' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '会社' }
-  },
-  companies: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'company', 'companies' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '会社' }
-  },
-  compartment: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'compartment', 'compartments' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'もの入れ' }
-  },
-  compartments: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'compartment', 'compartments' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'もの入れ' }
-  },
-  computer: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'computer', 'computers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'コンピュータ' }
-  },
-  computers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'computer', 'computers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'コンピュータ' }
-  },
-  concert: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'concert', 'concerts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'コンサート、演奏会、音楽会' }
-  },
-  concerts: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'concert', 'concerts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'コンサート、演奏会、音楽会' }
-  },
-  conclusion: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'conclusion', 'conclusions' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '結論' }
-  },
-  conclusions: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'conclusion', 'conclusions' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '結論' }
-  },
-  condition: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'condition', 'conditions' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '状態、容態、環境、状況' }
-  },
-  conditions: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'condition', 'conditions' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '状態、容態、環境、状況' }
-  },
-  conditioner: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'conditioner', 'conditioners' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '冷暖房装置　〔air conditioner で〕エアコン' }
-  },
-  conditioners: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'conditioner', 'conditioners' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '冷暖房装置　〔air conditioner で〕エアコン' }
-  },
-  condominium: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'condominium', 'condominiums' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '分譲マンション' }
-  },
-  condominiums: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'condominium', 'condominiums' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '分譲マンション' }
-  },
-  conference: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'conference', 'conferences' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '会議、会談、協議' }
-  },
-  conferences: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'conference', 'conferences' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '会議、会談、協議' }
-  },
-  connection: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'connection', 'connections' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '接続（すること）、つながり、関係' }
-  },
-  connections: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'connection', 'connections' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '接続（すること）、つながり、関係' }
-  },
-  content: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '内容、中身' }
-  },
-  contest: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'contest', 'contests' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'コンテスト、コンクール' }
-  },
-  contests: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'contest', 'contests' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'コンテスト、コンクール' }
-  },
-  control: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '制御　〔out of controlで〕制御しきれなくなって' }
-  },
-  convenience: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '便利なこと（もの）' }
-  },
-  cook: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'cook', 'cooks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '料理をする人' }
-  },
-  cooks: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'cook', 'cooks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '料理をする人' }
-  },
-  cooking: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '料理' }
-  },
-  corner: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'corner', 'corners' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（道路の）曲がり角' }
-  },
-  corners: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'corner', 'corners' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（道路の）曲がり角' }
-  },
-  costume: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'costume', 'costumes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '服装、衣装、コスチューム' }
-  },
-  costumes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'costume', 'costumes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '服装、衣装、コスチューム' }
-  },
-  cotton: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '綿' }
-  },
-  cough: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'cough', 'coughs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'せき' }
-  },
-  coughs: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'cough', 'coughs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'せき' }
-  },
-  country: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'country', 'countries' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '国' }
-  },
-  countries: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'country', 'countries' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '国' }
-  },
-  courage: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '勇気' }
-  },
-  course: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'course', 'courses' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '〔Of course.の形で〕 もちろん' }
-  },
-  courses: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'course', 'courses' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '〔Of course.の形で〕 もちろん' }
-  },
-  court: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'court', 'courts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（テニスなどの）コート' }
-  },
-  courts: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'court', 'courts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（テニスなどの）コート' }
-  },
-  cousin: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'cousin', 'cousins' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'いとこ' }
-  },
-  cousins: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'cousin', 'cousins' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'いとこ' }
-  },
-  cow: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'cow', 'cows' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '牛（雌牛、乳牛）' }
-  },
-  cows: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'cow', 'cows' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '牛（雌牛、乳牛）' }
-  },
-  cracker: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'cracker', 'crackers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（菓子の）クラッカー' }
-  },
-  crackers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'cracker', 'crackers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（菓子の）クラッカー' }
-  },
-  craftsperson: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'craftsperson', 'craftspeople' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '職人' }
-  },
-  craftspeople: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'craftsperson', 'craftspeople' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '職人' }
-  },
-  crane: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'crane', 'cranes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ツル' }
-  },
-  cranes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'crane', 'cranes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ツル' }
-  },
-  creativity: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '創造性[力]、独創[力]' }
-  },
-  culture: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '文化、土壌、習慣、風習、知的産物' }
-  },
-  cup: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'cup', 'cups' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（紅茶・コーヒー用などの）カップ、茶わん、賞杯' }
-  },
-  cups: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'cup', 'cups' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（紅茶・コーヒー用などの）カップ、茶わん、賞杯' }
-  },
-  curry: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'curry', 'curries' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'カレー、カレー料理' }
-  },
-  curries: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'curry', 'curries' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'カレー、カレー料理' }
-  },
-  cushion: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'cushion', 'cushions' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ざぶとん、クッション' }
-  },
-  cushions: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'cushion', 'cushions' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ざぶとん、クッション' }
-  },
-  custom: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'custom', 'customs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '風習、習慣' }
-  },
-  customs: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'custom', 'customs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '風習、習慣' }
-  },
-  customer: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'customer', 'customers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '客、顧客' }
-  },
-  customers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'customer', 'customers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '客、顧客' }
-  },
-  cycling: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'サイクリング' }
-  },
-  dad: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'dad', 'dads' ],
-    hinsi: [ '名詞' ],
-    means: {
-      '名詞': 'パパ、お父さん　《家庭内で子どもが父親を呼ぶのに使う。呼びかけの時にはしばしば大文字で始めて Dad とする。》'
-    }
-  },
-  dads: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'dad', 'dads' ],
-    hinsi: [ '名詞' ],
-    means: {
-      '名詞': 'パパ、お父さん　《家庭内で子どもが父親を呼ぶのに使う。呼びかけの時にはしばしば大文字で始めて Dad とする。》'
-    }
-  },
-  dance: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'dance', 'dances' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '踊り、ダンス' }
-  },
-  dances: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'dance', 'dances' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '踊り、ダンス' }
-  },
-  dancer: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'dancer', 'dancers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '踊る人、舞踏家、ダンサー' }
-  },
-  dancers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'dancer', 'dancers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '踊る人、舞踏家、ダンサー' }
-  },
-  danger: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '危険（な状態）' }
-  },
-  date: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'date', 'dates' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '日付、月日、日時' }
-  },
-  dates: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'date', 'dates' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '日付、月日、日時' }
-  },
-  daughter: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'daughter', 'daughters' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '娘' }
-  },
-  daughters: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'daughter', 'daughters' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '娘' }
-  },
-  day: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'day', 'days' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '日、1日' }
-  },
-  days: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'day', 'days' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '日、1日' }
-  },
-  death: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '死、死亡' }
-  },
-  decade: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'decade', 'decades' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '10年間' }
-  },
-  decades: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'decade', 'decades' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '10年間' }
-  },
-  December: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '12月' }
-  },
-  decision: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'decision', 'decisions' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '決断' }
-  },
-  decisions: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'decision', 'decisions' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '決断' }
-  },
-  democracy: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '民主主義' }
-  },
-  demonstration: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'demonstration', 'demonstrations' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（集会・行進などによる〕デモ、デモンストレーション' }
-  },
-  demonstrations: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'demonstration', 'demonstrations' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（集会・行進などによる〕デモ、デモンストレーション' }
-  },
-  dentist: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'dentist', 'dentists' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '歯医者' }
-  },
-  dentists: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'dentist', 'dentists' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '歯医者' }
-  },
-  design: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'design', 'designs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'デザイン、設計' }
-  },
-  designs: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'design', 'designs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'デザイン、設計' }
-  },
-  designer: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'designer', 'designers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'デザイナー、設計者' }
-  },
-  designers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'designer', 'designers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'デザイナー、設計者' }
-  },
-  desk: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'desk', 'desks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '机' }
-  },
-  desks: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'desk', 'desks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '机' }
-  },
-  diary: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'diary', 'diaries' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '日記、日記帳' }
-  },
-  diaries: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'diary', 'diaries' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '日記、日記帳' }
-  },
-  dictionary: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'dictionary', 'dictionaries' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '辞書' }
-  },
-  dictionaries: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'dictionary', 'dictionaries' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '辞書' }
-  },
-  difference: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'difference', 'differences' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ちがい、相違（点）、差' }
-  },
-  differences: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'difference', 'differences' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ちがい、相違（点）、差' }
-  },
-  difficulty: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '苦しさ、困難、苦労' }
-  },
-  dining: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '食事' }
-  },
-  dinner: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ディナー、夕食' }
-  },
-  dinosaur: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'dinosaur', 'dinosaurs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '恐竜' }
-  },
-  dinosaurs: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'dinosaur', 'dinosaurs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '恐竜' }
-  },
-  director: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'director', 'directors' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '(映画)監督' }
-  },
-  directors: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'director', 'directors' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '(映画)監督' }
-  },
-  disaster: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'disaster', 'disasters' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '災害' }
-  },
-  disasters: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'disaster', 'disasters' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '災害' }
-  },
-  discount: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'discount', 'discounts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '割引' }
-  },
-  discounts: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'discount', 'discounts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '割引' }
-  },
-  disease: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '病気' }
-  },
-  dish: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'dish', 'dishes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '皿、食器類' }
-  },
-  dishes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'dish', 'dishes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '皿、食器類' }
-  },
-  doctor: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'doctor', 'doctors' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '医者、医師、博士' }
-  },
-  doctors: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'doctor', 'doctors' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '医者、医師、博士' }
-  },
-  dog: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'dog', 'dogs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'イヌ' }
-  },
-  dogs: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'dog', 'dogs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'イヌ' }
-  },
-  dollar: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'dollar', 'dollars' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ドル　　　《米国・カナダなどの貨幣で、1ドルは100セント》' }
-  },
-  dollars: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'dollar', 'dollars' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ドル　　　《米国・カナダなどの貨幣で、1ドルは100セント》' }
-  },
-  dolphin: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'dolphin', 'dolphins' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'イルカ' }
-  },
-  dolphins: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'dolphin', 'dolphins' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'イルカ' }
-  },
-  dome: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'dome', 'domes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '丸屋根、ドーム' }
-  },
-  domes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'dome', 'domes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '丸屋根、ドーム' }
-  },
-  donut: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'donut', 'donuts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ドーナツ' }
-  },
-  donuts: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'donut', 'donuts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ドーナツ' }
-  },
-  door: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'door', 'doors' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '戸、ドア、戸口、玄関' }
-  },
-  doors: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'door', 'doors' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '戸、ドア、戸口、玄関' }
-  },
-  dot: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'dot', 'dots' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '点' }
-  },
-  dots: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'dot', 'dots' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '点' }
-  },
-  drama: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'drama', 'dramas' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（テレビの）ドラマ、劇' }
-  },
-  dramas: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'drama', 'dramas' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（テレビの）ドラマ、劇' }
-  },
-  dream: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'dream', 'dreams' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '夢、希望、理想' }
-  },
-  dreams: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'dream', 'dreams' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '夢、希望、理想' }
-  },
-  dress: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'dress', 'dresses' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '衣装、ドレス' }
-  },
-  dresses: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'dress', 'dresses' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '衣装、ドレス' }
-  },
-  driftwood: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '流木' }
-  },
-  drill: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'drill', 'drills' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '訓練' }
-  },
-  drills: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'drill', 'drills' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '訓練' }
-  },
-  drink: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'drink', 'drinks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '飲み物　　〔たとえば soft drinks の形で〕清涼（せいりょう）飲料' }
-  },
-  drinks: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'drink', 'drinks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '飲み物　　〔たとえば soft drinks の形で〕清涼（せいりょう）飲料' }
-  },
-  driver: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'driver', 'drivers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（車を）運転する人、運転手' }
-  },
-  drivers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'driver', 'drivers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（車を）運転する人、運転手' }
-  },
-  driveway: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'driveway', 'driveways' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（道から車庫または玄関までの）車道' }
-  },
-  driveways: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'driveway', 'driveways' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（道から車庫または玄関までの）車道' }
-  },
-  drop: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'drop', 'drops' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'しずく' }
-  },
-  drops: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'drop', 'drops' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'しずく' }
-  },
-  drugstore: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'drugstore', 'drugstores' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ドラッグストア、薬局' }
-  },
-  drugstores: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'drugstore', 'drugstores' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ドラッグストア、薬局' }
-  },
-  drum: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'drum', 'drums' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '太鼓、ドラム' }
-  },
-  drums: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'drum', 'drums' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '太鼓、ドラム' }
-  },
-  duck: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'duck', 'ducks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'カモ、アヒル' }
-  },
-  ducks: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'duck', 'ducks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'カモ、アヒル' }
-  },
-  DVD: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'DVD', 'DVDs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'デジタルビデオディスク　〔digital video disc ［disk］の略〕' }
-  },
-  DVDs: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'DVD', 'DVDs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'デジタルビデオディスク　〔digital video disc ［disk］の略〕' }
-  },
-  ear: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'ear', 'ears' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '耳' }
-  },
-  ears: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'ear', 'ears' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '耳' }
-  },
-  earth: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '地球　〔the をつけないで、Earth と大文字ではじめることもある〕' }
-  },
-  earthquake: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'earthquake', 'earthquakes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '地震' }
-  },
-  earthquakes: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'earthquake', 'earthquakes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '地震' }
-  },
-  east: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '東' }
-  },
-  effort: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '努力' }
-  },
-  egg: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'egg', 'eggs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '卵、玉子' }
-  },
-  eggs: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'egg', 'eggs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '卵、玉子' }
-  },
-  eight: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '8' }
-  },
-  eighteen: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '18' }
-  },
-  eighteenth: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '18番め、（月の）18日' }
-  },
-  eighth: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '8番め、（月の）8日' }
-  },
-  eighty: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '80' }
-  },
-  electricity: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '電気' }
-  },
-  elephant: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'elephant', 'elephants' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ゾウ' }
-  },
-  elephants: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'elephant', 'elephants' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ゾウ' }
-  },
-  elevator: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'elevator', 'elevators' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'エレベーター' }
-  },
-  elevators: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'elevator', 'elevators' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'エレベーター' }
-  },
-  eleven: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '11' }
-  },
-  eleventh: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '11番め、（月の）１１日' }
-  },
-  emergency: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'emergency', 'emergencies' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '緊急事態、非常時' }
-  },
-  emergencies: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'emergency', 'emergencies' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '緊急事態、非常時' }
-  },
-  end: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'end', 'ends' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '終わり、最後、端' }
-  },
-  ends: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'end', 'ends' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '終わり、最後、端' }
-  },
-  ending: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'ending', 'endings' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '終わり、結末、エンディング' }
-  },
-  endings: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'ending', 'endings' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '終わり、結末、エンディング' }
-  },
-  energy: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'エネルギー' }
-  },
-  engineer: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'engineer', 'engineers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '技師、エンジニア' }
-  },
-  engineers: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'engineer', 'engineers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '技師、エンジニア' }
-  },
-  engineering: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '工学' }
-  },
-  England: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'イングランド' }
-  },
-  English: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '英語' }
-  },
-  entertainment: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '娯楽' }
-  },
-  entrance: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'entrance', 'entrances' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '入り口、玄関' }
-  },
-  entrances: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'entrance', 'entrances' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '入り口、玄関' }
-  },
-  environment: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'environment', 'environments' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '環境' }
-  },
-  environments: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'environment', 'environments' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '環境' }
-  },
-  era: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'era', 'eras' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '時代　〔Nara era で〕奈良時代' }
-  },
-  eras: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'era', 'eras' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '時代　〔Nara era で〕奈良時代' }
-  },
-  eraser: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'eraser', 'erasers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '消しゴム' }
-  },
-  erasers: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'eraser', 'erasers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '消しゴム' }
-  },
-  Europe: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ヨーロッパ' }
-  },
-  evacuation: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '避難' }
-  },
-  evening: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '夕方、晩、夜  《通例、日没から寝る時間までを言う》' }
-  },
-  event: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'event', 'events' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '行事、出来事、イベント' }
-  },
-  events: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'event', 'events' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '行事、出来事、イベント' }
-  },
-  exam: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'exam', 'exams' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '試験' }
-  },
-  exams: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'exam', 'exams' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '試験' }
-  },
-  example: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'example', 'examples' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '例、実例　〔for example の形で〕たとえば' }
-  },
-  examples: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'example', 'examples' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '例、実例　〔for example の形で〕たとえば' }
-  },
-  exhibition: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'exhibition', 'exhibitions' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '展覧会' }
-  },
-  exhibitions: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'exhibition', 'exhibitions' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '展覧会' }
-  },
-  experience: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '経験' }
-  },
-  expert: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'expert', 'experts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '専門家、エキスパート' }
-  },
-  experts: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'expert', 'experts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '専門家、エキスパート' }
-  },
-  express: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'express', 'expresses' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '急行列車、速達便' }
-  },
-  expresses: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'express', 'expresses' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '急行列車、速達便' }
-  },
-  expression: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '表現、言い回し、（顔などの）表情' }
-  },
-  eye: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'eye', 'eyes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '目、視力、視線' }
-  },
-  eyes: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'eye', 'eyes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '目、視力、視線' }
-  },
-  eyesight: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '視力' }
-  },
-  face: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'face', 'faces' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '顔、表情' }
-  },
-  faces: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'face', 'faces' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '顔、表情' }
-  },
-  facility: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'facility', 'facilities' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '設備、施設' }
-  },
-  facilities: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'facility', 'facilities' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '設備、施設' }
-  },
-  fact: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'fact', 'facts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '事実' }
-  },
-  facts: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'fact', 'facts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '事実' }
-  },
-  fall: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'fall', 'falls' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '秋' }
-  },
-  falls: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'fall', 'falls' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '秋' }
-  },
-  family: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'family', 'families' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '家族、一家、家族の者たち' }
-  },
-  families: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'family', 'families' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '家族、一家、家族の者たち' }
-  },
-  fan: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'fan', 'fans' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': ' (スポーツなどの) ファン' }
-  },
-  fans: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'fan', 'fans' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': ' (スポーツなどの) ファン' }
-  },
-  farewell: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'farewell', 'farewells' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '別れ' }
-  },
-  farewells: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'farewell', 'farewells' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '別れ' }
-  },
-  farm: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'farm', 'farms' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '農場、農園' }
-  },
-  farms: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'farm', 'farms' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '農場、農園' }
-  },
-  farmer: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'farmer', 'farmers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '農家、農業をする人、農業主、農業経営者' }
-  },
-  farmers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'farmer', 'farmers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '農家、農業をする人、農業主、農業経営者' }
-  },
-  farming: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '農業、農場経営' }
-  },
-  fashion: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '流行、はやり、ファッション、流行の服装' }
-  },
-  fate: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '運命' }
-  },
-  father: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'father', 'fathers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '父、お父さん' }
-  },
-  fathers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'father', 'fathers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '父、お父さん' }
-  },
-  favor: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'favor', 'favors' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '親切な行為　〔ask … a favor で〕　…にお願いする' }
-  },
-  favors: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'favor', 'favors' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '親切な行為　〔ask … a favor で〕　…にお願いする' }
-  },
-  favorite: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'favorite', 'favorites' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'お気に入りのもの［人］' }
-  },
-  favorites: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'favorite', 'favorites' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'お気に入りのもの［人］' }
-  },
-  February: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'February', 'Februarys' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '2月' }
-  },
-  Februarys: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'February', 'Februarys' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '2月' }
-  },
-  fee: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'fee', 'fees' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '料金、入場料' }
-  },
-  fees: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'fee', 'fees' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '料金、入場料' }
-  },
-  feeling: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'feeling', 'feelings' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '感情、考え、感覚' }
-  },
-  feelings: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'feeling', 'feelings' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '感情、考え、感覚' }
-  },
-  fence: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'fence', 'fences' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '垣根' }
-  },
-  fences: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'fence', 'fences' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '垣根' }
-  },
-  festival: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'festival', 'festivals' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'お祭り、祭典　　〔たとえば the Aomori Nebuta Festival の形で〕 青森ねぶた祭り' }
-  },
-  festivals: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'festival', 'festivals' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'お祭り、祭典　　〔たとえば the Aomori Nebuta Festival の形で〕 青森ねぶた祭り' }
-  },
-  fever: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '熱' }
-  },
-  fiction: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '小説、フィクション' }
-  },
-  field: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'field', 'fields' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '運動場、フィールド、野原、畑、田、牧草地' }
-  },
-  fields: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'field', 'fields' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '運動場、フィールド、野原、畑、田、牧草地' }
-  },
-  fifteen: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '15' }
-  },
-  fifteenth: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'fifteenth', 'fifteenths' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '15番め、（月の）15日' }
-  },
-  fifteenths: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'fifteenth', 'fifteenths' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '15番め、（月の）15日' }
-  },
-  fifth: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'fifth', 'fifths' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '5番め、（月の）5日' }
-  },
-  fifths: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'fifth', 'fifths' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '5番め、（月の）5日' }
-  },
-  fifty: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '50' }
-  },
-  fight: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'fight', 'fights' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '戦い、口げんか' }
-  },
-  fights: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'fight', 'fights' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '戦い、口げんか' }
-  },
-  film: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'film', 'films' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '映画' }
-  },
-  films: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'film', 'films' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '映画' }
-  },
-  finger: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'finger', 'fingers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '(手の) 指' }
-  },
-  fingers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'finger', 'fingers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '(手の) 指' }
-  },
-  Finland: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'フィンランド' }
-  },
-  fire: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '火' }
-  },
-  fireplace: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'fireplace', 'fireplaces' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '暖炉' }
-  },
-  fireplaces: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'fireplace', 'fireplaces' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '暖炉' }
-  },
-  firewood: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'まき、たきぎ' }
-  },
-  firework: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'firework', 'fireworks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '花火' }
-  },
-  fireworks: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'firework', 'fireworks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '花火' }
-  },
-  fish: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '魚' }
-  },
-  flash: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'flash', 'flashes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ぱっと発する光、(撮影用の)フラッシュ' }
-  },
-  flashes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'flash', 'flashes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ぱっと発する光、(撮影用の)フラッシュ' }
-  },
-  flight: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'flight', 'flights' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'フライト、飛行機旅行' }
-  },
-  flights: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'flight', 'flights' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'フライト、飛行機旅行' }
-  },
-  float: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'float', 'floats' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '山車' }
-  },
-  floats: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'float', 'floats' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '山車' }
-  },
-  floor: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'floor', 'floors' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '床（ゆか）' }
-  },
-  floors: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'floor', 'floors' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '床（ゆか）' }
-  },
-  flower: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'flower', 'flowers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '花、草花' }
-  },
-  flowers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'flower', 'flowers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '花、草花' }
-  },
-  flute: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'flute', 'flutes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'フルート' }
-  },
-  flutes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'flute', 'flutes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'フルート' }
-  },
-  food: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '食べ物、食糧' }
-  },
-  foot: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'foot', 'feet' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '足 《足首から下の部分》' }
-  },
-  feet: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'foot', 'feet' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '足 《足首から下の部分》' }
-  },
-  football: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'フットボール(用のボール)、サッカー(用のボール)、アメリカンフットボール(用のボール)' }
-  },
-  forest: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'forest', 'forests' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '森、森林' }
-  },
-  forests: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'forest', 'forests' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '森、森林' }
-  },
-  fork: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'fork', 'forks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'フォーク' }
-  },
-  forks: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'fork', 'forks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'フォーク' }
-  },
-  forty: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '40' }
-  },
-  four: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '4' }
-  },
-  fourteen: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '14' }
-  },
-  fourth: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'fourth', 'fourths' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '4番め、（月の）4日' }
-  },
-  fourths: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'fourth', 'fourths' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '4番め、（月の）4日' }
-  },
-  fox: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'fox', 'foxes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'キツネ' }
-  },
-  foxes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'fox', 'foxes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'キツネ' }
-  },
-  France: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'フランス' }
-  },
-  freedom: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '自由' }
-  },
-  French: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'フランス語' }
-  },
-  Friday: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'Friday', 'Fridays' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '金曜日' }
-  },
-  Fridays: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'Friday', 'Fridays' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '金曜日' }
-  },
-  fridge: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'fridge', 'fridges' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '冷蔵庫' }
-  },
-  fridges: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'fridge', 'fridges' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '冷蔵庫' }
-  },
-  friend: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'friend', 'friends' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '友達、友人' }
-  },
-  friends: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'friend', 'friends' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '友達、友人' }
-  },
-  friendship: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '友情、友愛、親交' }
-  },
-  front: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'front', 'fronts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '前面、前部、前　　〔in front of ～の形で〕～の前に' }
-  },
-  fronts: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'front', 'fronts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '前面、前部、前　　〔in front of ～の形で〕～の前に' }
-  },
-  fruit: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '果物、フルーツ' }
-  },
-  fuel: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '燃料' }
-  },
-  fun: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '楽しいこと、面白いこと、楽しさ' }
-  },
-  furniture: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '家具' }
-  },
-  futon: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'futon', 'futons' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'フトン、ソファーベッド' }
-  },
-  futons: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'futon', 'futons' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'フトン、ソファーベッド' }
-  },
-  future: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '未来、将来' }
-  },
-  game: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'game', 'games' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（一定のルールを持った）ゲーム、遊び' }
-  },
-  games: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'game', 'games' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（一定のルールを持った）ゲーム、遊び' }
-  },
-  garbage: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '生ごみ、くず' }
-  },
-  garden: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'garden', 'gardens' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '庭、庭園' }
-  },
-  gardens: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'garden', 'gardens' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '庭、庭園' }
-  },
-  gas: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '気体' }
-  },
-  gate: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'gate', 'gates' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '門、出入口' }
-  },
-  gates: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'gate', 'gates' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '門、出入口' }
-  },
-  generation: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'generation', 'generations' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '世代、同世代の人々' }
-  },
-  generations: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'generation', 'generations' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '世代、同世代の人々' }
-  },
-  gentleman: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'gentleman', 'gentlemen' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '紳士' }
-  },
-  gentlemen: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'gentleman', 'gentlemen' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '紳士' }
-  },
-  ger: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'ger', 'gers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ゲル（モンゴルの伝統的な移動式住居）' }
-  },
-  gers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'ger', 'gers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ゲル（モンゴルの伝統的な移動式住居）' }
-  },
-  German: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'German', 'Germans' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ドイツ語' }
-  },
-  Germans: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'German', 'Germans' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ドイツ語' }
-  },
-  Germany: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ドイツ' }
-  },
-  gesture: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'gesture', 'gestures' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '身ぶり、ジェスチャー' }
-  },
-  gestures: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'gesture', 'gestures' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '身ぶり、ジェスチャー' }
-  },
-  Ghana: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ガーナ' }
-  },
-  gift: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'gift', 'gifts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '贈り物' }
-  },
-  gifts: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'gift', 'gifts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '贈り物' }
-  },
-  girl: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'girl', 'girls' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '女の子、少女' }
-  },
-  girls: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'girl', 'girls' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '女の子、少女' }
-  },
-  glacier: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'glacier', 'glaciers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '氷河' }
-  },
-  glaciers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'glacier', 'glaciers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '氷河' }
-  },
-  glove: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'glove', 'gloves' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '手袋' }
-  },
-  gloves: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'glove', 'gloves' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '手袋' }
-  },
-  goal: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'goal', 'goals' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ゴール、決勝点' }
-  },
-  goals: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'goal', 'goals' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ゴール、決勝点' }
-  },
-  goalball: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ゴールボール《３人ずつの２チームで音の出るボールを用いて行う球技》' }
-  },
-  God: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'God', 'Gods' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '神' }
-  },
-  Gods: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'God', 'Gods' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '神' }
-  },
-  gold: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '金' }
-  },
-  goodness: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '善良さ、親切' }
-  },
-  government: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'government', 'governments' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '政府' }
-  },
-  governments: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'government', 'governments' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '政府' }
-  },
-  grade: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'grade', 'grades' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '学年' }
-  },
-  grades: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'grade', 'grades' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '学年' }
-  },
-  granddaughter: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'granddaughter', 'granddaughters' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '孫娘、女の孫' }
-  },
-  granddaughters: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'granddaughter', 'granddaughters' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '孫娘、女の孫' }
-  },
-  grandfather: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'grandfather', 'grandfathers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'おじいさん，祖父' }
-  },
-  grandfathers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'grandfather', 'grandfathers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'おじいさん，祖父' }
-  },
-  grandmother: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'grandmother', 'grandmothers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'おばあさん、祖母' }
-  },
-  grandmothers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'grandmother', 'grandmothers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'おばあさん、祖母' }
-  },
-  grandson: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'grandson', 'grandsons' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '孫息子' }
-  },
-  grandsons: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'grandson', 'grandsons' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '孫息子' }
-  },
-  grape: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'grape', 'grapes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ブドウ' }
-  },
-  grapes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'grape', 'grapes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ブドウ' }
-  },
-  grass: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '草' }
-  },
-  gray: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '灰色、ねずみ色' }
-  },
-  Greece: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ギリシャ' }
-  },
-  green: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '緑（色）' }
-  },
-  greeting: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'greeting', 'greetings' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '挨拶' }
-  },
-  greetings: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'greeting', 'greetings' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '挨拶' }
-  },
-  ground: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '地面、大地' }
-  },
-  group: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'group', 'groups' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'グループ、団体' }
-  },
-  groups: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'group', 'groups' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'グループ、団体' }
-  },
-  guide: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'guide', 'guides' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（旅行などの）人、ガイド' }
-  },
-  guides: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'guide', 'guides' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（旅行などの）人、ガイド' }
-  },
-  guitar: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'guitar', 'guitars' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ギター' }
-  },
-  guitars: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'guitar', 'guitars' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ギター' }
-  },
-  gun: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'gun', 'guns' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '銃' }
-  },
-  guns: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'gun', 'guns' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '銃' }
-  },
-  gym: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'gym', 'gyms' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '体育館、ジム' }
-  },
-  gyms: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'gym', 'gyms' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '体育館、ジム' }
-  },
-  habit: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'habit', 'habits' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '習慣、くせ' }
-  },
-  habits: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'habit', 'habits' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '習慣、くせ' }
-  },
-  habitat: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'habitat', 'habitats' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '生息地' }
-  },
-  habitats: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'habitat', 'habitats' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '生息地' }
-  },
-  hair: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '毛、髪の毛' }
-  },
-  half: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'half', 'halves' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '半分' }
-  },
-  halves: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'half', 'halves' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '半分' }
-  },
-  hall: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'hall', 'halls' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '会館、役所　〔city hallの形で〕市役所' }
-  },
-  halls: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'hall', 'halls' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '会館、役所　〔city hallの形で〕市役所' }
-  },
-  hallway: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'hallway', 'hallways' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（ビルなどの）廊下、通路' }
-  },
-  hallways: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'hallway', 'hallways' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（ビルなどの）廊下、通路' }
-  },
-  ham: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ハム' }
-  },
-  hamburger: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'hamburger', 'hamburgers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ハンバーガー' }
-  },
-  hamburgers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'hamburger', 'hamburgers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ハンバーガー' }
-  },
-  hand: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'hand', 'hands' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '手' }
-  },
-  hands: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'hand', 'hands' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '手' }
-  },
-  handle: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'handle', 'handles' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '取っ手、柄' }
-  },
-  handles: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'handle', 'handles' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '取っ手、柄' }
-  },
-  handout: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'handout', 'handouts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '配付印刷物、ビラ、プリント' }
-  },
-  handouts: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'handout', 'handouts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '配付印刷物、ビラ、プリント' }
-  },
-  happiness: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '幸福' }
-  },
-  hardship: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '苦難' }
-  },
-  harvest: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '収穫' }
-  },
-  hatred: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '憎しみ' }
-  },
-  Hawaii: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ハワイ（太平洋にある米国の州、州都はホノルル）' }
-  },
-  hawk: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'hawk', 'hawks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'タカ' }
-  },
-  hawks: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'hawk', 'hawks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'タカ' }
-  },
-  head: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'head', 'heads' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '頭、頭部' }
-  },
-  heads: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'head', 'heads' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '頭、頭部' }
-  },
-  headache: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'headache', 'headaches' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '頭痛' }
-  },
-  headaches: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'headache', 'headaches' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '頭痛' }
-  },
-  health: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '健康' }
-  },
-  heart: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'heart', 'hearts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '心' }
-  },
-  hearts: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'heart', 'hearts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '心' }
-  },
-  heat: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '熱' }
-  },
-  heater: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'heater', 'heaters' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '暖房器具' }
-  },
-  heaters: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'heater', 'heaters' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '暖房器具' }
-  },
-  help: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '助け､援助' }
-  },
-  here: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ここ、この場所' }
-  },
-  heritage: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（祖先から伝わる精神的・文化的）遺産' }
-  },
-  hero: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'hero', 'heroes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ヒーロー、英雄' }
-  },
-  heroes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'hero', 'heroes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ヒーロー、英雄' }
-  },
-  highlight: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'highlight', 'highlights' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ハイライト、見せ場' }
-  },
-  highlights: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'highlight', 'highlights' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ハイライト、見せ場' }
-  },
-  hill: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'hill', 'hills' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '丘、小山' }
-  },
-  hills: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'hill', 'hills' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '丘、小山' }
-  },
-  history: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '歴史' }
-  },
-  hit: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'hit', 'hits' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ヒット（曲）' }
-  },
-  hits: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'hit', 'hits' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ヒット（曲）' }
-  },
-  hobby: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'hobby', 'hobbies' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '趣味' }
-  },
-  hobbies: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'hobby', 'hobbies' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '趣味' }
-  },
-  hole: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'hole', 'holes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '穴' }
-  },
-  holes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'hole', 'holes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '穴' }
-  },
-  holiday: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'holiday', 'holidays' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '休日、祝日' }
-  },
-  holidays: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'holiday', 'holidays' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '休日、祝日' }
-  },
-  home: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'home', 'homes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '家、家庭' }
-  },
-  homes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'home', 'homes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '家、家庭' }
-  },
-  homeland: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'homeland', 'homelands' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '本国、母国' }
-  },
-  homelands: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'homeland', 'homelands' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '本国、母国' }
-  },
-  homestay: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'homestay', 'homestays' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ホームステイ' }
-  },
-  homestays: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'homestay', 'homestays' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ホームステイ' }
-  },
-  hometown: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'hometown', 'hometowns' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '故郷' }
-  },
-  hometowns: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'hometown', 'hometowns' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '故郷' }
-  },
-  homework: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '宿題' }
-  },
-  honesty: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '正直（であること）、誠実さ' }
-  },
-  hope: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '希望、望' }
-  },
-  horizon: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'horizon', 'horizons' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（人の）視野' }
-  },
-  horizons: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'horizon', 'horizons' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（人の）視野' }
-  },
-  horse: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'horse', 'horses' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ウマ' }
-  },
-  horses: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'horse', 'horses' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ウマ' }
-  },
-  hospital: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'hospital', 'hospitals' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '病院、総合病院' }
-  },
-  hospitals: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'hospital', 'hospitals' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '病院、総合病院' }
-  },
-  host: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'host', 'hosts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（客を接待する）主人（役）' }
-  },
-  hosts: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'host', 'hosts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（客を接待する）主人（役）' }
-  },
-  hotel: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'hotel', 'hotels' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ホテル' }
-  },
-  hotels: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'hotel', 'hotels' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ホテル' }
-  },
-  hour: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'hour', 'hours' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '１時間' }
-  },
-  hours: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'hour', 'hours' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '１時間' }
-  },
-  house: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'house', 'houses' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '家、住宅' }
-  },
-  houses: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'house', 'houses' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '家、住宅' }
-  },
-  hula: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'フラ（ダンス）〈ハワイの民族舞踊〉' }
-  },
-  human: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'human', 'humans' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '人、人間' }
-  },
-  humans: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'human', 'humans' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '人、人間' }
-  },
-  humor: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ユーモア' }
-  },
-  hundred: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'hundred', 'hundreds' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '100' }
-  },
-  hundreds: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'hundred', 'hundreds' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '100' }
-  },
-  hunter: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'hunter', 'hunters' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ハンター、猟師' }
-  },
-  hunters: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'hunter', 'hunters' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ハンター、猟師' }
-  },
-  hunting: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'さがし求めること' }
-  },
-  husband: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'husband', 'husbands' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '夫' }
-  },
-  husbands: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'husband', 'husbands' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '夫' }
-  },
-  hymn: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'hymn', 'hymns' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '賛美歌' }
-  },
-  hymns: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'hymn', 'hymns' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '賛美歌' }
-  },
-  ice: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '氷' }
-  },
-  idea: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'idea', 'ideas' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '考え、思いつき、アイディア' }
-  },
-  ideas: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'idea', 'ideas' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '考え、思いつき、アイディア' }
-  },
-  image: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'image', 'images' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '像、イメージ画像、絵' }
-  },
-  images: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'image', 'images' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '像、イメージ画像、絵' }
-  },
-  importance: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '重要性、重大さ、大切さ' }
-  },
-  India: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'インド' }
-  },
-  industry: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '工業' }
-  },
-  information: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '情報' }
-  },
-  injury: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'injury', 'injuries' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'けが、不調' }
-  },
-  injuries: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'injury', 'injuries' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'けが、不調' }
-  },
-  ink: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'インク' }
-  },
-  insect: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'insect', 'insects' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '昆虫' }
-  },
-  insects: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'insect', 'insects' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '昆虫' }
-  },
-  insult: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'insult', 'insults' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '屈辱' }
-  },
-  insults: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'insult', 'insults' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '屈辱' }
-  },
-  interest: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '興味、関心' }
-  },
-  Internet: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'インターネット' }
-  },
-  interpreter: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'interpreter', 'interpreters' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '通訳者' }
-  },
-  interpreters: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'interpreter', 'interpreters' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '通訳者' }
-  },
-  interview: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'interview', 'interviews' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'インタビュー、会見、面接' }
-  },
-  interviews: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'interview', 'interviews' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'インタビュー、会見、面接' }
-  },
-  interviewer: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'interviewer', 'interviewers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'インタビューする人、インタビュワー、面接官' }
-  },
-  interviewers: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'interviewer', 'interviewers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'インタビューする人、インタビュワー、面接官' }
-  },
-  island: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'island', 'islands' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '島' }
-  },
-  islands: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'island', 'islands' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '島' }
-  },
-  jacket: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'jacket', 'jackets' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ジャケット、上着' }
-  },
-  jackets: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'jacket', 'jackets' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ジャケット、上着' }
-  },
-  January: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '１月' }
-  },
-  Japan: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '日本' }
-  },
-  Japanese: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '日本、日本人、日本語、（教科の日本語にとっての）国語' }
-  },
-  job: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'job', 'jobs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '仕事、職務' }
-  },
-  jobs: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'job', 'jobs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '仕事、職務' }
-  },
-  joke: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'joke', 'jokes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '冗談、しゃれ' }
-  },
-  jokes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'joke', 'jokes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '冗談、しゃれ' }
-  },
-  Jones: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ジョーンズ(姓）' }
-  },
-  journalist: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'journalist', 'journalists' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '記者、ジャーナリスト' }
-  },
-  journalists: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'journalist', 'journalists' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '記者、ジャーナリスト' }
-  },
-  joy: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '喜び' }
-  },
-  Judy: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ジュディ〔女性名〕' }
-  },
-  juice: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ジュース' }
-  },
-  July: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '７月' }
-  },
-  June: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '６月' }
-  },
-  jungle: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'jungle', 'jungles' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '〔ふつうthe～で〕(熱帯地方の)密林、ジャングル' }
-  },
-  jungles: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'jungle', 'jungles' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '〔ふつうthe～で〕(熱帯地方の)密林、ジャングル' }
-  },
-  justice: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '正義、正しさ、公平' }
-  },
-  kangaroo: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'kangaroo', 'kangaroos' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'カンガルー' }
-  },
-  kangaroos: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'kangaroo', 'kangaroos' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'カンガルー' }
-  },
-  karaoke: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'カラオケ' }
-  },
-  Kenya: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ケニヤ(アフリカ東部にある共和国）' }
-  },
-  key: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'key', 'keys' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'かぎ' }
-  },
-  keys: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'key', 'keys' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'かぎ' }
-  },
-  keyhole: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'keyhole', 'keyholes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '鍵穴' }
-  },
-  keyholes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'keyhole', 'keyholes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '鍵穴' }
-  },
-  kid: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'kid', 'kids' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '子ども' }
-  },
-  kids: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'kid', 'kids' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '子ども' }
-  },
-  kilogram: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'kilogram', 'kilograms' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'キログラム' }
-  },
-  kilograms: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'kilogram', 'kilograms' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'キログラム' }
-  },
-  kilometer: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'kilometer', 'kilometers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'キロメートル' }
-  },
-  kilometers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'kilometer', 'kilometers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'キロメートル' }
-  },
-  kind: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'kind', 'kinds' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '種類　　〔a kind of ～の形で〕　一種の～、～のようなもの' }
-  },
-  kinds: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'kind', 'kinds' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '種類　　〔a kind of ～の形で〕　一種の～、～のようなもの' }
-  },
-  king: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'king', 'kings' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '王、国王' }
-  },
-  kings: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'king', 'kings' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '王、国王' }
-  },
-  kitchen: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'kitchen', 'kitchens' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '台所、キッチン' }
-  },
-  kitchens: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'kitchen', 'kitchens' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '台所、キッチン' }
-  },
-  kite: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'kite', 'kites' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '(空にあげる)凧' }
-  },
-  kites: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'kite', 'kites' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '(空にあげる)凧' }
-  },
-  koala: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'koala', 'koalas' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'コアラ' }
-  },
-  koalas: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'koala', 'koalas' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'コアラ' }
-  },
-  Korea: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '"韓国・朝鮮　　〔たとえば South Korea' }
-  },
-  Korean: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'Korean', 'Koreans' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '韓国・朝鮮語、韓国人・朝鮮人' }
-  },
-  Koreans: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'Korean', 'Koreans' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '韓国・朝鮮語、韓国人・朝鮮人' }
-  },
-  lady: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'lady', 'ladies' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '婦人' }
-  },
-  ladies: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'lady', 'ladies' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '婦人' }
-  },
-  lake: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'lake', 'lakes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '湖    〔たとえば Lake Towada の形で〕 十和田湖' }
-  },
-  lakes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'lake', 'lakes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '湖    〔たとえば Lake Towada の形で〕 十和田湖' }
-  },
-  lamp: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'lamp', 'lamps' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ランプ、明かり' }
-  },
-  lamps: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'lamp', 'lamps' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ランプ、明かり' }
-  },
-  land: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '土地、陸地' }
-  },
-  landmine: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'landmine', 'landmines' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '地雷' }
-  },
-  landmines: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'landmine', 'landmines' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '地雷' }
-  },
-  language: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'language', 'languages' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ことば、言語' }
-  },
-  languages: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'language', 'languages' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ことば、言語' }
-  },
-  lap: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'lap', 'laps' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ひざ（の上）' }
-  },
-  laps: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'lap', 'laps' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ひざ（の上）' }
-  },
-  last: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '最後' }
-  },
-  laughter: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '笑い' }
-  },
-  law: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '法律' }
-  },
-  lawyer: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'lawyer', 'lawyers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '弁護士、法律家' }
-  },
-  lawyers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'lawyer', 'lawyers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '弁護士、法律家' }
-  },
-  leader: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'leader', 'leaders' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '指導者、リーダー' }
-  },
-  leaders: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'leader', 'leaders' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '指導者、リーダー' }
-  },
-  left: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '左、左側' }
-  },
-  leg: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'leg', 'legs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'あし 《ももの付け根から下全部あるいは足首までの部分》' }
-  },
-  legs: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'leg', 'legs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'あし 《ももの付け根から下全部あるいは足首までの部分》' }
-  },
-  lemon: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'lemon', 'lemons' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'レモン' }
-  },
-  lemons: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'lemon', 'lemons' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'レモン' }
-  },
-  leopard: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'leopard', 'leopards' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ヒョウ' }
-  },
-  leopards: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'leopard', 'leopards' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ヒョウ' }
-  },
-  lesson: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'lesson', 'lessons' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '(教科書などの)課、授業、勉強、けいこ、レッスン' }
-  },
-  lessons: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'lesson', 'lessons' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '(教科書などの)課、授業、勉強、けいこ、レッスン' }
-  },
-  letter: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'letter', 'letters' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '手紙、文字、字' }
-  },
-  letters: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'letter', 'letters' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '手紙、文字、字' }
-  },
-  level: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'level', 'levels' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '水平（面）、水位、高さ' }
-  },
-  levels: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'level', 'levels' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '水平（面）、水位、高さ' }
-  },
-  library: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'library', 'libraries' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '図書館，図書室' }
-  },
-  libraries: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'library', 'libraries' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '図書館，図書室' }
-  },
-  life: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'life', 'lives' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '生命、いのち（複 lives）' }
-  },
-  lives: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'life', 'lives' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '生命、いのち（複 lives）' }
-  },
-  light: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'light', 'lights' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '光、光線' }
-  },
-  lights: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'light', 'lights' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '光、光線' }
-  },
-  line: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'line', 'lines' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '線、電話線' }
-  },
-  lines: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'line', 'lines' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '線、電話線' }
-  },
-  lion: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'lion', 'lions' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ライオン' }
-  },
-  lions: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'lion', 'lions' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ライオン' }
-  },
-  locker: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'locker', 'lockers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ロッカー' }
-  },
-  lockers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'locker', 'lockers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ロッカー' }
-  },
-  London: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ロンドン' }
-  },
-  look: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'look', 'looks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '見ること、一見　　〔 have ［take］ a look at ～の形で〕～を見る' }
-  },
-  looks: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'look', 'looks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '見ること、一見　　〔 have ［take］ a look at ～の形で〕～を見る' }
-  },
-  lot: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'lot', 'lots' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '〔a lot of ～ の形で〕 たくさんの、多数の' }
-  },
-  lots: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'lot', 'lots' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '〔a lot of ～ の形で〕 たくさんの、多数の' }
-  },
-  love: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '愛、恋愛' }
-  },
-  luck: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '運' }
-  },
-  lullaby: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'lullaby', 'lullabies' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '子守歌' }
-  },
-  lullabies: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'lullaby', 'lullabies' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '子守歌' }
-  },
-  lunch: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'lunch', 'lunches' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '昼食、(お昼の）弁当' }
-  },
-  lunches: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'lunch', 'lunches' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '昼食、(お昼の）弁当' }
-  },
-  machine: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'machine', 'machines' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '機械' }
-  },
-  machines: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'machine', 'machines' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '機械' }
-  },
-  magazine: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'magazine', 'magazines' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '雑誌' }
-  },
-  magazines: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'magazine', 'magazines' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '雑誌' }
-  },
-  magic: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '手品' }
-  },
-  maker: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'maker', 'makers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '製作者' }
-  },
-  makers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'maker', 'makers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '製作者' }
-  },
-  man: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'man', 'men' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '男の人、(一般的に)人' }
-  },
-  men: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'man', 'men' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '男の人、(一般的に)人' }
-  },
-  manga: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（日本の）マンガ' }
-  },
-  manner: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'manner', 'manners' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（mannersで）行儀、マナー' }
-  },
-  manners: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'manner', 'manners' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（mannersで）行儀、マナー' }
-  },
-  map: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'map', 'maps' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '地図' }
-  },
-  maps: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'map', 'maps' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '地図' }
-  },
-  March: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '３月' }
-  },
-  market: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'market', 'markets' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '市場' }
-  },
-  markets: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'market', 'markets' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '市場' }
-  },
-  marsh: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'marsh', 'marshes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '沼' }
-  },
-  marshes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'marsh', 'marshes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '沼' }
-  },
-  mask: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'mask', 'masks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '(顔を保護する）防具、マスク' }
-  },
-  masks: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'mask', 'masks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '(顔を保護する）防具、マスク' }
-  },
-  master: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'master', 'masters' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '主人、住職、和尚(ときに固有名詞のように使い、大文字で書き始めてMasterで「和尚さま」' }
-  },
-  masters: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'master', 'masters' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '主人、住職、和尚(ときに固有名詞のように使い、大文字で書き始めてMasterで「和尚さま」' }
-  },
-  match: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'match', 'matches' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '試合、勝負' }
-  },
-  matches: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'match', 'matches' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '試合、勝負' }
-  },
-  math: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '数学 〔mathematicsを短くした形〕' }
-  },
-  matter: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '問題、困ったこと、事情' }
-  },
-  May: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '５月' }
-  },
-  mayor: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'mayor', 'mayors' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '村長' }
-  },
-  mayors: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'mayor', 'mayors' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '村長' }
-  },
-  meal: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'meal', 'meals' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '食事' }
-  },
-  meals: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'meal', 'meals' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '食事' }
-  },
-  meaning: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'meaning', 'meanings' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '意味' }
-  },
-  meanings: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'meaning', 'meanings' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '意味' }
-  },
-  meat: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '食用肉、肉' }
-  },
-  medal: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'medal', 'medals' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'メダル' }
-  },
-  medals: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'medal', 'medals' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'メダル' }
-  },
-  medicine: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '薬　〔take medicineの形で〕 薬を飲む' }
-  },
-  meeting: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'meeting', 'meetings' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '集会、会議' }
-  },
-  meetings: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'meeting', 'meetings' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '集会、会議' }
-  },
-  member: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'member', 'members' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '一員、メンバー' }
-  },
-  members: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'member', 'members' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '一員、メンバー' }
-  },
-  memorial: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'memorial', 'memorials' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '記念日、記念碑、記念館' }
-  },
-  memorials: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'memorial', 'memorials' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '記念日、記念碑、記念館' }
-  },
-  memory: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'memory', 'memories' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '記憶、記憶力、思い出' }
-  },
-  memories: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'memory', 'memories' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '記憶、記憶力、思い出' }
-  },
-  menu: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'menu', 'menus' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '献立表、メニュー' }
-  },
-  menus: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'menu', 'menus' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '献立表、メニュー' }
-  },
-  message: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'message', 'messages' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '伝言，メッセージ' }
-  },
-  messages: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'message', 'messages' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '伝言，メッセージ' }
-  },
-  meter: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'meter', 'meters' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'メートル' }
-  },
-  meters: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'meter', 'meters' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'メートル' }
-  },
-  middle: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'middle', 'middles' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '真ん中、中間' }
-  },
-  middles: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'middle', 'middles' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '真ん中、中間' }
-  },
-  milk: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '牛乳、ミルク' }
-  },
-  million: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'million', 'millions' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '百万' }
-  },
-  millions: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'million', 'millions' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '百万' }
-  },
-  mind: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'mind', 'minds' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '"心　[keep A in mindの形で］Aを心に留めておく' }
-  },
-  minds: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'mind', 'minds' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '"心　[keep A in mindの形で］Aを心に留めておく' }
-  },
-  minister: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'minister', 'ministers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '牧師' }
-  },
-  ministers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'minister', 'ministers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '牧師' }
-  },
-  minute: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'minute', 'minutes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '(時間の)分' }
-  },
-  minutes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'minute', 'minutes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '(時間の)分' }
-  },
-  mirror: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'mirror', 'mirrors' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '鏡' }
-  },
-  mirrors: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'mirror', 'mirrors' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '鏡' }
-  },
-  mistake: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'mistake', 'mistakes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'まちがい　［by mistakeの形で］誤って、間違って' }
-  },
-  mistakes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'mistake', 'mistakes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'まちがい　［by mistakeの形で］誤って、間違って' }
-  },
-  mom: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'mom', 'moms' ],
-    hinsi: [ '名詞' ],
-    means: {
-      '名詞': 'ママ、お母さん  《家庭内で子どもが母親を呼ぶのに使う。呼びかけの時にはしばしば大文字で始めて Mom とする。》'
-    }
-  },
-  moms: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'mom', 'moms' ],
-    hinsi: [ '名詞' ],
-    means: {
-      '名詞': 'ママ、お母さん  《家庭内で子どもが母親を呼ぶのに使う。呼びかけの時にはしばしば大文字で始めて Mom とする。》'
-    }
-  },
-  moment: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'moment', 'moments' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ちょっとの時間、瞬間' }
-  },
-  moments: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'moment', 'moments' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ちょっとの時間、瞬間' }
-  },
-  mommy: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'mommy', 'mommies' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'お母ちゃん' }
-  },
-  mommies: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'mommy', 'mommies' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'お母ちゃん' }
-  },
-  Monday: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '月曜日' }
-  },
-  money: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'お金' }
-  },
-  Mongolia: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'モンゴル(中国の北方に位置する国）' }
-  },
-  monkey: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'monkey', 'monkeys' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'サル' }
-  },
-  monkeys: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'monkey', 'monkeys' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'サル' }
-  },
-  month: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'month', 'months' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '(暦の)月' }
-  },
-  months: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'month', 'months' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '(暦の)月' }
-  },
-  moon: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'moon', 'moons' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '月' }
-  },
-  moons: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'moon', 'moons' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '月' }
-  },
-  morning: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'morning', 'mornings' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '朝、午前' }
-  },
-  mornings: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'morning', 'mornings' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '朝、午前' }
-  },
-  mother: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'mother', 'mothers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '母、お母さん' }
-  },
-  mothers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'mother', 'mothers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '母、お母さん' }
-  },
-  motto: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'motto', 'mottos' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '標語、モットー' }
-  },
-  mottos: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'motto', 'mottos' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '標語、モットー' }
-  },
-  mountain: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'mountain', 'mountains' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '山' }
-  },
-  mountains: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'mountain', 'mountains' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '山' }
-  },
-  mouth: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'mouth', 'mouths' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '口' }
-  },
-  mouths: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'mouth', 'mouths' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '口' }
-  },
-  movement: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'movement', 'movements' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '動き、(社会的)運動' }
-  },
-  movements: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'movement', 'movements' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '動き、(社会的)運動' }
-  },
-  movie: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'movie', 'movies' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '映画' }
-  },
-  movies: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'movie', 'movies' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '映画' }
-  },
-  'Mt.': {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '〔mountain （山）の略〕 ～山　  〔例えば Mt. Iwaki の形で〕 岩木山' }
-  },
-  much: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '多量、たくさん' }
-  },
-  museum: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'museum', 'museums' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '博物館、美術館' }
-  },
-  museums: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'museum', 'museums' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '博物館、美術館' }
-  },
-  music: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '音楽' }
-  },
-  musician: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'musician', 'musicians' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '音楽家、ミュージシャン' }
-  },
-  musicians: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'musician', 'musicians' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '音楽家、ミュージシャン' }
-  },
-  Myanmar: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ミャンマー' }
-  },
-  mystery: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'mystery', 'mysteries' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '謎' }
-  },
-  mysteries: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'mystery', 'mysteries' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '謎' }
-  },
-  name: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'name', 'names' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '名前' }
-  },
-  names: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'name', 'names' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '名前' }
-  },
-  nation: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'nation', 'nations' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '国家' }
-  },
-  nations: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'nation', 'nations' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '国家' }
-  },
-  nature: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '自然、自然界' }
-  },
-  neck: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'neck', 'necks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '首' }
-  },
-  necks: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'neck', 'necks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '首' }
-  },
-  need: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'need', 'needs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '必要　〔in needの形で〕必要で、困って' }
-  },
-  needs: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'need', 'needs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '必要　〔in needの形で〕必要で、困って' }
-  },
-  neighbor: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'neighbor', 'neighbors' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '隣人' }
-  },
-  neighbors: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'neighbor', 'neighbors' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '隣人' }
-  },
-  nest: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'nest', 'nests' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '巣' }
-  },
-  nests: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'nest', 'nests' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '巣' }
-  },
-  news: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ニュース、知らせ' }
-  },
-  newspaper: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'newspaper', 'newspapers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '新聞、新聞紙' }
-  },
-  newspapers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'newspaper', 'newspapers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '新聞、新聞紙' }
-  },
-  night: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'night', 'nights' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '夜' }
-  },
-  nights: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'night', 'nights' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '夜' }
-  },
-  nine: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'nine', 'nines' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '９' }
-  },
-  nines: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'nine', 'nines' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '９' }
-  },
-  nineteen: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'nineteen', 'nineteens' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '19' }
-  },
-  nineteens: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'nineteen', 'nineteens' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '19' }
-  },
-  nineteenth: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'nineteenth', 'nineteenths' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '19番目の、１９日' }
-  },
-  nineteenths: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'nineteenth', 'nineteenths' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '19番目の、１９日' }
-  },
-  ninety: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'ninety', 'nineties' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '90' }
-  },
-  nineties: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'ninety', 'nineties' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '90' }
-  },
-  ninth: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'ninth', 'ninths' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '9番め、（月の）9日' }
-  },
-  ninths: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'ninth', 'ninths' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '9番め、（月の）9日' }
-  },
-  noodle: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'noodle', 'noodles' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '麺、ヌードル' }
-  },
-  noodles: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'noodle', 'noodles' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '麺、ヌードル' }
-  },
-  noon: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '正午' }
-  },
-  north: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '北、北方、北部' }
-  },
-  nose: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'nose', 'noses' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '鼻' }
-  },
-  noses: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'nose', 'noses' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '鼻' }
-  },
-  note: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'note', 'notes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'メモ、覚え書き' }
-  },
-  notes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'note', 'notes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'メモ、覚え書き' }
-  },
-  notebook: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'notebook', 'notebooks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ノート' }
-  },
-  notebooks: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'notebook', 'notebooks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ノート' }
-  },
-  November: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '11月' }
-  },
-  now: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '今' }
-  },
-  number: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'number', 'numbers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '～番、番号、数、数字' }
-  },
-  numbers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'number', 'numbers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '～番、番号、数、数字' }
-  },
-  nun: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'nun', 'nuns' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '尼僧' }
-  },
-  nuns: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'nun', 'nuns' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '尼僧' }
-  },
-  nurse: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'nurse', 'nurses' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '看護師、保健の先生' }
-  },
-  nurses: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'nurse', 'nurses' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '看護師、保健の先生' }
-  },
-  nursery: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'nursery', 'nurseries' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '託児所' }
-  },
-  nurseries: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'nursery', 'nurseries' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '託児所' }
-  },
-  nursing: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '看護、介護' }
-  },
-  ocean: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'ocean', 'oceans' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '大洋、海' }
-  },
-  oceans: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'ocean', 'oceans' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '大洋、海' }
-  },
-  October: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '10月' }
-  },
-  octopus: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'octopus', 'octopuses' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'タコ' }
-  },
-  octopuses: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'octopus', 'octopuses' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'タコ' }
-  },
-  office: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'office', 'offices' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '事務所､役所' }
-  },
-  offices: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'office', 'offices' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '事務所､役所' }
-  },
-  officer: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'officer', 'officers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '係員、役人、警察官' }
-  },
-  officers: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'officer', 'officers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '係員、役人、警察官' }
-  },
-  official: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'official', 'officials' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '係官、職員' }
-  },
-  officials: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'official', 'officials' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '係官、職員' }
-  },
-  oil: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '油、石油' }
-  },
-  Olympics: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '(theをつけて）オリンピック' }
-  },
-  one: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'one', 'ones' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '１つ､１人' }
-  },
-  ones: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'one', 'ones' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '１つ､１人' }
-  },
-  opinion: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'opinion', 'opinions' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '意見、考え、判断' }
-  },
-  opinions: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'opinion', 'opinions' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '意見、考え、判断' }
-  },
-  orange: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'orange', 'oranges' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'オレンジ（色）' }
-  },
-  oranges: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'orange', 'oranges' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'オレンジ（色）' }
-  },
-  orchestra: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'orchestra', 'orchestras' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'オーケストラ' }
-  },
-  orchestras: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'orchestra', 'orchestras' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'オーケストラ' }
-  },
-  order: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'order', 'orders' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '命令' }
-  },
-  orders: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'order', 'orders' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '命令' }
-  },
-  origin: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'origin', 'origins' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（～の)起源、由来' }
-  },
-  origins: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'origin', 'origins' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（～の)起源、由来' }
-  },
-  outlook: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'outlook', 'outlooks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '見方、考え方' }
-  },
-  outlooks: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'outlook', 'outlooks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '見方、考え方' }
-  },
-  owl: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'owl', 'owls' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'フクロウ' }
-  },
-  owls: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'owl', 'owls' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'フクロウ' }
-  },
-  oxygen: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '酸素' }
-  },
-  pack: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'pack', 'packs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '1パック、１箱' }
-  },
-  packs: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'pack', 'packs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '1パック、１箱' }
-  },
-  page: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'page', 'pages' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ページ' }
-  },
-  pages: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'page', 'pages' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ページ' }
-  },
-  pain: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '痛み' }
-  },
-  painter: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'painter', 'painters' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '画家' }
-  },
-  painters: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'painter', 'painters' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '画家' }
-  },
-  painting: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'painting', 'paintings' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '絵、絵画' }
-  },
-  paintings: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'painting', 'paintings' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '絵、絵画' }
-  },
-  pair: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'pair', 'pairs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '１組、対' }
-  },
-  pairs: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'pair', 'pairs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '１組、対' }
-  },
-  palace: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'palace', 'palaces' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '御殿' }
-  },
-  palaces: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'palace', 'palaces' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '御殿' }
-  },
-  palm: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'palm', 'palms' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '手のひら' }
-  },
-  palms: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'palm', 'palms' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '手のひら' }
-  },
-  pamphlet: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'pamphlet', 'pamphlets' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'パンフレット' }
-  },
-  pamphlets: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'pamphlet', 'pamphlets' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'パンフレット' }
-  },
-  panda: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'panda', 'pandas' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'パンダ' }
-  },
-  pandas: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'panda', 'pandas' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'パンダ' }
-  },
-  panel: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'panel', 'panels' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'パネル' }
-  },
-  panels: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'panel', 'panels' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'パネル' }
-  },
-  paper: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'paper', 'papers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '紙、折り紙、レポート、論文' }
-  },
-  papers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'paper', 'papers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '紙、折り紙、レポート、論文' }
-  },
-  Paralympics: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'パラリンピック' }
-  },
-  pardon: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'pardon', 'pardons' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '許し、許すこと' }
-  },
-  pardons: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'pardon', 'pardons' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '許し、許すこと' }
-  },
-  parent: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'parent', 'parents' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '親' }
-  },
-  parents: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'parent', 'parents' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '親' }
-  },
-  Paris: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'パリ' }
-  },
-  park: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'park', 'parks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '公園、遊園地' }
-  },
-  parks: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'park', 'parks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '公園、遊園地' }
-  },
-  part: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'part', 'parts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '一部' }
-  },
-  parts: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'part', 'parts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '一部' }
-  },
-  particular: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'particular', 'particulars' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '項目、細部' }
-  },
-  particulars: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'particular', 'particulars' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '項目、細部' }
-  },
-  partner: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'partner', 'partners' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '仲間、パートナー' }
-  },
-  partners: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'partner', 'partners' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '仲間、パートナー' }
-  },
-  party: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'party', 'parties' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'パーティー' }
-  },
-  parties: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'party', 'parties' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'パーティー' }
-  },
-  passion: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '熱中（しているもの）、情熱' }
-  },
-  passport: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'passport', 'passports' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'パスポート' }
-  },
-  passports: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'passport', 'passports' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'パスポート' }
-  },
-  past: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '過去' }
-  },
-  patient: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'patient', 'patients' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '患者、病人' }
-  },
-  patients: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'patient', 'patients' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '患者、病人' }
-  },
-  peace: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '平和' }
-  },
-  peach: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'peach', 'peaches' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（果物の）モモ' }
-  },
-  peaches: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'peach', 'peaches' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（果物の）モモ' }
-  },
-  pen: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'pen', 'pens' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ペン' }
-  },
-  pens: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'pen', 'pens' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ペン' }
-  },
-  pencil: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'pencil', 'pencils' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'えんぴつ' }
-  },
-  pencils: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'pencil', 'pencils' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'えんぴつ' }
-  },
-  percent: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'パーセント' }
-  },
-  performance: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'performance', 'performances' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '上演、演奏、演技' }
-  },
-  performances: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'performance', 'performances' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '上演、演奏、演技' }
-  },
-  performer: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'performer', 'performers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '上演者、噺家、芸人' }
-  },
-  performers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'performer', 'performers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '上演者、噺家、芸人' }
-  },
-  period: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'period', 'periods' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '時代' }
-  },
-  periods: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'period', 'periods' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '時代' }
-  },
-  person: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'person', 'people' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '人' }
-  },
-  people: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'person', 'people' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '人' }
-  },
-  Peru: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ペルー（南米の国の名前）' }
-  },
-  pet: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'pet', 'pets' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ペット' }
-  },
-  pets: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'pet', 'pets' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ペット' }
-  },
-  pharmacist: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'pharmacist', 'pharmacists' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '薬剤師、薬局' }
-  },
-  pharmacists: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'pharmacist', 'pharmacists' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '薬剤師、薬局' }
-  },
-  Philippines: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'フィリピン共和国' }
-  },
-  phone: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'phone', 'phones' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '電話' }
-  },
-  phones: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'phone', 'phones' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '電話' }
-  },
-  photo: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'photo', 'photos' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '写真' }
-  },
-  photos: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'photo', 'photos' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '写真' }
-  },
-  photograph: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'photograph', 'photographs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '写真' }
-  },
-  photographs: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'photograph', 'photographs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '写真' }
-  },
-  photographer: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'photographer', 'photographers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '写真家、カメラマン' }
-  },
-  photographers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'photographer', 'photographers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '写真家、カメラマン' }
-  },
-  phrase: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'phrase', 'phrases' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '句、言い回し、フレーズ' }
-  },
-  phrases: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'phrase', 'phrases' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '句、言い回し、フレーズ' }
-  },
-  piano: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'piano', 'pianos' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ピアノ' }
-  },
-  pianos: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'piano', 'pianos' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ピアノ' }
-  },
-  picnic: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'picnic', 'picnics' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ピクニック、行楽' }
-  },
-  picnics: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'picnic', 'picnics' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ピクニック、行楽' }
-  },
-  picture: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'picture', 'pictures' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '絵、写真' }
-  },
-  pictures: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'picture', 'pictures' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '絵、写真' }
-  },
-  pie: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'pie', 'pies' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'パイ' }
-  },
-  pies: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'pie', 'pies' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'パイ' }
-  },
-  piece: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'piece', 'pieces' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '１つの～、ひとかけらの～' }
-  },
-  pieces: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'piece', 'pieces' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '１つの～、ひとかけらの～' }
-  },
-  pilot: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'pilot', 'pilots' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'パイロット' }
-  },
-  pilots: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'pilot', 'pilots' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'パイロット' }
-  },
-  pink: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'pink', 'pinks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ピンク色（の）、もも色（の）' }
-  },
-  pinks: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'pink', 'pinks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ピンク色（の）、もも色（の）' }
-  },
-  pizza: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'pizza', 'pizzas' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ピザ' }
-  },
-  pizzas: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'pizza', 'pizzas' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ピザ' }
-  },
-  place: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'place', 'places' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '場所､所' }
-  },
-  places: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'place', 'places' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '場所､所' }
-  },
-  plan: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'plan', 'plans' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '事業' }
-  },
-  plans: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'plan', 'plans' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '事業' }
-  },
-  plane: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'plane', 'planes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '飛行機' }
-  },
-  planes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'plane', 'planes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '飛行機' }
-  },
-  plant: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'plant', 'plants' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '植物' }
-  },
-  plants: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'plant', 'plants' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '植物' }
-  },
-  plastic: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'プラスチック' }
-  },
-  plate: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'plate', 'plates' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '取り皿' }
-  },
-  plates: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'plate', 'plates' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '取り皿' }
-  },
-  play: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'play', 'plays' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '劇' }
-  },
-  plays: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'play', 'plays' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '劇' }
-  },
-  player: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'player', 'players' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（楽器を）演奏する人、演奏家、（スポーツを）する人、選手' }
-  },
-  players: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'player', 'players' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（楽器を）演奏する人、演奏家、（スポーツを）する人、選手' }
-  },
-  pleasure: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '喜び' }
-  },
-  pocket: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'pocket', 'pockets' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ポケット' }
-  },
-  pockets: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'pocket', 'pockets' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ポケット' }
-  },
-  poem: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'poem', 'poems' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '詩' }
-  },
-  poems: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'poem', 'poems' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '詩' }
-  },
-  point: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'point', 'points' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '箇所、点、地点' }
-  },
-  points: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'point', 'points' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '箇所、点、地点' }
-  },
-  poison: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '毒薬、毒' }
-  },
-  police: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '警察' }
-  },
-  politician: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'politician', 'politicians' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '政治家' }
-  },
-  politicians: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'politician', 'politicians' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '政治家' }
-  },
-  pollution: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '汚染' }
-  },
-  polo: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'polo', 'polos' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（馬に乗って行う競技）ポロ' }
-  },
-  polos: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'polo', 'polos' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（馬に乗って行う競技）ポロ' }
-  },
-  pond: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'pond', 'ponds' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '池' }
-  },
-  ponds: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'pond', 'ponds' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '池' }
-  },
-  poodle: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'poodle', 'poodles' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'プードル（犬の１品種）' }
-  },
-  poodles: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'poodle', 'poodles' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'プードル（犬の１品種）' }
-  },
-  pool: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'pool', 'pools' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（水泳用の）プール' }
-  },
-  pools: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'pool', 'pools' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（水泳用の）プール' }
-  },
-  population: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '人口' }
-  },
-  Portuguese: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ポルトガル語' }
-  },
-  post: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'post', 'posts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '郵便、郵便物' }
-  },
-  posts: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'post', 'posts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '郵便、郵便物' }
-  },
-  postcard: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'postcard', 'postcards' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '郵便はがき、絵はがき' }
-  },
-  postcards: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'postcard', 'postcards' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '郵便はがき、絵はがき' }
-  },
-  poster: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'poster', 'posters' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ポスター' }
-  },
-  posters: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'poster', 'posters' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ポスター' }
-  },
-  pot: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'pot', 'pots' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（深い）なべ' }
-  },
-  pots: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'pot', 'pots' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（深い）なべ' }
-  },
-  pouch: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'pouch', 'pouches' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '袋' }
-  },
-  pouches: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'pouch', 'pouches' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '袋' }
-  },
-  pound: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'pound', 'pounds' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ポンド(イギリスの通貨）' }
-  },
-  pounds: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'pound', 'pounds' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ポンド(イギリスの通貨）' }
-  },
-  power: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '力、能力' }
-  },
-  prefecture: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'prefecture', 'prefectures' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '県' }
-  },
-  prefectures: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'prefecture', 'prefectures' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '県' }
-  },
-  present: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'present', 'presents' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '現在' }
-  },
-  presents: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'present', 'presents' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '現在' }
-  },
-  presentation: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'presentation', 'presentations' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（意見・提案などの）発表、プレゼンテーション' }
-  },
-  presentations: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'presentation', 'presentations' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（意見・提案などの）発表、プレゼンテーション' }
-  },
-  pressure: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '圧力、せまられること、プレッシャー' }
-  },
-  price: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'price', 'prices' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '値段' }
-  },
-  prices: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'price', 'prices' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '値段' }
-  },
-  prince: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'prince', 'princes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '王子' }
-  },
-  princes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'prince', 'princes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '王子' }
-  },
-  principal: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'principal', 'principals' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '校長' }
-  },
-  principals: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'principal', 'principals' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '校長' }
-  },
-  print: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'print', 'prints' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '印刷、版画' }
-  },
-  prints: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'print', 'prints' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '印刷、版画' }
-  },
-  prize: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'prize', 'prizes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '賞、賞品' }
-  },
-  prizes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'prize', 'prizes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '賞、賞品' }
-  },
-  problem: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'problem', 'problems' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '(困難を引き起こす)問題、障害、課題' }
-  },
-  problems: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'problem', 'problems' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '(困難を引き起こす)問題、障害、課題' }
-  },
-  product: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'product', 'products' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '製品、生産物' }
-  },
-  products: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'product', 'products' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '製品、生産物' }
-  },
-  professor: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'professor', 'professors' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '教授' }
-  },
-  professors: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'professor', 'professors' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '教授' }
-  },
-  program: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'program', 'programs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '番組（表）、プログラム' }
-  },
-  programs: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'program', 'programs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '番組（表）、プログラム' }
-  },
-  programmer: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'programmer', 'programmers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'プログラマー' }
-  },
-  programmers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'programmer', 'programmers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'プログラマー' }
-  },
-  promise: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'promise', 'promises' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '約束' }
-  },
-  promises: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'promise', 'promises' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '約束' }
-  },
-  prop: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'prop', 'props' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '小道具' }
-  },
-  props: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'prop', 'props' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '小道具' }
-  },
-  purple: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '紫色（の）' }
-  },
-  purpose: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'purpose', 'purposes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '目的' }
-  },
-  purposes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'purpose', 'purposes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '目的' }
-  },
-  question: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'question', 'questions' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '質問、問い' }
-  },
-  questions: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'question', 'questions' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '質問、問い' }
-  },
-  quiz: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'quiz', 'quizzes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '簡単な口頭（筆記）のテスト、質問、（ラジオ・テレビの）クイズ' }
-  },
-  quizzes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'quiz', 'quizzes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '簡単な口頭（筆記）のテスト、質問、（ラジオ・テレビの）クイズ' }
-  },
-  rabbit: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'rabbit', 'rabbits' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ウサギ' }
-  },
-  rabbits: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'rabbit', 'rabbits' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ウサギ' }
-  },
-  race: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'race', 'races' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '競争、競走' }
-  },
-  races: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'race', 'races' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '競争、競走' }
-  },
-  racket: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'racket', 'rackets' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ラケット' }
-  },
-  rackets: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'racket', 'rackets' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ラケット' }
-  },
-  radio: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'radio', 'radios' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ラジオ' }
-  },
-  radios: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'radio', 'radios' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ラジオ' }
-  },
-  radish: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'radish', 'radishes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ハツカダイコン' }
-  },
-  radishes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'radish', 'radishes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ハツカダイコン' }
-  },
-  rain: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '雨' }
-  },
-  rainbow: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'rainbow', 'rainbows' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '虹' }
-  },
-  rainbows: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'rainbow', 'rainbows' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '虹' }
-  },
-  ramp: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'ramp', 'ramps' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'スロープ' }
-  },
-  ramps: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'ramp', 'ramps' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'スロープ' }
-  },
-  reading: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '読むこと' }
-  },
-  reality: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '現実、実際' }
-  },
-  reason: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'reason', 'reasons' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '理由' }
-  },
-  reasons: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'reason', 'reasons' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '理由' }
-  },
-  recipe: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'recipe', 'recipes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（料理などの）作り方、レシピ' }
-  },
-  recipes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'recipe', 'recipes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（料理などの）作り方、レシピ' }
-  },
-  red: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '赤い、赤色（の）、赤' }
-  },
-  refugee: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'refugee', 'refugees' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '難民、避難者' }
-  },
-  refugees: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'refugee', 'refugees' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '難民、避難者' }
-  },
-  relay: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'relay', 'relays' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'リレー競走' }
-  },
-  relays: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'relay', 'relays' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'リレー競走' }
-  },
-  report: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'report', 'reports' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'レポート、報告' }
-  },
-  reports: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'report', 'reports' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'レポート、報告' }
-  },
-  reporter: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'reporter', 'reporters' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'リポーター' }
-  },
-  reporters: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'reporter', 'reporters' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'リポーター' }
-  },
-  research: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '研究、調査' }
-  },
-  resource: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'resource', 'resources' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '資源、財源' }
-  },
-  resources: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'resource', 'resources' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '資源、財源' }
-  },
-  respect: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '尊敬、尊重' }
-  },
-  rest: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '休み' }
-  },
-  restaurant: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'restaurant', 'restaurants' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'レストラン、食堂、料理屋' }
-  },
-  restaurants: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'restaurant', 'restaurants' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'レストラン、食堂、料理屋' }
-  },
-  restroom: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'restroom', 'restrooms' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（デパート・劇場などの）洗面所、トイレ' }
-  },
-  restrooms: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'restroom', 'restrooms' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（デパート・劇場などの）洗面所、トイレ' }
-  },
-  result: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'result', 'results' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '結果' }
-  },
-  results: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'result', 'results' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '結果' }
-  },
-  return: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'return', 'returns' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '再び巡ってくること' }
-  },
-  returns: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'return', 'returns' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '再び巡ってくること' }
-  },
-  reuse: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '再利用' }
-  },
-  rhythm: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'リズム' }
-  },
-  rice: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ご飯、米' }
-  },
-  right: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'right', 'rights' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '権利、法的権利' }
-  },
-  rights: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'right', 'rights' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '権利、法的権利' }
-  },
-  rise: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'rise', 'rises' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '上昇、増加、昇進' }
-  },
-  rises: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'rise', 'rises' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '上昇、増加、昇進' }
-  },
-  river: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'river', 'rivers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '川' }
-  },
-  rivers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'river', 'rivers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '川' }
-  },
-  road: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'road', 'roads' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '道路' }
-  },
-  roads: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'road', 'roads' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '道路' }
-  },
-  robot: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'robot', 'robots' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ロボット' }
-  },
-  robots: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'robot', 'robots' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ロボット' }
-  },
-  rock: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'rock', 'rocks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ロック（音楽）' }
-  },
-  rocks: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'rock', 'rocks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ロック（音楽）' }
-  },
-  roll: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'roll', 'rolls' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '巻いたもの、－巻' }
-  },
-  rolls: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'roll', 'rolls' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '巻いたもの、－巻' }
-  },
-  Roman: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'Roman', 'Romans' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '古代ローマ人、現代のローマ市民' }
-  },
-  Romans: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'Roman', 'Romans' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '古代ローマ人、現代のローマ市民' }
-  },
-  Rome: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ローマ〔イタリアの首都、古代ローマ帝国の首都〕' }
-  },
-  roof: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'roof', 'roofs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '屋上、屋根' }
-  },
-  roofs: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'roof', 'roofs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '屋上、屋根' }
-  },
-  room: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'room', 'rooms' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '部屋' }
-  },
-  rooms: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'room', 'rooms' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '部屋' }
-  },
-  rope: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'rope', 'ropes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '綱、縄、ロープ' }
-  },
-  ropes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'rope', 'ropes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '綱、縄、ロープ' }
-  },
-  rule: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'rule', 'rules' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '決まり、規則' }
-  },
-  rules: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'rule', 'rules' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '決まり、規則' }
-  },
-  ruler: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'ruler', 'rulers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ものさし、定規' }
-  },
-  rulers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'ruler', 'rulers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ものさし、定規' }
-  },
-  Russia: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ロシア' }
-  },
-  sadness: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '悲しみ' }
-  },
-  salad: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'salad', 'salads' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'サラダ' }
-  },
-  salads: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'salad', 'salads' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'サラダ' }
-  },
-  sale: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'sale', 'sales' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '安売り、バーゲンセール' }
-  },
-  sales: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'sale', 'sales' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '安売り、バーゲンセール' }
-  },
-  salt: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '塩' }
-  },
-  sandwich: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'sandwich', 'sandwiches' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'サンドイッチ' }
-  },
-  sandwiches: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'sandwich', 'sandwiches' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'サンドイッチ' }
-  },
-  Saturday: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '土曜日' }
-  },
-  scene: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'scene', 'scenes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（劇・映画・小説の）場面' }
-  },
-  scenes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'scene', 'scenes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（劇・映画・小説の）場面' }
-  },
-  scenery: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '風景、景色' }
-  },
-  schedule: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'schedule', 'schedules' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '予定（表）' }
-  },
-  schedules: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'schedule', 'schedules' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '予定（表）' }
-  },
-  school: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'school', 'schools' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '学校' }
-  },
-  schools: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'school', 'schools' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '学校' }
-  },
-  schoolyard: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'schoolyard', 'schoolyards' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '校庭、運動場' }
-  },
-  schoolyards: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'schoolyard', 'schoolyards' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '校庭、運動場' }
-  },
-  science: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '理科、科学、自然科学' }
-  },
-  scientist: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'scientist', 'scientists' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '科学者' }
-  },
-  scientists: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'scientist', 'scientists' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '科学者' }
-  },
-  Scotland: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'スコットランド' }
-  },
-  sculpture: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'sculpture', 'sculptures' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '彫刻' }
-  },
-  sculptures: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'sculpture', 'sculptures' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '彫刻' }
-  },
-  sea: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '海' }
-  },
-  seal: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'seal', 'seals' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'アザラシ' }
-  },
-  seals: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'seal', 'seals' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'アザラシ' }
-  },
-  season: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'season', 'seasons' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '季節' }
-  },
-  seasons: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'season', 'seasons' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '季節' }
-  },
-  seat: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'seat', 'seats' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '席' }
-  },
-  seats: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'seat', 'seats' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '席' }
-  },
-  second: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'second', 'seconds' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（時間の）秒' }
-  },
-  seconds: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'second', 'seconds' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（時間の）秒' }
-  },
-  section: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'section', 'sections' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '部分、部門、〔会社、官庁などの〕課' }
-  },
-  sections: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'section', 'sections' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '部分、部門、〔会社、官庁などの〕課' }
-  },
-  seed: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'seed', 'seeds' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '種' }
-  },
-  seeds: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'seed', 'seeds' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '種' }
-  },
-  sense: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'sense', 'senses' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '意味、感覚' }
-  },
-  senses: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'sense', 'senses' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '意味、感覚' }
-  },
-  September: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '９月' }
-  },
-  shade: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'shade', 'shades' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '陰' }
-  },
-  shades: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'shade', 'shades' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '陰' }
-  },
-  shampoo: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'シャンプー' }
-  },
-  shape: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'shape', 'shapes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '形、姿' }
-  },
-  shapes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'shape', 'shapes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '形、姿' }
-  },
-  shelf: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'shelf', 'shelves' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '棚' }
-  },
-  shelves: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'shelf', 'shelves' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '棚' }
-  },
-  ship: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'ship', 'ships' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '船' }
-  },
-  ships: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'ship', 'ships' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '船' }
-  },
-  shirt: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'shirt', 'shirts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'シャツ' }
-  },
-  shirts: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'shirt', 'shirts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'シャツ' }
-  },
-  shock: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（精神的な）ショック' }
-  },
-  shoe: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'shoe', 'shoes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'くつ' }
-  },
-  shoes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'shoe', 'shoes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'くつ' }
-  },
-  shop: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'shop', 'shops' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '(ものを売る)店、小売店' }
-  },
-  shops: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'shop', 'shops' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '(ものを売る)店、小売店' }
-  },
-  shopping: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '買い物' }
-  },
-  shoulder: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'shoulder', 'shoulders' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '肩' }
-  },
-  shoulders: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'shoulder', 'shoulders' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '肩' }
-  },
-  show: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'show', 'shows' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ショー' }
-  },
-  shows: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'show', 'shows' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ショー' }
-  },
-  shower: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'shower', 'showers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'シャワー' }
-  },
-  showers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'shower', 'showers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'シャワー' }
-  },
-  shrine: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'shrine', 'shrines' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '神社' }
-  },
-  shrines: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'shrine', 'shrines' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '神社' }
-  },
-  shyness: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '内気、はにかみ' }
-  },
-  sickness: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '病気' }
-  },
-  side: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'side', 'sides' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '面、局面、味方' }
-  },
-  sides: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'side', 'sides' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '面、局面、味方' }
-  },
-  sightseeing: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '観光、見物' }
-  },
-  sign: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'sign', 'signs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '標識、看板' }
-  },
-  signs: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'sign', 'signs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '標識、看板' }
-  },
-  singer: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'singer', 'singers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '歌う人、歌手' }
-  },
-  singers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'singer', 'singers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '歌う人、歌手' }
-  },
-  singing: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '歌うこと、歌唱' }
-  },
-  sister: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'sister', 'sisters' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '姉、妹' }
-  },
-  sisters: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'sister', 'sisters' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '姉、妹' }
-  },
-  site: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'site', 'sites' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（重大なできごとが起こった）場所、遺跡' }
-  },
-  sites: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'site', 'sites' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（重大なできごとが起こった）場所、遺跡' }
-  },
-  situation: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'situation', 'situations' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '状況、状態' }
-  },
-  situations: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'situation', 'situations' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '状況、状態' }
-  },
-  size: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'size', 'sizes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '大きさ、サイズ' }
-  },
-  sizes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'size', 'sizes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '大きさ、サイズ' }
-  },
-  skill: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'skill', 'skills' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '技術、技能' }
-  },
-  skills: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'skill', 'skills' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '技術、技能' }
-  },
-  skin: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '皮膚、肌' }
-  },
-  sky: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '空、大空' }
-  },
-  slump: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'slump', 'slumps' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '不振、不調' }
-  },
-  slumps: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'slump', 'slumps' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '不振、不調' }
-  },
-  smell: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'smell', 'smells' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'におい' }
-  },
-  smells: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'smell', 'smells' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'におい' }
-  },
-  smile: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'smile', 'smiles' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ほほえみ' }
-  },
-  smiles: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'smile', 'smiles' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ほほえみ' }
-  },
-  smog: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'スモッグ' }
-  },
-  smoke: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '煙' }
-  },
-  snack: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'snack', 'snacks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '軽食、おやつ' }
-  },
-  snacks: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'snack', 'snacks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '軽食、おやつ' }
-  },
-  snake: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'snake', 'snakes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'へび' }
-  },
-  snakes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'snake', 'snakes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'へび' }
-  },
-  sneaker: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'sneaker', 'sneakers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'スニーカー' }
-  },
-  sneakers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'sneaker', 'sneakers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'スニーカー' }
-  },
-  snow: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '雪' }
-  },
-  soccer: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'サッカー' }
-  },
-  sock: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'sock', 'socks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ソックス、（短い）くつ下' }
-  },
-  socks: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'sock', 'socks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ソックス、（短い）くつ下' }
-  },
-  sofa: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'sofa', 'sofas' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ソファー' }
-  },
-  sofas: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'sofa', 'sofas' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ソファー' }
-  },
-  softball: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'softball', 'softballs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ソフトボール' }
-  },
-  softballs: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'softball', 'softballs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ソフトボール' }
-  },
-  soldier: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'soldier', 'soldiers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（陸軍の）兵士、軍人' }
-  },
-  soldiers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'soldier', 'soldiers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（陸軍の）兵士、軍人' }
-  },
-  son: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'son', 'sons' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '息子' }
-  },
-  sons: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'son', 'sons' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '息子' }
-  },
-  song: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'song', 'songs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '歌' }
-  },
-  songs: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'song', 'songs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '歌' }
-  },
-  sound: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'sound', 'sounds' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '音、響き' }
-  },
-  sounds: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'sound', 'sounds' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '音、響き' }
-  },
-  soup: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'スープ' }
-  },
-  south: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '南' }
-  },
-  southwest: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '南西' }
-  },
-  soybean: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'soybean', 'soybeans' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '大豆' }
-  },
-  soybeans: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'soybean', 'soybeans' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '大豆' }
-  },
-  space: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '宇宙、宇宙空間' }
-  },
-  Spain: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'スペイン' }
-  },
-  Spanish: {
-    tags: [ '形容詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'スペイン語' }
-  },
-  speaker: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'speaker', 'speakers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '話す人' }
-  },
-  speakers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'speaker', 'speakers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '話す人' }
-  },
-  speech: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '演説、スピーチ' }
-  },
-  spirit: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'spirit', 'spirits' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '気力、勇気　〔fighting spirit の形で〕闘志' }
-  },
-  spirits: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'spirit', 'spirits' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '気力、勇気　〔fighting spirit の形で〕闘志' }
-  },
-  spoon: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'spoon', 'spoons' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'スプーン' }
-  },
-  spoons: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'spoon', 'spoons' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'スプーン' }
-  },
-  sport: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'スポーツ、運動' }
-  },
-  spring: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'spring', 'springs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '春' }
-  },
-  springs: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'spring', 'springs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '春' }
-  },
-  sprint: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'sprint', 'sprints' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '短距離走' }
-  },
-  sprints: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'sprint', 'sprints' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '短距離走' }
-  },
-  square: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'square', 'squares' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '四角形' }
-  },
-  squares: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'square', 'squares' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '四角形' }
-  },
-  stadium: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'stadium', 'stadiums' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'スタジアム、競技場' }
-  },
-  stadiums: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'stadium', 'stadiums' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'スタジアム、競技場' }
-  },
-  staff: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '〔集合的に〕職員、社員' }
-  },
-  stage: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'stage', 'stages' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '舞台、ステージ' }
-  },
-  stages: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'stage', 'stages' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '舞台、ステージ' }
-  },
-  stair: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'stair', 'stairs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '階段' }
-  },
-  stairs: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'stair', 'stairs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '階段' }
-  },
-  stand: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'stand', 'stands' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'スタンド、台' }
-  },
-  stands: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'stand', 'stands' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'スタンド、台' }
-  },
-  star: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'star', 'stars' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '星' }
-  },
-  stars: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'star', 'stars' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '星' }
-  },
-  starvation: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '飢餓、ききん' }
-  },
-  station: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'station', 'stations' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '駅' }
-  },
-  stations: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'station', 'stations' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '駅' }
-  },
-  stationery: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '文房具' }
-  },
-  statue: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'statue', 'statues' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '像、彫刻' }
-  },
-  statues: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'statue', 'statues' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '像、彫刻' }
-  },
-  step: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'step', 'steps' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（階段の）踏み段' }
-  },
-  steps: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'step', 'steps' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '（階段の）踏み段' }
-  },
-  stew: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'シチュー' }
-  },
-  stomach: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'stomach', 'stomachs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'おなか、胃' }
-  },
-  stomachs: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'stomach', 'stomachs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'おなか、胃' }
-  },
-  stomachache: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'stomachache', 'stomachaches' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '腹痛' }
-  },
-  stomachaches: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'stomachache', 'stomachaches' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '腹痛' }
-  },
-  store: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'store', 'stores' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '店' }
-  },
-  stores: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'store', 'stores' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '店' }
-  },
-  story: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'story', 'stories' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '話、物語' }
-  },
-  stories: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'story', 'stories' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '話、物語' }
-  },
-  storytelling: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '物語を語ること' }
-  },
-  stream: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'stream', 'streams' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '小川、川' }
-  },
-  streams: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'stream', 'streams' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '小川、川' }
-  },
-  street: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'street', 'streets' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '通り' }
-  },
-  streets: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'street', 'streets' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '通り' }
-  },
-  stroller: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'stroller', 'strollers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ベビーカー' }
-  },
-  strollers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'stroller', 'strollers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ベビーカー' }
-  },
-  student: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'student', 'students' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '学生、生徒' }
-  },
-  students: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'student', 'students' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '学生、生徒' }
-  },
-  stuff: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '原料、もの' }
-  },
-  style: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'style', 'styles' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'やり方、作風、型' }
-  },
-  styles: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'style', 'styles' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'やり方、作風、型' }
-  },
-  subject: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'subject', 'subjects' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '題、トピック、テーマ' }
-  },
-  subjects: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'subject', 'subjects' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '題、トピック、テーマ' }
-  },
-  suburb: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'suburb', 'suburbs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '郊外' }
-  },
-  suburbs: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'suburb', 'suburbs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '郊外' }
-  },
-  subway: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'subway', 'subways' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '地下鉄' }
-  },
-  subways: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'subway', 'subways' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '地下鉄' }
-  },
-  success: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '成功' }
-  },
-  sugar: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '砂糖' }
-  },
-  summer: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '夏' }
-  },
-  sun: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'sun', 'suns' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '太陽' }
-  },
-  suns: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'sun', 'suns' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '太陽' }
-  },
-  Sunday: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '日曜日' }
-  },
-  sunlight: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '日光、陽光' }
-  },
-  sunset: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'sunset', 'sunsets' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '日の入り' }
-  },
-  sunsets: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'sunset', 'sunsets' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '日の入り' }
-  },
-  supermarket: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'supermarket', 'supermarkets' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'スーパーマーケット' }
-  },
-  supermarkets: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'supermarket', 'supermarkets' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'スーパーマーケット' }
-  },
-  support: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '支持、支援' }
-  },
-  survival: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '生き残ること' }
-  },
-  swimming: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '水泳' }
-  },
-  sword: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'sword', 'swords' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '剣' }
-  },
-  swords: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'sword', 'swords' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '剣' }
-  },
-  Sydney: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'シドニー 《オーストラリア東岸にある都市》' }
-  },
-  symbol: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'symbol', 'symbols' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'シンボル、しるし' }
-  },
-  symbols: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'symbol', 'symbols' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'シンボル、しるし' }
-  },
-  system: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'system', 'systems' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '組織' }
-  },
-  systems: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'system', 'systems' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '組織' }
-  },
-  table: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'table', 'tables' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'テーブル、食卓' }
-  },
-  tables: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'table', 'tables' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'テーブル、食卓' }
-  },
-  tail: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'tail', 'tails' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '尾（ひれ）、しっぽ' }
-  },
-  tails: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'tail', 'tails' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '尾（ひれ）、しっぽ' }
-  },
-  tale: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'tale', 'tales' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '物語、お話' }
-  },
-  tales: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'tale', 'tales' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '物語、お話' }
-  },
-  talk: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'talk', 'talks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '話、スピーチ' }
-  },
-  talks: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'talk', 'talks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '話、スピーチ' }
-  },
-  Tanzania: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'タンザニア' }
-  },
-  task: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'task', 'tasks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '仕事、任務' }
-  },
-  tasks: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'task', 'tasks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '仕事、任務' }
-  },
-  taste: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'taste', 'tastes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '味' }
-  },
-  tastes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'taste', 'tastes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '味' }
-  },
-  taxi: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'taxi', 'taxis' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'タクシー' }
-  },
-  taxis: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'taxi', 'taxis' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'タクシー' }
-  },
-  tea: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '茶、紅茶' }
-  },
-  teacher: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'teacher', 'teachers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '教師、先生' }
-  },
-  teachers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'teacher', 'teachers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '教師、先生' }
-  },
-  team: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'team', 'teams' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'チーム' }
-  },
-  teams: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'team', 'teams' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'チーム' }
-  },
-  teammate: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'teammate', 'teammates' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'チームメイト' }
-  },
-  teammates: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'teammate', 'teammates' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'チームメイト' }
-  },
-  teamwork: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'チームワーク' }
-  },
-  tear: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'tear', 'tears' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '涙' }
-  },
-  tears: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'tear', 'tears' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '涙' }
-  },
-  technology: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '科学技術' }
-  },
-  telescope: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'telescope', 'telescopes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '望遠鏡' }
-  },
-  telescopes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'telescope', 'telescopes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '望遠鏡' }
-  },
-  temperature: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '温度、気温' }
-  },
-  temple: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'temple', 'temples' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '寺' }
-  },
-  temples: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'temple', 'temples' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '寺' }
-  },
-  tennis: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'テニス' }
-  },
-  test: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'test', 'tests' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '試験、テスト' }
-  },
-  tests: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'test', 'tests' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '試験、テスト' }
-  },
-  textbook: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'textbook', 'textbooks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '教科書、テキスト' }
-  },
-  textbooks: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'textbook', 'textbooks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '教科書、テキスト' }
-  },
-  Thailand: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'タイ' }
-  },
-  theater: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'theater', 'theaters' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '劇場、映画館〔movie theaterともいう〕' }
-  },
-  theaters: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'theater', 'theaters' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '劇場、映画館〔movie theaterともいう〕' }
-  },
-  theme: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'theme', 'themes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '主題、テーマ' }
-  },
-  themes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'theme', 'themes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '主題、テーマ' }
-  },
-  thing: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'thing', 'things' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'もの、こと' }
-  },
-  things: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'thing', 'things' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'もの、こと' }
-  },
-  thinking: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '考え、思考' }
-  },
-  throat: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'throat', 'throats' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'のど' }
-  },
-  throats: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'throat', 'throats' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'のど' }
-  },
-  Thursday: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '木曜日' }
-  },
-  ticket: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'ticket', 'tickets' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '切符、チケット、券' }
-  },
-  tickets: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'ticket', 'tickets' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '切符、チケット、券' }
-  },
-  tie: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'tie', 'ties' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ネクタイ' }
-  },
-  ties: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'tie', 'ties' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ネクタイ' }
-  },
-  time: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '回、度' }
-  },
-  timing: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'タイミング、時機を選ぶこと' }
-  },
-  title: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'title', 'titles' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '題名、タイトル' }
-  },
-  titles: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'title', 'titles' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '題名、タイトル' }
-  },
-  toast: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'toast', 'toasts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'トースト' }
-  },
-  toasts: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'toast', 'toasts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'トースト' }
-  },
-  toilet: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'toilet', 'toilets' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'トイレ、化粧室' }
-  },
-  toilets: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'toilet', 'toilets' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'トイレ、化粧室' }
-  },
-  tongue: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'tongue', 'tongues' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '国語、母語' }
-  },
-  tongues: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'tongue', 'tongues' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '国語、母語' }
-  },
-  tool: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'tool', 'tools' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '手段、道具' }
-  },
-  tools: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'tool', 'tools' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '手段、道具' }
-  },
-  tooth: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'tooth', 'teeth' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '歯' }
-  },
-  teeth: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'tooth', 'teeth' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '歯' }
-  },
-  toothache: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'toothache', 'toothaches' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '歯痛' }
-  },
-  toothaches: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'toothache', 'toothaches' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '歯痛' }
-  },
-  toothbrush: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'toothbrush', 'toothbrushes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '歯ブラシ' }
-  },
-  toothbrushes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'toothbrush', 'toothbrushes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '歯ブラシ' }
-  },
-  top: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'top', 'tops' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '一番上の部分、頂上' }
-  },
-  tops: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'top', 'tops' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '一番上の部分、頂上' }
-  },
-  total: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'total', 'totals' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '総合、合計' }
-  },
-  totals: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'total', 'totals' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '総合、合計' }
-  },
-  touch: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '接触' }
-  },
-  tour: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'tour', 'tours' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '旅行' }
-  },
-  tours: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'tour', 'tours' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '旅行' }
-  },
-  tourism: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '観光事業、観光、旅行' }
-  },
-  tournament: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'tournament', 'tournaments' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'トーナメント、勝ち抜き試合' }
-  },
-  tournaments: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'tournament', 'tournaments' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'トーナメント、勝ち抜き試合' }
-  },
-  towel: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'towel', 'towels' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '手拭い、タオル' }
-  },
-  towels: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'towel', 'towels' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '手拭い、タオル' }
-  },
-  tower: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'tower', 'towers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '塔、タワー' }
-  },
-  towers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'tower', 'towers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '塔、タワー' }
-  },
-  town: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'town', 'towns' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '町、市、都会' }
-  },
-  towns: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'town', 'towns' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '町、市、都会' }
-  },
-  toy: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'toy', 'toys' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'おもちゃ' }
-  },
-  toys: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'toy', 'toys' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'おもちゃ' }
-  },
-  track: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'track', 'tracks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '線路' }
-  },
-  tracks: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'track', 'tracks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '線路' }
-  },
-  trade: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '貿易' }
-  },
-  tradition: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '伝統' }
-  },
-  traffic: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '交通  〔traffic light〕交通信号（灯）' }
-  },
-  tragedy: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'tragedy', 'tragedies' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '悲劇、悲しいできごと' }
-  },
-  tragedies: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'tragedy', 'tragedies' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '悲劇、悲しいできごと' }
-  },
-  train: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'train', 'trains' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '列車、電車' }
-  },
-  trains: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'train', 'trains' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '列車、電車' }
-  },
-  trainer: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'trainer', 'trainers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'トレーナー' }
-  },
-  trainers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'trainer', 'trainers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'トレーナー' }
-  },
-  transportation: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '輸送機関' }
-  },
-  treasure: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '宝物' }
-  },
-  tree: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'tree', 'trees' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '木、樹木' }
-  },
-  trees: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'tree', 'trees' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '木、樹木' }
-  },
-  trip: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'trip', 'trips' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '旅行' }
-  },
-  trips: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'trip', 'trips' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '旅行' }
-  },
-  trophy: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'trophy', 'trophies' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '優勝記念品、トロフィー' }
-  },
-  trophies: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'trophy', 'trophies' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '優勝記念品、トロフィー' }
-  },
-  trouble: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '心配' }
-  },
-  Tuesday: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '火曜日' }
-  },
-  tuna: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'tuna', 'tunas' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'マグロ' }
-  },
-  tunas: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'tuna', 'tunas' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'マグロ' }
-  },
-  turkey: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'turkey', 'turkeys' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '七面鳥' }
-  },
-  turkeys: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'turkey', 'turkeys' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '七面鳥' }
-  },
-  turn: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'turn', 'turns' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '番、順番　　〔in turnで〕代わって今度は' }
-  },
-  turns: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'turn', 'turns' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '番、順番　　〔in turnで〕代わって今度は' }
-  },
-  turning: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'turning', 'turnings' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '曲がり角、回転    〔turning pointで〕転機' }
-  },
-  turnings: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'turning', 'turnings' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '曲がり角、回転    〔turning pointで〕転機' }
-  },
-  turtle: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'turtle', 'turtles' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'カメ' }
-  },
-  turtles: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'turtle', 'turtles' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'カメ' }
-  },
-  TV: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'TV', 'TVs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'テレビ（番組）' }
-  },
-  TVs: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'TV', 'TVs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'テレビ（番組）' }
-  },
-  twelfth: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'twelfth', 'twelfths' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '12番め、（月の）12日' }
-  },
-  twelfths: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'twelfth', 'twelfths' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '12番め、（月の）12日' }
-  },
-  twelve: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'twelve', 'twelves' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '12' }
-  },
-  twelves: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'twelve', 'twelves' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '12' }
-  },
-  twentieth: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'twentieth', 'twentieths' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '20番目' }
-  },
-  twentieths: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'twentieth', 'twentieths' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '20番目' }
-  },
-  twenty: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'twenty', 'twenties' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '20' }
-  },
-  twenties: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'twenty', 'twenties' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '20' }
-  },
-  two: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'two', 'twos' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '2' }
-  },
-  twos: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'two', 'twos' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '2' }
-  },
-  type: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'type', 'types' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '型、タイプ、種類' }
-  },
-  types: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'type', 'types' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '型、タイプ、種類' }
-  },
-  umbrella: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'umbrella', 'umbrellas' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'かさ' }
-  },
-  umbrellas: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'umbrella', 'umbrellas' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'かさ' }
-  },
-  uncle: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'uncle', 'uncles' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'おじ、おじさん' }
-  },
-  uncles: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'uncle', 'uncles' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'おじ、おじさん' }
-  },
-  underground: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'underground', 'undergrounds' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '地下、地下鉄' }
-  },
-  undergrounds: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'underground', 'undergrounds' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '地下、地下鉄' }
-  },
-  unicycle: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'unicycle', 'unicycles' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '一輪車' }
-  },
-  unicycles: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'unicycle', 'unicycles' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '一輪車' }
-  },
-  uniform: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'uniform', 'uniforms' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '制服、ユニフォーム' }
-  },
-  uniforms: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'uniform', 'uniforms' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '制服、ユニフォーム' }
-  },
-  university: {
-    tags: [ '可算名詞', '母音で始まる', '単数形' ],
-    katuyou: [ 'university', 'universities' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '大学' }
-  },
-  universities: {
-    tags: [ '可算名詞', '母音で始まる', '複数形' ],
-    katuyou: [ 'university', 'universities' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '大学' }
-  },
-  use: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'use', 'uses' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '使用、使い道' }
-  },
-  uses: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'use', 'uses' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '使用、使い道' }
-  },
-  vacation: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'vacation', 'vacations' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '休暇、休み' }
-  },
-  vacations: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'vacation', 'vacations' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '休暇、休み' }
-  },
-  vegetable: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'vegetable', 'vegetables' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '野菜' }
-  },
-  vegetables: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'vegetable', 'vegetables' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '野菜' }
-  },
-  Venezuela: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ベネズエラ〔南米の国の名〕' }
-  },
-  vet: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'vet', 'vets' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '獣医（veterinarianの略）' }
-  },
-  vets: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'vet', 'vets' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '獣医（veterinarianの略）' }
-  },
-  victory: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'victory', 'victories' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '勝利、優勝' }
-  },
-  victories: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'victory', 'victories' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '勝利、優勝' }
-  },
-  video: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'video', 'videos' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ビデオ  〔 video game の形で〕　テレビゲーム' }
-  },
-  videos: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'video', 'videos' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ビデオ  〔 video game の形で〕　テレビゲーム' }
-  },
-  view: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'view', 'views' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ながめ、景色' }
-  },
-  views: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'view', 'views' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ながめ、景色' }
-  },
-  village: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'village', 'villages' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '村' }
-  },
-  villages: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'village', 'villages' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '村' }
-  },
-  vinegar: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '食用酢、ビネガー' }
-  },
-  violin: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'violin', 'violins' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'バイオリン' }
-  },
-  violins: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'violin', 'violins' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'バイオリン' }
-  },
-  visit: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'visit', 'visits' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '訪問' }
-  },
-  visits: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'visit', 'visits' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '訪問' }
-  },
-  visitor: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'visitor', 'visitors' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '訪問者' }
-  },
-  visitors: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'visitor', 'visitors' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '訪問者' }
-  },
-  voice: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'voice', 'voices' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '声' }
-  },
-  voices: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'voice', 'voices' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '声' }
-  },
-  volleyball: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'volleyball', 'volleyballs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'バレーボール' }
-  },
-  volleyballs: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'volleyball', 'volleyballs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'バレーボール' }
-  },
-  volume: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'volume', 'volumes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '〔書物の〕巻、冊、容量' }
-  },
-  volumes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'volume', 'volumes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '〔書物の〕巻、冊、容量' }
-  },
-  volunteer: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'volunteer', 'volunteers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ボランティア、志願者' }
-  },
-  volunteers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'volunteer', 'volunteers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ボランティア、志願者' }
-  },
-  waitress: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'waitress', 'waitresses' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ウエイトレス' }
-  },
-  waitresses: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'waitress', 'waitresses' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ウエイトレス' }
-  },
-  walk: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'walk', 'walks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '歩くこと、散歩' }
-  },
-  walks: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'walk', 'walks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '歩くこと、散歩' }
-  },
-  wall: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'wall', 'walls' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '壁、へい、城壁' }
-  },
-  walls: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'wall', 'walls' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '壁、へい、城壁' }
-  },
-  war: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'war', 'wars' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '戦争' }
-  },
-  wars: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'war', 'wars' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '戦争' }
-  },
-  warrior: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'warrior', 'warriors' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '武人、軍人' }
-  },
-  warriors: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'warrior', 'warriors' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '武人、軍人' }
-  },
-  waste: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '浪費' }
-  },
-  watch: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'watch', 'watches' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '腕時計' }
-  },
-  watches: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'watch', 'watches' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '腕時計' }
-  },
-  water: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '水、水中' }
-  },
-  waterfall: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'waterfall', 'waterfalls' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '滝' }
-  },
-  waterfalls: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'waterfall', 'waterfalls' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '滝' }
-  },
-  wave: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'wave', 'waves' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '波' }
-  },
-  waves: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'wave', 'waves' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '波' }
-  },
-  way: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'way', 'ways' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '方向' }
-  },
-  ways: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'way', 'ways' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '方向' }
-  },
-  weather: {
-    tags: [ '不可算名詞' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '天気、気象' }
-  },
-  website: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'website', 'websites' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ウェブサイト' }
-  },
-  websites: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'website', 'websites' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ウェブサイト' }
-  },
-  week: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'week', 'weeks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '週' }
-  },
-  weeks: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'week', 'weeks' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '週' }
-  },
-  weekend: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'weekend', 'weekends' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '週末' }
-  },
-  weekends: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'weekend', 'weekends' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '週末' }
-  },
-  whale: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'whale', 'whales' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'クジラ' }
-  },
-  whales: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'whale', 'whales' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'クジラ' }
-  },
-  wheel: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'wheel', 'wheels' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '車輪' }
-  },
-  wheels: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'wheel', 'wheels' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '車輪' }
-  },
-  wheelchair: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'wheelchair', 'wheelchairs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '車イス' }
-  },
-  wheelchairs: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'wheelchair', 'wheelchairs' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '車イス' }
-  },
-  white: {
-    tags: [ '不可算名詞', '子音で始まる' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '白、白人' }
-  },
-  wife: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'wife', 'wives' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '妻' }
-  },
-  wives: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'wife', 'wives' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '妻' }
-  },
-  wild: {
-    tags: [ '不可算名詞', '子音で始まる' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '野生' }
-  },
-  wildcat: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'wildcat', 'wildcats' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ヤマネコ' }
-  },
-  wildcats: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'wildcat', 'wildcats' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ヤマネコ' }
-  },
-  wilderness: {
-    tags: [ '不可算名詞', '子音で始まる' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '荒野' }
-  },
-  wildlife: {
-    tags: [ '不可算名詞', '子音で始まる' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '野生動物' }
-  },
-  will: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'will', 'wills' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '意志' }
-  },
-  wills: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'will', 'wills' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '意志' }
-  },
-  wind: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'wind', 'winds' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '風' }
-  },
-  winds: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'wind', 'winds' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '風' }
-  },
-  windmill: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'windmill', 'windmills' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '風車' }
-  },
-  windmills: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'windmill', 'windmills' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '風車' }
-  },
-  window: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'window', 'windows' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '窓' }
-  },
-  windows: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'window', 'windows' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '窓' }
-  },
-  winner: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'winner', 'winners' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '勝った人、勝利者' }
-  },
-  winners: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'winner', 'winners' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '勝った人、勝利者' }
-  },
-  winter: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '冬' }
-  },
-  wire: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'wire', 'wires' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '針金、ワイヤー' }
-  },
-  wires: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'wire', 'wires' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '針金、ワイヤー' }
-  },
-  wish: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'wish', 'wishes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '願い、望み' }
-  },
-  wishes: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'wish', 'wishes' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '願い、望み' }
-  },
-  woman: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'woman', 'women' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '女性' }
-  },
-  women: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'woman', 'women' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '女性' }
-  },
-  wonder: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'wonder', 'wonders' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '驚き' }
-  },
-  wonders: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'wonder', 'wonders' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '驚き' }
-  },
-  wood: {
-    tags: [ '不可算名詞', '子音で始まる' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'まき、木' }
-  },
-  word: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'word', 'words' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ことば、発言' }
-  },
-  words: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'word', 'words' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ことば、発言' }
-  },
-  work: {
-    tags: [ '不可算名詞', '子音で始まる' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '"仕事、勉強' }
-  },
-  worker: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'worker', 'workers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '労働者' }
-  },
-  workers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'worker', 'workers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '労働者' }
-  },
-  world: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'world', 'worlds' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '世界' }
-  },
-  worlds: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'world', 'worlds' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '世界' }
-  },
-  wrestling: {
-    tags: [ '不可算名詞', '子音で始まる' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'レスリング' }
-  },
-  writer: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'writer', 'writers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '作家、著述家' }
-  },
-  writers: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'writer', 'writers' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '作家、著述家' }
-  },
-  writing: {
-    tags: [ '不可算名詞', '子音で始まる' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '書かれた文字、筆跡、書くこと' }
-  },
-  yacht: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'yacht', 'yachts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ヨット' }
-  },
-  yachts: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'yacht', 'yachts' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ヨット' }
-  },
-  year: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'year', 'years' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '年、1年' }
-  },
-  years: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'year', 'years' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '年、1年' }
-  },
-  yellow: {
-    tags: [ '不可算名詞', '子音で始まる' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '黄色' }
-  },
-  yesterday: {
-    tags: [ '不可算名詞', '子音で始まる' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '昨日' }
-  },
-  yogurt: {
-    tags: [ '不可算名詞', '子音で始まる' ],
-    katuyou: [],
-    hinsi: [ '名詞' ],
-    means: { '名詞': 'ヨーグルト' }
-  },
-  zoo: {
-    tags: [ '可算名詞', '子音で始まる', '単数形' ],
-    katuyou: [ 'zoo', 'zoos' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '動物園' }
-  },
-  zoos: {
-    tags: [ '可算名詞', '子音で始まる', '複数形' ],
-    katuyou: [ 'zoo', 'zoos' ],
-    hinsi: [ '名詞' ],
-    means: { '名詞': '動物園' }
-  }
-}
-
-function mergeAllDictionaries(...dictionaries) {
-    const wordCount = {}; // 単語ごとの出現回数
+    academy: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['academy', 'academies'],
+        hinsi: ['名詞'],
+        means: { 名詞: '学院、専門学校' },
+    },
+    academies: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['academy', 'academies'],
+        hinsi: ['名詞'],
+        means: { 名詞: '学院、専門学校' },
+    },
+    accident: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['accident', 'accidents'],
+        hinsi: ['名詞'],
+        means: { 名詞: '事故' },
+    },
+    accidents: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['accident', 'accidents'],
+        hinsi: ['名詞'],
+        means: { 名詞: '事故' },
+    },
+    action: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['action', 'actions'],
+        hinsi: ['名詞'],
+        means: { 名詞: '動き、演技' },
+    },
+    actions: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['action', 'actions'],
+        hinsi: ['名詞'],
+        means: { 名詞: '動き、演技' },
+    },
+    activity: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['activity', 'activities'],
+        hinsi: ['名詞'],
+        means: { 名詞: '活動' },
+    },
+    activities: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['activity', 'activities'],
+        hinsi: ['名詞'],
+        means: { 名詞: '活動' },
+    },
+    actor: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['actor', 'actors'],
+        hinsi: ['名詞'],
+        means: { 名詞: '俳優' },
+    },
+    actors: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['actor', 'actors'],
+        hinsi: ['名詞'],
+        means: { 名詞: '俳優' },
+    },
+    address: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['address', 'addresses'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'あて名、住所' },
+    },
+    addresses: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['address', 'addresses'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'あて名、住所' },
+    },
+    adult: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['adult', 'adults'],
+        hinsi: ['名詞'],
+        means: { 名詞: '大人、成人' },
+    },
+    adults: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['adult', 'adults'],
+        hinsi: ['名詞'],
+        means: { 名詞: '大人、成人' },
+    },
+    adventure: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['adventure', 'adventures'],
+        hinsi: ['名詞'],
+        means: { 名詞: '冒険' },
+    },
+    adventures: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['adventure', 'adventures'],
+        hinsi: ['名詞'],
+        means: { 名詞: '冒険' },
+    },
+    advertisement: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['advertisement', 'advertisements'],
+        hinsi: ['名詞'],
+        means: { 名詞: '広告、宣伝' },
+    },
+    advertisements: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['advertisement', 'advertisements'],
+        hinsi: ['名詞'],
+        means: { 名詞: '広告、宣伝' },
+    },
+    advice: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '忠告、助言、アドバイス' },
+    },
+    Africa: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'アフリカ、アフリカ大陸' },
+    },
+    afternoon: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['afternoon', 'afternoons'],
+        hinsi: ['名詞'],
+        means: { 名詞: '午後' },
+    },
+    afternoons: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['afternoon', 'afternoons'],
+        hinsi: ['名詞'],
+        means: { 名詞: '午後' },
+    },
+    age: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['age', 'ages'],
+        hinsi: ['名詞'],
+        means: { 名詞: '年齢、歳' },
+    },
+    ages: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['age', 'ages'],
+        hinsi: ['名詞'],
+        means: { 名詞: '年齢、歳' },
+    },
+    air: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '空中、空気' },
+    },
+    airport: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['airport', 'airports'],
+        hinsi: ['名詞'],
+        means: { 名詞: '空港' },
+    },
+    airports: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['airport', 'airports'],
+        hinsi: ['名詞'],
+        means: { 名詞: '空港' },
+    },
+    album: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['album', 'albums'],
+        hinsi: ['名詞'],
+        means: { 名詞: '(写真、ＣＤ、レコードなどの) アルバム' },
+    },
+    albums: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['album', 'albums'],
+        hinsi: ['名詞'],
+        means: { 名詞: '(写真、ＣＤ、レコードなどの) アルバム' },
+    },
+    ambulance: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['ambulance', 'ambulances'],
+        hinsi: ['名詞'],
+        means: { 名詞: '救急車' },
+    },
+    ambulances: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['ambulance', 'ambulances'],
+        hinsi: ['名詞'],
+        means: { 名詞: '救急車' },
+    },
+    America: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'アメリカ合衆国' },
+    },
+    American: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['American', 'Americans'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'アメリカ人、米国人' },
+    },
+    Americans: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['American', 'Americans'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'アメリカ人、米国人' },
+    },
+    ancestor: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['ancestor', 'ancestors'],
+        hinsi: ['名詞'],
+        means: { 名詞: '祖先、先祖' },
+    },
+    ancestors: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['ancestor', 'ancestors'],
+        hinsi: ['名詞'],
+        means: { 名詞: '祖先、先祖' },
+    },
+    animal: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['animal', 'animals'],
+        hinsi: ['名詞'],
+        means: { 名詞: '《植物に対して》 動物' },
+    },
+    animals: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['animal', 'animals'],
+        hinsi: ['名詞'],
+        means: { 名詞: '《植物に対して》 動物' },
+    },
+    animation: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['animation', 'animations'],
+        hinsi: ['名詞'],
+        means: { 名詞: '動画、アニメーション' },
+    },
+    animations: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['animation', 'animations'],
+        hinsi: ['名詞'],
+        means: { 名詞: '動画、アニメーション' },
+    },
+    anime: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '（日本の）アニメ' },
+    },
+    answer: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['answer', 'answers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '答え、応答、返事' },
+    },
+    answers: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['answer', 'answers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '答え、応答、返事' },
+    },
+    apartment: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['apartment', 'apartments'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'アパート' },
+    },
+    apartments: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['apartment', 'apartments'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'アパート' },
+    },
+    apple: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['apple', 'apples'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'リンゴ' },
+    },
+    apples: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['apple', 'apples'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'リンゴ' },
+    },
+    April: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '4月' },
+    },
+    aquarium: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['aquarium', 'aquariums'],
+        hinsi: ['名詞'],
+        means: { 名詞: '水族館' },
+    },
+    aquariums: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['aquarium', 'aquariums'],
+        hinsi: ['名詞'],
+        means: { 名詞: '水族館' },
+    },
+    architect: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['architect', 'architects'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（建物の）建設者、建築家' },
+    },
+    architects: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['architect', 'architects'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（建物の）建設者、建築家' },
+    },
+    area: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['area', 'areas'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（大小さまざまの）場所、区域、地域、地方' },
+    },
+    areas: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['area', 'areas'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（大小さまざまの）場所、区域、地域、地方' },
+    },
+    arena: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['arena', 'arenas'],
+        hinsi: ['名詞'],
+        means: { 名詞: '競技場、アリーナ' },
+    },
+    arenas: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['arena', 'arenas'],
+        hinsi: ['名詞'],
+        means: { 名詞: '競技場、アリーナ' },
+    },
+    arm: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['arm', 'arms'],
+        hinsi: ['名詞'],
+        means: { 名詞: '腕' },
+    },
+    arms: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['arm', 'arms'],
+        hinsi: ['名詞'],
+        means: { 名詞: '腕' },
+    },
+    arrest: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['arrest', 'arrests'],
+        hinsi: ['名詞'],
+        means: { 名詞: '逮捕' },
+    },
+    arrests: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['arrest', 'arrests'],
+        hinsi: ['名詞'],
+        means: { 名詞: '逮捕' },
+    },
+    art: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '美術、芸術' },
+    },
+    artist: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['artist', 'artists'],
+        hinsi: ['名詞'],
+        means: { 名詞: '芸術家' },
+    },
+    artists: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['artist', 'artists'],
+        hinsi: ['名詞'],
+        means: { 名詞: '芸術家' },
+    },
+    Asia: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'アジア（大陸）' },
+    },
+    astronaut: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['astronaut', 'astronauts'],
+        hinsi: ['名詞'],
+        means: { 名詞: '宇宙飛行士' },
+    },
+    astronauts: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['astronaut', 'astronauts'],
+        hinsi: ['名詞'],
+        means: { 名詞: '宇宙飛行士' },
+    },
+    attention: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '注意、注目' },
+    },
+    attitude: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['attitude', 'attitudes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '態度、考え方、見方' },
+    },
+    attitudes: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['attitude', 'attitudes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '態度、考え方、見方' },
+    },
+    audience: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['audience', 'audiences'],
+        hinsi: ['名詞'],
+        means: { 名詞: '聴衆、観客' },
+    },
+    audiences: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['audience', 'audiences'],
+        hinsi: ['名詞'],
+        means: { 名詞: '聴衆、観客' },
+    },
+    August: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '8月' },
+    },
+    aunt: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['aunt', 'aunts'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'おば、おばさん' },
+    },
+    aunts: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['aunt', 'aunts'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'おば、おばさん' },
+    },
+    Australia: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'オーストラリア' },
+    },
+    autumn: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '秋' },
+    },
+    baby: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['baby', 'babies'],
+        hinsi: ['名詞'],
+        means: { 名詞: '赤ちゃん' },
+    },
+    babies: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['baby', 'babies'],
+        hinsi: ['名詞'],
+        means: { 名詞: '赤ちゃん' },
+    },
+    backyard: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['backyard', 'backyards'],
+        hinsi: ['名詞'],
+        means: { 名詞: '裏庭' },
+    },
+    backyards: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['backyard', 'backyards'],
+        hinsi: ['名詞'],
+        means: { 名詞: '裏庭' },
+    },
+    bag: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['bag', 'bags'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'かばん、バッグ、袋' },
+    },
+    bags: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['bag', 'bags'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'かばん、バッグ、袋' },
+    },
+    balance: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['balance', 'balances'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'つり合い、バランス、（からだや心の）安定' },
+    },
+    balances: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['balance', 'balances'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'つり合い、バランス、（からだや心の）安定' },
+    },
+    ball: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['ball', 'balls'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ボール、球' },
+    },
+    balls: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['ball', 'balls'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ボール、球' },
+    },
+    balloon: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['balloon', 'balloons'],
+        hinsi: ['名詞'],
+        means: { 名詞: '風船' },
+    },
+    balloons: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['balloon', 'balloons'],
+        hinsi: ['名詞'],
+        means: { 名詞: '風船' },
+    },
+    bamboo: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '竹' },
+    },
+    banana: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['banana', 'bananas'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'バナナ' },
+    },
+    bananas: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['banana', 'bananas'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'バナナ' },
+    },
+    band: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['band', 'bands'],
+        hinsi: ['名詞'],
+        means: { 名詞: '楽団、バンド' },
+    },
+    bands: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['band', 'bands'],
+        hinsi: ['名詞'],
+        means: { 名詞: '楽団、バンド' },
+    },
+    bank: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['bank', 'banks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '銀行' },
+    },
+    banks: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['bank', 'banks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '銀行' },
+    },
+    barrier: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['barrier', 'barriers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '壁、障壁' },
+    },
+    barriers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['barrier', 'barriers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '壁、障壁' },
+    },
+    baseball: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '野球' },
+    },
+    basketball: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'バスケットボール' },
+    },
+    bat: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['bat', 'bats'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（野球の）バット' },
+    },
+    bats: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['bat', 'bats'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（野球の）バット' },
+    },
+    bath: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['bath', 'baths'],
+        hinsi: ['名詞'],
+        means: { 名詞: '入浴　  〔take a bath の形で〕 入浴する' },
+    },
+    baths: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['bath', 'baths'],
+        hinsi: ['名詞'],
+        means: { 名詞: '入浴　  〔take a bath の形で〕 入浴する' },
+    },
+    bathroom: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['bathroom', 'bathrooms'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'トイレ、浴室' },
+    },
+    bathrooms: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['bathroom', 'bathrooms'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'トイレ、浴室' },
+    },
+    beach: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['beach', 'beaches'],
+        hinsi: ['名詞'],
+        means: { 名詞: '浜、浜辺、海辺、なぎさ' },
+    },
+    beaches: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['beach', 'beaches'],
+        hinsi: ['名詞'],
+        means: { 名詞: '浜、浜辺、海辺、なぎさ' },
+    },
+    bear: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['bear', 'bears'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'クマ' },
+    },
+    bears: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['bear', 'bears'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'クマ' },
+    },
+    beauty: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '美しさ' },
+    },
+    bed: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['bed', 'beds'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ベッド 　〔go to bed の形で〕 寝る、床につく' },
+    },
+    beds: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['bed', 'beds'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ベッド 　〔go to bed の形で〕 寝る、床につく' },
+    },
+    bedroom: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['bedroom', 'bedrooms'],
+        hinsi: ['名詞'],
+        means: { 名詞: '寝室' },
+    },
+    bedrooms: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['bedroom', 'bedrooms'],
+        hinsi: ['名詞'],
+        means: { 名詞: '寝室' },
+    },
+    beef: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '牛肉' },
+    },
+    bell: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['bell', 'bells'],
+        hinsi: ['名詞'],
+        means: { 名詞: '鈴、鐘' },
+    },
+    bells: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['bell', 'bells'],
+        hinsi: ['名詞'],
+        means: { 名詞: '鈴、鐘' },
+    },
+    belt: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['belt', 'belts'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ベルト、（ズボンの）バンド、帯' },
+    },
+    belts: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['belt', 'belts'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ベルト、（ズボンの）バンド、帯' },
+    },
+    bench: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['bench', 'benches'],
+        hinsi: ['名詞'],
+        means: { 名詞: '長いす、ベンチ' },
+    },
+    benches: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['bench', 'benches'],
+        hinsi: ['名詞'],
+        means: { 名詞: '長いす、ベンチ' },
+    },
+    best: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '最高（のもの）' },
+    },
+    bicycle: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['bicycle', 'bicycles'],
+        hinsi: ['名詞'],
+        means: { 名詞: '自転車' },
+    },
+    bicycles: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['bicycle', 'bicycles'],
+        hinsi: ['名詞'],
+        means: { 名詞: '自転車' },
+    },
+    bike: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['bike', 'bikes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '自転車　　〔bicycle ともいう〕' },
+    },
+    bikes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['bike', 'bikes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '自転車　　〔bicycle ともいう〕' },
+    },
+    billion: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['billion', 'billions'],
+        hinsi: ['名詞'],
+        means: { 名詞: '10億' },
+    },
+    billions: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['billion', 'billions'],
+        hinsi: ['名詞'],
+        means: { 名詞: '10億' },
+    },
+    bird: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['bird', 'birds'],
+        hinsi: ['名詞'],
+        means: { 名詞: '鳥' },
+    },
+    birds: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['bird', 'birds'],
+        hinsi: ['名詞'],
+        means: { 名詞: '鳥' },
+    },
+    birthday: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['birthday', 'birthdays'],
+        hinsi: ['名詞'],
+        means: { 名詞: '誕生日' },
+    },
+    birthdays: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['birthday', 'birthdays'],
+        hinsi: ['名詞'],
+        means: { 名詞: '誕生日' },
+    },
+    blackboard: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['blackboard', 'blackboards'],
+        hinsi: ['名詞'],
+        means: { 名詞: '黒板' },
+    },
+    blackboards: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['blackboard', 'blackboards'],
+        hinsi: ['名詞'],
+        means: { 名詞: '黒板' },
+    },
+    block: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['block', 'blocks'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'かたまり、ブロック' },
+    },
+    blocks: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['block', 'blocks'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'かたまり、ブロック' },
+    },
+    blog: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['blog', 'blogs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '(コンピュータ)ブログ' },
+    },
+    blogs: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['blog', 'blogs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '(コンピュータ)ブログ' },
+    },
+    blossom: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['blossom', 'blossoms'],
+        hinsi: ['名詞'],
+        means: { 名詞: '(特に果樹の)花' },
+    },
+    blossoms: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['blossom', 'blossoms'],
+        hinsi: ['名詞'],
+        means: { 名詞: '(特に果樹の)花' },
+    },
+    blue: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '青' },
+    },
+    blueberry: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['blueberry', 'blueberries'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ブルーベリー' },
+    },
+    blueberries: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['blueberry', 'blueberries'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ブルーベリー' },
+    },
+    board: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['board', 'boards'],
+        hinsi: ['名詞'],
+        means: { 名詞: '板、掲示板、黒板' },
+    },
+    boards: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['board', 'boards'],
+        hinsi: ['名詞'],
+        means: { 名詞: '板、掲示板、黒板' },
+    },
+    boat: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['boat', 'boats'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ボート、小舟、船' },
+    },
+    boats: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['boat', 'boats'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ボート、小舟、船' },
+    },
+    body: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['body', 'bodies'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'からだ、肉体' },
+    },
+    bodies: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['body', 'bodies'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'からだ、肉体' },
+    },
+    bomb: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['bomb', 'bombs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '爆弾' },
+    },
+    bombs: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['bomb', 'bombs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '爆弾' },
+    },
+    book: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['book', 'books'],
+        hinsi: ['名詞'],
+        means: { 名詞: '本、書物' },
+    },
+    books: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['book', 'books'],
+        hinsi: ['名詞'],
+        means: { 名詞: '本、書物' },
+    },
+    bookcase: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['bookcase', 'bookcases'],
+        hinsi: ['名詞'],
+        means: { 名詞: '本箱' },
+    },
+    bookcases: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['bookcase', 'bookcases'],
+        hinsi: ['名詞'],
+        means: { 名詞: '本箱' },
+    },
+    bookstore: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['bookstore', 'bookstores'],
+        hinsi: ['名詞'],
+        means: { 名詞: '本屋、書店' },
+    },
+    bookstores: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['bookstore', 'bookstores'],
+        hinsi: ['名詞'],
+        means: { 名詞: '本屋、書店' },
+    },
+    border: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['border', 'borders'],
+        hinsi: ['名詞'],
+        means: { 名詞: '国境' },
+    },
+    borders: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['border', 'borders'],
+        hinsi: ['名詞'],
+        means: { 名詞: '国境' },
+    },
+    bottle: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['bottle', 'bottles'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'びん' },
+    },
+    bottles: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['bottle', 'bottles'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'びん' },
+    },
+    box: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['box', 'boxes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '箱' },
+    },
+    boxes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['box', 'boxes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '箱' },
+    },
+    boy: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['boy', 'boys'],
+        hinsi: ['名詞'],
+        means: { 名詞: '男の子、少年、青年' },
+    },
+    boys: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['boy', 'boys'],
+        hinsi: ['名詞'],
+        means: { 名詞: '男の子、少年、青年' },
+    },
+    Braille: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '点字' },
+    },
+    branch: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['branch', 'branches'],
+        hinsi: ['名詞'],
+        means: { 名詞: '支社' },
+    },
+    branches: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['branch', 'branches'],
+        hinsi: ['名詞'],
+        means: { 名詞: '支社' },
+    },
+    Brazil: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ブラジル' },
+    },
+    bread: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'パン' },
+    },
+    break: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['break', 'breaks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '休けい、中休み、中断' },
+    },
+    breaks: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['break', 'breaks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '休けい、中休み、中断' },
+    },
+    breakfast: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '朝食、朝ごはん' },
+    },
+    bridge: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['bridge', 'bridges'],
+        hinsi: ['名詞'],
+        means: { 名詞: '橋' },
+    },
+    bridges: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['bridge', 'bridges'],
+        hinsi: ['名詞'],
+        means: { 名詞: '橋' },
+    },
+    brightness: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '明るさ' },
+    },
+    British: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '英国人、イギリス人' },
+    },
+    brother: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['brother', 'brothers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '兄、弟、兄弟' },
+    },
+    brothers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['brother', 'brothers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '兄、弟、兄弟' },
+    },
+    brush: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['brush', 'brushes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '筆' },
+    },
+    brushes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['brush', 'brushes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '筆' },
+    },
+    bubble: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['bubble', 'bubbles'],
+        hinsi: ['名詞'],
+        means: { 名詞: '泡、あぶく' },
+    },
+    bubbles: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['bubble', 'bubbles'],
+        hinsi: ['名詞'],
+        means: { 名詞: '泡、あぶく' },
+    },
+    builder: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['builder', 'builders'],
+        hinsi: ['名詞'],
+        means: { 名詞: '建造者' },
+    },
+    builders: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['builder', 'builders'],
+        hinsi: ['名詞'],
+        means: { 名詞: '建造者' },
+    },
+    building: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['building', 'buildings'],
+        hinsi: ['名詞'],
+        means: { 名詞: '建物、ビル' },
+    },
+    buildings: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['building', 'buildings'],
+        hinsi: ['名詞'],
+        means: { 名詞: '建物、ビル' },
+    },
+    bump: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['bump', 'bumps'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'でこぼこ' },
+    },
+    bumps: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['bump', 'bumps'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'でこぼこ' },
+    },
+    burn: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['burn', 'burns'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'やけど' },
+    },
+    burns: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['burn', 'burns'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'やけど' },
+    },
+    bus: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['bus', 'buses'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'バス' },
+    },
+    buses: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['bus', 'buses'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'バス' },
+    },
+    business: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '商売、事業' },
+    },
+    butter: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'バター' },
+    },
+    button: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['button', 'buttons'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ボタン' },
+    },
+    buttons: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['button', 'buttons'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ボタン' },
+    },
+    buzzer: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['buzzer', 'buzzers'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ブザー' },
+    },
+    buzzers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['buzzer', 'buzzers'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ブザー' },
+    },
+    cacao: {
+        tags: ['不可算名詞', '単数形', '子音で始まる'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'カカオ（の実）' },
+    },
+    cafeteria: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['cafeteria', 'cafeterias'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'カフェテリア、学食' },
+    },
+    cafeterias: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['cafeteria', 'cafeterias'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'カフェテリア、学食' },
+    },
+    cake: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['cake', 'cakes'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ケーキ' },
+    },
+    cakes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['cake', 'cakes'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ケーキ' },
+    },
+    calendar: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['calendar', 'calendars'],
+        hinsi: ['名詞'],
+        means: { 名詞: '暦、カレンダー' },
+    },
+    calendars: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['calendar', 'calendars'],
+        hinsi: ['名詞'],
+        means: { 名詞: '暦、カレンダー' },
+    },
+    call: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['call', 'calls'],
+        hinsi: ['名詞'],
+        means: { 名詞: '電話(すること)' },
+    },
+    calls: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['call', 'calls'],
+        hinsi: ['名詞'],
+        means: { 名詞: '電話(すること)' },
+    },
+    calligraphy: {
+        tags: ['不可算名詞', '単数形', '子音で始まる'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '書道' },
+    },
+    Cambodia: {
+        tags: ['不可算名詞', '単数形', '子音で始まる'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'カンボジア' },
+    },
+    camera: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['camera', 'cameras'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'カメラ' },
+    },
+    cameras: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['camera', 'cameras'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'カメラ' },
+    },
+    can: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['can', 'cans'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（金属製の）缶' },
+    },
+    cans: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['can', 'cans'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（金属製の）缶' },
+    },
+    Canada: {
+        tags: ['不可算名詞', '単数形', '子音で始まる'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'カナダ' },
+    },
+    Canberra: {
+        tags: ['不可算名詞', '単数形', '子音で始まる'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'キャンベラ（オーストラリアの首都）' },
+    },
+    cap: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['cap', 'caps'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ぼうし 《つばがないか、つばが前だけにあるもの》' },
+    },
+    caps: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['cap', 'caps'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ぼうし 《つばがないか、つばが前だけにあるもの》' },
+    },
+    capital: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['capital', 'capitals'],
+        hinsi: ['名詞'],
+        means: { 名詞: '～の首都、中心地' },
+    },
+    capitals: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['capital', 'capitals'],
+        hinsi: ['名詞'],
+        means: { 名詞: '～の首都、中心地' },
+    },
+    captain: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['captain', 'captains'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（チームの）キャプテン' },
+    },
+    captains: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['captain', 'captains'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（チームの）キャプテン' },
+    },
+    car: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['car', 'cars'],
+        hinsi: ['名詞'],
+        means: { 名詞: '自動車、車' },
+    },
+    cars: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['car', 'cars'],
+        hinsi: ['名詞'],
+        means: { 名詞: '自動車、車' },
+    },
+    card: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['card', 'cards'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'カード、はがき、トランプの札　 〔たとえば play cards の形で〕 トランプをする' },
+    },
+    cards: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['card', 'cards'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'カード、はがき、トランプの札　 〔たとえば play cards の形で〕 トランプをする' },
+    },
+    cardboard: {
+        tags: ['不可算名詞', '単数形', '子音で始まる'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '段ボール、ボール紙' },
+    },
+    care: {
+        tags: ['不可算名詞', '単数形', '子音で始まる'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '世話　〔take care of ～の形で〕 ～の面倒をみる' },
+    },
+    career: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['career', 'careers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '職業、経歴' },
+    },
+    careers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['career', 'careers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '職業、経歴' },
+    },
+    carpenter: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['carpenter', 'carpenters'],
+        hinsi: ['名詞'],
+        means: { 名詞: '大工' },
+    },
+    carpenters: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['carpenter', 'carpenters'],
+        hinsi: ['名詞'],
+        means: { 名詞: '大工' },
+    },
+    carport: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['carport', 'carports'],
+        hinsi: ['名詞'],
+        means: { 名詞: '車庫、カーポート' },
+    },
+    carports: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['carport', 'carports'],
+        hinsi: ['名詞'],
+        means: { 名詞: '車庫、カーポート' },
+    },
+    carrot: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['carrot', 'carrots'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ニンジン' },
+    },
+    carrots: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['carrot', 'carrots'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ニンジン' },
+    },
+    case: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['case', 'cases'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ケース、箱、～入れ' },
+    },
+    cases: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['case', 'cases'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ケース、箱、～入れ' },
+    },
+    castle: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['castle', 'castles'],
+        hinsi: ['名詞'],
+        means: { 名詞: '城    〔たとえば Hirosaki Castle の形で〕 弘前城' },
+    },
+    castles: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['castle', 'castles'],
+        hinsi: ['名詞'],
+        means: { 名詞: '城    〔たとえば Hirosaki Castle の形で〕 弘前城' },
+    },
+    cat: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['cat', 'cats'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ネコ' },
+    },
+    cats: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['cat', 'cats'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ネコ' },
+    },
+    catalog: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['catalog', 'catalogs'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'カタログ' },
+    },
+    catalogs: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['catalog', 'catalogs'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'カタログ' },
+    },
+    catch: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['catch', 'catches'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（ボールなどを）とらえること、キャッチボール　　〔play catch の形で〕　キャッチボールをする' },
+    },
+    catches: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['catch', 'catches'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（ボールなどを）とらえること、キャッチボール　　〔play catch の形で〕　キャッチボールをする' },
+    },
+    cause: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['cause', 'causes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '原因' },
+    },
+    causes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['cause', 'causes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '原因' },
+    },
+    cave: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['cave', 'caves'],
+        hinsi: ['名詞'],
+        means: { 名詞: '洞窟、ほら穴、横穴' },
+    },
+    caves: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['cave', 'caves'],
+        hinsi: ['名詞'],
+        means: { 名詞: '洞窟、ほら穴、横穴' },
+    },
+    CD: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['CD', 'CDs'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'CD、コンパクトディスク  〔compact disc ［disk］の略〕' },
+    },
+    CDs: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['CD', 'CDs'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'CD、コンパクトディスク  〔compact disc ［disk］の略〕' },
+    },
+    ceiling: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['ceiling', 'ceilings'],
+        hinsi: ['名詞'],
+        means: { 名詞: '天井' },
+    },
+    ceilings: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['ceiling', 'ceilings'],
+        hinsi: ['名詞'],
+        means: { 名詞: '天井' },
+    },
+    cent: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['cent', 'cents'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'セント（アメリカ合衆国の通貨。100 cents = 1 dollar）' },
+    },
+    cents: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['cent', 'cents'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'セント（アメリカ合衆国の通貨。100 cents = 1 dollar）' },
+    },
+    center: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['center', 'centers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '中心、中央、真ん中' },
+    },
+    centers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['center', 'centers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '中心、中央、真ん中' },
+    },
+    century: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['century', 'centuries'],
+        hinsi: ['名詞'],
+        means: { 名詞: '世紀、100年' },
+    },
+    centuries: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['century', 'centuries'],
+        hinsi: ['名詞'],
+        means: { 名詞: '世紀、100年' },
+    },
+    chair: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['chair', 'chairs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（１人用で、背もたれのある） 椅子' },
+    },
+    chairs: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['chair', 'chairs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（１人用で、背もたれのある） 椅子' },
+    },
+    challenge: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['challenge', 'challenges'],
+        hinsi: ['名詞'],
+        means: { 名詞: '挑戦、やりがい' },
+    },
+    challenges: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['challenge', 'challenges'],
+        hinsi: ['名詞'],
+        means: { 名詞: '挑戦、やりがい' },
+    },
+    champion: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['champion', 'champions'],
+        hinsi: ['名詞'],
+        means: { 名詞: '優勝者、選手権保持者、チャンピオン' },
+    },
+    champions: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['champion', 'champions'],
+        hinsi: ['名詞'],
+        means: { 名詞: '優勝者、選手権保持者、チャンピオン' },
+    },
+    championship: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['championship', 'championships'],
+        hinsi: ['名詞'],
+        means: { 名詞: '選手権（大会）、優勝' },
+    },
+    championships: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['championship', 'championships'],
+        hinsi: ['名詞'],
+        means: { 名詞: '選手権（大会）、優勝' },
+    },
+    chance: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['chance', 'chances'],
+        hinsi: ['名詞'],
+        means: { 名詞: '機会、可能性、チャンス' },
+    },
+    chances: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['chance', 'chances'],
+        hinsi: ['名詞'],
+        means: { 名詞: '機会、可能性、チャンス' },
+    },
+    change: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['change', 'changes'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'おつり、つり銭、小銭' },
+    },
+    changes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['change', 'changes'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'おつり、つり銭、小銭' },
+    },
+    character: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['character', 'characters'],
+        hinsi: ['名詞'],
+        means: { 名詞: '(人の)性格、人格、(物の)特色' },
+    },
+    characters: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['character', 'characters'],
+        hinsi: ['名詞'],
+        means: { 名詞: '(人の)性格、人格、(物の)特色' },
+    },
+    charity: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['charity', 'charities'],
+        hinsi: ['名詞'],
+        means: { 名詞: '慈善、チャリティー、慈善団体' },
+    },
+    charities: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['charity', 'charities'],
+        hinsi: ['名詞'],
+        means: { 名詞: '慈善、チャリティー、慈善団体' },
+    },
+    chart: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['chart', 'charts'],
+        hinsi: ['名詞'],
+        means: { 名詞: '図表' },
+    },
+    charts: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['chart', 'charts'],
+        hinsi: ['名詞'],
+        means: { 名詞: '図表' },
+    },
+    cheese: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'チーズ' },
+    },
+    cheeseburger: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['cheeseburger', 'cheeseburgers'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'チーズバーガー' },
+    },
+    cheeseburgers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['cheeseburger', 'cheeseburgers'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'チーズバーガー' },
+    },
+    chef: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['chef', 'chefs'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'シェフ、コック長' },
+    },
+    chefs: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['chef', 'chefs'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'シェフ、コック長' },
+    },
+    cherry: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['cherry', 'cherries'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'サクランボ、サクラ（の木）' },
+    },
+    cherries: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['cherry', 'cherries'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'サクランボ、サクラ（の木）' },
+    },
+    chess: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'チェス' },
+    },
+    chest: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['chest', 'chests'],
+        hinsi: ['名詞'],
+        means: { 名詞: '胸' },
+    },
+    chests: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['chest', 'chests'],
+        hinsi: ['名詞'],
+        means: { 名詞: '胸' },
+    },
+    child: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['child', 'children'],
+        hinsi: ['名詞'],
+        means: { 名詞: '子ども' },
+    },
+    children: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['child', 'children'],
+        hinsi: ['名詞'],
+        means: { 名詞: '子ども' },
+    },
+    childhood: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '幼少時代' },
+    },
+    chimney: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['chimney', 'chimneys'],
+        hinsi: ['名詞'],
+        means: { 名詞: '煙突' },
+    },
+    chimneys: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['chimney', 'chimneys'],
+        hinsi: ['名詞'],
+        means: { 名詞: '煙突' },
+    },
+    China: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '中国' },
+    },
+    Chinese: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '中国語、中国人' },
+    },
+    chocolate: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'チョコレート' },
+    },
+    choice: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['choice', 'choices'],
+        hinsi: ['名詞'],
+        means: { 名詞: '選ぶこと、選択、選ぶ自由' },
+    },
+    choices: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['choice', 'choices'],
+        hinsi: ['名詞'],
+        means: { 名詞: '選ぶこと、選択、選ぶ自由' },
+    },
+    chorus: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['chorus', 'choruses'],
+        hinsi: ['名詞'],
+        means: { 名詞: '合唱' },
+    },
+    choruses: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['chorus', 'choruses'],
+        hinsi: ['名詞'],
+        means: { 名詞: '合唱' },
+    },
+    Christmas: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'クリスマス' },
+    },
+    church: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['church', 'churches'],
+        hinsi: ['名詞'],
+        means: { 名詞: '教会' },
+    },
+    churches: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['church', 'churches'],
+        hinsi: ['名詞'],
+        means: { 名詞: '教会' },
+    },
+    circle: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['circle', 'circles'],
+        hinsi: ['名詞'],
+        means: { 名詞: '円' },
+    },
+    circles: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['circle', 'circles'],
+        hinsi: ['名詞'],
+        means: { 名詞: '円' },
+    },
+    city: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['city', 'cities'],
+        hinsi: ['名詞'],
+        means: { 名詞: '市、都市、都会   〔city hall の形で〕 市役所' },
+    },
+    cities: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['city', 'cities'],
+        hinsi: ['名詞'],
+        means: { 名詞: '市、都市、都会   〔city hall の形で〕 市役所' },
+    },
+    class: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['class', 'classes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '授業' },
+    },
+    classes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['class', 'classes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '授業' },
+    },
+    classmate: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['classmate', 'classmates'],
+        hinsi: ['名詞'],
+        means: { 名詞: '同級生、クラスメート、級友' },
+    },
+    classmates: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['classmate', 'classmates'],
+        hinsi: ['名詞'],
+        means: { 名詞: '同級生、クラスメート、級友' },
+    },
+    classroom: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['classroom', 'classrooms'],
+        hinsi: ['名詞'],
+        means: { 名詞: '教室' },
+    },
+    classrooms: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['classroom', 'classrooms'],
+        hinsi: ['名詞'],
+        means: { 名詞: '教室' },
+    },
+    clerk: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['clerk', 'clerks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '係員、店員、係' },
+    },
+    clerks: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['clerk', 'clerks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '係員、店員、係' },
+    },
+    climate: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '気候' },
+    },
+    clock: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['clock', 'clocks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '時計《置時計、掛け時計・柱時計》' },
+    },
+    clocks: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['clock', 'clocks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '時計《置時計、掛け時計・柱時計》' },
+    },
+    cloth: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '布' },
+    },
+    cloud: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['cloud', 'clouds'],
+        hinsi: ['名詞'],
+        means: { 名詞: '雲' },
+    },
+    clouds: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['cloud', 'clouds'],
+        hinsi: ['名詞'],
+        means: { 名詞: '雲' },
+    },
+    club: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['club', 'clubs'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'クラブ、部' },
+    },
+    clubs: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['club', 'clubs'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'クラブ、部' },
+    },
+    coach: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['coach', 'coaches'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'コーチ' },
+    },
+    coaches: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['coach', 'coaches'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'コーチ' },
+    },
+    coat: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['coat', 'coats'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'コート、上着' },
+    },
+    coats: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['coat', 'coats'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'コート、上着' },
+    },
+    coffee: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'コーヒー' },
+    },
+    coin: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['coin', 'coins'],
+        hinsi: ['名詞'],
+        means: { 名詞: '硬貨、コイン' },
+    },
+    coins: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['coin', 'coins'],
+        hinsi: ['名詞'],
+        means: { 名詞: '硬貨、コイン' },
+    },
+    cola: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['cola', 'colas'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'コーラ' },
+    },
+    colas: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['cola', 'colas'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'コーラ' },
+    },
+    cold: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'かぜ　〔have a cold の形で〕 かぜをひいている' },
+    },
+    college: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['college', 'colleges'],
+        hinsi: ['名詞'],
+        means: { 名詞: '大学' },
+    },
+    colleges: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['college', 'colleges'],
+        hinsi: ['名詞'],
+        means: { 名詞: '大学' },
+    },
+    color: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['color', 'colors'],
+        hinsi: ['名詞'],
+        means: { 名詞: '色、肌の色' },
+    },
+    colors: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['color', 'colors'],
+        hinsi: ['名詞'],
+        means: { 名詞: '色、肌の色' },
+    },
+    comic: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['comic', 'comics'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'マンガ' },
+    },
+    comics: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['comic', 'comics'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'マンガ' },
+    },
+    comment: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['comment', 'comments'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'コメント' },
+    },
+    comments: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['comment', 'comments'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'コメント' },
+    },
+    communication: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'コミュニケーション、意思伝達、情報の伝達' },
+    },
+    community: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['community', 'communities'],
+        hinsi: ['名詞'],
+        means: { 名詞: '地域社会' },
+    },
+    communities: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['community', 'communities'],
+        hinsi: ['名詞'],
+        means: { 名詞: '地域社会' },
+    },
+    company: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['company', 'companies'],
+        hinsi: ['名詞'],
+        means: { 名詞: '会社' },
+    },
+    companies: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['company', 'companies'],
+        hinsi: ['名詞'],
+        means: { 名詞: '会社' },
+    },
+    compartment: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['compartment', 'compartments'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'もの入れ' },
+    },
+    compartments: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['compartment', 'compartments'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'もの入れ' },
+    },
+    computer: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['computer', 'computers'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'コンピュータ' },
+    },
+    computers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['computer', 'computers'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'コンピュータ' },
+    },
+    concert: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['concert', 'concerts'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'コンサート、演奏会、音楽会' },
+    },
+    concerts: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['concert', 'concerts'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'コンサート、演奏会、音楽会' },
+    },
+    conclusion: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['conclusion', 'conclusions'],
+        hinsi: ['名詞'],
+        means: { 名詞: '結論' },
+    },
+    conclusions: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['conclusion', 'conclusions'],
+        hinsi: ['名詞'],
+        means: { 名詞: '結論' },
+    },
+    condition: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['condition', 'conditions'],
+        hinsi: ['名詞'],
+        means: { 名詞: '状態、容態、環境、状況' },
+    },
+    conditions: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['condition', 'conditions'],
+        hinsi: ['名詞'],
+        means: { 名詞: '状態、容態、環境、状況' },
+    },
+    conditioner: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['conditioner', 'conditioners'],
+        hinsi: ['名詞'],
+        means: { 名詞: '冷暖房装置　〔air conditioner で〕エアコン' },
+    },
+    conditioners: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['conditioner', 'conditioners'],
+        hinsi: ['名詞'],
+        means: { 名詞: '冷暖房装置　〔air conditioner で〕エアコン' },
+    },
+    condominium: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['condominium', 'condominiums'],
+        hinsi: ['名詞'],
+        means: { 名詞: '分譲マンション' },
+    },
+    condominiums: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['condominium', 'condominiums'],
+        hinsi: ['名詞'],
+        means: { 名詞: '分譲マンション' },
+    },
+    conference: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['conference', 'conferences'],
+        hinsi: ['名詞'],
+        means: { 名詞: '会議、会談、協議' },
+    },
+    conferences: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['conference', 'conferences'],
+        hinsi: ['名詞'],
+        means: { 名詞: '会議、会談、協議' },
+    },
+    connection: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['connection', 'connections'],
+        hinsi: ['名詞'],
+        means: { 名詞: '接続（すること）、つながり、関係' },
+    },
+    connections: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['connection', 'connections'],
+        hinsi: ['名詞'],
+        means: { 名詞: '接続（すること）、つながり、関係' },
+    },
+    content: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '内容、中身' },
+    },
+    contest: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['contest', 'contests'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'コンテスト、コンクール' },
+    },
+    contests: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['contest', 'contests'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'コンテスト、コンクール' },
+    },
+    control: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '制御　〔out of controlで〕制御しきれなくなって' },
+    },
+    convenience: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '便利なこと（もの）' },
+    },
+    cook: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['cook', 'cooks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '料理をする人' },
+    },
+    cooks: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['cook', 'cooks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '料理をする人' },
+    },
+    cooking: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '料理' },
+    },
+    corner: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['corner', 'corners'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（道路の）曲がり角' },
+    },
+    corners: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['corner', 'corners'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（道路の）曲がり角' },
+    },
+    costume: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['costume', 'costumes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '服装、衣装、コスチューム' },
+    },
+    costumes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['costume', 'costumes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '服装、衣装、コスチューム' },
+    },
+    cotton: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '綿' },
+    },
+    cough: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['cough', 'coughs'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'せき' },
+    },
+    coughs: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['cough', 'coughs'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'せき' },
+    },
+    country: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['country', 'countries'],
+        hinsi: ['名詞'],
+        means: { 名詞: '国' },
+    },
+    countries: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['country', 'countries'],
+        hinsi: ['名詞'],
+        means: { 名詞: '国' },
+    },
+    courage: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '勇気' },
+    },
+    course: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['course', 'courses'],
+        hinsi: ['名詞'],
+        means: { 名詞: '〔Of course.の形で〕 もちろん' },
+    },
+    courses: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['course', 'courses'],
+        hinsi: ['名詞'],
+        means: { 名詞: '〔Of course.の形で〕 もちろん' },
+    },
+    court: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['court', 'courts'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（テニスなどの）コート' },
+    },
+    courts: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['court', 'courts'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（テニスなどの）コート' },
+    },
+    cousin: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['cousin', 'cousins'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'いとこ' },
+    },
+    cousins: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['cousin', 'cousins'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'いとこ' },
+    },
+    cow: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['cow', 'cows'],
+        hinsi: ['名詞'],
+        means: { 名詞: '牛（雌牛、乳牛）' },
+    },
+    cows: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['cow', 'cows'],
+        hinsi: ['名詞'],
+        means: { 名詞: '牛（雌牛、乳牛）' },
+    },
+    cracker: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['cracker', 'crackers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（菓子の）クラッカー' },
+    },
+    crackers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['cracker', 'crackers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（菓子の）クラッカー' },
+    },
+    craftsperson: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['craftsperson', 'craftspeople'],
+        hinsi: ['名詞'],
+        means: { 名詞: '職人' },
+    },
+    craftspeople: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['craftsperson', 'craftspeople'],
+        hinsi: ['名詞'],
+        means: { 名詞: '職人' },
+    },
+    crane: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['crane', 'cranes'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ツル' },
+    },
+    cranes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['crane', 'cranes'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ツル' },
+    },
+    creativity: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '創造性[力]、独創[力]' },
+    },
+    culture: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '文化、土壌、習慣、風習、知的産物' },
+    },
+    cup: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['cup', 'cups'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（紅茶・コーヒー用などの）カップ、茶わん、賞杯' },
+    },
+    cups: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['cup', 'cups'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（紅茶・コーヒー用などの）カップ、茶わん、賞杯' },
+    },
+    curry: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['curry', 'curries'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'カレー、カレー料理' },
+    },
+    curries: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['curry', 'curries'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'カレー、カレー料理' },
+    },
+    cushion: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['cushion', 'cushions'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ざぶとん、クッション' },
+    },
+    cushions: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['cushion', 'cushions'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ざぶとん、クッション' },
+    },
+    custom: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['custom', 'customs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '風習、習慣' },
+    },
+    customs: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['custom', 'customs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '風習、習慣' },
+    },
+    customer: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['customer', 'customers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '客、顧客' },
+    },
+    customers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['customer', 'customers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '客、顧客' },
+    },
+    cycling: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'サイクリング' },
+    },
+    dad: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['dad', 'dads'],
+        hinsi: ['名詞'],
+        means: {
+            名詞: 'パパ、お父さん　《家庭内で子どもが父親を呼ぶのに使う。呼びかけの時にはしばしば大文字で始めて Dad とする。》',
+        },
+    },
+    dads: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['dad', 'dads'],
+        hinsi: ['名詞'],
+        means: {
+            名詞: 'パパ、お父さん　《家庭内で子どもが父親を呼ぶのに使う。呼びかけの時にはしばしば大文字で始めて Dad とする。》',
+        },
+    },
+    dance: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['dance', 'dances'],
+        hinsi: ['名詞'],
+        means: { 名詞: '踊り、ダンス' },
+    },
+    dances: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['dance', 'dances'],
+        hinsi: ['名詞'],
+        means: { 名詞: '踊り、ダンス' },
+    },
+    dancer: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['dancer', 'dancers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '踊る人、舞踏家、ダンサー' },
+    },
+    dancers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['dancer', 'dancers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '踊る人、舞踏家、ダンサー' },
+    },
+    danger: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '危険（な状態）' },
+    },
+    date: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['date', 'dates'],
+        hinsi: ['名詞'],
+        means: { 名詞: '日付、月日、日時' },
+    },
+    dates: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['date', 'dates'],
+        hinsi: ['名詞'],
+        means: { 名詞: '日付、月日、日時' },
+    },
+    daughter: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['daughter', 'daughters'],
+        hinsi: ['名詞'],
+        means: { 名詞: '娘' },
+    },
+    daughters: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['daughter', 'daughters'],
+        hinsi: ['名詞'],
+        means: { 名詞: '娘' },
+    },
+    day: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['day', 'days'],
+        hinsi: ['名詞'],
+        means: { 名詞: '日、1日' },
+    },
+    days: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['day', 'days'],
+        hinsi: ['名詞'],
+        means: { 名詞: '日、1日' },
+    },
+    death: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '死、死亡' },
+    },
+    decade: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['decade', 'decades'],
+        hinsi: ['名詞'],
+        means: { 名詞: '10年間' },
+    },
+    decades: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['decade', 'decades'],
+        hinsi: ['名詞'],
+        means: { 名詞: '10年間' },
+    },
+    December: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '12月' },
+    },
+    decision: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['decision', 'decisions'],
+        hinsi: ['名詞'],
+        means: { 名詞: '決断' },
+    },
+    decisions: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['decision', 'decisions'],
+        hinsi: ['名詞'],
+        means: { 名詞: '決断' },
+    },
+    democracy: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '民主主義' },
+    },
+    demonstration: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['demonstration', 'demonstrations'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（集会・行進などによる〕デモ、デモンストレーション' },
+    },
+    demonstrations: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['demonstration', 'demonstrations'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（集会・行進などによる〕デモ、デモンストレーション' },
+    },
+    dentist: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['dentist', 'dentists'],
+        hinsi: ['名詞'],
+        means: { 名詞: '歯医者' },
+    },
+    dentists: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['dentist', 'dentists'],
+        hinsi: ['名詞'],
+        means: { 名詞: '歯医者' },
+    },
+    design: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['design', 'designs'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'デザイン、設計' },
+    },
+    designs: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['design', 'designs'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'デザイン、設計' },
+    },
+    designer: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['designer', 'designers'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'デザイナー、設計者' },
+    },
+    designers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['designer', 'designers'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'デザイナー、設計者' },
+    },
+    desk: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['desk', 'desks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '机' },
+    },
+    desks: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['desk', 'desks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '机' },
+    },
+    diary: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['diary', 'diaries'],
+        hinsi: ['名詞'],
+        means: { 名詞: '日記、日記帳' },
+    },
+    diaries: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['diary', 'diaries'],
+        hinsi: ['名詞'],
+        means: { 名詞: '日記、日記帳' },
+    },
+    dictionary: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['dictionary', 'dictionaries'],
+        hinsi: ['名詞'],
+        means: { 名詞: '辞書' },
+    },
+    dictionaries: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['dictionary', 'dictionaries'],
+        hinsi: ['名詞'],
+        means: { 名詞: '辞書' },
+    },
+    difference: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['difference', 'differences'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ちがい、相違（点）、差' },
+    },
+    differences: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['difference', 'differences'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ちがい、相違（点）、差' },
+    },
+    difficulty: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '苦しさ、困難、苦労' },
+    },
+    dining: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '食事' },
+    },
+    dinner: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ディナー、夕食' },
+    },
+    dinosaur: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['dinosaur', 'dinosaurs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '恐竜' },
+    },
+    dinosaurs: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['dinosaur', 'dinosaurs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '恐竜' },
+    },
+    director: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['director', 'directors'],
+        hinsi: ['名詞'],
+        means: { 名詞: '(映画)監督' },
+    },
+    directors: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['director', 'directors'],
+        hinsi: ['名詞'],
+        means: { 名詞: '(映画)監督' },
+    },
+    disaster: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['disaster', 'disasters'],
+        hinsi: ['名詞'],
+        means: { 名詞: '災害' },
+    },
+    disasters: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['disaster', 'disasters'],
+        hinsi: ['名詞'],
+        means: { 名詞: '災害' },
+    },
+    discount: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['discount', 'discounts'],
+        hinsi: ['名詞'],
+        means: { 名詞: '割引' },
+    },
+    discounts: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['discount', 'discounts'],
+        hinsi: ['名詞'],
+        means: { 名詞: '割引' },
+    },
+    disease: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '病気' },
+    },
+    dish: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['dish', 'dishes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '皿、食器類' },
+    },
+    dishes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['dish', 'dishes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '皿、食器類' },
+    },
+    doctor: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['doctor', 'doctors'],
+        hinsi: ['名詞'],
+        means: { 名詞: '医者、医師、博士' },
+    },
+    doctors: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['doctor', 'doctors'],
+        hinsi: ['名詞'],
+        means: { 名詞: '医者、医師、博士' },
+    },
+    dog: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['dog', 'dogs'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'イヌ' },
+    },
+    dogs: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['dog', 'dogs'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'イヌ' },
+    },
+    dollar: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['dollar', 'dollars'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ドル　　　《米国・カナダなどの貨幣で、1ドルは100セント》' },
+    },
+    dollars: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['dollar', 'dollars'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ドル　　　《米国・カナダなどの貨幣で、1ドルは100セント》' },
+    },
+    dolphin: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['dolphin', 'dolphins'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'イルカ' },
+    },
+    dolphins: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['dolphin', 'dolphins'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'イルカ' },
+    },
+    dome: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['dome', 'domes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '丸屋根、ドーム' },
+    },
+    domes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['dome', 'domes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '丸屋根、ドーム' },
+    },
+    donut: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['donut', 'donuts'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ドーナツ' },
+    },
+    donuts: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['donut', 'donuts'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ドーナツ' },
+    },
+    door: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['door', 'doors'],
+        hinsi: ['名詞'],
+        means: { 名詞: '戸、ドア、戸口、玄関' },
+    },
+    doors: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['door', 'doors'],
+        hinsi: ['名詞'],
+        means: { 名詞: '戸、ドア、戸口、玄関' },
+    },
+    dot: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['dot', 'dots'],
+        hinsi: ['名詞'],
+        means: { 名詞: '点' },
+    },
+    dots: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['dot', 'dots'],
+        hinsi: ['名詞'],
+        means: { 名詞: '点' },
+    },
+    drama: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['drama', 'dramas'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（テレビの）ドラマ、劇' },
+    },
+    dramas: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['drama', 'dramas'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（テレビの）ドラマ、劇' },
+    },
+    dream: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['dream', 'dreams'],
+        hinsi: ['名詞'],
+        means: { 名詞: '夢、希望、理想' },
+    },
+    dreams: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['dream', 'dreams'],
+        hinsi: ['名詞'],
+        means: { 名詞: '夢、希望、理想' },
+    },
+    dress: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['dress', 'dresses'],
+        hinsi: ['名詞'],
+        means: { 名詞: '衣装、ドレス' },
+    },
+    dresses: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['dress', 'dresses'],
+        hinsi: ['名詞'],
+        means: { 名詞: '衣装、ドレス' },
+    },
+    driftwood: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '流木' },
+    },
+    drill: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['drill', 'drills'],
+        hinsi: ['名詞'],
+        means: { 名詞: '訓練' },
+    },
+    drills: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['drill', 'drills'],
+        hinsi: ['名詞'],
+        means: { 名詞: '訓練' },
+    },
+    drink: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['drink', 'drinks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '飲み物　　〔たとえば soft drinks の形で〕清涼（せいりょう）飲料' },
+    },
+    drinks: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['drink', 'drinks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '飲み物　　〔たとえば soft drinks の形で〕清涼（せいりょう）飲料' },
+    },
+    driver: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['driver', 'drivers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（車を）運転する人、運転手' },
+    },
+    drivers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['driver', 'drivers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（車を）運転する人、運転手' },
+    },
+    driveway: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['driveway', 'driveways'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（道から車庫または玄関までの）車道' },
+    },
+    driveways: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['driveway', 'driveways'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（道から車庫または玄関までの）車道' },
+    },
+    drop: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['drop', 'drops'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'しずく' },
+    },
+    drops: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['drop', 'drops'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'しずく' },
+    },
+    drugstore: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['drugstore', 'drugstores'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ドラッグストア、薬局' },
+    },
+    drugstores: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['drugstore', 'drugstores'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ドラッグストア、薬局' },
+    },
+    drum: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['drum', 'drums'],
+        hinsi: ['名詞'],
+        means: { 名詞: '太鼓、ドラム' },
+    },
+    drums: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['drum', 'drums'],
+        hinsi: ['名詞'],
+        means: { 名詞: '太鼓、ドラム' },
+    },
+    duck: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['duck', 'ducks'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'カモ、アヒル' },
+    },
+    ducks: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['duck', 'ducks'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'カモ、アヒル' },
+    },
+    DVD: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['DVD', 'DVDs'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'デジタルビデオディスク　〔digital video disc ［disk］の略〕' },
+    },
+    DVDs: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['DVD', 'DVDs'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'デジタルビデオディスク　〔digital video disc ［disk］の略〕' },
+    },
+    ear: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['ear', 'ears'],
+        hinsi: ['名詞'],
+        means: { 名詞: '耳' },
+    },
+    ears: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['ear', 'ears'],
+        hinsi: ['名詞'],
+        means: { 名詞: '耳' },
+    },
+    earth: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '地球　〔the をつけないで、Earth と大文字ではじめることもある〕' },
+    },
+    earthquake: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['earthquake', 'earthquakes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '地震' },
+    },
+    earthquakes: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['earthquake', 'earthquakes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '地震' },
+    },
+    east: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '東' },
+    },
+    effort: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '努力' },
+    },
+    egg: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['egg', 'eggs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '卵、玉子' },
+    },
+    eggs: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['egg', 'eggs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '卵、玉子' },
+    },
+    eight: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '8' },
+    },
+    eighteen: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '18' },
+    },
+    eighteenth: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '18番め、（月の）18日' },
+    },
+    eighth: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '8番め、（月の）8日' },
+    },
+    eighty: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '80' },
+    },
+    electricity: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '電気' },
+    },
+    elephant: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['elephant', 'elephants'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ゾウ' },
+    },
+    elephants: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['elephant', 'elephants'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ゾウ' },
+    },
+    elevator: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['elevator', 'elevators'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'エレベーター' },
+    },
+    elevators: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['elevator', 'elevators'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'エレベーター' },
+    },
+    eleven: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '11' },
+    },
+    eleventh: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '11番め、（月の）１１日' },
+    },
+    emergency: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['emergency', 'emergencies'],
+        hinsi: ['名詞'],
+        means: { 名詞: '緊急事態、非常時' },
+    },
+    emergencies: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['emergency', 'emergencies'],
+        hinsi: ['名詞'],
+        means: { 名詞: '緊急事態、非常時' },
+    },
+    end: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['end', 'ends'],
+        hinsi: ['名詞'],
+        means: { 名詞: '終わり、最後、端' },
+    },
+    ends: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['end', 'ends'],
+        hinsi: ['名詞'],
+        means: { 名詞: '終わり、最後、端' },
+    },
+    ending: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['ending', 'endings'],
+        hinsi: ['名詞'],
+        means: { 名詞: '終わり、結末、エンディング' },
+    },
+    endings: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['ending', 'endings'],
+        hinsi: ['名詞'],
+        means: { 名詞: '終わり、結末、エンディング' },
+    },
+    energy: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'エネルギー' },
+    },
+    engineer: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['engineer', 'engineers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '技師、エンジニア' },
+    },
+    engineers: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['engineer', 'engineers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '技師、エンジニア' },
+    },
+    engineering: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '工学' },
+    },
+    England: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'イングランド' },
+    },
+    English: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '英語' },
+    },
+    entertainment: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '娯楽' },
+    },
+    entrance: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['entrance', 'entrances'],
+        hinsi: ['名詞'],
+        means: { 名詞: '入り口、玄関' },
+    },
+    entrances: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['entrance', 'entrances'],
+        hinsi: ['名詞'],
+        means: { 名詞: '入り口、玄関' },
+    },
+    environment: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['environment', 'environments'],
+        hinsi: ['名詞'],
+        means: { 名詞: '環境' },
+    },
+    environments: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['environment', 'environments'],
+        hinsi: ['名詞'],
+        means: { 名詞: '環境' },
+    },
+    era: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['era', 'eras'],
+        hinsi: ['名詞'],
+        means: { 名詞: '時代　〔Nara era で〕奈良時代' },
+    },
+    eras: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['era', 'eras'],
+        hinsi: ['名詞'],
+        means: { 名詞: '時代　〔Nara era で〕奈良時代' },
+    },
+    eraser: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['eraser', 'erasers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '消しゴム' },
+    },
+    erasers: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['eraser', 'erasers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '消しゴム' },
+    },
+    Europe: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ヨーロッパ' },
+    },
+    evacuation: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '避難' },
+    },
+    evening: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '夕方、晩、夜  《通例、日没から寝る時間までを言う》' },
+    },
+    event: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['event', 'events'],
+        hinsi: ['名詞'],
+        means: { 名詞: '行事、出来事、イベント' },
+    },
+    events: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['event', 'events'],
+        hinsi: ['名詞'],
+        means: { 名詞: '行事、出来事、イベント' },
+    },
+    exam: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['exam', 'exams'],
+        hinsi: ['名詞'],
+        means: { 名詞: '試験' },
+    },
+    exams: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['exam', 'exams'],
+        hinsi: ['名詞'],
+        means: { 名詞: '試験' },
+    },
+    example: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['example', 'examples'],
+        hinsi: ['名詞'],
+        means: { 名詞: '例、実例　〔for example の形で〕たとえば' },
+    },
+    examples: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['example', 'examples'],
+        hinsi: ['名詞'],
+        means: { 名詞: '例、実例　〔for example の形で〕たとえば' },
+    },
+    exhibition: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['exhibition', 'exhibitions'],
+        hinsi: ['名詞'],
+        means: { 名詞: '展覧会' },
+    },
+    exhibitions: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['exhibition', 'exhibitions'],
+        hinsi: ['名詞'],
+        means: { 名詞: '展覧会' },
+    },
+    experience: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '経験' },
+    },
+    expert: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['expert', 'experts'],
+        hinsi: ['名詞'],
+        means: { 名詞: '専門家、エキスパート' },
+    },
+    experts: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['expert', 'experts'],
+        hinsi: ['名詞'],
+        means: { 名詞: '専門家、エキスパート' },
+    },
+    express: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['express', 'expresses'],
+        hinsi: ['名詞'],
+        means: { 名詞: '急行列車、速達便' },
+    },
+    expresses: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['express', 'expresses'],
+        hinsi: ['名詞'],
+        means: { 名詞: '急行列車、速達便' },
+    },
+    expression: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '表現、言い回し、（顔などの）表情' },
+    },
+    eye: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['eye', 'eyes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '目、視力、視線' },
+    },
+    eyes: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['eye', 'eyes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '目、視力、視線' },
+    },
+    eyesight: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '視力' },
+    },
+    face: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['face', 'faces'],
+        hinsi: ['名詞'],
+        means: { 名詞: '顔、表情' },
+    },
+    faces: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['face', 'faces'],
+        hinsi: ['名詞'],
+        means: { 名詞: '顔、表情' },
+    },
+    facility: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['facility', 'facilities'],
+        hinsi: ['名詞'],
+        means: { 名詞: '設備、施設' },
+    },
+    facilities: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['facility', 'facilities'],
+        hinsi: ['名詞'],
+        means: { 名詞: '設備、施設' },
+    },
+    fact: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['fact', 'facts'],
+        hinsi: ['名詞'],
+        means: { 名詞: '事実' },
+    },
+    facts: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['fact', 'facts'],
+        hinsi: ['名詞'],
+        means: { 名詞: '事実' },
+    },
+    fall: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['fall', 'falls'],
+        hinsi: ['名詞'],
+        means: { 名詞: '秋' },
+    },
+    falls: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['fall', 'falls'],
+        hinsi: ['名詞'],
+        means: { 名詞: '秋' },
+    },
+    family: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['family', 'families'],
+        hinsi: ['名詞'],
+        means: { 名詞: '家族、一家、家族の者たち' },
+    },
+    families: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['family', 'families'],
+        hinsi: ['名詞'],
+        means: { 名詞: '家族、一家、家族の者たち' },
+    },
+    fan: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['fan', 'fans'],
+        hinsi: ['名詞'],
+        means: { 名詞: ' (スポーツなどの) ファン' },
+    },
+    fans: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['fan', 'fans'],
+        hinsi: ['名詞'],
+        means: { 名詞: ' (スポーツなどの) ファン' },
+    },
+    farewell: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['farewell', 'farewells'],
+        hinsi: ['名詞'],
+        means: { 名詞: '別れ' },
+    },
+    farewells: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['farewell', 'farewells'],
+        hinsi: ['名詞'],
+        means: { 名詞: '別れ' },
+    },
+    farm: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['farm', 'farms'],
+        hinsi: ['名詞'],
+        means: { 名詞: '農場、農園' },
+    },
+    farms: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['farm', 'farms'],
+        hinsi: ['名詞'],
+        means: { 名詞: '農場、農園' },
+    },
+    farmer: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['farmer', 'farmers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '農家、農業をする人、農業主、農業経営者' },
+    },
+    farmers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['farmer', 'farmers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '農家、農業をする人、農業主、農業経営者' },
+    },
+    farming: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '農業、農場経営' },
+    },
+    fashion: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '流行、はやり、ファッション、流行の服装' },
+    },
+    fate: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '運命' },
+    },
+    father: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['father', 'fathers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '父、お父さん' },
+    },
+    fathers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['father', 'fathers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '父、お父さん' },
+    },
+    favor: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['favor', 'favors'],
+        hinsi: ['名詞'],
+        means: { 名詞: '親切な行為　〔ask … a favor で〕　…にお願いする' },
+    },
+    favors: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['favor', 'favors'],
+        hinsi: ['名詞'],
+        means: { 名詞: '親切な行為　〔ask … a favor で〕　…にお願いする' },
+    },
+    favorite: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['favorite', 'favorites'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'お気に入りのもの［人］' },
+    },
+    favorites: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['favorite', 'favorites'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'お気に入りのもの［人］' },
+    },
+    February: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['February', 'Februarys'],
+        hinsi: ['名詞'],
+        means: { 名詞: '2月' },
+    },
+    Februarys: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['February', 'Februarys'],
+        hinsi: ['名詞'],
+        means: { 名詞: '2月' },
+    },
+    fee: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['fee', 'fees'],
+        hinsi: ['名詞'],
+        means: { 名詞: '料金、入場料' },
+    },
+    fees: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['fee', 'fees'],
+        hinsi: ['名詞'],
+        means: { 名詞: '料金、入場料' },
+    },
+    feeling: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['feeling', 'feelings'],
+        hinsi: ['名詞'],
+        means: { 名詞: '感情、考え、感覚' },
+    },
+    feelings: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['feeling', 'feelings'],
+        hinsi: ['名詞'],
+        means: { 名詞: '感情、考え、感覚' },
+    },
+    fence: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['fence', 'fences'],
+        hinsi: ['名詞'],
+        means: { 名詞: '垣根' },
+    },
+    fences: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['fence', 'fences'],
+        hinsi: ['名詞'],
+        means: { 名詞: '垣根' },
+    },
+    festival: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['festival', 'festivals'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'お祭り、祭典　　〔たとえば the Aomori Nebuta Festival の形で〕 青森ねぶた祭り' },
+    },
+    festivals: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['festival', 'festivals'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'お祭り、祭典　　〔たとえば the Aomori Nebuta Festival の形で〕 青森ねぶた祭り' },
+    },
+    fever: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '熱' },
+    },
+    fiction: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '小説、フィクション' },
+    },
+    field: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['field', 'fields'],
+        hinsi: ['名詞'],
+        means: { 名詞: '運動場、フィールド、野原、畑、田、牧草地' },
+    },
+    fields: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['field', 'fields'],
+        hinsi: ['名詞'],
+        means: { 名詞: '運動場、フィールド、野原、畑、田、牧草地' },
+    },
+    fifteen: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '15' },
+    },
+    fifteenth: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['fifteenth', 'fifteenths'],
+        hinsi: ['名詞'],
+        means: { 名詞: '15番め、（月の）15日' },
+    },
+    fifteenths: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['fifteenth', 'fifteenths'],
+        hinsi: ['名詞'],
+        means: { 名詞: '15番め、（月の）15日' },
+    },
+    fifth: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['fifth', 'fifths'],
+        hinsi: ['名詞'],
+        means: { 名詞: '5番め、（月の）5日' },
+    },
+    fifths: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['fifth', 'fifths'],
+        hinsi: ['名詞'],
+        means: { 名詞: '5番め、（月の）5日' },
+    },
+    fifty: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '50' },
+    },
+    fight: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['fight', 'fights'],
+        hinsi: ['名詞'],
+        means: { 名詞: '戦い、口げんか' },
+    },
+    fights: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['fight', 'fights'],
+        hinsi: ['名詞'],
+        means: { 名詞: '戦い、口げんか' },
+    },
+    film: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['film', 'films'],
+        hinsi: ['名詞'],
+        means: { 名詞: '映画' },
+    },
+    films: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['film', 'films'],
+        hinsi: ['名詞'],
+        means: { 名詞: '映画' },
+    },
+    finger: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['finger', 'fingers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '(手の) 指' },
+    },
+    fingers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['finger', 'fingers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '(手の) 指' },
+    },
+    Finland: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'フィンランド' },
+    },
+    fire: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '火' },
+    },
+    fireplace: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['fireplace', 'fireplaces'],
+        hinsi: ['名詞'],
+        means: { 名詞: '暖炉' },
+    },
+    fireplaces: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['fireplace', 'fireplaces'],
+        hinsi: ['名詞'],
+        means: { 名詞: '暖炉' },
+    },
+    firewood: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'まき、たきぎ' },
+    },
+    firework: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['firework', 'fireworks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '花火' },
+    },
+    fireworks: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['firework', 'fireworks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '花火' },
+    },
+    fish: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '魚' },
+    },
+    flash: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['flash', 'flashes'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ぱっと発する光、(撮影用の)フラッシュ' },
+    },
+    flashes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['flash', 'flashes'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ぱっと発する光、(撮影用の)フラッシュ' },
+    },
+    flight: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['flight', 'flights'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'フライト、飛行機旅行' },
+    },
+    flights: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['flight', 'flights'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'フライト、飛行機旅行' },
+    },
+    float: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['float', 'floats'],
+        hinsi: ['名詞'],
+        means: { 名詞: '山車' },
+    },
+    floats: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['float', 'floats'],
+        hinsi: ['名詞'],
+        means: { 名詞: '山車' },
+    },
+    floor: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['floor', 'floors'],
+        hinsi: ['名詞'],
+        means: { 名詞: '床（ゆか）' },
+    },
+    floors: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['floor', 'floors'],
+        hinsi: ['名詞'],
+        means: { 名詞: '床（ゆか）' },
+    },
+    flower: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['flower', 'flowers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '花、草花' },
+    },
+    flowers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['flower', 'flowers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '花、草花' },
+    },
+    flute: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['flute', 'flutes'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'フルート' },
+    },
+    flutes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['flute', 'flutes'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'フルート' },
+    },
+    food: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '食べ物、食糧' },
+    },
+    foot: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['foot', 'feet'],
+        hinsi: ['名詞'],
+        means: { 名詞: '足 《足首から下の部分》' },
+    },
+    feet: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['foot', 'feet'],
+        hinsi: ['名詞'],
+        means: { 名詞: '足 《足首から下の部分》' },
+    },
+    football: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'フットボール(用のボール)、サッカー(用のボール)、アメリカンフットボール(用のボール)' },
+    },
+    forest: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['forest', 'forests'],
+        hinsi: ['名詞'],
+        means: { 名詞: '森、森林' },
+    },
+    forests: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['forest', 'forests'],
+        hinsi: ['名詞'],
+        means: { 名詞: '森、森林' },
+    },
+    fork: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['fork', 'forks'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'フォーク' },
+    },
+    forks: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['fork', 'forks'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'フォーク' },
+    },
+    forty: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '40' },
+    },
+    four: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '4' },
+    },
+    fourteen: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '14' },
+    },
+    fourth: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['fourth', 'fourths'],
+        hinsi: ['名詞'],
+        means: { 名詞: '4番め、（月の）4日' },
+    },
+    fourths: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['fourth', 'fourths'],
+        hinsi: ['名詞'],
+        means: { 名詞: '4番め、（月の）4日' },
+    },
+    fox: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['fox', 'foxes'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'キツネ' },
+    },
+    foxes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['fox', 'foxes'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'キツネ' },
+    },
+    France: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'フランス' },
+    },
+    freedom: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '自由' },
+    },
+    French: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'フランス語' },
+    },
+    Friday: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['Friday', 'Fridays'],
+        hinsi: ['名詞'],
+        means: { 名詞: '金曜日' },
+    },
+    Fridays: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['Friday', 'Fridays'],
+        hinsi: ['名詞'],
+        means: { 名詞: '金曜日' },
+    },
+    fridge: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['fridge', 'fridges'],
+        hinsi: ['名詞'],
+        means: { 名詞: '冷蔵庫' },
+    },
+    fridges: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['fridge', 'fridges'],
+        hinsi: ['名詞'],
+        means: { 名詞: '冷蔵庫' },
+    },
+    friend: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['friend', 'friends'],
+        hinsi: ['名詞'],
+        means: { 名詞: '友達、友人' },
+    },
+    friends: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['friend', 'friends'],
+        hinsi: ['名詞'],
+        means: { 名詞: '友達、友人' },
+    },
+    friendship: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '友情、友愛、親交' },
+    },
+    front: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['front', 'fronts'],
+        hinsi: ['名詞'],
+        means: { 名詞: '前面、前部、前　　〔in front of ～の形で〕～の前に' },
+    },
+    fronts: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['front', 'fronts'],
+        hinsi: ['名詞'],
+        means: { 名詞: '前面、前部、前　　〔in front of ～の形で〕～の前に' },
+    },
+    fruit: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '果物、フルーツ' },
+    },
+    fuel: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '燃料' },
+    },
+    fun: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '楽しいこと、面白いこと、楽しさ' },
+    },
+    furniture: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '家具' },
+    },
+    futon: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['futon', 'futons'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'フトン、ソファーベッド' },
+    },
+    futons: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['futon', 'futons'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'フトン、ソファーベッド' },
+    },
+    future: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '未来、将来' },
+    },
+    game: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['game', 'games'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（一定のルールを持った）ゲーム、遊び' },
+    },
+    games: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['game', 'games'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（一定のルールを持った）ゲーム、遊び' },
+    },
+    garbage: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '生ごみ、くず' },
+    },
+    garden: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['garden', 'gardens'],
+        hinsi: ['名詞'],
+        means: { 名詞: '庭、庭園' },
+    },
+    gardens: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['garden', 'gardens'],
+        hinsi: ['名詞'],
+        means: { 名詞: '庭、庭園' },
+    },
+    gas: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '気体' },
+    },
+    gate: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['gate', 'gates'],
+        hinsi: ['名詞'],
+        means: { 名詞: '門、出入口' },
+    },
+    gates: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['gate', 'gates'],
+        hinsi: ['名詞'],
+        means: { 名詞: '門、出入口' },
+    },
+    generation: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['generation', 'generations'],
+        hinsi: ['名詞'],
+        means: { 名詞: '世代、同世代の人々' },
+    },
+    generations: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['generation', 'generations'],
+        hinsi: ['名詞'],
+        means: { 名詞: '世代、同世代の人々' },
+    },
+    gentleman: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['gentleman', 'gentlemen'],
+        hinsi: ['名詞'],
+        means: { 名詞: '紳士' },
+    },
+    gentlemen: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['gentleman', 'gentlemen'],
+        hinsi: ['名詞'],
+        means: { 名詞: '紳士' },
+    },
+    ger: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['ger', 'gers'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ゲル（モンゴルの伝統的な移動式住居）' },
+    },
+    gers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['ger', 'gers'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ゲル（モンゴルの伝統的な移動式住居）' },
+    },
+    German: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['German', 'Germans'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ドイツ語' },
+    },
+    Germans: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['German', 'Germans'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ドイツ語' },
+    },
+    Germany: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ドイツ' },
+    },
+    gesture: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['gesture', 'gestures'],
+        hinsi: ['名詞'],
+        means: { 名詞: '身ぶり、ジェスチャー' },
+    },
+    gestures: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['gesture', 'gestures'],
+        hinsi: ['名詞'],
+        means: { 名詞: '身ぶり、ジェスチャー' },
+    },
+    Ghana: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ガーナ' },
+    },
+    gift: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['gift', 'gifts'],
+        hinsi: ['名詞'],
+        means: { 名詞: '贈り物' },
+    },
+    gifts: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['gift', 'gifts'],
+        hinsi: ['名詞'],
+        means: { 名詞: '贈り物' },
+    },
+    girl: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['girl', 'girls'],
+        hinsi: ['名詞'],
+        means: { 名詞: '女の子、少女' },
+    },
+    girls: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['girl', 'girls'],
+        hinsi: ['名詞'],
+        means: { 名詞: '女の子、少女' },
+    },
+    glacier: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['glacier', 'glaciers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '氷河' },
+    },
+    glaciers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['glacier', 'glaciers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '氷河' },
+    },
+    glove: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['glove', 'gloves'],
+        hinsi: ['名詞'],
+        means: { 名詞: '手袋' },
+    },
+    gloves: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['glove', 'gloves'],
+        hinsi: ['名詞'],
+        means: { 名詞: '手袋' },
+    },
+    goal: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['goal', 'goals'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ゴール、決勝点' },
+    },
+    goals: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['goal', 'goals'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ゴール、決勝点' },
+    },
+    goalball: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ゴールボール《３人ずつの２チームで音の出るボールを用いて行う球技》' },
+    },
+    God: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['God', 'Gods'],
+        hinsi: ['名詞'],
+        means: { 名詞: '神' },
+    },
+    Gods: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['God', 'Gods'],
+        hinsi: ['名詞'],
+        means: { 名詞: '神' },
+    },
+    gold: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '金' },
+    },
+    goodness: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '善良さ、親切' },
+    },
+    government: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['government', 'governments'],
+        hinsi: ['名詞'],
+        means: { 名詞: '政府' },
+    },
+    governments: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['government', 'governments'],
+        hinsi: ['名詞'],
+        means: { 名詞: '政府' },
+    },
+    grade: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['grade', 'grades'],
+        hinsi: ['名詞'],
+        means: { 名詞: '学年' },
+    },
+    grades: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['grade', 'grades'],
+        hinsi: ['名詞'],
+        means: { 名詞: '学年' },
+    },
+    granddaughter: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['granddaughter', 'granddaughters'],
+        hinsi: ['名詞'],
+        means: { 名詞: '孫娘、女の孫' },
+    },
+    granddaughters: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['granddaughter', 'granddaughters'],
+        hinsi: ['名詞'],
+        means: { 名詞: '孫娘、女の孫' },
+    },
+    grandfather: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['grandfather', 'grandfathers'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'おじいさん，祖父' },
+    },
+    grandfathers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['grandfather', 'grandfathers'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'おじいさん，祖父' },
+    },
+    grandmother: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['grandmother', 'grandmothers'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'おばあさん、祖母' },
+    },
+    grandmothers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['grandmother', 'grandmothers'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'おばあさん、祖母' },
+    },
+    grandson: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['grandson', 'grandsons'],
+        hinsi: ['名詞'],
+        means: { 名詞: '孫息子' },
+    },
+    grandsons: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['grandson', 'grandsons'],
+        hinsi: ['名詞'],
+        means: { 名詞: '孫息子' },
+    },
+    grape: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['grape', 'grapes'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ブドウ' },
+    },
+    grapes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['grape', 'grapes'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ブドウ' },
+    },
+    grass: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '草' },
+    },
+    gray: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '灰色、ねずみ色' },
+    },
+    Greece: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ギリシャ' },
+    },
+    green: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '緑（色）' },
+    },
+    greeting: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['greeting', 'greetings'],
+        hinsi: ['名詞'],
+        means: { 名詞: '挨拶' },
+    },
+    greetings: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['greeting', 'greetings'],
+        hinsi: ['名詞'],
+        means: { 名詞: '挨拶' },
+    },
+    ground: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '地面、大地' },
+    },
+    group: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['group', 'groups'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'グループ、団体' },
+    },
+    groups: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['group', 'groups'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'グループ、団体' },
+    },
+    guide: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['guide', 'guides'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（旅行などの）人、ガイド' },
+    },
+    guides: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['guide', 'guides'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（旅行などの）人、ガイド' },
+    },
+    guitar: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['guitar', 'guitars'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ギター' },
+    },
+    guitars: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['guitar', 'guitars'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ギター' },
+    },
+    gun: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['gun', 'guns'],
+        hinsi: ['名詞'],
+        means: { 名詞: '銃' },
+    },
+    guns: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['gun', 'guns'],
+        hinsi: ['名詞'],
+        means: { 名詞: '銃' },
+    },
+    gym: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['gym', 'gyms'],
+        hinsi: ['名詞'],
+        means: { 名詞: '体育館、ジム' },
+    },
+    gyms: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['gym', 'gyms'],
+        hinsi: ['名詞'],
+        means: { 名詞: '体育館、ジム' },
+    },
+    habit: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['habit', 'habits'],
+        hinsi: ['名詞'],
+        means: { 名詞: '習慣、くせ' },
+    },
+    habits: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['habit', 'habits'],
+        hinsi: ['名詞'],
+        means: { 名詞: '習慣、くせ' },
+    },
+    habitat: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['habitat', 'habitats'],
+        hinsi: ['名詞'],
+        means: { 名詞: '生息地' },
+    },
+    habitats: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['habitat', 'habitats'],
+        hinsi: ['名詞'],
+        means: { 名詞: '生息地' },
+    },
+    hair: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '毛、髪の毛' },
+    },
+    half: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['half', 'halves'],
+        hinsi: ['名詞'],
+        means: { 名詞: '半分' },
+    },
+    halves: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['half', 'halves'],
+        hinsi: ['名詞'],
+        means: { 名詞: '半分' },
+    },
+    hall: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['hall', 'halls'],
+        hinsi: ['名詞'],
+        means: { 名詞: '会館、役所　〔city hallの形で〕市役所' },
+    },
+    halls: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['hall', 'halls'],
+        hinsi: ['名詞'],
+        means: { 名詞: '会館、役所　〔city hallの形で〕市役所' },
+    },
+    hallway: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['hallway', 'hallways'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（ビルなどの）廊下、通路' },
+    },
+    hallways: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['hallway', 'hallways'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（ビルなどの）廊下、通路' },
+    },
+    ham: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ハム' },
+    },
+    hamburger: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['hamburger', 'hamburgers'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ハンバーガー' },
+    },
+    hamburgers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['hamburger', 'hamburgers'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ハンバーガー' },
+    },
+    hand: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['hand', 'hands'],
+        hinsi: ['名詞'],
+        means: { 名詞: '手' },
+    },
+    hands: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['hand', 'hands'],
+        hinsi: ['名詞'],
+        means: { 名詞: '手' },
+    },
+    handle: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['handle', 'handles'],
+        hinsi: ['名詞'],
+        means: { 名詞: '取っ手、柄' },
+    },
+    handles: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['handle', 'handles'],
+        hinsi: ['名詞'],
+        means: { 名詞: '取っ手、柄' },
+    },
+    handout: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['handout', 'handouts'],
+        hinsi: ['名詞'],
+        means: { 名詞: '配付印刷物、ビラ、プリント' },
+    },
+    handouts: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['handout', 'handouts'],
+        hinsi: ['名詞'],
+        means: { 名詞: '配付印刷物、ビラ、プリント' },
+    },
+    happiness: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '幸福' },
+    },
+    hardship: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '苦難' },
+    },
+    harvest: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '収穫' },
+    },
+    hatred: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '憎しみ' },
+    },
+    Hawaii: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ハワイ（太平洋にある米国の州、州都はホノルル）' },
+    },
+    hawk: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['hawk', 'hawks'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'タカ' },
+    },
+    hawks: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['hawk', 'hawks'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'タカ' },
+    },
+    head: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['head', 'heads'],
+        hinsi: ['名詞'],
+        means: { 名詞: '頭、頭部' },
+    },
+    heads: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['head', 'heads'],
+        hinsi: ['名詞'],
+        means: { 名詞: '頭、頭部' },
+    },
+    headache: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['headache', 'headaches'],
+        hinsi: ['名詞'],
+        means: { 名詞: '頭痛' },
+    },
+    headaches: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['headache', 'headaches'],
+        hinsi: ['名詞'],
+        means: { 名詞: '頭痛' },
+    },
+    health: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '健康' },
+    },
+    heart: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['heart', 'hearts'],
+        hinsi: ['名詞'],
+        means: { 名詞: '心' },
+    },
+    hearts: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['heart', 'hearts'],
+        hinsi: ['名詞'],
+        means: { 名詞: '心' },
+    },
+    heat: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '熱' },
+    },
+    heater: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['heater', 'heaters'],
+        hinsi: ['名詞'],
+        means: { 名詞: '暖房器具' },
+    },
+    heaters: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['heater', 'heaters'],
+        hinsi: ['名詞'],
+        means: { 名詞: '暖房器具' },
+    },
+    help: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '助け､援助' },
+    },
+    here: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ここ、この場所' },
+    },
+    heritage: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '（祖先から伝わる精神的・文化的）遺産' },
+    },
+    hero: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['hero', 'heroes'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ヒーロー、英雄' },
+    },
+    heroes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['hero', 'heroes'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ヒーロー、英雄' },
+    },
+    highlight: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['highlight', 'highlights'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ハイライト、見せ場' },
+    },
+    highlights: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['highlight', 'highlights'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ハイライト、見せ場' },
+    },
+    hill: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['hill', 'hills'],
+        hinsi: ['名詞'],
+        means: { 名詞: '丘、小山' },
+    },
+    hills: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['hill', 'hills'],
+        hinsi: ['名詞'],
+        means: { 名詞: '丘、小山' },
+    },
+    history: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '歴史' },
+    },
+    hit: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['hit', 'hits'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ヒット（曲）' },
+    },
+    hits: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['hit', 'hits'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ヒット（曲）' },
+    },
+    hobby: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['hobby', 'hobbies'],
+        hinsi: ['名詞'],
+        means: { 名詞: '趣味' },
+    },
+    hobbies: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['hobby', 'hobbies'],
+        hinsi: ['名詞'],
+        means: { 名詞: '趣味' },
+    },
+    hole: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['hole', 'holes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '穴' },
+    },
+    holes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['hole', 'holes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '穴' },
+    },
+    holiday: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['holiday', 'holidays'],
+        hinsi: ['名詞'],
+        means: { 名詞: '休日、祝日' },
+    },
+    holidays: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['holiday', 'holidays'],
+        hinsi: ['名詞'],
+        means: { 名詞: '休日、祝日' },
+    },
+    home: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['home', 'homes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '家、家庭' },
+    },
+    homes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['home', 'homes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '家、家庭' },
+    },
+    homeland: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['homeland', 'homelands'],
+        hinsi: ['名詞'],
+        means: { 名詞: '本国、母国' },
+    },
+    homelands: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['homeland', 'homelands'],
+        hinsi: ['名詞'],
+        means: { 名詞: '本国、母国' },
+    },
+    homestay: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['homestay', 'homestays'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ホームステイ' },
+    },
+    homestays: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['homestay', 'homestays'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ホームステイ' },
+    },
+    hometown: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['hometown', 'hometowns'],
+        hinsi: ['名詞'],
+        means: { 名詞: '故郷' },
+    },
+    hometowns: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['hometown', 'hometowns'],
+        hinsi: ['名詞'],
+        means: { 名詞: '故郷' },
+    },
+    homework: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '宿題' },
+    },
+    honesty: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '正直（であること）、誠実さ' },
+    },
+    hope: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '希望、望' },
+    },
+    horizon: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['horizon', 'horizons'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（人の）視野' },
+    },
+    horizons: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['horizon', 'horizons'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（人の）視野' },
+    },
+    horse: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['horse', 'horses'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ウマ' },
+    },
+    horses: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['horse', 'horses'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ウマ' },
+    },
+    hospital: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['hospital', 'hospitals'],
+        hinsi: ['名詞'],
+        means: { 名詞: '病院、総合病院' },
+    },
+    hospitals: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['hospital', 'hospitals'],
+        hinsi: ['名詞'],
+        means: { 名詞: '病院、総合病院' },
+    },
+    host: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['host', 'hosts'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（客を接待する）主人（役）' },
+    },
+    hosts: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['host', 'hosts'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（客を接待する）主人（役）' },
+    },
+    hotel: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['hotel', 'hotels'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ホテル' },
+    },
+    hotels: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['hotel', 'hotels'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ホテル' },
+    },
+    hour: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['hour', 'hours'],
+        hinsi: ['名詞'],
+        means: { 名詞: '１時間' },
+    },
+    hours: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['hour', 'hours'],
+        hinsi: ['名詞'],
+        means: { 名詞: '１時間' },
+    },
+    house: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['house', 'houses'],
+        hinsi: ['名詞'],
+        means: { 名詞: '家、住宅' },
+    },
+    houses: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['house', 'houses'],
+        hinsi: ['名詞'],
+        means: { 名詞: '家、住宅' },
+    },
+    hula: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'フラ（ダンス）〈ハワイの民族舞踊〉' },
+    },
+    human: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['human', 'humans'],
+        hinsi: ['名詞'],
+        means: { 名詞: '人、人間' },
+    },
+    humans: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['human', 'humans'],
+        hinsi: ['名詞'],
+        means: { 名詞: '人、人間' },
+    },
+    humor: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ユーモア' },
+    },
+    hundred: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['hundred', 'hundreds'],
+        hinsi: ['名詞'],
+        means: { 名詞: '100' },
+    },
+    hundreds: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['hundred', 'hundreds'],
+        hinsi: ['名詞'],
+        means: { 名詞: '100' },
+    },
+    hunter: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['hunter', 'hunters'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ハンター、猟師' },
+    },
+    hunters: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['hunter', 'hunters'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ハンター、猟師' },
+    },
+    hunting: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'さがし求めること' },
+    },
+    husband: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['husband', 'husbands'],
+        hinsi: ['名詞'],
+        means: { 名詞: '夫' },
+    },
+    husbands: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['husband', 'husbands'],
+        hinsi: ['名詞'],
+        means: { 名詞: '夫' },
+    },
+    hymn: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['hymn', 'hymns'],
+        hinsi: ['名詞'],
+        means: { 名詞: '賛美歌' },
+    },
+    hymns: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['hymn', 'hymns'],
+        hinsi: ['名詞'],
+        means: { 名詞: '賛美歌' },
+    },
+    ice: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '氷' },
+    },
+    idea: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['idea', 'ideas'],
+        hinsi: ['名詞'],
+        means: { 名詞: '考え、思いつき、アイディア' },
+    },
+    ideas: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['idea', 'ideas'],
+        hinsi: ['名詞'],
+        means: { 名詞: '考え、思いつき、アイディア' },
+    },
+    image: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['image', 'images'],
+        hinsi: ['名詞'],
+        means: { 名詞: '像、イメージ画像、絵' },
+    },
+    images: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['image', 'images'],
+        hinsi: ['名詞'],
+        means: { 名詞: '像、イメージ画像、絵' },
+    },
+    importance: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '重要性、重大さ、大切さ' },
+    },
+    India: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'インド' },
+    },
+    industry: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '工業' },
+    },
+    information: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '情報' },
+    },
+    injury: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['injury', 'injuries'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'けが、不調' },
+    },
+    injuries: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['injury', 'injuries'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'けが、不調' },
+    },
+    ink: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'インク' },
+    },
+    insect: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['insect', 'insects'],
+        hinsi: ['名詞'],
+        means: { 名詞: '昆虫' },
+    },
+    insects: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['insect', 'insects'],
+        hinsi: ['名詞'],
+        means: { 名詞: '昆虫' },
+    },
+    insult: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['insult', 'insults'],
+        hinsi: ['名詞'],
+        means: { 名詞: '屈辱' },
+    },
+    insults: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['insult', 'insults'],
+        hinsi: ['名詞'],
+        means: { 名詞: '屈辱' },
+    },
+    interest: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '興味、関心' },
+    },
+    Internet: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'インターネット' },
+    },
+    interpreter: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['interpreter', 'interpreters'],
+        hinsi: ['名詞'],
+        means: { 名詞: '通訳者' },
+    },
+    interpreters: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['interpreter', 'interpreters'],
+        hinsi: ['名詞'],
+        means: { 名詞: '通訳者' },
+    },
+    interview: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['interview', 'interviews'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'インタビュー、会見、面接' },
+    },
+    interviews: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['interview', 'interviews'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'インタビュー、会見、面接' },
+    },
+    interviewer: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['interviewer', 'interviewers'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'インタビューする人、インタビュワー、面接官' },
+    },
+    interviewers: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['interviewer', 'interviewers'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'インタビューする人、インタビュワー、面接官' },
+    },
+    island: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['island', 'islands'],
+        hinsi: ['名詞'],
+        means: { 名詞: '島' },
+    },
+    islands: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['island', 'islands'],
+        hinsi: ['名詞'],
+        means: { 名詞: '島' },
+    },
+    jacket: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['jacket', 'jackets'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ジャケット、上着' },
+    },
+    jackets: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['jacket', 'jackets'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ジャケット、上着' },
+    },
+    January: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '１月' },
+    },
+    Japan: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '日本' },
+    },
+    Japanese: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '日本、日本人、日本語、（教科の日本語にとっての）国語' },
+    },
+    job: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['job', 'jobs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '仕事、職務' },
+    },
+    jobs: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['job', 'jobs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '仕事、職務' },
+    },
+    joke: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['joke', 'jokes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '冗談、しゃれ' },
+    },
+    jokes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['joke', 'jokes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '冗談、しゃれ' },
+    },
+    Jones: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ジョーンズ(姓）' },
+    },
+    journalist: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['journalist', 'journalists'],
+        hinsi: ['名詞'],
+        means: { 名詞: '記者、ジャーナリスト' },
+    },
+    journalists: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['journalist', 'journalists'],
+        hinsi: ['名詞'],
+        means: { 名詞: '記者、ジャーナリスト' },
+    },
+    joy: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '喜び' },
+    },
+    Judy: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ジュディ〔女性名〕' },
+    },
+    juice: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ジュース' },
+    },
+    July: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '７月' },
+    },
+    June: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '６月' },
+    },
+    jungle: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['jungle', 'jungles'],
+        hinsi: ['名詞'],
+        means: { 名詞: '〔ふつうthe～で〕(熱帯地方の)密林、ジャングル' },
+    },
+    jungles: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['jungle', 'jungles'],
+        hinsi: ['名詞'],
+        means: { 名詞: '〔ふつうthe～で〕(熱帯地方の)密林、ジャングル' },
+    },
+    justice: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '正義、正しさ、公平' },
+    },
+    kangaroo: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['kangaroo', 'kangaroos'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'カンガルー' },
+    },
+    kangaroos: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['kangaroo', 'kangaroos'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'カンガルー' },
+    },
+    karaoke: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'カラオケ' },
+    },
+    Kenya: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ケニヤ(アフリカ東部にある共和国）' },
+    },
+    key: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['key', 'keys'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'かぎ' },
+    },
+    keys: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['key', 'keys'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'かぎ' },
+    },
+    keyhole: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['keyhole', 'keyholes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '鍵穴' },
+    },
+    keyholes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['keyhole', 'keyholes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '鍵穴' },
+    },
+    kid: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['kid', 'kids'],
+        hinsi: ['名詞'],
+        means: { 名詞: '子ども' },
+    },
+    kids: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['kid', 'kids'],
+        hinsi: ['名詞'],
+        means: { 名詞: '子ども' },
+    },
+    kilogram: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['kilogram', 'kilograms'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'キログラム' },
+    },
+    kilograms: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['kilogram', 'kilograms'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'キログラム' },
+    },
+    kilometer: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['kilometer', 'kilometers'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'キロメートル' },
+    },
+    kilometers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['kilometer', 'kilometers'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'キロメートル' },
+    },
+    kind: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['kind', 'kinds'],
+        hinsi: ['名詞'],
+        means: { 名詞: '種類　　〔a kind of ～の形で〕　一種の～、～のようなもの' },
+    },
+    kinds: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['kind', 'kinds'],
+        hinsi: ['名詞'],
+        means: { 名詞: '種類　　〔a kind of ～の形で〕　一種の～、～のようなもの' },
+    },
+    king: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['king', 'kings'],
+        hinsi: ['名詞'],
+        means: { 名詞: '王、国王' },
+    },
+    kings: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['king', 'kings'],
+        hinsi: ['名詞'],
+        means: { 名詞: '王、国王' },
+    },
+    kitchen: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['kitchen', 'kitchens'],
+        hinsi: ['名詞'],
+        means: { 名詞: '台所、キッチン' },
+    },
+    kitchens: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['kitchen', 'kitchens'],
+        hinsi: ['名詞'],
+        means: { 名詞: '台所、キッチン' },
+    },
+    kite: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['kite', 'kites'],
+        hinsi: ['名詞'],
+        means: { 名詞: '(空にあげる)凧' },
+    },
+    kites: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['kite', 'kites'],
+        hinsi: ['名詞'],
+        means: { 名詞: '(空にあげる)凧' },
+    },
+    koala: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['koala', 'koalas'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'コアラ' },
+    },
+    koalas: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['koala', 'koalas'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'コアラ' },
+    },
+    Korea: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '"韓国・朝鮮　　〔たとえば South Korea' },
+    },
+    Korean: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['Korean', 'Koreans'],
+        hinsi: ['名詞'],
+        means: { 名詞: '韓国・朝鮮語、韓国人・朝鮮人' },
+    },
+    Koreans: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['Korean', 'Koreans'],
+        hinsi: ['名詞'],
+        means: { 名詞: '韓国・朝鮮語、韓国人・朝鮮人' },
+    },
+    lady: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['lady', 'ladies'],
+        hinsi: ['名詞'],
+        means: { 名詞: '婦人' },
+    },
+    ladies: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['lady', 'ladies'],
+        hinsi: ['名詞'],
+        means: { 名詞: '婦人' },
+    },
+    lake: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['lake', 'lakes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '湖    〔たとえば Lake Towada の形で〕 十和田湖' },
+    },
+    lakes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['lake', 'lakes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '湖    〔たとえば Lake Towada の形で〕 十和田湖' },
+    },
+    lamp: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['lamp', 'lamps'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ランプ、明かり' },
+    },
+    lamps: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['lamp', 'lamps'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ランプ、明かり' },
+    },
+    land: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '土地、陸地' },
+    },
+    landmine: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['landmine', 'landmines'],
+        hinsi: ['名詞'],
+        means: { 名詞: '地雷' },
+    },
+    landmines: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['landmine', 'landmines'],
+        hinsi: ['名詞'],
+        means: { 名詞: '地雷' },
+    },
+    language: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['language', 'languages'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ことば、言語' },
+    },
+    languages: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['language', 'languages'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ことば、言語' },
+    },
+    lap: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['lap', 'laps'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ひざ（の上）' },
+    },
+    laps: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['lap', 'laps'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ひざ（の上）' },
+    },
+    last: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '最後' },
+    },
+    laughter: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '笑い' },
+    },
+    law: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '法律' },
+    },
+    lawyer: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['lawyer', 'lawyers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '弁護士、法律家' },
+    },
+    lawyers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['lawyer', 'lawyers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '弁護士、法律家' },
+    },
+    leader: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['leader', 'leaders'],
+        hinsi: ['名詞'],
+        means: { 名詞: '指導者、リーダー' },
+    },
+    leaders: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['leader', 'leaders'],
+        hinsi: ['名詞'],
+        means: { 名詞: '指導者、リーダー' },
+    },
+    left: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '左、左側' },
+    },
+    leg: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['leg', 'legs'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'あし 《ももの付け根から下全部あるいは足首までの部分》' },
+    },
+    legs: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['leg', 'legs'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'あし 《ももの付け根から下全部あるいは足首までの部分》' },
+    },
+    lemon: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['lemon', 'lemons'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'レモン' },
+    },
+    lemons: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['lemon', 'lemons'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'レモン' },
+    },
+    leopard: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['leopard', 'leopards'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ヒョウ' },
+    },
+    leopards: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['leopard', 'leopards'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ヒョウ' },
+    },
+    lesson: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['lesson', 'lessons'],
+        hinsi: ['名詞'],
+        means: { 名詞: '(教科書などの)課、授業、勉強、けいこ、レッスン' },
+    },
+    lessons: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['lesson', 'lessons'],
+        hinsi: ['名詞'],
+        means: { 名詞: '(教科書などの)課、授業、勉強、けいこ、レッスン' },
+    },
+    letter: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['letter', 'letters'],
+        hinsi: ['名詞'],
+        means: { 名詞: '手紙、文字、字' },
+    },
+    letters: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['letter', 'letters'],
+        hinsi: ['名詞'],
+        means: { 名詞: '手紙、文字、字' },
+    },
+    level: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['level', 'levels'],
+        hinsi: ['名詞'],
+        means: { 名詞: '水平（面）、水位、高さ' },
+    },
+    levels: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['level', 'levels'],
+        hinsi: ['名詞'],
+        means: { 名詞: '水平（面）、水位、高さ' },
+    },
+    library: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['library', 'libraries'],
+        hinsi: ['名詞'],
+        means: { 名詞: '図書館，図書室' },
+    },
+    libraries: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['library', 'libraries'],
+        hinsi: ['名詞'],
+        means: { 名詞: '図書館，図書室' },
+    },
+    life: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['life', 'lives'],
+        hinsi: ['名詞'],
+        means: { 名詞: '生命、いのち（複 lives）' },
+    },
+    lives: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['life', 'lives'],
+        hinsi: ['名詞'],
+        means: { 名詞: '生命、いのち（複 lives）' },
+    },
+    light: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['light', 'lights'],
+        hinsi: ['名詞'],
+        means: { 名詞: '光、光線' },
+    },
+    lights: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['light', 'lights'],
+        hinsi: ['名詞'],
+        means: { 名詞: '光、光線' },
+    },
+    line: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['line', 'lines'],
+        hinsi: ['名詞'],
+        means: { 名詞: '線、電話線' },
+    },
+    lines: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['line', 'lines'],
+        hinsi: ['名詞'],
+        means: { 名詞: '線、電話線' },
+    },
+    lion: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['lion', 'lions'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ライオン' },
+    },
+    lions: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['lion', 'lions'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ライオン' },
+    },
+    locker: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['locker', 'lockers'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ロッカー' },
+    },
+    lockers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['locker', 'lockers'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ロッカー' },
+    },
+    London: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ロンドン' },
+    },
+    look: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['look', 'looks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '見ること、一見　　〔 have ［take］ a look at ～の形で〕～を見る' },
+    },
+    looks: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['look', 'looks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '見ること、一見　　〔 have ［take］ a look at ～の形で〕～を見る' },
+    },
+    lot: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['lot', 'lots'],
+        hinsi: ['名詞'],
+        means: { 名詞: '〔a lot of ～ の形で〕 たくさんの、多数の' },
+    },
+    lots: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['lot', 'lots'],
+        hinsi: ['名詞'],
+        means: { 名詞: '〔a lot of ～ の形で〕 たくさんの、多数の' },
+    },
+    love: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '愛、恋愛' },
+    },
+    luck: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '運' },
+    },
+    lullaby: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['lullaby', 'lullabies'],
+        hinsi: ['名詞'],
+        means: { 名詞: '子守歌' },
+    },
+    lullabies: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['lullaby', 'lullabies'],
+        hinsi: ['名詞'],
+        means: { 名詞: '子守歌' },
+    },
+    lunch: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['lunch', 'lunches'],
+        hinsi: ['名詞'],
+        means: { 名詞: '昼食、(お昼の）弁当' },
+    },
+    lunches: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['lunch', 'lunches'],
+        hinsi: ['名詞'],
+        means: { 名詞: '昼食、(お昼の）弁当' },
+    },
+    machine: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['machine', 'machines'],
+        hinsi: ['名詞'],
+        means: { 名詞: '機械' },
+    },
+    machines: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['machine', 'machines'],
+        hinsi: ['名詞'],
+        means: { 名詞: '機械' },
+    },
+    magazine: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['magazine', 'magazines'],
+        hinsi: ['名詞'],
+        means: { 名詞: '雑誌' },
+    },
+    magazines: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['magazine', 'magazines'],
+        hinsi: ['名詞'],
+        means: { 名詞: '雑誌' },
+    },
+    magic: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '手品' },
+    },
+    maker: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['maker', 'makers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '製作者' },
+    },
+    makers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['maker', 'makers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '製作者' },
+    },
+    man: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['man', 'men'],
+        hinsi: ['名詞'],
+        means: { 名詞: '男の人、(一般的に)人' },
+    },
+    men: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['man', 'men'],
+        hinsi: ['名詞'],
+        means: { 名詞: '男の人、(一般的に)人' },
+    },
+    manga: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '（日本の）マンガ' },
+    },
+    manner: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['manner', 'manners'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（mannersで）行儀、マナー' },
+    },
+    manners: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['manner', 'manners'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（mannersで）行儀、マナー' },
+    },
+    map: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['map', 'maps'],
+        hinsi: ['名詞'],
+        means: { 名詞: '地図' },
+    },
+    maps: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['map', 'maps'],
+        hinsi: ['名詞'],
+        means: { 名詞: '地図' },
+    },
+    March: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '３月' },
+    },
+    market: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['market', 'markets'],
+        hinsi: ['名詞'],
+        means: { 名詞: '市場' },
+    },
+    markets: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['market', 'markets'],
+        hinsi: ['名詞'],
+        means: { 名詞: '市場' },
+    },
+    marsh: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['marsh', 'marshes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '沼' },
+    },
+    marshes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['marsh', 'marshes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '沼' },
+    },
+    mask: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['mask', 'masks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '(顔を保護する）防具、マスク' },
+    },
+    masks: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['mask', 'masks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '(顔を保護する）防具、マスク' },
+    },
+    master: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['master', 'masters'],
+        hinsi: ['名詞'],
+        means: { 名詞: '主人、住職、和尚(ときに固有名詞のように使い、大文字で書き始めてMasterで「和尚さま」' },
+    },
+    masters: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['master', 'masters'],
+        hinsi: ['名詞'],
+        means: { 名詞: '主人、住職、和尚(ときに固有名詞のように使い、大文字で書き始めてMasterで「和尚さま」' },
+    },
+    match: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['match', 'matches'],
+        hinsi: ['名詞'],
+        means: { 名詞: '試合、勝負' },
+    },
+    matches: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['match', 'matches'],
+        hinsi: ['名詞'],
+        means: { 名詞: '試合、勝負' },
+    },
+    math: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '数学 〔mathematicsを短くした形〕' },
+    },
+    matter: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '問題、困ったこと、事情' },
+    },
+    May: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '５月' },
+    },
+    mayor: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['mayor', 'mayors'],
+        hinsi: ['名詞'],
+        means: { 名詞: '村長' },
+    },
+    mayors: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['mayor', 'mayors'],
+        hinsi: ['名詞'],
+        means: { 名詞: '村長' },
+    },
+    meal: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['meal', 'meals'],
+        hinsi: ['名詞'],
+        means: { 名詞: '食事' },
+    },
+    meals: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['meal', 'meals'],
+        hinsi: ['名詞'],
+        means: { 名詞: '食事' },
+    },
+    meaning: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['meaning', 'meanings'],
+        hinsi: ['名詞'],
+        means: { 名詞: '意味' },
+    },
+    meanings: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['meaning', 'meanings'],
+        hinsi: ['名詞'],
+        means: { 名詞: '意味' },
+    },
+    meat: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '食用肉、肉' },
+    },
+    medal: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['medal', 'medals'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'メダル' },
+    },
+    medals: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['medal', 'medals'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'メダル' },
+    },
+    medicine: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '薬　〔take medicineの形で〕 薬を飲む' },
+    },
+    meeting: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['meeting', 'meetings'],
+        hinsi: ['名詞'],
+        means: { 名詞: '集会、会議' },
+    },
+    meetings: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['meeting', 'meetings'],
+        hinsi: ['名詞'],
+        means: { 名詞: '集会、会議' },
+    },
+    member: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['member', 'members'],
+        hinsi: ['名詞'],
+        means: { 名詞: '一員、メンバー' },
+    },
+    members: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['member', 'members'],
+        hinsi: ['名詞'],
+        means: { 名詞: '一員、メンバー' },
+    },
+    memorial: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['memorial', 'memorials'],
+        hinsi: ['名詞'],
+        means: { 名詞: '記念日、記念碑、記念館' },
+    },
+    memorials: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['memorial', 'memorials'],
+        hinsi: ['名詞'],
+        means: { 名詞: '記念日、記念碑、記念館' },
+    },
+    memory: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['memory', 'memories'],
+        hinsi: ['名詞'],
+        means: { 名詞: '記憶、記憶力、思い出' },
+    },
+    memories: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['memory', 'memories'],
+        hinsi: ['名詞'],
+        means: { 名詞: '記憶、記憶力、思い出' },
+    },
+    menu: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['menu', 'menus'],
+        hinsi: ['名詞'],
+        means: { 名詞: '献立表、メニュー' },
+    },
+    menus: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['menu', 'menus'],
+        hinsi: ['名詞'],
+        means: { 名詞: '献立表、メニュー' },
+    },
+    message: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['message', 'messages'],
+        hinsi: ['名詞'],
+        means: { 名詞: '伝言，メッセージ' },
+    },
+    messages: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['message', 'messages'],
+        hinsi: ['名詞'],
+        means: { 名詞: '伝言，メッセージ' },
+    },
+    meter: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['meter', 'meters'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'メートル' },
+    },
+    meters: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['meter', 'meters'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'メートル' },
+    },
+    middle: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['middle', 'middles'],
+        hinsi: ['名詞'],
+        means: { 名詞: '真ん中、中間' },
+    },
+    middles: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['middle', 'middles'],
+        hinsi: ['名詞'],
+        means: { 名詞: '真ん中、中間' },
+    },
+    milk: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '牛乳、ミルク' },
+    },
+    million: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['million', 'millions'],
+        hinsi: ['名詞'],
+        means: { 名詞: '百万' },
+    },
+    millions: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['million', 'millions'],
+        hinsi: ['名詞'],
+        means: { 名詞: '百万' },
+    },
+    mind: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['mind', 'minds'],
+        hinsi: ['名詞'],
+        means: { 名詞: '"心　[keep A in mindの形で］Aを心に留めておく' },
+    },
+    minds: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['mind', 'minds'],
+        hinsi: ['名詞'],
+        means: { 名詞: '"心　[keep A in mindの形で］Aを心に留めておく' },
+    },
+    minister: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['minister', 'ministers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '牧師' },
+    },
+    ministers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['minister', 'ministers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '牧師' },
+    },
+    minute: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['minute', 'minutes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '(時間の)分' },
+    },
+    minutes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['minute', 'minutes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '(時間の)分' },
+    },
+    mirror: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['mirror', 'mirrors'],
+        hinsi: ['名詞'],
+        means: { 名詞: '鏡' },
+    },
+    mirrors: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['mirror', 'mirrors'],
+        hinsi: ['名詞'],
+        means: { 名詞: '鏡' },
+    },
+    mistake: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['mistake', 'mistakes'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'まちがい　［by mistakeの形で］誤って、間違って' },
+    },
+    mistakes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['mistake', 'mistakes'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'まちがい　［by mistakeの形で］誤って、間違って' },
+    },
+    mom: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['mom', 'moms'],
+        hinsi: ['名詞'],
+        means: {
+            名詞: 'ママ、お母さん  《家庭内で子どもが母親を呼ぶのに使う。呼びかけの時にはしばしば大文字で始めて Mom とする。》',
+        },
+    },
+    moms: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['mom', 'moms'],
+        hinsi: ['名詞'],
+        means: {
+            名詞: 'ママ、お母さん  《家庭内で子どもが母親を呼ぶのに使う。呼びかけの時にはしばしば大文字で始めて Mom とする。》',
+        },
+    },
+    moment: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['moment', 'moments'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ちょっとの時間、瞬間' },
+    },
+    moments: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['moment', 'moments'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ちょっとの時間、瞬間' },
+    },
+    mommy: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['mommy', 'mommies'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'お母ちゃん' },
+    },
+    mommies: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['mommy', 'mommies'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'お母ちゃん' },
+    },
+    Monday: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '月曜日' },
+    },
+    money: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'お金' },
+    },
+    Mongolia: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'モンゴル(中国の北方に位置する国）' },
+    },
+    monkey: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['monkey', 'monkeys'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'サル' },
+    },
+    monkeys: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['monkey', 'monkeys'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'サル' },
+    },
+    month: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['month', 'months'],
+        hinsi: ['名詞'],
+        means: { 名詞: '(暦の)月' },
+    },
+    months: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['month', 'months'],
+        hinsi: ['名詞'],
+        means: { 名詞: '(暦の)月' },
+    },
+    moon: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['moon', 'moons'],
+        hinsi: ['名詞'],
+        means: { 名詞: '月' },
+    },
+    moons: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['moon', 'moons'],
+        hinsi: ['名詞'],
+        means: { 名詞: '月' },
+    },
+    morning: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['morning', 'mornings'],
+        hinsi: ['名詞'],
+        means: { 名詞: '朝、午前' },
+    },
+    mornings: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['morning', 'mornings'],
+        hinsi: ['名詞'],
+        means: { 名詞: '朝、午前' },
+    },
+    mother: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['mother', 'mothers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '母、お母さん' },
+    },
+    mothers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['mother', 'mothers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '母、お母さん' },
+    },
+    motto: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['motto', 'mottos'],
+        hinsi: ['名詞'],
+        means: { 名詞: '標語、モットー' },
+    },
+    mottos: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['motto', 'mottos'],
+        hinsi: ['名詞'],
+        means: { 名詞: '標語、モットー' },
+    },
+    mountain: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['mountain', 'mountains'],
+        hinsi: ['名詞'],
+        means: { 名詞: '山' },
+    },
+    mountains: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['mountain', 'mountains'],
+        hinsi: ['名詞'],
+        means: { 名詞: '山' },
+    },
+    mouth: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['mouth', 'mouths'],
+        hinsi: ['名詞'],
+        means: { 名詞: '口' },
+    },
+    mouths: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['mouth', 'mouths'],
+        hinsi: ['名詞'],
+        means: { 名詞: '口' },
+    },
+    movement: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['movement', 'movements'],
+        hinsi: ['名詞'],
+        means: { 名詞: '動き、(社会的)運動' },
+    },
+    movements: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['movement', 'movements'],
+        hinsi: ['名詞'],
+        means: { 名詞: '動き、(社会的)運動' },
+    },
+    movie: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['movie', 'movies'],
+        hinsi: ['名詞'],
+        means: { 名詞: '映画' },
+    },
+    movies: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['movie', 'movies'],
+        hinsi: ['名詞'],
+        means: { 名詞: '映画' },
+    },
+    'Mt.': {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '〔mountain （山）の略〕 ～山　  〔例えば Mt. Iwaki の形で〕 岩木山' },
+    },
+    much: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '多量、たくさん' },
+    },
+    museum: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['museum', 'museums'],
+        hinsi: ['名詞'],
+        means: { 名詞: '博物館、美術館' },
+    },
+    museums: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['museum', 'museums'],
+        hinsi: ['名詞'],
+        means: { 名詞: '博物館、美術館' },
+    },
+    music: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '音楽' },
+    },
+    musician: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['musician', 'musicians'],
+        hinsi: ['名詞'],
+        means: { 名詞: '音楽家、ミュージシャン' },
+    },
+    musicians: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['musician', 'musicians'],
+        hinsi: ['名詞'],
+        means: { 名詞: '音楽家、ミュージシャン' },
+    },
+    Myanmar: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ミャンマー' },
+    },
+    mystery: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['mystery', 'mysteries'],
+        hinsi: ['名詞'],
+        means: { 名詞: '謎' },
+    },
+    mysteries: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['mystery', 'mysteries'],
+        hinsi: ['名詞'],
+        means: { 名詞: '謎' },
+    },
+    name: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['name', 'names'],
+        hinsi: ['名詞'],
+        means: { 名詞: '名前' },
+    },
+    names: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['name', 'names'],
+        hinsi: ['名詞'],
+        means: { 名詞: '名前' },
+    },
+    nation: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['nation', 'nations'],
+        hinsi: ['名詞'],
+        means: { 名詞: '国家' },
+    },
+    nations: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['nation', 'nations'],
+        hinsi: ['名詞'],
+        means: { 名詞: '国家' },
+    },
+    nature: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '自然、自然界' },
+    },
+    neck: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['neck', 'necks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '首' },
+    },
+    necks: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['neck', 'necks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '首' },
+    },
+    need: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['need', 'needs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '必要　〔in needの形で〕必要で、困って' },
+    },
+    needs: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['need', 'needs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '必要　〔in needの形で〕必要で、困って' },
+    },
+    neighbor: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['neighbor', 'neighbors'],
+        hinsi: ['名詞'],
+        means: { 名詞: '隣人' },
+    },
+    neighbors: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['neighbor', 'neighbors'],
+        hinsi: ['名詞'],
+        means: { 名詞: '隣人' },
+    },
+    nest: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['nest', 'nests'],
+        hinsi: ['名詞'],
+        means: { 名詞: '巣' },
+    },
+    nests: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['nest', 'nests'],
+        hinsi: ['名詞'],
+        means: { 名詞: '巣' },
+    },
+    news: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ニュース、知らせ' },
+    },
+    newspaper: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['newspaper', 'newspapers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '新聞、新聞紙' },
+    },
+    newspapers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['newspaper', 'newspapers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '新聞、新聞紙' },
+    },
+    night: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['night', 'nights'],
+        hinsi: ['名詞'],
+        means: { 名詞: '夜' },
+    },
+    nights: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['night', 'nights'],
+        hinsi: ['名詞'],
+        means: { 名詞: '夜' },
+    },
+    nine: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['nine', 'nines'],
+        hinsi: ['名詞'],
+        means: { 名詞: '９' },
+    },
+    nines: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['nine', 'nines'],
+        hinsi: ['名詞'],
+        means: { 名詞: '９' },
+    },
+    nineteen: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['nineteen', 'nineteens'],
+        hinsi: ['名詞'],
+        means: { 名詞: '19' },
+    },
+    nineteens: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['nineteen', 'nineteens'],
+        hinsi: ['名詞'],
+        means: { 名詞: '19' },
+    },
+    nineteenth: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['nineteenth', 'nineteenths'],
+        hinsi: ['名詞'],
+        means: { 名詞: '19番目の、１９日' },
+    },
+    nineteenths: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['nineteenth', 'nineteenths'],
+        hinsi: ['名詞'],
+        means: { 名詞: '19番目の、１９日' },
+    },
+    ninety: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['ninety', 'nineties'],
+        hinsi: ['名詞'],
+        means: { 名詞: '90' },
+    },
+    nineties: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['ninety', 'nineties'],
+        hinsi: ['名詞'],
+        means: { 名詞: '90' },
+    },
+    ninth: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['ninth', 'ninths'],
+        hinsi: ['名詞'],
+        means: { 名詞: '9番め、（月の）9日' },
+    },
+    ninths: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['ninth', 'ninths'],
+        hinsi: ['名詞'],
+        means: { 名詞: '9番め、（月の）9日' },
+    },
+    noodle: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['noodle', 'noodles'],
+        hinsi: ['名詞'],
+        means: { 名詞: '麺、ヌードル' },
+    },
+    noodles: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['noodle', 'noodles'],
+        hinsi: ['名詞'],
+        means: { 名詞: '麺、ヌードル' },
+    },
+    noon: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '正午' },
+    },
+    north: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '北、北方、北部' },
+    },
+    nose: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['nose', 'noses'],
+        hinsi: ['名詞'],
+        means: { 名詞: '鼻' },
+    },
+    noses: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['nose', 'noses'],
+        hinsi: ['名詞'],
+        means: { 名詞: '鼻' },
+    },
+    note: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['note', 'notes'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'メモ、覚え書き' },
+    },
+    notes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['note', 'notes'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'メモ、覚え書き' },
+    },
+    notebook: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['notebook', 'notebooks'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ノート' },
+    },
+    notebooks: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['notebook', 'notebooks'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ノート' },
+    },
+    November: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '11月' },
+    },
+    now: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '今' },
+    },
+    number: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['number', 'numbers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '～番、番号、数、数字' },
+    },
+    numbers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['number', 'numbers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '～番、番号、数、数字' },
+    },
+    nun: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['nun', 'nuns'],
+        hinsi: ['名詞'],
+        means: { 名詞: '尼僧' },
+    },
+    nuns: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['nun', 'nuns'],
+        hinsi: ['名詞'],
+        means: { 名詞: '尼僧' },
+    },
+    nurse: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['nurse', 'nurses'],
+        hinsi: ['名詞'],
+        means: { 名詞: '看護師、保健の先生' },
+    },
+    nurses: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['nurse', 'nurses'],
+        hinsi: ['名詞'],
+        means: { 名詞: '看護師、保健の先生' },
+    },
+    nursery: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['nursery', 'nurseries'],
+        hinsi: ['名詞'],
+        means: { 名詞: '託児所' },
+    },
+    nurseries: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['nursery', 'nurseries'],
+        hinsi: ['名詞'],
+        means: { 名詞: '託児所' },
+    },
+    nursing: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '看護、介護' },
+    },
+    ocean: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['ocean', 'oceans'],
+        hinsi: ['名詞'],
+        means: { 名詞: '大洋、海' },
+    },
+    oceans: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['ocean', 'oceans'],
+        hinsi: ['名詞'],
+        means: { 名詞: '大洋、海' },
+    },
+    October: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '10月' },
+    },
+    octopus: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['octopus', 'octopuses'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'タコ' },
+    },
+    octopuses: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['octopus', 'octopuses'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'タコ' },
+    },
+    office: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['office', 'offices'],
+        hinsi: ['名詞'],
+        means: { 名詞: '事務所､役所' },
+    },
+    offices: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['office', 'offices'],
+        hinsi: ['名詞'],
+        means: { 名詞: '事務所､役所' },
+    },
+    officer: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['officer', 'officers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '係員、役人、警察官' },
+    },
+    officers: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['officer', 'officers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '係員、役人、警察官' },
+    },
+    official: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['official', 'officials'],
+        hinsi: ['名詞'],
+        means: { 名詞: '係官、職員' },
+    },
+    officials: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['official', 'officials'],
+        hinsi: ['名詞'],
+        means: { 名詞: '係官、職員' },
+    },
+    oil: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '油、石油' },
+    },
+    Olympics: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '(theをつけて）オリンピック' },
+    },
+    one: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['one', 'ones'],
+        hinsi: ['名詞'],
+        means: { 名詞: '１つ､１人' },
+    },
+    ones: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['one', 'ones'],
+        hinsi: ['名詞'],
+        means: { 名詞: '１つ､１人' },
+    },
+    opinion: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['opinion', 'opinions'],
+        hinsi: ['名詞'],
+        means: { 名詞: '意見、考え、判断' },
+    },
+    opinions: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['opinion', 'opinions'],
+        hinsi: ['名詞'],
+        means: { 名詞: '意見、考え、判断' },
+    },
+    orange: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['orange', 'oranges'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'オレンジ（色）' },
+    },
+    oranges: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['orange', 'oranges'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'オレンジ（色）' },
+    },
+    orchestra: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['orchestra', 'orchestras'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'オーケストラ' },
+    },
+    orchestras: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['orchestra', 'orchestras'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'オーケストラ' },
+    },
+    order: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['order', 'orders'],
+        hinsi: ['名詞'],
+        means: { 名詞: '命令' },
+    },
+    orders: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['order', 'orders'],
+        hinsi: ['名詞'],
+        means: { 名詞: '命令' },
+    },
+    origin: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['origin', 'origins'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（～の)起源、由来' },
+    },
+    origins: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['origin', 'origins'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（～の)起源、由来' },
+    },
+    outlook: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['outlook', 'outlooks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '見方、考え方' },
+    },
+    outlooks: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['outlook', 'outlooks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '見方、考え方' },
+    },
+    owl: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['owl', 'owls'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'フクロウ' },
+    },
+    owls: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['owl', 'owls'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'フクロウ' },
+    },
+    oxygen: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '酸素' },
+    },
+    pack: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['pack', 'packs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '1パック、１箱' },
+    },
+    packs: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['pack', 'packs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '1パック、１箱' },
+    },
+    page: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['page', 'pages'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ページ' },
+    },
+    pages: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['page', 'pages'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ページ' },
+    },
+    pain: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '痛み' },
+    },
+    painter: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['painter', 'painters'],
+        hinsi: ['名詞'],
+        means: { 名詞: '画家' },
+    },
+    painters: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['painter', 'painters'],
+        hinsi: ['名詞'],
+        means: { 名詞: '画家' },
+    },
+    painting: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['painting', 'paintings'],
+        hinsi: ['名詞'],
+        means: { 名詞: '絵、絵画' },
+    },
+    paintings: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['painting', 'paintings'],
+        hinsi: ['名詞'],
+        means: { 名詞: '絵、絵画' },
+    },
+    pair: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['pair', 'pairs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '１組、対' },
+    },
+    pairs: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['pair', 'pairs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '１組、対' },
+    },
+    palace: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['palace', 'palaces'],
+        hinsi: ['名詞'],
+        means: { 名詞: '御殿' },
+    },
+    palaces: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['palace', 'palaces'],
+        hinsi: ['名詞'],
+        means: { 名詞: '御殿' },
+    },
+    palm: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['palm', 'palms'],
+        hinsi: ['名詞'],
+        means: { 名詞: '手のひら' },
+    },
+    palms: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['palm', 'palms'],
+        hinsi: ['名詞'],
+        means: { 名詞: '手のひら' },
+    },
+    pamphlet: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['pamphlet', 'pamphlets'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'パンフレット' },
+    },
+    pamphlets: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['pamphlet', 'pamphlets'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'パンフレット' },
+    },
+    panda: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['panda', 'pandas'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'パンダ' },
+    },
+    pandas: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['panda', 'pandas'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'パンダ' },
+    },
+    panel: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['panel', 'panels'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'パネル' },
+    },
+    panels: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['panel', 'panels'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'パネル' },
+    },
+    paper: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['paper', 'papers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '紙、折り紙、レポート、論文' },
+    },
+    papers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['paper', 'papers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '紙、折り紙、レポート、論文' },
+    },
+    Paralympics: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'パラリンピック' },
+    },
+    pardon: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['pardon', 'pardons'],
+        hinsi: ['名詞'],
+        means: { 名詞: '許し、許すこと' },
+    },
+    pardons: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['pardon', 'pardons'],
+        hinsi: ['名詞'],
+        means: { 名詞: '許し、許すこと' },
+    },
+    parent: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['parent', 'parents'],
+        hinsi: ['名詞'],
+        means: { 名詞: '親' },
+    },
+    parents: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['parent', 'parents'],
+        hinsi: ['名詞'],
+        means: { 名詞: '親' },
+    },
+    Paris: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'パリ' },
+    },
+    park: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['park', 'parks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '公園、遊園地' },
+    },
+    parks: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['park', 'parks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '公園、遊園地' },
+    },
+    part: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['part', 'parts'],
+        hinsi: ['名詞'],
+        means: { 名詞: '一部' },
+    },
+    parts: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['part', 'parts'],
+        hinsi: ['名詞'],
+        means: { 名詞: '一部' },
+    },
+    particular: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['particular', 'particulars'],
+        hinsi: ['名詞'],
+        means: { 名詞: '項目、細部' },
+    },
+    particulars: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['particular', 'particulars'],
+        hinsi: ['名詞'],
+        means: { 名詞: '項目、細部' },
+    },
+    partner: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['partner', 'partners'],
+        hinsi: ['名詞'],
+        means: { 名詞: '仲間、パートナー' },
+    },
+    partners: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['partner', 'partners'],
+        hinsi: ['名詞'],
+        means: { 名詞: '仲間、パートナー' },
+    },
+    party: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['party', 'parties'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'パーティー' },
+    },
+    parties: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['party', 'parties'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'パーティー' },
+    },
+    passion: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '熱中（しているもの）、情熱' },
+    },
+    passport: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['passport', 'passports'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'パスポート' },
+    },
+    passports: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['passport', 'passports'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'パスポート' },
+    },
+    past: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '過去' },
+    },
+    patient: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['patient', 'patients'],
+        hinsi: ['名詞'],
+        means: { 名詞: '患者、病人' },
+    },
+    patients: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['patient', 'patients'],
+        hinsi: ['名詞'],
+        means: { 名詞: '患者、病人' },
+    },
+    peace: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '平和' },
+    },
+    peach: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['peach', 'peaches'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（果物の）モモ' },
+    },
+    peaches: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['peach', 'peaches'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（果物の）モモ' },
+    },
+    pen: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['pen', 'pens'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ペン' },
+    },
+    pens: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['pen', 'pens'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ペン' },
+    },
+    pencil: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['pencil', 'pencils'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'えんぴつ' },
+    },
+    pencils: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['pencil', 'pencils'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'えんぴつ' },
+    },
+    percent: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'パーセント' },
+    },
+    performance: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['performance', 'performances'],
+        hinsi: ['名詞'],
+        means: { 名詞: '上演、演奏、演技' },
+    },
+    performances: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['performance', 'performances'],
+        hinsi: ['名詞'],
+        means: { 名詞: '上演、演奏、演技' },
+    },
+    performer: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['performer', 'performers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '上演者、噺家、芸人' },
+    },
+    performers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['performer', 'performers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '上演者、噺家、芸人' },
+    },
+    period: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['period', 'periods'],
+        hinsi: ['名詞'],
+        means: { 名詞: '時代' },
+    },
+    periods: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['period', 'periods'],
+        hinsi: ['名詞'],
+        means: { 名詞: '時代' },
+    },
+    person: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['person', 'people'],
+        hinsi: ['名詞'],
+        means: { 名詞: '人' },
+    },
+    people: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['person', 'people'],
+        hinsi: ['名詞'],
+        means: { 名詞: '人' },
+    },
+    Peru: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ペルー（南米の国の名前）' },
+    },
+    pet: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['pet', 'pets'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ペット' },
+    },
+    pets: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['pet', 'pets'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ペット' },
+    },
+    pharmacist: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['pharmacist', 'pharmacists'],
+        hinsi: ['名詞'],
+        means: { 名詞: '薬剤師、薬局' },
+    },
+    pharmacists: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['pharmacist', 'pharmacists'],
+        hinsi: ['名詞'],
+        means: { 名詞: '薬剤師、薬局' },
+    },
+    Philippines: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'フィリピン共和国' },
+    },
+    phone: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['phone', 'phones'],
+        hinsi: ['名詞'],
+        means: { 名詞: '電話' },
+    },
+    phones: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['phone', 'phones'],
+        hinsi: ['名詞'],
+        means: { 名詞: '電話' },
+    },
+    photo: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['photo', 'photos'],
+        hinsi: ['名詞'],
+        means: { 名詞: '写真' },
+    },
+    photos: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['photo', 'photos'],
+        hinsi: ['名詞'],
+        means: { 名詞: '写真' },
+    },
+    photograph: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['photograph', 'photographs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '写真' },
+    },
+    photographs: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['photograph', 'photographs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '写真' },
+    },
+    photographer: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['photographer', 'photographers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '写真家、カメラマン' },
+    },
+    photographers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['photographer', 'photographers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '写真家、カメラマン' },
+    },
+    phrase: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['phrase', 'phrases'],
+        hinsi: ['名詞'],
+        means: { 名詞: '句、言い回し、フレーズ' },
+    },
+    phrases: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['phrase', 'phrases'],
+        hinsi: ['名詞'],
+        means: { 名詞: '句、言い回し、フレーズ' },
+    },
+    piano: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['piano', 'pianos'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ピアノ' },
+    },
+    pianos: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['piano', 'pianos'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ピアノ' },
+    },
+    picnic: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['picnic', 'picnics'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ピクニック、行楽' },
+    },
+    picnics: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['picnic', 'picnics'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ピクニック、行楽' },
+    },
+    picture: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['picture', 'pictures'],
+        hinsi: ['名詞'],
+        means: { 名詞: '絵、写真' },
+    },
+    pictures: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['picture', 'pictures'],
+        hinsi: ['名詞'],
+        means: { 名詞: '絵、写真' },
+    },
+    pie: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['pie', 'pies'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'パイ' },
+    },
+    pies: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['pie', 'pies'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'パイ' },
+    },
+    piece: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['piece', 'pieces'],
+        hinsi: ['名詞'],
+        means: { 名詞: '１つの～、ひとかけらの～' },
+    },
+    pieces: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['piece', 'pieces'],
+        hinsi: ['名詞'],
+        means: { 名詞: '１つの～、ひとかけらの～' },
+    },
+    pilot: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['pilot', 'pilots'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'パイロット' },
+    },
+    pilots: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['pilot', 'pilots'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'パイロット' },
+    },
+    pink: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['pink', 'pinks'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ピンク色（の）、もも色（の）' },
+    },
+    pinks: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['pink', 'pinks'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ピンク色（の）、もも色（の）' },
+    },
+    pizza: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['pizza', 'pizzas'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ピザ' },
+    },
+    pizzas: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['pizza', 'pizzas'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ピザ' },
+    },
+    place: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['place', 'places'],
+        hinsi: ['名詞'],
+        means: { 名詞: '場所､所' },
+    },
+    places: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['place', 'places'],
+        hinsi: ['名詞'],
+        means: { 名詞: '場所､所' },
+    },
+    plan: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['plan', 'plans'],
+        hinsi: ['名詞'],
+        means: { 名詞: '事業' },
+    },
+    plans: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['plan', 'plans'],
+        hinsi: ['名詞'],
+        means: { 名詞: '事業' },
+    },
+    plane: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['plane', 'planes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '飛行機' },
+    },
+    planes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['plane', 'planes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '飛行機' },
+    },
+    plant: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['plant', 'plants'],
+        hinsi: ['名詞'],
+        means: { 名詞: '植物' },
+    },
+    plants: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['plant', 'plants'],
+        hinsi: ['名詞'],
+        means: { 名詞: '植物' },
+    },
+    plastic: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'プラスチック' },
+    },
+    plate: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['plate', 'plates'],
+        hinsi: ['名詞'],
+        means: { 名詞: '取り皿' },
+    },
+    plates: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['plate', 'plates'],
+        hinsi: ['名詞'],
+        means: { 名詞: '取り皿' },
+    },
+    play: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['play', 'plays'],
+        hinsi: ['名詞'],
+        means: { 名詞: '劇' },
+    },
+    plays: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['play', 'plays'],
+        hinsi: ['名詞'],
+        means: { 名詞: '劇' },
+    },
+    player: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['player', 'players'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（楽器を）演奏する人、演奏家、（スポーツを）する人、選手' },
+    },
+    players: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['player', 'players'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（楽器を）演奏する人、演奏家、（スポーツを）する人、選手' },
+    },
+    pleasure: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '喜び' },
+    },
+    pocket: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['pocket', 'pockets'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ポケット' },
+    },
+    pockets: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['pocket', 'pockets'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ポケット' },
+    },
+    poem: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['poem', 'poems'],
+        hinsi: ['名詞'],
+        means: { 名詞: '詩' },
+    },
+    poems: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['poem', 'poems'],
+        hinsi: ['名詞'],
+        means: { 名詞: '詩' },
+    },
+    point: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['point', 'points'],
+        hinsi: ['名詞'],
+        means: { 名詞: '箇所、点、地点' },
+    },
+    points: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['point', 'points'],
+        hinsi: ['名詞'],
+        means: { 名詞: '箇所、点、地点' },
+    },
+    poison: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '毒薬、毒' },
+    },
+    police: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '警察' },
+    },
+    politician: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['politician', 'politicians'],
+        hinsi: ['名詞'],
+        means: { 名詞: '政治家' },
+    },
+    politicians: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['politician', 'politicians'],
+        hinsi: ['名詞'],
+        means: { 名詞: '政治家' },
+    },
+    pollution: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '汚染' },
+    },
+    polo: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['polo', 'polos'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（馬に乗って行う競技）ポロ' },
+    },
+    polos: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['polo', 'polos'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（馬に乗って行う競技）ポロ' },
+    },
+    pond: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['pond', 'ponds'],
+        hinsi: ['名詞'],
+        means: { 名詞: '池' },
+    },
+    ponds: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['pond', 'ponds'],
+        hinsi: ['名詞'],
+        means: { 名詞: '池' },
+    },
+    poodle: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['poodle', 'poodles'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'プードル（犬の１品種）' },
+    },
+    poodles: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['poodle', 'poodles'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'プードル（犬の１品種）' },
+    },
+    pool: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['pool', 'pools'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（水泳用の）プール' },
+    },
+    pools: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['pool', 'pools'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（水泳用の）プール' },
+    },
+    population: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '人口' },
+    },
+    Portuguese: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ポルトガル語' },
+    },
+    post: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['post', 'posts'],
+        hinsi: ['名詞'],
+        means: { 名詞: '郵便、郵便物' },
+    },
+    posts: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['post', 'posts'],
+        hinsi: ['名詞'],
+        means: { 名詞: '郵便、郵便物' },
+    },
+    postcard: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['postcard', 'postcards'],
+        hinsi: ['名詞'],
+        means: { 名詞: '郵便はがき、絵はがき' },
+    },
+    postcards: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['postcard', 'postcards'],
+        hinsi: ['名詞'],
+        means: { 名詞: '郵便はがき、絵はがき' },
+    },
+    poster: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['poster', 'posters'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ポスター' },
+    },
+    posters: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['poster', 'posters'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ポスター' },
+    },
+    pot: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['pot', 'pots'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（深い）なべ' },
+    },
+    pots: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['pot', 'pots'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（深い）なべ' },
+    },
+    pouch: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['pouch', 'pouches'],
+        hinsi: ['名詞'],
+        means: { 名詞: '袋' },
+    },
+    pouches: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['pouch', 'pouches'],
+        hinsi: ['名詞'],
+        means: { 名詞: '袋' },
+    },
+    pound: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['pound', 'pounds'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ポンド(イギリスの通貨）' },
+    },
+    pounds: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['pound', 'pounds'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ポンド(イギリスの通貨）' },
+    },
+    power: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '力、能力' },
+    },
+    prefecture: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['prefecture', 'prefectures'],
+        hinsi: ['名詞'],
+        means: { 名詞: '県' },
+    },
+    prefectures: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['prefecture', 'prefectures'],
+        hinsi: ['名詞'],
+        means: { 名詞: '県' },
+    },
+    present: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['present', 'presents'],
+        hinsi: ['名詞'],
+        means: { 名詞: '現在' },
+    },
+    presents: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['present', 'presents'],
+        hinsi: ['名詞'],
+        means: { 名詞: '現在' },
+    },
+    presentation: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['presentation', 'presentations'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（意見・提案などの）発表、プレゼンテーション' },
+    },
+    presentations: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['presentation', 'presentations'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（意見・提案などの）発表、プレゼンテーション' },
+    },
+    pressure: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '圧力、せまられること、プレッシャー' },
+    },
+    price: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['price', 'prices'],
+        hinsi: ['名詞'],
+        means: { 名詞: '値段' },
+    },
+    prices: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['price', 'prices'],
+        hinsi: ['名詞'],
+        means: { 名詞: '値段' },
+    },
+    prince: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['prince', 'princes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '王子' },
+    },
+    princes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['prince', 'princes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '王子' },
+    },
+    principal: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['principal', 'principals'],
+        hinsi: ['名詞'],
+        means: { 名詞: '校長' },
+    },
+    principals: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['principal', 'principals'],
+        hinsi: ['名詞'],
+        means: { 名詞: '校長' },
+    },
+    print: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['print', 'prints'],
+        hinsi: ['名詞'],
+        means: { 名詞: '印刷、版画' },
+    },
+    prints: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['print', 'prints'],
+        hinsi: ['名詞'],
+        means: { 名詞: '印刷、版画' },
+    },
+    prize: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['prize', 'prizes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '賞、賞品' },
+    },
+    prizes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['prize', 'prizes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '賞、賞品' },
+    },
+    problem: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['problem', 'problems'],
+        hinsi: ['名詞'],
+        means: { 名詞: '(困難を引き起こす)問題、障害、課題' },
+    },
+    problems: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['problem', 'problems'],
+        hinsi: ['名詞'],
+        means: { 名詞: '(困難を引き起こす)問題、障害、課題' },
+    },
+    product: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['product', 'products'],
+        hinsi: ['名詞'],
+        means: { 名詞: '製品、生産物' },
+    },
+    products: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['product', 'products'],
+        hinsi: ['名詞'],
+        means: { 名詞: '製品、生産物' },
+    },
+    professor: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['professor', 'professors'],
+        hinsi: ['名詞'],
+        means: { 名詞: '教授' },
+    },
+    professors: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['professor', 'professors'],
+        hinsi: ['名詞'],
+        means: { 名詞: '教授' },
+    },
+    program: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['program', 'programs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '番組（表）、プログラム' },
+    },
+    programs: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['program', 'programs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '番組（表）、プログラム' },
+    },
+    programmer: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['programmer', 'programmers'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'プログラマー' },
+    },
+    programmers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['programmer', 'programmers'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'プログラマー' },
+    },
+    promise: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['promise', 'promises'],
+        hinsi: ['名詞'],
+        means: { 名詞: '約束' },
+    },
+    promises: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['promise', 'promises'],
+        hinsi: ['名詞'],
+        means: { 名詞: '約束' },
+    },
+    prop: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['prop', 'props'],
+        hinsi: ['名詞'],
+        means: { 名詞: '小道具' },
+    },
+    props: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['prop', 'props'],
+        hinsi: ['名詞'],
+        means: { 名詞: '小道具' },
+    },
+    purple: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '紫色（の）' },
+    },
+    purpose: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['purpose', 'purposes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '目的' },
+    },
+    purposes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['purpose', 'purposes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '目的' },
+    },
+    question: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['question', 'questions'],
+        hinsi: ['名詞'],
+        means: { 名詞: '質問、問い' },
+    },
+    questions: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['question', 'questions'],
+        hinsi: ['名詞'],
+        means: { 名詞: '質問、問い' },
+    },
+    quiz: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['quiz', 'quizzes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '簡単な口頭（筆記）のテスト、質問、（ラジオ・テレビの）クイズ' },
+    },
+    quizzes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['quiz', 'quizzes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '簡単な口頭（筆記）のテスト、質問、（ラジオ・テレビの）クイズ' },
+    },
+    rabbit: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['rabbit', 'rabbits'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ウサギ' },
+    },
+    rabbits: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['rabbit', 'rabbits'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ウサギ' },
+    },
+    race: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['race', 'races'],
+        hinsi: ['名詞'],
+        means: { 名詞: '競争、競走' },
+    },
+    races: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['race', 'races'],
+        hinsi: ['名詞'],
+        means: { 名詞: '競争、競走' },
+    },
+    racket: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['racket', 'rackets'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ラケット' },
+    },
+    rackets: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['racket', 'rackets'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ラケット' },
+    },
+    radio: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['radio', 'radios'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ラジオ' },
+    },
+    radios: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['radio', 'radios'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ラジオ' },
+    },
+    radish: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['radish', 'radishes'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ハツカダイコン' },
+    },
+    radishes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['radish', 'radishes'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ハツカダイコン' },
+    },
+    rain: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '雨' },
+    },
+    rainbow: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['rainbow', 'rainbows'],
+        hinsi: ['名詞'],
+        means: { 名詞: '虹' },
+    },
+    rainbows: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['rainbow', 'rainbows'],
+        hinsi: ['名詞'],
+        means: { 名詞: '虹' },
+    },
+    ramp: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['ramp', 'ramps'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'スロープ' },
+    },
+    ramps: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['ramp', 'ramps'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'スロープ' },
+    },
+    reading: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '読むこと' },
+    },
+    reality: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '現実、実際' },
+    },
+    reason: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['reason', 'reasons'],
+        hinsi: ['名詞'],
+        means: { 名詞: '理由' },
+    },
+    reasons: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['reason', 'reasons'],
+        hinsi: ['名詞'],
+        means: { 名詞: '理由' },
+    },
+    recipe: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['recipe', 'recipes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（料理などの）作り方、レシピ' },
+    },
+    recipes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['recipe', 'recipes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（料理などの）作り方、レシピ' },
+    },
+    red: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '赤い、赤色（の）、赤' },
+    },
+    refugee: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['refugee', 'refugees'],
+        hinsi: ['名詞'],
+        means: { 名詞: '難民、避難者' },
+    },
+    refugees: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['refugee', 'refugees'],
+        hinsi: ['名詞'],
+        means: { 名詞: '難民、避難者' },
+    },
+    relay: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['relay', 'relays'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'リレー競走' },
+    },
+    relays: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['relay', 'relays'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'リレー競走' },
+    },
+    report: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['report', 'reports'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'レポート、報告' },
+    },
+    reports: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['report', 'reports'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'レポート、報告' },
+    },
+    reporter: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['reporter', 'reporters'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'リポーター' },
+    },
+    reporters: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['reporter', 'reporters'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'リポーター' },
+    },
+    research: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '研究、調査' },
+    },
+    resource: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['resource', 'resources'],
+        hinsi: ['名詞'],
+        means: { 名詞: '資源、財源' },
+    },
+    resources: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['resource', 'resources'],
+        hinsi: ['名詞'],
+        means: { 名詞: '資源、財源' },
+    },
+    respect: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '尊敬、尊重' },
+    },
+    rest: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '休み' },
+    },
+    restaurant: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['restaurant', 'restaurants'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'レストラン、食堂、料理屋' },
+    },
+    restaurants: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['restaurant', 'restaurants'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'レストラン、食堂、料理屋' },
+    },
+    restroom: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['restroom', 'restrooms'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（デパート・劇場などの）洗面所、トイレ' },
+    },
+    restrooms: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['restroom', 'restrooms'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（デパート・劇場などの）洗面所、トイレ' },
+    },
+    result: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['result', 'results'],
+        hinsi: ['名詞'],
+        means: { 名詞: '結果' },
+    },
+    results: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['result', 'results'],
+        hinsi: ['名詞'],
+        means: { 名詞: '結果' },
+    },
+    return: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['return', 'returns'],
+        hinsi: ['名詞'],
+        means: { 名詞: '再び巡ってくること' },
+    },
+    returns: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['return', 'returns'],
+        hinsi: ['名詞'],
+        means: { 名詞: '再び巡ってくること' },
+    },
+    reuse: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '再利用' },
+    },
+    rhythm: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'リズム' },
+    },
+    rice: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ご飯、米' },
+    },
+    right: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['right', 'rights'],
+        hinsi: ['名詞'],
+        means: { 名詞: '権利、法的権利' },
+    },
+    rights: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['right', 'rights'],
+        hinsi: ['名詞'],
+        means: { 名詞: '権利、法的権利' },
+    },
+    rise: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['rise', 'rises'],
+        hinsi: ['名詞'],
+        means: { 名詞: '上昇、増加、昇進' },
+    },
+    rises: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['rise', 'rises'],
+        hinsi: ['名詞'],
+        means: { 名詞: '上昇、増加、昇進' },
+    },
+    river: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['river', 'rivers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '川' },
+    },
+    rivers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['river', 'rivers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '川' },
+    },
+    road: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['road', 'roads'],
+        hinsi: ['名詞'],
+        means: { 名詞: '道路' },
+    },
+    roads: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['road', 'roads'],
+        hinsi: ['名詞'],
+        means: { 名詞: '道路' },
+    },
+    robot: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['robot', 'robots'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ロボット' },
+    },
+    robots: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['robot', 'robots'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ロボット' },
+    },
+    rock: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['rock', 'rocks'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ロック（音楽）' },
+    },
+    rocks: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['rock', 'rocks'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ロック（音楽）' },
+    },
+    roll: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['roll', 'rolls'],
+        hinsi: ['名詞'],
+        means: { 名詞: '巻いたもの、－巻' },
+    },
+    rolls: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['roll', 'rolls'],
+        hinsi: ['名詞'],
+        means: { 名詞: '巻いたもの、－巻' },
+    },
+    Roman: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['Roman', 'Romans'],
+        hinsi: ['名詞'],
+        means: { 名詞: '古代ローマ人、現代のローマ市民' },
+    },
+    Romans: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['Roman', 'Romans'],
+        hinsi: ['名詞'],
+        means: { 名詞: '古代ローマ人、現代のローマ市民' },
+    },
+    Rome: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ローマ〔イタリアの首都、古代ローマ帝国の首都〕' },
+    },
+    roof: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['roof', 'roofs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '屋上、屋根' },
+    },
+    roofs: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['roof', 'roofs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '屋上、屋根' },
+    },
+    room: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['room', 'rooms'],
+        hinsi: ['名詞'],
+        means: { 名詞: '部屋' },
+    },
+    rooms: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['room', 'rooms'],
+        hinsi: ['名詞'],
+        means: { 名詞: '部屋' },
+    },
+    rope: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['rope', 'ropes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '綱、縄、ロープ' },
+    },
+    ropes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['rope', 'ropes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '綱、縄、ロープ' },
+    },
+    rule: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['rule', 'rules'],
+        hinsi: ['名詞'],
+        means: { 名詞: '決まり、規則' },
+    },
+    rules: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['rule', 'rules'],
+        hinsi: ['名詞'],
+        means: { 名詞: '決まり、規則' },
+    },
+    ruler: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['ruler', 'rulers'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ものさし、定規' },
+    },
+    rulers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['ruler', 'rulers'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ものさし、定規' },
+    },
+    Russia: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ロシア' },
+    },
+    sadness: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '悲しみ' },
+    },
+    salad: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['salad', 'salads'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'サラダ' },
+    },
+    salads: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['salad', 'salads'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'サラダ' },
+    },
+    sale: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['sale', 'sales'],
+        hinsi: ['名詞'],
+        means: { 名詞: '安売り、バーゲンセール' },
+    },
+    sales: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['sale', 'sales'],
+        hinsi: ['名詞'],
+        means: { 名詞: '安売り、バーゲンセール' },
+    },
+    salt: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '塩' },
+    },
+    sandwich: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['sandwich', 'sandwiches'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'サンドイッチ' },
+    },
+    sandwiches: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['sandwich', 'sandwiches'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'サンドイッチ' },
+    },
+    Saturday: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '土曜日' },
+    },
+    scene: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['scene', 'scenes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（劇・映画・小説の）場面' },
+    },
+    scenes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['scene', 'scenes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（劇・映画・小説の）場面' },
+    },
+    scenery: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '風景、景色' },
+    },
+    schedule: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['schedule', 'schedules'],
+        hinsi: ['名詞'],
+        means: { 名詞: '予定（表）' },
+    },
+    schedules: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['schedule', 'schedules'],
+        hinsi: ['名詞'],
+        means: { 名詞: '予定（表）' },
+    },
+    school: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['school', 'schools'],
+        hinsi: ['名詞'],
+        means: { 名詞: '学校' },
+    },
+    schools: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['school', 'schools'],
+        hinsi: ['名詞'],
+        means: { 名詞: '学校' },
+    },
+    schoolyard: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['schoolyard', 'schoolyards'],
+        hinsi: ['名詞'],
+        means: { 名詞: '校庭、運動場' },
+    },
+    schoolyards: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['schoolyard', 'schoolyards'],
+        hinsi: ['名詞'],
+        means: { 名詞: '校庭、運動場' },
+    },
+    science: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '理科、科学、自然科学' },
+    },
+    scientist: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['scientist', 'scientists'],
+        hinsi: ['名詞'],
+        means: { 名詞: '科学者' },
+    },
+    scientists: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['scientist', 'scientists'],
+        hinsi: ['名詞'],
+        means: { 名詞: '科学者' },
+    },
+    Scotland: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'スコットランド' },
+    },
+    sculpture: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['sculpture', 'sculptures'],
+        hinsi: ['名詞'],
+        means: { 名詞: '彫刻' },
+    },
+    sculptures: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['sculpture', 'sculptures'],
+        hinsi: ['名詞'],
+        means: { 名詞: '彫刻' },
+    },
+    sea: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '海' },
+    },
+    seal: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['seal', 'seals'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'アザラシ' },
+    },
+    seals: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['seal', 'seals'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'アザラシ' },
+    },
+    season: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['season', 'seasons'],
+        hinsi: ['名詞'],
+        means: { 名詞: '季節' },
+    },
+    seasons: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['season', 'seasons'],
+        hinsi: ['名詞'],
+        means: { 名詞: '季節' },
+    },
+    seat: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['seat', 'seats'],
+        hinsi: ['名詞'],
+        means: { 名詞: '席' },
+    },
+    seats: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['seat', 'seats'],
+        hinsi: ['名詞'],
+        means: { 名詞: '席' },
+    },
+    second: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['second', 'seconds'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（時間の）秒' },
+    },
+    seconds: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['second', 'seconds'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（時間の）秒' },
+    },
+    section: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['section', 'sections'],
+        hinsi: ['名詞'],
+        means: { 名詞: '部分、部門、〔会社、官庁などの〕課' },
+    },
+    sections: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['section', 'sections'],
+        hinsi: ['名詞'],
+        means: { 名詞: '部分、部門、〔会社、官庁などの〕課' },
+    },
+    seed: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['seed', 'seeds'],
+        hinsi: ['名詞'],
+        means: { 名詞: '種' },
+    },
+    seeds: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['seed', 'seeds'],
+        hinsi: ['名詞'],
+        means: { 名詞: '種' },
+    },
+    sense: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['sense', 'senses'],
+        hinsi: ['名詞'],
+        means: { 名詞: '意味、感覚' },
+    },
+    senses: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['sense', 'senses'],
+        hinsi: ['名詞'],
+        means: { 名詞: '意味、感覚' },
+    },
+    September: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '９月' },
+    },
+    shade: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['shade', 'shades'],
+        hinsi: ['名詞'],
+        means: { 名詞: '陰' },
+    },
+    shades: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['shade', 'shades'],
+        hinsi: ['名詞'],
+        means: { 名詞: '陰' },
+    },
+    shampoo: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'シャンプー' },
+    },
+    shape: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['shape', 'shapes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '形、姿' },
+    },
+    shapes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['shape', 'shapes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '形、姿' },
+    },
+    shelf: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['shelf', 'shelves'],
+        hinsi: ['名詞'],
+        means: { 名詞: '棚' },
+    },
+    shelves: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['shelf', 'shelves'],
+        hinsi: ['名詞'],
+        means: { 名詞: '棚' },
+    },
+    ship: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['ship', 'ships'],
+        hinsi: ['名詞'],
+        means: { 名詞: '船' },
+    },
+    ships: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['ship', 'ships'],
+        hinsi: ['名詞'],
+        means: { 名詞: '船' },
+    },
+    shirt: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['shirt', 'shirts'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'シャツ' },
+    },
+    shirts: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['shirt', 'shirts'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'シャツ' },
+    },
+    shock: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '（精神的な）ショック' },
+    },
+    shoe: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['shoe', 'shoes'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'くつ' },
+    },
+    shoes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['shoe', 'shoes'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'くつ' },
+    },
+    shop: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['shop', 'shops'],
+        hinsi: ['名詞'],
+        means: { 名詞: '(ものを売る)店、小売店' },
+    },
+    shops: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['shop', 'shops'],
+        hinsi: ['名詞'],
+        means: { 名詞: '(ものを売る)店、小売店' },
+    },
+    shopping: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '買い物' },
+    },
+    shoulder: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['shoulder', 'shoulders'],
+        hinsi: ['名詞'],
+        means: { 名詞: '肩' },
+    },
+    shoulders: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['shoulder', 'shoulders'],
+        hinsi: ['名詞'],
+        means: { 名詞: '肩' },
+    },
+    show: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['show', 'shows'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ショー' },
+    },
+    shows: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['show', 'shows'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ショー' },
+    },
+    shower: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['shower', 'showers'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'シャワー' },
+    },
+    showers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['shower', 'showers'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'シャワー' },
+    },
+    shrine: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['shrine', 'shrines'],
+        hinsi: ['名詞'],
+        means: { 名詞: '神社' },
+    },
+    shrines: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['shrine', 'shrines'],
+        hinsi: ['名詞'],
+        means: { 名詞: '神社' },
+    },
+    shyness: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '内気、はにかみ' },
+    },
+    sickness: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '病気' },
+    },
+    side: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['side', 'sides'],
+        hinsi: ['名詞'],
+        means: { 名詞: '面、局面、味方' },
+    },
+    sides: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['side', 'sides'],
+        hinsi: ['名詞'],
+        means: { 名詞: '面、局面、味方' },
+    },
+    sightseeing: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '観光、見物' },
+    },
+    sign: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['sign', 'signs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '標識、看板' },
+    },
+    signs: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['sign', 'signs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '標識、看板' },
+    },
+    singer: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['singer', 'singers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '歌う人、歌手' },
+    },
+    singers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['singer', 'singers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '歌う人、歌手' },
+    },
+    singing: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '歌うこと、歌唱' },
+    },
+    sister: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['sister', 'sisters'],
+        hinsi: ['名詞'],
+        means: { 名詞: '姉、妹' },
+    },
+    sisters: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['sister', 'sisters'],
+        hinsi: ['名詞'],
+        means: { 名詞: '姉、妹' },
+    },
+    site: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['site', 'sites'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（重大なできごとが起こった）場所、遺跡' },
+    },
+    sites: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['site', 'sites'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（重大なできごとが起こった）場所、遺跡' },
+    },
+    situation: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['situation', 'situations'],
+        hinsi: ['名詞'],
+        means: { 名詞: '状況、状態' },
+    },
+    situations: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['situation', 'situations'],
+        hinsi: ['名詞'],
+        means: { 名詞: '状況、状態' },
+    },
+    size: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['size', 'sizes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '大きさ、サイズ' },
+    },
+    sizes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['size', 'sizes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '大きさ、サイズ' },
+    },
+    skill: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['skill', 'skills'],
+        hinsi: ['名詞'],
+        means: { 名詞: '技術、技能' },
+    },
+    skills: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['skill', 'skills'],
+        hinsi: ['名詞'],
+        means: { 名詞: '技術、技能' },
+    },
+    skin: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '皮膚、肌' },
+    },
+    sky: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '空、大空' },
+    },
+    slump: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['slump', 'slumps'],
+        hinsi: ['名詞'],
+        means: { 名詞: '不振、不調' },
+    },
+    slumps: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['slump', 'slumps'],
+        hinsi: ['名詞'],
+        means: { 名詞: '不振、不調' },
+    },
+    smell: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['smell', 'smells'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'におい' },
+    },
+    smells: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['smell', 'smells'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'におい' },
+    },
+    smile: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['smile', 'smiles'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ほほえみ' },
+    },
+    smiles: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['smile', 'smiles'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ほほえみ' },
+    },
+    smog: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'スモッグ' },
+    },
+    smoke: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '煙' },
+    },
+    snack: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['snack', 'snacks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '軽食、おやつ' },
+    },
+    snacks: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['snack', 'snacks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '軽食、おやつ' },
+    },
+    snake: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['snake', 'snakes'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'へび' },
+    },
+    snakes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['snake', 'snakes'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'へび' },
+    },
+    sneaker: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['sneaker', 'sneakers'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'スニーカー' },
+    },
+    sneakers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['sneaker', 'sneakers'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'スニーカー' },
+    },
+    snow: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '雪' },
+    },
+    soccer: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'サッカー' },
+    },
+    sock: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['sock', 'socks'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ソックス、（短い）くつ下' },
+    },
+    socks: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['sock', 'socks'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ソックス、（短い）くつ下' },
+    },
+    sofa: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['sofa', 'sofas'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ソファー' },
+    },
+    sofas: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['sofa', 'sofas'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ソファー' },
+    },
+    softball: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['softball', 'softballs'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ソフトボール' },
+    },
+    softballs: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['softball', 'softballs'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ソフトボール' },
+    },
+    soldier: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['soldier', 'soldiers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（陸軍の）兵士、軍人' },
+    },
+    soldiers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['soldier', 'soldiers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（陸軍の）兵士、軍人' },
+    },
+    son: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['son', 'sons'],
+        hinsi: ['名詞'],
+        means: { 名詞: '息子' },
+    },
+    sons: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['son', 'sons'],
+        hinsi: ['名詞'],
+        means: { 名詞: '息子' },
+    },
+    song: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['song', 'songs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '歌' },
+    },
+    songs: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['song', 'songs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '歌' },
+    },
+    sound: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['sound', 'sounds'],
+        hinsi: ['名詞'],
+        means: { 名詞: '音、響き' },
+    },
+    sounds: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['sound', 'sounds'],
+        hinsi: ['名詞'],
+        means: { 名詞: '音、響き' },
+    },
+    soup: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'スープ' },
+    },
+    south: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '南' },
+    },
+    southwest: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '南西' },
+    },
+    soybean: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['soybean', 'soybeans'],
+        hinsi: ['名詞'],
+        means: { 名詞: '大豆' },
+    },
+    soybeans: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['soybean', 'soybeans'],
+        hinsi: ['名詞'],
+        means: { 名詞: '大豆' },
+    },
+    space: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '宇宙、宇宙空間' },
+    },
+    Spain: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'スペイン' },
+    },
+    Spanish: {
+        tags: ['形容詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'スペイン語' },
+    },
+    speaker: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['speaker', 'speakers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '話す人' },
+    },
+    speakers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['speaker', 'speakers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '話す人' },
+    },
+    speech: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '演説、スピーチ' },
+    },
+    spirit: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['spirit', 'spirits'],
+        hinsi: ['名詞'],
+        means: { 名詞: '気力、勇気　〔fighting spirit の形で〕闘志' },
+    },
+    spirits: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['spirit', 'spirits'],
+        hinsi: ['名詞'],
+        means: { 名詞: '気力、勇気　〔fighting spirit の形で〕闘志' },
+    },
+    spoon: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['spoon', 'spoons'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'スプーン' },
+    },
+    spoons: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['spoon', 'spoons'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'スプーン' },
+    },
+    sport: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'スポーツ、運動' },
+    },
+    spring: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['spring', 'springs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '春' },
+    },
+    springs: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['spring', 'springs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '春' },
+    },
+    sprint: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['sprint', 'sprints'],
+        hinsi: ['名詞'],
+        means: { 名詞: '短距離走' },
+    },
+    sprints: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['sprint', 'sprints'],
+        hinsi: ['名詞'],
+        means: { 名詞: '短距離走' },
+    },
+    square: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['square', 'squares'],
+        hinsi: ['名詞'],
+        means: { 名詞: '四角形' },
+    },
+    squares: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['square', 'squares'],
+        hinsi: ['名詞'],
+        means: { 名詞: '四角形' },
+    },
+    stadium: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['stadium', 'stadiums'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'スタジアム、競技場' },
+    },
+    stadiums: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['stadium', 'stadiums'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'スタジアム、競技場' },
+    },
+    staff: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '〔集合的に〕職員、社員' },
+    },
+    stage: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['stage', 'stages'],
+        hinsi: ['名詞'],
+        means: { 名詞: '舞台、ステージ' },
+    },
+    stages: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['stage', 'stages'],
+        hinsi: ['名詞'],
+        means: { 名詞: '舞台、ステージ' },
+    },
+    stair: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['stair', 'stairs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '階段' },
+    },
+    stairs: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['stair', 'stairs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '階段' },
+    },
+    stand: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['stand', 'stands'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'スタンド、台' },
+    },
+    stands: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['stand', 'stands'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'スタンド、台' },
+    },
+    star: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['star', 'stars'],
+        hinsi: ['名詞'],
+        means: { 名詞: '星' },
+    },
+    stars: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['star', 'stars'],
+        hinsi: ['名詞'],
+        means: { 名詞: '星' },
+    },
+    starvation: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '飢餓、ききん' },
+    },
+    station: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['station', 'stations'],
+        hinsi: ['名詞'],
+        means: { 名詞: '駅' },
+    },
+    stations: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['station', 'stations'],
+        hinsi: ['名詞'],
+        means: { 名詞: '駅' },
+    },
+    stationery: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '文房具' },
+    },
+    statue: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['statue', 'statues'],
+        hinsi: ['名詞'],
+        means: { 名詞: '像、彫刻' },
+    },
+    statues: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['statue', 'statues'],
+        hinsi: ['名詞'],
+        means: { 名詞: '像、彫刻' },
+    },
+    step: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['step', 'steps'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（階段の）踏み段' },
+    },
+    steps: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['step', 'steps'],
+        hinsi: ['名詞'],
+        means: { 名詞: '（階段の）踏み段' },
+    },
+    stew: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'シチュー' },
+    },
+    stomach: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['stomach', 'stomachs'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'おなか、胃' },
+    },
+    stomachs: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['stomach', 'stomachs'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'おなか、胃' },
+    },
+    stomachache: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['stomachache', 'stomachaches'],
+        hinsi: ['名詞'],
+        means: { 名詞: '腹痛' },
+    },
+    stomachaches: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['stomachache', 'stomachaches'],
+        hinsi: ['名詞'],
+        means: { 名詞: '腹痛' },
+    },
+    store: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['store', 'stores'],
+        hinsi: ['名詞'],
+        means: { 名詞: '店' },
+    },
+    stores: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['store', 'stores'],
+        hinsi: ['名詞'],
+        means: { 名詞: '店' },
+    },
+    story: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['story', 'stories'],
+        hinsi: ['名詞'],
+        means: { 名詞: '話、物語' },
+    },
+    stories: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['story', 'stories'],
+        hinsi: ['名詞'],
+        means: { 名詞: '話、物語' },
+    },
+    storytelling: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '物語を語ること' },
+    },
+    stream: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['stream', 'streams'],
+        hinsi: ['名詞'],
+        means: { 名詞: '小川、川' },
+    },
+    streams: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['stream', 'streams'],
+        hinsi: ['名詞'],
+        means: { 名詞: '小川、川' },
+    },
+    street: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['street', 'streets'],
+        hinsi: ['名詞'],
+        means: { 名詞: '通り' },
+    },
+    streets: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['street', 'streets'],
+        hinsi: ['名詞'],
+        means: { 名詞: '通り' },
+    },
+    stroller: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['stroller', 'strollers'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ベビーカー' },
+    },
+    strollers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['stroller', 'strollers'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ベビーカー' },
+    },
+    student: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['student', 'students'],
+        hinsi: ['名詞'],
+        means: { 名詞: '学生、生徒' },
+    },
+    students: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['student', 'students'],
+        hinsi: ['名詞'],
+        means: { 名詞: '学生、生徒' },
+    },
+    stuff: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '原料、もの' },
+    },
+    style: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['style', 'styles'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'やり方、作風、型' },
+    },
+    styles: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['style', 'styles'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'やり方、作風、型' },
+    },
+    subject: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['subject', 'subjects'],
+        hinsi: ['名詞'],
+        means: { 名詞: '題、トピック、テーマ' },
+    },
+    subjects: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['subject', 'subjects'],
+        hinsi: ['名詞'],
+        means: { 名詞: '題、トピック、テーマ' },
+    },
+    suburb: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['suburb', 'suburbs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '郊外' },
+    },
+    suburbs: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['suburb', 'suburbs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '郊外' },
+    },
+    subway: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['subway', 'subways'],
+        hinsi: ['名詞'],
+        means: { 名詞: '地下鉄' },
+    },
+    subways: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['subway', 'subways'],
+        hinsi: ['名詞'],
+        means: { 名詞: '地下鉄' },
+    },
+    success: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '成功' },
+    },
+    sugar: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '砂糖' },
+    },
+    summer: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '夏' },
+    },
+    sun: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['sun', 'suns'],
+        hinsi: ['名詞'],
+        means: { 名詞: '太陽' },
+    },
+    suns: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['sun', 'suns'],
+        hinsi: ['名詞'],
+        means: { 名詞: '太陽' },
+    },
+    Sunday: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '日曜日' },
+    },
+    sunlight: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '日光、陽光' },
+    },
+    sunset: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['sunset', 'sunsets'],
+        hinsi: ['名詞'],
+        means: { 名詞: '日の入り' },
+    },
+    sunsets: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['sunset', 'sunsets'],
+        hinsi: ['名詞'],
+        means: { 名詞: '日の入り' },
+    },
+    supermarket: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['supermarket', 'supermarkets'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'スーパーマーケット' },
+    },
+    supermarkets: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['supermarket', 'supermarkets'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'スーパーマーケット' },
+    },
+    support: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '支持、支援' },
+    },
+    survival: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '生き残ること' },
+    },
+    swimming: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '水泳' },
+    },
+    sword: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['sword', 'swords'],
+        hinsi: ['名詞'],
+        means: { 名詞: '剣' },
+    },
+    swords: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['sword', 'swords'],
+        hinsi: ['名詞'],
+        means: { 名詞: '剣' },
+    },
+    Sydney: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'シドニー 《オーストラリア東岸にある都市》' },
+    },
+    symbol: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['symbol', 'symbols'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'シンボル、しるし' },
+    },
+    symbols: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['symbol', 'symbols'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'シンボル、しるし' },
+    },
+    system: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['system', 'systems'],
+        hinsi: ['名詞'],
+        means: { 名詞: '組織' },
+    },
+    systems: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['system', 'systems'],
+        hinsi: ['名詞'],
+        means: { 名詞: '組織' },
+    },
+    table: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['table', 'tables'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'テーブル、食卓' },
+    },
+    tables: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['table', 'tables'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'テーブル、食卓' },
+    },
+    tail: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['tail', 'tails'],
+        hinsi: ['名詞'],
+        means: { 名詞: '尾（ひれ）、しっぽ' },
+    },
+    tails: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['tail', 'tails'],
+        hinsi: ['名詞'],
+        means: { 名詞: '尾（ひれ）、しっぽ' },
+    },
+    tale: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['tale', 'tales'],
+        hinsi: ['名詞'],
+        means: { 名詞: '物語、お話' },
+    },
+    tales: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['tale', 'tales'],
+        hinsi: ['名詞'],
+        means: { 名詞: '物語、お話' },
+    },
+    talk: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['talk', 'talks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '話、スピーチ' },
+    },
+    talks: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['talk', 'talks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '話、スピーチ' },
+    },
+    Tanzania: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'タンザニア' },
+    },
+    task: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['task', 'tasks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '仕事、任務' },
+    },
+    tasks: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['task', 'tasks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '仕事、任務' },
+    },
+    taste: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['taste', 'tastes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '味' },
+    },
+    tastes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['taste', 'tastes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '味' },
+    },
+    taxi: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['taxi', 'taxis'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'タクシー' },
+    },
+    taxis: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['taxi', 'taxis'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'タクシー' },
+    },
+    tea: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '茶、紅茶' },
+    },
+    teacher: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['teacher', 'teachers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '教師、先生' },
+    },
+    teachers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['teacher', 'teachers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '教師、先生' },
+    },
+    team: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['team', 'teams'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'チーム' },
+    },
+    teams: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['team', 'teams'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'チーム' },
+    },
+    teammate: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['teammate', 'teammates'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'チームメイト' },
+    },
+    teammates: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['teammate', 'teammates'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'チームメイト' },
+    },
+    teamwork: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'チームワーク' },
+    },
+    tear: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['tear', 'tears'],
+        hinsi: ['名詞'],
+        means: { 名詞: '涙' },
+    },
+    tears: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['tear', 'tears'],
+        hinsi: ['名詞'],
+        means: { 名詞: '涙' },
+    },
+    technology: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '科学技術' },
+    },
+    telescope: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['telescope', 'telescopes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '望遠鏡' },
+    },
+    telescopes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['telescope', 'telescopes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '望遠鏡' },
+    },
+    temperature: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '温度、気温' },
+    },
+    temple: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['temple', 'temples'],
+        hinsi: ['名詞'],
+        means: { 名詞: '寺' },
+    },
+    temples: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['temple', 'temples'],
+        hinsi: ['名詞'],
+        means: { 名詞: '寺' },
+    },
+    tennis: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'テニス' },
+    },
+    test: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['test', 'tests'],
+        hinsi: ['名詞'],
+        means: { 名詞: '試験、テスト' },
+    },
+    tests: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['test', 'tests'],
+        hinsi: ['名詞'],
+        means: { 名詞: '試験、テスト' },
+    },
+    textbook: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['textbook', 'textbooks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '教科書、テキスト' },
+    },
+    textbooks: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['textbook', 'textbooks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '教科書、テキスト' },
+    },
+    Thailand: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'タイ' },
+    },
+    theater: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['theater', 'theaters'],
+        hinsi: ['名詞'],
+        means: { 名詞: '劇場、映画館〔movie theaterともいう〕' },
+    },
+    theaters: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['theater', 'theaters'],
+        hinsi: ['名詞'],
+        means: { 名詞: '劇場、映画館〔movie theaterともいう〕' },
+    },
+    theme: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['theme', 'themes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '主題、テーマ' },
+    },
+    themes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['theme', 'themes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '主題、テーマ' },
+    },
+    thing: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['thing', 'things'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'もの、こと' },
+    },
+    things: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['thing', 'things'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'もの、こと' },
+    },
+    thinking: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '考え、思考' },
+    },
+    throat: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['throat', 'throats'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'のど' },
+    },
+    throats: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['throat', 'throats'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'のど' },
+    },
+    Thursday: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '木曜日' },
+    },
+    ticket: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['ticket', 'tickets'],
+        hinsi: ['名詞'],
+        means: { 名詞: '切符、チケット、券' },
+    },
+    tickets: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['ticket', 'tickets'],
+        hinsi: ['名詞'],
+        means: { 名詞: '切符、チケット、券' },
+    },
+    tie: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['tie', 'ties'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ネクタイ' },
+    },
+    ties: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['tie', 'ties'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ネクタイ' },
+    },
+    time: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '回、度' },
+    },
+    timing: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'タイミング、時機を選ぶこと' },
+    },
+    title: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['title', 'titles'],
+        hinsi: ['名詞'],
+        means: { 名詞: '題名、タイトル' },
+    },
+    titles: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['title', 'titles'],
+        hinsi: ['名詞'],
+        means: { 名詞: '題名、タイトル' },
+    },
+    toast: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['toast', 'toasts'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'トースト' },
+    },
+    toasts: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['toast', 'toasts'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'トースト' },
+    },
+    toilet: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['toilet', 'toilets'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'トイレ、化粧室' },
+    },
+    toilets: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['toilet', 'toilets'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'トイレ、化粧室' },
+    },
+    tongue: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['tongue', 'tongues'],
+        hinsi: ['名詞'],
+        means: { 名詞: '国語、母語' },
+    },
+    tongues: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['tongue', 'tongues'],
+        hinsi: ['名詞'],
+        means: { 名詞: '国語、母語' },
+    },
+    tool: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['tool', 'tools'],
+        hinsi: ['名詞'],
+        means: { 名詞: '手段、道具' },
+    },
+    tools: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['tool', 'tools'],
+        hinsi: ['名詞'],
+        means: { 名詞: '手段、道具' },
+    },
+    tooth: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['tooth', 'teeth'],
+        hinsi: ['名詞'],
+        means: { 名詞: '歯' },
+    },
+    teeth: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['tooth', 'teeth'],
+        hinsi: ['名詞'],
+        means: { 名詞: '歯' },
+    },
+    toothache: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['toothache', 'toothaches'],
+        hinsi: ['名詞'],
+        means: { 名詞: '歯痛' },
+    },
+    toothaches: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['toothache', 'toothaches'],
+        hinsi: ['名詞'],
+        means: { 名詞: '歯痛' },
+    },
+    toothbrush: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['toothbrush', 'toothbrushes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '歯ブラシ' },
+    },
+    toothbrushes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['toothbrush', 'toothbrushes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '歯ブラシ' },
+    },
+    top: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['top', 'tops'],
+        hinsi: ['名詞'],
+        means: { 名詞: '一番上の部分、頂上' },
+    },
+    tops: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['top', 'tops'],
+        hinsi: ['名詞'],
+        means: { 名詞: '一番上の部分、頂上' },
+    },
+    total: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['total', 'totals'],
+        hinsi: ['名詞'],
+        means: { 名詞: '総合、合計' },
+    },
+    totals: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['total', 'totals'],
+        hinsi: ['名詞'],
+        means: { 名詞: '総合、合計' },
+    },
+    touch: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '接触' },
+    },
+    tour: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['tour', 'tours'],
+        hinsi: ['名詞'],
+        means: { 名詞: '旅行' },
+    },
+    tours: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['tour', 'tours'],
+        hinsi: ['名詞'],
+        means: { 名詞: '旅行' },
+    },
+    tourism: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '観光事業、観光、旅行' },
+    },
+    tournament: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['tournament', 'tournaments'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'トーナメント、勝ち抜き試合' },
+    },
+    tournaments: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['tournament', 'tournaments'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'トーナメント、勝ち抜き試合' },
+    },
+    towel: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['towel', 'towels'],
+        hinsi: ['名詞'],
+        means: { 名詞: '手拭い、タオル' },
+    },
+    towels: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['towel', 'towels'],
+        hinsi: ['名詞'],
+        means: { 名詞: '手拭い、タオル' },
+    },
+    tower: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['tower', 'towers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '塔、タワー' },
+    },
+    towers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['tower', 'towers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '塔、タワー' },
+    },
+    town: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['town', 'towns'],
+        hinsi: ['名詞'],
+        means: { 名詞: '町、市、都会' },
+    },
+    towns: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['town', 'towns'],
+        hinsi: ['名詞'],
+        means: { 名詞: '町、市、都会' },
+    },
+    toy: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['toy', 'toys'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'おもちゃ' },
+    },
+    toys: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['toy', 'toys'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'おもちゃ' },
+    },
+    track: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['track', 'tracks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '線路' },
+    },
+    tracks: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['track', 'tracks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '線路' },
+    },
+    trade: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '貿易' },
+    },
+    tradition: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '伝統' },
+    },
+    traffic: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '交通  〔traffic light〕交通信号（灯）' },
+    },
+    tragedy: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['tragedy', 'tragedies'],
+        hinsi: ['名詞'],
+        means: { 名詞: '悲劇、悲しいできごと' },
+    },
+    tragedies: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['tragedy', 'tragedies'],
+        hinsi: ['名詞'],
+        means: { 名詞: '悲劇、悲しいできごと' },
+    },
+    train: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['train', 'trains'],
+        hinsi: ['名詞'],
+        means: { 名詞: '列車、電車' },
+    },
+    trains: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['train', 'trains'],
+        hinsi: ['名詞'],
+        means: { 名詞: '列車、電車' },
+    },
+    trainer: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['trainer', 'trainers'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'トレーナー' },
+    },
+    trainers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['trainer', 'trainers'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'トレーナー' },
+    },
+    transportation: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '輸送機関' },
+    },
+    treasure: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '宝物' },
+    },
+    tree: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['tree', 'trees'],
+        hinsi: ['名詞'],
+        means: { 名詞: '木、樹木' },
+    },
+    trees: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['tree', 'trees'],
+        hinsi: ['名詞'],
+        means: { 名詞: '木、樹木' },
+    },
+    trip: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['trip', 'trips'],
+        hinsi: ['名詞'],
+        means: { 名詞: '旅行' },
+    },
+    trips: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['trip', 'trips'],
+        hinsi: ['名詞'],
+        means: { 名詞: '旅行' },
+    },
+    trophy: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['trophy', 'trophies'],
+        hinsi: ['名詞'],
+        means: { 名詞: '優勝記念品、トロフィー' },
+    },
+    trophies: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['trophy', 'trophies'],
+        hinsi: ['名詞'],
+        means: { 名詞: '優勝記念品、トロフィー' },
+    },
+    trouble: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '心配' },
+    },
+    Tuesday: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '火曜日' },
+    },
+    tuna: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['tuna', 'tunas'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'マグロ' },
+    },
+    tunas: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['tuna', 'tunas'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'マグロ' },
+    },
+    turkey: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['turkey', 'turkeys'],
+        hinsi: ['名詞'],
+        means: { 名詞: '七面鳥' },
+    },
+    turkeys: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['turkey', 'turkeys'],
+        hinsi: ['名詞'],
+        means: { 名詞: '七面鳥' },
+    },
+    turn: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['turn', 'turns'],
+        hinsi: ['名詞'],
+        means: { 名詞: '番、順番　　〔in turnで〕代わって今度は' },
+    },
+    turns: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['turn', 'turns'],
+        hinsi: ['名詞'],
+        means: { 名詞: '番、順番　　〔in turnで〕代わって今度は' },
+    },
+    turning: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['turning', 'turnings'],
+        hinsi: ['名詞'],
+        means: { 名詞: '曲がり角、回転    〔turning pointで〕転機' },
+    },
+    turnings: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['turning', 'turnings'],
+        hinsi: ['名詞'],
+        means: { 名詞: '曲がり角、回転    〔turning pointで〕転機' },
+    },
+    turtle: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['turtle', 'turtles'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'カメ' },
+    },
+    turtles: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['turtle', 'turtles'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'カメ' },
+    },
+    TV: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['TV', 'TVs'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'テレビ（番組）' },
+    },
+    TVs: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['TV', 'TVs'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'テレビ（番組）' },
+    },
+    twelfth: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['twelfth', 'twelfths'],
+        hinsi: ['名詞'],
+        means: { 名詞: '12番め、（月の）12日' },
+    },
+    twelfths: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['twelfth', 'twelfths'],
+        hinsi: ['名詞'],
+        means: { 名詞: '12番め、（月の）12日' },
+    },
+    twelve: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['twelve', 'twelves'],
+        hinsi: ['名詞'],
+        means: { 名詞: '12' },
+    },
+    twelves: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['twelve', 'twelves'],
+        hinsi: ['名詞'],
+        means: { 名詞: '12' },
+    },
+    twentieth: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['twentieth', 'twentieths'],
+        hinsi: ['名詞'],
+        means: { 名詞: '20番目' },
+    },
+    twentieths: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['twentieth', 'twentieths'],
+        hinsi: ['名詞'],
+        means: { 名詞: '20番目' },
+    },
+    twenty: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['twenty', 'twenties'],
+        hinsi: ['名詞'],
+        means: { 名詞: '20' },
+    },
+    twenties: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['twenty', 'twenties'],
+        hinsi: ['名詞'],
+        means: { 名詞: '20' },
+    },
+    two: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['two', 'twos'],
+        hinsi: ['名詞'],
+        means: { 名詞: '2' },
+    },
+    twos: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['two', 'twos'],
+        hinsi: ['名詞'],
+        means: { 名詞: '2' },
+    },
+    type: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['type', 'types'],
+        hinsi: ['名詞'],
+        means: { 名詞: '型、タイプ、種類' },
+    },
+    types: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['type', 'types'],
+        hinsi: ['名詞'],
+        means: { 名詞: '型、タイプ、種類' },
+    },
+    umbrella: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['umbrella', 'umbrellas'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'かさ' },
+    },
+    umbrellas: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['umbrella', 'umbrellas'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'かさ' },
+    },
+    uncle: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['uncle', 'uncles'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'おじ、おじさん' },
+    },
+    uncles: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['uncle', 'uncles'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'おじ、おじさん' },
+    },
+    underground: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['underground', 'undergrounds'],
+        hinsi: ['名詞'],
+        means: { 名詞: '地下、地下鉄' },
+    },
+    undergrounds: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['underground', 'undergrounds'],
+        hinsi: ['名詞'],
+        means: { 名詞: '地下、地下鉄' },
+    },
+    unicycle: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['unicycle', 'unicycles'],
+        hinsi: ['名詞'],
+        means: { 名詞: '一輪車' },
+    },
+    unicycles: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['unicycle', 'unicycles'],
+        hinsi: ['名詞'],
+        means: { 名詞: '一輪車' },
+    },
+    uniform: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['uniform', 'uniforms'],
+        hinsi: ['名詞'],
+        means: { 名詞: '制服、ユニフォーム' },
+    },
+    uniforms: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['uniform', 'uniforms'],
+        hinsi: ['名詞'],
+        means: { 名詞: '制服、ユニフォーム' },
+    },
+    university: {
+        tags: ['可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['university', 'universities'],
+        hinsi: ['名詞'],
+        means: { 名詞: '大学' },
+    },
+    universities: {
+        tags: ['可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['university', 'universities'],
+        hinsi: ['名詞'],
+        means: { 名詞: '大学' },
+    },
+    use: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['use', 'uses'],
+        hinsi: ['名詞'],
+        means: { 名詞: '使用、使い道' },
+    },
+    uses: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['use', 'uses'],
+        hinsi: ['名詞'],
+        means: { 名詞: '使用、使い道' },
+    },
+    vacation: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['vacation', 'vacations'],
+        hinsi: ['名詞'],
+        means: { 名詞: '休暇、休み' },
+    },
+    vacations: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['vacation', 'vacations'],
+        hinsi: ['名詞'],
+        means: { 名詞: '休暇、休み' },
+    },
+    vegetable: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['vegetable', 'vegetables'],
+        hinsi: ['名詞'],
+        means: { 名詞: '野菜' },
+    },
+    vegetables: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['vegetable', 'vegetables'],
+        hinsi: ['名詞'],
+        means: { 名詞: '野菜' },
+    },
+    Venezuela: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ベネズエラ〔南米の国の名〕' },
+    },
+    vet: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['vet', 'vets'],
+        hinsi: ['名詞'],
+        means: { 名詞: '獣医（veterinarianの略）' },
+    },
+    vets: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['vet', 'vets'],
+        hinsi: ['名詞'],
+        means: { 名詞: '獣医（veterinarianの略）' },
+    },
+    victory: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['victory', 'victories'],
+        hinsi: ['名詞'],
+        means: { 名詞: '勝利、優勝' },
+    },
+    victories: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['victory', 'victories'],
+        hinsi: ['名詞'],
+        means: { 名詞: '勝利、優勝' },
+    },
+    video: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['video', 'videos'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ビデオ  〔 video game の形で〕　テレビゲーム' },
+    },
+    videos: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['video', 'videos'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ビデオ  〔 video game の形で〕　テレビゲーム' },
+    },
+    view: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['view', 'views'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ながめ、景色' },
+    },
+    views: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['view', 'views'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ながめ、景色' },
+    },
+    village: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['village', 'villages'],
+        hinsi: ['名詞'],
+        means: { 名詞: '村' },
+    },
+    villages: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['village', 'villages'],
+        hinsi: ['名詞'],
+        means: { 名詞: '村' },
+    },
+    vinegar: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '食用酢、ビネガー' },
+    },
+    violin: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['violin', 'violins'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'バイオリン' },
+    },
+    violins: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['violin', 'violins'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'バイオリン' },
+    },
+    visit: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['visit', 'visits'],
+        hinsi: ['名詞'],
+        means: { 名詞: '訪問' },
+    },
+    visits: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['visit', 'visits'],
+        hinsi: ['名詞'],
+        means: { 名詞: '訪問' },
+    },
+    visitor: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['visitor', 'visitors'],
+        hinsi: ['名詞'],
+        means: { 名詞: '訪問者' },
+    },
+    visitors: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['visitor', 'visitors'],
+        hinsi: ['名詞'],
+        means: { 名詞: '訪問者' },
+    },
+    voice: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['voice', 'voices'],
+        hinsi: ['名詞'],
+        means: { 名詞: '声' },
+    },
+    voices: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['voice', 'voices'],
+        hinsi: ['名詞'],
+        means: { 名詞: '声' },
+    },
+    volleyball: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['volleyball', 'volleyballs'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'バレーボール' },
+    },
+    volleyballs: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['volleyball', 'volleyballs'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'バレーボール' },
+    },
+    volume: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['volume', 'volumes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '〔書物の〕巻、冊、容量' },
+    },
+    volumes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['volume', 'volumes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '〔書物の〕巻、冊、容量' },
+    },
+    volunteer: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['volunteer', 'volunteers'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ボランティア、志願者' },
+    },
+    volunteers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['volunteer', 'volunteers'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ボランティア、志願者' },
+    },
+    waitress: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['waitress', 'waitresses'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ウエイトレス' },
+    },
+    waitresses: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['waitress', 'waitresses'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ウエイトレス' },
+    },
+    walk: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['walk', 'walks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '歩くこと、散歩' },
+    },
+    walks: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['walk', 'walks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '歩くこと、散歩' },
+    },
+    wall: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['wall', 'walls'],
+        hinsi: ['名詞'],
+        means: { 名詞: '壁、へい、城壁' },
+    },
+    walls: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['wall', 'walls'],
+        hinsi: ['名詞'],
+        means: { 名詞: '壁、へい、城壁' },
+    },
+    war: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['war', 'wars'],
+        hinsi: ['名詞'],
+        means: { 名詞: '戦争' },
+    },
+    wars: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['war', 'wars'],
+        hinsi: ['名詞'],
+        means: { 名詞: '戦争' },
+    },
+    warrior: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['warrior', 'warriors'],
+        hinsi: ['名詞'],
+        means: { 名詞: '武人、軍人' },
+    },
+    warriors: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['warrior', 'warriors'],
+        hinsi: ['名詞'],
+        means: { 名詞: '武人、軍人' },
+    },
+    waste: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '浪費' },
+    },
+    watch: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['watch', 'watches'],
+        hinsi: ['名詞'],
+        means: { 名詞: '腕時計' },
+    },
+    watches: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['watch', 'watches'],
+        hinsi: ['名詞'],
+        means: { 名詞: '腕時計' },
+    },
+    water: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '水、水中' },
+    },
+    waterfall: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['waterfall', 'waterfalls'],
+        hinsi: ['名詞'],
+        means: { 名詞: '滝' },
+    },
+    waterfalls: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['waterfall', 'waterfalls'],
+        hinsi: ['名詞'],
+        means: { 名詞: '滝' },
+    },
+    wave: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['wave', 'waves'],
+        hinsi: ['名詞'],
+        means: { 名詞: '波' },
+    },
+    waves: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['wave', 'waves'],
+        hinsi: ['名詞'],
+        means: { 名詞: '波' },
+    },
+    way: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['way', 'ways'],
+        hinsi: ['名詞'],
+        means: { 名詞: '方向' },
+    },
+    ways: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['way', 'ways'],
+        hinsi: ['名詞'],
+        means: { 名詞: '方向' },
+    },
+    weather: {
+        tags: ['不可算名詞'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '天気、気象' },
+    },
+    website: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['website', 'websites'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ウェブサイト' },
+    },
+    websites: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['website', 'websites'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ウェブサイト' },
+    },
+    week: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['week', 'weeks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '週' },
+    },
+    weeks: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['week', 'weeks'],
+        hinsi: ['名詞'],
+        means: { 名詞: '週' },
+    },
+    weekend: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['weekend', 'weekends'],
+        hinsi: ['名詞'],
+        means: { 名詞: '週末' },
+    },
+    weekends: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['weekend', 'weekends'],
+        hinsi: ['名詞'],
+        means: { 名詞: '週末' },
+    },
+    whale: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['whale', 'whales'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'クジラ' },
+    },
+    whales: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['whale', 'whales'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'クジラ' },
+    },
+    wheel: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['wheel', 'wheels'],
+        hinsi: ['名詞'],
+        means: { 名詞: '車輪' },
+    },
+    wheels: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['wheel', 'wheels'],
+        hinsi: ['名詞'],
+        means: { 名詞: '車輪' },
+    },
+    wheelchair: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['wheelchair', 'wheelchairs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '車イス' },
+    },
+    wheelchairs: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['wheelchair', 'wheelchairs'],
+        hinsi: ['名詞'],
+        means: { 名詞: '車イス' },
+    },
+    white: {
+        tags: ['不可算名詞', '子音で始まる'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '白、白人' },
+    },
+    wife: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['wife', 'wives'],
+        hinsi: ['名詞'],
+        means: { 名詞: '妻' },
+    },
+    wives: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['wife', 'wives'],
+        hinsi: ['名詞'],
+        means: { 名詞: '妻' },
+    },
+    wild: {
+        tags: ['不可算名詞', '子音で始まる'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '野生' },
+    },
+    wildcat: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['wildcat', 'wildcats'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ヤマネコ' },
+    },
+    wildcats: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['wildcat', 'wildcats'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ヤマネコ' },
+    },
+    wilderness: {
+        tags: ['不可算名詞', '子音で始まる'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '荒野' },
+    },
+    wildlife: {
+        tags: ['不可算名詞', '子音で始まる'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '野生動物' },
+    },
+    will: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['will', 'wills'],
+        hinsi: ['名詞'],
+        means: { 名詞: '意志' },
+    },
+    wills: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['will', 'wills'],
+        hinsi: ['名詞'],
+        means: { 名詞: '意志' },
+    },
+    wind: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['wind', 'winds'],
+        hinsi: ['名詞'],
+        means: { 名詞: '風' },
+    },
+    winds: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['wind', 'winds'],
+        hinsi: ['名詞'],
+        means: { 名詞: '風' },
+    },
+    windmill: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['windmill', 'windmills'],
+        hinsi: ['名詞'],
+        means: { 名詞: '風車' },
+    },
+    windmills: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['windmill', 'windmills'],
+        hinsi: ['名詞'],
+        means: { 名詞: '風車' },
+    },
+    window: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['window', 'windows'],
+        hinsi: ['名詞'],
+        means: { 名詞: '窓' },
+    },
+    windows: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['window', 'windows'],
+        hinsi: ['名詞'],
+        means: { 名詞: '窓' },
+    },
+    winner: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['winner', 'winners'],
+        hinsi: ['名詞'],
+        means: { 名詞: '勝った人、勝利者' },
+    },
+    winners: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['winner', 'winners'],
+        hinsi: ['名詞'],
+        means: { 名詞: '勝った人、勝利者' },
+    },
+    winter: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '冬' },
+    },
+    wire: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['wire', 'wires'],
+        hinsi: ['名詞'],
+        means: { 名詞: '針金、ワイヤー' },
+    },
+    wires: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['wire', 'wires'],
+        hinsi: ['名詞'],
+        means: { 名詞: '針金、ワイヤー' },
+    },
+    wish: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['wish', 'wishes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '願い、望み' },
+    },
+    wishes: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['wish', 'wishes'],
+        hinsi: ['名詞'],
+        means: { 名詞: '願い、望み' },
+    },
+    woman: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['woman', 'women'],
+        hinsi: ['名詞'],
+        means: { 名詞: '女性' },
+    },
+    women: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['woman', 'women'],
+        hinsi: ['名詞'],
+        means: { 名詞: '女性' },
+    },
+    wonder: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['wonder', 'wonders'],
+        hinsi: ['名詞'],
+        means: { 名詞: '驚き' },
+    },
+    wonders: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['wonder', 'wonders'],
+        hinsi: ['名詞'],
+        means: { 名詞: '驚き' },
+    },
+    wood: {
+        tags: ['不可算名詞', '子音で始まる'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'まき、木' },
+    },
+    word: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['word', 'words'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ことば、発言' },
+    },
+    words: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['word', 'words'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ことば、発言' },
+    },
+    work: {
+        tags: ['不可算名詞', '子音で始まる'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '"仕事、勉強' },
+    },
+    worker: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['worker', 'workers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '労働者' },
+    },
+    workers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['worker', 'workers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '労働者' },
+    },
+    world: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['world', 'worlds'],
+        hinsi: ['名詞'],
+        means: { 名詞: '世界' },
+    },
+    worlds: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['world', 'worlds'],
+        hinsi: ['名詞'],
+        means: { 名詞: '世界' },
+    },
+    wrestling: {
+        tags: ['不可算名詞', '子音で始まる'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'レスリング' },
+    },
+    writer: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['writer', 'writers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '作家、著述家' },
+    },
+    writers: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['writer', 'writers'],
+        hinsi: ['名詞'],
+        means: { 名詞: '作家、著述家' },
+    },
+    writing: {
+        tags: ['不可算名詞', '子音で始まる'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '書かれた文字、筆跡、書くこと' },
+    },
+    yacht: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['yacht', 'yachts'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ヨット' },
+    },
+    yachts: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['yacht', 'yachts'],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ヨット' },
+    },
+    year: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['year', 'years'],
+        hinsi: ['名詞'],
+        means: { 名詞: '年、1年' },
+    },
+    years: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['year', 'years'],
+        hinsi: ['名詞'],
+        means: { 名詞: '年、1年' },
+    },
+    yellow: {
+        tags: ['不可算名詞', '子音で始まる'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '黄色' },
+    },
+    yesterday: {
+        tags: ['不可算名詞', '子音で始まる'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: '昨日' },
+    },
+    yogurt: {
+        tags: ['不可算名詞', '子音で始まる'],
+        katuyou: [],
+        hinsi: ['名詞'],
+        means: { 名詞: 'ヨーグルト' },
+    },
+    zoo: {
+        tags: ['可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['zoo', 'zoos'],
+        hinsi: ['名詞'],
+        means: { 名詞: '動物園' },
+    },
+    zoos: {
+        tags: ['可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['zoo', 'zoos'],
+        hinsi: ['名詞'],
+        means: { 名詞: '動物園' },
+    },
+};
+let covertango = {
+    amazing: {
+        tags: ['他動詞', '感覚動詞', '現在分詞', '限定用法', '原級'],
+        katuyou: ['amaze', 'amazes', 'amazed', 'amazing'],
+        hinsi: ['動詞', '形容詞'],
+        means: { 動詞: '～を驚嘆させる、びっくりさせる', 形容詞: '驚くべき、目を見張らせる' },
+    },
+    answer: {
+        tags: ['他動詞', '動作動詞', '原型', '可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['answer', 'answers', 'answered', 'answering'],
+        hinsi: ['動詞', '名詞'],
+        means: {
+            動詞: '～に答える、応答する　〔answer the phone の形で〕 電話に出る',
+            名詞: '答え、応答、返事',
+        },
+    },
+    answers: {
+        tags: ['他動詞', '動作動詞', '三単現s', '可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['answer', 'answers', 'answered', 'answering'],
+        hinsi: ['動詞', '名詞'],
+        means: {
+            動詞: '～に答える、応答する　〔answer the phone の形で〕 電話に出る',
+            名詞: '答え、応答、返事',
+        },
+    },
+    arrest: {
+        tags: ['他動詞', '動作動詞', '原型', '可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['arrest', 'arrests', 'arrested', 'arresting'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '逮捕する', 名詞: '逮捕' },
+    },
+    arrests: {
+        tags: ['他動詞', '動作動詞', '三単現s', '可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['arrest', 'arrests', 'arrested', 'arresting'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '逮捕する', 名詞: '逮捕' },
+    },
+    bear: {
+        tags: ['自動詞', '動作動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['bear', 'bears', 'bore', 'born', 'bearing'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '誕生する、生まれる', 名詞: 'クマ' },
+    },
+    bears: {
+        tags: ['自動詞', '動作動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['bear', 'bears', 'bore', 'born', 'bearing'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '誕生する、生まれる', 名詞: 'クマ' },
+    },
+    break: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['break', 'breaks', 'broke', 'broken', 'breaking'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～をこわす、折る、破る', 名詞: '休けい、中休み、中断' },
+    },
+    breaks: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['break', 'breaks', 'broke', 'broken', 'breaking'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～をこわす、折る、破る', 名詞: '休けい、中休み、中断' },
+    },
+    brush: {
+        tags: ['他動詞', '動作動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['brush', 'brushes', 'brushed', 'brushing'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '（ブラシで）みがく', 名詞: '筆' },
+    },
+    brushes: {
+        tags: ['他動詞', '動作動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['brush', 'brushes', 'brushed', 'brushing'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '（ブラシで）みがく', 名詞: '筆' },
+    },
+    building: {
+        tags: ['他動詞', '動作動詞', 'SVOOがとれる動詞', '現在分詞', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['build', 'builds', 'built', 'building', 'buildings'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～を建てる、～を築き上げる', 名詞: '建物、ビル' },
+    },
+    burn: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['burn', 'burns', 'burned', 'burning'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～を燃やす', 名詞: 'やけど' },
+    },
+    burns: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['burn', 'burns', 'burned', 'burning'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～を燃やす', 名詞: 'やけど' },
+    },
+    call: {
+        tags: ['他動詞', '動作動詞', 'SVOCがとれる動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['call', 'calls', 'called', 'calling'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '"1. （大声で）呼ぶ', 名詞: '電話(すること)' },
+    },
+    calls: {
+        tags: ['他動詞', '動作動詞', 'SVOCがとれる動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['call', 'calls', 'called', 'calling'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '"1. （大声で）呼ぶ', 名詞: '電話(すること)' },
+    },
+    care: {
+        tags: ['自動詞', '状態動詞', '原型', '不可算名詞', '単数形', '子音で始まる'],
+        katuyou: ['care', 'cares', 'cared', 'caring'],
+        hinsi: ['動詞', '名詞'],
+        means: {
+            動詞: '[care for ～の形で]　～の世話をする',
+            名詞: '世話　〔take care of ～の形で〕 ～の面倒をみる',
+        },
+    },
+    catch: {
+        tags: ['他動詞', '動作動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['catch', 'catches', 'caught', 'catching'],
+        hinsi: ['動詞', '名詞'],
+        means: {
+            動詞: '～をとらえる、つかまえる',
+            名詞: '（ボールなどを）とらえること、キャッチボール　　〔play catch の形で〕　キャッチボールをする',
+        },
+    },
+    catches: {
+        tags: ['他動詞', '動作動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['catch', 'catches', 'caught', 'catching'],
+        hinsi: ['動詞', '名詞'],
+        means: {
+            動詞: '～をとらえる、つかまえる',
+            名詞: '（ボールなどを）とらえること、キャッチボール　　〔play catch の形で〕　キャッチボールをする',
+        },
+    },
+    cause: {
+        tags: ['他動詞', '動作動詞', 'SVOCがとれる動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['cause', 'causes', 'caused', 'causing'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～を引き起こす、～の原因となる', 名詞: '原因' },
+    },
+    causes: {
+        tags: ['他動詞', '動作動詞', 'SVOCがとれる動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['cause', 'causes', 'caused', 'causing'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～を引き起こす、～の原因となる', 名詞: '原因' },
+    },
+    change: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['change', 'changes', 'changed', 'changing'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '"1. 変わる〔自動詞〕', 名詞: 'おつり、つり銭、小銭' },
+    },
+    changes: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['change', 'changes', 'changed', 'changing'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '"1. 変わる〔自動詞〕', 名詞: 'おつり、つり銭、小銭' },
+    },
+    clean: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型', '限定用法', '叙述用法', '原級'],
+        katuyou: ['clean', 'cleans', 'cleaned', 'cleaning'],
+        hinsi: ['動詞', '形容詞'],
+        means: { 動詞: '～をきれいにする、そうじする', 形容詞: 'きれいな、清潔な、クリーンな' },
+    },
+    close: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型', '限定用法', '叙述用法', '原級'],
+        katuyou: ['close', 'closes', 'closed', 'closing'],
+        hinsi: ['動詞', '形容詞'],
+        means: { 動詞: '（窓、ドアなど） を閉める、閉じる、閉まる', 形容詞: ' 近い、接近した、親密な、親しい' },
+    },
+    cook: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['cook', 'cooks', 'cooked', 'cooking'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '（～を）料理する', 名詞: '料理をする人' },
+    },
+    cooks: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['cook', 'cooks', 'cooked', 'cooking'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '（～を）料理する', 名詞: '料理をする人' },
+    },
+    cooking: {
+        tags: ['他動詞', '自動詞', '動作動詞', '現在分詞', '不可算名詞'],
+        katuyou: ['cook', 'cooks', 'cooked', 'cooking'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '（～を）料理する', 名詞: '料理' },
+    },
+    dance: {
+        tags: ['自動詞', '動作動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['dance', 'dances', 'danced', 'dancing'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '踊る、ダンスをする', 名詞: '踊り、ダンス' },
+    },
+    dances: {
+        tags: ['自動詞', '動作動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['dance', 'dances', 'danced', 'dancing'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '踊る、ダンスをする', 名詞: '踊り、ダンス' },
+    },
+    design: {
+        tags: ['他動詞', '動作動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['design', 'designs', 'designed', 'designing'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～をデザインする、設計する', 名詞: 'デザイン、設計' },
+    },
+    designs: {
+        tags: ['他動詞', '動作動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['design', 'designs', 'designed', 'designing'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～をデザインする、設計する', 名詞: 'デザイン、設計' },
+    },
+    do: {
+        tags: ['他動詞', '自動詞', '動作動詞', '使役動詞', '原型', '相助動詞'],
+        katuyou: ['do', 'does', 'did', 'done', 'doing'],
+        hinsi: ['動詞', '助動詞'],
+        means: { 動詞: '～をする', 助動詞: '〔疑問文と応答に用いる〕' },
+    },
+    does: {
+        tags: ['他動詞', '自動詞', '動作動詞', '使役動詞', '三単現s', '相助動詞'],
+        katuyou: ['do', 'does', 'did', 'done', 'doing'],
+        hinsi: ['動詞', '助動詞'],
+        means: { 動詞: '～をする', 助動詞: '〔主語が3人称単数の時の do の形で、疑問文や否定文を作るのに使う〕' },
+    },
+    did: {
+        tags: ['他動詞', '自動詞', '動作動詞', '使役動詞', '過去形', '相助動詞'],
+        katuyou: ['do', 'does', 'did', 'done', 'doing'],
+        hinsi: ['動詞', '助動詞'],
+        means: { 動詞: '～をする', 助動詞: '〔doの過去形で、疑問文や否定文を作るのに使う〕' },
+    },
+    drink: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['drink', 'drinks', 'drank', 'drunk', 'drinking'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～を飲む', 名詞: '飲み物　　〔たとえば soft drinks の形で〕清涼（せいりょう）飲料' },
+    },
+    drinks: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['drink', 'drinks', 'drank', 'drunk', 'drinking'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～を飲む', 名詞: '飲み物　　〔たとえば soft drinks の形で〕清涼（せいりょう）飲料' },
+    },
+    drop: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['drop', 'drops', 'dropped', 'dropping'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～を落とす、落ちる', 名詞: 'しずく' },
+    },
+    drops: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['drop', 'drops', 'dropped', 'dropping'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～を落とす、落ちる', 名詞: 'しずく' },
+    },
+    end: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型', '可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['end', 'ends', 'ended', 'ending'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '終わる、終える', 名詞: '終わり、最後、端' },
+    },
+    ends: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s', '可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['end', 'ends', 'ended', 'ending'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '終わる、終える', 名詞: '終わり、最後、端' },
+    },
+    ending: {
+        tags: ['他動詞', '自動詞', '動作動詞', '現在分詞', '可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['end', 'ends', 'ended', 'ending', 'endings'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '終わる、終える', 名詞: '終わり、結末、エンディング' },
+    },
+    experience: {
+        tags: ['他動詞', '動作動詞', '原型', '不可算名詞'],
+        katuyou: ['experience', 'experiences', 'experienced', 'experiencing'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '経験する', 名詞: '経験' },
+    },
+    express: {
+        tags: ['他動詞', '動作動詞', '原型', '可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['express', 'expresses', 'expressed', 'expressing'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～を表現する、言い表す', 名詞: '急行列車、速達便' },
+    },
+    expresses: {
+        tags: ['他動詞', '動作動詞', '三単現s', '可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['express', 'expresses', 'expressed', 'expressing'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～を表現する、言い表す', 名詞: '急行列車、速達便' },
+    },
+    face: {
+        tags: ['他動詞', '動作動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['face', 'faces', 'faced', 'facing'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '（危険・困難などに)立ち向かう、直面する', 名詞: '顔、表情' },
+    },
+    faces: {
+        tags: ['他動詞', '動作動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['face', 'faces', 'faced', 'facing'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '（危険・困難などに)立ち向かう、直面する', 名詞: '顔、表情' },
+    },
+    fall: {
+        tags: ['自動詞', '動作動詞', '連結動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['fall', 'falls', 'fell', 'fallen', 'falling'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '落ちる', 名詞: '秋' },
+    },
+    falls: {
+        tags: ['自動詞', '動作動詞', '連結動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['fall', 'falls', 'fell', 'fallen', 'falling'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '落ちる', 名詞: '秋' },
+    },
+    feeling: {
+        tags: ['他動詞', '自動詞', '感覚動詞', '連結動詞', '現在分詞', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['feel', 'feels', 'felt', 'feeling', 'feelings'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '"1. ～と感じる、～と思う', 名詞: '感情、考え、感覚' },
+    },
+    fight: {
+        tags: ['自動詞', '他動詞', '動作動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['fight', 'fights', 'fought', 'fighting'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '戦う', 名詞: '戦い、口げんか' },
+    },
+    fights: {
+        tags: ['自動詞', '他動詞', '動作動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['fight', 'fights', 'fought', 'fighting'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '戦う', 名詞: '戦い、口げんか' },
+    },
+    fish: {
+        tags: ['自動詞', '他動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['fish', 'fishes', 'fished', 'fishing'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '魚釣りをする', 名詞: '魚' },
+    },
+    greeting: {
+        tags: ['他動詞', '現在分詞', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['greet', 'greets', 'greeted', 'greeting', 'greetings'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～に挨拶する、～をむかえる', 名詞: '挨拶' },
+    },
+    have: {
+        tags: ['他動詞', '状態動詞', 'SVOOがとれる動詞', '原型', '相助動詞'],
+        katuyou: ['have', 'has', 'had', 'having'],
+        hinsi: ['動詞', '助動詞'],
+        means: {
+            動詞: '"1. ～をもっている、～がある、～がいる',
+            助動詞: '〔have＋過去分詞の形で〕 《ある動作や状態が、過去から現在までずっと続いていることを表して》 ずっと～している、ずっと～だ',
+        },
+    },
+    has: {
+        tags: ['他動詞', '状態動詞', 'SVOOがとれる動詞', '三単現s', '相助動詞'],
+        katuyou: ['have', 'has', 'had', 'having'],
+        hinsi: ['動詞', '助動詞'],
+        means: {
+            動詞: '"1. ～をもっている、～がある、～がいる',
+            助動詞: '〔現在完了の文において、主語が３人称単数の時の has の形で、疑問文や否定文を作るのに使う〕',
+        },
+    },
+    had: {
+        tags: ['他動詞', '状態動詞', 'SVOOがとれる動詞', '過去形', '過去分詞', '相助動詞'],
+        katuyou: ['have', 'has', 'had', 'having'],
+        hinsi: ['動詞', '助動詞'],
+        means: {
+            動詞: '"1. ～をもっている、～がある、～がいる',
+            助動詞: '〔had＋過去分詞の形で〕 《過去のある時点を基準として、それよりも前の出来事や状態を表して》 ～していた、したことがあった',
+        },
+    },
+    head: {
+        tags: ['自動詞', '他動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['head', 'heads', 'headed', 'heading'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～向かう', 名詞: '頭、頭部' },
+    },
+    heads: {
+        tags: ['自動詞', '他動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['head', 'heads', 'headed', 'heading'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～向かう', 名詞: '頭、頭部' },
+    },
+    heat: {
+        tags: ['他動詞', '自動詞', '原型', '不可算名詞'],
+        katuyou: ['heat', 'heats', 'heated', 'heating'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '熱する、あたためる', 名詞: '熱' },
+    },
+    help: {
+        tags: ['他動詞', 'SVOOがとれる動詞', '使役動詞', '原型', '不可算名詞'],
+        katuyou: ['help', 'helps', 'helped', 'helping'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '"1. ～を助ける、援助する', 名詞: '助け､援助' },
+    },
+    hit: {
+        tags: ['他動詞', '原型', '過去形', '過去分詞', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['hit', 'hits', 'hitting'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～に当たる、ぶつかる　〔過去形、過去分詞形もhit〕', 名詞: 'ヒット（曲）' },
+    },
+    hits: {
+        tags: ['他動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['hit', 'hits', 'hitting'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～に当たる、ぶつかる　〔過去形、過去分詞形もhit〕', 名詞: 'ヒット（曲）' },
+    },
+    hope: {
+        tags: ['他動詞', '状態動詞', '原型', '不可算名詞'],
+        katuyou: ['hope', 'hopes', 'hoped', 'hoping'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～を望む、～だとよいと思う', 名詞: '希望、望' },
+    },
+    hunting: {
+        tags: ['他動詞', '自動詞', '現在分詞', '不可算名詞'],
+        katuyou: ['hunt', 'hunts', 'hunted', 'hunting'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '狩りをする', 名詞: 'さがし求めること' },
+    },
+    interview: {
+        tags: ['他動詞', '自動詞', '原型', '可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['interview', 'interviews', 'interviewed', 'interviewing'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: 'インタビューする、面接する', 名詞: 'インタビュー、会見、面接' },
+    },
+    interviews: {
+        tags: ['他動詞', '自動詞', '三単現s', '可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['interview', 'interviews', 'interviewed', 'interviewing'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: 'インタビューする、面接する', 名詞: 'インタビュー、会見、面接' },
+    },
+    kid: {
+        tags: ['他動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['kid', 'kids', 'kidded', 'kidding'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: 'からかう、冗談を言う', 名詞: '子ども' },
+    },
+    kids: {
+        tags: ['他動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['kid', 'kids', 'kidded', 'kidding'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: 'からかう、冗談を言う', 名詞: '子ども' },
+    },
+    land: {
+        tags: ['自動詞', '他動詞', '原型', '不可算名詞'],
+        katuyou: ['land', 'lands', 'landed', 'landing'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '着陸する', 名詞: '土地、陸地' },
+    },
+    last: {
+        tags: ['自動詞', '状態動詞', '原型', '不可算名詞', '限定用法', '原級'],
+        katuyou: ['last', 'lasts', 'lasted', 'lasting'],
+        hinsi: ['動詞', '名詞', '形容詞'],
+        means: { 動詞: '続く', 名詞: '最後', 形容詞: '先～、昨～、（時間的に）この前の' },
+    },
+    left: {
+        tags: ['他動詞', '自動詞', '過去形', '過去分詞', '不可算名詞', '限定用法', '原級'],
+        katuyou: ['leave', 'leaves', 'left', 'leaving'],
+        hinsi: ['動詞', '名詞', '形容詞'],
+        means: { 動詞: '"1. ～を出発する、出る、去る', 名詞: '左、左側', 形容詞: '左の' },
+    },
+    like: {
+        tags: ['他動詞', '状態動詞', '原型', '手段'],
+        katuyou: ['like', 'likes', 'liked', 'liking'],
+        hinsi: ['動詞', '前置詞'],
+        means: { 動詞: '～を好む、～が好きだ', 前置詞: '～のような［に］、～に似ている、～に似た' },
+    },
+    lives: {
+        tags: ['自動詞', '状態動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['live', 'lives', 'lived', 'living', 'life'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '"1. 住んでいる、暮らしている、生活する', 名詞: '生命、いのち（複 lives）' },
+    },
+    living: {
+        tags: ['自動詞', '状態動詞', '現在分詞', '限定用法', '原級'],
+        katuyou: ['live', 'lives', 'lived', 'living'],
+        hinsi: ['動詞', '形容詞'],
+        means: { 動詞: '"1. 住んでいる、暮らしている、生活する', 形容詞: '生きている' },
+    },
+    look: {
+        tags: ['自動詞', '感覚動詞', '連結動詞', '動作動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['look', 'looks', 'looked', 'looking'],
+        hinsi: ['動詞', '名詞'],
+        means: {
+            動詞: '"1. （意識的に）見る 〔look at ～ の形で〕～を見る',
+            名詞: '見ること、一見　　〔 have ［take］ a look at ～の形で〕～を見る',
+        },
+    },
+    looks: {
+        tags: ['自動詞', '感覚動詞', '連結動詞', '動作動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['look', 'looks', 'looked', 'looking'],
+        hinsi: ['動詞', '名詞'],
+        means: {
+            動詞: '"1. （意識的に）見る 〔look at ～ の形で〕～を見る',
+            名詞: '見ること、一見　　〔 have ［take］ a look at ～の形で〕～を見る',
+        },
+    },
+    love: {
+        tags: ['他動詞', '状態動詞', '原型', '不可算名詞'],
+        katuyou: ['love', 'loves', 'loved', 'loving'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '"1. ～を愛する、～が大好きである', 名詞: '愛、恋愛' },
+    },
+    meaning: {
+        tags: ['他動詞', '状態動詞', '現在分詞', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['mean', 'means', 'meant', 'meaning', 'meanings'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '"1. ～を意味する、表す', 名詞: '意味' },
+    },
+    meeting: {
+        tags: ['他動詞', '現在分詞', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['meet', 'meets', 'met', 'meeting', 'meetings'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '"1.～に会う、面会する', 名詞: '集会、会議' },
+    },
+    missing: {
+        tags: ['他動詞', '現在分詞', '限定用法', '原級'],
+        katuyou: ['miss', 'misses', 'missed', 'missing'],
+        hinsi: ['動詞', '形容詞'],
+        means: { 動詞: '"1.　乗りそこなう、取り［見・聞き］そこなう､欠席する', 形容詞: '紛失した、行方不明の' },
+    },
+    mistake: {
+        tags: ['他動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['mistake', 'mistakes', 'mistook', 'mistaken', 'mistaking'],
+        hinsi: ['動詞', '名詞'],
+        means: {
+            動詞: '～を間違える　［mistake A for Bの形で］AをBと間違える',
+            名詞: 'まちがい　［by mistakeの形で］誤って、間違って',
+        },
+    },
+    mistakes: {
+        tags: ['他動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['mistake', 'mistakes', 'mistook', 'mistaken', 'mistaking'],
+        hinsi: ['動詞', '名詞'],
+        means: {
+            動詞: '～を間違える　［mistake A for Bの形で］AをBと間違える',
+            名詞: 'まちがい　［by mistakeの形で］誤って、間違って',
+        },
+    },
+    name: {
+        tags: ['他動詞', 'SVOCがとれる動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['name', 'names', 'named', 'naming'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '〔name A B の形で〕ＡをＢと名づける、呼ぶ', 名詞: '名前' },
+    },
+    names: {
+        tags: ['他動詞', 'SVOCがとれる動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['name', 'names', 'named', 'naming'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '〔name A B の形で〕ＡをＢと名づける、呼ぶ', 名詞: '名前' },
+    },
+    need: {
+        tags: ['他動詞', '状態動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['need', 'needs', 'needed', 'needing'],
+        hinsi: ['動詞', '名詞'],
+        means: {
+            動詞: '～が必要である　　[need to～の形で］～する必要がある',
+            名詞: '必要　〔in needの形で〕必要で、困って',
+        },
+    },
+    needs: {
+        tags: ['他動詞', '状態動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['need', 'needs', 'needed', 'needing'],
+        hinsi: ['動詞', '名詞'],
+        means: {
+            動詞: '～が必要である　　[need to～の形で］～する必要がある',
+            名詞: '必要　〔in needの形で〕必要で、困って',
+        },
+    },
+    open: {
+        tags: ['他動詞', '自動詞', '原型', '限定用法', '原級'],
+        katuyou: ['open', 'opens', 'opened', 'opening'],
+        hinsi: ['動詞', '形容詞'],
+        means: { 動詞: '"1. あける、広げる', 形容詞: 'あいている、（店などが）営業中の［で］' },
+    },
+    order: {
+        tags: ['他動詞', '原型', '可算名詞', '母音で始まる', '単数形'],
+        katuyou: ['order', 'orders', 'ordered', 'ordering'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '命ずる、注文する', 名詞: '命令' },
+    },
+    orders: {
+        tags: ['他動詞', '三単現s', '可算名詞', '母音で始まる', '複数形'],
+        katuyou: ['order', 'orders', 'ordered', 'ordering'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '命ずる、注文する', 名詞: '命令' },
+    },
+    painting: {
+        tags: ['他動詞', '自動詞', '現在分詞', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['paint', 'paints', 'painted', 'painting', 'paintings'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '(絵の具で絵)をかく', 名詞: '絵、絵画' },
+    },
+    pardon: {
+        tags: ['他動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['pardon', 'pardons', 'pardoned', 'pardoning'],
+        hinsi: ['動詞', '名詞'],
+        means: {
+            動詞: '～を許す  〔Pardon me?の形で〕 すみませんが、もう一度言ってください。',
+            名詞: '許し、許すこと',
+        },
+    },
+    pardons: {
+        tags: ['他動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['pardon', 'pardons', 'pardoned', 'pardoning'],
+        hinsi: ['動詞', '名詞'],
+        means: {
+            動詞: '～を許す  〔Pardon me?の形で〕 すみませんが、もう一度言ってください。',
+            名詞: '許し、許すこと',
+        },
+    },
+    park: {
+        tags: ['他動詞', '自動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['park', 'parks', 'parked', 'parking'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '(自動車）をとめておく､駐車する', 名詞: '公園、遊園地' },
+    },
+    parks: {
+        tags: ['他動詞', '自動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['park', 'parks', 'parked', 'parking'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '(自動車）をとめておく､駐車する', 名詞: '公園、遊園地' },
+    },
+    photograph: {
+        tags: ['他動詞', '自動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['photograph', 'photographs', 'photographed', 'photographing'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '写真を撮る', 名詞: '写真' },
+    },
+    photographs: {
+        tags: ['他動詞', '自動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['photograph', 'photographs', 'photographed', 'photographing'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '写真を撮る', 名詞: '写真' },
+    },
+    place: {
+        tags: ['他動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['place', 'places', 'placed', 'placing'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '置く、並べる', 名詞: '場所､所' },
+    },
+    places: {
+        tags: ['他動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['place', 'places', 'placed', 'placing'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '置く、並べる', 名詞: '場所､所' },
+    },
+    plan: {
+        tags: ['他動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['plan', 'plans', 'planned', 'planning'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～を計画する', 名詞: '事業' },
+    },
+    plans: {
+        tags: ['他動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['plan', 'plans', 'planned', 'planning'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～を計画する', 名詞: '事業' },
+    },
+    plant: {
+        tags: ['他動詞', '動作動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['plant', 'plants', 'planted', 'planting'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～を植える', 名詞: '植物' },
+    },
+    plants: {
+        tags: ['他動詞', '動作動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['plant', 'plants', 'planted', 'planting'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～を植える', 名詞: '植物' },
+    },
+    play: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['play', 'plays', 'played', 'playing'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '"1. (スポーツ・ゲームなど)をする', 名詞: '劇' },
+    },
+    plays: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['play', 'plays', 'played', 'playing'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '"1. (スポーツ・ゲームなど)をする', 名詞: '劇' },
+    },
+    point: {
+        tags: ['自動詞', '他動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['point', 'points', 'pointed', 'pointing'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '指さす､さし示す', 名詞: '箇所、点、地点' },
+    },
+    points: {
+        tags: ['自動詞', '他動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['point', 'points', 'pointed', 'pointing'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '指さす､さし示す', 名詞: '箇所、点、地点' },
+    },
+    post: {
+        tags: ['他動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['post', 'posts', 'posted', 'posting'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '（ウエブ上に写真などを）投稿する、投函する', 名詞: '郵便、郵便物' },
+    },
+    posts: {
+        tags: ['他動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['post', 'posts', 'posted', 'posting'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '（ウエブ上に写真などを）投稿する、投函する', 名詞: '郵便、郵便物' },
+    },
+    quiz: {
+        tags: ['他動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['quiz', 'quizzes', 'quizzed', 'quizzing'],
+        hinsi: ['動詞', '名詞'],
+        means: {
+            動詞: '～に簡単なテストを行う、～に質問する',
+            名詞: '簡単な口頭（筆記）のテスト、質問、（ラジオ・テレビの）クイズ',
+        },
+    },
+    quizzes: {
+        tags: ['他動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['quiz', 'quizzes', 'quizzed', 'quizzing'],
+        hinsi: ['動詞', '名詞'],
+        means: {
+            動詞: '～に簡単なテストを行う、～に質問する',
+            名詞: '簡単な口頭（筆記）のテスト、質問、（ラジオ・テレビの）クイズ',
+        },
+    },
+    rain: {
+        tags: ['自動詞', '原型', '不可算名詞'],
+        katuyou: ['rain', 'rains', 'rained', 'raining'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '雨が降る 　〔it が主語になる〕', 名詞: '雨' },
+    },
+    reading: {
+        tags: ['他動詞', '現在分詞', '不可算名詞'],
+        katuyou: ['read', 'reads', 'reading'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～を読む   〔発音は ［ri:d］〕', 名詞: '読むこと' },
+    },
+    report: {
+        tags: ['他動詞', '自動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['report', 'reports', 'reported', 'reporting'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～を報告する、報道する', 名詞: 'レポート、報告' },
+    },
+    reports: {
+        tags: ['他動詞', '自動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['report', 'reports', 'reported', 'reporting'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～を報告する、報道する', 名詞: 'レポート、報告' },
+    },
+    respect: {
+        tags: ['他動詞', '状態動詞', '原型', '不可算名詞'],
+        katuyou: ['respect', 'respects', 'respected', 'respecting'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～を尊敬する、～を大切にする', 名詞: '尊敬、尊重' },
+    },
+    rest: {
+        tags: ['自動詞', '動作動詞', '原型', '不可算名詞'],
+        katuyou: ['rest', 'rests', 'rested', 'resting'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '休む、横になる', 名詞: '休み' },
+    },
+    return: {
+        tags: ['自動詞', '他動詞', '原型', '可算名詞', '子音で始まる', '単数形', '限定用法', '原級'],
+        katuyou: ['return', 'returns', 'returned', 'returning'],
+        hinsi: ['動詞', '名詞', '形容詞'],
+        means: { 動詞: '帰る、戻る', 名詞: '再び巡ってくること', 形容詞: '帰りの' },
+    },
+    returns: {
+        tags: ['自動詞', '他動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['return', 'returns', 'returned', 'returning'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '帰る、戻る', 名詞: '再び巡ってくること' },
+    },
+    reuse: {
+        tags: ['他動詞', '原型', '不可算名詞'],
+        katuyou: ['reuse', 'reuses', 'reused', 'reusing'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～を再利用する', 名詞: '再利用' },
+    },
+    rise: {
+        tags: ['自動詞', '動作動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['rise', 'rises', 'rose', 'risen', 'rising'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '（太陽などが）のぼる', 名詞: '上昇、増加、昇進' },
+    },
+    rises: {
+        tags: ['自動詞', '動作動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['rise', 'rises', 'rose', 'risen', 'rising'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '（太陽などが）のぼる', 名詞: '上昇、増加、昇進' },
+    },
+    roll: {
+        tags: ['他動詞', '自動詞', '動作動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['roll', 'rolls', 'rolled', 'rolling'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '巻く、くるむ', 名詞: '巻いたもの、－巻' },
+    },
+    rolls: {
+        tags: ['他動詞', '自動詞', '動作動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['roll', 'rolls', 'rolled', 'rolling'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '巻く、くるむ', 名詞: '巻いたもの、－巻' },
+    },
+    rule: {
+        tags: ['自動詞', '状態動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['rule', 'rules', 'ruled', 'ruling'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～を支配する、統治する', 名詞: '決まり、規則' },
+    },
+    rules: {
+        tags: ['自動詞', '状態動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['rule', 'rules', 'ruled', 'ruling'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～を支配する、統治する', 名詞: '決まり、規則' },
+    },
+    scared: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞', '限定用法', '原級'],
+        katuyou: ['scare', 'scares', 'scared', 'scaring'],
+        hinsi: ['動詞', '形容詞'],
+        means: { 動詞: '～を怖がらせる', 形容詞: '（～が）こわい　〔be scared of で〕～がこわい' },
+    },
+    shock: {
+        tags: ['他動詞', '動作動詞', '原型', '不可算名詞'],
+        katuyou: ['shock', 'shocks', 'shocked', 'shocking'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: 'ショックを与える', 名詞: '（精神的な）ショック' },
+    },
+    shop: {
+        tags: ['自動詞', '動作動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['shop', 'shops', 'shopped', 'shopping'],
+        hinsi: ['動詞', '名詞'],
+        means: {
+            動詞: '買い物をする　〔例えば go shopping の形で〕 買い物に行く',
+            名詞: '(ものを売る)店、小売店',
+        },
+    },
+    shops: {
+        tags: ['自動詞', '動作動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['shop', 'shops', 'shopped', 'shopping'],
+        hinsi: ['動詞', '名詞'],
+        means: {
+            動詞: '買い物をする　〔例えば go shopping の形で〕 買い物に行く',
+            名詞: '(ものを売る)店、小売店',
+        },
+    },
+    shopping: {
+        tags: ['自動詞', '動作動詞', '現在分詞', '不可算名詞'],
+        katuyou: ['shop', 'shops', 'shopped', 'shopping'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '買い物をする　〔例えば go shopping の形で〕 買い物に行く', 名詞: '買い物' },
+    },
+    show: {
+        tags: ['他動詞', 'SVOCがとれる動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['show', 'shows', 'showed', 'shown', 'showing'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '"1. ～を見せる、示す、教える  〔show A B の形で〕ＡにＢを見せる', 名詞: 'ショー' },
+    },
+    shows: {
+        tags: ['他動詞', 'SVOCがとれる動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['show', 'shows', 'showed', 'shown', 'showing'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '"1. ～を見せる、示す、教える  〔show A B の形で〕ＡにＢを見せる', 名詞: 'ショー' },
+    },
+    singing: {
+        tags: ['自動詞', '動作動詞', '現在分詞', '不可算名詞'],
+        katuyou: ['sing', 'sings', 'sang', 'sung', 'singing'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '（～を）歌う', 名詞: '歌うこと、歌唱' },
+    },
+    smell: {
+        tags: ['自動詞', '他動詞', '感覚動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['smell', 'smells', 'smelled', 'smelling'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～のにおいがする', 名詞: 'におい' },
+    },
+    smells: {
+        tags: ['自動詞', '他動詞', '感覚動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['smell', 'smells', 'smelled', 'smelling'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～のにおいがする', 名詞: 'におい' },
+    },
+    smile: {
+        tags: ['自動詞', '動作動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['smile', 'smiles', 'smiled', 'smiling'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: 'ほほえむ、にっこり笑う、微笑する', 名詞: 'ほほえみ' },
+    },
+    smiles: {
+        tags: ['自動詞', '動作動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['smile', 'smiles', 'smiled', 'smiling'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: 'ほほえむ、にっこり笑う、微笑する', 名詞: 'ほほえみ' },
+    },
+    sound: {
+        tags: ['自動詞', '連結動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['sound', 'sounds', 'sounded', 'sounding'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～に聞こえる、～に思われる', 名詞: '音、響き' },
+    },
+    sounds: {
+        tags: ['自動詞', '連結動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['sound', 'sounds', 'sounded', 'sounding'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～に聞こえる、～に思われる', 名詞: '音、響き' },
+    },
+    stand: {
+        tags: ['自動詞', '動作動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['stand', 'stands', 'stood', 'standing'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '"1. 立っている', 名詞: 'スタンド、台' },
+    },
+    stands: {
+        tags: ['自動詞', '動作動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['stand', 'stands', 'stood', 'standing'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '"1. 立っている', 名詞: 'スタンド、台' },
+    },
+    step: {
+        tags: ['自動詞', '他動詞', '動作動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['step', 'steps', 'stepped', 'stepping'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '（一歩・少し）歩む', 名詞: '（階段の）踏み段' },
+    },
+    steps: {
+        tags: ['自動詞', '他動詞', '動作動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['step', 'steps', 'stepped', 'stepping'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '（一歩・少し）歩む', 名詞: '（階段の）踏み段' },
+    },
+    support: {
+        tags: ['他動詞', '動作動詞', '原型', '不可算名詞'],
+        katuyou: ['support', 'supports', 'supported', 'supporting'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '(人や考え)を支持する、支援する', 名詞: '支持、支援' },
+    },
+    surprised: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞', '限定用法', '原級'],
+        katuyou: ['surprise', 'surprises', 'surprised', 'surprising'],
+        hinsi: ['動詞', '形容詞'],
+        means: {
+            動詞: '～を驚かす、びっくりさせる　 〔be surprised at ～ の形で〕 (知らせなど)に驚いている',
+            形容詞: 'びっくりした、おどろいた',
+        },
+    },
+    surprising: {
+        tags: ['他動詞', '動作動詞', '現在分詞', '限定用法', '原級'],
+        katuyou: ['surprise', 'surprises', 'surprised', 'surprising'],
+        hinsi: ['動詞', '形容詞'],
+        means: {
+            動詞: '～を驚かす、びっくりさせる　 〔be surprised at ～ の形で〕 (知らせなど)に驚いている',
+            形容詞: '驚くべき、すばらしい',
+        },
+    },
+    swimming: {
+        tags: ['自動詞', '動作動詞', '現在分詞', '不可算名詞'],
+        katuyou: ['swim', 'swims', 'swam', 'swum', 'swimming'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '泳ぐ', 名詞: '水泳' },
+    },
+    talk: {
+        tags: ['自動詞', '動作動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['talk', 'talks', 'talked', 'talking'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '話す、話をする', 名詞: '話、スピーチ' },
+    },
+    talks: {
+        tags: ['自動詞', '動作動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['talk', 'talks', 'talked', 'talking'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '話す、話をする', 名詞: '話、スピーチ' },
+    },
+    taste: {
+        tags: ['自動詞', '他動詞', '感覚動詞', '連結動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['taste', 'tastes', 'tasted', 'tasting'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '"1. 味わう、食べる', 名詞: '味' },
+    },
+    tastes: {
+        tags: ['自動詞', '他動詞', '感覚動詞', '連結動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['taste', 'tastes', 'tasted', 'tasting'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '"1. 味わう、食べる', 名詞: '味' },
+    },
+    thinking: {
+        tags: ['他動詞', '自動詞', '状態動詞', '現在分詞', '不可算名詞'],
+        katuyou: ['think', 'thinks', 'thought', 'thinking'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～と考える、思う', 名詞: '考え、思考' },
+    },
+    touch: {
+        tags: ['他動詞', '感覚動詞', '動作動詞', '原型', '不可算名詞'],
+        katuyou: ['touch', 'touches', 'touched', 'touching'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～にさわる、触れる', 名詞: '接触' },
+    },
+    train: {
+        tags: ['他動詞', '動作動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['train', 'trains', 'trained', 'training'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '"1. ～を訓練する', 名詞: '列車、電車' },
+    },
+    trains: {
+        tags: ['他動詞', '動作動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['train', 'trains', 'trained', 'training'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '"1. ～を訓練する', 名詞: '列車、電車' },
+    },
+    traveling: {
+        tags: ['自動詞', '動作動詞', '現在分詞', '限定用法', '原級'],
+        katuyou: ['travel', 'travels', 'traveled', 'traveling'],
+        hinsi: ['動詞', '形容詞'],
+        means: { 動詞: '旅する、移動する', 形容詞: '巡業する、旅する' },
+    },
+    turn: {
+        tags: ['自動詞', '他動詞', '動作動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['turn', 'turns', 'turned', 'turning'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '"1. 曲がる、向きを変える', 名詞: '番、順番　　〔in turnで〕代わって今度は' },
+    },
+    turns: {
+        tags: ['自動詞', '他動詞', '動作動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['turn', 'turns', 'turned', 'turning'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '"1. 曲がる、向きを変える', 名詞: '番、順番　　〔in turnで〕代わって今度は' },
+    },
+    turning: {
+        tags: ['自動詞', '他動詞', '動作動詞', '現在分詞', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['turn', 'turns', 'turned', 'turning', 'turnings'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '"1. 曲がる、向きを変える', 名詞: '曲がり角、回転    〔turning pointで〕転機' },
+    },
+    upset: {
+        tags: ['他動詞', '動作動詞', '状態動詞', '原型', '過去形', '過去分詞', '限定用法', '原級'],
+        katuyou: ['upset', 'upsets', 'upsetting'],
+        hinsi: ['動詞', '形容詞'],
+        means: { 動詞: '気を動転させる、うろたえさせる', 形容詞: '気が動転した、取り乱した' },
+    },
+    use: {
+        tags: ['他動詞', '動作動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['use', 'uses', 'used', 'using'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～を使う', 名詞: '使用、使い道' },
+    },
+    uses: {
+        tags: ['他動詞', '動作動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['use', 'uses', 'used', 'using'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～を使う', 名詞: '使用、使い道' },
+    },
+    used: {
+        tags: ['他動詞', '動作動詞', '過去形', '過去分詞', '限定用法', '原級'],
+        katuyou: ['use', 'uses', 'used', 'using'],
+        hinsi: ['動詞', '形容詞'],
+        means: { 動詞: '～を使う', 形容詞: '使用済みの、使い古した' },
+    },
+    visit: {
+        tags: ['他動詞', '動作動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['visit', 'visits', 'visited', 'visiting'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '"1. (場所、人など)をおとずれる', 名詞: '訪問' },
+    },
+    visits: {
+        tags: ['他動詞', '動作動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['visit', 'visits', 'visited', 'visiting'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '"1. (場所、人など)をおとずれる', 名詞: '訪問' },
+    },
+    walk: {
+        tags: ['自動詞', '動作動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['walk', 'walks', 'walked', 'walking'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '"1. 歩く、歩いて行く［来る］', 名詞: '歩くこと、散歩' },
+    },
+    walks: {
+        tags: ['自動詞', '動作動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['walk', 'walks', 'walked', 'walking'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '"1. 歩く、歩いて行く［来る］', 名詞: '歩くこと、散歩' },
+    },
+    watch: {
+        tags: ['他動詞', '動作動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['watch', 'watches', 'watched', 'watching'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '"1. (注意して、動いているもの)を見る', 名詞: '腕時計' },
+    },
+    watches: {
+        tags: ['他動詞', '動作動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['watch', 'watches', 'watched', 'watching'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '"1. (注意して、動いているもの)を見る', 名詞: '腕時計' },
+    },
+    water: {
+        tags: ['他動詞', '動作動詞', '原型', '不可算名詞'],
+        katuyou: ['water', 'waters', 'watered', 'watering'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～に水をやる', 名詞: '水、水中' },
+    },
+    welcome: {
+        tags: ['他動詞', '動作動詞', '原型', '限定用法', '原級'],
+        katuyou: ['welcome', 'welcomes', 'welcomed', 'welcoming'],
+        hinsi: ['動詞', '形容詞'],
+        means: { 動詞: '歓迎する', 形容詞: '歓迎される　〔You are welcome. の形で〕 どういたしまして' },
+    },
+    wish: {
+        tags: ['他動詞', '状態動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['wish', 'wishes', 'wished', 'wishing'],
+        hinsi: ['動詞', '名詞'],
+        means: {
+            動詞: '～を願う、望む　〔たとえば I wish you a happy new year.の形で〕新年おめでとう',
+            名詞: '願い、望み',
+        },
+    },
+    wishes: {
+        tags: ['他動詞', '状態動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['wish', 'wishes', 'wished', 'wishing'],
+        hinsi: ['動詞', '名詞'],
+        means: {
+            動詞: '～を願う、望む　〔たとえば I wish you a happy new year.の形で〕新年おめでとう',
+            名詞: '願い、望み',
+        },
+    },
+    wonder: {
+        tags: ['自動詞', '状態動詞', '原型', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['wonder', 'wonders', 'wondered', 'wondering'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '（～する）かしら（と思う）、～かどうかを知りたいと思う', 名詞: '驚き' },
+    },
+    wonders: {
+        tags: ['自動詞', '状態動詞', '三単現s', '可算名詞', '子音で始まる', '複数形'],
+        katuyou: ['wonder', 'wonders', 'wondered', 'wondering'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '（～する）かしら（と思う）、～かどうかを知りたいと思う', 名詞: '驚き' },
+    },
+    work: {
+        tags: ['自動詞', '動作動詞', '原型', '不可算名詞', '子音で始まる'],
+        katuyou: ['work', 'works', 'worked', 'working'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '"1. 働く、勉強する', 名詞: '"仕事、勉強' },
+    },
+    worried: {
+        tags: ['自動詞', '他動詞', '状態動詞', '過去形', '過去分詞', '限定用法', '原級'],
+        katuyou: ['worry', 'worries', 'worried', 'worrying'],
+        hinsi: ['動詞', '形容詞'],
+        means: { 動詞: '心配する、悩む', 形容詞: '心配した、不安な' },
+    },
+    writing: {
+        tags: ['他動詞', '動作動詞', '現在分詞', '不可算名詞', '子音で始まる'],
+        katuyou: ['write', 'writes', 'wrote', 'written', 'writing'],
+        hinsi: ['動詞', '名詞'],
+        means: { 動詞: '～を書く', 名詞: '書かれた文字、筆跡、書くこと' },
+    },
+    can: {
+        tags: ['法助動詞', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['can', 'cans'],
+        hinsi: ['助動詞', '名詞'],
+        means: { 助動詞: '～できる、～してもよい', 名詞: '（金属製の）缶' },
+    },
+    will: {
+        tags: ['法助動詞', '可算名詞', '子音で始まる', '単数形'],
+        katuyou: ['will', 'wills'],
+        hinsi: ['助動詞', '名詞'],
+        means: { 助動詞: '《意思未来を表して》 ～するつもりである', 名詞: '意志' },
+    },
+    American: {
+        tags: ['可算名詞', '母音で始まる', '単数形', '限定用法', '原級'],
+        katuyou: ['American', 'Americans'],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: 'アメリカ人、米国人', 形容詞: 'アメリカ人の、アメリカの' },
+    },
+    billion: {
+        tags: ['可算名詞', '子音で始まる', '単数形', '限定用法', '数詞'],
+        katuyou: ['billion', 'billions'],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '10億', 形容詞: '10億の' },
+    },
+    blue: {
+        tags: ['不可算名詞', '限定用法', '叙述用法', '原級'],
+        katuyou: [],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '青', 形容詞: '青い' },
+    },
+    British: {
+        tags: ['不可算名詞', '限定用法', '原級'],
+        katuyou: [],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '英国人、イギリス人', 形容詞: '英国（人）の、イギリス（人）の' },
+    },
+    capital: {
+        tags: ['可算名詞', '子音で始まる', '単数形', '限定用法', '原級'],
+        katuyou: ['capital', 'capitals'],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '～の首都、中心地', 形容詞: '大文字の' },
+    },
+    Chinese: {
+        tags: ['不可算名詞', '限定用法', '原級'],
+        katuyou: [],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '中国語、中国人', 形容詞: '中国の、中国人の、中国語の' },
+    },
+    cold: {
+        tags: ['不可算名詞', '限定用法', '叙述用法', '原級'],
+        katuyou: [],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: 'かぜ　〔have a cold の形で〕 かぜをひいている', 形容詞: '寒い、冷たい' },
+    },
+    eight: {
+        tags: ['不可算名詞', '数詞'],
+        katuyou: [],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '8', 形容詞: '8つの' },
+    },
+    eighteen: {
+        tags: ['不可算名詞', '数詞'],
+        katuyou: [],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '18', 形容詞: '１８の' },
+    },
+    eighth: {
+        tags: ['不可算名詞', '数詞'],
+        katuyou: [],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '8番め、（月の）8日', 形容詞: '８番目の' },
+    },
+    eighty: {
+        tags: ['不可算名詞', '数詞'],
+        katuyou: [],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '80', 形容詞: '８０の' },
+    },
+    eleven: {
+        tags: ['不可算名詞', '数詞'],
+        katuyou: [],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '11', 形容詞: '11の' },
+    },
+    eleventh: {
+        tags: ['不可算名詞', '数詞'],
+        katuyou: [],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '11番め、（月の）１１日', 形容詞: '11番めの' },
+    },
+    English: {
+        tags: ['不可算名詞', '限定用法', '原級'],
+        katuyou: [],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '英語', 形容詞: '英語の、英国の、イングランドの' },
+    },
+    favorite: {
+        tags: ['可算名詞', '子音で始まる', '単数形', '限定用法', '原級'],
+        katuyou: ['favorite', 'favorites'],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: 'お気に入りのもの［人］', 形容詞: 'いちばん好きな、お気に入りの、大好きな' },
+    },
+    fifteen: {
+        tags: ['不可算名詞', '数詞'],
+        katuyou: [],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '15', 形容詞: '15の' },
+    },
+    fifteenth: {
+        tags: ['可算名詞', '子音で始まる', '単数形', '数詞'],
+        katuyou: ['fifteenth', 'fifteenths'],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '15番め、（月の）15日', 形容詞: '15番目の' },
+    },
+    fifth: {
+        tags: ['可算名詞', '子音で始まる', '単数形', '数詞'],
+        katuyou: ['fifth', 'fifths'],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '5番め、（月の）5日', 形容詞: '5番目の' },
+    },
+    fifty: {
+        tags: ['不可算名詞', '数詞'],
+        katuyou: [],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '50', 形容詞: '50の' },
+    },
+    forty: {
+        tags: ['不可算名詞', '数詞'],
+        katuyou: [],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '40', 形容詞: '40の' },
+    },
+    four: {
+        tags: ['不可算名詞', '数詞'],
+        katuyou: [],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '4', 形容詞: '4つの' },
+    },
+    fourteen: {
+        tags: ['不可算名詞', '数詞'],
+        katuyou: [],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '14', 形容詞: '14の' },
+    },
+    fourth: {
+        tags: ['可算名詞', '子音で始まる', '単数形', '数詞'],
+        katuyou: ['fourth', 'fourths'],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '4番め、（月の）4日', 形容詞: '4番目の' },
+    },
+    French: {
+        tags: ['不可算名詞', '限定用法', '原級'],
+        katuyou: [],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: 'フランス語', 形容詞: 'フランスの、フランス人の、フランス語の' },
+    },
+    future: {
+        tags: ['不可算名詞', '限定用法', '原級'],
+        katuyou: [],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '未来、将来', 形容詞: '未来の、将来の' },
+    },
+    gold: {
+        tags: ['不可算名詞', '限定用法', '原級'],
+        katuyou: [],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '金', 形容詞: '金の' },
+    },
+    gray: {
+        tags: ['不可算名詞', '限定用法', '原級'],
+        katuyou: [],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '灰色、ねずみ色', 形容詞: '灰色の、ねずみ色の' },
+    },
+    green: {
+        tags: ['不可算名詞', '限定用法', '原級'],
+        katuyou: [],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '緑（色）', 形容詞: '緑（色）の' },
+    },
+    home: {
+        tags: ['可算名詞', '子音で始まる', '単数形', '限定用法', '原級'],
+        katuyou: ['home', 'homes'],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '家、家庭', 形容詞: '家庭の、家庭用の' },
+    },
+    hundred: {
+        tags: ['可算名詞', '子音で始まる', '単数形', '数詞'],
+        katuyou: ['hundred', 'hundreds'],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '100', 形容詞: '100の' },
+    },
+    Japanese: {
+        tags: ['不可算名詞', '限定用法', '原級'],
+        katuyou: [],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '日本、日本人、日本語、（教科の日本語にとっての）国語', 形容詞: '日本の、日本人の、日本語の' },
+    },
+    kind: {
+        tags: ['可算名詞', '子音で始まる', '単数形', '限定用法', '原級'],
+        katuyou: ['kind', 'kinds'],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '種類　　〔a kind of ～の形で〕　一種の～、～のようなもの', 形容詞: '親切な、やさしい' },
+    },
+    Korean: {
+        tags: ['可算名詞', '子音で始まる', '単数形', '限定用法', '原級'],
+        katuyou: ['Korean', 'Koreans'],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '韓国・朝鮮語、韓国人・朝鮮人', 形容詞: '韓国・朝鮮（人）の、韓国・朝鮮語の' },
+    },
+    light: {
+        tags: ['可算名詞', '子音で始まる', '単数形', '限定用法', '原級'],
+        katuyou: ['light', 'lights'],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '光、光線', 形容詞: '明るい' },
+    },
+    magic: {
+        tags: ['不可算名詞', '限定用法', '原級'],
+        katuyou: [],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '手品', 形容詞: '手品の' },
+    },
+    memorial: {
+        tags: ['可算名詞', '子音で始まる', '単数形', '限定用法', '原級'],
+        katuyou: ['memorial', 'memorials'],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '記念日、記念碑、記念館', 形容詞: '記念の' },
+    },
+    million: {
+        tags: ['可算名詞', '子音で始まる', '単数形', '数詞'],
+        katuyou: ['million', 'millions'],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '百万', 形容詞: '百万の' },
+    },
+    much: {
+        tags: ['不可算名詞', '限定用法', '原級'],
+        katuyou: [],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '多量、たくさん', 形容詞: '(量が)多くの、たくさんの' },
+    },
+    nine: {
+        tags: ['可算名詞', '子音で始まる', '単数形', '数詞'],
+        katuyou: ['nine', 'nines'],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '９', 形容詞: '９つの' },
+    },
+    nineteen: {
+        tags: ['可算名詞', '子音で始まる', '単数形', '数詞'],
+        katuyou: ['nineteen', 'nineteens'],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '19', 形容詞: '19の' },
+    },
+    ninety: {
+        tags: ['可算名詞', '子音で始まる', '単数形', '数詞'],
+        katuyou: ['ninety', 'nineties'],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '90', 形容詞: '90の' },
+    },
+    ninth: {
+        tags: ['可算名詞', '子音で始まる', '単数形', '数詞'],
+        katuyou: ['ninth', 'ninths'],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '9番め、（月の）9日', 形容詞: '9番目の' },
+    },
+    one: {
+        tags: ['可算名詞', '母音で始まる', '単数形', '数詞'],
+        katuyou: ['one', 'ones'],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '１つ､１人', 形容詞: '１つの､１人の' },
+    },
+    pink: {
+        tags: ['可算名詞', '子音で始まる', '単数形', '限定用法', '原級'],
+        katuyou: ['pink', 'pinks'],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: 'ピンク色（の）、もも色（の）', 形容詞: 'ピンク色（の）、もも色（の）' },
+    },
+    plastic: {
+        tags: ['不可算名詞', '限定用法', '原級'],
+        katuyou: [],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: 'プラスチック', 形容詞: 'プラスチック製の、ビニール製の' },
+    },
+    purple: {
+        tags: ['不可算名詞', '限定用法', '原級'],
+        katuyou: [],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '紫色（の）', 形容詞: '紫色（の）' },
+    },
+    red: {
+        tags: ['不可算名詞', '限定用法', '原級'],
+        katuyou: [],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '赤い、赤色（の）、赤', 形容詞: '赤い、赤色（の）、赤' },
+    },
+    right: {
+        tags: ['可算名詞', '子音で始まる', '単数形', '限定用法', '原級'],
+        katuyou: ['right', 'rights'],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '権利、法的権利', 形容詞: '正しい' },
+    },
+    second: {
+        tags: ['可算名詞', '子音で始まる', '単数形', '限定用法', '数詞'],
+        katuyou: ['second', 'seconds'],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '（時間の）秒', 形容詞: '第２の、２番めの' },
+    },
+    sport: {
+        tags: ['不可算名詞', '限定用法', '原級'],
+        katuyou: [],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: 'スポーツ、運動', 形容詞: 'スポーツ（用）の' },
+    },
+    square: {
+        tags: ['可算名詞', '子音で始まる', '単数形', '限定用法', '原級'],
+        katuyou: ['square', 'squares'],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '四角形', 形容詞: '四角の、（面積の単位として）…平方' },
+    },
+    two: {
+        tags: ['可算名詞', '子音で始まる', '単数形', '限定用法', '数詞'],
+        katuyou: ['two', 'twos'],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '2', 形容詞: '2つの' },
+    },
+    white: {
+        tags: ['不可算名詞', '子音で始まる', '限定用法', '原級'],
+        katuyou: [],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '白、白人', 形容詞: '白い､白人の' },
+    },
+    yellow: {
+        tags: ['不可算名詞', '子音で始まる', '限定用法', '原級', '比較級', '最上級'],
+        katuyou: [],
+        hinsi: ['名詞', '形容詞'],
+        means: { 名詞: '黄色', 形容詞: '黄色い(の)' },
+    },
+    down: {
+        tags: ['限定用法', '原級', '方向', '場所'],
+        katuyou: [],
+        hinsi: ['形容詞', '前置詞'],
+        means: { 形容詞: '元気のない', 前置詞: '～の下へ［に］、～を通って、～に沿って' },
+    },
+    many: {
+        tags: ['限定用法', '原級', '不定代名詞', '複数'],
+        katuyou: [],
+        hinsi: ['形容詞', '代名詞'],
+        means: { 形容詞: '多くの、多数の', 代名詞: 'たくさん（の人、物）' },
+    },
+    some: {
+        tags: ['限定用法', '原級', '不定代名詞'],
+        katuyou: [],
+        hinsi: ['形容詞', '代名詞'],
+        means: { 形容詞: '一部の、中には～もいる［ある］', 代名詞: '（全体の中の）一部分、一部の人々' },
+    },
+    that: {
+        tags: ['限定用法', '原級', '指示代名詞', '関係代名詞', '単数'],
+        katuyou: [],
+        hinsi: ['形容詞', '代名詞'],
+        means: { 形容詞: 'その、あの', 代名詞: 'あれ、それ' },
+    },
+    these: {
+        tags: ['限定用法', '原級', '指示代名詞', '複数'],
+        katuyou: [],
+        hinsi: ['形容詞', '代名詞'],
+        means: { 形容詞: 'これらの', 代名詞: 'これらが［は］[を][に]' },
+    },
+}; // 被ってる単語
+function mergeDictionaries(covertango, ...dicts) {
+    // 初期結果は covertango のコピー（優先的に使う）
     const merged = {};
 
-    dictionaries.forEach(dict => {
-        for (const word in dict) {
-            wordCount[word] = (wordCount[word] || 0) + 1;
-            const entry = dict[word];
+    // covertango の単語をまずコピー
+    for (const word in covertango) {
+        merged[word] = {
+            tags: new Set(covertango[word].tags || []),
+            katuyou: new Set(covertango[word].katuyou || []),
+            hinsi: new Set(covertango[word].hinsi || []),
+            means: { ...covertango[word].means },
+        };
+    }
 
+    // 他の辞書をマージ。ただし、covertango にある単語はスキップ
+    dicts.forEach((dict) => {
+        for (const word in dict) {
+            if (merged[word]) {
+                // covertango にある単語はすでに入っているのでスキップ
+                continue;
+            }
+
+            const entry = dict[word];
             if (!merged[word]) {
                 merged[word] = {
                     tags: new Set(entry.tags || []),
@@ -21517,9 +23046,10 @@ function mergeAllDictionaries(...dictionaries) {
                 };
             } else {
                 const existing = merged[word];
-                (entry.tags || []).forEach(tag => existing.tags.add(tag));
-                (entry.katuyou || []).forEach(k => existing.katuyou.add(k));
-                (entry.hinsi || []).forEach(h => existing.hinsi.add(h));
+                (entry.tags || []).forEach((tag) => existing.tags.add(tag));
+                (entry.katuyou || []).forEach((k) => existing.katuyou.add(k));
+                (entry.hinsi || []).forEach((h) => existing.hinsi.add(h));
+
                 for (const pos in entry.means) {
                     if (!existing.means[pos]) {
                         existing.means[pos] = entry.means[pos];
@@ -21531,94 +23061,44 @@ function mergeAllDictionaries(...dictionaries) {
         }
     });
 
-    // 出現回数が2回以上のものだけ、Set → Array にして抽出
+    // Set → Array に変換
     const result = {};
     for (const word in merged) {
-        if (wordCount[word] >= 2) {
-            result[word] = {
-                tags: Array.from(merged[word].tags),
-                katuyou: Array.from(merged[word].katuyou),
-                hinsi: Array.from(merged[word].hinsi),
-                means: merged[word].means,
-            };
-        }
+        result[word] = {
+            tags: Array.from(merged[word].tags),
+            katuyou: Array.from(merged[word].katuyou),
+            hinsi: Array.from(merged[word].hinsi),
+            means: merged[word].means,
+        };
     }
 
     return result;
 }
 
-// 使用例
-// const mergedResult = mergeAllDictionaries(dict1, dict2, dict3);
-// console.log(JSON.stringify(mergedResult, null, 2));
+async function main() {
+    // 例として jodousi, meisi を統合（必要に応じて他辞書も追加）
+    const mergedDict = mergeDictionaries(covertango, jodousi, meisi, dousi, daimeisi, kansi, zentisi, keiyousi);
 
+    // JSON文字列に整形
+    const jsonString = JSON.stringify(mergedDict, null, 2);
 
+    // ファイルに保存
+    async function saveAsJSObject(obj, path) {
+        // JSON.stringifyで整形した文字列のダブルクオーテーションを外す簡易処理
+        let str = JSON.stringify(obj, null, 2);
 
+        // キー名の"を外す（ただし安全な英数字キーにのみ有効。複雑なキーは壊れます）
+        str = str.replace(/"([a-zA-Z0-9_]+)":/g, '$1:');
 
+        // 先頭と末尾に export か const をつけてJSファイルとして保存
+        const content = `export const dictionary = ${str};\n`;
 
+        await writeFile(path, content, 'utf-8');
+        console.log(`${path} にJSオブジェクトリテラルを保存しました。`);
+    }
 
-const result = mergeAllDictionaries(dousi, jodousi, meisi, keiyousi, daimeisi, zentisi, kansi);
+    // 例の辞書を渡す
+    saveAsJSObject(mergedDict, './mergedDictionary.js');
+}
 
-console.log(result);
-
-
-// function expandTangoEntries(tango) {
-//     const expanded = {};
-
-//     for (const key in tango) {
-//         const entry = tango[key];
-//         const { katuyou = [], tags = [], hinsi = [], means = {} } = entry;
-
-//         const isCountable = tags.includes('可算名詞');
-
-//         // タグ生成: 可算名詞なら単数形タグ追加、不可算なら元のまま
-//         expanded[key] = {
-//             tags: isCountable ? mergeTags(tags, ['単数形']) : [...tags],
-//             katuyou: [...katuyou],
-//             hinsi: [...hinsi],
-//             means: { ...means },
-//         };
-
-//         katuyou.forEach((form) => {
-//             // すでに登録済みならスキップ
-//             if (expanded[form]) return;
-
-//             const formTag = (form === key) ? '単数形' : '複数形';
-
-//             expanded[form] = {
-//                 tags: isCountable ? mergeTags(tags, [formTag]) : [...tags],
-//                 katuyou: [...katuyou],
-//                 hinsi: [...hinsi],
-//                 means: { ...means },
-//             };
-//         });
-//     }
-
-//     return expanded;
-// }
-
-// // tags を重複なくマージする関数
-// function mergeTags(baseTags, addTags) {
-//     return Array.from(
-//         new Set([
-//             ...baseTags.filter(tag => tag !== '単数形' && tag !== '複数形'),
-//             ...addTags,
-//         ])
-//     );
-// }
-
-
-
-
-// const expanded = expandTangoEntries(tango);
-// console.log(expanded);
-
-// // // for (const [key, value] of Object.entries(tango)) {
-// // //     if (Array.isArray(value.katuyou) && value.katuyou.length > 0) {
-// // //         if (!value.katuyou.includes(key)) {
-// // //             value.katuyou.unshift(key);
-// // //         }
-// // //     }
-// // // }
-
-// // console.log(tango);
-
+main().catch(console.error);
