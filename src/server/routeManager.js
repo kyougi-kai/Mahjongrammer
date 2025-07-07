@@ -61,29 +61,12 @@ export class routeManager {
         this.serverManager.onGet('/play/:roomId', async (req, res) => {
             try {
                 await usersManager.isLogin(req, res);
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                const parentId = await roomsDB.getRow('parent_id', 'room_id', req.params.roomId);
-                const parentName = await usersManager.idToName(parentId);
-                if (await !roomManager.isRoomByParentId(parentId)) res.redirect('/room');
-
-                const username = await usersManager.idToName(req.cookies.userId);
-=======
                 const roomId = req.params.roomId;
                 if (await !roomManager.isRoomByRoomId(roomId)) res.redirect('/room');
 
                 const username = await usersManager.idToName(req.cookies.userId);
                 const parentId = await roomsDB.getRow('parent_id', 'room_id', roomId);
                 const parentName = await usersManager.idToName(parentId);
->>>>>>> Stashed changes
-=======
-                const roomId = req.params.roomId;
-                if (await !roomManager.isRoomByRoomId(roomId)) res.redirect('/room');
-
-                const username = await usersManager.idToName(req.cookies.userId);
-                const parentId = await roomsDB.getRow('parent_id', 'room_id', roomId);
-                const parentName = await usersManager.idToName(parentId);
->>>>>>> Stashed changes
                 res.render('pages/play', { username: username, parentName: parentName });
             } catch (err) {
                 console.log(`Error :${err}`);
