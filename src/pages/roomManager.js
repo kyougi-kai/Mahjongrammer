@@ -69,4 +69,8 @@ export class roomManager {
     static async isRoomByParentId(parentId) {
         return (await roomsrepository.isNull('parent_id', parentId)) == false;
     }
+
+    static async isRoomByRoomId(roomId) {
+        return (await roomsrepository.isNull('room_id', roomId)) == false;
+    }
 }

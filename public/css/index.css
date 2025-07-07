@@ -67,6 +67,85 @@ html {
     border-bottom: 1px solid white;
     color: rgb(255, 255, 255); 
     width: 100px;
-    transform: rotate(-5deg);
+    animation: tiltAnimation 4s infinite alternate ease-in-out;
 }
 
+@keyframes tiltAnimation {
+    from{
+        transform: rotate(5deg);
+    }
+    to{
+        transform: rotate(-5deg);
+    }
+}
+
+.usersettei2{
+    border-bottom: 1px solid white;
+    color: rgb(255, 255, 255); 
+    width: 100px;
+    animation: tiltAnimation 5s infinite alternate ease-in-out;
+}
+
+@keyframes tiltAnimation {
+    from{
+        transform: rotate(-4deg);
+    }
+    to{
+        transform: rotate(4deg);
+    }
+}
+
+.gu{
+    animation: guAnimation 6s infinite alternate ease-in-out;
+}
+
+@keyframes guAnimation {
+    from{
+        transform: rotate(-6deg)  translateY(10px);
+    }
+    to{
+        transform: rotate(6deg)  translateY(-10px);
+    }
+}
+
+
+.ra{
+    animation: raAnimation 4s infinite alternate ease-in-out;
+}
+
+@keyframes raAnimation {
+    from{
+        transform: rotate(4deg)  translateY(-10px);
+    }
+    to{
+        transform: rotate(-4deg)  translateY(7px);
+    }
+}
+
+
+.ma{
+    animation: maAnimation 3.5s infinite alternate ease-in-out;
+}
+
+@keyframes maAnimation {
+    from{
+        transform: rotate(-5deg)  translateY(8px);
+    }
+    to{
+        transform: rotate(6deg)  translateY(-12px);
+    }
+}
+
+
+.jyann{
+    animation: jyannAnimation 5s infinite alternate ease-in-out;
+}
+
+@keyframes jyannAnimation {
+    from{
+        transform: rotate(6deg)  translateY(-14px);
+    }
+    to{
+        transform: rotate(-7deg)  translateY(5px);
+    }
+}

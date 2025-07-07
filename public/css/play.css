@@ -202,7 +202,7 @@ p {
     height: calc(100% - 270px);
     width: 100%;
     background-image: url('/img/background/ゲーム画面背景.png');
-    background-size: auto;
+    background-size: 2200px;
 }
 
 .footer {
@@ -250,6 +250,11 @@ p {
     margin: auto 7px;
     border-radius: 5px;
     background-size: contain;
+    transition: 0.6s;
+}
+
+.border-div:hover{
+    transform: scale(1.2);
 }
 
 .border-div p {
@@ -458,5 +463,41 @@ p {
 
     100% {
         transform: rotateZ(360deg);
+    }
+}
+
+@keyframes hai1 {
+    from{
+        transform: rotate(-6deg)  translateY(10px);
+    }
+    to{
+        transform: rotate(6deg)  translateY(-10px);
+    }
+}
+
+@keyframes hai2 {
+    from{
+        transform: rotate(4deg)  translateY(-10px);
+    }
+    to{
+        transform: rotate(-4deg)  translateY(7px);
+    }
+}
+
+@keyframes hai3 {
+    from{
+        transform: rotate(-5deg)  translateY(8px);
+    }
+    to{
+        transform: rotate(6deg)  translateY(-12px);
+    }
+}
+
+@keyframes hai4 {
+    from{
+        transform: rotate(6deg)  translateY(-14px);
+    }
+    to{
+        transform: rotate(-7deg)  translateY(5px);
     }
 }
