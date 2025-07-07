@@ -30,11 +30,14 @@ export class connectionManager {
 
             ws.on('message', async (data) => {
                 const parseData = JSON.parse(data);
-                console.log(parseData);
                 await this._doHanlders(this.messageHandlers.get(parseData['type']), ws, parseData['payload']);
 
                 if (parseData['type'] == 'createRoom') {
+<<<<<<< Updated upstream
                     const roomId = await roomsDB.getRoomId(parseData['payload']['userId']);
+=======
+                    const roomId = await roomsDB.getRoomId(parseData.payload.userId);
+>>>>>>> Stashed changes
                     const sendSuccess = {
                         type: 'success',
                         payload: {
