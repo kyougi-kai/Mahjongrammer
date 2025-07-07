@@ -283,6 +283,25 @@ export class flow {
             this.topleft.style.top = this.tops[idx2];
             this.topleft.style.left = this.lefts[idx2];
             this.topleft.style.setProperty('--original-html-ban', idx2);
+            let i = idx2;
+            let j = idx2 + 4;
+            let k = 0;
+            this.yourtops = [];
+            this.yourlefts = [];
+            for(i;i > j;i++){
+                this.yourtops.push(this.tops[i % this.tops.length]);
+                this.yourlefts.push(this.lefts[i % this.lefts.length]);
+            }
+            console.log(this.tops);
+            console.log(this.yourtops);
+            console.log(this.lefts);
+            console.log(this.yourlefts);
+        }else{
+            console.log(this.playermanager.getPlayerMembers());
+            let idx2 = (this.topleft.style.getPropertyValue('--original-html-ban') + 1) % this.playermanager.getPlayerMembers();
+            this.topleft.style.top = this.tops[idx2];
+            this.topleft.style.left = this.lefts[idx2];
+            this.topleft.style.setProperty('--original-html-ban', idx2);
         }
     }
 
@@ -300,10 +319,6 @@ export class flow {
             }
         }
         console.log(this.nowPhaseNumber);
-        let idx2 = (this.topleft.style.getPropertyValue('--original-html-ban') + 1) % 4;
-        this.topleft.style.top = this.tops[idx2];
-        this.topleft.style.left = this.lefts[idx2];
-        this.topleft.style.setProperty('--original-html-ban', idx2);
         this.start();
     }
 

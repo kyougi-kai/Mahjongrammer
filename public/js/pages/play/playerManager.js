@@ -176,4 +176,9 @@ export class playerManager {
         const phasenumber = this.playerMembers[0].indexOf(this.nameDivs[position].children[0].innerHTML);
         return phasenumber;
     }
+
+    getPlayerMembers() {
+        const ninzuu = this.playerMembers[0].length;
+        return ninzuu;
+    }
 }
