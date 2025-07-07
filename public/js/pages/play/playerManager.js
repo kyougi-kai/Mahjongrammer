@@ -13,6 +13,7 @@ export class playerManager {
         console.log(this.nameDivs);
         this.wss = wss;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         this.playerMembers = [];
         this.parentName = functions.sN(document.getElementById('parentNameText').innerHTML);
         this.parentNumber = 0;
@@ -20,6 +21,14 @@ export class playerManager {
 
         const pageName = location.href;
         this.roomId = pageName.split('/')[4];
+=======
+        this.playerMembers = [[],[]];
+        this.parentName = functions.sN(document.getElementById('parentNameText').innerHTML);
+        this.parentNumber = 0;
+        this.playerMembers[0].push(this.parentName);
+        console.log(this.playerMembers[0].length);
+        this.playerMembers[1].push(this.playerMembers[0].length);
+>>>>>>> Stashed changes
 =======
         this.playerMembers = [[],[]];
         this.parentName = functions.sN(document.getElementById('parentNameText').innerHTML);
