@@ -26,7 +26,16 @@ export class hai {
         });
 
         // 後ろに画像表示 名詞はとりあえず1番目のやつ
-        this.hai.style.backgroundImage = `url(/img/partOfSpeech/${this.hinsi}.png)`;
+        let wakusei = "";
+        if(this.hinsi == '名詞'){
+            wakusei = Math.floor(Math.random() * 7 + 1);
+            while(wakusei == 3 || wakusei == 5){
+                wakusei = Math.floor(Math.random() * 7 + 1);
+            }
+        }
+        this.hai.style.animation = `hai${Math.floor(Math.random() * 3 + 1)} 6s infinite alternate ease-in-out`;
+
+        this.hai.style.backgroundImage = `url(/img/partOfSpeech/${this.hinsi + wakusei}.png)`;
         return this.hai;
     }
 
