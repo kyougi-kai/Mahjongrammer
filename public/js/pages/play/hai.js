@@ -33,7 +33,7 @@ export class hai {
                 wakusei = Math.floor(Math.random() * 7 + 1);
             }
         }
-        this.hai.style.animation = `hai${Math.floor(Math.random() * 3 + 1)} 6s infinite alternate ease-in-out`;
+        this.hai.style.animation = `hai${Math.floor(Math.random() * 3 + 1)} 2s infinite alternate ease-in-out`;
 
         this.hai.style.backgroundImage = `url(/img/partOfSpeech/${this.hinsi + wakusei}.png)`;
         return this.hai;
