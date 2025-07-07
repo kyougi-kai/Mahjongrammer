@@ -282,15 +282,16 @@ export class flow {
             console.log(this.topleft.style.top);
             this.topleft.style.top = this.tops[idx2];
             this.topleft.style.left = this.lefts[idx2];
-            this.topleft.style.setProperty('--original-html-ban', idx2);
+            this.topleft.style.setProperty('--original-html-ban', 0);
             let i = idx2;
             let j = idx2 + 4;
             let k = 0;
             this.yourtops = [];
             this.yourlefts = [];
-            for(i;i > j;i++){
-                this.yourtops.push(this.tops[i % this.tops.length]);
-                this.yourlefts.push(this.lefts[i % this.lefts.length]);
+            for(i;i < j;i++){
+                this.yourtops[k] = this.tops[i % this.tops.length];
+                this.yourlefts[k] = this.lefts[i % this.lefts.length];
+                k = k + 1;
             }
             console.log(this.tops);
             console.log(this.yourtops);
@@ -299,8 +300,8 @@ export class flow {
         }else{
             console.log(this.playermanager.getPlayerMembers());
             let idx2 = (this.topleft.style.getPropertyValue('--original-html-ban') + 1) % this.playermanager.getPlayerMembers();
-            this.topleft.style.top = this.tops[idx2];
-            this.topleft.style.left = this.lefts[idx2];
+            this.topleft.style.top = this.yourtops[idx2];
+            this.topleft.style.left = this.yourlefts[idx2];
             this.topleft.style.setProperty('--original-html-ban', idx2);
         }
     }

@@ -12,11 +12,10 @@ export class playerManager {
         this.nameDivs = document.getElementsByClassName('name');
         console.log(this.nameDivs);
         this.wss = wss;
-        this.playerMembers = [];
         this.parentName = functions.sN(document.getElementById('parentNameText').innerHTML);
         this.parentNumber = 0;
-        this.playerMembers.push(this.parentName);
-
+        this.playerMembers = [[], []];
+        this.playerMembers[0].push(this.parentName);
         const pageName = location.href;
         this.roomId = pageName.split('/')[4];
         console.log(this.playerMembers);
@@ -133,18 +132,26 @@ export class playerManager {
     // playerMembersの値を使って名前を表示する
     updatePlayerName() {
         const nanka = this.playerMembers[0].indexOf(this.playername);
+
+        // 一旦全ての表示をリセット
         let j = 0;
         while (j < 4) {
             if (j !== 2) {
                 this.nameDivs[j].children[0].innerHTML = '';
+                this.nameDivs[j].children[0].style.color = 'black'; // 色リセット
             }
             j++;
         }
 
         this.playerMembers[0].forEach((value, index) => {
-            this.nameDivs[(index + 2 - nanka) % 4].children[0].innerHTML = value;
-            if (value == this.playerMembers[0][0] && index == 0) {
-                this.nameDivs[(index + 2 - nanka) % 4].children[0].style.color = 'red';
+            const pos = (index + 2 - nanka + 4) % 4;
+            const nameElem = this.nameDivs[pos].children[0];
+
+            nameElem.innerHTML = value;
+            nameElem.style.color = 'black'; // ← デフォルトに戻す
+
+            if (value === this.playerMembers[0][0]) {
+                nameElem.style.color = 'red'; // 親だけ赤くする
             }
         });
     }
