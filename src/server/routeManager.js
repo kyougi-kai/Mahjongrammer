@@ -1,7 +1,7 @@
 import { roomManager } from '../pages/roomManager.js';
 import { cookieManager } from '../utils/cookieManager.js';
 import { serverManager } from './serverManager.js';
-import { usersManager } from './usersManager.js';
+import { usersManager } from '../server/usersManager.js';
 import roomsDB from '../db/repositories/roomsRepository.js';
 
 export class routeManager {

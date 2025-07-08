@@ -1,7 +1,6 @@
 import { connectionManager } from '../ws/connectionManager.js';
 import { roomClientsManager } from '../ws/roomClientsManager.js';
 import { roomsRepository } from '../db/repositories/roomsRepository.js';
-import { usersManager } from '../server/usersManager.js';
 const roomsrepository = new roomsRepository();
 
 export class roomManager {
