@@ -130,7 +130,7 @@ export let tango = {
         katuyou: ['call', 'calls', 'called', 'calling'],
         hinsi: ['動詞', '名詞'],
         means: {
-            動詞: '"1. （大声で）呼ぶ',
+            動詞: '（大声で）呼ぶ',
             名詞: '電話(すること)',
         },
     },
@@ -139,7 +139,7 @@ export let tango = {
         katuyou: ['call', 'calls', 'called', 'calling'],
         hinsi: ['動詞', '名詞'],
         means: {
-            動詞: '"1. （大声で）呼ぶ',
+            動詞: '（大声で）呼ぶ',
             名詞: '電話(すること)',
         },
     },
@@ -193,7 +193,7 @@ export let tango = {
         katuyou: ['change', 'changes', 'changed', 'changing'],
         hinsi: ['動詞', '名詞'],
         means: {
-            動詞: '"1. 変わる〔自動詞〕',
+            動詞: '変わる〔自動詞〕',
             名詞: 'おつり、つり銭、小銭',
         },
     },
@@ -202,7 +202,7 @@ export let tango = {
         katuyou: ['change', 'changes', 'changed', 'changing'],
         hinsi: ['動詞', '名詞'],
         means: {
-            動詞: '"1. 変わる〔自動詞〕',
+            動詞: '変わる〔自動詞〕',
             名詞: 'おつり、つり銭、小銭',
         },
     },
@@ -445,7 +445,7 @@ export let tango = {
         katuyou: ['feel', 'feels', 'felt', 'feeling', 'feelings'],
         hinsi: ['動詞', '名詞'],
         means: {
-            動詞: '"1. ～と感じる、～と思う',
+            動詞: '～と感じる、～と思う',
             名詞: '感情、考え、感覚',
         },
     },
@@ -490,7 +490,7 @@ export let tango = {
         katuyou: ['have', 'has', 'had', 'having'],
         hinsi: ['動詞', '助動詞'],
         means: {
-            動詞: '"1. ～をもっている、～がある、～がいる',
+            動詞: '～をもっている、～がある、～がいる',
             助動詞: '〔have＋過去分詞の形で〕 《ある動作や状態が、過去から現在までずっと続いていることを表して》 ずっと～している、ずっと～だ',
         },
     },
@@ -499,7 +499,7 @@ export let tango = {
         katuyou: ['have', 'has', 'had', 'having'],
         hinsi: ['動詞', '助動詞'],
         means: {
-            動詞: '"1. ～をもっている、～がある、～がいる',
+            動詞: '～をもっている、～がある、～がいる',
             助動詞: '〔現在完了の文において、主語が３人称単数の時の has の形で、疑問文や否定文を作るのに使う〕',
         },
     },
@@ -508,7 +508,7 @@ export let tango = {
         katuyou: ['have', 'has', 'had', 'having'],
         hinsi: ['動詞', '助動詞'],
         means: {
-            動詞: '"1. ～をもっている、～がある、～がいる',
+            動詞: '～をもっている、～がある、～がいる',
             助動詞: '〔had＋過去分詞の形で〕 《過去のある時点を基準として、それよりも前の出来事や状態を表して》 ～していた、したことがあった',
         },
     },
@@ -544,7 +544,7 @@ export let tango = {
         katuyou: ['help', 'helps', 'helped', 'helping'],
         hinsi: ['動詞', '名詞'],
         means: {
-            動詞: '"1. ～を助ける、援助する',
+            動詞: '～を助ける、援助する',
             名詞: '助け､援助',
         },
     },
@@ -644,7 +644,7 @@ export let tango = {
         katuyou: ['leave', 'leaves', 'left', 'leaving'],
         hinsi: ['動詞', '名詞', '形容詞'],
         means: {
-            動詞: '"1. ～を出発する、出る、去る',
+            動詞: '～を出発する、出る、去る',
             名詞: '左、左側',
             形容詞: '左の',
         },
@@ -663,7 +663,7 @@ export let tango = {
         katuyou: ['live', 'lives', 'lived', 'living', 'life'],
         hinsi: ['動詞', '名詞'],
         means: {
-            動詞: '"1. 住んでいる、暮らしている、生活する',
+            動詞: '住んでいる、暮らしている、生活する',
             名詞: '生命、いのち（複 lives）',
         },
     },
@@ -672,7 +672,7 @@ export let tango = {
         katuyou: ['live', 'lives', 'lived', 'living'],
         hinsi: ['動詞', '形容詞'],
         means: {
-            動詞: '"1. 住んでいる、暮らしている、生活する',
+            動詞: '住んでいる、暮らしている、生活する',
             形容詞: '生きている',
         },
     },
@@ -681,7 +681,7 @@ export let tango = {
         katuyou: ['look', 'looks', 'looked', 'looking'],
         hinsi: ['動詞', '名詞'],
         means: {
-            動詞: '"1. （意識的に）見る 〔look at ～ の形で〕～を見る',
+            動詞: '（意識的に）見る 〔look at ～ の形で〕～を見る',
             名詞: '見ること、一見　　〔 have ［take］ a look at ～の形で〕～を見る',
         },
     },
@@ -690,7 +690,7 @@ export let tango = {
         katuyou: ['look', 'looks', 'looked', 'looking'],
         hinsi: ['動詞', '名詞'],
         means: {
-            動詞: '"1. （意識的に）見る 〔look at ～ の形で〕～を見る',
+            動詞: '（意識的に）見る 〔look at ～ の形で〕～を見る',
             名詞: '見ること、一見　　〔 have ［take］ a look at ～の形で〕～を見る',
         },
     },
@@ -699,7 +699,7 @@ export let tango = {
         katuyou: ['love', 'loves', 'loved', 'loving'],
         hinsi: ['動詞', '名詞'],
         means: {
-            動詞: '"1. ～を愛する、～が大好きである',
+            動詞: '～を愛する、～が大好きである',
             名詞: '愛、恋愛',
         },
     },
@@ -708,7 +708,7 @@ export let tango = {
         katuyou: ['mean', 'means', 'meant', 'meaning', 'meanings'],
         hinsi: ['動詞', '名詞'],
         means: {
-            動詞: '"1. ～を意味する、表す',
+            動詞: '～を意味する、表す',
             名詞: '意味',
         },
     },
@@ -717,7 +717,7 @@ export let tango = {
         katuyou: ['meet', 'meets', 'met', 'meeting', 'meetings'],
         hinsi: ['動詞', '名詞'],
         means: {
-            動詞: '"1.～に会う、面会する',
+            動詞: '～に会う、面会する',
             名詞: '集会、会議',
         },
     },
@@ -726,7 +726,7 @@ export let tango = {
         katuyou: ['miss', 'misses', 'missed', 'missing'],
         hinsi: ['動詞', '形容詞'],
         means: {
-            動詞: '"1.　乗りそこなう、取り［見・聞き］そこなう､欠席する',
+            動詞: '　乗りそこなう、取り［見・聞き］そこなう､欠席する',
             形容詞: '紛失した、行方不明の',
         },
     },
@@ -789,7 +789,7 @@ export let tango = {
         katuyou: ['open', 'opens', 'opened', 'opening'],
         hinsi: ['動詞', '形容詞'],
         means: {
-            動詞: '"1. あける、広げる',
+            動詞: 'あける、広げる',
             形容詞: 'あいている、（店などが）営業中の［で］',
         },
     },
@@ -933,7 +933,7 @@ export let tango = {
         katuyou: ['play', 'plays', 'played', 'playing'],
         hinsi: ['動詞', '名詞'],
         means: {
-            動詞: '"1. (スポーツ・ゲームなど)をする',
+            動詞: '(スポーツ・ゲームなど)をする',
             名詞: '劇',
         },
     },
@@ -942,7 +942,7 @@ export let tango = {
         katuyou: ['play', 'plays', 'played', 'playing'],
         hinsi: ['動詞', '名詞'],
         means: {
-            動詞: '"1. (スポーツ・ゲームなど)をする',
+            動詞: '(スポーツ・ゲームなど)をする',
             名詞: '劇',
         },
     },
@@ -1186,7 +1186,7 @@ export let tango = {
         katuyou: ['show', 'shows', 'showed', 'shown', 'showing'],
         hinsi: ['動詞', '名詞'],
         means: {
-            動詞: '"1. ～を見せる、示す、教える  〔show A B の形で〕ＡにＢを見せる',
+            動詞: '～を見せる、示す、教える  〔show A B の形で〕ＡにＢを見せる',
             名詞: 'ショー',
         },
     },
@@ -1195,7 +1195,7 @@ export let tango = {
         katuyou: ['show', 'shows', 'showed', 'shown', 'showing'],
         hinsi: ['動詞', '名詞'],
         means: {
-            動詞: '"1. ～を見せる、示す、教える  〔show A B の形で〕ＡにＢを見せる',
+            動詞: '～を見せる、示す、教える  〔show A B の形で〕ＡにＢを見せる',
             名詞: 'ショー',
         },
     },
@@ -1267,7 +1267,7 @@ export let tango = {
         katuyou: ['stand', 'stands', 'stood', 'standing'],
         hinsi: ['動詞', '名詞'],
         means: {
-            動詞: '"1. 立っている',
+            動詞: '立っている',
             名詞: 'スタンド、台',
         },
     },
@@ -1276,7 +1276,7 @@ export let tango = {
         katuyou: ['stand', 'stands', 'stood', 'standing'],
         hinsi: ['動詞', '名詞'],
         means: {
-            動詞: '"1. 立っている',
+            動詞: '立っている',
             名詞: 'スタンド、台',
         },
     },
@@ -1357,7 +1357,7 @@ export let tango = {
         katuyou: ['taste', 'tastes', 'tasted', 'tasting'],
         hinsi: ['動詞', '名詞'],
         means: {
-            動詞: '"1. 味わう、食べる',
+            動詞: '味わう、食べる',
             名詞: '味',
         },
     },
@@ -1366,7 +1366,7 @@ export let tango = {
         katuyou: ['taste', 'tastes', 'tasted', 'tasting'],
         hinsi: ['動詞', '名詞'],
         means: {
-            動詞: '"1. 味わう、食べる',
+            動詞: '味わう、食べる',
             名詞: '味',
         },
     },
@@ -1393,7 +1393,7 @@ export let tango = {
         katuyou: ['train', 'trains', 'trained', 'training'],
         hinsi: ['動詞', '名詞'],
         means: {
-            動詞: '"1. ～を訓練する',
+            動詞: '～を訓練する',
             名詞: '列車、電車',
         },
     },
@@ -1402,7 +1402,7 @@ export let tango = {
         katuyou: ['train', 'trains', 'trained', 'training'],
         hinsi: ['動詞', '名詞'],
         means: {
-            動詞: '"1. ～を訓練する',
+            動詞: '～を訓練する',
             名詞: '列車、電車',
         },
     },
@@ -1420,7 +1420,7 @@ export let tango = {
         katuyou: ['turn', 'turns', 'turned', 'turning'],
         hinsi: ['動詞', '名詞'],
         means: {
-            動詞: '"1. 曲がる、向きを変える',
+            動詞: '曲がる、向きを変える',
             名詞: '番、順番　　〔in turnで〕代わって今度は',
         },
     },
@@ -1429,7 +1429,7 @@ export let tango = {
         katuyou: ['turn', 'turns', 'turned', 'turning'],
         hinsi: ['動詞', '名詞'],
         means: {
-            動詞: '"1. 曲がる、向きを変える',
+            動詞: '曲がる、向きを変える',
             名詞: '番、順番　　〔in turnで〕代わって今度は',
         },
     },
@@ -1438,7 +1438,7 @@ export let tango = {
         katuyou: ['turn', 'turns', 'turned', 'turning', 'turnings'],
         hinsi: ['動詞', '名詞'],
         means: {
-            動詞: '"1. 曲がる、向きを変える',
+            動詞: '曲がる、向きを変える',
             名詞: '曲がり角、回転    〔turning pointで〕転機',
         },
     },
@@ -1483,7 +1483,7 @@ export let tango = {
         katuyou: ['visit', 'visits', 'visited', 'visiting'],
         hinsi: ['動詞', '名詞'],
         means: {
-            動詞: '"1. (場所、人など)をおとずれる',
+            動詞: '(場所、人など)をおとずれる',
             名詞: '訪問',
         },
     },
@@ -1492,7 +1492,7 @@ export let tango = {
         katuyou: ['visit', 'visits', 'visited', 'visiting'],
         hinsi: ['動詞', '名詞'],
         means: {
-            動詞: '"1. (場所、人など)をおとずれる',
+            動詞: '(場所、人など)をおとずれる',
             名詞: '訪問',
         },
     },
@@ -1501,7 +1501,7 @@ export let tango = {
         katuyou: ['walk', 'walks', 'walked', 'walking'],
         hinsi: ['動詞', '名詞'],
         means: {
-            動詞: '"1. 歩く、歩いて行く［来る］',
+            動詞: '歩く、歩いて行く［来る］',
             名詞: '歩くこと、散歩',
         },
     },
@@ -1510,7 +1510,7 @@ export let tango = {
         katuyou: ['walk', 'walks', 'walked', 'walking'],
         hinsi: ['動詞', '名詞'],
         means: {
-            動詞: '"1. 歩く、歩いて行く［来る］',
+            動詞: '歩く、歩いて行く［来る］',
             名詞: '歩くこと、散歩',
         },
     },
@@ -1519,7 +1519,7 @@ export let tango = {
         katuyou: ['watch', 'watches', 'watched', 'watching'],
         hinsi: ['動詞', '名詞'],
         means: {
-            動詞: '"1. (注意して、動いているもの)を見る',
+            動詞: '(注意して、動いているもの)を見る',
             名詞: '腕時計',
         },
     },
@@ -1528,7 +1528,7 @@ export let tango = {
         katuyou: ['watch', 'watches', 'watched', 'watching'],
         hinsi: ['動詞', '名詞'],
         means: {
-            動詞: '"1. (注意して、動いているもの)を見る',
+            動詞: '(注意して、動いているもの)を見る',
             名詞: '腕時計',
         },
     },
@@ -1591,8 +1591,8 @@ export let tango = {
         katuyou: ['work', 'works', 'worked', 'working'],
         hinsi: ['動詞', '名詞'],
         means: {
-            動詞: '"1. 働く、勉強する',
-            名詞: '"仕事、勉強',
+            動詞: '働く、勉強する',
+            名詞: '仕事、勉強',
         },
     },
     worried: {
@@ -8671,7 +8671,7 @@ export let tango = {
         katuyou: [],
         hinsi: ['名詞'],
         means: {
-            名詞: '"韓国・朝鮮　　〔たとえば South Korea',
+            名詞: '韓国・朝鮮　　〔たとえば South Korea',
         },
     },
     Koreans: {
@@ -9487,7 +9487,7 @@ export let tango = {
         katuyou: ['mind', 'minds'],
         hinsi: ['名詞'],
         means: {
-            名詞: '"心　[keep A in mindの形で］Aを心に留めておく',
+            名詞: '心　[keep A in mindの形で］Aを心に留めておく',
         },
     },
     minds: {
@@ -9495,7 +9495,7 @@ export let tango = {
         katuyou: ['mind', 'minds'],
         hinsi: ['名詞'],
         means: {
-            名詞: '"心　[keep A in mindの形で］Aを心に留めておく',
+            名詞: '心　[keep A in mindの形で］Aを心に留めておく',
         },
     },
     minister: {
@@ -15615,7 +15615,7 @@ export let tango = {
         katuyou: ['arrive', 'arrives', 'arrived', 'arriving'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"着く、到着する　〔たとえば arrive at school',
+            動詞: '着く、到着する　〔たとえば arrive at school',
         },
     },
     arrives: {
@@ -15623,7 +15623,7 @@ export let tango = {
         katuyou: ['arrive', 'arrives', 'arrived', 'arriving'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"着く、到着する　〔たとえば arrive at school',
+            動詞: '着く、到着する　〔たとえば arrive at school',
         },
     },
     arrived: {
@@ -15631,7 +15631,7 @@ export let tango = {
         katuyou: ['arrive', 'arrives', 'arrived', 'arriving'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"着く、到着する　〔たとえば arrive at school',
+            動詞: '着く、到着する　〔たとえば arrive at school',
         },
     },
     arriving: {
@@ -15639,7 +15639,7 @@ export let tango = {
         katuyou: ['arrive', 'arrives', 'arrived', 'arriving'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"着く、到着する　〔たとえば arrive at school',
+            動詞: '着く、到着する　〔たとえば arrive at school',
         },
     },
     ask: {
@@ -15647,7 +15647,7 @@ export let tango = {
         katuyou: ['ask', 'asks', 'asked', 'asking'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～をたずねる、問う',
+            動詞: '～をたずねる、問う',
         },
     },
     asks: {
@@ -15655,7 +15655,7 @@ export let tango = {
         katuyou: ['ask', 'asks', 'asked', 'asking'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～をたずねる、問う',
+            動詞: '～をたずねる、問う',
         },
     },
     asked: {
@@ -15663,7 +15663,7 @@ export let tango = {
         katuyou: ['ask', 'asks', 'asked', 'asking'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～をたずねる、問う',
+            動詞: '～をたずねる、問う',
         },
     },
     asking: {
@@ -15671,7 +15671,7 @@ export let tango = {
         katuyou: ['ask', 'asks', 'asked', 'asking'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～をたずねる、問う',
+            動詞: '～をたずねる、問う',
         },
     },
     assist: {
@@ -15743,7 +15743,7 @@ export let tango = {
         katuyou: ['attract', 'attracts', 'attracted', 'attracting'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1.（人を）ひきつける',
+            動詞: '（人を）ひきつける',
         },
     },
     attracts: {
@@ -15751,7 +15751,7 @@ export let tango = {
         katuyou: ['attract', 'attracts', 'attracted', 'attracting'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1.（人を）ひきつける',
+            動詞: '（人を）ひきつける',
         },
     },
     attracted: {
@@ -15759,7 +15759,7 @@ export let tango = {
         katuyou: ['attract', 'attracts', 'attracted', 'attracting'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1.（人を）ひきつける',
+            動詞: '（人を）ひきつける',
         },
     },
     attracting: {
@@ -15767,7 +15767,7 @@ export let tango = {
         katuyou: ['attract', 'attracts', 'attracted', 'attracting'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1.（人を）ひきつける',
+            動詞: '（人を）ひきつける',
         },
     },
     bake: {
@@ -15871,7 +15871,7 @@ export let tango = {
         katuyou: ['begin', 'begins', 'began', 'begun', 'beginning'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. はじまる〔自動詞〕',
+            動詞: 'はじまる〔自動詞〕',
         },
     },
     begins: {
@@ -15879,7 +15879,7 @@ export let tango = {
         katuyou: ['begin', 'begins', 'began', 'begun', 'beginning'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. はじまる〔自動詞〕',
+            動詞: 'はじまる〔自動詞〕',
         },
     },
     began: {
@@ -15887,7 +15887,7 @@ export let tango = {
         katuyou: ['begin', 'begins', 'began', 'begun', 'beginning'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. はじまる〔自動詞〕',
+            動詞: 'はじまる〔自動詞〕',
         },
     },
     begun: {
@@ -15895,7 +15895,7 @@ export let tango = {
         katuyou: ['begin', 'begins', 'began', 'begun', 'beginning'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. はじまる〔自動詞〕',
+            動詞: 'はじまる〔自動詞〕',
         },
     },
     beginning: {
@@ -15903,7 +15903,7 @@ export let tango = {
         katuyou: ['begin', 'begins', 'began', 'begun', 'beginning'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. はじまる〔自動詞〕',
+            動詞: 'はじまる〔自動詞〕',
         },
     },
     believe: {
@@ -15975,7 +15975,7 @@ export let tango = {
         katuyou: ['blow', 'blows', 'blew', 'blown', 'blowing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. （風が）ふく',
+            動詞: '（風が）ふく',
         },
     },
     blows: {
@@ -15983,7 +15983,7 @@ export let tango = {
         katuyou: ['blow', 'blows', 'blew', 'blown', 'blowing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. （風が）ふく',
+            動詞: '（風が）ふく',
         },
     },
     blew: {
@@ -15991,7 +15991,7 @@ export let tango = {
         katuyou: ['blow', 'blows', 'blew', 'blown', 'blowing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. （風が）ふく',
+            動詞: '（風が）ふく',
         },
     },
     blown: {
@@ -15999,7 +15999,7 @@ export let tango = {
         katuyou: ['blow', 'blows', 'blew', 'blown', 'blowing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. （風が）ふく',
+            動詞: '（風が）ふく',
         },
     },
     blowing: {
@@ -16007,7 +16007,7 @@ export let tango = {
         katuyou: ['blow', 'blows', 'blew', 'blown', 'blowing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. （風が）ふく',
+            動詞: '（風が）ふく',
         },
     },
     blush: {
@@ -16375,7 +16375,7 @@ export let tango = {
         katuyou: ['call', 'calls', 'called', 'calling'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. （大声で）呼ぶ',
+            動詞: '（大声で）呼ぶ',
         },
     },
     calling: {
@@ -16383,7 +16383,7 @@ export let tango = {
         katuyou: ['call', 'calls', 'called', 'calling'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. （大声で）呼ぶ',
+            動詞: '（大声で）呼ぶ',
         },
     },
     calm: {
@@ -16575,7 +16575,7 @@ export let tango = {
         katuyou: ['change', 'changes', 'changed', 'changing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 変わる〔自動詞〕',
+            動詞: '変わる〔自動詞〕',
         },
     },
     changing: {
@@ -16583,7 +16583,7 @@ export let tango = {
         katuyou: ['change', 'changes', 'changed', 'changing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 変わる〔自動詞〕',
+            動詞: '変わる〔自動詞〕',
         },
     },
     check: {
@@ -16839,7 +16839,7 @@ export let tango = {
         katuyou: ['come', 'comes', 'came', 'coming'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 来る　〔come and ～ の形で〕 ～しに来る  〔come to school の形で〕 学校に来る  〔come back の形で〕 戻ってくる',
+            動詞: '来る　〔come and ～ の形で〕 ～しに来る  〔come to school の形で〕 学校に来る  〔come back の形で〕 戻ってくる',
         },
     },
     comes: {
@@ -16847,7 +16847,7 @@ export let tango = {
         katuyou: ['come', 'comes', 'came', 'coming'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 来る　〔come and ～ の形で〕 ～しに来る  〔come to school の形で〕 学校に来る  〔come back の形で〕 戻ってくる',
+            動詞: '来る　〔come and ～ の形で〕 ～しに来る  〔come to school の形で〕 学校に来る  〔come back の形で〕 戻ってくる',
         },
     },
     came: {
@@ -16855,7 +16855,7 @@ export let tango = {
         katuyou: ['come', 'comes', 'came', 'coming'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 来る　〔come and ～ の形で〕 ～しに来る  〔come to school の形で〕 学校に来る  〔come back の形で〕 戻ってくる',
+            動詞: '来る　〔come and ～ の形で〕 ～しに来る  〔come to school の形で〕 学校に来る  〔come back の形で〕 戻ってくる',
         },
     },
     coming: {
@@ -16863,7 +16863,7 @@ export let tango = {
         katuyou: ['come', 'comes', 'came', 'coming'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 来る　〔come and ～ の形で〕 ～しに来る  〔come to school の形で〕 学校に来る  〔come back の形で〕 戻ってくる',
+            動詞: '来る　〔come and ～ の形で〕 ～しに来る  〔come to school の形で〕 学校に来る  〔come back の形で〕 戻ってくる',
         },
     },
     communicate: {
@@ -17223,7 +17223,7 @@ export let tango = {
         katuyou: ['cry', 'cries', 'cried', 'crying'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. （大声で）叫ぶ、大声で言う',
+            動詞: '（大声で）叫ぶ、大声で言う',
         },
     },
     cries: {
@@ -17231,7 +17231,7 @@ export let tango = {
         katuyou: ['cry', 'cries', 'cried', 'crying'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. （大声で）叫ぶ、大声で言う',
+            動詞: '（大声で）叫ぶ、大声で言う',
         },
     },
     cried: {
@@ -17239,7 +17239,7 @@ export let tango = {
         katuyou: ['cry', 'cries', 'cried', 'crying'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. （大声で）叫ぶ、大声で言う',
+            動詞: '（大声で）叫ぶ、大声で言う',
         },
     },
     crying: {
@@ -17247,7 +17247,7 @@ export let tango = {
         katuyou: ['cry', 'cries', 'cried', 'crying'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. （大声で）叫ぶ、大声で言う',
+            動詞: '（大声で）叫ぶ、大声で言う',
         },
     },
     cut: {
@@ -17615,7 +17615,7 @@ export let tango = {
         katuyou: ['draw', 'draws', 'drew', 'drawn', 'drawing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. （鉛筆、ペンなどで絵など）をかく、（線）を引く',
+            動詞: '（鉛筆、ペンなどで絵など）をかく、（線）を引く',
         },
     },
     draws: {
@@ -17623,7 +17623,7 @@ export let tango = {
         katuyou: ['draw', 'draws', 'drew', 'drawn', 'drawing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. （鉛筆、ペンなどで絵など）をかく、（線）を引く',
+            動詞: '（鉛筆、ペンなどで絵など）をかく、（線）を引く',
         },
     },
     drew: {
@@ -17631,7 +17631,7 @@ export let tango = {
         katuyou: ['draw', 'draws', 'drew', 'drawn', 'drawing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. （鉛筆、ペンなどで絵など）をかく、（線）を引く',
+            動詞: '（鉛筆、ペンなどで絵など）をかく、（線）を引く',
         },
     },
     drawn: {
@@ -17639,7 +17639,7 @@ export let tango = {
         katuyou: ['draw', 'draws', 'drew', 'drawn', 'drawing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. （鉛筆、ペンなどで絵など）をかく、（線）を引く',
+            動詞: '（鉛筆、ペンなどで絵など）をかく、（線）を引く',
         },
     },
     drawing: {
@@ -17647,7 +17647,7 @@ export let tango = {
         katuyou: ['draw', 'draws', 'drew', 'drawn', 'drawing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. （鉛筆、ペンなどで絵など）をかく、（線）を引く',
+            動詞: '（鉛筆、ペンなどで絵など）をかく、（線）を引く',
         },
     },
     drank: {
@@ -18151,7 +18151,7 @@ export let tango = {
         katuyou: ['feel', 'feels', 'felt', 'feeling'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～と感じる、～と思う',
+            動詞: '～と感じる、～と思う',
         },
     },
     feels: {
@@ -18159,7 +18159,7 @@ export let tango = {
         katuyou: ['feel', 'feels', 'felt', 'feeling'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～と感じる、～と思う',
+            動詞: '～と感じる、～と思う',
         },
     },
     felt: {
@@ -18167,7 +18167,7 @@ export let tango = {
         katuyou: ['feel', 'feels', 'felt', 'feeling'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～と感じる、～と思う',
+            動詞: '～と感じる、～と思う',
         },
     },
     fought: {
@@ -18575,7 +18575,7 @@ export let tango = {
         katuyou: ['get', 'gets', 'got', 'gotten', 'getting'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を得る、手に入れる',
+            動詞: '～を得る、手に入れる',
         },
     },
     gets: {
@@ -18583,7 +18583,7 @@ export let tango = {
         katuyou: ['get', 'gets', 'got', 'gotten', 'getting'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を得る、手に入れる',
+            動詞: '～を得る、手に入れる',
         },
     },
     got: {
@@ -18591,7 +18591,7 @@ export let tango = {
         katuyou: ['get', 'gets', 'got', 'gotten', 'getting'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を得る、手に入れる',
+            動詞: '～を得る、手に入れる',
         },
     },
     gotten: {
@@ -18599,7 +18599,7 @@ export let tango = {
         katuyou: ['get', 'gets', 'got', 'gotten', 'getting'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を得る、手に入れる',
+            動詞: '～を得る、手に入れる',
         },
     },
     getting: {
@@ -18607,7 +18607,7 @@ export let tango = {
         katuyou: ['get', 'gets', 'got', 'gotten', 'getting'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を得る、手に入れる',
+            動詞: '～を得る、手に入れる',
         },
     },
     give: {
@@ -18615,7 +18615,7 @@ export let tango = {
         katuyou: ['give', 'gives', 'gave', 'given', 'giving'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を与える、贈る　〔give A B',
+            動詞: '～を与える、贈る　〔give A B',
         },
     },
     gives: {
@@ -18623,7 +18623,7 @@ export let tango = {
         katuyou: ['give', 'gives', 'gave', 'given', 'giving'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を与える、贈る　〔give A B',
+            動詞: '～を与える、贈る　〔give A B',
         },
     },
     gave: {
@@ -18631,7 +18631,7 @@ export let tango = {
         katuyou: ['give', 'gives', 'gave', 'given', 'giving'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を与える、贈る　〔give A B',
+            動詞: '～を与える、贈る　〔give A B',
         },
     },
     given: {
@@ -18639,7 +18639,7 @@ export let tango = {
         katuyou: ['give', 'gives', 'gave', 'given', 'giving'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を与える、贈る　〔give A B',
+            動詞: '～を与える、贈る　〔give A B',
         },
     },
     giving: {
@@ -18647,7 +18647,7 @@ export let tango = {
         katuyou: ['give', 'gives', 'gave', 'given', 'giving'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を与える、贈る　〔give A B',
+            動詞: '～を与える、贈る　〔give A B',
         },
     },
     go: {
@@ -18655,7 +18655,7 @@ export let tango = {
         katuyou: ['go', 'goes', 'went', 'gone', 'going'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 行く　〔たとえばgo to school の形で〕学校へ行く',
+            動詞: '行く　〔たとえばgo to school の形で〕学校へ行く',
         },
     },
     goes: {
@@ -18663,7 +18663,7 @@ export let tango = {
         katuyou: ['go', 'goes', 'went', 'gone', 'going'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 行く　〔たとえばgo to school の形で〕学校へ行く',
+            動詞: '行く　〔たとえばgo to school の形で〕学校へ行く',
         },
     },
     went: {
@@ -18671,7 +18671,7 @@ export let tango = {
         katuyou: ['go', 'goes', 'went', 'gone', 'going'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 行く　〔たとえばgo to school の形で〕学校へ行く',
+            動詞: '行く　〔たとえばgo to school の形で〕学校へ行く',
         },
     },
     gone: {
@@ -18679,7 +18679,7 @@ export let tango = {
         katuyou: ['go', 'goes', 'went', 'gone', 'going'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 行く　〔たとえばgo to school の形で〕学校へ行く',
+            動詞: '行く　〔たとえばgo to school の形で〕学校へ行く',
         },
     },
     going: {
@@ -18687,7 +18687,7 @@ export let tango = {
         katuyou: ['go', 'goes', 'went', 'gone', 'going'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 行く　〔たとえばgo to school の形で〕学校へ行く',
+            動詞: '行く　〔たとえばgo to school の形で〕学校へ行く',
         },
     },
     graduate: {
@@ -18783,7 +18783,7 @@ export let tango = {
         katuyou: ['grow', 'grows', 'grew', 'grown', 'growing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 成長する、大きくなる、育つ',
+            動詞: '成長する、大きくなる、育つ',
         },
     },
     grows: {
@@ -18791,7 +18791,7 @@ export let tango = {
         katuyou: ['grow', 'grows', 'grew', 'grown', 'growing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 成長する、大きくなる、育つ',
+            動詞: '成長する、大きくなる、育つ',
         },
     },
     grew: {
@@ -18799,7 +18799,7 @@ export let tango = {
         katuyou: ['grow', 'grows', 'grew', 'grown', 'growing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 成長する、大きくなる、育つ',
+            動詞: '成長する、大きくなる、育つ',
         },
     },
     grown: {
@@ -18807,7 +18807,7 @@ export let tango = {
         katuyou: ['grow', 'grows', 'grew', 'grown', 'growing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 成長する、大きくなる、育つ',
+            動詞: '成長する、大きくなる、育つ',
         },
     },
     growing: {
@@ -18815,7 +18815,7 @@ export let tango = {
         katuyou: ['grow', 'grows', 'grew', 'grown', 'growing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 成長する、大きくなる、育つ',
+            動詞: '成長する、大きくなる、育つ',
         },
     },
     guess: {
@@ -18919,7 +18919,7 @@ export let tango = {
         katuyou: ['have', 'has', 'had', 'having'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～をもっている、～がある、～がいる',
+            動詞: '～をもっている、～がある、～がいる',
         },
     },
     headed: {
@@ -18975,7 +18975,7 @@ export let tango = {
         katuyou: ['hear', 'hears', 'heard', 'hearing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を聞く、～が聞こえる',
+            動詞: '～を聞く、～が聞こえる',
         },
     },
     hears: {
@@ -18983,7 +18983,7 @@ export let tango = {
         katuyou: ['hear', 'hears', 'heard', 'hearing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を聞く、～が聞こえる',
+            動詞: '～を聞く、～が聞こえる',
         },
     },
     heard: {
@@ -18991,7 +18991,7 @@ export let tango = {
         katuyou: ['hear', 'hears', 'heard', 'hearing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を聞く、～が聞こえる',
+            動詞: '～を聞く、～が聞こえる',
         },
     },
     hearing: {
@@ -18999,7 +18999,7 @@ export let tango = {
         katuyou: ['hear', 'hears', 'heard', 'hearing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を聞く、～が聞こえる',
+            動詞: '～を聞く、～が聞こえる',
         },
     },
     heats: {
@@ -19031,7 +19031,7 @@ export let tango = {
         katuyou: ['help', 'helps', 'helped', 'helping'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を助ける、援助する',
+            動詞: '～を助ける、援助する',
         },
     },
     helped: {
@@ -19039,7 +19039,7 @@ export let tango = {
         katuyou: ['help', 'helps', 'helped', 'helping'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を助ける、援助する',
+            動詞: '～を助ける、援助する',
         },
     },
     helping: {
@@ -19047,7 +19047,7 @@ export let tango = {
         katuyou: ['help', 'helps', 'helped', 'helping'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を助ける、援助する',
+            動詞: '～を助ける、援助する',
         },
     },
     hitting: {
@@ -19063,7 +19063,7 @@ export let tango = {
         katuyou: ['hold', 'holds', 'held', 'holding'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. (手などでしっかりと）持つ、にぎる、抱く、抱きかかえる',
+            動詞: '(手などでしっかりと）持つ、にぎる、抱く、抱きかかえる',
         },
     },
     holds: {
@@ -19071,7 +19071,7 @@ export let tango = {
         katuyou: ['hold', 'holds', 'held', 'holding'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. (手などでしっかりと）持つ、にぎる、抱く、抱きかかえる',
+            動詞: '(手などでしっかりと）持つ、にぎる、抱く、抱きかかえる',
         },
     },
     held: {
@@ -19079,7 +19079,7 @@ export let tango = {
         katuyou: ['hold', 'holds', 'held', 'holding'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. (手などでしっかりと）持つ、にぎる、抱く、抱きかかえる',
+            動詞: '(手などでしっかりと）持つ、にぎる、抱く、抱きかかえる',
         },
     },
     holding: {
@@ -19087,7 +19087,7 @@ export let tango = {
         katuyou: ['hold', 'holds', 'held', 'holding'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. (手などでしっかりと）持つ、にぎる、抱く、抱きかかえる',
+            動詞: '(手などでしっかりと）持つ、にぎる、抱く、抱きかかえる',
         },
     },
     hopes: {
@@ -19207,7 +19207,7 @@ export let tango = {
         katuyou: ['hurt', 'hurts', 'hurting'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 痛む 〔過去形、過去分詞形もhurt〕',
+            動詞: '痛む 〔過去形、過去分詞形もhurt〕',
         },
     },
     hurts: {
@@ -19215,7 +19215,7 @@ export let tango = {
         katuyou: ['hurt', 'hurts', 'hurting'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 痛む 〔過去形、過去分詞形もhurt〕',
+            動詞: '痛む 〔過去形、過去分詞形もhurt〕',
         },
     },
     hurting: {
@@ -19223,7 +19223,7 @@ export let tango = {
         katuyou: ['hurt', 'hurts', 'hurting'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 痛む 〔過去形、過去分詞形もhurt〕',
+            動詞: '痛む 〔過去形、過去分詞形もhurt〕',
         },
     },
     imagine: {
@@ -19503,7 +19503,7 @@ export let tango = {
         katuyou: ['join', 'joins', 'joined', 'joining'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～に加わる、参加する',
+            動詞: '～に加わる、参加する',
         },
     },
     joins: {
@@ -19511,7 +19511,7 @@ export let tango = {
         katuyou: ['join', 'joins', 'joined', 'joining'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～に加わる、参加する',
+            動詞: '～に加わる、参加する',
         },
     },
     joined: {
@@ -19519,7 +19519,7 @@ export let tango = {
         katuyou: ['join', 'joins', 'joined', 'joining'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～に加わる、参加する',
+            動詞: '～に加わる、参加する',
         },
     },
     joining: {
@@ -19527,7 +19527,7 @@ export let tango = {
         katuyou: ['join', 'joins', 'joined', 'joining'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～に加わる、参加する',
+            動詞: '～に加わる、参加する',
         },
     },
     judge: {
@@ -19599,7 +19599,7 @@ export let tango = {
         katuyou: ['keep', 'keeps', 'kept', 'keeping'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. (法律・慣習・命令など)を守る、保存する、保つ、しまっておく',
+            動詞: '(法律・慣習・命令など)を守る、保存する、保つ、しまっておく',
         },
     },
     keeps: {
@@ -19607,7 +19607,7 @@ export let tango = {
         katuyou: ['keep', 'keeps', 'kept', 'keeping'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. (法律・慣習・命令など)を守る、保存する、保つ、しまっておく',
+            動詞: '(法律・慣習・命令など)を守る、保存する、保つ、しまっておく',
         },
     },
     kept: {
@@ -19615,7 +19615,7 @@ export let tango = {
         katuyou: ['keep', 'keeps', 'kept', 'keeping'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. (法律・慣習・命令など)を守る、保存する、保つ、しまっておく',
+            動詞: '(法律・慣習・命令など)を守る、保存する、保つ、しまっておく',
         },
     },
     keeping: {
@@ -19623,7 +19623,7 @@ export let tango = {
         katuyou: ['keep', 'keeps', 'kept', 'keeping'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. (法律・慣習・命令など)を守る、保存する、保つ、しまっておく',
+            動詞: '(法律・慣習・命令など)を守る、保存する、保つ、しまっておく',
         },
     },
     kick: {
@@ -19959,7 +19959,7 @@ export let tango = {
         katuyou: ['learn', 'learns', 'learned', 'learning'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を学ぶ、習う、覚える',
+            動詞: '～を学ぶ、習う、覚える',
         },
     },
     learns: {
@@ -19967,7 +19967,7 @@ export let tango = {
         katuyou: ['learn', 'learns', 'learned', 'learning'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を学ぶ、習う、覚える',
+            動詞: '～を学ぶ、習う、覚える',
         },
     },
     learned: {
@@ -19975,7 +19975,7 @@ export let tango = {
         katuyou: ['learn', 'learns', 'learned', 'learning'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を学ぶ、習う、覚える',
+            動詞: '～を学ぶ、習う、覚える',
         },
     },
     learning: {
@@ -19983,7 +19983,7 @@ export let tango = {
         katuyou: ['learn', 'learns', 'learned', 'learning'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を学ぶ、習う、覚える',
+            動詞: '～を学ぶ、習う、覚える',
         },
     },
     leave: {
@@ -19991,7 +19991,7 @@ export let tango = {
         katuyou: ['leave', 'leaves', 'left', 'leaving'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を出発する、出る、去る',
+            動詞: '～を出発する、出る、去る',
         },
     },
     leaves: {
@@ -19999,7 +19999,7 @@ export let tango = {
         katuyou: ['leave', 'leaves', 'left', 'leaving'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を出発する、出る、去る',
+            動詞: '～を出発する、出る、去る',
         },
     },
     leaving: {
@@ -20007,7 +20007,7 @@ export let tango = {
         katuyou: ['leave', 'leaves', 'left', 'leaving'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を出発する、出る、去る',
+            動詞: '～を出発する、出る、去る',
         },
     },
     lend: {
@@ -20167,7 +20167,7 @@ export let tango = {
         katuyou: ['live', 'lives', 'lived', 'living'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 住んでいる、暮らしている、生活する',
+            動詞: '住んでいる、暮らしている、生活する',
         },
     },
     lived: {
@@ -20175,7 +20175,7 @@ export let tango = {
         katuyou: ['live', 'lives', 'lived', 'living'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 住んでいる、暮らしている、生活する',
+            動詞: '住んでいる、暮らしている、生活する',
         },
     },
     locate: {
@@ -20247,7 +20247,7 @@ export let tango = {
         katuyou: ['look', 'looks', 'looked', 'looking'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. （意識的に）見る 〔look at ～ の形で〕～を見る',
+            動詞: '（意識的に）見る 〔look at ～ の形で〕～を見る',
         },
     },
     looking: {
@@ -20255,7 +20255,7 @@ export let tango = {
         katuyou: ['look', 'looks', 'looked', 'looking'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. （意識的に）見る 〔look at ～ の形で〕～を見る',
+            動詞: '（意識的に）見る 〔look at ～ の形で〕～を見る',
         },
     },
     lose: {
@@ -20263,7 +20263,7 @@ export let tango = {
         katuyou: ['lose', 'loses', 'lost', 'losing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を失う　[lose one\'s wayの形で]道に迷う',
+            動詞: "～を失う　[lose one's wayの形で]道に迷う",
         },
     },
     loses: {
@@ -20271,7 +20271,7 @@ export let tango = {
         katuyou: ['lose', 'loses', 'lost', 'losing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を失う　[lose one\'s wayの形で]道に迷う',
+            動詞: "～を失う　[lose one's wayの形で]道に迷う",
         },
     },
     lost: {
@@ -20279,7 +20279,7 @@ export let tango = {
         katuyou: ['lose', 'loses', 'lost', 'losing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を失う　[lose one\'s wayの形で]道に迷う',
+            動詞: "～を失う　[lose one's wayの形で]道に迷う",
         },
     },
     losing: {
@@ -20287,7 +20287,7 @@ export let tango = {
         katuyou: ['lose', 'loses', 'lost', 'losing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を失う　[lose one\'s wayの形で]道に迷う',
+            動詞: "～を失う　[lose one's wayの形で]道に迷う",
         },
     },
     loves: {
@@ -20295,7 +20295,7 @@ export let tango = {
         katuyou: ['love', 'loves', 'loved', 'loving'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を愛する、～が大好きである',
+            動詞: '～を愛する、～が大好きである',
         },
     },
     loved: {
@@ -20303,7 +20303,7 @@ export let tango = {
         katuyou: ['love', 'loves', 'loved', 'loving'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を愛する、～が大好きである',
+            動詞: '～を愛する、～が大好きである',
         },
     },
     loving: {
@@ -20311,7 +20311,7 @@ export let tango = {
         katuyou: ['love', 'loves', 'loved', 'loving'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を愛する、～が大好きである',
+            動詞: '～を愛する、～が大好きである',
         },
     },
     make: {
@@ -20319,7 +20319,7 @@ export let tango = {
         katuyou: ['make', 'makes', 'made', 'making'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を作る',
+            動詞: '～を作る',
         },
     },
     makes: {
@@ -20327,7 +20327,7 @@ export let tango = {
         katuyou: ['make', 'makes', 'made', 'making'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を作る',
+            動詞: '～を作る',
         },
     },
     made: {
@@ -20335,7 +20335,7 @@ export let tango = {
         katuyou: ['make', 'makes', 'made', 'making'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を作る',
+            動詞: '～を作る',
         },
     },
     making: {
@@ -20343,7 +20343,7 @@ export let tango = {
         katuyou: ['make', 'makes', 'made', 'making'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を作る',
+            動詞: '～を作る',
         },
     },
     manage: {
@@ -20415,7 +20415,7 @@ export let tango = {
         katuyou: ['mean', 'means', 'meant', 'meaning'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を意味する、表す',
+            動詞: '～を意味する、表す',
         },
     },
     means: {
@@ -20423,7 +20423,7 @@ export let tango = {
         katuyou: ['mean', 'means', 'meant', 'meaning'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を意味する、表す',
+            動詞: '～を意味する、表す',
         },
     },
     meant: {
@@ -20431,7 +20431,7 @@ export let tango = {
         katuyou: ['mean', 'means', 'meant', 'meaning'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を意味する、表す',
+            動詞: '～を意味する、表す',
         },
     },
     meet: {
@@ -20439,7 +20439,7 @@ export let tango = {
         katuyou: ['meet', 'meets', 'met', 'meeting'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1.～に会う、面会する',
+            動詞: '～に会う、面会する',
         },
     },
     meets: {
@@ -20447,7 +20447,7 @@ export let tango = {
         katuyou: ['meet', 'meets', 'met', 'meeting'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1.～に会う、面会する',
+            動詞: '～に会う、面会する',
         },
     },
     met: {
@@ -20455,7 +20455,7 @@ export let tango = {
         katuyou: ['meet', 'meets', 'met', 'meeting'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1.～に会う、面会する',
+            動詞: '～に会う、面会する',
         },
     },
     melt: {
@@ -20495,7 +20495,7 @@ export let tango = {
         katuyou: ['miss', 'misses', 'missed', 'missing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1.　乗りそこなう、取り［見・聞き］そこなう､欠席する',
+            動詞: '　乗りそこなう、取り［見・聞き］そこなう､欠席する',
         },
     },
     misses: {
@@ -20503,7 +20503,7 @@ export let tango = {
         katuyou: ['miss', 'misses', 'missed', 'missing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1.　乗りそこなう、取り［見・聞き］そこなう､欠席する',
+            動詞: '　乗りそこなう、取り［見・聞き］そこなう､欠席する',
         },
     },
     missed: {
@@ -20511,7 +20511,7 @@ export let tango = {
         katuyou: ['miss', 'misses', 'missed', 'missing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1.　乗りそこなう、取り［見・聞き］そこなう､欠席する',
+            動詞: '　乗りそこなう、取り［見・聞き］そこなう､欠席する',
         },
     },
     mistook: {
@@ -20575,7 +20575,7 @@ export let tango = {
         katuyou: ['move', 'moves', 'moved', 'moving'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 動く、移動する',
+            動詞: '動く、移動する',
         },
     },
     moves: {
@@ -20583,7 +20583,7 @@ export let tango = {
         katuyou: ['move', 'moves', 'moved', 'moving'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 動く、移動する',
+            動詞: '動く、移動する',
         },
     },
     moved: {
@@ -20591,7 +20591,7 @@ export let tango = {
         katuyou: ['move', 'moves', 'moved', 'moving'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 動く、移動する',
+            動詞: '動く、移動する',
         },
     },
     moving: {
@@ -20599,7 +20599,7 @@ export let tango = {
         katuyou: ['move', 'moves', 'moved', 'moving'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 動く、移動する',
+            動詞: '動く、移動する',
         },
     },
     named: {
@@ -20703,7 +20703,7 @@ export let tango = {
         katuyou: ['open', 'opens', 'opened', 'opening'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. あける、広げる',
+            動詞: 'あける、広げる',
         },
     },
     opened: {
@@ -20711,7 +20711,7 @@ export let tango = {
         katuyou: ['open', 'opens', 'opened', 'opening'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. あける、広げる',
+            動詞: 'あける、広げる',
         },
     },
     opening: {
@@ -20719,7 +20719,7 @@ export let tango = {
         katuyou: ['open', 'opens', 'opened', 'opening'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. あける、広げる',
+            動詞: 'あける、広げる',
         },
     },
     ordered: {
@@ -20927,7 +20927,7 @@ export let tango = {
         katuyou: ['pass', 'passes', 'passed', 'passing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を手渡す､回す',
+            動詞: '～を手渡す､回す',
         },
     },
     passes: {
@@ -20935,7 +20935,7 @@ export let tango = {
         katuyou: ['pass', 'passes', 'passed', 'passing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を手渡す､回す',
+            動詞: '～を手渡す､回す',
         },
     },
     passed: {
@@ -20943,7 +20943,7 @@ export let tango = {
         katuyou: ['pass', 'passes', 'passed', 'passing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を手渡す､回す',
+            動詞: '～を手渡す､回す',
         },
     },
     passing: {
@@ -20951,7 +20951,7 @@ export let tango = {
         katuyou: ['pass', 'passes', 'passed', 'passing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を手渡す､回す',
+            動詞: '～を手渡す､回す',
         },
     },
     pay: {
@@ -21039,7 +21039,7 @@ export let tango = {
         katuyou: ['pick', 'picks', 'picked', 'picking'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を摘む、つみ取る',
+            動詞: '～を摘む、つみ取る',
         },
     },
     picks: {
@@ -21047,7 +21047,7 @@ export let tango = {
         katuyou: ['pick', 'picks', 'picked', 'picking'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を摘む、つみ取る',
+            動詞: '～を摘む、つみ取る',
         },
     },
     picked: {
@@ -21055,7 +21055,7 @@ export let tango = {
         katuyou: ['pick', 'picks', 'picked', 'picking'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を摘む、つみ取る',
+            動詞: '～を摘む、つみ取る',
         },
     },
     picking: {
@@ -21063,7 +21063,7 @@ export let tango = {
         katuyou: ['pick', 'picks', 'picked', 'picking'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を摘む、つみ取る',
+            動詞: '～を摘む、つみ取る',
         },
     },
     placed: {
@@ -21119,7 +21119,7 @@ export let tango = {
         katuyou: ['play', 'plays', 'played', 'playing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. (スポーツ・ゲームなど)をする',
+            動詞: '(スポーツ・ゲームなど)をする',
         },
     },
     playing: {
@@ -21127,7 +21127,7 @@ export let tango = {
         katuyou: ['play', 'plays', 'played', 'playing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. (スポーツ・ゲームなど)をする',
+            動詞: '(スポーツ・ゲームなど)をする',
         },
     },
     pointed: {
@@ -21543,7 +21543,7 @@ export let tango = {
         katuyou: ['raise', 'raises', 'raised', 'raising'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1.～を上げる　 　〔たとえば Raise your hand. の形で〕 手を上げなさい',
+            動詞: '～を上げる　 　〔たとえば Raise your hand. の形で〕 手を上げなさい',
         },
     },
     raises: {
@@ -21551,7 +21551,7 @@ export let tango = {
         katuyou: ['raise', 'raises', 'raised', 'raising'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1.～を上げる　 　〔たとえば Raise your hand. の形で〕 手を上げなさい',
+            動詞: '～を上げる　 　〔たとえば Raise your hand. の形で〕 手を上げなさい',
         },
     },
     raised: {
@@ -21559,7 +21559,7 @@ export let tango = {
         katuyou: ['raise', 'raises', 'raised', 'raising'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1.～を上げる　 　〔たとえば Raise your hand. の形で〕 手を上げなさい',
+            動詞: '～を上げる　 　〔たとえば Raise your hand. の形で〕 手を上げなさい',
         },
     },
     raising: {
@@ -21567,7 +21567,7 @@ export let tango = {
         katuyou: ['raise', 'raises', 'raised', 'raising'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1.～を上げる　 　〔たとえば Raise your hand. の形で〕 手を上げなさい',
+            動詞: '～を上げる　 　〔たとえば Raise your hand. の形で〕 手を上げなさい',
         },
     },
     read: {
@@ -22279,7 +22279,7 @@ export let tango = {
         katuyou: ['run', 'runs', 'ran', 'running'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. (人・動物が）走る　　〔過去分詞もrun〕',
+            動詞: '(人・動物が）走る　　〔過去分詞もrun〕',
         },
     },
     runs: {
@@ -22287,7 +22287,7 @@ export let tango = {
         katuyou: ['run', 'runs', 'ran', 'running'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. (人・動物が）走る　　〔過去分詞もrun〕',
+            動詞: '(人・動物が）走る　　〔過去分詞もrun〕',
         },
     },
     ran: {
@@ -22295,7 +22295,7 @@ export let tango = {
         katuyou: ['run', 'runs', 'ran', 'running'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. (人・動物が）走る　　〔過去分詞もrun〕',
+            動詞: '(人・動物が）走る　　〔過去分詞もrun〕',
         },
     },
     running: {
@@ -22303,7 +22303,7 @@ export let tango = {
         katuyou: ['run', 'runs', 'ran', 'running'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. (人・動物が）走る　　〔過去分詞もrun〕',
+            動詞: '(人・動物が）走る　　〔過去分詞もrun〕',
         },
     },
     save: {
@@ -22311,7 +22311,7 @@ export let tango = {
         katuyou: ['save', 'saves', 'saved', 'saving'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. (危害・困難などから人・物・自然など)を救う',
+            動詞: '(危害・困難などから人・物・自然など)を救う',
         },
     },
     saves: {
@@ -22319,7 +22319,7 @@ export let tango = {
         katuyou: ['save', 'saves', 'saved', 'saving'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. (危害・困難などから人・物・自然など)を救う',
+            動詞: '(危害・困難などから人・物・自然など)を救う',
         },
     },
     saved: {
@@ -22327,7 +22327,7 @@ export let tango = {
         katuyou: ['save', 'saves', 'saved', 'saving'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. (危害・困難などから人・物・自然など)を救う',
+            動詞: '(危害・困難などから人・物・自然など)を救う',
         },
     },
     saving: {
@@ -22335,7 +22335,7 @@ export let tango = {
         katuyou: ['save', 'saves', 'saved', 'saving'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. (危害・困難などから人・物・自然など)を救う',
+            動詞: '(危害・困難などから人・物・自然など)を救う',
         },
     },
     say: {
@@ -22343,7 +22343,7 @@ export let tango = {
         katuyou: ['say', 'says', 'said', 'saying'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 〔人が主語で〕～と言う',
+            動詞: '〔人が主語で〕～と言う',
         },
     },
     says: {
@@ -22351,7 +22351,7 @@ export let tango = {
         katuyou: ['say', 'says', 'said', 'saying'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 〔人が主語で〕～と言う',
+            動詞: '〔人が主語で〕～と言う',
         },
     },
     said: {
@@ -22359,7 +22359,7 @@ export let tango = {
         katuyou: ['say', 'says', 'said', 'saying'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 〔人が主語で〕～と言う',
+            動詞: '〔人が主語で〕～と言う',
         },
     },
     saying: {
@@ -22367,7 +22367,7 @@ export let tango = {
         katuyou: ['say', 'says', 'said', 'saying'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 〔人が主語で〕～と言う',
+            動詞: '〔人が主語で〕～と言う',
         },
     },
     scare: {
@@ -22463,7 +22463,7 @@ export let tango = {
         katuyou: ['see', 'sees', 'saw', 'seen', 'seeing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を見る、見物する',
+            動詞: '～を見る、見物する',
         },
     },
     sees: {
@@ -22471,7 +22471,7 @@ export let tango = {
         katuyou: ['see', 'sees', 'saw', 'seen', 'seeing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を見る、見物する',
+            動詞: '～を見る、見物する',
         },
     },
     saw: {
@@ -22479,7 +22479,7 @@ export let tango = {
         katuyou: ['see', 'sees', 'saw', 'seen', 'seeing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を見る、見物する',
+            動詞: '～を見る、見物する',
         },
     },
     seen: {
@@ -22487,7 +22487,7 @@ export let tango = {
         katuyou: ['see', 'sees', 'saw', 'seen', 'seeing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を見る、見物する',
+            動詞: '～を見る、見物する',
         },
     },
     seeing: {
@@ -22495,7 +22495,7 @@ export let tango = {
         katuyou: ['see', 'sees', 'saw', 'seen', 'seeing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を見る、見物する',
+            動詞: '～を見る、見物する',
         },
     },
     seem: {
@@ -22887,7 +22887,7 @@ export let tango = {
         katuyou: ['show', 'shows', 'showed', 'shown', 'showing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を見せる、示す、教える  〔show A B の形で〕ＡにＢを見せる',
+            動詞: '～を見せる、示す、教える  〔show A B の形で〕ＡにＢを見せる',
         },
     },
     shown: {
@@ -22895,7 +22895,7 @@ export let tango = {
         katuyou: ['show', 'shows', 'showed', 'shown', 'showing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を見せる、示す、教える  〔show A B の形で〕ＡにＢを見せる',
+            動詞: '～を見せる、示す、教える  〔show A B の形で〕ＡにＢを見せる',
         },
     },
     showing: {
@@ -22903,7 +22903,7 @@ export let tango = {
         katuyou: ['show', 'shows', 'showed', 'shown', 'showing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を見せる、示す、教える  〔show A B の形で〕ＡにＢを見せる',
+            動詞: '～を見せる、示す、教える  〔show A B の形で〕ＡにＢを見せる',
         },
     },
     shut: {
@@ -23279,7 +23279,7 @@ export let tango = {
         katuyou: ['spend', 'spends', 'spent', 'spending'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. (お金）を使う、費やす',
+            動詞: '(お金）を使う、費やす',
         },
     },
     spends: {
@@ -23287,7 +23287,7 @@ export let tango = {
         katuyou: ['spend', 'spends', 'spent', 'spending'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. (お金）を使う、費やす',
+            動詞: '(お金）を使う、費やす',
         },
     },
     spent: {
@@ -23295,7 +23295,7 @@ export let tango = {
         katuyou: ['spend', 'spends', 'spent', 'spending'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. (お金）を使う、費やす',
+            動詞: '(お金）を使う、費やす',
         },
     },
     spending: {
@@ -23303,7 +23303,7 @@ export let tango = {
         katuyou: ['spend', 'spends', 'spent', 'spending'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. (お金）を使う、費やす',
+            動詞: '(お金）を使う、費やす',
         },
     },
     spread: {
@@ -23335,7 +23335,7 @@ export let tango = {
         katuyou: ['stand', 'stands', 'stood', 'standing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 立っている',
+            動詞: '立っている',
         },
     },
     standing: {
@@ -23343,7 +23343,7 @@ export let tango = {
         katuyou: ['stand', 'stands', 'stood', 'standing'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 立っている',
+            動詞: '立っている',
         },
     },
     start: {
@@ -23351,7 +23351,7 @@ export let tango = {
         katuyou: ['start', 'starts', 'started', 'starting'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 始まる  〔自動詞〕',
+            動詞: '始まる  〔自動詞〕',
         },
     },
     starts: {
@@ -23359,7 +23359,7 @@ export let tango = {
         katuyou: ['start', 'starts', 'started', 'starting'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 始まる  〔自動詞〕',
+            動詞: '始まる  〔自動詞〕',
         },
     },
     started: {
@@ -23367,7 +23367,7 @@ export let tango = {
         katuyou: ['start', 'starts', 'started', 'starting'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 始まる  〔自動詞〕',
+            動詞: '始まる  〔自動詞〕',
         },
     },
     starting: {
@@ -23375,7 +23375,7 @@ export let tango = {
         katuyou: ['start', 'starts', 'started', 'starting'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 始まる  〔自動詞〕',
+            動詞: '始まる  〔自動詞〕',
         },
     },
     stay: {
@@ -23383,7 +23383,7 @@ export let tango = {
         katuyou: ['stay', 'stays', 'stayed', 'staying'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. (場所に)とどまる',
+            動詞: '(場所に)とどまる',
         },
     },
     stays: {
@@ -23391,7 +23391,7 @@ export let tango = {
         katuyou: ['stay', 'stays', 'stayed', 'staying'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. (場所に)とどまる',
+            動詞: '(場所に)とどまる',
         },
     },
     stayed: {
@@ -23399,7 +23399,7 @@ export let tango = {
         katuyou: ['stay', 'stays', 'stayed', 'staying'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. (場所に)とどまる',
+            動詞: '(場所に)とどまる',
         },
     },
     staying: {
@@ -23407,7 +23407,7 @@ export let tango = {
         katuyou: ['stay', 'stays', 'stayed', 'staying'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. (場所に)とどまる',
+            動詞: '(場所に)とどまる',
         },
     },
     stepped: {
@@ -23431,7 +23431,7 @@ export let tango = {
         katuyou: ['stop', 'stops', 'stopped', 'stopping'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. とまる  〔自動詞〕',
+            動詞: 'とまる  〔自動詞〕',
         },
     },
     stops: {
@@ -23439,7 +23439,7 @@ export let tango = {
         katuyou: ['stop', 'stops', 'stopped', 'stopping'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. とまる  〔自動詞〕',
+            動詞: 'とまる  〔自動詞〕',
         },
     },
     stopped: {
@@ -23447,7 +23447,7 @@ export let tango = {
         katuyou: ['stop', 'stops', 'stopped', 'stopping'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. とまる  〔自動詞〕',
+            動詞: 'とまる  〔自動詞〕',
         },
     },
     stopping: {
@@ -23455,7 +23455,7 @@ export let tango = {
         katuyou: ['stop', 'stops', 'stopped', 'stopping'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. とまる  〔自動詞〕',
+            動詞: 'とまる  〔自動詞〕',
         },
     },
     strive: {
@@ -23799,7 +23799,7 @@ export let tango = {
         katuyou: ['take', 'takes', 'took', 'taken', 'taking'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1.  (時間、労力)がかかる',
+            動詞: ' (時間、労力)がかかる',
         },
     },
     takes: {
@@ -23807,7 +23807,7 @@ export let tango = {
         katuyou: ['take', 'takes', 'took', 'taken', 'taking'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1.  (時間、労力)がかかる',
+            動詞: ' (時間、労力)がかかる',
         },
     },
     took: {
@@ -23815,7 +23815,7 @@ export let tango = {
         katuyou: ['take', 'takes', 'took', 'taken', 'taking'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1.  (時間、労力)がかかる',
+            動詞: ' (時間、労力)がかかる',
         },
     },
     taken: {
@@ -23823,7 +23823,7 @@ export let tango = {
         katuyou: ['take', 'takes', 'took', 'taken', 'taking'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1.  (時間、労力)がかかる',
+            動詞: ' (時間、労力)がかかる',
         },
     },
     taking: {
@@ -23831,7 +23831,7 @@ export let tango = {
         katuyou: ['take', 'takes', 'took', 'taken', 'taking'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1.  (時間、労力)がかかる',
+            動詞: ' (時間、労力)がかかる',
         },
     },
     talked: {
@@ -23855,7 +23855,7 @@ export let tango = {
         katuyou: ['taste', 'tastes', 'tasted', 'tasting'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 味わう、食べる',
+            動詞: '味わう、食べる',
         },
     },
     tasting: {
@@ -23863,7 +23863,7 @@ export let tango = {
         katuyou: ['taste', 'tastes', 'tasted', 'tasting'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 味わう、食べる',
+            動詞: '味わう、食べる',
         },
     },
     teach: {
@@ -23903,7 +23903,7 @@ export let tango = {
         katuyou: ['tell', 'tells', 'told', 'telling'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～に話す、～を話す、教える　〔tell Ａ Ｂの形で〕 Ａ［人］にＢ［ものごとなど］を話す',
+            動詞: '～に話す、～を話す、教える　〔tell Ａ Ｂの形で〕 Ａ［人］にＢ［ものごとなど］を話す',
         },
     },
     tells: {
@@ -23911,7 +23911,7 @@ export let tango = {
         katuyou: ['tell', 'tells', 'told', 'telling'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～に話す、～を話す、教える　〔tell Ａ Ｂの形で〕 Ａ［人］にＢ［ものごとなど］を話す',
+            動詞: '～に話す、～を話す、教える　〔tell Ａ Ｂの形で〕 Ａ［人］にＢ［ものごとなど］を話す',
         },
     },
     told: {
@@ -23919,7 +23919,7 @@ export let tango = {
         katuyou: ['tell', 'tells', 'told', 'telling'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～に話す、～を話す、教える　〔tell Ａ Ｂの形で〕 Ａ［人］にＢ［ものごとなど］を話す',
+            動詞: '～に話す、～を話す、教える　〔tell Ａ Ｂの形で〕 Ａ［人］にＢ［ものごとなど］を話す',
         },
     },
     telling: {
@@ -23927,7 +23927,7 @@ export let tango = {
         katuyou: ['tell', 'tells', 'told', 'telling'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～に話す、～を話す、教える　〔tell Ａ Ｂの形で〕 Ａ［人］にＢ［ものごとなど］を話す',
+            動詞: '～に話す、～を話す、教える　〔tell Ａ Ｂの形で〕 Ａ［人］にＢ［ものごとなど］を話す',
         },
     },
     thank: {
@@ -24015,7 +24015,7 @@ export let tango = {
         katuyou: ['train', 'trains', 'trained', 'training'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を訓練する',
+            動詞: '～を訓練する',
         },
     },
     training: {
@@ -24023,7 +24023,7 @@ export let tango = {
         katuyou: ['train', 'trains', 'trained', 'training'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～を訓練する',
+            動詞: '～を訓練する',
         },
     },
     translate: {
@@ -24183,7 +24183,7 @@ export let tango = {
         katuyou: ['turn', 'turns', 'turned', 'turning'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 曲がる、向きを変える',
+            動詞: '曲がる、向きを変える',
         },
     },
     understand: {
@@ -24279,7 +24279,7 @@ export let tango = {
         katuyou: ['visit', 'visits', 'visited', 'visiting'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. (場所、人など)をおとずれる',
+            動詞: '(場所、人など)をおとずれる',
         },
     },
     visiting: {
@@ -24287,7 +24287,7 @@ export let tango = {
         katuyou: ['visit', 'visits', 'visited', 'visiting'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. (場所、人など)をおとずれる',
+            動詞: '(場所、人など)をおとずれる',
         },
     },
     wait: {
@@ -24367,7 +24367,7 @@ export let tango = {
         katuyou: ['walk', 'walks', 'walked', 'walking'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 歩く、歩いて行く［来る］',
+            動詞: '歩く、歩いて行く［来る］',
         },
     },
     walking: {
@@ -24375,7 +24375,7 @@ export let tango = {
         katuyou: ['walk', 'walks', 'walked', 'walking'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 歩く、歩いて行く［来る］',
+            動詞: '歩く、歩いて行く［来る］',
         },
     },
     want: {
@@ -24383,7 +24383,7 @@ export let tango = {
         katuyou: ['want', 'wants', 'wanted', 'wanting'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～がほしい',
+            動詞: '～がほしい',
         },
     },
     wants: {
@@ -24391,7 +24391,7 @@ export let tango = {
         katuyou: ['want', 'wants', 'wanted', 'wanting'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～がほしい',
+            動詞: '～がほしい',
         },
     },
     wanted: {
@@ -24399,7 +24399,7 @@ export let tango = {
         katuyou: ['want', 'wants', 'wanted', 'wanting'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～がほしい',
+            動詞: '～がほしい',
         },
     },
     wanting: {
@@ -24407,7 +24407,7 @@ export let tango = {
         katuyou: ['want', 'wants', 'wanted', 'wanting'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. ～がほしい',
+            動詞: '～がほしい',
         },
     },
     wash: {
@@ -24447,7 +24447,7 @@ export let tango = {
         katuyou: ['watch', 'watches', 'watched', 'watching'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. (注意して、動いているもの)を見る',
+            動詞: '(注意して、動いているもの)を見る',
         },
     },
     watching: {
@@ -24455,7 +24455,7 @@ export let tango = {
         katuyou: ['watch', 'watches', 'watched', 'watching'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. (注意して、動いているもの)を見る',
+            動詞: '(注意して、動いているもの)を見る',
         },
     },
     waters: {
@@ -24679,7 +24679,7 @@ export let tango = {
         katuyou: ['work', 'works', 'worked', 'working'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 働く、勉強する',
+            動詞: '働く、勉強する',
         },
     },
     worked: {
@@ -24687,7 +24687,7 @@ export let tango = {
         katuyou: ['work', 'works', 'worked', 'working'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 働く、勉強する',
+            動詞: '働く、勉強する',
         },
     },
     working: {
@@ -24695,7 +24695,7 @@ export let tango = {
         katuyou: ['work', 'works', 'worked', 'working'],
         hinsi: ['動詞'],
         means: {
-            動詞: '"1. 働く、勉強する',
+            動詞: '働く、勉強する',
         },
     },
     worry: {
