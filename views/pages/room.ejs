@@ -1,80 +1,187 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>ルーム</title>
-        <link rel="stylesheet" href="/css/room.css" />
-        <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
-    </head>
 
-    <body>
-        <h2 id="userName"><%= name %></h2>
-        <div id="userID" class="userID"><%= userId %></div>
-        <button style="margin: 0 auto" onclick="window.location.href = '/deleteUser'">アカウント削除</button>
-        <button style="margin: 0 auto" onclick="window.location.href = '/logout'">ログアウト</button>
-        <br />
-        <br />
-        <button style="margin: 0 auto" id="showCreateBtn">部屋作成</button>
-        <div class="main-div"></div>
-        <div class="background-div" style="opacity: 0" id="backgroundDiv"></div>
-        <div style="position: absolute; width: 100%; height: 100%; display: flex; top: 0; pointer-events: none">
-            <div style="opacity: 0; pointer-events: none" class="create-room-div">
-                <div style="width: 100%">
-                    <p>部屋の名前</p>
-                    <input
-                        style="padding: 4px; border-radius: 5px; outline: none; font-size: 15px; width: 60%"
-                        type="text"
-                        value="<%= name %>の部屋"
-                        id="roomName" />
+<head>
+    <meta charset="UTF-8">
+    <title>グラ麻雀 - 待機ルーム</title>
+    <style>
+        body {
+            font-family: "Segoe UI", sans-serif;
+            background: #fdfaf2;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #a0a28a;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 25px;
+            width: 500px;
+            margin: 20px auto;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            padding: 2rem;
+        }
+
+        .section {
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            flex: 1;
+            min-width: 300px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .player {
+            padding: 0.5rem 0.75rem;
+            margin-bottom: 0.5rem;
+            border-left: 5px solid #ccc;
+            border-radius: 6px;
+            background: #f9f9f9;
+        }
+
+        .ready {
+            border-color: #3c9c3c;
+            color: #3c9c3c;
+            font-weight: bold;
+        }
+
+        .not-ready {
+            border-color: #c94d3f;
+            color: #c94d3f;
+        }
+
+        .host::after {
+            content: "（ホスト）";
+            font-weight: normal;
+            color: #777;
+            margin-left: 6px;
+        }
+
+        #chat-box {
+            height: 180px;
+            overflow-y: scroll;
+            background: #f5f5f5;
+            padding: 0.5rem;
+            margin-bottom: 0.75rem;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+
+        input[type="text"] {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            width: 70%;
+            font-size: 1rem;
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            background-color: #a0a28a;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #888a76;
+        }
+
+        #actions {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        @media screen and (max-width: 600px) {
+            .container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div>
+            <strong>
+                <%= roomName %>
+            </strong>
+        </div>
+        <div><strong>
+                <%= username %>
+            </strong>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- プレイヤー一覧 -->
+        <div class="section">
+            <h2>プレイヤー</h2>
+            <% playerList.forEach( (value, index)=> { %>
+                <div class="player <%= value.isReady ? 'ready' : 'not-ready' %> <%= index == 0 ? 'host' : '' %>">
+                    <%= value.username %>
                 </div>
-                <div class="wariai-div">
-                    <div>
-                        <p>名詞</p>
-                        <input type="number" value="5" />
-                    </div>
-                    <div>
-                        <p>動詞</p>
-                        <input type="number" value="4" />
-                    </div>
-                    <div>
-                        <p>形容詞</p>
-                        <input type="number" value="2" />
-                    </div>
-                    <div>
-                        <p>副詞</p>
-                        <input type="number" value="2" />
-                    </div>
-                    <div>
-                        <p>代名詞</p>
-                        <input type="number" value="2" />
-                    </div>
-                    <div>
-                        <p>前置詞</p>
-                        <input type="number" value="1" />
-                    </div>
-                    <div>
-                        <p>接続詞</p>
-                        <input type="number" value="0" />
-                    </div>
-                    <div>
-                        <p>感嘆詞</p>
-                        <input type="number" value="0" />
-                    </div>
-                    <div>
-                        <p>冠詞</p>
-                        <input type="number" value="2" />
-                    </div>
-                    <div>
-                        <p>助動詞</p>
-                        <input type="number" value="2" />
-                    </div>
-                </div>
-                <div style="display: flex">
-                    <button id="createBtn" style="width: 80%; height: 80%; margin: auto">作成</button>
-                </div>
+                <% }) %>
+        </div>
+
+        <!-- チャット -->
+        <div class="section">
+            <h2>チャット</h2>
+            <div id="chat-box">
+                <!--
+                <div><strong>alice:</strong> ルールってどんな感じ？</div>
+                <div><strong>bob:</strong> まだ準備できてないー</div>
+                -->
+            </div>
+            <input type="text" id="chat-input" placeholder="メッセージを入力">
+            <button onclick="sendChat()">送信</button>
+
+            <div id="actions">
+                <button onclick="toggleReady()">準備完了</button>
+                <button onclick="startGame()">ゲーム開始</button>
             </div>
         </div>
-    </body>
-    <script src="/js/pages/room.js" type="module" defer></script>
+    </div>
+
+    <script>
+        function sendChat() {
+            const input = document.getElementById('chat-input');
+            const box = document.getElementById('chat-box');
+            const msg = input.value.trim();
+            if (msg) {
+                const div = document.createElement('div');
+                div.innerHTML = `<strong>merg_z:</strong> ${msg}`;
+                box.appendChild(div);
+                input.value = '';
+                box.scrollTop = box.scrollHeight;
+            }
+        }
+
+        function toggleReady() {
+            alert('準備状態を切り替えました（テスト用）');
+        }
+
+        function startGame() {
+            alert('ゲームを開始します！（テスト用）');
+        }
+    </script>
+
+</body>
+
 </html>

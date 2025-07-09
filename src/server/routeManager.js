@@ -3,6 +3,7 @@ import { cookieManager } from '../utils/cookieManager.js';
 import { serverManager } from './serverManager.js';
 import { usersManager } from '../server/usersManager.js';
 import roomsDB from '../db/repositories/roomsRepository.js';
+import roomMemberDB from '../db/repositories/roomMemberRepository.js';
 
 export class routeManager {
     /**
@@ -43,13 +44,13 @@ export class routeManager {
         this.serverManager.onGet('/', async (req, res) => {
             const userId = req.cookies.userId;
             if (userId === undefined) res.render('pages/index');
-            else (await usersManager.isUserById(userId)) ? res.render('pages/index') : res.redirect('/room');
+            else (await usersManager.isUserById(userId)) ? res.render('pages/index') : res.redirect('/home');
         });
 
-        this.serverManager.onGet('/room', async (req, res) => {
+        this.serverManager.onGet('/home', async (req, res) => {
             await usersManager.isLogin(req, res);
             try {
-                res.render('pages/room', {
+                res.render('pages/home', {
                     name: await usersManager.idToName(req.cookies.userId),
                     userId: req.cookies.userId,
                 });
@@ -62,7 +63,7 @@ export class routeManager {
             try {
                 await usersManager.isLogin(req, res);
                 const roomId = req.params.roomId;
-                if (await !roomManager.isRoomByRoomId(roomId)) res.redirect('/room');
+                if (await !roomManager.isRoomByRoomId(roomId)) res.redirect('/home');
 
                 const username = await usersManager.idToName(req.cookies.userId);
                 const parentId = await roomsDB.getRow('parent_id', 'room_id', roomId);
@@ -70,7 +71,23 @@ export class routeManager {
                 res.render('pages/play', { username: username, parentName: parentName });
             } catch (err) {
                 console.log(`Error :${err}`);
-                res.redirect('/room');
+                res.redirect('/home');
+            }
+        });
+
+        this.serverManager.onGet('/room/:roomId', async (req, res) => {
+            try {
+                await usersManager.isLogin(req, res);
+                const roomId = req.params.roomId;
+                if (await !roomManager.isRoomByRoomId(roomId)) res.redirect('/home');
+
+                const username = await usersManager.idToName(req.cookies.userId);
+                const roomName = await roomsDB.getRow('room_name', 'room_id', roomId);
+                let playerData = await roomMemberDB.getRoomMembers(roomId);
+                res.render('pages/room', { username: username, roomName: roomName, playerList: playerData });
+            } catch (err) {
+                console.log(`Error /room :${err}`);
+                res.redirect('/home');
             }
         });
 
@@ -139,23 +156,5 @@ export class routeManager {
                 res.json({ success: false, error: err });
             }
         });
-
-        /*
-
-        this.serverManager.onPost('/play/:parentName', async (req, res) => {
-            if (req.body.hasOwnProperty('roomClose')) {
-                hideRoom(req.params.parentName);
-                const result = await pool.query(
-                    'select room_id from rooms, users \
-            where rooms.parent_id = users.user_id \
-            and users.username = ?',
-                    [req.params.parentName]
-                );
-                Object.values(playClients[result[0][0]['room_id']]).forEach((client) => {
-                    client.send(JSON.stringify({ start: true }));
-                });
-            }
-        });
-        */
     }
 }

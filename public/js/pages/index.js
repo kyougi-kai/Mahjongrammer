@@ -28,7 +28,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         });
         const data = await response.json();
         if (data.success) {
-            window.location.href = '/room';
+            window.location.href = '/home';
         } else {
             alert('ログイン失敗: ' + data.error);
         }
@@ -38,9 +38,9 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
 });
 
 const hyoujis = document.getElementById('hyouji');
-const hyoujis2 =document.getElementById('hyoujis');
+const hyoujis2 = document.getElementById('hyoujis');
 
 hyoujis.addEventListener('click', () => {
-     hyoujis.style.display = 'none';
-     hyoujis2.style.display = 'inline';
+    hyoujis.style.display = 'none';
+    hyoujis2.style.display = 'inline';
 });
