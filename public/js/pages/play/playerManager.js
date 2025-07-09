@@ -125,7 +125,7 @@ export class playerManager {
 
         this.wss?.onMessage('closeRoom', (data) => {
             alert('親が退出しました');
-            window.location.href = '/room';
+            window.location.href = '/home';
         });
     }
 
@@ -164,10 +164,12 @@ export class playerManager {
         } else return false;
     }
 
+    // 変えない
     get getParent() {
         return this.parentName;
     }
 
+    // Object.keys(this.playerMembers)でplayerIdの配列を作ってindexOfでだす
     getPlayerNumber() {
         const number = this.playerMembers[0].indexOf(this.playername);
         return number;
