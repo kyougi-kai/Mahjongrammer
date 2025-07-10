@@ -68,7 +68,7 @@ export class routeManager {
                 const username = await usersManager.idToName(req.cookies.userId);
                 const parentId = await roomsDB.getRow('parent_id', 'room_id', roomId);
                 const parentName = await usersManager.idToName(parentId);
-                res.render('pages/play', { username: username, parentName: parentName });
+                res.render('pages/play', { username: username, parentName: parentName, userId: req.cookies.userId});
             } catch (err) {
                 console.log(`Error :${err}`);
                 res.redirect('/home');
