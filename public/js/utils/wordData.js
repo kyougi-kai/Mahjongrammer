@@ -27498,4 +27498,68 @@ export let tango = {
             形容詞: '0の、ゼロの',
         },
     },
+    be: {
+        tags: ['自動詞', 'be動詞', '原型'],
+        katuyou: ['be', 'was', 'been', 'being'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '〜である、存在する',
+        },
+    },
+    am: {
+        tags: ['自動詞', 'be動詞', '一人称', '原型'],
+        katuyou: ['am', 'was', 'been', 'being'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '〜である、存在する',
+        },
+    },
+    is: {
+        tags: ['自動詞', 'be動詞', '三人称', '原型'],
+        katuyou: ['is', 'was', 'been', 'being'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '〜である、存在する',
+        },
+    },
+    are: {
+        tags: ['自動詞', 'be動詞', '二人称', '原型'],
+        katuyou: ['are', 'were', 'been', 'being'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '〜である、存在する',
+        },
+    },
+    was: {
+        tags: ['自動詞', 'be動詞', '一人称', '三人称', '過去形'],
+        katuyou: ['is', 'am', 'was', 'been', 'being'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '〜である、存在する',
+        },
+    },
+    were: {
+        tags: ['自動詞', 'be動詞', '過去形', '二人称'],
+        katuyou: ['are', 'were', 'been', 'being'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '〜である、存在する',
+        },
+    },
+    been: {
+        tags: ['自動詞', 'be動詞', '一人称', '二人称', '三人称', '過去分詞'],
+        katuyou: ['be', 'am', 'is', 'are', 'was', 'were', 'been', 'being'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '〜である、存在する',
+        },
+    },
+    being: {
+        tags: ['自動詞', 'be動詞', '一人称', '二人称', '三人称', '現在分詞'],
+        katuyou: ['be', 'am', 'is', 'are', 'was', 'were', 'been', 'being'],
+        hinsi: ['動詞'],
+        means: {
+            動詞: '〜である、存在する',
+        },
+    },
 };

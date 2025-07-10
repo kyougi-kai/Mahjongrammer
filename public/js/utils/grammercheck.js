@@ -1,9 +1,5 @@
 import { tango } from '/js/utils/wordData.js';
 
-const DaimeisicanSArray = ['主格', '指示代名詞', '不定代名詞', '疑問代名詞'];
-const DaimeisicanCArray = ['主格', '所有代名詞', '再帰代名詞', '指示代名詞', '不定代名詞', '疑問代名詞'];
-const DaimeisicanOArray = ['目的格', '再帰代名詞', '指示代名詞', '不定代名詞', '疑問代名詞'];
-
 const errorTemplete = {
     part: '',
     index: 0,
