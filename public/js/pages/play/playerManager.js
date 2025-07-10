@@ -14,11 +14,13 @@ export class playerManager {
         this.wss = wss;
         this.parentName = functions.sN(document.getElementById('parentNameText').innerHTML);
         this.parentNumber = 0;
-        this.playerMembers = [[], []];
-        this.playerMembers[0].push(this.parentName);
+        this.renban = 0;
+        this.playerMembers = {};
+        this.playerMembers[this.renban] = this.parentName;
         const pageName = location.href;
         this.roomId = pageName.split('/')[4];
         console.log(this.playerMembers);
+        this.userId = functions.sN(document.getElementById('userIdText').innerHTML);
 
         /* this.wss.send(送りたいデータ);
         送るデータの形式
@@ -58,13 +60,14 @@ export class playerManager {
                 let sendData = {
                     type: 'outRoom',
                     payload: {
-                        username: this.playername,
-                        parentName: this.parentName,
+                        playerNumber: this.playerNumber,
+                        userId: this.userId,
+                        roomId: this.roomId,
                     },
                 };
                 sendBeaconFlag = true;
                 navigator.sendBeacon(
-                    `/post?type=outRoom&username=${this.playername}&parentName=${this.playerMembers[0][0]}`,
+                    `/post?type=outRoom&playerNumber=${this.playerNumber}&roomId=${this.roomId}`,
                     JSON.stringify(sendData)
                 );
             }
@@ -77,7 +80,7 @@ export class playerManager {
             const sendparent = {
                 type: 'entryRoom',
                 payload: {
-                    parentName: this.playerMembers[0][0],
+                    parentName: this.playerMembers[0],
                     username: this.playername,
                 },
             };
@@ -91,18 +94,19 @@ export class playerManager {
             }
         */
         this.wss?.onMessage('entryRoom', (data) => {
-            this.playerMembers[0].push(data.username);
-            this.playerMembers[1].push(this.playerMembers[0].length);
+            this.renban = this.renban + 1;
+            this.playerMembers[this.renban] = data;
             console.log(this.playerMembers);
             this.updatePlayerName();
         });
 
         /*
             data = {
-                username : 'ユーザーネーム'
+                playerNumber : プレイヤーナンバー
             }
         */
         this.wss?.onMessage('outRoom', (data) => {
+            console.log(data);
             const idx = this.playerMembers[0].indexOf(data.username);
             this.playerMembers[0].splice(idx, 1);
             this.playerMembers[1].splice(idx, 1);

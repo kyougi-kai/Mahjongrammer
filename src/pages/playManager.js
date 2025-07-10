@@ -147,15 +147,11 @@ export class playManager {
                 const payload = data;
                 console.log(payload);
 
-                const username = payload.username;
-
                 try {
-                    const userId = await usersManager.nameToId(username);
-                    const parentName = payload.parentName;
-                    const parentId = await usersManager.nameToId(parentName);
-                    const roomId = await roomsDB.getRoomId(parentId);
+                    const userId = payload.userId;
+                    const roomId = payload.roomId;
 
-                    if (username == parentName) {
+                    if (payload.playerNumber == 0) {
                         await roomsDB.deleteRoom(roomId);
 
                         const sendData = {
@@ -175,7 +171,7 @@ export class playManager {
                         const sendData = {
                             type: 'outRoom',
                             payload: {
-                                username: username,
+                                playerNumber: payload.playerNumber,
                             },
                         };
                         this.sendToClients(sendData, roomId);
