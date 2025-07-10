@@ -27498,7 +27498,6 @@ export let tango = {
             形容詞: '0の、ゼロの',
         },
     },
-<<<<<<< HEAD
     be: {
         tags: ['自動詞', 'be動詞', '原型'],
         katuyou: ['be', 'was', 'been', 'being'],
@@ -27563,7 +27562,4 @@ export let tango = {
             動詞: '〜である、存在する',
         },
     },
-=======
-    
->>>>>>> bca342ea8de2c31a301bec1fe7e6f8ffdde33091
 };

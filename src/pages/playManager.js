@@ -27,8 +27,6 @@ export class playManager {
         const userId = await usersManager.nameToId(username);
 
         let roomMembersData = await roomMemberDB.getRoomMembers(roomId);
-        roomMembersData = roomMembersData.map((value) => value.username);
-        roomMembersData.push(username);
 
         // room_member に追加
         await roomMemberDB.addRoomMember(roomId, userId);
@@ -48,6 +46,7 @@ export class playManager {
             type: 'entryRoom',
             payload: {
                 username: username,
+                userId: userId,
             },
         };
         this.sendToClients(sendData, roomId);
@@ -171,7 +170,7 @@ export class playManager {
                         const sendData = {
                             type: 'outRoom',
                             payload: {
-                                playerNumber: payload.playerNumber,
+                                userId: userId,
                             },
                         };
                         this.sendToClients(sendData, roomId);

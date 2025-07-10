@@ -21,6 +21,7 @@ export class playerManager {
         this.roomId = pageName.split('/')[4];
         console.log(this.playerMembers);
         this.userId = functions.sN(document.getElementById('userIdText').innerHTML);
+        this.playerNumber = this.renban;
 
         /* this.wss.send(送りたいデータ);
         送るデータの形式
@@ -66,10 +67,7 @@ export class playerManager {
                     },
                 };
                 sendBeaconFlag = true;
-                navigator.sendBeacon(
-                    `/post?type=outRoom&playerNumber=${this.playerNumber}&roomId=${this.roomId}`,
-                    JSON.stringify(sendData)
-                );
+                navigator.sendBeacon(`/post?type=outRoom&playerNumber=${this.playerNumber}&roomId=${this.roomId}`, JSON.stringify(sendData));
             }
         });
     }
@@ -121,6 +119,8 @@ export class playerManager {
             }
         */
         this.wss?.onMessage('getRoomMemberData', (data) => {
+            console.log(data);
+            console.log('a');
             this.playerMembers[0] = data.roomMembers;
             console.log('getRoomMemberData');
             console.log(this.playerMembers);
