@@ -300,7 +300,7 @@ export class flow {
         console.log('reStart');
         this.uimanager.initTable();
         this.nowPhaseNumber = nextParent;
-        for (let i = 0; i < this.playermanager.playerMembers.getPlayerCount(); i++) {
+        for (let i = 0; i < this.playermanager.getPlayerCount(); i++) {
             // そのうちやる
             try {
                 this.uimanager.hideThrowHai(i);
