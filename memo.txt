@@ -49,7 +49,7 @@ node --env-file=.env-local src/app.js
 npm install
 
 //コード
-pool.queryで出した値は必ず何もそうさせず変数に入れる
+pool.queryで出した値は必ず何も操作せず変数に入れる
 〇 const result = pool.query('なんか');
 ✕ const result = pool.query('なんか')[0];
 
