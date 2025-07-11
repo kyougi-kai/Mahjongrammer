@@ -93,7 +93,7 @@ export class playerManager {
         */
         this.wss?.onMessage('entryRoom', (data) => {
             this.renban = this.renban + 1;
-            this.playerMembers[this.renban] = data;
+            this.playerMembers[this.renban] = data.username;
             console.log(this.playerMembers);
             this.updatePlayerName();
         });

@@ -26,12 +26,13 @@ export class playManager {
         const roomId = await roomsDB.getRoomId(parentId);
         const userId = await usersManager.nameToId(username);
 
-        let roomMembersData = await roomMemberDB.getRoomMembers(roomId);
-
         // room_member に追加
         await roomMemberDB.addRoomMember(roomId, userId);
 
+        let roomMembersData = await roomMemberDB.getRoomMembers(roomId);
+
         // 割合送信
+        console.log('roomMembersData:', roomMembersData);
         ws.send(
             JSON.stringify({
                 type: 'getRoomMemberData',
