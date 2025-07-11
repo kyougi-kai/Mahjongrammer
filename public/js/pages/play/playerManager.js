@@ -16,12 +16,12 @@ export class playerManager {
         this.parentNumber = 0;
         this.renban = 0;
         this.playerMembers = {};
-        this.playerMembers[this.renban] = this.parentName;
         const pageName = location.href;
         this.roomId = pageName.split('/')[4];
         console.log(this.playerMembers);
         this.userId = functions.sN(document.getElementById('userIdText').innerHTML);
         this.playerNumber = this.renban;
+        this.playerMembers[this.userId] = this.parentName;
 
         /* this.wss.send(送りたいデータ);
         送るデータの形式
