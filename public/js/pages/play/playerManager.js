@@ -121,7 +121,7 @@ export class playerManager {
         this.wss?.onMessage('getRoomMemberData', (data) => {
             console.log(data);
             console.log('a');
-            this.playerMembers[0] = data.roomMembers;
+            this.playerMembers[0] = data.roomMembers.map(member => member.username);
             console.log('getRoomMemberData');
             console.log(this.playerMembers);
             this.updatePlayerName();

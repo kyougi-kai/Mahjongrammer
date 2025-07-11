@@ -8,7 +8,7 @@ export class roomMemberRepository extends baseRepository {
     async addRoomMember(roomId, userId) {
         const sql = 'insert into room_member (room_id, user_id) values(?,?)';
         const params = [roomId, userId];
-        this.query(sql, params);
+        await this.query(sql, params);
     }
 
     async roomMemberCounts(roomId) {
