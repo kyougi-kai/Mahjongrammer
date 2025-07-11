@@ -16,6 +16,7 @@ export class playerManager {
         this.roomId = pageName.split('/')[4];
         this.userId = functions.sN(document.getElementById('userIdText').innerHTML);
         this.reload = false;
+        this.parentNumber = 0;
 
         /* this.wss.send(送りたいデータ);
         送るデータの形式

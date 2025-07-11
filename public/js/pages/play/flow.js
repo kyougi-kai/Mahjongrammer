@@ -166,8 +166,7 @@ export class flow {
         this.wss.onMessage('reStart', (data) => {
             this.uimanager.hideNowBlink();
             if (data.tumoPlayerNumber != this.playermanager.parentNumber) {
-                this.playermanager.parentNumber = (this.playermanager.parentNumber + 1) % this.playermanager.playerMembers.getPlayerCount();
-                this.playermanager.parentName = this.playermanager.playerMembers[this.playermanager.parentNumber];
+                this.playermanager.parentNumber = (this.playermanager.parentNumber + 1) % this.playermanager.getPlayerCount();
             }
             this.reStart(this.playermanager.parentNumber);
         });

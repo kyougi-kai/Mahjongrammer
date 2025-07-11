@@ -33,7 +33,7 @@ export class DM {
 
     pickTango() {
         let returnValue = {};
-        const randomValue = Math.random();
+        const randomValue = (Math.floor(Math.random() * 1000) % 101) / 100;
         let temporaryWariai = this._ratio.concat();
         temporaryWariai.reduce((acc, cur, idx, array) => {
             if (idx != 0) array[idx] += acc;
@@ -43,7 +43,7 @@ export class DM {
         let finishFlag = false;
         temporaryWariai.forEach((value, idx) => {
             if (randomValue <= value && !finishFlag) {
-                console.log(randomValue + ' : ' + value);
+                console.log(randomValue + ' : ' + value + ' : ' + idx);
                 const targetKey = Object.keys(this._tango)[idx];
                 returnValue.word = this._tango[targetKey][Math.floor(Math.random() * this._tango[targetKey].length)];
                 returnValue.partOfSpeech = targetKey;
