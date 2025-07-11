@@ -18,7 +18,7 @@ export class roomClientsManager {
     }
 
     _setup() {
-        this.wss.onGet('/room', (ws) => {
+        this.wss.onGet('/home', (ws) => {
             const uuid = uuidv4();
             this.roomClients.set(uuid, ws);
 

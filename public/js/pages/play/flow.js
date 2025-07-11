@@ -80,7 +80,7 @@ export class flow {
             let ponData = {
                 type: 'pon',
                 payload: {
-                    parentName: this.playermanager.parentname,
+                    roomId: this.playermanager.roomId,
                     playerNumber: this.playermanager.getPlayerNumber(),
                 },
             };
@@ -91,7 +91,7 @@ export class flow {
             let skipData = {
                 type: 'skip',
                 payload: {
-                    parentName: this.playermanager.parentname,
+                    roomId: this.playermanager.roomId,
                 },
             };
             this.uimanager.hideponskip();
@@ -119,7 +119,7 @@ export class flow {
                     let nextData = {
                         type: 'next',
                         payload: {
-                            parentName: this.playermanager.getParent,
+                            roomId: this.playermanager.roomId,
                         },
                     };
                     this.sendInterval = setTimeout(() => {
@@ -137,7 +137,7 @@ export class flow {
             this.uimanager.pon();
             if (this.sendInterval != null) clearTimeout(this.sendInterval);
             this.sendInterval = null;
-            this.nowPhaseNumber = (this.nowPhaseNumber + 1) % this.playermanager.playerMembers.length;
+            this.nowPhaseNumber = (this.nowPhaseNumber + 1) % this.playermanager.getPlayerCount();
             this.nextPhase();
         });
 
@@ -166,7 +166,7 @@ export class flow {
         this.wss.onMessage('reStart', (data) => {
             this.uimanager.hideNowBlink();
             if (data.tumoPlayerNumber != this.playermanager.parentNumber) {
-                this.playermanager.parentNumber = (this.playermanager.parentNumber + 1) % this.playermanager.playerMembers.length;
+                this.playermanager.parentNumber = (this.playermanager.parentNumber + 1) % this.playermanager.playerMembers.getPlayerCount();
                 this.playermanager.parentName = this.playermanager.playerMembers[this.playermanager.parentNumber];
             }
             this.reStart(this.playermanager.parentNumber);
@@ -190,22 +190,12 @@ export class flow {
             let startData = {
                 type: 'startGame',
                 payload: {
-                    parentName: this.playermanager.getParent,
+                    roomId: this.playermanager.roomId,
                 },
             };
             this.wss.send(startData);
             element.remove();
         });
-    }
-
-    sendStart() {
-        let startData = {
-            type: 'startGame',
-            payload: {
-                parentName: this.playermanager.getParent,
-            },
-        };
-        this.wss.send(startData);
     }
 
     start() {
@@ -267,17 +257,16 @@ export class flow {
         }, 200);
         var scoreBord = document.getElementById('scoreBord');
         scoreBord.style.opacity = 1;
-        this.uimanager.showBlink(this.playermanager.phaseToPosition(this.playermanager.parentNumber));
+        this.uimanager.showBlink(this.playermanager.phaseToPosition(0));
 
-        let isparent = this.playermanager.isParent();
-        if (isparent) {
+        if (this.playermanager.isParent()) {
             this.youCanThrow = true;
             this.drawHai();
             this.scorebords.children[4].style.opacity = 1;
             this.scorebords.children[4].style.pointerEvents = 'all';
         }
         if (this.topleft.style.getPropertyValue('--original-html-ban') == '') {
-            let idx2 = this.playermanager.phaseToPosition(this.playermanager.parentNumber);
+            let idx2 = this.playermanager.phaseToPosition(0);
             console.log(idx2);
             console.log(this.topleft.style.top);
             this.topleft.style.top = this.tops[idx2];
@@ -288,7 +277,7 @@ export class flow {
             let k = 0;
             this.yourtops = [];
             this.yourlefts = [];
-            for(i;i < j;i++){
+            for (i; i < j; i++) {
                 this.yourtops[k] = this.tops[i % this.tops.length];
                 this.yourlefts[k] = this.lefts[i % this.lefts.length];
                 k = k + 1;
@@ -297,7 +286,7 @@ export class flow {
             console.log(this.yourtops);
             console.log(this.lefts);
             console.log(this.yourlefts);
-        }else{
+        } else {
             console.log(this.playermanager.getPlayerMembers());
             let idx2 = (this.topleft.style.getPropertyValue('--original-html-ban') + 1) % this.playermanager.getPlayerMembers();
             this.topleft.style.top = this.yourtops[idx2];
@@ -311,7 +300,7 @@ export class flow {
         console.log('reStart');
         this.uimanager.initTable();
         this.nowPhaseNumber = nextParent;
-        for (let i = 0; i < this.playermanager.playerMembers.length; i++) {
+        for (let i = 0; i < this.playermanager.playerMembers.getPlayerCount(); i++) {
             // そのうちやる
             try {
                 this.uimanager.hideThrowHai(i);
@@ -326,6 +315,7 @@ export class flow {
     nextPhase(isPon = false) {
         console.log('nextPhase()');
         this.uimanager.hideNowBlink();
+        console.log('nowPhaseNumber', this.nowPhaseNumber);
         this.uimanager.showBlink(this.playermanager.phaseToPosition(this.nowPhaseNumber));
         if (this.nowPhaseNumber == this.playermanager.getPlayerNumber()) {
             if (!isPon) this.drawHai();
@@ -343,7 +333,7 @@ export class flow {
         console.log('flow.js haiを捨てようとしている');
         console.log(hai);
         let phasenumber = this.playermanager.getPlayerNumber();
-        console.log(phasenumber, this.nowPhaseNumber);
+        console.log(phasenumber, this.nowPhaseNumber, this.youCanThrow);
 
         if (this.nowPhaseNumber == phasenumber && this.youCanThrow) {
             hai.removeAttribute('draggable');
@@ -351,7 +341,7 @@ export class flow {
                 type: 'throwHai',
                 payload: {
                     hai: hai.outerHTML,
-                    parentName: this.playermanager.getParent,
+                    roomId: this.playermanager.roomId,
                 },
             };
             this.youCanThrow = false;

@@ -19,12 +19,9 @@ export class playManager {
     }
 
     async onMessageEntryRoom(ws, data) {
-        const parentName = data.parentName;
-        const username = data.username;
-        const parentId = await usersManager.nameToId(parentName);
-        const ratio = await roomsDB.getRow('ratio', 'parent_id', parentId);
-        const roomId = await roomsDB.getRoomId(parentId);
-        const userId = await usersManager.nameToId(username);
+        const roomId = data.roomId;
+        const userId = data.userId;
+        const ratio = await roomsDB.getRow('ratio', 'room_id', roomId);
 
         // room_member に追加
         await roomMemberDB.addRoomMember(roomId, userId);
@@ -43,6 +40,7 @@ export class playManager {
             })
         );
 
+        const username = await usersManager.idToName(userId);
         const sendData = {
             type: 'entryRoom',
             payload: {
@@ -59,8 +57,7 @@ export class playManager {
 
     _setup() {
         this.wss.onMessage('startGame', async (ws, data) => {
-            const parentId = await usersManager.nameToId(data.parentName);
-            const roomId = await roomsDB.getRoomId(parentId);
+            const roomId = data.roomId;
             const sendData = {
                 type: 'startGame',
                 payload: {},
@@ -69,8 +66,7 @@ export class playManager {
         });
 
         this.wss.onMessage('next', async (ws, data) => {
-            const parentId = await usersManager.nameToId(data.parentName);
-            const roomId = await roomsDB.getRoomId(parentId);
+            const roomId = data.roomId;
             const sendData = {
                 type: 'nextPhase',
                 payload: {},
@@ -79,8 +75,7 @@ export class playManager {
         });
 
         this.wss.onMessage('skip', async (ws, data) => {
-            const parentId = await usersManager.nameToId(data.parentName);
-            const roomId = await roomsDB.getRoomId(parentId);
+            const roomId = data.roomId;
             this.playclientsmanager.playC[roomId].skip++;
             const roomMemberCounts = await roomMemberDB.roomMemberCounts(roomId);
             if (this.playclientsmanager.playC[roomId].skip == roomMemberCounts - 1) {
@@ -94,8 +89,7 @@ export class playManager {
         });
 
         this.wss.onMessage('pon', async (ws, data) => {
-            const parentId = await usersManager.nameToId(data.parentName);
-            const roomId = await roomsDB.getRoomId(parentId);
+            const roomId = data.roomId;
             const sendData = {
                 type: 'pon',
                 payload: { ponPlayerNumber: data.playerNumber },
@@ -118,8 +112,7 @@ export class playManager {
         });
 
         this.wss.onMessage('throwHai', async (ws, data) => {
-            const parentId = await usersManager.nameToId(data.parentName);
-            const roomId = await roomsDB.getRoomId(parentId);
+            const roomId = data.roomId;
             const sendData = {
                 type: 'throwHai',
                 payload: { hai: data.hai },
@@ -150,8 +143,9 @@ export class playManager {
                 try {
                     const userId = payload.userId;
                     const roomId = payload.roomId;
+                    const parentId = await roomsDB.getRow('parent_id', 'room_id', roomId);
 
-                    if (payload.playerNumber == 0) {
+                    if (userId == parentId) {
                         await roomsDB.deleteRoom(roomId);
 
                         const sendData = {

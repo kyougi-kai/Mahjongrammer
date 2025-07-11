@@ -7,21 +7,15 @@ export class playerManager {
      * @param {connectionManager} wss
      */
     constructor(wss) {
-        this.playername = document.getElementById('usernameText').innerHTML;
-        this.playername = this.ds(this.playername);
+        this.playername = this.ds(document.getElementById('usernameText').innerHTML);
         this.nameDivs = document.getElementsByClassName('name');
         console.log(this.nameDivs);
         this.wss = wss;
-        this.parentName = functions.sN(document.getElementById('parentNameText').innerHTML);
-        this.parentNumber = 0;
-        this.renban = 0;
         this.playerMembers = {};
         const pageName = location.href;
         this.roomId = pageName.split('/')[4];
-        console.log(this.playerMembers);
         this.userId = functions.sN(document.getElementById('userIdText').innerHTML);
-        this.playerNumber = this.renban;
-        this.playerMembers[this.userId] = this.parentName;
+        this.reload = false;
 
         /* this.wss.send(送りたいデータ);
         送るデータの形式
@@ -61,25 +55,23 @@ export class playerManager {
                 let sendData = {
                     type: 'outRoom',
                     payload: {
-                        playerNumber: this.playerNumber,
                         userId: this.userId,
                         roomId: this.roomId,
                     },
                 };
                 sendBeaconFlag = true;
-                navigator.sendBeacon(`/post?type=outRoom&playerNumber=${this.playerNumber}&roomId=${this.roomId}`, JSON.stringify(sendData));
+                navigator.sendBeacon(`/post?type=outRoom&userId=${this.userId}&roomId=${this.roomId}`, JSON.stringify(sendData));
             }
         });
     }
 
     _setupWebsocket() {
         this.wss.onOpen(() => {
-            this.playername = functions.sN(this.playername);
             const sendparent = {
                 type: 'entryRoom',
                 payload: {
-                    parentName: this.playerMembers[0],
-                    username: this.playername,
+                    roomId: this.roomId,
+                    userId: this.userId,
                 },
             };
             this.wss.send(sendparent);
@@ -92,8 +84,7 @@ export class playerManager {
             }
         */
         this.wss?.onMessage('entryRoom', (data) => {
-            this.renban = this.renban + 1;
-            this.playerMembers[this.renban] = data.username;
+            this.playerMembers[data.userId] = data.username;
             console.log(this.playerMembers);
             this.updatePlayerName();
         });
@@ -104,11 +95,8 @@ export class playerManager {
             }
         */
         this.wss?.onMessage('outRoom', (data) => {
-            console.log(data);
-            const idx = this.playerMembers[0].indexOf(data.username);
-            this.playerMembers[0].splice(idx, 1);
-            this.playerMembers[1].splice(idx, 1);
-            console.log(`${data.username}が退出しました`);
+            console.log(`${this.playerMembers[data.userId]}が退出しました`);
+            delete this.playerMembers[data.userId];
             console.log(this.playerMembers);
             this.updatePlayerName();
         });
@@ -119,12 +107,14 @@ export class playerManager {
             }
         */
         this.wss?.onMessage('getRoomMemberData', (data) => {
-            console.log(data);
-            console.log('a');
-            this.playerMembers[0] = data.roomMembers.map(member => member.username);
             console.log('getRoomMemberData');
+            console.log(data);
+            data.roomMembers.forEach((user) => {
+                this.playerMembers[user.user_id] = user.username;
+            });
             console.log(this.playerMembers);
             this.updatePlayerName();
+            this.reload = true;
         });
 
         this.wss?.onMessage('closeRoom', (data) => {
@@ -135,8 +125,6 @@ export class playerManager {
 
     // playerMembersの値を使って名前を表示する
     updatePlayerName() {
-        const nanka = this.playerMembers[0].indexOf(this.playername);
-
         // 一旦全ての表示をリセット
         let j = 0;
         while (j < 4) {
@@ -147,23 +135,25 @@ export class playerManager {
             j++;
         }
 
-        this.playerMembers[0].forEach((value, index) => {
-            const pos = (index + 2 - nanka + 4) % 4;
-            const nameElem = this.nameDivs[pos].children[0];
+        console.log('updatePlayerName');
+        console.log(this.playerMembers);
+        Object.values(this.playerMembers).forEach((value, index) => {
+            console.log(value);
+            const nameElem = this.nameDivs[this.phaseToPosition(index)].children[0];
 
             nameElem.innerHTML = value;
             nameElem.style.color = 'black'; // ← デフォルトに戻す
 
-            if (value === this.playerMembers[0][0]) {
+            if (index == 0) {
                 nameElem.style.color = 'red'; // 親だけ赤くする
             }
         });
     }
 
     isParent() {
-        console.log('isParent');
-        console.log(`playerName : ${this.playername} --- parentName : ${this.parentName}`);
-        if (this.getPlayerNumber() == this.parentNumber) {
+        console.log('ーーーisParentーーー');
+        console.log('this.getPlayerNumber() = ', this.getPlayerNumber());
+        if (this.getPlayerNumber() == 0) {
             return true;
         } else return false;
     }
@@ -173,25 +163,23 @@ export class playerManager {
         return this.parentName;
     }
 
-    // Object.keys(this.playerMembers)でplayerIdの配列を作ってindexOfでだす
     getPlayerNumber() {
-        const number = this.playerMembers[0].indexOf(this.playername);
+        const number = Object.keys(this.playerMembers).indexOf(this.userId);
         return number;
     }
 
     phaseToPosition(phase) {
-        const wa = this.playerMembers[0].indexOf(this.playername);
-        const positionnumber = (phase + 2 - wa) % 4;
+        const positionnumber = (phase + 2 - this.getPlayerNumber()) % 4;
         return positionnumber;
     }
 
     positonToPhase(position) {
-        const phasenumber = this.playerMembers[0].indexOf(this.nameDivs[position].children[0].innerHTML);
+        const phasenumber = (position + 2 - this.getPlayerNumber()) % 4;
         return phasenumber;
     }
 
-    getPlayerMembers() {
-        const ninzuu = this.playerMembers[0].length;
+    getPlayerCount() {
+        const ninzuu = Object.keys(this.playerMembers).length;
         return ninzuu;
     }
 }

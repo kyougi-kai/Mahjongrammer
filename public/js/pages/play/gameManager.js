@@ -32,7 +32,7 @@ export class gameManager {
     }
 
     getConnectUrl() {
-        return `${this.protocol}://${window.location.host}/play/${this.playermanager.parentname}`;
+        return `${this.protocol}://${window.location.host}/play/${this.playermanager.roomId}`;
     }
 }
 

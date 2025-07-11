@@ -6,22 +6,7 @@ export class uiManager {
         this.throwHaiTable = document.getElementsByClassName('throw-hai-table')[0];
         this.ponskip = document.getElementsByClassName('bark-div')[0];
         this.flow = null;
-        this.startButton = null;
         this.scoreBord = document.getElementById('scoreBord');
-
-        // あなたが親なら真ん中にスタートボタン表示
-        if (this.playermanager.isParent()) {
-            const startbutto = document.createElement('button');
-            startbutto.textContent = 'スタート';
-            startbutto.style.position = 'absolute';
-            startbutto.style.left = '50%';
-            startbutto.style.top = '50%';
-            startbutto.style.transform = 'translateX(-50%) translateY(-50%)';
-
-            document.body.appendChild(startbutto);
-
-            this.startButton = startbutto;
-        }
 
         // チートdiv
         this.hinsiDiv = document.getElementById('hinsiDrop');
@@ -83,6 +68,32 @@ export class uiManager {
             let pickWord = pickWordList[Math.floor(Math.random() * pickWordList.length)];
             this.flow.drawHai(pickWord);
         });
+
+        const showStart = async () => {
+            const timer = setInterval(() => {
+                if (this.playermanager.reload) {
+                    this.showStartButton();
+                    console.log('showStartButton');
+                    clearInterval(timer);
+                }
+            }, 500);
+        };
+        showStart();
+    }
+
+    showStartButton() {
+        // あなたが親なら真ん中にスタートボタン表示
+        if (this.playermanager.isParent()) {
+            const startbutto = document.createElement('button');
+            startbutto.textContent = 'スタート';
+            startbutto.style.position = 'absolute';
+            startbutto.style.left = '50%';
+            startbutto.style.top = '50%';
+            startbutto.style.transform = 'translateX(-50%) translateY(-50%)';
+
+            document.body.appendChild(startbutto);
+            this.flow.setStartButton(startbutto);
+        }
     }
 
     showCheatDiv() {
@@ -91,7 +102,6 @@ export class uiManager {
 
     setFlow(flow) {
         this.flow = flow;
-        if (this.startButton != null) this.flow.setStartButton(this.startButton);
     }
 
     showThrowHai(hai, position) {

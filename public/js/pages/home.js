@@ -10,7 +10,7 @@ let rooms = [];
 
 window.onload = () => {
     const connectionmanager = new connectionManager();
-    connectionmanager.connect(`${protocol}://${window.location.host}/room`);
+    connectionmanager.connect(`${protocol}://${window.location.host}/home`);
 
     // サーバーに接続時
     connectionmanager.onOpen(() => {
@@ -27,7 +27,7 @@ window.onload = () => {
             createNewRoom(data.roomName, data.roomId, data.room_member_counts);
         } else {
             data.forEach((mono) => {
-                rooms.push(mono.roomId);
+                rooms.push(mono.room_id);
                 createNewRoom(mono.room_name, mono.room_id, mono.room_member_counts);
             });
         }
@@ -42,6 +42,8 @@ window.onload = () => {
 
     // 削除された部屋を非表示
     connectionmanager.onMessage('deleteRoom', (data) => {
+        console.log('deleteRoom');
+        console.log(rooms);
         const idx = rooms.indexOf(data.roomId);
         if (idx != -1) {
             rooms.splice(idx, 1);
@@ -101,7 +103,7 @@ function createNewRoom(roomName, roomId, roomMemberCounts = 0) {
 }
 
 function updateRoomMemberCounts(roomId, roomMemberCounts) {
-    if (rooms[0] === undefined) window.location = '/room';
+    if (rooms[0] === undefined) window.location = '/home';
     const idx = rooms.indexOf(roomId);
     console.log(mainDiv.children[idx].children);
     mainDiv.children[idx].children[1].innerHTML = `${roomMemberCounts}/4`;
