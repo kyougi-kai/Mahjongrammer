@@ -70,6 +70,7 @@ export class flow {
                 type: 'nextRound',
                 payload: {
                     roomId: this.playermanager.roomId,
+                    playerNumber: this.nowPhaseNumber,
                 },
             };
 
@@ -165,6 +166,8 @@ export class flow {
         });
         this.wss.onMessage('reStart', (data) => {
             this.uimanager.hideNowBlink();
+            console.log('reStart');
+            console.log(data.tumoPlayerNumber, this.playermanager.parentNumber);
             if (data.tumoPlayerNumber != this.playermanager.parentNumber) {
                 this.playermanager.parentNumber = (this.playermanager.parentNumber + 1) % this.playermanager.getPlayerCount();
             }
@@ -286,8 +289,7 @@ export class flow {
             console.log(this.lefts);
             console.log(this.yourlefts);
         } else {
-            console.log(this.playermanager.getPlayerMembers());
-            let idx2 = (this.topleft.style.getPropertyValue('--original-html-ban') + 1) % this.playermanager.getPlayerMembers();
+            let idx2 = (this.topleft.style.getPropertyValue('--original-html-ban') + 1) % this.playermanager.getPlayerCount();
             this.topleft.style.top = this.yourtops[idx2];
             this.topleft.style.left = this.yourlefts[idx2];
             this.topleft.style.setProperty('--original-html-ban', idx2);
