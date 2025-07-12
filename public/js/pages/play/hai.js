@@ -33,9 +33,13 @@ export class hai {
                 wakusei = Math.floor(Math.random() * 7 + 1);
             }
         }
+        if(this.hinsi == '助動詞'){
+            this.hai.style.color = '#FFFFFF';
+        }
         this.hai.style.animation = `hai${Math.floor(Math.random() * 3 + 1)} 2s infinite alternate ease-in-out`;
 
         this.hai.style.backgroundImage = `url(/img/partOfSpeech/${this.hinsi + wakusei}.png)`;
+        this.hai.style.backgroundRepeat = 'no-repeat';
         return this.hai;
     }
 
