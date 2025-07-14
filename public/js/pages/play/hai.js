@@ -26,14 +26,14 @@ export class hai {
         });
 
         // 後ろに画像表示 名詞はとりあえず1番目のやつ
-        let wakusei = "";
-        if(this.hinsi == '名詞'){
+        let wakusei = '';
+        if (this.hinsi == '名詞') {
             wakusei = Math.floor(Math.random() * 7 + 1);
-            while(wakusei == 3 || wakusei == 5){
+            while (wakusei == 3 || wakusei == 5) {
                 wakusei = Math.floor(Math.random() * 7 + 1);
             }
         }
-        if(this.hinsi == '助動詞'){
+        if (this.hinsi == '助動詞') {
             this.hai.style.color = '#FFFFFF';
         }
         this.hai.style.animation = `hai${Math.floor(Math.random() * 3 + 1)} 2s infinite alternate ease-in-out`;
@@ -44,23 +44,23 @@ export class hai {
     }
 
     changeKatuyou() {
-        if(this.hai.style.getPropertyValue('--original-html') == ''){
+        if (this.hai.style.getPropertyValue('--original-html') == '') {
             this.hai.style.setProperty('--original-html', this.hai.innerHTML);
         }
-        const keys = Object.keys(tango); 
+        const keys = Object.keys(tango);
         const values = Object.values(tango);
         const index = keys.indexOf(this.hai.style.getPropertyValue('--original-html'));
-        if (values[index].katuyou != undefined) {
-            if(this.hai.style.getPropertyValue('--original-html-ban') == ''){
-                let idx2 = (values[index].katuyou.indexOf(this.hai.innerHTML) + 1) % (values[index].katuyou.length);
+        if (values[index].katuyou !== undefined && values[index].katuyou.length != 0) {
+            if (this.hai.style.getPropertyValue('--original-html-ban') == '') {
+                let idx2 = (values[index].katuyou.indexOf(this.hai.innerHTML) + 1) % values[index].katuyou.length;
                 this.hai.innerHTML = values[index].katuyou[idx2];
                 this.hai.style.setProperty('--original-html-ban', idx2);
-            }else{
-                let idx2 = (Number(this.hai.style.getPropertyValue('--original-html-ban')) + 1) % (values[index].katuyou.length);
+            } else {
+                let idx2 = (Number(this.hai.style.getPropertyValue('--original-html-ban')) + 1) % values[index].katuyou.length;
                 this.hai.innerHTML = values[index].katuyou[idx2];
                 this.hai.style.setProperty('--original-html-ban', idx2);
             }
-        };
+        }
     }
 
     get getHai() {

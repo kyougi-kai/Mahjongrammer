@@ -103,6 +103,7 @@ export class playManager {
             this.playclientsmanager.playC[roomId].nextRound++;
             const roomMemberCounts = await roomMemberDB.roomMemberCounts(roomId);
             if (this.playclientsmanager.playC[roomId].nextRound == roomMemberCounts) {
+                this.playclientsmanager.playC[roomId].nextRound = 0;
                 const sendData = {
                     type: 'reStart',
                     payload: { tumoPlayerNumber: data.playerNumber },
