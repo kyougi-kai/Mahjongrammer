@@ -18,8 +18,12 @@ export class hai {
 
     createHai() {
         this.hai = document.createElement('div');
-        this.hai.innerHTML = this.word;
         this.hai.classList.add('border-div');
+        //this.hai.innerHTML = this.word;
+
+        const p = document.createElement('p');
+        p.innerHTML = this.word;
+        this.hai.appendChild(p);
 
         this.hai.addEventListener('click', () => {
             this.changeKatuyou();
@@ -33,9 +37,6 @@ export class hai {
                 wakusei = Math.floor(Math.random() * 7 + 1);
             }
         }
-        if (this.hinsi == '助動詞') {
-            this.hai.style.color = '#FFFFFF';
-        }
         this.hai.style.animation = `hai${Math.floor(Math.random() * 3 + 1)} 2s infinite alternate ease-in-out`;
 
         this.hai.style.backgroundImage = `url(/img/partOfSpeech/${this.hinsi + wakusei}.png)`;
@@ -44,20 +45,23 @@ export class hai {
     }
 
     changeKatuyou() {
+        const p = this.hai.querySelector('p');
+        if (!p) return;
+
         if (this.hai.style.getPropertyValue('--original-html') == '') {
-            this.hai.style.setProperty('--original-html', this.hai.innerHTML);
+            this.hai.style.setProperty('--original-html', p.innerHTML);
         }
         const keys = Object.keys(tango);
         const values = Object.values(tango);
         const index = keys.indexOf(this.hai.style.getPropertyValue('--original-html'));
         if (values[index].katuyou !== undefined && values[index].katuyou.length != 0) {
             if (this.hai.style.getPropertyValue('--original-html-ban') == '') {
-                let idx2 = (values[index].katuyou.indexOf(this.hai.innerHTML) + 1) % values[index].katuyou.length;
-                this.hai.innerHTML = values[index].katuyou[idx2];
+                let idx2 = (values[index].katuyou.indexOf(p.innerHTML) + 1) % values[index].katuyou.length;
+                p.innerHTML = values[index].katuyou[idx2];
                 this.hai.style.setProperty('--original-html-ban', idx2);
             } else {
                 let idx2 = (Number(this.hai.style.getPropertyValue('--original-html-ban')) + 1) % values[index].katuyou.length;
-                this.hai.innerHTML = values[index].katuyou[idx2];
+                p.innerHTML = values[index].katuyou[idx2];
                 this.hai.style.setProperty('--original-html-ban', idx2);
             }
         }
