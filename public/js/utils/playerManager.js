@@ -6,29 +6,23 @@ export class playerManager {
      *
      * @param {connectionManager} wss
      */
-    constructor(wss) {
-        this.playername = this.ds(document.getElementById('usernameText').innerHTML);
-        this.nameDivs = document.getElementsByClassName('name');
-        console.log(this.nameDivs);
+    constructor(wss, type = 'room') {
+        this.type = type;
+        if (type == 'play') {
+            this.playername = this.ds(document.getElementById('usernameText').innerHTML);
+            this.nameDivs = document.getElementsByClassName('name');
+            console.log(this.nameDivs);
+        }
+
         this.wss = wss;
         this.playerMembers = {};
         const pageName = location.href;
         this.roomId = pageName.split('/')[4];
         this.userId = functions.sN(document.getElementById('userIdText').innerHTML);
-        this.reload = false;
         this.parentNumber = 0;
 
-        /* this.wss.send(送りたいデータ);
-        送るデータの形式
-        const sendData = {
-            type:'entryRoom',
-            payload:{
-                parentName: ,
-                username: ,
-            }
-        }
+        this.sendBeaconFlag = false;
 
-        */
         this._setupWebsocket();
         this._setup();
     }
@@ -50,9 +44,8 @@ export class playerManager {
 
     */
     _setup() {
-        let sendBeaconFlag = false;
         window.addEventListener('beforeunload', () => {
-            if (!sendBeaconFlag) {
+            if (!this.sendBeaconFlag) {
                 let sendData = {
                     type: 'outRoom',
                     payload: {
@@ -60,7 +53,7 @@ export class playerManager {
                         roomId: this.roomId,
                     },
                 };
-                sendBeaconFlag = true;
+                this.sendBeaconFlag = true;
                 navigator.sendBeacon(`/post?type=outRoom&userId=${this.userId}&roomId=${this.roomId}`, JSON.stringify(sendData));
             }
         });
@@ -69,12 +62,12 @@ export class playerManager {
     _setupWebsocket() {
         this.wss.onOpen(() => {
             const sendparent = {
-                type: 'entryRoom',
                 payload: {
                     roomId: this.roomId,
                     userId: this.userId,
                 },
             };
+            this.type == 'room' ? (sendparent['type'] = 'entryRoom') : (sendparent['type'] = 'entryPlay');
             this.wss.send(sendparent);
             console.log(sendparent);
         });
@@ -87,7 +80,7 @@ export class playerManager {
         this.wss?.onMessage('entryRoom', (data) => {
             this.playerMembers[data.userId] = data.username;
             console.log(this.playerMembers);
-            this.updatePlayerName();
+            this.type == 'play' ? this.updatePlayerName() : this.addPlayer(data.username, data.isReady);
         });
 
         /*
@@ -97,9 +90,10 @@ export class playerManager {
         */
         this.wss?.onMessage('outRoom', (data) => {
             console.log(`${this.playerMembers[data.userId]}が退出しました`);
+            if (this.type == 'room') this.deletePlayer(data.userId);
             delete this.playerMembers[data.userId];
             console.log(this.playerMembers);
-            this.updatePlayerName();
+            if (this.type == 'play') this.updatePlayerName();
         });
 
         /*
@@ -110,18 +104,40 @@ export class playerManager {
         this.wss?.onMessage('getRoomMemberData', (data) => {
             console.log('getRoomMemberData');
             console.log(data);
-            data.roomMembers.forEach((user) => {
+            data.roomMembers.forEach((user, index) => {
                 this.playerMembers[user.user_id] = user.username;
+
+                if (this.type == 'room') {
+                    if (this.userId == user.user_id && index == 0) this.startBtn = document.getElementById('startBtn').style.display = 'block';
+                    this.addPlayer(user.username, user.isReady, index == 0);
+                }
             });
             console.log(this.playerMembers);
-            this.updatePlayerName();
-            this.reload = true;
+
+            if (this.type == 'play') {
+                this.updatePlayerName();
+            }
         });
 
         this.wss?.onMessage('closeRoom', (data) => {
             alert('親が退出しました');
             window.location.href = '/home';
         });
+    }
+
+    addPlayer(playerName, isReady = false, isHost = false) {
+        const playerTag = document.createElement('div');
+        playerTag.classList.add('player');
+        isReady ? playerTag.classList.add('ready') : playerTag.classList.add('not-ready');
+        if (isHost) playerTag.classList.add('host');
+
+        playerTag.innerHTML = playerName;
+        document.getElementById('playerTags').appendChild(playerTag);
+    }
+
+    deletePlayer(playerId) {
+        const idx = Object.keys(this.playerMembers).indexOf(playerId);
+        document.getElementById('playerTags').children[idx + 1].remove();
     }
 
     // playerMembersの値を使って名前を表示する

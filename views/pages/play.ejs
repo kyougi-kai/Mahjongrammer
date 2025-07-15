@@ -8,14 +8,6 @@
         <script src="/js/pages/play/gameManager.js" type="module" defer></script>
     </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/play.css">
-    <script src="/js/pages/play/gameManager.js" type="module" defer></script>
-</head>
-
 <body>
     <div style="display: none;" id="userIdText">
         <%= userId %>
@@ -132,5 +124,24 @@
                 <button id="pickButton">決定</button>
             </div>
         </div>
+
+        <button 
+  onclick="window.location='/home'" 
+  style="
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 9999;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  ">
+  退出
+</button>
     </body>
 </html>

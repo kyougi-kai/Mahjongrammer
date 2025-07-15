@@ -31,6 +31,12 @@ export class roomMemberRepository extends baseRepository {
         const params = [userId];
         await this.query(sql, params);
     }
+
+    async updateIsReady(userId, isReady) {
+        const sql = 'update room_member set isReady = ? where user_id = ?';
+        const params = [isReady, userId];
+        await this.query(sql, params);
+    }
 }
 
 const instance = new roomMemberRepository();

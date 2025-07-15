@@ -24,13 +24,12 @@ export class playClientsManager {
 
     _setup() {
         this.wss.onMessage('outRoom', async (ws, data) => {
-            const parentName = data.parentName;
-            const username = data.username;
-            const parentId = await usersManager.nameToId(parentName);
-            const roomId = await roomsDB.getRoomId(parentId);
-            delete this.playClients[roomId][username];
+            const userId = data.userId;
+            const roomId = data.roomId;
+            delete this.playClients[roomId][userId];
+            const parentId = await roomsDB.getRow('parent_id', 'room_id', roomId);
 
-            if (username == parentName) {
+            if (userId == parentId) {
                 Object.values(this.playClients[roomId]).forEach((client, index) => {
                     if (index == 0) return;
 
@@ -49,11 +48,11 @@ export class playClientsManager {
         });
     }
 
-    async entryRoom(roomId, username, ws) {
+    async entryRoom(roomId, userId, ws) {
         const isRoom = await roomsDB.isNull('room_id', roomId);
         if (!isRoom && !this.playClients.hasOwnProperty(roomId)) {
-            this.playClients[roomId] = { skip: 0, nextRound: 0 };
+            this.playClients[roomId] = { skip: 0, nextRound: 0, entry: 0 };
         }
-        this.playClients[roomId][username] = ws;
+        this.playClients[roomId][userId] = ws;
     }
 }

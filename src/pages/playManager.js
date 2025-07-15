@@ -21,7 +21,7 @@ export class playManager {
     async onMessageEntryRoom(ws, data) {
         const roomId = data.roomId;
         const userId = data.userId;
-        const ratio = await roomsDB.getRow('ratio', 'room_id', roomId);
+        // const ratio = await roomsDB.getRow('ratio', 'room_id', roomId);
 
         // room_member に追加
         await roomMemberDB.addRoomMember(roomId, userId);
@@ -34,7 +34,7 @@ export class playManager {
             JSON.stringify({
                 type: 'getRoomMemberData',
                 payload: {
-                    ratio: JSON.parse(ratio),
+                    // ratio: JSON.parse(ratio),
                     roomMembers: roomMembersData,
                 },
             })
@@ -46,22 +46,73 @@ export class playManager {
             payload: {
                 username: username,
                 userId: userId,
+                isReady: false,
             },
         };
         this.sendToClients(sendData, roomId);
 
         // playClientsに保存
-        this.playclientsmanager.entryRoom(roomId, username, ws);
+        this.playclientsmanager.entryRoom(roomId, userId, ws);
         this.roommanager.noticeEntryRoom(roomId, roomMembersData.length);
     }
 
     _setup() {
-        this.wss.onMessage('startGame', async (ws, data) => {
+        this.wss.onMessage('entryPlay', async (ws, data) => {
+            const roomId = data.roomId;
+            const ratio = await roomsDB.getRow('ratio', 'room_id', roomId);
+            const userId = data.userId;
+            let roomMembersData = await roomMemberDB.getRoomMembers(roomId);
+            this.playclientsmanager.entryRoom(roomId, userId, ws);
+
+            // 割合送信
+            console.log('roomMembersData:', roomMembersData);
+            await ws.send(
+                JSON.stringify({
+                    type: 'getRoomMemberData',
+                    payload: {
+                        ratio: JSON.parse(ratio),
+                        roomMembers: roomMembersData,
+                    },
+                })
+            );
+
+            this.playclientsmanager.playClients[roomId].entry++;
+            const roomMemberCounts = await roomMemberDB.roomMemberCounts(roomId);
+            console.log(this.playclientsmanager.playClients[roomId].entry, roomMemberCounts);
+            if (this.playclientsmanager.playClients[roomId].entry == roomMemberCounts) {
+                const sendData = {
+                    type: 'startGame',
+                    payload: {},
+                };
+
+                this.sendToClients(sendData, roomId);
+            }
+        });
+
+        this.wss.onMessage('readyMessage', async (ws, data) => {
+            const roomId = data.roomId;
+            const userId = data.userId;
+            const isReady = data.isReady;
+            roomMemberDB.updateIsReady(userId, isReady);
+
+            const sendData = {
+                type: 'changeIsReady',
+                payload: {
+                    userId: userId,
+                    isReady: isReady,
+                },
+            };
+
+            this.sendToClients(sendData, roomId);
+        });
+
+        this.wss.onMessage('moveToPlay', async (ws, data) => {
             const roomId = data.roomId;
             const sendData = {
-                type: 'startGame',
+                type: 'moveToPlay',
                 payload: {},
             };
+
             this.sendToClients(sendData, roomId);
         });
 
@@ -182,7 +233,7 @@ export class playManager {
     sendToClients(sendData, roomId) {
         if (!this.playclientsmanager.playC.hasOwnProperty(roomId)) return;
         Object.values(this.playclientsmanager.playC[roomId]).forEach((client, index) => {
-            if (index == 0 || index == 1) return;
+            if (index == 0 || index == 1 || index == 2) return;
             client.send(JSON.stringify(sendData));
         });
     }

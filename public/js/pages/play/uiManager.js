@@ -68,32 +68,6 @@ export class uiManager {
             let pickWord = pickWordList[Math.floor(Math.random() * pickWordList.length)];
             this.flow.drawHai(pickWord);
         });
-
-        const showStart = async () => {
-            const timer = setInterval(() => {
-                if (this.playermanager.reload) {
-                    this.showStartButton();
-                    console.log('showStartButton');
-                    clearInterval(timer);
-                }
-            }, 500);
-        };
-        showStart();
-    }
-
-    showStartButton() {
-        // あなたが親なら真ん中にスタートボタン表示
-        if (this.playermanager.isParent()) {
-            const startbutto = document.createElement('button');
-            startbutto.textContent = 'スタート';
-            startbutto.style.position = 'absolute';
-            startbutto.style.left = '50%';
-            startbutto.style.top = '50%';
-            startbutto.style.transform = 'translateX(-50%) translateY(-50%)';
-
-            document.body.appendChild(startbutto);
-            this.flow.setStartButton(startbutto);
-        }
     }
 
     showCheatDiv() {

@@ -36,7 +36,7 @@ window.onload = () => {
     connectionmanager.onMessage('success', (data) => {
         if (data.type == 'createRoom') {
             //部屋作った人が行くとこ
-            window.location.href = `/play/${data.roomId}`;
+            window.location.href = `/room/${data.roomId}`;
         }
     });
 
@@ -99,7 +99,7 @@ function createNewRoom(roomName, roomId, roomMemberCounts = 0) {
     mainDiv.appendChild(temporaryDiv);
     temporaryDiv.appendChild(roomNameText);
     temporaryDiv.appendChild(temporaryText);
-    if (roomMemberCounts != 4) temporaryDiv.setAttribute('onclick', `window.location.href = '/play/${roomId}';`);
+    if (roomMemberCounts != 4) temporaryDiv.setAttribute('onclick', `window.location.href = '/room/${roomId}';`);
 }
 
 function updateRoomMemberCounts(roomId, roomMemberCounts) {
@@ -110,5 +110,5 @@ function updateRoomMemberCounts(roomId, roomMemberCounts) {
 
     roomMemberCounts == 4
         ? mainDiv.children[idx].setAttribute('onclick', '')
-        : mainDiv.children[idx].setAttribute('onclick', `window.location.href = '/play/${roomId}';`);
+        : mainDiv.children[idx].setAttribute('onclick', `window.location.href = '/room/${roomId}';`);
 }

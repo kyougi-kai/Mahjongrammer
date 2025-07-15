@@ -187,19 +187,6 @@ export class flow {
         document.getElementById('wordDown').appendChild(temporaryHai.getHai);
     }
 
-    setStartButton(element) {
-        element.addEventListener('click', (e) => {
-            let startData = {
-                type: 'startGame',
-                payload: {
-                    roomId: this.playermanager.roomId,
-                },
-            };
-            this.wss.send(startData);
-            element.remove();
-        });
-    }
-
     start() {
         //ラウンド
         this.topleft = document.getElementById('oyaban');
@@ -291,7 +278,7 @@ export class flow {
         } else {
             /*let currentIndex = Number(this.topleft.style.getPropertyValue('--original-html-ban'));
             let idx2 = (currentIndex + 1) % this.playermanager.getPlayerCount();*/
-            let idx2 =this.playermanager.parentNumber;
+            let idx2 = this.playermanager.parentNumber;
             this.topleft.style.top = this.yourtops[idx2];
             this.topleft.style.left = this.yourlefts[idx2];
             this.topleft.style.setProperty('--original-html-ban', idx2);
