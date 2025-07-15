@@ -62,6 +62,7 @@ export class HM {
                     if (!value.children[0]) value.remove();
                 });
             }
+
         });
 
         document.addEventListener('dragover', (event) => {
