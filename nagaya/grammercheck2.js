@@ -1134,30 +1134,24 @@ function checkKansiRoot(targetSentence, GCR) {
 
 function checkZentiKeiyousiRoot(targetSentence, GCR) {
     if (Array.isArray(targetSentence[GCR[GCR.flagsNum].targetIndex])) {
-        let true_M_Num = targetSentence[GCR[GCR.flagsNum].targetIndex].length;
         let keiyousiCount = 0;
 
         if (
-            tango[targetSentence[GCR[GCR.flagsNum].targetIndex][keiyousiCount]].tags.includes('過去分詞') ||
-            tango[targetSentence[GCR[GCR.flagsNum].targetIndex][keiyousiCount]].tags.includes('現在分詞')
+            tango[targetSentence[GCR[GCR.flagsNum].targetIndex]].tags.includes('過去分詞') ||
+            tango[targetSentence[GCR[GCR.flagsNum].targetIndex]].tags.includes('現在分詞')
         ) {
+            GCR[GCR.flagsNum].targetIndex += 1;
             keiyousiCount += 1;
         } else {
-            keiyousiCount += checkHukusiOfKeiyousi(targetSentence, GCR); //形容詞の前に副詞があるかどうか
             while (
-                keiyousiCount < targetSentence[GCR[GCR.flagsNum].targetIndex].length &&
                 tango[targetSentence[GCR[GCR.flagsNum].targetIndex][keiyousiCount]].hinsi.includes('形容詞')
             ) {
                 keiyousiCount++;
             }
         }
 
-        if (true_M_Num != keiyousiCount) {
-            GCR = errorManager(GCR, '', 'ZentiKeiyousi');
-        }
         GCR[GCR.flagsNum].wordsCount += keiyousiCount;
         GCR.currentIndex += keiyousiCount;
-        GCR[GCR.flagsNum].targetIndex += 1;
     }
     console.log('checkZentiKeiyousiroot通過後GCR', targetSentence, GCR);
     return GCR;
