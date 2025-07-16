@@ -19,7 +19,6 @@ export class hai {
     createHai() {
         this.hai = document.createElement('div');
         this.hai.classList.add('border-div');
-        //this.hai.innerHTML = this.word;
 
         const p = document.createElement('p');
         p.innerHTML = this.word;

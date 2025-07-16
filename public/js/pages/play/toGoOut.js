@@ -76,7 +76,10 @@ export class toGoOut {
                     oCount++;
                 } else grammerData[index][valString] = [];
                 Array.from(val.children).forEach((word) => {
-                    grammerData[index][valString].push(word.innerHTML);
+                    const p = word.querySelector('p');
+                    const wordText = p ? p.textContent.trim() : '';
+                    console.log(wordText);
+                    grammerData[index][valString].push(wordText);
                 });
             });
             if (Object.keys(this.sentenceList).indexOf(grammerString) == -1) return false;
