@@ -78,7 +78,9 @@ export class toGoOut {
                 Array.from(val.children).forEach((word) => {
                     const p = word.querySelector('p');
                     const wordText = p ? p.textContent.trim() : '';
-                    console.log(wordText);
+                    console.log(wordText
+                        
+                    );
                     grammerData[index][valString].push(wordText);
                 });
             });
