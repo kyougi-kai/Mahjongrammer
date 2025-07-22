@@ -199,4 +199,10 @@ export class playerManager {
         const ninzuu = Object.keys(this.playerMembers).length;
         return ninzuu;
     }
+    getPlayerName(date) {
+        const userIds = Object.keys(this.playerMembers);
+        if (date < 0 || date >= userIds.length) return null;
+        const userId = userIds[date];
+        return this.playerMembers[userId];
+    }
 }

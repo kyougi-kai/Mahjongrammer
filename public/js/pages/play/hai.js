@@ -11,6 +11,7 @@ export const tango1 = Object.entries(tango);
 export class hai {
     constructor(word, hinsi = null) {
         this.word = word;
+        console.log(word);
         hinsi == null ? (this.hinsi = tango[word]['hinsi'][0]) : (this.hinsi = hinsi);
 
         this.createHai();

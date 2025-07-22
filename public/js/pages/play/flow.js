@@ -151,7 +151,9 @@ export class flow {
             this.uimanager.pon();
             this.nowPhaseNumber = data.ponPlayerNumber;
             data.ponPlayerNumber == this.playermanager.getPlayerNumber() ? this.nextPhase(true) : this.nextPhase();
+            console.log(data.ponPlayerNumber)
             if (data.ponPlayerNumber == this.playermanager.getPlayerNumber()) {
+                
                 let nanka = document.createElement('div');
                 nanka.innerHTML = this.throwElement;
 
@@ -163,6 +165,34 @@ export class flow {
                     this.hai.changeKatuyou();
                 });
             }
+            const overlay = document.createElement('div');
+            overlay.textContent = `${this.playermanager.getPlayerName(this.playermanager.getPlayerNumber())}さんがポン`;
+            Object.assign(overlay.style, {
+                position: 'fixed',
+                top: '0',
+                left: '0',
+                width: '100vw',
+                height: '100vh',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: 'rgba(0,0,0,0.4)',
+                color: '#eb8d4eff',
+                fontSize: '250px',
+                zIndex: '10000',
+                opacity: '0',
+                transition: 'opacity 0.5s ease-out',
+            });
+            document.body.appendChild(overlay);
+
+            requestAnimationFrame(() => {
+                overlay.style.opacity = '1';
+            });
+
+            setTimeout(() => {
+                overlay.style.opacity = '0';
+                overlay.addEventListener('transitionend', () => overlay.remove(), { once: true });
+            }, 1500);
         });
         this.wss.onMessage('reStart', (data) => {
             this.uimanager.hideNowBlink();
