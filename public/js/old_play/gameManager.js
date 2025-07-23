@@ -26,6 +26,7 @@ export default class gameManager {
                 })
             );
         });
+
         this._throwHais = document.getElementsByClassName('throw-hai');
 
         const nameDivs = document.getElementsByClassName('name');
