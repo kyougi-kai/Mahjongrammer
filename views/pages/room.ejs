@@ -1,186 +1,212 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="UTF-8" />
-        <title>グラ麻雀 - 待機ルーム</title>
-        <script src="/js/pages/room/roomManager.js" type="module" defer></script>
-        <style>
-            body {
-                font-family: 'Segoe UI', sans-serif;
-                background: #fdfaf2;
-                margin: 0;
-                padding: 0;
-            }
 
-            header {
-                background-color: #a0a28a;
-                color: white;
-                padding: 1rem 2rem;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                border-radius: 25px;
-                width: 500px;
-                margin: 20px auto;
-            }
+<head>
+    <meta charset="UTF-8" />
+    <title>グラ麻雀 - 待機ルーム</title>
+    <script src="/js/pages/room/roomManager.js" type="module" defer></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #fdfaf2;
+            margin: 0;
+            padding: 0;
+        }
 
+        header {
+            background-color: #a0a28a;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 25px;
+            width: 500px;
+            margin: 20px auto;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            padding: 2rem;
+        }
+
+        .section {
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            flex: 1;
+            min-width: 300px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .player {
+            padding: 0.5rem 0.75rem;
+            margin-bottom: 0.5rem;
+            border-left: 5px solid #ccc;
+            border-radius: 6px;
+            background: #f9f9f9;
+        }
+
+        .ready {
+            border-color: #3c9c3c;
+            color: #3c9c3c;
+            font-weight: bold;
+        }
+
+        .not-ready {
+            border-color: #c94d3f;
+            color: #c94d3f;
+        }
+
+        .host::after {
+            content: '（ホスト）';
+            font-weight: normal;
+            color: #777;
+            margin-left: 6px;
+        }
+
+        #chat-box {
+            height: 180px;
+            overflow-y: scroll;
+            background: #f5f5f5;
+            padding: 0.5rem;
+            margin-bottom: 0.75rem;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+
+        input[type='text'] {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            width: 70%;
+            font-size: 1rem;
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            background-color: #a0a28a;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #888a76;
+        }
+
+        #actions {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            flex-direction: row-reverse;
+        }
+
+        .btn-ready {
+            background-color: #3c9c3c;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+
+        .btn-ready:hover {
+            background-color: #318531;
+        }
+
+        /* 準備解除ボタン（やや赤系で目立たせる） */
+        .btn-unready {
+            background-color: #c94d3f;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+
+        .btn-unready:hover {
+            background-color: #a84337;
+        }
+
+        .btn-start {
+            background: #3c9c3c;
+        }
+
+        @media screen and (max-width: 600px) {
             .container {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 1.5rem;
-                padding: 2rem;
+                flex-direction: column;
             }
+        }
+    </style>
+</head>
 
-            .section {
-                background: white;
-                padding: 1rem 1.5rem;
-                border-radius: 12px;
-                flex: 1;
-                min-width: 300px;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            }
+<body>
+    <header>
+        <div>
+            <strong>
+                <%= roomName %>
+            </strong>
+        </div>
+        <div><strong>
+                <%= username %>
+            </strong></div>
+    </header>
+    <div style="display: none" id="userIdText">
+        <%= userId %>
+    </div>
+    <div class="container">
+        <!-- プレイヤー一覧 -->
+        <div id="playerTags" class="section">
+            <h2>プレイヤー</h2>
+        </div>
 
-            .player {
-                padding: 0.5rem 0.75rem;
-                margin-bottom: 0.5rem;
-                border-left: 5px solid #ccc;
-                border-radius: 6px;
-                background: #f9f9f9;
-            }
-
-            .ready {
-                border-color: #3c9c3c;
-                color: #3c9c3c;
-                font-weight: bold;
-            }
-
-            .not-ready {
-                border-color: #c94d3f;
-                color: #c94d3f;
-            }
-
-            .host::after {
-                content: '（ホスト）';
-                font-weight: normal;
-                color: #777;
-                margin-left: 6px;
-            }
-
-            #chat-box {
-                height: 180px;
-                overflow-y: scroll;
-                background: #f5f5f5;
-                padding: 0.5rem;
-                margin-bottom: 0.75rem;
-                border-radius: 6px;
-                border: 1px solid #ddd;
-            }
-
-            input[type='text'] {
-                padding: 0.5rem;
-                border: 1px solid #ccc;
-                border-radius: 6px;
-                width: 70%;
-                font-size: 1rem;
-            }
-
-            button {
-                padding: 0.5rem 1rem;
-                background-color: #a0a28a;
-                color: white;
-                border: none;
-                border-radius: 6px;
-                cursor: pointer;
-                font-size: 1rem;
-                transition: background-color 0.2s;
-            }
-
-            button:hover {
-                background-color: #888a76;
-            }
-
-            #actions {
-                margin-top: 1rem;
-                display: flex;
-                flex-wrap: wrap;
-                gap: 1rem;
-                flex-direction: row-reverse;
-            }
-
-            .btn-ready {
-                background-color: #3c9c3c;
-                color: white;
-                border: none;
-                border-radius: 6px;
-                padding: 0.5rem 1rem;
-                cursor: pointer;
-                font-weight: bold;
-                transition: background-color 0.2s;
-            }
-
-            .btn-ready:hover {
-                background-color: #318531;
-            }
-
-            /* 準備解除ボタン（やや赤系で目立たせる） */
-            .btn-unready {
-                background-color: #c94d3f;
-                color: white;
-                border: none;
-                border-radius: 6px;
-                padding: 0.5rem 1rem;
-                cursor: pointer;
-                font-weight: bold;
-                transition: background-color 0.2s;
-            }
-
-            .btn-unready:hover {
-                background-color: #a84337;
-            }
-
-            .btn-start {
-                background: #3c9c3c;
-            }
-
-            @media screen and (max-width: 600px) {
-                .container {
-                    flex-direction: column;
-                }
-            }
-        </style>
-    </head>
-
-    <body>
-        <header>
-            <div>
-                <strong> <%= roomName %> </strong>
-            </div>
-            <div><strong> <%= username %> </strong></div>
-        </header>
-        <div style="display: none" id="userIdText"><%= userId %></div>
-        <div class="container">
-            <!-- プレイヤー一覧 -->
-            <div id="playerTags" class="section">
-                <h2>プレイヤー</h2>
-            </div>
-
-            <!-- チャット -->
-            <div class="section">
-                <h2>チャット</h2>
-                <div id="chat-box">
-                    <!--
+        <!-- チャット -->
+        <div class="section">
+            <h2>チャット</h2>
+            <div id="chat-box">
+                <!--
                 <div><strong>alice:</strong> ルールってどんな感じ？</div>
                 <div><strong>bob:</strong> まだ準備できてないー</div>
-                --></div>
-                <input type="text" id="chat-input" placeholder="メッセージを入力" />
-                <button onclick="sendChat()">送信</button>
+                -->
+            </div>
+            <input type="text" id="chat-input" placeholder="メッセージを入力" />
+            <button id="sendButton">送信</button>
 
-                <div id="actions">
-                    <button id="startBtn" class="btn-start" style="display: none; opacity: 0.5" disabled>ゲーム開始</button>
-                    <button id="readyBtn" class="btn-ready">準備完了</button>
-                </div>
+            <div id="actions">
+                <button id="startBtn" class="btn-start" style="display: none; opacity: 0.5" disabled>ゲーム開始</button>
+                <button id="readyBtn" class="btn-ready">準備完了</button>
             </div>
         </div>
-    </body>
+    </div>
+
+    <button onclick="window.location='/home'" style="
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 9999;
+        background-color: #ff4d4d;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      ">
+        退出
+    </button>
+</body>
+
 </html>

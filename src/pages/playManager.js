@@ -89,6 +89,20 @@ export class playManager {
             }
         });
 
+        this.wss.onMessage('sendChat', async (ws, data) => {
+            const userId = data.userId;
+            const text = data.text;
+            const roomId = data.roomId;
+            const sendData = {
+                type: 'sendChat',
+                payload: {
+                    userId: userId,
+                    text: text,
+                },
+            };
+            this.sendToClients(sendData, roomId);
+        });
+
         this.wss.onMessage('readyMessage', async (ws, data) => {
             const roomId = data.roomId;
             const userId = data.userId;

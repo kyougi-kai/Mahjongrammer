@@ -4,11 +4,29 @@ export class actionManager {
         this.playermanager = playermanager;
         this.readyBtn = document.getElementById('readyBtn');
         this.startBtn = document.getElementById('startBtn');
+        this.chatInput = document.getElementById('chat-input');
         this.isReady = false;
         this.setup();
     }
 
     setup() {
+        document.getElementById('sendButton').addEventListener('click', (e) => {
+            if (this.chatInput.value == '') return;
+
+            const sendText = this.chatInput.value;
+            this.chatInput.value = '';
+
+            const sendData = {
+                type: 'sendChat',
+                payload: {
+                    userId: this.playermanager.userId,
+                    text: sendText,
+                    roomId: this.playermanager.roomId,
+                },
+            };
+            this.wss.send(sendData);
+        });
+
         this.readyBtn.addEventListener('click', (e) => {
             if (this.isReady) {
                 this.sendReadyMessage(false);
@@ -23,6 +41,12 @@ export class actionManager {
             }
 
             this.isReady = !this.isReady;
+        });
+
+        this.wss.onMessage('sendChat', (data) => {
+            const chatText = document.createElement('div');
+            chatText.innerHTML = `<strong>${this.playermanager.playerMembers[data.userId]}:</strong> ${data.text}`;
+            document.getElementById('chat-box').appendChild(chatText);
         });
 
         this.wss.onMessage('changeIsReady', (data) => {
@@ -43,6 +67,11 @@ export class actionManager {
         this.wss.onMessage('moveToPlay', (data) => {
             this.playermanager.sendBeaconFlag = true;
             window.location = `/play/${this.playermanager.roomId}`;
+        });
+
+        this.wss.onMessage('entryRoom', (data) => {
+            this.startBtn.disabled = true;
+            this.startBtn.style.opacity = '0.5';
         });
     }
 

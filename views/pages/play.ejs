@@ -1,24 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-        <link rel="stylesheet" href="/css/play.css" />
-        <script src="/js/pages/play/gameManager.js" type="module" defer></script>
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const colorList = ['#dfdfdf','#ccffcc','#ccf2ff','#e6ccff'];
+<html lang="ja">
 
-                const nameElements = document.querySelectorAll('.name');
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/play.css" />
+    <script src="/js/pages/play/gameManager.js" type="module" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const colorList = ['#dfdfdf', '#ccffcc', '#ccf2ff', '#e6ccff'];
 
-                nameElements.forEach(el => {
-                    const randomColor = colorList[Math.floor(Math.random() * colorList.length)];
-                    el.style.backgroundColor = randomColor;
-                });
+            const nameElements = document.querySelectorAll('.name');
+
+            nameElements.forEach(el => {
+                const randomColor = colorList[Math.floor(Math.random() * colorList.length)];
+                el.style.backgroundColor = randomColor;
             });
-        </script>
-    </head>
+        });
+    </script>
+</head>
 
 <body>
     <div style="display: none;" id="userIdText">
@@ -28,11 +29,11 @@
     <div class="main-content">
         <div class="main-bord">
             <div style="display: none" class="result-page" id="resultpage">
-                    <div id="resultGrammerDiv"></div>
-                    <div id="resetButton" style="display: flex; width: 100%; justify-content: right">
-                        <button class="result-button" id="resultbutton">nextround</button>
-                    </div>
+                <div id="resultGrammerDiv"></div>
+                <div id="resetButton" style="display: flex; width: 100%; justify-content: right">
+                    <button class="result-button" id="resultbutton">nextround</button>
                 </div>
+            </div>
             <div class="complete-div" id="completeDiv" style="opacity: 0;z-index:-1;pointer-events:none;">
                 <h2></h2>
                 <div class="complete-table">
@@ -108,11 +109,10 @@
                 </div>
                 <div style="width:100%;overflow:hidden;">
                     <div class="hai-table" id="wordUp" style="background: rgb(217, 217, 217)"></div>
-                    <div class="hai-table" id="wordDown" style="background-image: url(/img/tyosakukenntaisaku.png)"></div>
+                    <div class="hai-table" id="wordDown" style="background-image: url(/img/tyosakukenntaisaku.png)">
+                    </div>
                 </div>
-            <div
-                id="cheatDiv"
-                style="
+                <div id="cheatDiv" style="
                     z-index: 4;
                     display: none;
                     position: absolute;
@@ -122,24 +122,22 @@
                     transform: translateX(-50%) translateY(-50%);
                     background: white;
                 ">
-                <div style="display: flex">
-                    <div style="padding-right: 20px">
-                        <label for="hinsiDrop">品詞</label>
-                        <select name="hinsis" id="hinsiDrop"></select>
+                    <div style="display: flex">
+                        <div style="padding-right: 20px">
+                            <label for="hinsiDrop">品詞</label>
+                            <select name="hinsis" id="hinsiDrop"></select>
+                        </div>
+                        <div>
+                            <label for="tagDrop">タグ</label>
+                            <select name="tags" id="tagDrop"></select>
+                        </div>
                     </div>
-                    <div>
-                        <label for="tagDrop">タグ</label>
-                        <select name="tags" id="tagDrop"></select>
-                    </div>
+
+                    <button id="pickButton">決定</button>
                 </div>
-
-                <button id="pickButton">決定</button>
             </div>
-        </div>
 
-        <button 
-  onclick="window.location='/home'" 
-  style="
+            <button onclick="window.location='/home'" style="
     position: absolute;
     top: 10px;
     left: 10px;
@@ -153,7 +151,8 @@
     cursor: pointer;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   ">
-  退出
-</button>
-    </body>
+                退出
+            </button>
+</body>
+
 </html>
