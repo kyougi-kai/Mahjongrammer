@@ -127,3 +127,7 @@ backgroundDivName.addEventListener('click', (e) => {
     createRoomName.style.opacity = '0';
     createRoomName.style.pointerEvents = 'none';
 });
+
+document.getElementById('galaxyBtn').addEventListener('click', () => {
+    window.location.href = '/roomkensaku';
+});

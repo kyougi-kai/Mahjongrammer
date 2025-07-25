@@ -240,6 +240,15 @@ app.get('/room', async (req, res) => {
     }
 });
 
+app.get('/roomkensaku', async (req, res) => {
+    try {
+        res.render('pages/roomkensaku'); // ← views/pages/roomkensaku.ejs を表示
+    } catch (err) {
+        console.log(`Error : ${err}`);
+        res.redirect('/room');
+    }
+});
+
 app.get('/play/:parentName', async (req, res) => {
     try {
         const parentId = await nameToId(req.params.parentName);
