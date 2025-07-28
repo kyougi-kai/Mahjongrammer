@@ -147,7 +147,6 @@ export class playerManager {
         while (j < 4) {
             if (j !== 2) {
                 this.nameDivs[j].children[0].innerHTML = '';
-                this.nameDivs[j].children[0].style.color = 'black'; // 色リセット
             }
             j++;
         }
@@ -159,11 +158,6 @@ export class playerManager {
             const nameElem = this.nameDivs[this.phaseToPosition(index)].children[0];
 
             nameElem.innerHTML = value;
-            nameElem.style.color = 'black'; // ← デフォルトに戻す
-
-            if (index == 0) {
-                nameElem.style.color = 'red'; // 親だけ赤くする
-            }
         });
     }
 

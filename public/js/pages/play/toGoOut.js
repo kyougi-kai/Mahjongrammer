@@ -108,7 +108,7 @@ export class toGoOut {
                     errordiv.innerHTML = errorReasons.join('<br>');
                     Object.assign(errordiv.style, {
                         position: 'absolute',
-                        bottom: '25%',
+                        bottom: '275px',
                         left: '15%',
                         backgroundColor: 'rgba(109, 109, 109, 0.4)',
                         color: '#FFFFFF',
@@ -123,7 +123,7 @@ export class toGoOut {
                     });
                     document.body.appendChild(errordiv);
 
-                    const displayDuration = 2000 + errorReasons.length * 500;
+                    const displayDuration = 2000 + errorReasons.length * 1000;
 
                     setTimeout(() => {
                         errordiv.style.opacity = '0';

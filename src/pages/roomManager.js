@@ -19,7 +19,7 @@ export class roomManager {
     }
 
     _setup() {
-        this.wss.onGet('/home', async (ws) => {
+        this.wss.onMessage('requestRoomData', async (ws, data) => {
             const roomData = await roomsrepository.getRoomMemberCountData();
             ws.send(JSON.stringify({ type: 'getRoomData', payload: roomData }));
         });

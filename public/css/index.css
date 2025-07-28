@@ -14,138 +14,187 @@ html {
     height: 100%;
 }
 
-.login-div {
-    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.47);
-    width: 90%;
-    max-width: 300px;
-    display: none;
-}
-
-.login-header {
-    display: flex;
-    background: var(--main-color);
-}
-
-.login-header button {
-    color: white;
-    width: 50%;
-    height: 30px;
-    border: none;
-    background: transparent;
-}
-
-.login-header button p {
-    margin: auto;
-    width: 70%;
-}
-
-.login-footer {
-    display: flex;
-    justify-content: right;
-    margin-top: 10px;
-    border-top: 1px solid var(--main-color);
-}
-
 .nanka {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 15vw;
-    height: 700px;
+    width: 14vw;
+    padding: 8%;
 }
 
 .nanka img {
     width: 100%;
 }
 
-.hoyuji-style {
+.start-btn {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 20%;
     justify-content: center;
     display: flex;
+    background: transparent;
+    border: none;
+    animation: blink 2s linear infinite;
 }
 
-.usersettei{
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.usersettei {
     border-bottom: 1px solid white;
-    color: rgb(255, 255, 255); 
+    color: rgb(255, 255, 255);
     width: 100px;
     animation: tiltAnimation 4s infinite alternate ease-in-out;
 }
 
 @keyframes tiltAnimation {
-    from{
+    from {
         transform: rotate(5deg);
     }
-    to{
+    to {
         transform: rotate(-5deg);
     }
 }
 
-.usersettei2{
+.usersettei2 {
     border-bottom: 1px solid white;
-    color: rgb(255, 255, 255); 
+    color: rgb(255, 255, 255);
     width: 100px;
     animation: tiltAnimation 5s infinite alternate ease-in-out;
 }
 
 @keyframes tiltAnimation {
-    from{
+    from {
         transform: rotate(-4deg);
     }
-    to{
+    to {
         transform: rotate(4deg);
     }
 }
 
-.gu{
+.gu {
     animation: guAnimation 6s infinite alternate ease-in-out;
 }
 
 @keyframes guAnimation {
-    from{
-        transform: rotate(-6deg)  translateY(10px);
+    from {
+        transform: rotate(-6deg) translateY(10px);
     }
-    to{
-        transform: rotate(6deg)  translateY(-10px);
+    to {
+        transform: rotate(6deg) translateY(-10px);
     }
 }
 
-
-.ra{
+.ra {
     animation: raAnimation 4s infinite alternate ease-in-out;
 }
 
 @keyframes raAnimation {
-    from{
-        transform: rotate(4deg)  translateY(-10px);
+    from {
+        transform: rotate(4deg) translateY(-10px);
     }
-    to{
-        transform: rotate(-4deg)  translateY(7px);
+    to {
+        transform: rotate(-4deg) translateY(7px);
     }
 }
 
-
-.ma{
+.ma {
     animation: maAnimation 3.5s infinite alternate ease-in-out;
 }
 
 @keyframes maAnimation {
-    from{
-        transform: rotate(-5deg)  translateY(8px);
+    from {
+        transform: rotate(-5deg) translateY(8px);
     }
-    to{
-        transform: rotate(6deg)  translateY(-12px);
+    to {
+        transform: rotate(6deg) translateY(-12px);
     }
 }
 
-
-.jyann{
+.jyann {
     animation: jyannAnimation 5s infinite alternate ease-in-out;
 }
 
 @keyframes jyannAnimation {
-    from{
-        transform: rotate(6deg)  translateY(-14px);
+    from {
+        transform: rotate(6deg) translateY(-14px);
     }
-    to{
-        transform: rotate(-7deg)  translateY(5px);
+    to {
+        transform: rotate(-7deg) translateY(5px);
     }
+}
+
+.login-box {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 30px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    transition: 0.4s;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 20%;
+}
+
+.tab-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.tab-buttons button {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #e0e0e0;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px 5px 0 0;
+    transition: background-color 0.2s;
+}
+
+.tab-buttons button.active {
+    background-color: #ffffff;
+    font-weight: bold;
+    border-bottom: 2px solid #4a90e2;
+}
+
+.login-box input {
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 280px;
+    outline: none;
+}
+
+.login-box button.submit-btn {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-box button.submit-btn:hover {
+    background-color: #357ab7;
 }

@@ -47,6 +47,18 @@ export class routeManager {
             else (await usersManager.isUserById(userId)) ? res.render('pages/index') : res.redirect('/home');
         });
 
+        this.serverManager.onGet('/roomkensaku', async (req, res) => {
+            await usersManager.isLogin(req, res);
+            try {
+                res.render('pages/roomkensaku', {
+                    name: await usersManager.idToName(req.cookies.userId),
+                    userId: req.cookies.userId,
+                });
+            } catch (err) {
+                console.log(`Error : ${err}`);
+            }
+        });
+
         this.serverManager.onGet('/home', async (req, res) => {
             await usersManager.isLogin(req, res);
             try {

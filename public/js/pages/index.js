@@ -1,46 +1,52 @@
 let loginFlag = 'login';
 const loginHeader = document.getElementsByClassName('login-header')[0];
 
-function changeForm(formName) {
-    if (formName == 'login') {
-        loginHeader.children[0].children[0].style.borderBottom = '1px solid white';
-        loginHeader.children[1].children[0].style.borderBottom = '';
-        loginFlag = 'login';
-    } else {
-        console.log(loginHeader.children[1]);
-        loginHeader.children[1].children[0].style.borderBottom = '1px solid white';
-        loginHeader.children[0].children[0].style.borderBottom = '';
-        loginFlag = 'signin';
-    }
-}
+let startFlag = false;
 
-document.getElementById('loginForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
+document.addEventListener('click', () => {
+    if (!startFlag) {
+        startFlag = true;
+        document.getElementById('startBtn').style.display = 'none';
+        document.getElementById('loginBox').style.display = 'block';
+        document.getElementById('loginBox').style.opacity = '1';
 
-    const username = document.getElementById('usernameInput').value;
-    const password = document.getElementById('passwordInput').value;
+        document.getElementById('submitBtn').addEventListener('click', async () => {
+            const username = document.getElementById('userName').value;
+            const password = document.getElementById('password').value;
 
-    try {
-        const response = await fetch(`/${loginFlag}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username, password }),
+            try {
+                const response = await fetch(`/${loginFlag}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password }),
+                });
+                const data = await response.json();
+                if (data.success) {
+                    window.location.href = '/home';
+                } else {
+                    alert('ログイン失敗: ' + data.error);
+                }
+            } catch (err) {
+                console.log(err);
+            }
         });
-        const data = await response.json();
-        if (data.success) {
-            window.location.href = '/home';
-        } else {
-            alert('ログイン失敗: ' + data.error);
-        }
-    } catch (err) {
-        console.log(err);
     }
 });
 
-const hyoujis = document.getElementById('hyouji');
-const hyoujis2 = document.getElementById('hyoujis');
+const loginTab = document.getElementById('loginTab');
+const signupTab = document.getElementById('signupTab');
+const submitBtn = document.getElementById('submitBtn');
 
-hyoujis.addEventListener('click', () => {
-    hyoujis.style.display = 'none';
-    hyoujis2.style.display = 'inline';
+loginTab.addEventListener('click', () => {
+    loginTab.classList.add('active');
+    signupTab.classList.remove('active');
+    submitBtn.textContent = 'ログイン';
+    loginFlag = 'login';
+});
+
+signupTab.addEventListener('click', () => {
+    signupTab.classList.add('active');
+    loginTab.classList.remove('active');
+    submitBtn.textContent = 'サインイン';
+    loginFlag = 'signin';
 });

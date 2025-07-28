@@ -7,18 +7,6 @@
     <title>Document</title>
     <link rel="stylesheet" href="/css/play.css" />
     <script src="/js/pages/play/gameManager.js" type="module" defer></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const colorList = ['#dfdfdf', '#ccffcc', '#ccf2ff', '#e6ccff'];
-
-            const nameElements = document.querySelectorAll('.name');
-
-            nameElements.forEach(el => {
-                const randomColor = colorList[Math.floor(Math.random() * colorList.length)];
-                el.style.backgroundColor = randomColor;
-            });
-        });
-    </script>
 </head>
 
 <body>
@@ -29,9 +17,10 @@
     <div class="main-content">
         <div class="main-bord">
             <div style="display: none" class="result-page" id="resultpage">
+                <h2 style="color: white;margin: 20px 0;">リザルト</h2>
                 <div id="resultGrammerDiv"></div>
                 <div id="resetButton" style="display: flex; width: 100%; justify-content: right">
-                    <button class="result-button" id="resultbutton">nextround</button>
+                    <button class="result-button" id="resultbutton">次へ</button>
                 </div>
             </div>
             <div class="complete-div" id="completeDiv" style="opacity: 0;z-index:-1;pointer-events:none;">
@@ -68,7 +57,7 @@
             </div>
 
             <div class="throw-hai-table">
-                <div class="throw-hai top-content" style="opacity: 0;">
+                <div class="throw-hai top-content-hai" style="opacity: 0;">
                     word
                 </div>
                 <div class="throw-hai right-content" style="opacity: 0;">

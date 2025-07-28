@@ -1,13 +1,14 @@
 import { connectionManager } from '/js/utils/connectionManager.js';
 import { functions } from '/js/utils/functions.js';
 
-const mainDiv = document.getElementsByClassName('main-div')[0];
 const backgroundDiv = document.getElementById('backgroundDiv');
 const backgroundDivName = document.getElementById('backgroundDivName');
-const createRoomDiv = document.getElementsByClassName('create-room-div')[0];
+const createRoomDiv = document.getElementById('createRoomDiv');
 const createRoomName = document.getElementById('CreatSet');
 const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
 const userId = functions.sN(document.getElementById('userID').innerHTML);
+const roomList = document.getElementById('roomList');
+const mainDiv = roomList.children[1];
 let rooms = [];
 
 window.onload = () => {
@@ -17,6 +18,13 @@ window.onload = () => {
     // サーバーに接続時
     connectionmanager.onOpen(() => {
         console.log('サーバーに接続しました');
+        setTimeout(() => {
+            const sendData = {
+                type: 'requestRoomData',
+                payload: {},
+            };
+            connectionmanager.send(sendData);
+        }, 1000);
     });
 
     // 部屋のデータを取得
@@ -73,46 +81,63 @@ window.onload = () => {
     });
 
     document.getElementById('createBtn').addEventListener('click', () => {
-        let temporaryList = [];
-        Array.from(document.getElementsByClassName('wariai-div')[0].children).forEach((value) => {
-            if (Array.from(value.children).length != 2) return;
-            const ratio = parseInt(value.children[1].value);
-            temporaryList.push(ratio);
-        });
         const sendData = {
             type: 'createRoom',
             payload: {
                 roomName: document.getElementById('roomName').value,
-                ratio: temporaryList,
+                ratio: [5, 4, 2, 0, 2, 1, 0, 0, 2, 2],
                 userId: userId,
             },
         };
         connectionmanager.send(sendData);
     });
+
+    // ボタンの位置
+    document.getElementById('showCreateBtn').style.bottom =
+        Math.floor(parseInt(document.getElementById('backgroundImage').offsetHeight) * 0.17) +
+        (parseInt(window.innerHeight) - parseInt(document.getElementById('backgroundImage').offsetHeight)) / 2 +
+        'px';
+
+    document.getElementById('profile').style.top =
+        Math.floor(parseInt(document.getElementById('backgroundImage').offsetHeight) * 0.07) +
+        (parseInt(window.innerHeight) - parseInt(document.getElementById('backgroundImage').offsetHeight)) / 2 +
+        'px';
 };
+
+window.addEventListener('resize', () => {
+    document.getElementById('showCreateBtn').style.bottom =
+        Math.floor(parseInt(document.getElementById('backgroundImage').offsetHeight) * 0.17) +
+        (parseInt(window.innerHeight) - parseInt(document.getElementById('backgroundImage').offsetHeight)) / 2 +
+        'px';
+
+    document.getElementById('profile').style.top =
+        Math.floor(parseInt(document.getElementById('backgroundImage').offsetHeight) * 0.07) +
+        (parseInt(window.innerHeight) - parseInt(document.getElementById('backgroundImage').offsetHeight)) / 2 +
+        'px';
+});
 
 function createNewRoom(roomName, roomId, roomMemberCounts = 0) {
     let temporaryDiv = document.createElement('div');
-    temporaryDiv.classList.add('room-div');
-    let roomNameText = document.createElement('p');
-    roomNameText.innerHTML = roomName;
-    let temporaryText = document.createElement('p');
-    temporaryText.innerHTML = `${roomMemberCounts}/4`;
-    mainDiv.appendChild(temporaryDiv);
-    temporaryDiv.appendChild(roomNameText);
-    temporaryDiv.appendChild(temporaryText);
-    if (roomMemberCounts != 4) temporaryDiv.setAttribute('onclick', `window.location.href = '/room/${roomId}';`);
+    temporaryDiv.classList.add('room-item');
+    temporaryDiv.innerHTML = `<div class='room-info'><div class='room-name'>${roomName}</div><div class='room-count'>${roomMemberCounts} / 4人</div></div>`;
+    let temporaryBtn = document.createElement('button');
+    temporaryBtn.classList.add('join-btn');
+    temporaryBtn.innerHTML = '参加';
+    temporaryBtn.setAttribute('onclick', `window.location.href = '/room/${roomId}';`);
+    temporaryDiv.appendChild(temporaryBtn);
+    roomList.children[1].appendChild(temporaryDiv);
 }
 
 function updateRoomMemberCounts(roomId, roomMemberCounts) {
     if (rooms[0] === undefined) window.location = '/home';
     const idx = rooms.indexOf(roomId);
-    console.log(mainDiv.children[idx].children);
-    mainDiv.children[idx].children[1].innerHTML = `${roomMemberCounts}/4`;
-
+    console.log(mainDiv);
+    console.log(mainDiv.children[idx]);
+    console.log(mainDiv.children[idx].children[0]);
+    mainDiv.children[idx].children[0].children[1].innerHTML = `${roomMemberCounts} / 4人`;
     roomMemberCounts == 4
-        ? mainDiv.children[idx].setAttribute('onclick', '')
-        : mainDiv.children[idx].setAttribute('onclick', `window.location.href = '/room/${roomId}';`);
+        ? mainDiv.children[idx].children[0].children[1].setAttribute('onclick', '')
+        : mainDiv.children[idx].children[0].children[1].setAttribute('onclick', `window.location.href = '/room/${roomId}';`);
 }
 
 document.getElementById('setname').addEventListener('click', () => {
@@ -129,5 +154,20 @@ backgroundDivName.addEventListener('click', (e) => {
 });
 
 document.getElementById('galaxyBtn').addEventListener('click', () => {
-    window.location.href = '/roomkensaku';
+    if (roomList.style.opacity == '0') {
+        roomList.style.opacity = '1';
+        roomList.style.pointerEvents = 'all';
+    }
+});
+
+document.getElementById('closeRoomList').addEventListener('click', () => {
+    roomList.style.opacity = '0';
+    roomList.style.pointerEvents = 'none';
+});
+
+document.getElementById('closeCreateRoom').addEventListener('click', () => {
+    createRoomDiv.style.opacity = '0';
+    createRoomDiv.style.pointerEvents = 'none';
+    backgroundDiv.style.opacity = '0';
+    backgroundDiv.style.pointerEvents = 'none';
 });

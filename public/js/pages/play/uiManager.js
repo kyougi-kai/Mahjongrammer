@@ -96,7 +96,7 @@ export class uiManager {
     }
 
     showRoundResult(grammerData) {
-        document.getElementById('resultpage').style.display = 'block';
+        document.getElementById('resultpage').style.display = 'flex';
         document.getElementById('resultGrammerDiv').innerHTML = grammerData;
     }
 
@@ -105,7 +105,6 @@ export class uiManager {
     }
 
     showCountDown() {
-
         console.log(this.ponskip);
         this.ponskip.style.display = 'block';
         console.log(this.flow.nowPhaseNumber);

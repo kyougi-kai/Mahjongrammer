@@ -10,21 +10,14 @@ export class actionManager {
     }
 
     setup() {
+        this.chatInput.addEventListener('keydown', (e) => {
+            if (e.key == 'Enter') {
+                this.sendChatMessage();
+            }
+        });
+
         document.getElementById('sendButton').addEventListener('click', (e) => {
-            if (this.chatInput.value == '') return;
-
-            const sendText = this.chatInput.value;
-            this.chatInput.value = '';
-
-            const sendData = {
-                type: 'sendChat',
-                payload: {
-                    userId: this.playermanager.userId,
-                    text: sendText,
-                    roomId: this.playermanager.roomId,
-                },
-            };
-            this.wss.send(sendData);
+            this.sendChatMessage();
         });
 
         this.readyBtn.addEventListener('click', (e) => {
@@ -73,6 +66,23 @@ export class actionManager {
             this.startBtn.disabled = true;
             this.startBtn.style.opacity = '0.5';
         });
+    }
+
+    sendChatMessage() {
+        if (this.chatInput.value == '') return;
+
+        const sendText = this.chatInput.value;
+        this.chatInput.value = '';
+
+        const sendData = {
+            type: 'sendChat',
+            payload: {
+                userId: this.playermanager.userId,
+                text: sendText,
+                roomId: this.playermanager.roomId,
+            },
+        };
+        this.wss.send(sendData);
     }
 
     changeIsReady(targetId, isReady) {

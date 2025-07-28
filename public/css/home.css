@@ -2,53 +2,57 @@ p {
     margin: 0;
 }
 
+html,
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
 
-html, body {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
+.background-image {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .home-div {
-  background-image: url('/img/home.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+    position: fixed; /* これで常に画面に固定 */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
 
-  position: fixed; /* これで常に画面に固定 */
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-
-  overflow: hidden; /* 子要素がはみ出してもスクロールしない */
+    overflow: hidden; /* 子要素がはみ出してもスクロールしない */
 }
 
 .galaxyBtn {
     position: absolute;
-    top: 300px;        
-    left: 650px;       
-    width: 1250px;     
-    height: 600px;     
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -57%);
+    width: 49%;
+    aspect-ratio: 16 / 8;
     background: transparent;
-    border: 2px dashed blue; 
+    /* border: 2px dashed blue; */
+    border: none;
     cursor: pointer;
-    z-index: 10;
+    z-index: 5;
 }
 
-.heyaset{
+.heyaset {
     position: absolute;
-    bottom: 180px;        
-    right: 450px;       
-    width: 250px;     
-    height: 340px;     
+    right: 17%;
+    width: 11%;
+    aspect-ratio: 4 / 5;
     background: transparent;
-    border: 2px dashed red; 
+    /* border: 2px dashed red; */
+    border: none;
     cursor: pointer;
     z-index: 10;
-     transform: rotate(24deg);
+    transform: rotate(24deg);
 }
 
 .name-div {
@@ -58,64 +62,17 @@ html, body {
     transform: rotate(16deg);
 }
 
-.name-button button{
-     position: absolute;
-    top: 50px;
-    right: 200px;
-    width: 450px;
-    height: 260px;
+.name-button button {
+    position: absolute;
+    right: 7%;
+    width: 19%;
+    aspect-ratio: 5 / 3;
     background: transparent;
     border: none;
     cursor: pointer;
     z-index: 10;
-    border: 2px dashed yellow;
+    /* border: 2px dashed yellow; */
     transform: rotate(16deg);
-}
-
-.main-div {
-    border: 1px solid black;
-    width: 500px;
-    margin: auto;
-}
-
-.room-div {
-    width: 100%;
-    height: 60px;
-    border: 1px solid black;
-}
-
-.create-room-div {
-    box-shadow: 0px 0px 2px 2px black;
-    margin: auto;
-    z-index: 100;
-    transition: 0.6s;
-    background: rgb(227, 227, 227);
-}
-
-.create-room-name {
-    width: 400px;
-    height: 200px;
-    margin: auto;
-
-    box-shadow: 0px 0px 2px 2px black;
-    margin: auto;
-    z-index: 5;
-    transition: 0.6s;
-    background: rgb(227, 227, 227);
-}
-
-.wariai-div {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-}
-
-.create-room-div p {
-    margin: 0;
-    font-size: 16px;
-}
-
-.create-room-div div {
-    margin: 8px 4px;
 }
 
 .background-div {
@@ -132,4 +89,14 @@ html, body {
 
 .userID {
     display: none;
+}
+
+.room-name-input {
+    margin: auto auto 10px auto;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 90%;
+    outline: none;
 }
