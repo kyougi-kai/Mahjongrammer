@@ -138,7 +138,14 @@ export function checkGrammer(targetArray) {
             GCR.message.push('存在しない文型を指定しています');
             break;
     }
+    if (GCR.success = true){
+        GCR = exchangeToPoint(GCR);
+    }
     return GCR;
+}
+
+function exchangeToPoint(GCR){
+
 }
 
 function checkS(targetSentence, GCR) /*＜S＞*/ {
@@ -160,6 +167,9 @@ function checkC(targetSentence, GCR) /*＜C＞*/ {
         GCR = checkMeisiRoot(targetSentence, GCR);
     } else {
         GCR = checkKeiyousiRoot(targetSentence, GCR);
+    }
+    if (Object.values(GCR.errors).some((error) => error.part === 'C')) {
+        GCR.successes[GCR.currentType[GCR.currentTypeNum]].push('false');
     }
     return GCR;
 }
@@ -202,7 +212,10 @@ function checkO(targetSentence, GCR) /*＜O＞*/ {
     } else {
         GCR = checkMeisiRoot(targetSentence, GCR);
     }
-    if (Object.values(GCR.errors).some((error) => error.part === 'O')) {
+    if (Object.values(GCR.errors).some((error) => error.part === 'O1')) {
+        GCR.successes[GCR.currentType[GCR.currentTypeNum]].push('false');
+    }
+    if (Object.values(GCR.errors).some((error) => error.part === 'O2')) {
         GCR.successes[GCR.currentType[GCR.currentTypeNum]].push('false');
     }
     return GCR;
