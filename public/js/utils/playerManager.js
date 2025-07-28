@@ -78,9 +78,11 @@ export class playerManager {
             }
         */
         this.wss?.onMessage('entryRoom', (data) => {
-            this.playerMembers[data.userId] = data.username;
-            console.log(this.playerMembers);
-            this.type == 'play' ? this.updatePlayerName() : this.addPlayer(data.username, data.isReady);
+            if (this.type != 'play') {
+                this.playerMembers[data.userId] = data.username;
+                console.log(this.playerMembers);
+                this.addPlayer(data.username, data.isReady);
+            }
         });
 
         /*

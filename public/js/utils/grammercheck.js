@@ -138,14 +138,14 @@ export function checkGrammer(targetArray) {
             GCR.message.push('存在しない文型を指定しています');
             break;
     }
-    if (GCR.success = true){
+    if ((GCR.success = true)) {
         GCR = exchangeToPoint(GCR);
     }
     return GCR;
 }
 
-function exchangeToPoint(GCR){
-
+function exchangeToPoint(GCR) {
+    return GCR;
 }
 
 function checkS(targetSentence, GCR) /*＜S＞*/ {

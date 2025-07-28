@@ -8,6 +8,7 @@ export class flow {
         this.playermanager = playermanager;
         this.togoout = togoout;
         this.datamanager = datamanager;
+        this.gameCount = 0;
 
         this.scorebords = document.getElementById('scoreBord');
         this.youCanThrow = false;
@@ -151,9 +152,8 @@ export class flow {
             this.uimanager.pon();
             this.nowPhaseNumber = data.ponPlayerNumber;
             data.ponPlayerNumber == this.playermanager.getPlayerNumber() ? this.nextPhase(true) : this.nextPhase();
-            console.log(data.ponPlayerNumber)
+            console.log(data.ponPlayerNumber);
             if (data.ponPlayerNumber == this.playermanager.getPlayerNumber()) {
-                
                 let nanka = document.createElement('div');
                 nanka.innerHTML = this.throwElement;
 
@@ -211,9 +211,8 @@ export class flow {
 
             overlay.addEventListener('animationend', () => {
                 overlay.remove();
-                style.remove(); 
+                style.remove();
             });
-
         });
         this.wss.onMessage('reStart', (data) => {
             this.uimanager.hideNowBlink();
@@ -337,6 +336,12 @@ export class flow {
     }
 
     reStart(nextParent) {
+        this.gameCount++;
+        if (this.gameCount == 1) {
+            this.playermanager.sendBeaconFlag = true;
+            window.location = '/room/' + this.playermanager.roomId;
+        }
+
         // やること
         console.log('reStart');
         this.uimanager.initTable();

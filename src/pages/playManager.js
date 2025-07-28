@@ -24,7 +24,8 @@ export class playManager {
         // const ratio = await roomsDB.getRow('ratio', 'room_id', roomId);
 
         // room_member に追加
-        await roomMemberDB.addRoomMember(roomId, userId);
+        const isPlayer = await roomMemberDB.isNull('user_id', userId);
+        if (isPlayer) await roomMemberDB.addRoomMember(roomId, userId);
 
         let roomMembersData = await roomMemberDB.getRoomMembers(roomId);
 
@@ -39,21 +40,21 @@ export class playManager {
                 },
             })
         );
-
-        const username = await usersManager.idToName(userId);
-        const sendData = {
-            type: 'entryRoom',
-            payload: {
-                username: username,
-                userId: userId,
-                isReady: false,
-            },
-        };
-        this.sendToClients(sendData, roomId);
-
         // playClientsに保存
         this.playclientsmanager.entryRoom(roomId, userId, ws);
-        this.roommanager.noticeEntryRoom(roomId, roomMembersData.length);
+        if (isPlayer) {
+            const username = await usersManager.idToName(userId);
+            const sendData = {
+                type: 'entryRoom',
+                payload: {
+                    username: username,
+                    userId: userId,
+                    isReady: false,
+                },
+            };
+            this.sendToClients(sendData, roomId);
+            this.roommanager.noticeEntryRoom(roomId, roomMembersData.length);
+        }
     }
 
     _setup() {
@@ -62,6 +63,7 @@ export class playManager {
             const ratio = await roomsDB.getRow('ratio', 'room_id', roomId);
             const userId = data.userId;
             let roomMembersData = await roomMemberDB.getRoomMembers(roomId);
+            await roomMemberDB.updateIsReady(userId, false);
             this.playclientsmanager.entryRoom(roomId, userId, ws);
 
             // 割合送信

@@ -7,6 +7,7 @@
     max-width: 600px;
     min-width: 320px;
     max-height: 80vh;
+    min-height: 200px;
     background-color: #eaeaea;
     border-radius: 12px;
     display: flex;
@@ -21,7 +22,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
 }
 
 .room-list-header h2 {
