@@ -2,10 +2,12 @@
 cd C:\Users\Student\Documents\Github\Mahjongrammer
 
 //プロンプトからのクラウドデータベースへの接続
-mysql -h trolley.proxy.rlwy.net -u root -p railway --port 59200 --protocol=TCP
+mysql -h trolley.proxy.rlwy.net -u root -p railway --port 35337 --protocol=TCP
+
+mysql -h crossover.proxy.rlwy.net -u root -p --port 35337 --protocol=TCP railway
 
 //パスワード
-yqHSkiatKYxPmlMdQJjdArjmYmdiWhDB
+OgwUqnqxuKNJFHmfdYwyfCjssLLLVgCW
 
 //データベース名
 railway
