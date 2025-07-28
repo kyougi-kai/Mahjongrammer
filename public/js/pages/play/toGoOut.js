@@ -92,14 +92,44 @@ export class toGoOut {
     tumo() {
         const grammerDatas = this.getGrammerData();
         if (grammerDatas == false) {
-            // 今後
+            // 今後の処理
         } else {
             let errorFlag = false;
             grammerDatas.forEach((data) => {
                 const checkResult = checkGrammer(data);
                 console.log('checkResult');
                 console.log(checkResult);
-                if (checkResult.success == false) errorFlag = true;
+
+                if (checkResult.success == false) {
+                    errorFlag = true;
+
+                    const errorReasons = [...new Set(Object.values(checkResult.errors).map((error) => error.reason))];
+                    const errordiv = document.createElement('div');
+                    errordiv.innerHTML = errorReasons.join('<br>');
+                    Object.assign(errordiv.style, {
+                        position: 'absolute',
+                        bottom: '25%',
+                        left: '15%',
+                        backgroundColor: 'rgba(109, 109, 109, 0.4)',
+                        color: '#FFFFFF',
+                        border: '2px solid #000000',
+                        zIndex: 9999,
+                        fontSize: '24px',
+                        opacity: '1',
+                        borderRadius: '10px',
+                        transition: 'opacity 0.5s ease',
+                        padding: '10px',
+                        maxWidth: '60%',
+                    });
+                    document.body.appendChild(errordiv);
+
+                    const displayDuration = 2000 + errorReasons.length * 500;
+
+                    setTimeout(() => {
+                        errordiv.style.opacity = '0';
+                        errordiv.addEventListener('transitionend', () => errordiv.remove(), { once: true });
+                    }, displayDuration);
+                }
             });
 
             return !errorFlag;

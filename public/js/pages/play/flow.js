@@ -151,7 +151,9 @@ export class flow {
             this.uimanager.pon();
             this.nowPhaseNumber = data.ponPlayerNumber;
             data.ponPlayerNumber == this.playermanager.getPlayerNumber() ? this.nextPhase(true) : this.nextPhase();
+            console.log(data.ponPlayerNumber)
             if (data.ponPlayerNumber == this.playermanager.getPlayerNumber()) {
+                
                 let nanka = document.createElement('div');
                 nanka.innerHTML = this.throwElement;
 
@@ -163,6 +165,55 @@ export class flow {
                     this.hai.changeKatuyou();
                 });
             }
+            const overlay = document.createElement('div');
+            overlay.textContent = `${this.playermanager.getPlayerName(this.playermanager.getPlayerNumber())}さんがポン！`;
+
+            Object.assign(overlay.style, {
+                position: 'fixed',
+                top: '50%',
+                left: '0',
+                transform: 'translate(-100%, -50%)',
+                width: '100vw',
+                textAlign: 'center',
+                fontSize: '200px',
+                fontWeight: 'bold',
+                color: '#ffab4bff',
+                backgroundColor: 'rgba(0,0,0,0.6)',
+                zIndex: '10000',
+                pointerEvents: 'none',
+                animation: 'cutin-move 1s ease-out forwards',
+            });
+
+            const style = document.createElement('style');
+            style.textContent = `
+            @keyframes cutin-move {
+                0% {
+                    transform: translate(-100%, -50%);
+                    opacity: 0;
+                }
+                7% {
+                    transform: translate(0%, -50%);
+                    opacity: 1;
+                }
+                93% {
+                    transform: translate(0%, -50%);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translate(100%, -50%);
+                    opacity: 0;
+                }
+            }
+            `;
+            document.head.appendChild(style);
+
+            document.body.appendChild(overlay);
+
+            overlay.addEventListener('animationend', () => {
+                overlay.remove();
+                style.remove(); 
+            });
+
         });
         this.wss.onMessage('reStart', (data) => {
             this.uimanager.hideNowBlink();

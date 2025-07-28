@@ -346,15 +346,17 @@ p {
     font-size: large;
 }
 .finish-button {
-    background: rgb(178 178 178);
+    background: transparent;       
+    border: 2px solid #FFFFFF;      
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    border: none;
+    transform: translate(-50%, -50%);
     font-size: 16px;
     aspect-ratio: 1 / 1;
+    color: #FFFFFF;           
 }
+
 
 .complete-div {
     position: absolute;
@@ -501,3 +503,4 @@ p {
         transform: rotate(-7deg)  translateY(5px);
     }
 }
+

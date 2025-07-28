@@ -105,6 +105,7 @@ export class uiManager {
     }
 
     showCountDown() {
+
         console.log(this.ponskip);
         this.ponskip.style.display = 'block';
         console.log(this.flow.nowPhaseNumber);

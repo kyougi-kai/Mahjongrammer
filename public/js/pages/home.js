@@ -3,7 +3,9 @@ import { functions } from '/js/utils/functions.js';
 
 const mainDiv = document.getElementsByClassName('main-div')[0];
 const backgroundDiv = document.getElementById('backgroundDiv');
+const backgroundDivName = document.getElementById('backgroundDivName');
 const createRoomDiv = document.getElementsByClassName('create-room-div')[0];
+const createRoomName = document.getElementById('CreatSet');
 const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
 const userId = functions.sN(document.getElementById('userID').innerHTML);
 let rooms = [];
@@ -112,3 +114,20 @@ function updateRoomMemberCounts(roomId, roomMemberCounts) {
         ? mainDiv.children[idx].setAttribute('onclick', '')
         : mainDiv.children[idx].setAttribute('onclick', `window.location.href = '/room/${roomId}';`);
 }
+
+document.getElementById('setname').addEventListener('click', () => {
+    backgroundDivName.style.opacity = '1';
+    backgroundDivName.style.pointerEvents = 'all';
+    createRoomName.style.opacity = '1';
+    createRoomName.style.pointerEvents = 'all';
+});
+backgroundDivName.addEventListener('click', (e) => {
+    backgroundDivName.style.opacity = '0';
+    backgroundDivName.style.pointerEvents = 'none';
+    createRoomName.style.opacity = '0';
+    createRoomName.style.pointerEvents = 'none';
+});
+
+document.getElementById('galaxyBtn').addEventListener('click', () => {
+    window.location.href = '/roomkensaku';
+});
