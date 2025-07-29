@@ -1057,6 +1057,7 @@ function exchangeToPoint(GCR,targetSentence) {
     GCR.points[keyName] = {...pointTemplete};
     GCR.points[keyName].pointName = keyName;
     GCR.points[keyName].pointValue += totalWordsCount * 100; 
+    
     return GCR;
 }
 
