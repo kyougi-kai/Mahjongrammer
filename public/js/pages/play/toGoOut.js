@@ -62,6 +62,7 @@ export class toGoOut {
 
     getGrammerData() {
         let grammerData = [];
+        let wordsCount = 0;
         Array.from(this.table.children).forEach((value, index) => {
             if (!value.classList.contains('sentence-div')) return false;
             grammerData.push({});
@@ -80,11 +81,15 @@ export class toGoOut {
                     const wordText = p ? p.textContent.trim() : '';
                     console.log(wordText);
                     grammerData[index][valString].push(wordText);
+                    wordsCount++;
                 });
             });
             if (Object.keys(this.sentenceList).indexOf(grammerString) == -1) return false;
             grammerData[index].sentence = this.sentenceList[grammerString];
         });
+
+        // 上がるときの下限
+        if (wordsCount < 5) grammerData = false;
 
         return grammerData;
     }

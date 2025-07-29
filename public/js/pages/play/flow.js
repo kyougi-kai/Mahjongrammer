@@ -10,6 +10,9 @@ export class flow {
         this.datamanager = datamanager;
         this.gameCount = 0;
 
+        this.ponCount = 0;
+        this.myScore = 2500;
+
         this.scorebords = document.getElementById('scoreBord');
         this.youCanThrow = false;
         this.throwElement = null;
