@@ -21,6 +21,7 @@ export class playManager {
     async onMessageEntryRoom(ws, data) {
         const roomId = data.roomId;
         const userId = data.userId;
+        const parentId = await roomsDB.getRow('parent_id', 'room_id', roomId);
         // const ratio = await roomsDB.getRow('ratio', 'room_id', roomId);
 
         // room_member に追加
@@ -54,6 +55,8 @@ export class playManager {
             };
             this.sendToClients(sendData, roomId);
             this.roommanager.noticeEntryRoom(roomId, roomMembersData.length);
+        } else if (userId == parentId) {
+            this.playclientsmanager.playClients[roomId].entry = 0;
         }
     }
 
@@ -65,9 +68,9 @@ export class playManager {
             let roomMembersData = await roomMemberDB.getRoomMembers(roomId);
             await roomMemberDB.updateIsReady(userId, false);
             this.playclientsmanager.entryRoom(roomId, userId, ws);
+            console.log('clientsLength', Object.keys(this.playclientsmanager.playClients[roomId]).length - 2);
 
             // 割合送信
-            console.log('roomMembersData:', roomMembersData);
             await ws.send(
                 JSON.stringify({
                     type: 'getRoomMemberData',
@@ -80,13 +83,13 @@ export class playManager {
 
             this.playclientsmanager.playClients[roomId].entry++;
             const roomMemberCounts = await roomMemberDB.roomMemberCounts(roomId);
-            console.log(this.playclientsmanager.playClients[roomId].entry, roomMemberCounts);
             if (this.playclientsmanager.playClients[roomId].entry == roomMemberCounts) {
                 const sendData = {
                     type: 'startGame',
                     payload: {},
                 };
-
+                console.log('sendStart');
+                this.playclientsmanager.playClients[roomId].entry = 0;
                 this.sendToClients(sendData, roomId);
             }
         });

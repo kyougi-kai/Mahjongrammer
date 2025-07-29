@@ -337,7 +337,7 @@ export class flow {
 
     reStart(nextParent) {
         this.gameCount++;
-        if (this.gameCount == 1) {
+        if (this.gameCount == 4) {
             this.playermanager.sendBeaconFlag = true;
             window.location = '/room/' + this.playermanager.roomId;
         }

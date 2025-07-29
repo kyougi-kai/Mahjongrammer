@@ -78,7 +78,7 @@ export class playerManager {
             }
         */
         this.wss?.onMessage('entryRoom', (data) => {
-            if (this.type != 'play') {
+            if (this.type != 'play' && !this.playerMembers.hasOwnProperty(data.userId)) {
                 this.playerMembers[data.userId] = data.username;
                 console.log(this.playerMembers);
                 this.addPlayer(data.username, data.isReady);
