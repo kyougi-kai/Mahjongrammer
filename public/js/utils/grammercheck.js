@@ -8,6 +8,11 @@ const errorTemplete = {
     suggestion: '',
 };
 
+const pointTemplete = {
+    pointName:'',
+    pointValue: 0,
+}
+
 export function checkGrammer(targetArray) {
     targetArray.sentence = targetArray.sentence.toString();
 
@@ -139,12 +144,52 @@ export function checkGrammer(targetArray) {
             break;
     }
     if (GCR.success == true) {
-        GCR = exchangeToPoint(GCR);
+        GCR = exchangeToPoint(GCR,targetArray.sentence);
     }
     return GCR;
 }
 
-function exchangeToPoint(GCR) {
+function exchangeToPoint(GCR,targetSentence) {
+     GCR.points = {};
+    let keyName;
+    let totalWordsCount = 0;
+        
+    switch(targetSentence){
+        case '1': //第一文型SV
+             totalWordsCount += GCR.allOfSTags.wordsCount;
+    totalWordsCount += GCR.allOfVTags.wordsCount;   
+            break;
+        case '2': //第二文型SVC
+               totalWordsCount += GCR.allOfSTags.wordsCount;
+    totalWordsCount += GCR.allOfVTags.wordsCount;
+    totalWordsCount += GCR.allOfCTags.wordsCount;
+            break;
+        case '3': //第三文型SVO
+                totalWordsCount += GCR.allOfSTags.wordsCount;
+    totalWordsCount += GCR.allOfVTags.wordsCount;
+        totalWordsCount += GCR.allOfO1Tags.wordsCount;
+            break;
+        case '4': //第四文型SVOO
+               totalWordsCount += GCR.allOfSTags.wordsCount;
+    totalWordsCount += GCR.allOfVTags.wordsCount;
+        totalWordsCount += GCR.allOfO1Tags.wordsCount;
+            totalWordsCount += GCR.allOfO2Tags.wordsCount;
+            break;
+        case '5': //第五文型SVOC
+               totalWordsCount += GCR.allOfSTags.wordsCount;
+    totalWordsCount += GCR.allOfVTags.wordsCount;
+        totalWordsCount += GCR.allOfO1Tags.wordsCount;
+    totalWordsCount += GCR.allOfCTags.wordsCount;
+            break;
+        default:
+            GCR.message.push('存在しない文型を指定しています');
+            break;
+    }
+    GCR.wordsCount = totalWordsCount;
+    keyName = '牌の個数';
+    GCR.points[keyName] = {...pointTemplete};
+    GCR.points[keyName].pointName = keyName;
+    GCR.points[keyName].pointValue += totalWordsCount * 100; 
     return GCR;
 }
 

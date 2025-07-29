@@ -856,11 +856,16 @@ const errorTemplete = {
     suggestion: '',
 };
 
+const pointTemplete = {
+    pointName:'',
+    pointValue: 0,
+}
+
 let checkGrammerTestArray = {
-    sentence: 2,
-    s: ['apples'],
-    v: ['is'],
-    c: ['happy'],
+    sentence: 3,
+    s: ['he'],
+    v: ['hear'],
+    o1: ['an','apple'],
 };
 
 const testGCR = {
@@ -1005,6 +1010,53 @@ function checkGrammer(targetArray) {
             GCR.message.push('存在しない文型を指定しています');
             break;
     }
+    if ((GCR.success == true)) {
+        GCR = exchangeToPoint(GCR,targetArray.sentence);
+    }
+    return GCR;
+}
+
+function exchangeToPoint(GCR,targetSentence) {
+    GCR.points = {};
+    let keyName;
+    let totalWordsCount = 0;
+        
+    switch(targetSentence){
+        case '1': //第一文型SV
+             totalWordsCount += GCR.allOfSTags.wordsCount;
+    totalWordsCount += GCR.allOfVTags.wordsCount;   
+            break;
+        case '2': //第二文型SVC
+               totalWordsCount += GCR.allOfSTags.wordsCount;
+    totalWordsCount += GCR.allOfVTags.wordsCount;
+    totalWordsCount += GCR.allOfCTags.wordsCount;
+            break;
+        case '3': //第三文型SVO
+                totalWordsCount += GCR.allOfSTags.wordsCount;
+    totalWordsCount += GCR.allOfVTags.wordsCount;
+        totalWordsCount += GCR.allOfO1Tags.wordsCount;
+            break;
+        case '4': //第四文型SVOO
+               totalWordsCount += GCR.allOfSTags.wordsCount;
+    totalWordsCount += GCR.allOfVTags.wordsCount;
+        totalWordsCount += GCR.allOfO1Tags.wordsCount;
+            totalWordsCount += GCR.allOfO2Tags.wordsCount;
+            break;
+        case '5': //第五文型SVOC
+               totalWordsCount += GCR.allOfSTags.wordsCount;
+    totalWordsCount += GCR.allOfVTags.wordsCount;
+        totalWordsCount += GCR.allOfO1Tags.wordsCount;
+    totalWordsCount += GCR.allOfCTags.wordsCount;
+            break;
+        default:
+            GCR.message.push('存在しない文型を指定しています');
+            break;
+    }
+    GCR.wordsCount = totalWordsCount;
+    keyName = '牌の個数';
+    GCR.points[keyName] = {...pointTemplete};
+    GCR.points[keyName].pointName = keyName;
+    GCR.points[keyName].pointValue += totalWordsCount * 100; 
     return GCR;
 }
 
@@ -1040,6 +1092,7 @@ function checkKeiyousiRoot(targetSentence, GCR) /*＜形容詞根＞*/ {
     let truenum = targetSentence.flat(Infinity).length;
     let keiyousiCount = 0;
     let targetIndex = 0;
+    GCR['allOfCTags'] = {Ckeiyousi:[], wordsCount: 0, targetIndex: 0 };
     if (Array.isArray(targetSentence[targetIndex])) {
         keiyousiCount += checkHukusiOfCKeiyousi(targetSentence, GCR);
         targetIndex++;
@@ -1050,6 +1103,9 @@ function checkKeiyousiRoot(targetSentence, GCR) /*＜形容詞根＞*/ {
     } else {
         GCR = errorManager(GCR, '', 'HogoMissOfAny'); //補語のどこかにミスがある
     }
+    GCR['allOfCTags'].Ckeiyousi.push(tango[targetSentence[GCR['allOfCTags'].targetIndex]].tags); //タグを代入
+    GCR['allOfCTags'].Ckeiyousi = GCR['allOfCTags'].Ckeiyousi.flat(Infinity);
+    GCR['allOfCTags'].wordsCount += 1;
     return GCR;
 }
 
@@ -1230,6 +1286,7 @@ function checkKoutiKeiyousiRoot(targetSentence, GCR) {
 function checkDaimeisi(targetSentence, GCR) /*＜代名詞根＞*/ {
     let DaimeisiTypeArray;
     let typeText = '';
+    GCR['allOf' + GCR.currentType[GCR.currentTypeNum] + 'Tags'] = { daimeisi:[], wordsCount: 0, targetIndex: 0 };
     switch (GCR.currentType[GCR.currentTypeNum]) {
         case 'S':
             DaimeisiTypeArray = ['主格', '指示代名詞', '不定代名詞', '疑問代名詞'];
@@ -1254,6 +1311,9 @@ function checkDaimeisi(targetSentence, GCR) /*＜代名詞根＞*/ {
             GCR = errorManager(GCR, typeText, 'Daimeisi');
         }
     }
+    GCR['allOf' + GCR.currentType[GCR.currentTypeNum] + 'Tags'].daimeisi.push(tango[targetSentence[GCR['allOf' + GCR.currentType[GCR.currentTypeNum] + 'Tags'].targetIndex]].tags); //タグを代入
+    GCR['allOf' + GCR.currentType[GCR.currentTypeNum] + 'Tags'].daimeisi = GCR['allOf' + GCR.currentType[GCR.currentTypeNum] + 'Tags'].daimeisi.flat(Infinity);
+    GCR['allOf' + GCR.currentType[GCR.currentTypeNum] + 'Tags'].wordsCount += 1;
     return GCR;
 }
 
