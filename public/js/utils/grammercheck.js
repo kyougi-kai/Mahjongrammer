@@ -223,6 +223,7 @@ function checkKeiyousiRoot(targetSentence, GCR) /*＜形容詞根＞*/ {
     let truenum = targetSentence.flat(Infinity).length;
     let keiyousiCount = 0;
     let targetIndex = 0;
+    GCR['allOfCTags'] = {Ckeiyousi:[], wordsCount: 0, targetIndex: 0 };
     if (Array.isArray(targetSentence[targetIndex])) {
         keiyousiCount += checkHukusiOfCKeiyousi(targetSentence, GCR);
         targetIndex++;
@@ -233,6 +234,9 @@ function checkKeiyousiRoot(targetSentence, GCR) /*＜形容詞根＞*/ {
     } else {
         GCR = errorManager(GCR, '', 'HogoMissOfAny'); //補語のどこかにミスがある
     }
+    GCR['allOfCTags'].Ckeiyousi.push(tango[targetSentence[GCR['allOfCTags'].targetIndex]].tags); //タグを代入
+    GCR['allOfCTags'].Ckeiyousi = GCR['allOfCTags'].Ckeiyousi.flat(Infinity);
+    GCR['allOfCTags'].wordsCount += 1;
     return GCR;
 }
 
@@ -413,6 +417,7 @@ function checkKoutiKeiyousiRoot(targetSentence, GCR) {
 function checkDaimeisi(targetSentence, GCR) /*＜代名詞根＞*/ {
     let DaimeisiTypeArray;
     let typeText = '';
+    GCR['allOf' + GCR.currentType[GCR.currentTypeNum] + 'Tags'] = { daimeisi:[], wordsCount: 0, targetIndex: 0 };
     switch (GCR.currentType[GCR.currentTypeNum]) {
         case 'S':
             DaimeisiTypeArray = ['主格', '指示代名詞', '不定代名詞', '疑問代名詞'];
@@ -422,11 +427,7 @@ function checkDaimeisi(targetSentence, GCR) /*＜代名詞根＞*/ {
             DaimeisiTypeArray = ['主格', '所有代名詞', '再帰代名詞', '指示代名詞', '不定代名詞', '疑問代名詞'];
             typeText = '補語';
             break;
-        case 'O1':
-            DaimeisiTypeArray = ['目的格', '再帰代名詞', '指示代名詞', '不定代名詞', '疑問代名詞'];
-            typeText = '目的語';
-            break;
-        case 'O2':
+        case 'O':
             DaimeisiTypeArray = ['目的格', '再帰代名詞', '指示代名詞', '不定代名詞', '疑問代名詞'];
             typeText = '目的語';
             break;
@@ -441,6 +442,9 @@ function checkDaimeisi(targetSentence, GCR) /*＜代名詞根＞*/ {
             GCR = errorManager(GCR, typeText, 'Daimeisi');
         }
     }
+    GCR['allOf' + GCR.currentType[GCR.currentTypeNum] + 'Tags'].daimeisi.push(tango[targetSentence[GCR['allOf' + GCR.currentType[GCR.currentTypeNum] + 'Tags'].targetIndex]].tags); //タグを代入
+    GCR['allOf' + GCR.currentType[GCR.currentTypeNum] + 'Tags'].daimeisi = GCR['allOf' + GCR.currentType[GCR.currentTypeNum] + 'Tags'].daimeisi.flat(Infinity);
+    GCR['allOf' + GCR.currentType[GCR.currentTypeNum] + 'Tags'].wordsCount += 1;
     return GCR;
 }
 
@@ -449,7 +453,7 @@ function checkMeisiGrammerMatters(targetSentence, GCR) {
     if (GCR[GCR.flagsNum].kansi.length > 0 && !GCR[GCR.flagsNum].kansi.includes('false') && GCR[GCR.flagsNum].meisi.includes('false')) {
         /*名詞が入っていない場合*/ GCR = errorManager(GCR, '', 'MeisiNotExist');
     }
-    if (GCR[GCR.flagsNum].kansi.includes('false') && GCR[GCR.flagsNum].meisi.includes('可算名詞')) {
+    if (GCR[GCR.flagsNum].kansi.includes('false') && GCR[GCR.flagsNum].meisi.includes('可算名詞') && GCR[GCR.flagsNum].meisi.includes('単数形')) {
         /*冠詞が空で名詞が可算名詞の場合*/ GCR = errorManager(GCR, '', 'KansiNotExist');
     }
     if (GCR[GCR.flagsNum].meisi.includes('不可算名詞') && GCR[GCR.flagsNum].kansi.includes('不定冠詞')) {
@@ -480,6 +484,8 @@ function checkMeisiGrammerMatters(targetSentence, GCR) {
     return GCR;
 }
 
+//console.log('checkV結果：', checkGrammerTestArray.v, checkV(checkGrammerTestArray.v, testGCR, checkGrammerTestArray.sentence));
+
 function checkV(targetSentence, GCR, sentenceType) /*＜V＞*/ {
     let temporaryIndex = targetSentence.length - 1;
     GCR['allOfVTags'] = { houjodousi: [], jodousi: [], zentiHukusi: [], dousi: [], koutiHukusi: [], wordsCount: 0, targetIndex: temporaryIndex };
@@ -501,6 +507,8 @@ function checkV(targetSentence, GCR, sentenceType) /*＜V＞*/ {
     }
     return GCR;
 }
+
+
 
 function checkDousi(targetSentence, GCR, sentenceType) {
     if (Array.isArray(targetSentence[GCR['allOfVTags'].targetIndex])) {
@@ -578,9 +586,7 @@ function checkJodousiRoot(targetSentence, GCR) {
         GCR['allOfVTags'].targetIndex -= 1;
     }
     //法助動詞の次に法助動詞が続いたらエラー、そのほかの助動詞はOK
-    if (GCR['allOfVTags'].targetIndex < 0) {
-        return GCR;
-    }
+
     if (tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags.includes('法助動詞')) {
         GCR['allOfVTags'].houjodousi.push(tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags); //タグを代入
         GCR['allOfVTags'].houjodousi = GCR['allOfVTags'].houjodousi.flat(Infinity);
