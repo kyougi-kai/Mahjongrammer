@@ -858,7 +858,7 @@ const errorTemplete = {
 
 let checkGrammerTestArray = {
     sentence: 2,
-    s: ['an', 'apple'],
+    s: ['apples'],
     v: ['is'],
     c: ['happy'],
 };
@@ -1262,7 +1262,7 @@ function checkMeisiGrammerMatters(targetSentence, GCR) {
     if (GCR[GCR.flagsNum].kansi.length > 0 && !GCR[GCR.flagsNum].kansi.includes('false') && GCR[GCR.flagsNum].meisi.includes('false')) {
         /*名詞が入っていない場合*/ GCR = errorManager(GCR, '', 'MeisiNotExist');
     }
-    if (GCR[GCR.flagsNum].kansi.includes('false') && GCR[GCR.flagsNum].meisi.includes('可算名詞')) {
+    if (GCR[GCR.flagsNum].kansi.includes('false') && GCR[GCR.flagsNum].meisi.includes('可算名詞') && GCR[GCR.flagsNum].meisi.includes('単数形')) {
         /*冠詞が空で名詞が可算名詞の場合*/ GCR = errorManager(GCR, '', 'KansiNotExist');
     }
     if (GCR[GCR.flagsNum].meisi.includes('不可算名詞') && GCR[GCR.flagsNum].kansi.includes('不定冠詞')) {
