@@ -827,7 +827,7 @@ function pointManager(GCR) {
 }
 
 function checkTotalGrammerMatters(GCR){
-    
+    let keyName;
     return GCR;
 }
 
