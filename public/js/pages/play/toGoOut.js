@@ -89,7 +89,7 @@ export class toGoOut {
         });
 
         // 上がるときの下限
-        /*if (wordsCount < 5) {
+        if (wordsCount < 5) {
             grammerData = false;
 
             const errordiv = document.createElement('div');
@@ -117,7 +117,7 @@ export class toGoOut {
                 errordiv.style.opacity = '0';
                 errordiv.addEventListener('transitionend', () => errordiv.remove(), { once: true });
             }, displayDuration);
-        }*/
+        }
 
         return grammerData;
     }
