@@ -156,6 +156,7 @@ export class flow {
             this.nowPhaseNumber = data.ponPlayerNumber;
             data.ponPlayerNumber == this.playermanager.getPlayerNumber() ? this.nextPhase(true) : this.nextPhase();
             console.log(data.ponPlayerNumber);
+            console.log(this.playermanager.getPlayerNumber());
             if (data.ponPlayerNumber == this.playermanager.getPlayerNumber()) {
                 let nanka = document.createElement('div');
                 nanka.innerHTML = this.throwElement;
@@ -169,7 +170,7 @@ export class flow {
                 });
             }
             const overlay = document.createElement('div');
-            overlay.textContent = `${this.playermanager.getPlayerName(this.playermanager.getPlayerNumber())}さんがポン！`;
+            overlay.textContent = `${this.playermanager.getPlayerName(data.ponPlayerNumber)}さんがポン！`;
 
             Object.assign(overlay.style, {
                 position: 'fixed',
