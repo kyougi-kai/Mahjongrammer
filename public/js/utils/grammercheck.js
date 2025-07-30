@@ -15,7 +15,7 @@ const pointTemplete = {
 
 export function checkGrammer(targetArray) {
     targetArray.sentence = targetArray.sentence.toString();
-
+    console.log(targetArray);
     /**
      * @typedef {Object} gcr
      * @property {boolean} success -成功-

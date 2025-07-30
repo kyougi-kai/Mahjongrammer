@@ -18,10 +18,10 @@ const pointTemplete = {
 };
 
 let checkGrammerTestArray = {
-    sentence: 3,
-    s: ['he'],
-    v: ['hear'],
-    o1: ['an', 'apple'],
+    sentence: 1,
+    s: ['I'],
+    v: ['am'],
+    m: ['from', 'home'],
 };
 
 const testGCR = {
@@ -59,17 +59,27 @@ function checkGrammer(targetArray) {
 
     switch (targetArray.sentence) {
         case '1': //第一文型SV
-            GCR.successes = { S: [], V: [] };
-            GCR.currentType.push('S', 'V');
+            if ('m' in targetArray) {
+                GCR.successes = { S: [], V: [], M: [] };
+                GCR.currentType.push('S', 'V', 'M');
+            } else {
+                GCR.successes = { S: [], V: [] };
+                GCR.currentType.push('S', 'V');
+            }
             checkS(targetArray.s, GCR);
             GCR.currentTypeNum++;
             checkV(targetArray.v, GCR, targetArray.sentence);
             GCR.currentTypeNum++;
+            if ('m' in targetArray) {
+                checkM(targetArray.m, GCR, targetArray.sentence);
+            }
             if (
                 GCR.successes.S.includes('true') &&
                 GCR.successes.V.includes('true') &&
-                !GCR.successes.S.includes('false') &&
-                !GCR.successes.V.includes('false')
+                GCR.successes.M.includes('true') &&
+                !GCR.successes.S.includes('false') &&Mの実装から始めるよにょあ
+                !GCR.successes.V.includes('false') &&
+                !GCR.successes.M.includes('false')
             ) {
                 GCR.success = true;
             }
@@ -826,7 +836,7 @@ function pointManager(GCR) {
     return GCR;
 }
 
-function checkTotalGrammerMatters(GCR){
+function checkTotalGrammerMatters(GCR) {
     let keyName;
     return GCR;
 }
