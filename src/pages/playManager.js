@@ -83,6 +83,7 @@ export class playManager {
 
             this.playclientsmanager.playClients[roomId].entry++;
             const roomMemberCounts = await roomMemberDB.roomMemberCounts(roomId);
+            console.log("ゲームに入ろうとしているログだよ",this.playclientsmanager.playClients[roomId].entry, "ルームメンバーカウントのログだよ",roomMemberCounts);
             if (this.playclientsmanager.playClients[roomId].entry == roomMemberCounts) {
                 const sendData = {
                     type: 'startGame',
@@ -90,7 +91,11 @@ export class playManager {
                 };
                 console.log('sendStart');
                 this.playclientsmanager.playClients[roomId].entry = 0;
-                this.sendToClients(sendData, roomId);
+
+                setTimeout(() => {
+                    this.sendToClients(sendData, roomId);
+                }, 500);
+                
             }
         });
 
