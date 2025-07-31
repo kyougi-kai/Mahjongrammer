@@ -126,6 +126,7 @@ export class toGoOut {
         const grammerDatas = this.getGrammerData();
         if (grammerDatas == false) {
             // 今後の処理
+            return 0;
         } else {
             let errorFlag = false;
             let score = 0;
@@ -164,10 +165,13 @@ export class toGoOut {
                         errordiv.addEventListener('transitionend', () => errordiv.remove(), { once: true });
                     }, displayDuration);
                 } else {
+                    score += checkResult.points.牌の個数.pointValue;
                 }
             });
 
-            return !errorFlag;
+            if (errorFlag) score = 0;
+
+            return score;
         }
     }
 }

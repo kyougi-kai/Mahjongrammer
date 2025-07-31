@@ -203,6 +203,7 @@ export class playManager {
                 payload: {
                     grammerData: data.grammerData,
                     tumoPlayerNumber: data.playerNumber,
+                    score: data.score,
                 },
             };
             this.sendToClients(sendData, roomId);

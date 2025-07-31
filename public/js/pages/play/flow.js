@@ -54,13 +54,15 @@ export class flow {
     _setupWebsocket() {
         // 上がれるようにする
         document.getElementById('finishButton').addEventListener('click', (e) => {
-            if (this.togoout.tumo()) {
+            let score = this.togoout.tumo();
+            if (score != 0) {
                 let tumoData = {
                     type: 'tumo',
                     payload: {
                         roomId: this.playermanager.roomId,
                         grammerData: document.getElementById('wordUp').innerHTML,
                         playerNumber: this.playermanager.getPlayerNumber(),
+                        score: score,
                     },
                 };
 
@@ -109,7 +111,7 @@ export class flow {
 
         this.wss.onMessage('tumo', (data) => {
             const tumoPlayerName = Object.values(this.playermanager.playerMembers)[data.tumoPlayerNumber];
-            this.uimanager.showRoundResult(data.grammerData, tumoPlayerName);
+            this.uimanager.showRoundResult(data.grammerData, tumoPlayerName, data.score);
         });
 
         this.wss.onMessage('getRoomMemberData', (data) => {
