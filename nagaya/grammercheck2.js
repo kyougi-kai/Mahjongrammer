@@ -19,8 +19,8 @@ const pointTemplete = {
 
 let checkGrammerTestArray = {
     sentence: 3,
-    s: ['she'],
-    v: ['likes'],
+    s: ['dog'],
+    v: ['like'],
     o1: ['baseball'],
     m: ['every', 'day'],
 };
@@ -177,12 +177,10 @@ function checkGrammer(targetArray) {
             GCR.message.push('存在しない文型を指定しています');
             break;
     }
-    if (GCR.success == true) {
-        GCR = checkTotalGrammerMatters(GCR);
-        const errorParts = ['S', 'V', 'O1', 'O2', 'C', 'M'];
-        if (errorParts.some((part) => Object.values(GCR.errors).some((error) => error.part === part))) {
-            GCR.success = false;
-        }
+    GCR = checkTotalGrammerMatters(GCR);
+    const errorParts = ['S', 'V', 'O1', 'O2', 'C', 'M'];
+    if (errorParts.some((part) => Object.values(GCR.errors).some((error) => error.part === part))) {
+        GCR.success = false;
     }
     if (GCR.success == true) {
         GCR = exchangeToPoint(GCR, targetArray);
@@ -906,6 +904,24 @@ function errorManager(GCR, typeText, errorID) {
             GCR.errors[keyName].reason = '動詞の使い方を間違えています';
             GCR.errors[keyName].suggestion = 'I,youには三単現sは使えません。活用形を変えてみましょう';
             break;
+        case 'SantangensMissbygenkei':
+            keyName = 'SantangensMissbygenkei';
+            GCR.errors[keyName] = { ...errorTemplete };
+            GCR.errors[keyName].part = 'V';
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '文法ミス！';
+            GCR.errors[keyName].reason = '動詞の使い方を間違えています';
+            GCR.errors[keyName].suggestion = '助動詞がない時は、I,you以外の主語には原型は使えません。活用形を変えてみましょう';
+            break;
+        case 'SantangensMissbyhukusuu':
+            keyName = 'SantangensMissbyhukusuu';
+            GCR.errors[keyName] = { ...errorTemplete };
+            GCR.errors[keyName].part = 'V';
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '文法ミス！';
+            GCR.errors[keyName].reason = '動詞の使い方を間違えています';
+            GCR.errors[keyName].suggestion = '複数形の名詞には、三単現sは使えません。活用形を変えてみましょう';
+            break;
     }
     return GCR;
 }
@@ -919,33 +935,59 @@ function pointManager(GCR) {
         GCR.points[keyName].pointName = keyName;
         GCR.points[keyName].pointValue += 200;
     }
-
+    if (GCR['allOfVTags'].dousi.includes('三単現s')) {
+        //三単現sを含んでいたら
+        keyName = '三単現s';
+        GCR.points[keyName] = { ...pointTemplete };
+        GCR.points[keyName].pointName = keyName;
+        GCR.points[keyName].pointValue += 300;
+    }
     return GCR;
 }
 
 function checkTotalGrammerMatters(GCR) {
-    let keyName;
-    if (
-        ((GCR['allOfSTags'].daimeisi.includes('二人称') &&
-            GCR['allOfSTags'].daimeisi.includes('単数') &&
-            GCR['allOfSTags'].daimeisi.includes('主格')) ||
-            (GCR['allOfSTags'].daimeisi.includes('一人称') &&
+    if (GCR['allOfVTags'].dousi.includes('be動詞')) {
+        //be動詞の場合
+        if (
+            GCR['allOfSTags'].daimeisi.includes('一人称') &&
+            GCR['allOfSTags'].daimeisi.includes('単数') &&　ここかたあああああああああああああああ
+            GCR['allOfSTags'].daimeisi.includes('主格') 
+        ) {
+            /*amにI以外の */ errorManager(GCR, '', 'SantangensMissbyIyou');
+        }
+    } else {
+        //一般動詞の場合
+        try {
+            if (
+                ((GCR['allOfSTags'].daimeisi.includes('二人称') &&
+                    GCR['allOfSTags'].daimeisi.includes('単数') &&
+                    GCR['allOfSTags'].daimeisi.includes('主格')) ||
+                    (GCR['allOfSTags'].daimeisi.includes('一人称') &&
+                        GCR['allOfSTags'].daimeisi.includes('単数') &&
+                        GCR['allOfSTags'].daimeisi.includes('主格'))) &&
+                GCR['allOfVTags'].dousi.includes('三単現s')
+            ) {
+                /*I,youに三単現sをつけている場合 */ errorManager(GCR, '', 'SantangensMissbyIyou');
+            }
+            if (
+                GCR['allOfSTags'].daimeisi.includes('三人称') &&
                 GCR['allOfSTags'].daimeisi.includes('単数') &&
-                GCR['allOfSTags'].daimeisi.includes('主格'))) &&
-        GCR['allOfVTags'].dousi.includes('三単現s')
-    ) {
-        /*I,youに三単現sをつけている場合 */ errorManager(GCR, '', 'SantangensMissbyIyou');
-    }
-    if (
-        ((GCR['allOfSTags'].daimeisi.includes('二人称') &&
-            GCR['allOfSTags'].daimeisi.includes('単数') &&
-            GCR['allOfSTags'].daimeisi.includes('主格')) ||
-            (GCR['allOfSTags'].daimeisi.includes('一人称') &&
-                GCR['allOfSTags'].daimeisi.includes('単数') &&
-                GCR['allOfSTags'].daimeisi.includes('主格'))) &&
-        GCR['allOfVTags'].dousi.includes('三単現s')
-    ) {
-        /*三人称単数現在形に原型をつけている場合 */ errorManager(GCR, '', 'SantangensMissbyIyou');
+                GCR['allOfSTags'].daimeisi.includes('主格') &&
+                GCR['allOfVTags'].dousi.includes('原型')
+            ) {
+                /*三人称単数現在形に原型をつけている場合 */ errorManager(GCR, '', 'SantangensMissbygenkei');
+            }
+        } catch (e) {
+            if (
+                (GCR['allOfSTags'].meisi.includes('単数形') || GCR['allOfSTags'].meisi.includes('不可算名詞')) &&
+                GCR['allOfVTags'].dousi.includes('原型')
+            ) {
+                /*単数形の名詞に原型をつけている場合 */ errorManager(GCR, '', 'SantangensMissbygenkei');
+            }
+            if (GCR['allOfSTags'].meisi.includes('複数形') && GCR['allOfVTags'].dousi.includes('三単現s')) {
+                /*複数形の名詞に三単現sをつけている場合 */ errorManager(GCR, '', 'SantangensMissbyhukusuu');
+            }
+        }
     }
     return GCR;
 }
