@@ -18,10 +18,10 @@ const pointTemplete = {
 };
 
 let checkGrammerTestArray = {
-    sentence: 3,
-    s: ['dog'],
-    v: ['like'],
-    o1: ['baseball'],
+    sentence: 2,
+    s: ['I'],
+    v: ['am'],
+    c: ['a', 'new', 'student'],
     m: ['every', 'day'],
 };
 
@@ -366,32 +366,29 @@ function checkKansiRoot(targetSentence, GCR) {
 }
 
 function checkZentiKeiyousiRoot(targetSentence, GCR) {
-    if (Array.isArray(targetSentence[GCR[GCR.flagsNum].targetIndex])) {
-        let true_M_Num = targetSentence[GCR[GCR.flagsNum].targetIndex].length;
-        let keiyousiCount = 0;
-
-        if (
-            tango[targetSentence[GCR[GCR.flagsNum].targetIndex][keiyousiCount]].tags.includes('過去分詞') ||
-            tango[targetSentence[GCR[GCR.flagsNum].targetIndex][keiyousiCount]].tags.includes('現在分詞')
+    if (Array.isArray(targetSentence[GCR[GCR.flagsNum].targetIndex])) return GCR;
+    if (
+        tango[targetSentence[GCR[GCR.flagsNum].targetIndex][keiyousiCount]].tags.includes('過去分詞') ||
+        tango[targetSentence[GCR[GCR.flagsNum].targetIndex][keiyousiCount]].tags.includes('現在分詞')
+    ) {
+        keiyousiCount += 1;
+    } else {
+        keiyousiCount += checkHukusiOfKeiyousi(targetSentence, GCR); //形容詞の前に副詞があるかどうか
+        while (
+            keiyousiCount < targetSentence[GCR[GCR.flagsNum].targetIndex].length &&
+            tango[targetSentence[GCR[GCR.flagsNum].targetIndex][keiyousiCount]].hinsi.includes('形容詞')
         ) {
-            keiyousiCount += 1;
-        } else {
-            keiyousiCount += checkHukusiOfKeiyousi(targetSentence, GCR); //形容詞の前に副詞があるかどうか
-            while (
-                keiyousiCount < targetSentence[GCR[GCR.flagsNum].targetIndex].length &&
-                tango[targetSentence[GCR[GCR.flagsNum].targetIndex][keiyousiCount]].hinsi.includes('形容詞')
-            ) {
-                keiyousiCount++;
-            }
+            keiyousiCount++;
         }
-
-        if (true_M_Num != keiyousiCount) {
-            GCR = errorManager(GCR, '', 'ZentiKeiyousi');
-        }
-        GCR[GCR.flagsNum].wordsCount += keiyousiCount;
-        GCR.currentIndex += keiyousiCount;
-        GCR[GCR.flagsNum].targetIndex += 1;
     }
+
+    if (true_M_Num != keiyousiCount) {
+        GCR = errorManager(GCR, '', 'ZentiKeiyousi');
+    }
+    GCR[GCR.flagsNum].wordsCount += keiyousiCount;
+    GCR.currentIndex += keiyousiCount;
+    GCR[GCR.flagsNum].targetIndex += 1;
+
     console.log('checkZentiKeiyousiroot通過後GCR', targetSentence, GCR);
     return GCR;
 }
@@ -922,6 +919,52 @@ function errorManager(GCR, typeText, errorID) {
             GCR.errors[keyName].reason = '動詞の使い方を間違えています';
             GCR.errors[keyName].suggestion = '複数形の名詞には、三単現sは使えません。活用形を変えてみましょう';
             break;
+        case 'bedousiMissbyitininsyodaimeisi':
+            keyName = 'bedousiMissbyitininsyodaimeisi';
+            GCR.errors[keyName] = { ...errorTemplete };
+            GCR.errors[keyName].part = 'V';
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '文法ミス！';
+            GCR.errors[keyName].reason = 'be動詞の使い方を間違えています';
+            GCR.errors[keyName].suggestion = 'Iにはam,was,been,beingのみbe動詞が使えます。活用形を変えるか、主語を変えてみましょう';
+            break;
+        case 'bedousiMissbynininnsyodaimeisi':
+            keyName = 'bedousiMissbyI';
+            GCR.errors[keyName] = { ...errorTemplete };
+            GCR.errors[keyName].part = 'V';
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '文法ミス！';
+            GCR.errors[keyName].reason = 'be動詞の使い方を間違えています';
+            GCR.errors[keyName].suggestion =
+                'youまたは複数形の代名詞にはare,were,been,beingのみbe動詞が使えます。活用形を変えるか、主語を変えてみましょう';
+            break;
+        case 'bedousiMissbysanninsyodaimeisi':
+            keyName = 'bedousiMissbysanninsyodaimeisi';
+            GCR.errors[keyName] = { ...errorTemplete };
+            GCR.errors[keyName].part = 'V';
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '文法ミス！';
+            GCR.errors[keyName].reason = 'be動詞の使い方を間違えています';
+            GCR.errors[keyName].suggestion = '三人称単数の代名詞にはis,was,been,beingのみbe動詞が使えます。活用形を変えるか、主語を変えてみましょう';
+            break;
+        case 'bedousiMissbyTansuu':
+            keyName = 'bedousiMissbyTansuu';
+            GCR.errors[keyName] = { ...errorTemplete };
+            GCR.errors[keyName].part = 'V';
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '文法ミス！';
+            GCR.errors[keyName].reason = 'be動詞の使い方を間違えています';
+            GCR.errors[keyName].suggestion = '単数形の名詞にはis,was,been,beingのみbe動詞が使えます。活用形を変えるか、主語を変えてみましょう';
+            break;
+        case 'bedousiMissbyhukusuu':
+            keyName = 'bedousiMissbyhukusuu';
+            GCR.errors[keyName] = { ...errorTemplete };
+            GCR.errors[keyName].part = 'V';
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '文法ミス！';
+            GCR.errors[keyName].reason = 'be動詞の使い方を間違えています';
+            GCR.errors[keyName].suggestion = '複数形の名詞にはare,were,been,beingのみbe動詞が使えます。活用形を変えるか、主語を変えてみましょう';
+            break;
     }
     return GCR;
 }
@@ -948,12 +991,41 @@ function pointManager(GCR) {
 function checkTotalGrammerMatters(GCR) {
     if (GCR['allOfVTags'].dousi.includes('be動詞')) {
         //be動詞の場合
-        if (
-            GCR['allOfSTags'].daimeisi.includes('一人称') &&
-            GCR['allOfSTags'].daimeisi.includes('単数') &&　ここかたあああああああああああああああ
-            GCR['allOfSTags'].daimeisi.includes('主格') 
-        ) {
-            /*amにI以外の */ errorManager(GCR, '', 'SantangensMissbyIyou');
+        try {
+            if (
+                GCR['allOfSTags'].daimeisi.includes('一人称') &&
+                GCR['allOfSTags'].daimeisi.includes('単数') &&
+                GCR['allOfSTags'].daimeisi.includes('主格') &&
+                !GCR['allOfVTags'].dousi.includes('一人称')
+            ) {
+                /*Iにつかないbe動詞をつけている */ errorManager(GCR, '', 'bedousiMissbyitininsyodaimeisi');
+            }
+            if (
+                ((GCR['allOfSTags'].daimeisi.includes('二人称') &&
+                    GCR['allOfSTags'].daimeisi.includes('単数') &&
+                    GCR['allOfSTags'].daimeisi.includes('主格')) ||
+                    GCR['allOfSTags'].daimeisi.includes('複数')) &&
+                !GCR['allOfVTags'].dousi.includes('二人称')
+            ) {
+                /*you,複数形につかないbe動詞をつけている */ errorManager(GCR, '', 'bedousiMissbynininnsyodaimeisi');
+            }
+            if (
+                GCR['allOfSTags'].daimeisi.includes('三人称') &&
+                GCR['allOfSTags'].daimeisi.includes('単数') &&
+                !GCR['allOfVTags'].dousi.includes('三人称')
+            ) {
+                /*三人称につかないbe動詞 */ errorManager(GCR, '', 'bedousiMissbysanninsyodaimeisi');
+            }
+        } catch (e) {
+            if (
+                (GCR['allOfSTags'].meisi.includes('単数形') || GCR['allOfSTags'].meisi.includes('不可算名詞')) &&
+                !GCR['allOfVTags'].dousi.includes('三人称')
+            ) {
+                /*単数形の名詞にis以外をつけている場合 */ errorManager(GCR, '', 'bedousiMissbyTansuu');
+            }
+            if (GCR['allOfSTags'].meisi.includes('複数形') && !GCR['allOfVTags'].dousi.includes('二人称')) {
+                /*複数形の名詞にare以外をつけている場合 */ errorManager(GCR, '', 'bedousiMissbyhukusuu');
+            }
         }
     } else {
         //一般動詞の場合
