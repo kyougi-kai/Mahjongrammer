@@ -167,7 +167,7 @@ export class playManager {
             const roomId = data.roomId;
             const sendData = {
                 type: 'pon',
-                payload: { ponPlayerNumber: data.playerNumber },
+                payload: { ponPlayerNumber: data.playerNumber, decreasePoint: data.decreasePoint },
             };
             this.playclientsmanager.playC[roomId].skip = 0;
             this.sendToClients(sendData, roomId);

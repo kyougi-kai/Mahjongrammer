@@ -128,6 +128,7 @@ export class toGoOut {
             // 今後の処理
         } else {
             let errorFlag = false;
+            let score = 0;
             grammerDatas.forEach((data) => {
                 const checkResult = checkGrammer(data);
                 console.log('checkResult');
@@ -162,6 +163,7 @@ export class toGoOut {
                         errordiv.style.opacity = '0';
                         errordiv.addEventListener('transitionend', () => errordiv.remove(), { once: true });
                     }, displayDuration);
+                } else {
                 }
             });
 

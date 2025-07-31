@@ -18,10 +18,11 @@ const pointTemplete = {
 };
 
 let checkGrammerTestArray = {
-    sentence: 1,
-    s: ['I'],
-    v: ['am'],
-    m: ['from', 'home'],
+    sentence: 3,
+    s: ['she'],
+    v: ['likes'],
+    o1: ['baseball'],
+    m: ['every', 'day'],
 };
 
 const testGCR = {
@@ -77,7 +78,7 @@ function checkGrammer(targetArray) {
                 GCR.successes.S.includes('true') &&
                 GCR.successes.V.includes('true') &&
                 GCR.successes.M.includes('true') &&
-                !GCR.successes.S.includes('false') &&Mの実装から始めるよにょあ
+                !GCR.successes.S.includes('false') &&
                 !GCR.successes.V.includes('false') &&
                 !GCR.successes.M.includes('false')
             ) {
@@ -178,20 +179,29 @@ function checkGrammer(targetArray) {
     }
     if (GCR.success == true) {
         GCR = checkTotalGrammerMatters(GCR);
+        const errorParts = ['S', 'V', 'O1', 'O2', 'C', 'M'];
+        if (errorParts.some((part) => Object.values(GCR.errors).some((error) => error.part === part))) {
+            GCR.success = false;
+        }
     }
-    GCR = exchangeToPoint(GCR, targetArray.sentence);
+    if (GCR.success == true) {
+        GCR = exchangeToPoint(GCR, targetArray);
+    }
     return GCR;
 }
 
-function exchangeToPoint(GCR, targetSentence) {
+function exchangeToPoint(GCR, targetArray) {
     GCR.points = {};
     let keyName;
     let totalWordsCount = 0;
 
-    switch (targetSentence) {
+    switch (targetArray.sentence) {
         case '1': //第一文型SV
             totalWordsCount += GCR.allOfSTags.wordsCount;
             totalWordsCount += GCR.allOfVTags.wordsCount;
+            if ('m' in targetArray) {
+                totalWordsCount += GCR.allOfMTags.wordsCount;
+            }
             break;
         case '2': //第二文型SVC
             totalWordsCount += GCR.allOfSTags.wordsCount;
@@ -522,6 +532,57 @@ function checkMeisiGrammerMatters(targetSentence, GCR) {
     return GCR;
 }
 
+function checkM(targetSentence, GCR, sentenceType) {
+    let wordsCount = 0;
+    GCR['allOfMTags'] = {};
+    console.log('checkM開始時点のGCR', targetSentence, GCR);
+    let truenum = targetSentence.flat(Infinity).length;
+    if (truenum == 0) {
+        GCR = errorManager(GCR, '修飾語', 'AllNotExist'); /*何も入っていない場合*/
+        GCR.successes[GCR.currentType[GCR.currentTypeNum]].push('false');
+        return GCR;
+    }
+
+    switch (sentenceType) {
+        case '1': //第一文型SV
+            if (tango[targetSentence[0]].hinsi.includes('前置詞')) {
+                wordsCount += 1;
+                let temporaryTargetSentence = JSON.parse(JSON.stringify(targetSentence)); // ディープコピー
+                temporaryTargetSentence.shift();
+                let temporaryGCR = JSON.parse(JSON.stringify(GCR)); // GCRをディープコピー
+                temporaryGCR = checkMeisiRoot(temporaryTargetSentence, temporaryGCR); //仮のGCRを引数にする。本当のGCRは渡さない←何で？いみわからん←trueが2個返ってくるから
+                if (temporaryGCR.temporaryWordsNum > 0) wordsCount += temporaryGCR.temporaryWordsNum; //名詞がある場合
+                console.log('temporaryGCRRRRRRRRRRR', temporaryGCR);
+                GCR['allOfMTags'] = temporaryGCR['allOfMTags'];
+                GCR['allOfMTags'].wordsCount = wordsCount;
+                GCR.errors = temporaryGCR.errors;
+            }
+            break;
+        case '2': //第二文型SVC
+            break;
+        case '3': //第三文型SVO
+            break;
+        case '4': //第四文型SVOO
+            break;
+        case '5': //第五文型SVOC
+            break;
+        default:
+            GCR.message.push('存在しない文型を指定しています');
+            break;
+    }
+
+    if (truenum == GCR['allOfMTags'].wordsCount) {
+        GCR.successes[GCR.currentType[GCR.currentTypeNum]].push('true');
+    } else {
+        console.log('checkMRoot通過後GCR', targetSentence, GCR);
+        GCR = errorManager(GCR, '', 'MMissOfAny'); //修飾語のどこかにミスがある
+        GCR.successes[GCR.currentType[GCR.currentTypeNum]].push('false');
+    }
+    if (Object.values(GCR.errors).some((error) => error.part === 'M')) {
+        GCR.successes[GCR.currentType[GCR.currentTypeNum]].push('false');
+    }
+}
+
 //console.log('checkV結果：', checkGrammerTestArray.v, checkV(checkGrammerTestArray.v, testGCR, checkGrammerTestArray.sentence));
 
 function checkV(targetSentence, GCR, sentenceType) /*＜V＞*/ {
@@ -827,17 +888,65 @@ function errorManager(GCR, typeText, errorID) {
             GCR.errors[keyName].reason = 'Vの中にMを入れているかもしれません';
             GCR.errors[keyName].suggestion = '助動詞を入れ直してみましょう';
             break;
+        case 'MMissOfAny':
+            keyName = GCR.currentType[GCR.currentTypeNum] + 'MMissOfAny';
+            GCR.errors[keyName] = { ...errorTemplete };
+            GCR.errors[keyName].part = GCR.currentType[GCR.currentTypeNum];
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '修飾語ミス！';
+            GCR.errors[keyName].reason = 'Mの中身にミスがあります';
+            GCR.errors[keyName].suggestion = '前置詞が抜けているかもしれません。ミスのある箇所を確認してみましょう';
+            break;
+        case 'SantangensMissbyIyou':
+            keyName = 'SantangensMissbyIyou';
+            GCR.errors[keyName] = { ...errorTemplete };
+            GCR.errors[keyName].part = 'V';
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '文法ミス！';
+            GCR.errors[keyName].reason = '動詞の使い方を間違えています';
+            GCR.errors[keyName].suggestion = 'I,youには三単現sは使えません。活用形を変えてみましょう';
+            break;
     }
     return GCR;
 }
 
 function pointManager(GCR) {
     let keyName;
+    if (GCR['allOfVTags'].dousi.includes('be動詞')) {
+        //be動詞を含んでいたら
+        keyName = 'be動詞';
+        GCR.points[keyName] = { ...pointTemplete };
+        GCR.points[keyName].pointName = keyName;
+        GCR.points[keyName].pointValue += 200;
+    }
+
     return GCR;
 }
 
 function checkTotalGrammerMatters(GCR) {
     let keyName;
+    if (
+        ((GCR['allOfSTags'].daimeisi.includes('二人称') &&
+            GCR['allOfSTags'].daimeisi.includes('単数') &&
+            GCR['allOfSTags'].daimeisi.includes('主格')) ||
+            (GCR['allOfSTags'].daimeisi.includes('一人称') &&
+                GCR['allOfSTags'].daimeisi.includes('単数') &&
+                GCR['allOfSTags'].daimeisi.includes('主格'))) &&
+        GCR['allOfVTags'].dousi.includes('三単現s')
+    ) {
+        /*I,youに三単現sをつけている場合 */ errorManager(GCR, '', 'SantangensMissbyIyou');
+    }
+    if (
+        ((GCR['allOfSTags'].daimeisi.includes('二人称') &&
+            GCR['allOfSTags'].daimeisi.includes('単数') &&
+            GCR['allOfSTags'].daimeisi.includes('主格')) ||
+            (GCR['allOfSTags'].daimeisi.includes('一人称') &&
+                GCR['allOfSTags'].daimeisi.includes('単数') &&
+                GCR['allOfSTags'].daimeisi.includes('主格'))) &&
+        GCR['allOfVTags'].dousi.includes('三単現s')
+    ) {
+        /*三人称単数現在形に原型をつけている場合 */ errorManager(GCR, '', 'SantangensMissbyIyou');
+    }
     return GCR;
 }
 

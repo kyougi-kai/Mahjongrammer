@@ -7,6 +7,7 @@ export class uiManager {
         this.ponskip = document.getElementsByClassName('bark-div')[0];
         this.flow = null;
         this.scoreBord = document.getElementById('scoreBord');
+        this.resultPage = document.getElementById('resultpage');
 
         // チートdiv
         this.hinsiDiv = document.getElementById('hinsiDrop');
@@ -91,12 +92,23 @@ export class uiManager {
         document.getElementById('wordDown').innerHTML = '';
     }
 
+    changePoint(position, point) {
+        const targetElement = this.scoreBord.children[position];
+        targetElement.innerHTML = Number(targetElement.innerHTML) + point;
+    }
+
+    changePonPoint(point) {
+        this.ponskip.children[0].innerHTML = 'ポン -' + point;
+    }
+
     hideThrowHai(position) {
         this.throwHaiTable.children[position].children[0].remove();
     }
 
-    showRoundResult(grammerData) {
-        document.getElementById('resultpage').style.display = 'flex';
+    showRoundResult(grammerData, playerName, score) {
+        this.resultPage.style.display = 'flex';
+        this.resultPage.getElementsByClassName('result-name')[0].innerHTML = playerName;
+        this.resultPage.getElementsByClassName('score-text')[0].innerHTML = score;
         document.getElementById('resultGrammerDiv').innerHTML = grammerData;
     }
 
