@@ -82,14 +82,18 @@ export class flow {
         });
 
         this.barkdiv.children[0].addEventListener('click', (e) => {
-            let ponData = {
-                type: 'pon',
-                payload: {
-                    roomId: this.playermanager.roomId,
-                    playerNumber: this.playermanager.getPlayerNumber(),
-                },
-            };
-            this.wss.send(ponData);
+            if (Number(this.scorebords.children[2].innerHTML) >= (this.ponCount + 1) * 1000) {
+                this.ponCount++;
+                let ponData = {
+                    type: 'pon',
+                    payload: {
+                        roomId: this.playermanager.roomId,
+                        playerNumber: this.playermanager.getPlayerNumber(),
+                        decreasePoint: this.ponCount * 1000,
+                    },
+                };
+                this.wss.send(ponData);
+            }
         });
 
         this.barkdiv.children[1].addEventListener('click', (e) => {
@@ -104,8 +108,8 @@ export class flow {
         });
 
         this.wss.onMessage('tumo', (data) => {
-            const isTumoPlayer = data.tumoPlayerNumber == this.playermanager.getPlayerNumber();
-            this.uimanager.showRoundResult(data.grammerData, isTumoPlayer);
+            const tumoPlayerName = Object.values(this.playermanager.playerMembers)[data.tumoPlayerNumber];
+            this.uimanager.showRoundResult(data.grammerData, tumoPlayerName);
         });
 
         this.wss.onMessage('getRoomMemberData', (data) => {
@@ -148,6 +152,7 @@ export class flow {
 
         this.wss.onMessage('pon', (data) => {
             this.uimanager.hideThrowHai(this.playermanager.phaseToPosition(this.nowPhaseNumber));
+            this.uimanager.changePoint(this.playermanager.phaseToPosition(data.ponPlayerNumber), -data.decreasePoint);
 
             if (this.sendInterval != null) clearTimeout(this.sendInterval);
             this.sendInterval = null;
@@ -158,6 +163,8 @@ export class flow {
             console.log(data.ponPlayerNumber);
             console.log(this.playermanager.getPlayerNumber());
             if (data.ponPlayerNumber == this.playermanager.getPlayerNumber()) {
+                this.uimanager.changePonPoint((this.ponCount + 1) * 1000);
+
                 let nanka = document.createElement('div');
                 nanka.innerHTML = this.throwElement;
 
