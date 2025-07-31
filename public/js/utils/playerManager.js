@@ -156,7 +156,10 @@ export class playerManager {
         console.log('updatePlayerName');
         console.log(this.playerMembers);
         Object.values(this.playerMembers).forEach((value, index) => {
-            console.log(value);
+            console.log(this.nameDivs);
+            console.log(index);
+            console.log(this.phaseToPosition(index));
+            console.log(this.nameDivs[this.phaseToPosition(index)]);
             const nameElem = this.nameDivs[this.phaseToPosition(index)].children[0];
 
             nameElem.innerHTML = value;
@@ -182,12 +185,12 @@ export class playerManager {
     }
 
     phaseToPosition(phase) {
-        const positionnumber = (phase + 2 - this.getPlayerNumber()) % 4;
+        const positionnumber = (phase + 2 - this.getPlayerNumber() + 4) % 4;
         return positionnumber;
     }
 
     positonToPhase(position) {
-        const phasenumber = (position + 2 - this.getPlayerNumber()) % 4;
+        const phasenumber = (position + 2 - this.getPlayerNumber() + 4) % 4;
         return phasenumber;
     }
 

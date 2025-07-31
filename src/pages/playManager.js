@@ -68,7 +68,7 @@ export class playManager {
             let roomMembersData = await roomMemberDB.getRoomMembers(roomId);
             await roomMemberDB.updateIsReady(userId, false);
             this.playclientsmanager.entryRoom(roomId, userId, ws);
-            console.log('clientsLength', Object.keys(this.playclientsmanager.playClients[roomId]).length - 2);
+            console.log('clientsLength', Object.keys(this.playclientsmanager.playClients[roomId]).length - 3);
 
             // 割合送信
             await ws.send(
