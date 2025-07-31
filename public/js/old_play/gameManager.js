@@ -262,6 +262,7 @@ export default class gameManager {
 
         //自分のターンなら
         if (this._nowPhase == this._ownNumber) {
+            console.log(this._nowPhase);
             this._hm.changeCondition(this._finishButton, true);
             this._hm.isMyTurn = true;
             this.pickTango();
