@@ -486,7 +486,7 @@ function checkDaimeisi(targetSentence, GCR) /*＜代名詞根＞*/ {
         if (DaimeisiTypeArray.some((value) => tango[targetSentence].tags.includes(value))) {
             GCR.successes[GCR.currentType[GCR.currentTypeNum]].push('true');
         } else {
-            GCR = errorManager(GCR, typeText, 'Daimeisi');
+            GCR = errorManager(GCR, GCR.currentType[GCR.currentTypeNum], 'Daimeisi');
         }
     }
     GCR['allOf' + GCR.currentType[GCR.currentTypeNum] + 'Tags'].daimeisi.push(
