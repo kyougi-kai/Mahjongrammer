@@ -309,8 +309,15 @@ export class flow {
         }, 200);
         var scoreBord = document.getElementById('scoreBord');
         scoreBord.style.opacity = 1;
-        this.uimanager.showBlink(this.playermanager.phaseToPosition(0));
+<<<<<<< Updated upstream
 
+=======
+        let Count = 0;
+        if (Count == 0){
+            this.uimanager.showBlink(this.playermanager.phaseToPosition(0));
+            Count++;
+        };
+>>>>>>> Stashed changes
         if (this.playermanager.isParent()) {
             this.youCanThrow = true;
             this.drawHai();
@@ -318,6 +325,7 @@ export class flow {
             this.scorebords.children[4].style.pointerEvents = 'all';
         }
         if (this.topleft.style.getPropertyValue('--original-html-ban') == '') {
+            this.uimanager.showBlink(this.playermanager.phaseToPosition(0));
             let idx2 = this.playermanager.phaseToPosition(0);
             console.log(idx2);
             console.log(this.topleft.style.top);
@@ -341,6 +349,7 @@ export class flow {
         } else {
             /*let currentIndex = Number(this.topleft.style.getPropertyValue('--original-html-ban'));
             let idx2 = (currentIndex + 1) % this.playermanager.getPlayerCount();*/
+            this.uimanager.showBlink(this.playermanager.phaseToPosition(this.nowPhaseNumber));
             let idx2 = this.playermanager.parentNumber;
             this.topleft.style.top = this.yourtops[idx2];
             this.topleft.style.left = this.yourlefts[idx2];
@@ -368,6 +377,7 @@ export class flow {
             }
         }
         console.log(this.nowPhaseNumber);
+        this.uimanager.showBlink(this.playermanager.phaseToPosition(nextParent));
         this.start();
     }
 
