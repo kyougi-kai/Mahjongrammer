@@ -309,7 +309,15 @@ export class flow {
         }, 200);
         var scoreBord = document.getElementById('scoreBord');
         scoreBord.style.opacity = 1;
+<<<<<<< Updated upstream
 
+=======
+        let Count = 0;
+        if (Count == 0){
+            this.uimanager.showBlink(this.playermanager.phaseToPosition(0));
+            Count++;
+        };
+>>>>>>> Stashed changes
         if (this.playermanager.isParent()) {
             this.youCanThrow = true;
             this.drawHai();
@@ -369,6 +377,7 @@ export class flow {
             }
         }
         console.log(this.nowPhaseNumber);
+        this.uimanager.showBlink(this.playermanager.phaseToPosition(nextParent));
         this.start();
     }
 
