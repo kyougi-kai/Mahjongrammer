@@ -145,6 +145,12 @@ export default class gameManager {
                 nameDivs[this.phaseToPlayerNumber(message.bark)].children[1].style.opacity = '1';
 
                 setTimeout(() => (nameDivs[this.phaseToPlayerNumber(message.bark)].children[1].style.opacity = '0'), 2000);
+
+                 if (this._nowPhase == this._ownNumber) {
+                    this._hm.changeCondition(this._finishButton, true);
+                } else {
+                    this._hm.changeCondition(this._finishButton, false);
+                }
             } else if (message.hasOwnProperty('tangoRatio')) {
                 this._dm.updateRatio(message.tangoRatio);
             } else if (message.hasOwnProperty('skip')) {
@@ -266,6 +272,8 @@ export default class gameManager {
             this._hm.changeCondition(this._finishButton, true);
             this._hm.isMyTurn = true;
             this.pickTango();
+        }else {
+            this._hm.changeCondition(this._finishButton, false);
         }
     }
 

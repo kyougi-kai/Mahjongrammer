@@ -1615,7 +1615,7 @@ export let tango = {
     },
     can: {
         tags: ['法助動詞', '可算名詞', '子音で始まる', '単数形'],
-        katuyou: ['can', 'cans'],
+        katuyou: ['can', 'cans','could'],
         hinsi: ['助動詞', '名詞'],
         means: {
             助動詞: '～できる、～してもよい',
@@ -2172,7 +2172,7 @@ export let tango = {
     },
     could: {
         tags: ['法助動詞'],
-        katuyou: [],
+        katuyou: ['can','could'],
         hinsi: ['助動詞'],
         means: {
             助動詞: 'canの過去形 ～できた',

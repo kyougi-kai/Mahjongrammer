@@ -165,7 +165,9 @@ export class toGoOut {
                         errordiv.addEventListener('transitionend', () => errordiv.remove(), { once: true });
                     }, displayDuration);
                 } else {
-                    score += checkResult.points.牌の個数.pointValue;
+                    const pointDetails = Object.values(checkResult.points).map(point =>`${point.pointName}:${point.pointValue}`).join(' ');
+                    console.log(`得点内訳: ${pointDetails}`);
+                    score += Object.values(checkResult.points).reduce((sum, point) => sum + point.pointValue, 0);
                 }
             });
 

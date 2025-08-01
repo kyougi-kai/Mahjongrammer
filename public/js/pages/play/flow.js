@@ -140,7 +140,7 @@ export class flow {
             } catch (err) {
                 this.uimanager.showThrowHai(data.hai, 2);
             }
-
+            console.log(data.hai);
             this.throwElement = data.hai;
         });
 
@@ -309,15 +309,6 @@ export class flow {
         }, 200);
         var scoreBord = document.getElementById('scoreBord');
         scoreBord.style.opacity = 1;
-<<<<<<< Updated upstream
-
-=======
-        let Count = 0;
-        if (Count == 0){
-            this.uimanager.showBlink(this.playermanager.phaseToPosition(0));
-            Count++;
-        };
->>>>>>> Stashed changes
         if (this.playermanager.isParent()) {
             this.youCanThrow = true;
             this.drawHai();
