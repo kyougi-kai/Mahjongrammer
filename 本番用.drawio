@@ -1,0 +1,121 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36" version="28.0.1">
+  <diagram name="ページ1" id="_JQeSs2E_7cJO0kSYv7o">
+    <mxGraphModel dx="786" dy="1159" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3300" pageHeight="4681" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-1" value="app.js" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-2" value="server.js" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="120" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-3" value="route.js" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="140" y="120" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-5" value="roomManager.js" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="200" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-6" value="playManager.js" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="200" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-7" value="connectionManager.js" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="200" width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-9" value="roomClientsManager.js" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="280" width="170" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-10" value="playClientsManager.js" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="270" y="280" width="170" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-12" value="cookieManager.js" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="40" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-14" value="dbClients.js" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="400" width="70" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-15" value="baseRepository.js" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="470" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-16" value="usersRepository.js" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="540" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-17" value="roomMemberRepository.js" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="540" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-18" value="roomsRepository.js" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="540" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-19" value="usersManager.js" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="90" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-21" value="index.ejs" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="640" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-22" value="home.ejs" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="640" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-23" value="room.ejs" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="800" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-24" value="play.ejs" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="800" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-26" value="inde.js" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="720" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-27" value="home.js" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="720" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-28" value="roomManager.js" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="880" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-29" value="actionManager.js" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="960" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-30" value="gameManager.js" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="880" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-33" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1040" width="550" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-34" value="connectionManager.js" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1060" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-35" value="dataManager.js" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="1060" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-36" value="functions.js" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="1060" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-37" value="grammercheck.js" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="1060" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-38" value="playerManager.js" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1120" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-39" value="wordData.js" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="1120" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-40" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1210" width="410" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-41" value="flow.js" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="55" y="1220" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-42" value="uiManager.js" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="55" y="1290" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-43" value="toGoOut.js" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="190" y="1220" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-44" value="blockManager.js" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="1220" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WE9E5J160Hdqpgt8S3mM-45" value="hai.js" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="190" y="1290" width="100" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

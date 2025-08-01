@@ -2,7 +2,7 @@ import { connectionManager } from '/js/utils/connectionManager.js';
 import { playerManager } from '/js/utils/playerManager.js';
 import { actionManager } from '/js/pages/room/actionManager.js';
 
-export class gameManager {
+export class roomManager {
     constructor() {
         this.protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
         this.connectionmanager = new connectionManager();
@@ -18,4 +18,4 @@ export class gameManager {
     }
 }
 
-const gamemanager = new gameManager();
+const roommanager = new roomManager();
