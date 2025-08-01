@@ -21,7 +21,7 @@ let checkGrammerTestArray = {
     sentence: 2,
     s: ['I'],
     v: ['am'],
-    c: ['a', 'new', 'student'],
+    c: ['a', 'student'],
     m: ['every', 'day'],
 };
 
@@ -200,28 +200,48 @@ function exchangeToPoint(GCR, targetArray) {
             if ('m' in targetArray) {
                 totalWordsCount += GCR.allOfMTags.wordsCount;
             }
+            keyName = '第一文型SV';
+            GCR.points[keyName] = { ...pointTemplete };
+            GCR.points[keyName].pointName = keyName;
+            GCR.points[keyName].pointValue += 200;
             break;
         case '2': //第二文型SVC
             totalWordsCount += GCR.allOfSTags.wordsCount;
             totalWordsCount += GCR.allOfVTags.wordsCount;
             totalWordsCount += GCR.allOfCTags.wordsCount;
+            keyName = '第二文型SVC';
+            GCR.points[keyName] = { ...pointTemplete };
+            GCR.points[keyName].pointName = keyName;
+            GCR.points[keyName].pointValue += 300;
             break;
         case '3': //第三文型SVO
             totalWordsCount += GCR.allOfSTags.wordsCount;
             totalWordsCount += GCR.allOfVTags.wordsCount;
             totalWordsCount += GCR.allOfO1Tags.wordsCount;
+            keyName = '第三文型SVO';
+            GCR.points[keyName] = { ...pointTemplete };
+            GCR.points[keyName].pointName = keyName;
+            GCR.points[keyName].pointValue += 300;
             break;
         case '4': //第四文型SVOO
             totalWordsCount += GCR.allOfSTags.wordsCount;
             totalWordsCount += GCR.allOfVTags.wordsCount;
             totalWordsCount += GCR.allOfO1Tags.wordsCount;
             totalWordsCount += GCR.allOfO2Tags.wordsCount;
+            keyName = '第四文型SVOO';
+            GCR.points[keyName] = { ...pointTemplete };
+            GCR.points[keyName].pointName = keyName;
+            GCR.points[keyName].pointValue += 500;
             break;
         case '5': //第五文型SVOC
             totalWordsCount += GCR.allOfSTags.wordsCount;
             totalWordsCount += GCR.allOfVTags.wordsCount;
             totalWordsCount += GCR.allOfO1Tags.wordsCount;
             totalWordsCount += GCR.allOfCTags.wordsCount;
+            keyName = '第五文型SVOC';
+            GCR.points[keyName] = { ...pointTemplete };
+            GCR.points[keyName].pointName = keyName;
+            GCR.points[keyName].pointValue += 500;
             break;
         default:
             GCR.message.push('存在しない文型を指定しています');
@@ -366,48 +386,35 @@ function checkKansiRoot(targetSentence, GCR) {
 }
 
 function checkZentiKeiyousiRoot(targetSentence, GCR) {
-    if (Array.isArray(targetSentence[GCR[GCR.flagsNum].targetIndex])) return GCR;
-    if (
-        tango[targetSentence[GCR[GCR.flagsNum].targetIndex][keiyousiCount]].tags.includes('過去分詞') ||
-        tango[targetSentence[GCR[GCR.flagsNum].targetIndex][keiyousiCount]].tags.includes('現在分詞')
-    ) {
-        keiyousiCount += 1;
-    } else {
-        keiyousiCount += checkHukusiOfKeiyousi(targetSentence, GCR); //形容詞の前に副詞があるかどうか
-        while (
-            keiyousiCount < targetSentence[GCR[GCR.flagsNum].targetIndex].length &&
-            tango[targetSentence[GCR[GCR.flagsNum].targetIndex][keiyousiCount]].hinsi.includes('形容詞')
+    if (Array.isArray(targetSentence[GCR[GCR.flagsNum].targetIndex])) {
+        let true_M_Num = targetSentence[GCR[GCR.flagsNum].targetIndex].length;
+        let keiyousiCount = 0;
+
+        if (
+            tango[targetSentence[GCR[GCR.flagsNum].targetIndex][keiyousiCount]].tags.includes('過去分詞') ||
+            tango[targetSentence[GCR[GCR.flagsNum].targetIndex][keiyousiCount]].tags.includes('現在分詞')
         ) {
-            keiyousiCount++;
+            keiyousiCount += 1;
+        } else {
+            keiyousiCount += checkHukusiOfKeiyousi(targetSentence, GCR); //形容詞の前に副詞があるかどうか
+            while (
+                keiyousiCount < targetSentence[GCR[GCR.flagsNum].targetIndex].length &&
+                tango[targetSentence[GCR[GCR.flagsNum].targetIndex][keiyousiCount]].hinsi.includes('形容詞')
+            ) {
+                keiyousiCount++;
+            }
         }
-    }
 
-    if (true_M_Num != keiyousiCount) {
-        GCR = errorManager(GCR, '', 'ZentiKeiyousi');
+        if (true_M_Num != keiyousiCount) {
+            GCR = errorManager(GCR, '', 'ZentiKeiyousi');
+        }
+        GCR[GCR.flagsNum].wordsCount += keiyousiCount;
+        GCR.currentIndex += keiyousiCount;
+        GCR[GCR.flagsNum].targetIndex += 1;
     }
-    GCR[GCR.flagsNum].wordsCount += keiyousiCount;
-    GCR.currentIndex += keiyousiCount;
-    GCR[GCR.flagsNum].targetIndex += 1;
-
     console.log('checkZentiKeiyousiroot通過後GCR', targetSentence, GCR);
     return GCR;
 }
-
-function checkHukusiOfKeiyousi(targetSentence, GCR) {
-    let hukusiCount = 0;
-
-    while (
-        hukusiCount < targetSentence[GCR[GCR.flagsNum].targetIndex].length &&
-        tango[targetSentence[GCR[GCR.flagsNum].targetIndex][hukusiCount]].hinsi.includes('副詞') &&
-        (tango[targetSentence[GCR[GCR.flagsNum].targetIndex][hukusiCount]].tags.includes('程度') ||
-            tango[targetSentence[GCR[GCR.flagsNum].targetIndex][hukusiCount]].tags.includes('強調') ||
-            tango[targetSentence[GCR[GCR.flagsNum].targetIndex][hukusiCount]].tags.includes('様態') ||
-            tango[targetSentence[GCR[GCR.flagsNum].targetIndex][hukusiCount]].tags.includes('否定'))
-    ) {
-        hukusiCount++;
-    }
-    return hukusiCount;
-} //形容詞の前に副詞があるかどうか
 
 function checkMeisi(targetSentence, GCR) {
     if (Array.isArray(targetSentence[GCR[GCR.flagsNum].targetIndex])) {
