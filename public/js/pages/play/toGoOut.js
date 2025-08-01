@@ -129,7 +129,7 @@ export class toGoOut {
             return 0;
         } else {
             let errorFlag = false;
-            let score = 0;
+            let score = [];
             grammerDatas.forEach((data) => {
                 const checkResult = checkGrammer(data);
                 console.log('checkResult');
@@ -165,15 +165,16 @@ export class toGoOut {
                         errordiv.addEventListener('transitionend', () => errordiv.remove(), { once: true });
                     }, displayDuration);
                 } else {
+                    
                     const pointDetails = Object.values(checkResult.points).map(point =>`${point.pointName}:${point.pointValue}`).join(' ');
                     console.log(`得点内訳: ${pointDetails}`);
-                    score += Object.values(checkResult.points).reduce((sum, point) => sum + point.pointValue, 0);
+                    score.push(pointDetails);
                 }
             });
 
-            if (errorFlag) score = 0;
-
+            if (errorFlag) score = [];
+            console.log(score);
             return score;
         }
-    }
+    }   
 }

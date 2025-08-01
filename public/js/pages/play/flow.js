@@ -110,8 +110,24 @@ export class flow {
         });
 
         this.wss.onMessage('tumo', (data) => {
+            let tokuten = 0;
+
+            data.score.forEach((scoreString) => {
+                
+                const items = scoreString.split(' ');
+            
+                items.forEach((item) => {
+                    const parts = item.split(':');
+                    if (parts.length === 2) {
+                        const point = parseInt(parts[1], 10);
+                        if (!isNaN(point)) {
+                            tokuten += point;
+                        }
+                    }
+                });
+            });
             const tumoPlayerName = Object.values(this.playermanager.playerMembers)[data.tumoPlayerNumber];
-            this.uimanager.showRoundResult(data.grammerData, tumoPlayerName, data.score);
+            this.uimanager.showRoundResult(data.grammerData, tumoPlayerName, data.score,tokuten);
         });
 
         this.wss.onMessage('getRoomMemberData', (data) => {

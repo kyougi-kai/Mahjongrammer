@@ -105,10 +105,11 @@ export class uiManager {
         this.throwHaiTable.children[position].children[0].remove();
     }
 
-    showRoundResult(grammerData, playerName, score) {
+    showRoundResult(grammerData, playerName, score, tokuten) {
         this.resultPage.style.display = 'flex';
         this.resultPage.getElementsByClassName('result-name')[0].innerHTML = playerName;
-        this.resultPage.getElementsByClassName('score-text')[0].innerHTML = score;
+        this.resultPage.getElementsByClassName('score-text')[0].innerHTML = score.join('<br>');
+        this.resultPage.getElementsByClassName('allten')[0].innerHTML = `合計${tokuten}`;
         document.getElementById('resultGrammerDiv').innerHTML = grammerData;
     }
 
