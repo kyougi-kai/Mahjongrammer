@@ -19,9 +19,9 @@ const pointTemplete = {
 
 let checkGrammerTestArray = {
     sentence: 3,
-    s: ['he'],
-    v: ['hears'],
-    o1: ['an', 'apple'],
+    s: ['ham'],
+    v: ['is', 'used'],
+    o1: ['this', 'machine'],
 };
 
 const testGCR = {
@@ -46,7 +46,7 @@ function checkGrammer(targetArray) {
 
     /** @type {gcr} 文法チェックの結果を代入（旧grammerCheckResult）*/
     let GCR = {
-        success: false,
+        success: true,
         successes: {},
         currentType: [],
         currentTypeNum: 0,
@@ -73,16 +73,6 @@ function checkGrammer(targetArray) {
             if ('m' in targetArray) {
                 checkM(targetArray.m, GCR, targetArray.sentence);
             }
-            if (
-                GCR.successes.S.includes('true') &&
-                GCR.successes.V.includes('true') &&
-                GCR.successes.M.includes('true') &&
-                !GCR.successes.S.includes('false') &&
-                !GCR.successes.V.includes('false') &&
-                !GCR.successes.M.includes('false')
-            ) {
-                GCR.success = true;
-            }
             break;
         case '2': //第二文型SVC
             GCR.successes = { S: [], V: [], C: [] };
@@ -93,16 +83,6 @@ function checkGrammer(targetArray) {
             GCR.currentTypeNum++;
             checkC(targetArray.c, GCR);
             GCR.currentTypeNum++;
-            if (
-                GCR.successes.S.includes('true') &&
-                GCR.successes.V.includes('true') &&
-                !GCR.successes.S.includes('false') &&
-                !GCR.successes.V.includes('false') &&
-                GCR.successes.C.includes('true') &&
-                !GCR.successes.C.includes('false')
-            ) {
-                GCR.success = true;
-            }
             break;
         case '3': //第三文型SVO
             GCR.successes = { S: [], V: [], O1: [] };
@@ -113,16 +93,6 @@ function checkGrammer(targetArray) {
             GCR.currentTypeNum++;
             checkO(targetArray.o1, GCR);
             GCR.currentTypeNum++;
-            if (
-                GCR.successes.S.includes('true') &&
-                GCR.successes.V.includes('true') &&
-                !GCR.successes.S.includes('false') &&
-                !GCR.successes.V.includes('false') &&
-                GCR.successes.O1.includes('true') &&
-                !GCR.successes.O1.includes('false')
-            ) {
-                GCR.success = true;
-            }
             break;
         case '4': //第四文型SVOO
             GCR.successes = { S: [], V: [], O1: [], O2: [] };
@@ -135,18 +105,6 @@ function checkGrammer(targetArray) {
             GCR.currentTypeNum++;
             checkO(targetArray.o2, GCR);
             GCR.currentTypeNum++;
-            if (
-                GCR.successes.S.includes('true') &&
-                GCR.successes.V.includes('true') &&
-                !GCR.successes.S.includes('false') &&
-                !GCR.successes.V.includes('false') &&
-                GCR.successes.O1.includes('true') &&
-                !GCR.successes.O1.includes('false') &&
-                GCR.successes.O2.includes('true') &&
-                !GCR.successes.O2.includes('false')
-            ) {
-                GCR.success = true;
-            }
             break;
         case '5': //第五文型SVOC
             GCR.successes = { S: [], V: [], O1: [], C: [] };
@@ -159,18 +117,6 @@ function checkGrammer(targetArray) {
             GCR.currentTypeNum++;
             checkC(targetArray.c, GCR);
             GCR.currentTypeNum++;
-            if (
-                GCR.successes.S.includes('true') &&
-                GCR.successes.V.includes('true') &&
-                !GCR.successes.S.includes('false') &&
-                !GCR.successes.V.includes('false') &&
-                GCR.successes.O1.includes('true') &&
-                !GCR.successes.O1.includes('false') &&
-                GCR.successes.C.includes('true') &&
-                !GCR.successes.C.includes('false')
-            ) {
-                GCR.success = true;
-            }
             break;
         default:
             GCR.message.push('存在しない文型を指定しています');
@@ -473,7 +419,11 @@ function checkDaimeisi(targetSentence, GCR) /*＜代名詞根＞*/ {
             DaimeisiTypeArray = ['主格', '所有代名詞', '再帰代名詞', '指示代名詞', '不定代名詞', '疑問代名詞'];
             typeText = '補語';
             break;
-        case 'O':
+        case 'O1':
+            DaimeisiTypeArray = ['目的格', '再帰代名詞', '指示代名詞', '不定代名詞', '疑問代名詞'];
+            typeText = '目的語';
+            break;
+        case 'O2':
             DaimeisiTypeArray = ['目的格', '再帰代名詞', '指示代名詞', '不定代名詞', '疑問代名詞'];
             typeText = '目的語';
             break;
@@ -597,6 +547,7 @@ function checkV(targetSentence, GCR, sentenceType) /*＜V＞*/ {
     }
 
     if (GCR['allOfVTags'].targetIndex >= 0) GCR = checkDousi(targetSentence, GCR, sentenceType); //動詞が存在するかどうか
+    console.log('checkDousiRoot通過後GCR', targetSentence, GCR);
     if (GCR['allOfVTags'].targetIndex >= 0) GCR = checkJodousiRoot(targetSentence, GCR, sentenceType); //助動詞が存在するかどうか
 
     if (truenum == GCR['allOfVTags'].wordsCount) {
@@ -1067,6 +1018,7 @@ function checkTotalGrammerMatters(GCR) {
             }
         }
     }
+
     return GCR;
 }
 
