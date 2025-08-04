@@ -128,6 +128,7 @@ export class flow {
             });
             const tumoPlayerName = Object.values(this.playermanager.playerMembers)[data.tumoPlayerNumber];
             this.uimanager.showRoundResult(data.grammerData, tumoPlayerName, data.score,tokuten);
+            this.uimanager.changePoint(this.playermanager.phaseToPosition(data.tumoPlayerNumber),tokuten);
         });
 
         this.wss.onMessage('getRoomMemberData', (data) => {
