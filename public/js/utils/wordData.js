@@ -1615,7 +1615,7 @@ export let tango = {
     },
     can: {
         tags: ['法助動詞', '可算名詞', '子音で始まる', '単数形'],
-        katuyou: ['can', 'cans','could'],
+        katuyou: ['can', 'cans', 'could'],
         hinsi: ['助動詞', '名詞'],
         means: {
             助動詞: '～できる、～してもよい',
@@ -2172,7 +2172,7 @@ export let tango = {
     },
     could: {
         tags: ['法助動詞'],
-        katuyou: ['can','could'],
+        katuyou: ['can', 'could'],
         hinsi: ['助動詞'],
         means: {
             助動詞: 'canの過去形 ～できた',
@@ -24834,7 +24834,7 @@ export let tango = {
             代名詞: '彼は［が］、その（男の）人は［が］',
         },
     },
-   she: {
+    she: {
         tags: ['三人称', '単数', '人称代名詞', '主格'],
         katuyou: [],
         hinsi: ['代名詞'],
@@ -27507,7 +27507,7 @@ export let tango = {
         },
     },
     be: {
-        tags: ['自動詞', 'be動詞', '原型'],
+        tags: ['自動詞', 'be動詞', '原型', '相助動詞'],
         katuyou: ['be', 'was', 'been', 'being'],
         hinsi: ['動詞'],
         means: {
@@ -27515,7 +27515,7 @@ export let tango = {
         },
     },
     am: {
-        tags: ['自動詞', 'be動詞', '一人称', '原型'],
+        tags: ['自動詞', 'be動詞', '一人称', '原型', '相助動詞'],
         katuyou: ['am', 'was', 'been', 'being'],
         hinsi: ['動詞'],
         means: {
@@ -27523,7 +27523,7 @@ export let tango = {
         },
     },
     is: {
-        tags: ['自動詞', 'be動詞', '三人称', '原型'],
+        tags: ['自動詞', 'be動詞', '三人称', '原型', '相助動詞'],
         katuyou: ['is', 'was', 'been', 'being'],
         hinsi: ['動詞'],
         means: {
@@ -27531,7 +27531,7 @@ export let tango = {
         },
     },
     are: {
-        tags: ['自動詞', 'be動詞', '二人称', '原型'],
+        tags: ['自動詞', 'be動詞', '二人称', '原型', '相助動詞'],
         katuyou: ['are', 'were', 'been', 'being'],
         hinsi: ['動詞'],
         means: {
@@ -27539,7 +27539,7 @@ export let tango = {
         },
     },
     was: {
-        tags: ['自動詞', 'be動詞', '一人称', '三人称', '過去形'],
+        tags: ['自動詞', 'be動詞', '一人称', '三人称', '過去形', '相助動詞'],
         katuyou: ['is', 'am', 'was', 'been', 'being'],
         hinsi: ['動詞'],
         means: {
@@ -27547,7 +27547,7 @@ export let tango = {
         },
     },
     were: {
-        tags: ['自動詞', 'be動詞', '過去形', '二人称'],
+        tags: ['自動詞', 'be動詞', '過去形', '二人称', '相助動詞'],
         katuyou: ['are', 'were', 'been', 'being'],
         hinsi: ['動詞'],
         means: {
