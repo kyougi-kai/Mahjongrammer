@@ -678,6 +678,7 @@ function checkJodousiRoot(targetSentence, GCR) {
             GCR['allOfVTags'].wordsCount += 1;
             GCR['allOfVTags'].targetIndex -= 1;
         } else if (targetSentence[GCR['allOfVTags'].targetIndex] == 'to') {
+            //疑似法助動詞が存在する場合
             GCR['allOfVTags'].wordsCount += 1;
             GCR['allOfVTags'].targetIndex -= 1;
             if (GCR['allOfVTags'].targetIndex >= 0) {
