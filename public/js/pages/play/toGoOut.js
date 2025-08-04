@@ -91,32 +91,7 @@ export class toGoOut {
         // 上がるときの下限
         if (wordsCount < 5) {
             grammerData = false;
-
-            const errordiv = document.createElement('div');
-            errordiv.innerHTML = '５単語を超えていません';
-            Object.assign(errordiv.style, {
-                position: 'absolute',
-                bottom: '275px',
-                left: '15%',
-                backgroundColor: 'rgba(109, 109, 109, 0.4)',
-                color: '#FFFFFF',
-                border: '2px solid #000000',
-                zIndex: 9999,
-                fontSize: '24px',
-                opacity: '1',
-                borderRadius: '10px',
-                transition: 'opacity 0.5s ease',
-                padding: '10px',
-                maxWidth: '60%',
-            });
-            document.body.appendChild(errordiv);
-
-            const displayDuration = 2000;
-
-            setTimeout(() => {
-                errordiv.style.opacity = '0';
-                errordiv.addEventListener('transitionend', () => errordiv.remove(), { once: true });
-            }, displayDuration);
+            this.uimanager.errorbox('5単語を超えていません');
         }
 
         return grammerData;
@@ -138,32 +113,7 @@ export class toGoOut {
                 if (checkResult.success == false) {
                     errorFlag = true;
 
-                    const errorReasons = [...new Set(Object.values(checkResult.errors).map((error) => error.reason))];
-                    const errordiv = document.createElement('div');
-                    errordiv.innerHTML = errorReasons.join('<br>');
-                    Object.assign(errordiv.style, {
-                        position: 'absolute',
-                        bottom: '275px',
-                        left: '15%',
-                        backgroundColor: 'rgba(109, 109, 109, 0.4)',
-                        color: '#FFFFFF',
-                        border: '2px solid #000000',
-                        zIndex: 9999,
-                        fontSize: '24px',
-                        opacity: '1',
-                        borderRadius: '10px',
-                        transition: 'opacity 0.5s ease',
-                        padding: '10px',
-                        maxWidth: '60%',
-                    });
-                    document.body.appendChild(errordiv);
-
-                    const displayDuration = 2000 + errorReasons.length * 1000;
-
-                    setTimeout(() => {
-                        errordiv.style.opacity = '0';
-                        errordiv.addEventListener('transitionend', () => errordiv.remove(), { once: true });
-                    }, displayDuration);
+                    this.uimanager.errorbox([...new Set(Object.values(checkResult.errors).map((error) => error.reason))]);
                 } else {
                     
                     const pointDetails = Object.values(checkResult.points).map(point =>`${point.pointName}:${point.pointValue}`).join(' ');
