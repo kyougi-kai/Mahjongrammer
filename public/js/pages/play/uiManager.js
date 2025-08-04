@@ -8,6 +8,7 @@ export class uiManager {
         this.flow = null;
         this.scoreBord = document.getElementById('scoreBord');
         this.resultPage = document.getElementById('resultpage');
+        this.playResultPage = document.getElementById('playResult');
 
         // チートdiv
         this.hinsiDiv = document.getElementById('hinsiDrop');
@@ -165,5 +166,39 @@ export class uiManager {
     pon() {
         this.ponskip.style.display = 'none';
         clearTimeout(this.time);
+    }
+
+    showPlayResult(){
+        this.playResultPage.style.opacity = '1';
+        this.playResultPage.style.pointerEvents = 'all';
+
+        let gradeList = [];
+        for(let i = 0; i < this.playermanager.getPlayerCount(); i++){
+            gradeList.push(1);
+
+            for(let j = 0; j < this.playermanager.getPlayerCount(); j++){
+                console.log(Number(this.scoreBord.children[this.playermanager.phaseToPosition(i)].innerHTML));
+                if(Number(this.scoreBord.children[this.playermanager.phaseToPosition(i)].innerHTML) < Number(this.scoreBord.children[this.playermanager.phaseToPosition(j)].innerHTML)){
+                    gradeList[i]++;
+                }
+
+                if(Number(this.scoreBord.children[this.playermanager.phaseToPosition(i)].innerHTML) == Number(this.scoreBord.children[this.playermanager.phaseToPosition(j)].innerHTML) && i > j){
+                    gradeList[i]++;
+                }
+            }
+        }
+
+        console.log(gradeList);
+
+        for(let i = 1; i <= this.playermanager.getPlayerCount(); i++){
+            for(let j = 0; j < this.playermanager.getPlayerCount(); j++){
+                if(i == gradeList[j]){
+                    let temporaryDiv = document.createElement('div');
+                    temporaryDiv.classList.add('result-grade');
+                    temporaryDiv.innerHTML = `<h2>${i}位</h2><h2>${Object.values(this.playermanager.playerMembers)[j]}</h2><p class="result-score">${Number(this.scoreBord.children[this.playermanager.phaseToPosition(j)].innerHTML)}</p>`;
+                    this.playResultPage.insertBefore(temporaryDiv, document.getElementById('playResultFinish'));
+                }
+            }
+        }
     }
 }
