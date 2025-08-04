@@ -5,16 +5,16 @@
 */
 
 import { tango } from '/js/utils/wordData.js';
-//export const tango1 = Array.isArray(tango) ? tango : [tango];
-export const tango1 = Object.entries(tango);
 
 export class hai {
-    constructor(word, hinsi = null) {
+    constructor(word, hinsi = null, uimanager) {
+        this.uimanager = uimanager;
         this.word = word;
         console.log(word);
         hinsi == null ? (this.hinsi = tango[word]['hinsi'][0]) : (this.hinsi = hinsi);
 
         this.createHai();
+        this.tagText = document.getElementById('tagText');
     }
 
     createHai() {
@@ -41,7 +41,22 @@ export class hai {
 
         this.hai.style.backgroundImage = `url(/img/partOfSpeech/${this.hinsi + wakusei}.png)`;
         this.hai.style.backgroundRepeat = 'no-repeat';
+
+        this.attachShowTags(this.hai);
         return this.hai;
+    }
+
+    attachShowTags(element){
+        element.addEventListener('mouseenter', () => {
+            let word = tango[this.word]['tags'].join(' ');
+            word += '<br>';
+            word += tango[this.word]['means'][this.hinsi];
+            this.showTagText(word, element);
+        });
+
+        element.addEventListener('mouseover', () => {
+            // 消す処理
+        });
     }
 
     changeKatuyou() {
@@ -69,5 +84,13 @@ export class hai {
 
     get getHai() {
         return this.hai;
+    }
+
+    showTagText(word, targetElement){
+        this.tagText.innerHTML = word;
+        this.tagText.style.opacity = '1';
+        this.tagText.style.left = targetElement.getBoundingClientRect().x + Number(targetElement.offsetWidth) / 2 + 'px';
+        this.tagText.style.bottom = Number(window.innerHeight) - targetElement.getBoundingClientRect().y + 20 + 'px';
+        // 消す処理
     }
 }
