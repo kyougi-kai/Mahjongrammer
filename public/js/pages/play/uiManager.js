@@ -9,6 +9,9 @@ export class uiManager {
         this.scoreBord = document.getElementById('scoreBord');
         this.resultPage = document.getElementById('resultpage');
         this.playResultPage = document.getElementById('playResult');
+        this.topleft = document.getElementById('oyaban');
+        this.tops = ['-8%', '69%', '69%', '-8%'];
+        this.lefts = ['61%', '61%', '-15%', '-15%'];
 
         // チートdiv
         this.hinsiDiv = document.getElementById('hinsiDrop');
@@ -199,6 +202,134 @@ export class uiManager {
                     this.playResultPage.insertBefore(temporaryDiv, document.getElementById('playResultFinish'));
                 }
             }
+        }
+    }
+
+    cutin(text){
+        const overlay = document.createElement('div');
+        overlay.textContent = text;
+        Object.assign(overlay.style, {
+            position: 'fixed',
+            top: '50%',
+            left: '0',
+            transform: 'translate(-100%, -50%)',
+            width: '100vw',
+            textAlign: 'center',
+            fontSize: '200px',
+            fontWeight: 'bold',
+            color: '#ffab4bff',
+            backgroundColor: 'rgba(0,0,0,0.6)',
+            zIndex: '10000',
+            pointerEvents: 'none',
+            animation: 'cutin-move 1s ease-out forwards',
+        });
+        const style = document.createElement('style');
+        style.textContent = `
+        @keyframes cutin-move {
+            0% {
+                transform: translate(-100%, -50%);
+                opacity: 0;
+            }
+            7% {
+                transform: translate(0%, -50%);
+                opacity: 1;
+            }
+            93% {
+                transform: translate(0%, -50%);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(100%, -50%);
+                opacity: 0;
+            }
+        }
+        `;
+        document.head.appendChild(style);
+        document.body.appendChild(overlay);
+        overlay.addEventListener('animationend', () => {
+            overlay.remove();
+            style.remove();
+        });
+    }
+
+    showRoundStart(nowRound){
+        //ラウンド
+        const round = document.createElement('div');
+        round.textContent = `第${nowRound}ラウンド`;
+        Object.assign(round.style, {
+            position: 'fixed',
+            top: '0',
+            left: '0',
+            width: '100vw',
+            height: '100vh',
+            color: 'black', // 文字色
+            fontSize: '10vw', // フォントサイズは画面幅に応じて可変
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            zIndex: '9999', // 他の要素より前面に
+            margin: '0',
+            padding: '0',
+            fontFamily: 'sans-serif',
+        });
+        let rounds = document.body.appendChild(round);
+
+        setInterval(() => {
+            rounds.remove();
+        }, 2000);
+
+        this.start_img = document.createElement('img');
+        this.start_img.src = '../img/haikeimoji/LETSGRAMMAHJONG2.png';
+        Object.assign(this.start_img.style, {
+            position: 'fixed',
+            top: '0',
+            left: '0',
+            width: '100vw',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            zIndex: '9999', // 他の要素より前面に
+            margin: '0',
+            padding: '0',
+        });
+        let startss = document.body.appendChild(this.start_img);
+
+        setInterval(() => {
+            startss.remove();
+        }, 2000);
+    }
+
+    changePhase(){
+        if (this.topleft.style.getPropertyValue('--original-html-ban') == '') {
+            this.showBlink(this.playermanager.phaseToPosition(0));
+            let idx2 = this.playermanager.phaseToPosition(0);
+            console.log(idx2);
+            console.log(this.topleft.style.top);
+            this.topleft.style.top = this.tops[idx2];
+            this.topleft.style.left = this.lefts[idx2];
+            this.topleft.style.setProperty('--original-html-ban', 0);
+            let i = idx2;
+            let j = idx2 + 4;
+            let k = 0;
+            this.yourtops = [];
+            this.yourlefts = [];
+            for (i; i < j; i++) {
+                this.yourtops[k] = this.tops[i % this.tops.length];
+                this.yourlefts[k] = this.lefts[i % this.lefts.length];
+                k = k + 1;
+            }
+            console.log(this.tops);
+            console.log(this.yourtops);
+            console.log(this.lefts);
+            console.log(this.yourlefts);
+        } else {
+            /*let currentIndex = Number(this.topleft.style.getPropertyValue('--original-html-ban'));
+            let idx2 = (currentIndex + 1) % this.playermanager.getPlayerCount();*/
+            this.showBlink(this.playermanager.phaseToPosition(this.flow.nowPhaseNumber));
+            let idx2 = this.playermanager.parentNumber;
+            this.topleft.style.top = this.yourtops[idx2];
+            this.topleft.style.left = this.yourlefts[idx2];
+            this.topleft.style.setProperty('--original-html-ban', idx2);
         }
     }
 }
