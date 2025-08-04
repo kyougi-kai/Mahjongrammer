@@ -105,6 +105,7 @@ export class toGoOut {
         } else {
             let errorFlag = false;
             let score = [];
+            let point = 0;
             grammerDatas.forEach((data) => {
                 const checkResult = checkGrammer(data);
                 console.log('checkResult');
@@ -119,10 +120,15 @@ export class toGoOut {
                     const pointDetails = Object.values(checkResult.points).map(point =>`${point.pointName}:${point.pointValue}`).join(' ');
                     console.log(`得点内訳: ${pointDetails}`);
                     score.push(pointDetails);
+
+                    Object.values(checkResult.points).forEach((value) => {
+                        point += Object.values(value)[1];
+                    })
                 }
             });
 
-            if (errorFlag) score = [];
+            console.log('point', point);
+            if (errorFlag || point < 1000) score = [];
             console.log(score);
             return score;
         }

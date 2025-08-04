@@ -132,7 +132,7 @@ export class flow {
                     }
                 });
             });
-            tokuten *= this.playermanager.getPlayerCount() - 1;
+            tokuten *= (this.playermanager.getPlayerCount() - 1);
             const tumoPlayerName = Object.values(this.playermanager.playerMembers)[data.tumoPlayerNumber];
             this.uimanager.showRoundResult(data.grammerData, tumoPlayerName, data.score,tokuten);
             this.uimanager.changePoint(this.playermanager.phaseToPosition(data.tumoPlayerNumber),tokuten);
