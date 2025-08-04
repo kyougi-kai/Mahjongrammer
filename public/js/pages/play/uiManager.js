@@ -13,6 +13,8 @@ export class uiManager {
         this.tops = ['-8%', '69%', '69%', '-8%'];
         this.lefts = ['61%', '61%', '-15%', '-15%'];
 
+        this.hideTimeOut = null;
+
         // チートdiv
         this.hinsiDiv = document.getElementById('hinsiDrop');
         this.tagDiv = document.getElementById('tagDrop');
@@ -331,5 +333,18 @@ export class uiManager {
             this.topleft.style.left = this.yourlefts[idx2];
             this.topleft.style.setProperty('--original-html-ban', idx2);
         }
+    }
+
+    showTagText(){
+        if(this.hideTimeOut != null)clearTimeout(this.hideTimeOut);
+    }
+
+    hideTagText(){
+        if(this.hideTimeOut != null)clearTimeout(this.hideTimeOut);
+        this.hideTimeOut = null;
+
+        this.hideTimeOut = setTimeout(() => {
+            document.getElementById('tagText').style.opacity = '0';
+        }, 3000);
     }
 }

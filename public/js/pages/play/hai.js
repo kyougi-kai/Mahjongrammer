@@ -47,15 +47,22 @@ export class hai {
     }
 
     attachShowTags(element){
+        this.enterDelay = null;
         element.addEventListener('mouseenter', () => {
-            let word = tango[this.word]['tags'].join(' ');
-            word += '<br>';
-            word += tango[this.word]['means'][this.hinsi];
-            this.showTagText(word, element);
+            this.enterDelay = setTimeout(() => {
+                let word = tango[this.word]['tags'].join(' ');
+                word += '<br>';
+                word += tango[this.word]['means'][this.hinsi];
+                this.showTagText(word, element);
+
+                this.uimanager.showTagText();
+            }, 1500);
         });
 
-        element.addEventListener('mouseover', () => {
-            // 消す処理
+        element.addEventListener('mouseout', () => {
+            clearTimeout(this.enterDelay);
+            this.enterDelay = null;
+            this.uimanager.hideTagText();
         });
     }
 

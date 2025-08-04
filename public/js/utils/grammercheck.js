@@ -227,7 +227,7 @@ function exchangeToPoint(GCR, targetArray) {
     keyName = '牌の個数';
     GCR.points[keyName] = { ...pointTemplete };
     GCR.points[keyName].pointName = keyName;
-    GCR.points[keyName].pointValue += totalWordsCount * 120;
+    GCR.points[keyName].pointValue += totalWordsCount * 100;
     GCR = pointManager(GCR);
     return GCR;
 }
