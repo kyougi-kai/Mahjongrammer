@@ -23,7 +23,7 @@ export function checkGrammer(targetArray) {
 
     /** @type {gcr} 文法チェックの結果を代入（旧grammerCheckResult）*/
     let GCR = {
-        success: false,
+        success: true,
         successes: {},
         currentType: [],
         currentTypeNum: 0,
