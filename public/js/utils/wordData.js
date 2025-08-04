@@ -486,7 +486,7 @@ export let tango = {
         },
     },
     have: {
-        tags: ['他動詞', '状態動詞', 'SVOOがとれる動詞', '原型', '相助動詞'],
+        tags: ['他動詞', '状態動詞', 'SVOOがとれる動詞', '原型', '相助動詞', 'have'],
         katuyou: ['have', 'has', 'had', 'having'],
         hinsi: ['動詞', '助動詞'],
         means: {
@@ -495,7 +495,7 @@ export let tango = {
         },
     },
     has: {
-        tags: ['他動詞', '状態動詞', 'SVOOがとれる動詞', '三単現s', '相助動詞'],
+        tags: ['他動詞', '状態動詞', 'SVOOがとれる動詞', '三単現s', '相助動詞', 'have'],
         katuyou: ['have', 'has', 'had', 'having'],
         hinsi: ['動詞', '助動詞'],
         means: {
@@ -504,7 +504,7 @@ export let tango = {
         },
     },
     had: {
-        tags: ['他動詞', '状態動詞', 'SVOOがとれる動詞', '過去形', '過去分詞', '相助動詞'],
+        tags: ['他動詞', '状態動詞', 'SVOOがとれる動詞', '過去形', '過去分詞', '相助動詞', 'have'],
         katuyou: ['have', 'has', 'had', 'having'],
         hinsi: ['動詞', '助動詞'],
         means: {

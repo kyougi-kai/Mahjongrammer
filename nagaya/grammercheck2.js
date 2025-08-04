@@ -20,7 +20,7 @@ const pointTemplete = {
 let checkGrammerTestArray = {
     sentence: 3,
     s: ['we'],
-    v: ['are', 'able', 'to', 'make'],
+    v: ['have', 'been', 'making'],
     o1: ['this', 'machine'],
 };
 
@@ -75,28 +75,52 @@ function checkGrammer(targetArray) {
             }
             break;
         case '2': //第二文型SVC
-            GCR.successes = { S: [], V: [], C: [] };
-            GCR.currentType.push('S', 'V', 'C');
+            if ('m' in targetArray) {
+                GCR.successes = { S: [], V: [], C: [], M: [] };
+                GCR.currentType.push('S', 'V', 'C', 'M');
+            } else {
+                GCR.successes = { S: [], V: [], C: [] };
+                GCR.currentType.push('S', 'V', 'C');
+            }
+
             checkS(targetArray.s, GCR);
             GCR.currentTypeNum++;
             checkV(targetArray.v, GCR, targetArray.sentence);
             GCR.currentTypeNum++;
             checkC(targetArray.c, GCR);
             GCR.currentTypeNum++;
+            if ('m' in targetArray) {
+                checkM(targetArray.m, GCR, targetArray.sentence);
+            }
             break;
         case '3': //第三文型SVO
-            GCR.successes = { S: [], V: [], O1: [] };
-            GCR.currentType.push('S', 'V', 'O1');
+            if ('m' in targetArray) {
+                GCR.successes = { S: [], V: [], O1: [], M: [] };
+                GCR.currentType.push('S', 'V', 'O1', 'M');
+            } else {
+                GCR.successes = { S: [], V: [], O1: [] };
+                GCR.currentType.push('S', 'V', 'O1');
+            }
+
             checkS(targetArray.s, GCR);
             GCR.currentTypeNum++;
             checkV(targetArray.v, GCR, targetArray.sentence);
             GCR.currentTypeNum++;
             checkO(targetArray.o1, GCR);
             GCR.currentTypeNum++;
+            if ('m' in targetArray) {
+                checkM(targetArray.m, GCR, targetArray.sentence);
+            }
             break;
         case '4': //第四文型SVOO
-            GCR.successes = { S: [], V: [], O1: [], O2: [] };
-            GCR.currentType.push('S', 'V', 'O1', 'O2');
+            if ('m' in targetArray) {
+                GCR.successes = { S: [], V: [], O1: [], O2: [], M: [] };
+                GCR.currentType.push('S', 'V', 'O1', 'O2', 'M');
+            } else {
+                GCR.successes = { S: [], V: [], O1: [], O2: [] };
+                GCR.currentType.push('S', 'V', 'O1', 'O2');
+            }
+
             checkS(targetArray.s, GCR);
             GCR.currentTypeNum++;
             checkV(targetArray.v, GCR, targetArray.sentence);
@@ -105,10 +129,19 @@ function checkGrammer(targetArray) {
             GCR.currentTypeNum++;
             checkO(targetArray.o2, GCR);
             GCR.currentTypeNum++;
+            if ('m' in targetArray) {
+                checkM(targetArray.m, GCR, targetArray.sentence);
+            }
             break;
         case '5': //第五文型SVOC
-            GCR.successes = { S: [], V: [], O1: [], C: [] };
-            GCR.currentType.push('S', 'V', 'O1', 'C');
+            if ('m' in targetArray) {
+                GCR.successes = { S: [], V: [], O1: [], C: [], M: [] };
+                GCR.currentType.push('S', 'V', 'O1', 'C', 'M');
+            } else {
+                GCR.successes = { S: [], V: [], O1: [], C: [] };
+                GCR.currentType.push('S', 'V', 'O1', 'C');
+            }
+
             checkS(targetArray.s, GCR);
             GCR.currentTypeNum++;
             checkV(targetArray.v, GCR, targetArray.sentence);
@@ -117,6 +150,9 @@ function checkGrammer(targetArray) {
             GCR.currentTypeNum++;
             checkC(targetArray.c, GCR);
             GCR.currentTypeNum++;
+            if ('m' in targetArray) {
+                checkM(targetArray.m, GCR, targetArray.sentence);
+            }
             break;
         default:
             GCR.message.push('存在しない文型を指定しています');
@@ -681,6 +717,19 @@ function checkJodousiRoot(targetSentence, GCR) {
         GCR['allOfVTags'].jodousi = GCR['allOfVTags'].jodousi.flat(Infinity);
         GCR['allOfVTags'].wordsCount += 1;
         GCR['allOfVTags'].targetIndex -= 1;
+    } else if (targetSentence[GCR['allOfVTags'].targetIndex] == 'been') {
+        if (GCR['allOfVTags'].targetIndex - 1 >= 0) {
+            if (tango[targetSentence[GCR['allOfVTags'].targetIndex - 1]].tags.includes('have')) {
+                GCR['allOfVTags'].jodousi.push(tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags);
+                GCR['allOfVTags'].jodousi = GCR['allOfVTags'].jodousi.flat(Infinity);
+                GCR['allOfVTags'].wordsCount += 1;
+                GCR['allOfVTags'].targetIndex -= 1;
+                GCR['allOfVTags'].jodousi.push(tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags);
+                GCR['allOfVTags'].jodousi = GCR['allOfVTags'].jodousi.flat(Infinity);
+                GCR['allOfVTags'].wordsCount += 1;
+                GCR['allOfVTags'].targetIndex -= 1;
+            }
+        }
     } else {
         GCR['allOfVTags'].jodousi.push('false');
     }
@@ -688,8 +737,7 @@ function checkJodousiRoot(targetSentence, GCR) {
     if (GCR['allOfVTags'].targetIndex >= 0) {
         if (tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags.includes('法助動詞')) {
             //法助動詞が存在する場合
-            if (targetSentence[GCR['allOfVTags'].targetIndex] == 'will')
-                GCR['allOfVTags'].houjodousi.push(tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags); //タグを代入
+            GCR['allOfVTags'].houjodousi.push(tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags); //タグを代入
             GCR['allOfVTags'].houjodousi = GCR['allOfVTags'].houjodousi.flat(Infinity);
             if (targetSentence[GCR['allOfVTags'].targetIndex] == 'will') GCR['allOfVTags'].houjodousi.push('未来'); //タグを代入
             GCR['allOfVTags'].wordsCount += 1;
@@ -1167,6 +1215,15 @@ function errorManager(GCR, typeText, errorID) {
             GCR.errors[keyName].suggestion =
                 'be going to,be able toを作る際にも，複数形の名詞にはare,were,been,beingのみbe動詞が使えます。活用形を変えるか、主語を変えてみましょう';
             break;
+        case 'houJodousiMissbynotgenkei':
+            keyName = 'houJodousiMissbynotgenkei';
+            GCR.errors[keyName] = { ...errorTemplete };
+            GCR.errors[keyName].part = 'V';
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '助動詞ミス！';
+            GCR.errors[keyName].reason = '助動詞の作り方を間違えています';
+            GCR.errors[keyName].suggestion = '助動詞の次に完了形のhaveや受け身、進行形のbe動詞を置きたいときは原型にしましょう';
+            break;
     }
 
     return GCR;
@@ -1208,6 +1265,45 @@ function pointManager(GCR) {
         GCR.points[keyName] = { ...pointTemplete };
         GCR.points[keyName].pointName = keyName;
         GCR.points[keyName].pointValue += 500;
+    }
+    if (GCR['allOfVTags'].jodousi.includes('be動詞') && GCR['allOfVTags'].jodousi.includes('原型') && GCR['allOfVTags'].dousi.includes('現在分詞')) {
+        //現在進行形なら
+        keyName = '現在進行形';
+        GCR.points[keyName] = { ...pointTemplete };
+        GCR.points[keyName].pointName = keyName;
+        GCR.points[keyName].pointValue += 300;
+    }
+    if (
+        GCR['allOfVTags'].jodousi.includes('be動詞') &&
+        GCR['allOfVTags'].jodousi.includes('過去形') &&
+        GCR['allOfVTags'].dousi.includes('現在分詞')
+    ) {
+        //過去進行形なら
+        keyName = '過去進行形';
+        GCR.points[keyName] = { ...pointTemplete };
+        GCR.points[keyName].pointName = keyName;
+        GCR.points[keyName].pointValue += 300;
+    }
+    if (GCR['allOfVTags'].jodousi.includes('be動詞') && GCR['allOfVTags'].dousi.includes('過去分詞')) {
+        //受け身なら
+        keyName = '受け身';
+        GCR.points[keyName] = { ...pointTemplete };
+        GCR.points[keyName].pointName = keyName;
+        GCR.points[keyName].pointValue += 300;
+    }
+    if (GCR['allOfVTags'].jodousi.includes('have') && GCR['allOfVTags'].dousi.includes('過去分詞')) {
+        //現在完了形なら
+        keyName = '現在完了形';
+        GCR.points[keyName] = { ...pointTemplete };
+        GCR.points[keyName].pointName = keyName;
+        GCR.points[keyName].pointValue += 300;
+    }
+    if (GCR['allOfVTags'].jodousi.includes('have') && GCR['allOfVTags'].dousi.includes('現在分詞')) {
+        //現在完了進行形なら
+        keyName = '現在完了進行形';
+        GCR.points[keyName] = { ...pointTemplete };
+        GCR.points[keyName].pointName = keyName;
+        GCR.points[keyName].pointValue += 400;
     }
     return GCR;
 }
@@ -1371,10 +1467,19 @@ function checkTotalGrammerMatters(GCR) {
         }
     }
 
-    //主語+法助動詞+動詞
-    if (GCR['allOfVTags'].houjodousi.includes('法助動詞') && GCR['allOfVTags'].jodousi.includes('false')) {
-        if (!GCR['allOfVTags'].dousi.includes('原型')) {
-            /*助動詞に原型以外の動詞をつけている場合*/ errorManager(GCR, '', 'JodousiMissbynotgenkei');
+    if (GCR['allOfVTags'].jodousi.includes('false')) {
+        //主語+法助動詞+動詞（相助動詞がない場合）
+        if (GCR['allOfVTags'].houjodousi.includes('法助動詞')) {
+            if (!GCR['allOfVTags'].dousi.includes('原型')) {
+                /*助動詞に原型以外の動詞をつけている場合*/ errorManager(GCR, '', 'JodousiMissbynotgenkei');
+            }
+        }
+    } else {
+        //主語+法助動詞+動詞（相助動詞がある場合）
+        if (GCR['allOfVTags'].houjodousi.includes('法助動詞')) {
+            if (!GCR['allOfVTags'].jodousi.includes('原型')) {
+                /*法助動詞に原型以外の助動詞をつけている場合*/ errorManager(GCR, '', 'houJodousiMissbynotgenkei');
+            }
         }
     }
 
