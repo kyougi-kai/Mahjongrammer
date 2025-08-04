@@ -28,6 +28,11 @@ export class flow {
 
         this.barkdiv = document.getElementById('barkDiv');
 
+        document.getElementById('playFinish').addEventListener('click', ()=>{
+            this.playermanager.sendBeaconFlag = true;
+            window.location = '/room/' + this.playermanager.roomId;
+        });
+
         document.addEventListener('keydown', (e) => {
             if (e.key == 'c') {
                 this.cheatPick();
@@ -374,26 +379,27 @@ export class flow {
 
     reStart(nextParent) {
         this.gameCount++;
-        if (this.gameCount == 4) {
-            this.playermanager.sendBeaconFlag = true;
-            window.location = '/room/' + this.playermanager.roomId;
+        if (this.gameCount == 1) {
+            this.uimanager.showPlayResult();
         }
-
-        // やること
-        console.log('reStart');
-        this.uimanager.initTable();
-        this.nowPhaseNumber = nextParent;
-        for (let i = 0; i < this.playermanager.getPlayerCount(); i++) {
-            // そのうちやる
-            try {
-                this.uimanager.hideThrowHai(i);
-            } catch (err) {
-                console.log('すてられた牌がないよ');
+        else{
+            // やること
+            console.log('reStart');
+            this.uimanager.initTable();
+            this.nowPhaseNumber = nextParent;
+            for (let i = 0; i < this.playermanager.getPlayerCount(); i++) {
+                // そのうちやる
+                try {
+                    this.uimanager.hideThrowHai(i);
+                } catch (err) {
+                    console.log('すてられた牌がないよ');
+                }
             }
+            console.log(this.nowPhaseNumber);
+            this.uimanager.showBlink(this.playermanager.phaseToPosition(nextParent));
+            this.start();
         }
-        console.log(this.nowPhaseNumber);
-        this.uimanager.showBlink(this.playermanager.phaseToPosition(nextParent));
-        this.start();
+        
     }
 
     nextPhase(isPon = false) {
