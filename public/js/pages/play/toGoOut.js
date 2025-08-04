@@ -77,11 +77,25 @@ export class toGoOut {
                     oCount++;
                 } else grammerData[index][valString] = [];
                 Array.from(val.children).forEach((word) => {
-                    const p = word.querySelector('p');
-                    const wordText = p ? p.textContent.trim() : '';
-                    console.log(wordText);
-                    grammerData[index][valString].push(wordText);
-                    wordsCount++;
+                    if(word.classList.contains('division-m')){
+                        let mw = [];
+                        Array.from(word.children).forEach((mWords) => {
+                            const p = mWords.querySelector('p');
+                            const wordText = p ? p.textContent.trim() : '';
+                            console.log(wordText);
+                            mw.push(wordText);
+                            wordsCount++;
+                        });
+                        grammerData[index][valString].push(mw);
+                    }
+                    else{
+                        const p = word.querySelector('p');
+                        const wordText = p ? p.textContent.trim() : '';
+                        console.log(wordText);
+                        grammerData[index][valString].push(wordText);
+                        wordsCount++;
+                    }
+                    
                 });
             });
             if (Object.keys(this.sentenceList).indexOf(grammerString) == -1) return false;
