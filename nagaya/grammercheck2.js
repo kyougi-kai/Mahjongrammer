@@ -18,10 +18,10 @@ const pointTemplete = {
 };
 
 let checkGrammerTestArray = {
-    sentence: 2,
-    s: ['ham'],
-    v: ['can', 'be'],
-    c: ['this', 'machine'],
+    sentence: 3,
+    s: ['we'],
+    v: ['are', 'able', 'to', 'make'],
+    o1: ['this', 'machine'],
 };
 
 const testGCR = {
@@ -510,12 +510,60 @@ function checkM(targetSentence, GCR, sentenceType) {
             }
             break;
         case '2': //第二文型SVC
+            if (tango[targetSentence[0]].hinsi.includes('前置詞')) {
+                wordsCount += 1;
+                let temporaryTargetSentence = JSON.parse(JSON.stringify(targetSentence)); // ディープコピー
+                temporaryTargetSentence.shift();
+                let temporaryGCR = JSON.parse(JSON.stringify(GCR)); // GCRをディープコピー
+                temporaryGCR = checkMeisiRoot(temporaryTargetSentence, temporaryGCR); //仮のGCRを引数にする。本当のGCRは渡さない←何で？いみわからん←trueが2個返ってくるから
+                if (temporaryGCR.temporaryWordsNum > 0) wordsCount += temporaryGCR.temporaryWordsNum; //名詞がある場合
+                console.log('temporaryGCRRRRRRRRRRR', temporaryGCR);
+                GCR['allOfMTags'] = temporaryGCR['allOfMTags'];
+                GCR['allOfMTags'].wordsCount = wordsCount;
+                GCR.errors = temporaryGCR.errors;
+            }
             break;
         case '3': //第三文型SVO
+            if (tango[targetSentence[0]].hinsi.includes('前置詞')) {
+                wordsCount += 1;
+                let temporaryTargetSentence = JSON.parse(JSON.stringify(targetSentence)); // ディープコピー
+                temporaryTargetSentence.shift();
+                let temporaryGCR = JSON.parse(JSON.stringify(GCR)); // GCRをディープコピー
+                temporaryGCR = checkMeisiRoot(temporaryTargetSentence, temporaryGCR); //仮のGCRを引数にする。本当のGCRは渡さない←何で？いみわからん←trueが2個返ってくるから
+                if (temporaryGCR.temporaryWordsNum > 0) wordsCount += temporaryGCR.temporaryWordsNum; //名詞がある場合
+                console.log('temporaryGCRRRRRRRRRRR', temporaryGCR);
+                GCR['allOfMTags'] = temporaryGCR['allOfMTags'];
+                GCR['allOfMTags'].wordsCount = wordsCount;
+                GCR.errors = temporaryGCR.errors;
+            }
             break;
         case '4': //第四文型SVOO
+            if (tango[targetSentence[0]].hinsi.includes('前置詞')) {
+                wordsCount += 1;
+                let temporaryTargetSentence = JSON.parse(JSON.stringify(targetSentence)); // ディープコピー
+                temporaryTargetSentence.shift();
+                let temporaryGCR = JSON.parse(JSON.stringify(GCR)); // GCRをディープコピー
+                temporaryGCR = checkMeisiRoot(temporaryTargetSentence, temporaryGCR); //仮のGCRを引数にする。本当のGCRは渡さない←何で？いみわからん←trueが2個返ってくるから
+                if (temporaryGCR.temporaryWordsNum > 0) wordsCount += temporaryGCR.temporaryWordsNum; //名詞がある場合
+                console.log('temporaryGCRRRRRRRRRRR', temporaryGCR);
+                GCR['allOfMTags'] = temporaryGCR['allOfMTags'];
+                GCR['allOfMTags'].wordsCount = wordsCount;
+                GCR.errors = temporaryGCR.errors;
+            }
             break;
         case '5': //第五文型SVOC
+            if (tango[targetSentence[0]].hinsi.includes('前置詞')) {
+                wordsCount += 1;
+                let temporaryTargetSentence = JSON.parse(JSON.stringify(targetSentence)); // ディープコピー
+                temporaryTargetSentence.shift();
+                let temporaryGCR = JSON.parse(JSON.stringify(GCR)); // GCRをディープコピー
+                temporaryGCR = checkMeisiRoot(temporaryTargetSentence, temporaryGCR); //仮のGCRを引数にする。本当のGCRは渡さない←何で？いみわからん←trueが2個返ってくるから
+                if (temporaryGCR.temporaryWordsNum > 0) wordsCount += temporaryGCR.temporaryWordsNum; //名詞がある場合
+                console.log('temporaryGCRRRRRRRRRRR', temporaryGCR);
+                GCR['allOfMTags'] = temporaryGCR['allOfMTags'];
+                GCR['allOfMTags'].wordsCount = wordsCount;
+                GCR.errors = temporaryGCR.errors;
+            }
             break;
         default:
             GCR.message.push('存在しない文型を指定しています');
@@ -633,8 +681,6 @@ function checkJodousiRoot(targetSentence, GCR) {
         GCR['allOfVTags'].jodousi = GCR['allOfVTags'].jodousi.flat(Infinity);
         GCR['allOfVTags'].wordsCount += 1;
         GCR['allOfVTags'].targetIndex -= 1;
-    } else if (targetSentence[GCR['allOfVTags'].targetIndex] == 'to') {
-        GCR['allOfVTags'].targetIndex -= 1;
     } else {
         GCR['allOfVTags'].jodousi.push('false');
     }
@@ -642,34 +688,104 @@ function checkJodousiRoot(targetSentence, GCR) {
     if (GCR['allOfVTags'].targetIndex >= 0) {
         if (tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags.includes('法助動詞')) {
             //法助動詞が存在する場合
-            GCR['allOfVTags'].houjodousi.push(tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags); //タグを代入
+            if (targetSentence[GCR['allOfVTags'].targetIndex] == 'will')
+                GCR['allOfVTags'].houjodousi.push(tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags); //タグを代入
             GCR['allOfVTags'].houjodousi = GCR['allOfVTags'].houjodousi.flat(Infinity);
+            if (targetSentence[GCR['allOfVTags'].targetIndex] == 'will') GCR['allOfVTags'].houjodousi.push('未来'); //タグを代入
             GCR['allOfVTags'].wordsCount += 1;
             GCR['allOfVTags'].targetIndex -= 1;
-        } else if (targetSentence[GCR['allOfVTags'].targetIndex] == 'to') {
+        } else if (targetSentence[GCR['allOfVTags'].targetIndex] == 'to' && GCR['allOfVTags'].jodousi.includes('false')) {
+            //疑似法助動詞がある場合
             GCR['allOfVTags'].wordsCount += 1;
             GCR['allOfVTags'].targetIndex -= 1;
             if (GCR['allOfVTags'].targetIndex >= 0) {
                 switch (targetSentence[GCR['allOfVTags'].targetIndex]) {
                     case 'going': //be going toの時
+                        GCR['allOfVTags'].wordsCount += 1;
+                        GCR['allOfVTags'].targetIndex -= 1;
+                        if (GCR['allOfVTags'].targetIndex >= 0) {
+                            if (
+                                tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags.includes('be動詞') &&
+                                !tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags.includes('過去分詞') &&
+                                !tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags.includes('現在分詞')
+                            ) {
+                                GCR['allOfVTags'].houjodousi.push(tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags); //タグを代入
+                                GCR['allOfVTags'].houjodousi = GCR['allOfVTags'].houjodousi.flat(Infinity);
+                                GCR['allOfVTags'].houjodousi.push('疑似法助動詞', 'be', '未来'); //タグを代入
+                                GCR['allOfVTags'].wordsCount += 1;
+                                GCR['allOfVTags'].targetIndex -= 1;
+                            } else if (
+                                tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags.includes('be動詞') &&
+                                (tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags.includes('過去分詞') ||
+                                    tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags.includes('現在分詞'))
+                            ) {
+                                /**be going to でbeen やbeing を使っている場合 */ errorManager(GCR, 'be going to', 'gijijodousiMiss');
+                            }
+                        }
                         break;
                     case 'able': //be able toの時
+                        GCR['allOfVTags'].wordsCount += 1;
+                        GCR['allOfVTags'].targetIndex -= 1;
+                        if (GCR['allOfVTags'].targetIndex >= 0) {
+                            if (
+                                tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags.includes('be動詞') &&
+                                !tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags.includes('過去分詞') &&
+                                !tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags.includes('現在分詞')
+                            ) {
+                                GCR['allOfVTags'].houjodousi.push(tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags); //タグを代入
+                                GCR['allOfVTags'].houjodousi = GCR['allOfVTags'].houjodousi.flat(Infinity);
+                                GCR['allOfVTags'].houjodousi.push('疑似法助動詞', 'be', 'beableto'); //タグを代入
+                                GCR['allOfVTags'].wordsCount += 1;
+                                GCR['allOfVTags'].targetIndex -= 1;
+                            } else if (
+                                tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags.includes('be動詞') &&
+                                (tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags.includes('過去分詞') ||
+                                    tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags.includes('現在分詞'))
+                            ) {
+                                /**be able to でbeen やbeing を使っている場合 */ errorManager(GCR, 'be able to', 'gijijodousiMiss');
+                            }
+                        }
                         break;
                     case 'have': //have to
+                        GCR['allOfVTags'].wordsCount += 1;
+                        GCR['allOfVTags'].targetIndex -= 1;
+                        GCR['allOfVTags'].houjodousi.push(tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags); //タグを代入
+                        GCR['allOfVTags'].houjodousi = GCR['allOfVTags'].houjodousi.flat(Infinity);
+                        GCR['allOfVTags'].houjodousi.push('疑似法助動詞', 'have'); //タグを代入
                         break;
                     case 'has': //has to
+                        GCR['allOfVTags'].wordsCount += 1;
+                        GCR['allOfVTags'].targetIndex -= 1;
+                        GCR['allOfVTags'].houjodousi.push(tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags); //タグを代入
+                        GCR['allOfVTags'].houjodousi = GCR['allOfVTags'].houjodousi.flat(Infinity);
+                        GCR['allOfVTags'].houjodousi.push('疑似法助動詞'); //タグを代入
                         break;
                     case 'had': //had to
+                        GCR['allOfVTags'].wordsCount += 1;
+                        GCR['allOfVTags'].targetIndex -= 1;
+                        GCR['allOfVTags'].houjodousi.push(tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags); //タグを代入
+                        GCR['allOfVTags'].houjodousi = GCR['allOfVTags'].houjodousi.flat(Infinity);
+                        GCR['allOfVTags'].houjodousi.push('疑似法助動詞'); //タグを代入
                         break;
                     case 'used': //used to
+                        GCR['allOfVTags'].wordsCount += 1;
+                        GCR['allOfVTags'].targetIndex -= 1;
+                        GCR['allOfVTags'].houjodousi.push(tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags); //タグを代入
+                        GCR['allOfVTags'].houjodousi = GCR['allOfVTags'].houjodousi.flat(Infinity);
+                        GCR['allOfVTags'].houjodousi.push('疑似法助動詞'); //タグを代入
                         break;
                     case 'ought': //ought to
+                        GCR['allOfVTags'].wordsCount += 1;
+                        GCR['allOfVTags'].targetIndex -= 1;
+                        GCR['allOfVTags'].houjodousi.push(tango[targetSentence[GCR['allOfVTags'].targetIndex]].tags); //タグを代入
+                        GCR['allOfVTags'].houjodousi = GCR['allOfVTags'].houjodousi.flat(Infinity);
+                        GCR['allOfVTags'].houjodousi.push('疑似法助動詞'); //タグを代入
                         break;
                     default:
                         break;
                 }
             }
-        } else if (targetSentence[GCR['allOfVTags'].targetIndex] == 'better') {
+        } else if (targetSentence[GCR['allOfVTags'].targetIndex] == 'better' && GCR['allOfVTags'].jodousi.includes('false')) {
             //had better
             GCR['allOfVTags'].wordsCount += 1;
             GCR['allOfVTags'].targetIndex -= 1;
@@ -883,14 +999,14 @@ function errorManager(GCR, typeText, errorID) {
             GCR.errors[keyName].reason = 'Mの中身にミスがあります';
             GCR.errors[keyName].suggestion = '前置詞が抜けているかもしれません。ミスのある箇所を確認してみましょう';
             break;
-        case 'SantangensMissbyIyou':
-            keyName = 'SantangensMissbyIyou';
+        case 'SantangensMissbyIyouwe':
+            keyName = 'SantangensMissbyIyouwe';
             GCR.errors[keyName] = { ...errorTemplete };
             GCR.errors[keyName].part = 'V';
             GCR.errors[keyName].index = GCR.currentIndex;
             GCR.errors[keyName].type = '文法ミス！';
             GCR.errors[keyName].reason = '動詞の使い方を間違えています';
-            GCR.errors[keyName].suggestion = 'I,youには三単現sは使えません。活用形を変えてみましょう';
+            GCR.errors[keyName].suggestion = 'I,youや複数を表す代名詞には三単現sは使えません。活用形を変えてみましょう';
             break;
         case 'SantangensMissbygenkei':
             keyName = 'SantangensMissbygenkei';
@@ -965,7 +1081,94 @@ function errorManager(GCR, typeText, errorID) {
             GCR.errors[keyName].reason = '助動詞の使い方を間違えています';
             GCR.errors[keyName].suggestion = 'can,willなどの助動詞をつける場合には，原型の動詞をつけましょう';
             break;
+        case 'gijijodousiMiss':
+            keyName = 'gijijodousiMiss';
+            GCR.errors[keyName] = { ...errorTemplete };
+            GCR.errors[keyName].part = 'V';
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '助動詞ミス！';
+            GCR.errors[keyName].reason = '助動詞の作り方を間違えています';
+            GCR.errors[keyName].suggestion = typeText + 'を作る際には，beenやbeingは使えません。他のbe動詞に変えてみましょう';
+            break;
+        case 'havetoMissbyIyouwe':
+            keyName = 'havetoMissbyIyouwe';
+            GCR.errors[keyName] = { ...errorTemplete };
+            GCR.errors[keyName].part = 'V';
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '助動詞ミス！';
+            GCR.errors[keyName].reason = '助動詞の作り方を間違えています';
+            GCR.errors[keyName].suggestion = 'have toを作る際にも，I,youや複数を表す代名詞には三単現sは使えません。hasをhaveなどに変えてみましょう';
+            break;
+        case 'havetoMissbygenkei':
+            keyName = 'havetoMissbygenkei';
+            GCR.errors[keyName] = { ...errorTemplete };
+            GCR.errors[keyName].part = 'V';
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '助動詞ミス！';
+            GCR.errors[keyName].reason = '助動詞の作り方を間違えています';
+            GCR.errors[keyName].suggestion = 'have toを作る際にも，三人称単数現在形の主語には原型は使えません。原型でない活用形に変えてみましょう';
+            break;
+        case 'havetoMissbyhukusuu':
+            keyName = 'havetoMissbyhukusuu';
+            GCR.errors[keyName] = { ...errorTemplete };
+            GCR.errors[keyName].part = 'V';
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '助動詞ミス！';
+            GCR.errors[keyName].reason = '助動詞の作り方を間違えています';
+            GCR.errors[keyName].suggestion = 'have toを作る際にも，複数形の名詞には、三単現sは使えません。活用形を変えてみましょう';
+            break;
+        case 'bejodousiMissbyitininsyodaimeisi':
+            keyName = 'bejodousiMissbyitininsyodaimeisi';
+            GCR.errors[keyName] = { ...errorTemplete };
+            GCR.errors[keyName].part = 'V';
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '助動詞ミス！';
+            GCR.errors[keyName].reason = '助動詞の作り方を間違えています';
+            GCR.errors[keyName].suggestion =
+                'be going to,be able toを作る際にも，Iにはam,was,been,beingのみbe動詞が使えます。活用形を変えるか、主語を変えてみましょう';
+            break;
+        case 'bejodousiMissbynininnsyodaimeisi':
+            keyName = 'bejodousiMissbynininnsyodaimeisi';
+            GCR.errors[keyName] = { ...errorTemplete };
+            GCR.errors[keyName].part = 'V';
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '助動詞ミス！';
+            GCR.errors[keyName].reason = '助動詞の作り方を間違えています';
+            GCR.errors[keyName].suggestion =
+                'be going to,be able toを作る際にも，youまたは複数形の代名詞にはare,were,been,beingのみbe動詞が使えます。活用形を変えるか、主語を変えてみましょう';
+            break;
+        case 'bejodousiMissbysanninsyodaimeisi':
+            keyName = 'bejodousiMissbysanninsyodaimeisi';
+            GCR.errors[keyName] = { ...errorTemplete };
+            GCR.errors[keyName].part = 'V';
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '助動詞ミス！';
+            GCR.errors[keyName].reason = '助動詞の作り方を間違えています';
+            GCR.errors[keyName].suggestion =
+                'be going to,be able toを作る際にも，三人称単数の代名詞にはis,was,been,beingのみbe動詞が使えます。活用形を変えるか、主語を変えてみましょう';
+            break;
+        case 'bejodousiMissbyTansuu':
+            keyName = 'bejodousiMissbyTansuu';
+            GCR.errors[keyName] = { ...errorTemplete };
+            GCR.errors[keyName].part = 'V';
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '助動詞ミス！';
+            GCR.errors[keyName].reason = '助動詞の作り方を間違えています';
+            GCR.errors[keyName].suggestion =
+                'be going to,be able toを作る際にも，単数形の名詞にはis,was,been,beingのみbe動詞が使えます。活用形を変えるか、主語を変えてみましょう';
+            break;
+        case 'bejodousiMissbyhukusuu':
+            keyName = 'bejodousiMissbyhukusuu';
+            GCR.errors[keyName] = { ...errorTemplete };
+            GCR.errors[keyName].part = 'V';
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '助動詞ミス！';
+            GCR.errors[keyName].reason = '助動詞の作り方を間違えています';
+            GCR.errors[keyName].suggestion =
+                'be going to,be able toを作る際にも，複数形の名詞にはare,were,been,beingのみbe動詞が使えます。活用形を変えるか、主語を変えてみましょう';
+            break;
     }
+
     return GCR;
 }
 
@@ -985,12 +1188,26 @@ function pointManager(GCR) {
         GCR.points[keyName].pointName = keyName;
         GCR.points[keyName].pointValue += 300;
     }
-    if (GCR['allOfVTags'].houjodousi.includes('法助動詞')) {
+    if (GCR['allOfVTags'].houjodousi.includes('法助動詞') || GCR['allOfVTags'].houjodousi.includes('疑似法助動詞')) {
         //法助動詞を含んでいたら
         keyName = '助動詞';
         GCR.points[keyName] = { ...pointTemplete };
         GCR.points[keyName].pointName = keyName;
         GCR.points[keyName].pointValue += 300;
+    }
+    if (GCR['allOfVTags'].houjodousi.includes('未来')) {
+        //未来型なら
+        keyName = '未来';
+        GCR.points[keyName] = { ...pointTemplete };
+        GCR.points[keyName].pointName = keyName;
+        GCR.points[keyName].pointValue += 500;
+    }
+    if (GCR['allOfVTags'].houjodousi.includes('beableto')) {
+        //be able toなら
+        keyName = 'be able to';
+        GCR.points[keyName] = { ...pointTemplete };
+        GCR.points[keyName].pointName = keyName;
+        GCR.points[keyName].pointValue += 500;
     }
     return GCR;
 }
@@ -1045,10 +1262,11 @@ function checkTotalGrammerMatters(GCR) {
                         GCR['allOfSTags'].daimeisi.includes('主格')) ||
                         (GCR['allOfSTags'].daimeisi.includes('一人称') &&
                             GCR['allOfSTags'].daimeisi.includes('単数') &&
-                            GCR['allOfSTags'].daimeisi.includes('主格'))) &&
+                            GCR['allOfSTags'].daimeisi.includes('主格')) ||
+                        GCR['allOfSTags'].daimeisi.includes('複数')) &&
                     GCR['allOfVTags'].dousi.includes('三単現s')
                 ) {
-                    /*I,youに三単現sをつけている場合 */ errorManager(GCR, '', 'SantangensMissbyIyou');
+                    /*I,youに三単現sをつけている場合 */ errorManager(GCR, '', 'SantangensMissbyIyouwe');
                 }
                 if (
                     GCR['allOfSTags'].daimeisi.includes('三人称') &&
@@ -1072,8 +1290,89 @@ function checkTotalGrammerMatters(GCR) {
         }
     }
 
+    //主語+疑似法助動詞+動詞
+    if (GCR['allOfVTags'].houjodousi.includes('疑似法助動詞') && GCR['allOfVTags'].jodousi.includes('false')) {
+        if (!GCR['allOfVTags'].dousi.includes('原型')) {
+            /*助動詞に原型以外の動詞をつけている場合*/ errorManager(GCR, '', 'JodousiMissbynotgenkei');
+        }
+        if (GCR['allOfVTags'].houjodousi.includes('have')) {
+            /* haveと主語の対応が違う場合*/
+            try {
+                if (
+                    ((GCR['allOfSTags'].daimeisi.includes('二人称') &&
+                        GCR['allOfSTags'].daimeisi.includes('単数') &&
+                        GCR['allOfSTags'].daimeisi.includes('主格')) ||
+                        (GCR['allOfSTags'].daimeisi.includes('一人称') &&
+                            GCR['allOfSTags'].daimeisi.includes('単数') &&
+                            GCR['allOfSTags'].daimeisi.includes('主格')) ||
+                        GCR['allOfSTags'].daimeisi.includes('複数')) &&
+                    GCR['allOfVTags'].houjodousi.includes('三単現s')
+                ) {
+                    /*I,you,weに三単現sをつけている場合 */ errorManager(GCR, '', 'havetoMissbyIyouwe');
+                }
+                if (
+                    GCR['allOfSTags'].daimeisi.includes('三人称') &&
+                    GCR['allOfSTags'].daimeisi.includes('単数') &&
+                    GCR['allOfSTags'].daimeisi.includes('主格') &&
+                    GCR['allOfVTags'].houjodousi.includes('原型')
+                ) {
+                    /*三人称単数現在形に原型をつけている場合 */ errorManager(GCR, '', 'havetoMissbygenkei');
+                }
+            } catch (e) {
+                if (
+                    (GCR['allOfSTags'].meisi.includes('単数形') || GCR['allOfSTags'].meisi.includes('不可算名詞')) &&
+                    GCR['allOfVTags'].houjodousi.includes('原型')
+                ) {
+                    /*単数形の名詞に原型をつけている場合 */ errorManager(GCR, '', 'havetoMissbygenkei');
+                }
+                if (GCR['allOfSTags'].meisi.includes('複数形') && GCR['allOfVTags'].houjodousi.includes('三単現s')) {
+                    /*複数形の名詞に三単現sをつけている場合 */ errorManager(GCR, '', 'havetoMissbyhukusuu');
+                }
+            }
+        }
+        if (GCR['allOfVTags'].houjodousi.includes('be')) {
+            //be going to be able to と主語の対応が違う場合
+            try {
+                if (
+                    GCR['allOfSTags'].daimeisi.includes('一人称') &&
+                    GCR['allOfSTags'].daimeisi.includes('単数') &&
+                    GCR['allOfSTags'].daimeisi.includes('主格') &&
+                    !GCR['allOfVTags'].houjodousi.includes('一人称')
+                ) {
+                    /*Iにつかないbe動詞をつけている */ errorManager(GCR, '', 'bejodousibyitininsyodaimeisi');
+                }
+                if (
+                    ((GCR['allOfSTags'].daimeisi.includes('二人称') &&
+                        GCR['allOfSTags'].daimeisi.includes('単数') &&
+                        GCR['allOfSTags'].daimeisi.includes('主格')) ||
+                        GCR['allOfSTags'].daimeisi.includes('複数')) &&
+                    !GCR['allOfVTags'].houjodousi.includes('二人称')
+                ) {
+                    /*you,複数形につかないbe動詞をつけている */ errorManager(GCR, '', 'bejodousiMissbynininnsyodaimeisi');
+                }
+                if (
+                    GCR['allOfSTags'].daimeisi.includes('三人称') &&
+                    GCR['allOfSTags'].daimeisi.includes('単数') &&
+                    !GCR['allOfVTags'].houjodousi.includes('三人称')
+                ) {
+                    /*三人称につかないbe動詞 */ errorManager(GCR, '', 'bejodousiMissbysanninsyodaimeisi');
+                }
+            } catch (e) {
+                if (
+                    (GCR['allOfSTags'].meisi.includes('単数形') || GCR['allOfSTags'].meisi.includes('不可算名詞')) &&
+                    !GCR['allOfVTags'].houjodousi.includes('三人称')
+                ) {
+                    /*単数形の名詞にis以外をつけている場合 */ errorManager(GCR, '', 'bejodousiMissbyTansuu');
+                }
+                if (GCR['allOfSTags'].meisi.includes('複数形') && !GCR['allOfVTags'].houjodousi.includes('二人称')) {
+                    /*複数形の名詞にare以外をつけている場合 */ errorManager(GCR, '', 'bejodousiMissbyhukusuu');
+                }
+            }
+        }
+    }
+
     //主語+法助動詞+動詞
-    if (GCR['allOfVTags'].houjodousi.includes('法助動詞') && !GCR['allOfVTags'].jodousi.includes('false')) {
+    if (GCR['allOfVTags'].houjodousi.includes('法助動詞') && GCR['allOfVTags'].jodousi.includes('false')) {
         if (!GCR['allOfVTags'].dousi.includes('原型')) {
             /*助動詞に原型以外の動詞をつけている場合*/ errorManager(GCR, '', 'JodousiMissbynotgenkei');
         }

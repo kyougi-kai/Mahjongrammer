@@ -132,6 +132,7 @@ export class flow {
                     }
                 });
             });
+            tokuten *= this.playermanager.getPlayerCount() - 1;
             const tumoPlayerName = Object.values(this.playermanager.playerMembers)[data.tumoPlayerNumber];
             this.uimanager.showRoundResult(data.grammerData, tumoPlayerName, data.score,tokuten);
             this.uimanager.changePoint(this.playermanager.phaseToPosition(data.tumoPlayerNumber),tokuten);
@@ -139,7 +140,7 @@ export class flow {
             for(let i = 0; i < Object.keys(this.playermanager.playerMembers).length; i++){
                 if(data.tumoPlayerNumber == i)continue;
 
-                this.uimanager.changePoint(this.playermanager.phaseToPosition(i),-tokuten / (Object.keys(this.playermanager.playerMembers).length - 1));
+                this.uimanager.changePoint(this.playermanager.phaseToPosition(i),-tokuten);
             }
         });
 
@@ -226,8 +227,8 @@ export class flow {
         let temporaryHai = '';
         if (tango === null) {
             tango = this.datamanager.pickTango();
-            temporaryHai = new hai(tango.word, tango.partOfSpeech);
-        } else temporaryHai = new hai(tango);
+            temporaryHai = new hai(tango.word, tango.partOfSpeech, this.uimanager);
+        } else temporaryHai = new hai(tango, null, this.uimanager);
         this.blockmanager.attachDraggable(temporaryHai.getHai);
 
         document.getElementById('wordDown').appendChild(temporaryHai.getHai);
