@@ -332,4 +332,31 @@ export class uiManager {
             this.topleft.style.setProperty('--original-html-ban', idx2);
         }
     }
+    errorbox(word){
+        const errordiv = document.createElement('div');
+        errordiv.innerHTML = word;
+        Object.assign(errordiv.style, {
+            position: 'absolute',
+            bottom: '275px',
+            left: '15%',
+            backgroundColor: 'rgba(109, 109, 109, 0.4)',
+            color: '#FFFFFF',
+            border: '2px solid #000000',
+            zIndex: 9999,
+            fontSize: '24px',
+            opacity: '1',
+            borderRadius: '10px',
+            transition: 'opacity 0.5s ease',
+            padding: '10px',
+            maxWidth: '60%',
+        });
+        document.body.appendChild(errordiv);
+
+        const displayDuration = 3500;
+
+            setTimeout(() => {
+                errordiv.style.opacity = '0';
+                errordiv.addEventListener('transitionend', () => errordiv.remove(), { once: true });
+            }, displayDuration);
+    }
 }
