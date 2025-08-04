@@ -50,16 +50,6 @@ export function checkGrammer(targetArray) {
             if ('m' in targetArray) {
                 checkM(targetArray.m, GCR, targetArray.sentence);
             }
-            if (
-                GCR.successes.S.includes('true') &&
-                GCR.successes.V.includes('true') &&
-                GCR.successes.M.includes('true') &&
-                !GCR.successes.S.includes('false') &&
-                !GCR.successes.V.includes('false') &&
-                !GCR.successes.M.includes('false')
-            ) {
-                GCR.success = true;
-            }
             break;
         case '2': //第二文型SVC
             GCR.successes = { S: [], V: [], C: [] };
@@ -70,16 +60,6 @@ export function checkGrammer(targetArray) {
             GCR.currentTypeNum++;
             checkC(targetArray.c, GCR);
             GCR.currentTypeNum++;
-            if (
-                GCR.successes.S.includes('true') &&
-                GCR.successes.V.includes('true') &&
-                !GCR.successes.S.includes('false') &&
-                !GCR.successes.V.includes('false') &&
-                GCR.successes.C.includes('true') &&
-                !GCR.successes.C.includes('false')
-            ) {
-                GCR.success = true;
-            }
             break;
         case '3': //第三文型SVO
             GCR.successes = { S: [], V: [], O1: [] };
@@ -90,16 +70,6 @@ export function checkGrammer(targetArray) {
             GCR.currentTypeNum++;
             checkO(targetArray.o1, GCR);
             GCR.currentTypeNum++;
-            if (
-                GCR.successes.S.includes('true') &&
-                GCR.successes.V.includes('true') &&
-                !GCR.successes.S.includes('false') &&
-                !GCR.successes.V.includes('false') &&
-                GCR.successes.O1.includes('true') &&
-                !GCR.successes.O1.includes('false')
-            ) {
-                GCR.success = true;
-            }
             break;
         case '4': //第四文型SVOO
             GCR.successes = { S: [], V: [], O1: [], O2: [] };
@@ -112,18 +82,6 @@ export function checkGrammer(targetArray) {
             GCR.currentTypeNum++;
             checkO(targetArray.o2, GCR);
             GCR.currentTypeNum++;
-            if (
-                GCR.successes.S.includes('true') &&
-                GCR.successes.V.includes('true') &&
-                !GCR.successes.S.includes('false') &&
-                !GCR.successes.V.includes('false') &&
-                GCR.successes.O1.includes('true') &&
-                !GCR.successes.O1.includes('false') &&
-                GCR.successes.O2.includes('true') &&
-                !GCR.successes.O2.includes('false')
-            ) {
-                GCR.success = true;
-            }
             break;
         case '5': //第五文型SVOC
             GCR.successes = { S: [], V: [], O1: [], C: [] };
@@ -136,18 +94,6 @@ export function checkGrammer(targetArray) {
             GCR.currentTypeNum++;
             checkC(targetArray.c, GCR);
             GCR.currentTypeNum++;
-            if (
-                GCR.successes.S.includes('true') &&
-                GCR.successes.V.includes('true') &&
-                !GCR.successes.S.includes('false') &&
-                !GCR.successes.V.includes('false') &&
-                GCR.successes.O1.includes('true') &&
-                !GCR.successes.O1.includes('false') &&
-                GCR.successes.C.includes('true') &&
-                !GCR.successes.C.includes('false')
-            ) {
-                GCR.success = true;
-            }
             break;
         default:
             GCR.message.push('存在しない文型を指定しています');
