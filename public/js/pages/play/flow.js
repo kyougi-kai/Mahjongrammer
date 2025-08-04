@@ -11,6 +11,7 @@ export class flow {
         this.gameCount = 0;
 
         this.ponCount = 0;
+        this.ponCos = 100;
         this.myScore = 2500;
 
         this.scorebords = document.getElementById('scoreBord');
@@ -84,14 +85,14 @@ export class flow {
         });
 
         this.barkdiv.children[0].addEventListener('click', (e) => {
-            if (Number(this.scorebords.children[2].innerHTML) >= (this.ponCount + 1) * 1000) {
+            if (Number(this.scorebords.children[2].innerHTML) >= (this.ponCount + 1) * this.ponCos) {
                 this.ponCount++;
                 let ponData = {
                     type: 'pon',
                     payload: {
                         roomId: this.playermanager.roomId,
                         playerNumber: this.playermanager.getPlayerNumber(),
-                        decreasePoint: this.ponCount * 1000,
+                        decreasePoint: this.ponCount * this.ponCos,
                     },
                 };
                 this.wss.send(ponData);
@@ -181,7 +182,7 @@ export class flow {
             console.log(data.ponPlayerNumber);
             console.log(this.playermanager.getPlayerNumber());
             if (data.ponPlayerNumber == this.playermanager.getPlayerNumber()) {
-                this.uimanager.changePonPoint((this.ponCount + 1) * 1000);
+                this.uimanager.changePonPoint((this.ponCount + 1) * this.ponCos);
 
                 let nanka = document.createElement('div');
                 nanka.innerHTML = this.throwElement;
