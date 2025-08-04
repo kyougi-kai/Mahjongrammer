@@ -33,6 +33,7 @@ export class flow {
             window.location = '/room/' + this.playermanager.roomId;
         });
 
+        /*
         document.addEventListener('keydown', (e) => {
             if (e.key == 'c') {
                 this.cheatPick();
@@ -42,6 +43,7 @@ export class flow {
                 this.uimanager.showCheatDiv();
             }
         });
+        */
 
         this._setupWebsocket();
     }
