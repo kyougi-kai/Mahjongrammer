@@ -25140,7 +25140,7 @@ export let tango = {
     },
     a: {
         tags: ['不定冠詞', '直後子音'],
-        katuyou: [],
+        katuyou: ['a','an'],
         hinsi: ['冠詞'],
         means: {
             冠詞: '1 つの、1 人の〔数えられる名詞の前に置き、ふつう訳さない〕',
@@ -25148,7 +25148,7 @@ export let tango = {
     },
     an: {
         tags: ['不定冠詞', '直後母音'],
-        katuyou: [],
+        katuyou: ['a','an'],
         hinsi: ['冠詞'],
         means: {
             冠詞: '1つの、1人の 〔母音ではじまる数えられる名詞の前に置き、ふつう訳さない〕',
