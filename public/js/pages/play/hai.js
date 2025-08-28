@@ -25,9 +25,22 @@ export class hai {
         p.innerHTML = this.word;
         this.hai.appendChild(p);
 
-        this.hai.addEventListener('click', () => {
-            this.changeKatuyou();
+        let clickTimer = null;
+
+        this.hai.addEventListener("click", (e) => {
+            if (clickTimer) return; 
+        
+            clickTimer = setTimeout(() => {
+                this.changeKatuyou(); 
+                clickTimer = null;
+            }, 200); 
         });
+
+        this.hai.addEventListener("dblclick", (e) => {
+            clearTimeout(clickTimer);
+            clickTimer = null;
+        });
+
 
         // 後ろに画像表示 名詞はとりあえず1番目のやつ
         let wakusei = '';
@@ -38,7 +51,6 @@ export class hai {
             }
         }
         this.hai.style.animation = `hai${Math.floor(Math.random() * 3 + 1)} 2s infinite alternate ease-in-out`;
-
         this.hai.style.backgroundImage = `url(/img/partOfSpeech/${this.hinsi + wakusei}.png)`;
         this.hai.style.backgroundRepeat = 'no-repeat';
 
@@ -48,15 +60,13 @@ export class hai {
 
     attachShowTags(element){
         this.enterDelay = null;
-        element.addEventListener('mouseenter', () => {
-            this.enterDelay = setTimeout(() => {
+        element.addEventListener('dblclick', () => {
                 let word = tango[this.word]['tags'].join(' ');
                 word += '<br>';
                 word += tango[this.word]['means'][this.hinsi];
                 this.showTagText(word, element);
 
                 this.uimanager.showTagText();
-            }, 1500);
         });
 
         element.addEventListener('mouseout', () => {
