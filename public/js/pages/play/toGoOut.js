@@ -77,7 +77,7 @@ export class toGoOut {
                     oCount++;
                 } else grammerData[index][valString] = [];
                 Array.from(val.children).forEach((word) => {
-                    if(word.classList.contains('division-m')){
+                    if (word.classList.contains('division-m')) {
                         let mw = [];
                         Array.from(word.children).forEach((mWords) => {
                             const p = mWords.querySelector('p');
@@ -87,15 +87,13 @@ export class toGoOut {
                             wordsCount++;
                         });
                         grammerData[index][valString].push(mw);
-                    }
-                    else{
+                    } else {
                         const p = word.querySelector('p');
                         const wordText = p ? p.textContent.trim() : '';
                         console.log(wordText);
                         grammerData[index][valString].push(wordText);
                         wordsCount++;
                     }
-                    
                 });
             });
             if (Object.keys(this.sentenceList).indexOf(grammerString) == -1) return false;
@@ -118,9 +116,14 @@ export class toGoOut {
             return 0;
         } else {
             let errorFlag = false;
-            let score = [];
+            // 左ポイント　右英語
+            let result = [[], []];
+            let flatWords = [];
             let point = 0;
             grammerDatas.forEach((data) => {
+                let temporaryList = Object.values(data).flat();
+                temporaryList.pop();
+                flatWords.push(temporaryList);
                 const checkResult = checkGrammer(data);
                 console.log('checkResult');
                 console.log(checkResult);
@@ -130,21 +133,24 @@ export class toGoOut {
 
                     this.uimanager.errorbox([...new Set(Object.values(checkResult.errors).map((error) => error.reason))]);
                 } else {
-                    
-                    const pointDetails = Object.values(checkResult.points).map(point =>`${point.pointName}:${point.pointValue}`).join(' ');
+                    const pointDetails = Object.values(checkResult.points)
+                        .map((point) => `${point.pointName}:${point.pointValue}`)
+                        .join(' ');
                     console.log(`得点内訳: ${pointDetails}`);
-                    score.push(pointDetails);
+                    result[0].push(pointDetails);
 
                     Object.values(checkResult.points).forEach((value) => {
                         point += Object.values(value)[1];
-                    })
+                    });
                 }
             });
 
             console.log('point', point);
-            if (errorFlag || point < 1000) score = [];
-            console.log(score);
-            return score;
+            result[1] = flatWords;
+
+            if (errorFlag || point < 1000) result = [];
+            console.log(result);
+            return result;
         }
-    }   
+    }
 }

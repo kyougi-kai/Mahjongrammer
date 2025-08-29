@@ -28,12 +28,11 @@ export class flow {
 
         this.barkdiv = document.getElementById('barkDiv');
 
-        document.getElementById('playFinish').addEventListener('click', ()=>{
+        document.getElementById('playFinish').addEventListener('click', () => {
             this.playermanager.sendBeaconFlag = true;
             window.location = '/room/' + this.playermanager.roomId;
         });
 
-        /*
         document.addEventListener('keydown', (e) => {
             if (e.key == 'c') {
                 this.cheatPick();
@@ -42,8 +41,20 @@ export class flow {
             if (e.key == 'x') {
                 this.uimanager.showCheatDiv();
             }
+
+            if (e.key == 'z') {
+                document.getElementById('wordUp').innerHTML =
+                    '<div class="sentence-div" draggable="true"><div class="division-div division-s" draggable="true" style="opacity: 1;">\
+                    <div class="border-div" draggable="true" style="animation: 2s ease-in-out 0s infinite alternate none running hai3; background-image: url(&quot;/img/partOfSpeech/冠詞.png&quot;); background-repeat: no-repeat; opacity: 1;">\
+                    <p>a</p></div><div class="border-div" draggable="true" style="animation: 2s ease-in-out 0s infinite alternate none running hai3; background-image: url(&quot;/img/partOfSpeech/名詞2.png&quot;); background-repeat: no-repeat; opacity: 1;">\
+                    <p>cat</p></div></div><div class="division-div division-v" draggable="true" style="opacity: 1;">\
+                    <div class="border-div" draggable="true" style="animation: 2s ease-in-out 0s infinite alternate none running hai3; background-image: url(&quot;/img/partOfSpeech/助動詞.png&quot;); background-repeat: no-repeat; opacity: 1;">\
+                    <p>can</p></div><div class="border-div" draggable="true" style="animation: 2s ease-in-out 0s infinite alternate none running hai3; background-image: url(&quot;/img/partOfSpeech/動詞.png&quot;); background-repeat: no-repeat; opacity: 1;">\
+                    <p>play</p></div></div><div class="division-div division-o" draggable="true" style="opacity: 1;">\
+                    <div class="border-div" draggable="true" style="animation: 2s ease-in-out 0s infinite alternate none running hai1; background-image: url(&quot;/img/partOfSpeech/冠詞.png&quot;); background-repeat: no-repeat; opacity: 1;">\
+                    <p>the</p></div><div class="border-div" draggable="true" style="animation: 2s ease-in-out 0s infinite alternate none running hai3; background-image: url(&quot;/img/partOfSpeech/名詞2.png&quot;); background-repeat: no-repeat; opacity: 1;"><p>game</p></div></div></div>';
+            }
         });
-        */
 
         this._setupWebsocket();
     }
@@ -119,11 +130,12 @@ export class flow {
 
         this.wss.onMessage('tumo', (data) => {
             let tokuten = 0;
+            console.log('get tumo');
+            console.log(data);
 
-            data.score.forEach((scoreString) => {
-                
+            data.score[0].forEach((scoreString) => {
                 const items = scoreString.split(' ');
-            
+
                 items.forEach((item) => {
                     const parts = item.split(':');
                     if (parts.length === 2) {
@@ -134,15 +146,15 @@ export class flow {
                     }
                 });
             });
-            tokuten *= (this.playermanager.getPlayerCount() - 1);
+            tokuten *= this.playermanager.getPlayerCount() - 1;
             const tumoPlayerName = Object.values(this.playermanager.playerMembers)[data.tumoPlayerNumber];
-            this.uimanager.showRoundResult(data.grammerData, tumoPlayerName, data.score,tokuten);
-            this.uimanager.changePoint(this.playermanager.phaseToPosition(data.tumoPlayerNumber),tokuten);
+            this.uimanager.showRoundResult(data.grammerData, tumoPlayerName, data.score, tokuten);
+            this.uimanager.changePoint(this.playermanager.phaseToPosition(data.tumoPlayerNumber), tokuten);
 
-            for(let i = 0; i < Object.keys(this.playermanager.playerMembers).length; i++){
-                if(data.tumoPlayerNumber == i)continue;
+            for (let i = 0; i < Object.keys(this.playermanager.playerMembers).length; i++) {
+                if (data.tumoPlayerNumber == i) continue;
 
-                this.uimanager.changePoint(this.playermanager.phaseToPosition(i),-tokuten);
+                this.uimanager.changePoint(this.playermanager.phaseToPosition(i), -tokuten);
             }
         });
 
@@ -262,8 +274,7 @@ export class flow {
         this.gameCount++;
         if (this.gameCount == 4) {
             this.uimanager.showPlayResult();
-        }
-        else{
+        } else {
             // やること
             console.log('reStart');
             this.uimanager.initTable();
@@ -280,7 +291,6 @@ export class flow {
             this.uimanager.showBlink(this.playermanager.phaseToPosition(nextParent));
             this.start();
         }
-        
     }
 
     nextPhase(isPon = false) {
