@@ -107,56 +107,59 @@
                     <div class="hai-table" id="wordDown" style="background-image: url(/img/tyosakukenntaisaku.png)">
                     </div>
                 </div>
-                <div id="cheatDiv" style="
-                    z-index: 4;
-                    display: none;
-                    position: absolute;
-                    padding: 20px;
-                    top: 50%;
-                    left: 50%;
-                    transform: translateX(-50%) translateY(-50%);
-                    background: white;
-                ">
-                    <div style="display: flex">
-                        <div style="padding-right: 20px">
-                            <label for="hinsiDrop">品詞</label>
-                            <select name="hinsis" id="hinsiDrop"></select>
-                        </div>
-                        <div>
-                            <label for="tagDrop">タグ</label>
-                            <select name="tags" id="tagDrop"></select>
-                        </div>
-                    </div>
+            </div>
+        </div>
 
-                    <button id="pickButton">決定</button>
+        <div class="result-page" id="playResult" style="opacity: 0;pointer-events: none;">
+            <h2 class="result-main">試合結果</h2>
+            <div id="playResultFinish" style="display: flex; width: 100%; justify-content: right">
+                <button id="playFinish" class="result-button">終了</button>
+            </div>
+        </div>
+
+        <div id="tagText" class="balloon" style="opacity: 0;">
+        </div>
+
+        <div id="cheatDiv" style="
+                                z-index: 4;
+                                display: none;
+                                position: absolute;
+                                padding: 20px;
+                                top: 50%;
+                                left: 50%;
+                                transform: translateX(-50%) translateY(-50%);
+                                background: white;
+                            ">
+            <div style="display: flex">
+                <div style="padding-right: 20px">
+                    <label for="hinsiDrop">品詞</label>
+                    <select name="hinsis" id="hinsiDrop"></select>
+                </div>
+                <div>
+                    <label for="tagDrop">タグ</label>
+                    <select name="tags" id="tagDrop"></select>
                 </div>
             </div>
 
-            <button onclick="window.location='/home'" style="
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 9999;
-    background-color: #ff4d4d;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  ">
-                退出
-            </button>
+            <button id="pickButton">決定</button>
+        </div>
 
-            <div class="result-page" id="playResult" style="opacity: 0;pointer-events: none;">
-                <h2 class="result-main">試合結果</h2>
-                <div id="playResultFinish" style="display: flex; width: 100%; justify-content: right">
-                    <button id="playFinish" class="result-button">終了</button>
-                </div>
-            </div>
-
-            <div id="tagText" class="balloon" style="opacity: 0;">
-            </div>
+        <button onclick="window.location='/home'" style="
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                z-index: 9999;
+                background-color: #ff4d4d;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                font-size: 16px;
+                cursor: pointer;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+              ">
+            退出
+        </button>
 </body>
+
 </html>

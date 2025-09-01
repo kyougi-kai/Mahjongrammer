@@ -1,13 +1,14 @@
 import { hai } from '/js/pages/play/hai.js';
 import { tango } from '/js/utils/wordData.js';
 export class flow {
-    constructor(wss, blockmanager, uimanager, playermanager, togoout, datamanager) {
+    constructor(wss, blockmanager, uimanager, playermanager, togoout, datamanager, rulemanager) {
         this.wss = wss;
         this.blockmanager = blockmanager;
         this.uimanager = uimanager;
         this.playermanager = playermanager;
         this.togoout = togoout;
         this.datamanager = datamanager;
+        this.rulemanager = rulemanager;
         this.gameCount = 0;
 
         this.ponCount = 0;
@@ -43,7 +44,7 @@ export class flow {
             }
 
             if (e.key == 'z') {
-                document.getElementById('wordUp').innerHTML =
+                this.uimanager.wordUp.innerHTML =
                     '<div class="sentence-div" draggable="true"><div class="division-div division-s" draggable="true" style="opacity: 1;">\
                     <div class="border-div" draggable="true" style="animation: 2s ease-in-out 0s infinite alternate none running hai3; background-image: url(&quot;/img/partOfSpeech/冠詞.png&quot;); background-repeat: no-repeat; opacity: 1;">\
                     <p>a</p></div><div class="border-div" draggable="true" style="animation: 2s ease-in-out 0s infinite alternate none running hai3; background-image: url(&quot;/img/partOfSpeech/名詞2.png&quot;); background-repeat: no-repeat; opacity: 1;">\
@@ -79,7 +80,7 @@ export class flow {
                     type: 'tumo',
                     payload: {
                         roomId: this.playermanager.roomId,
-                        grammerData: document.getElementById('wordUp').innerHTML,
+                        grammerData: this.uimanager.wordUp.innerHTML,
                         playerNumber: this.playermanager.getPlayerNumber(),
                         score: score,
                     },
@@ -168,6 +169,12 @@ export class flow {
         });
 
         this.wss.onMessage('throwHai', (data) => {
+            //引き分け
+            if (this.rulemanager.nowHai == 0) {
+                this.sendTie();
+                return;
+            }
+
             try {
                 this.uimanager.showThrowHai(data.hai, this.playermanager.phaseToPosition(this.nowPhaseNumber));
                 if (this.playermanager.isParent()) {
@@ -186,6 +193,10 @@ export class flow {
             }
             console.log(data.hai);
             this.throwElement = data.hai;
+        });
+
+        this.wss.onMessage('tie', (data) => {
+            this.tie(data.grammerDatas);
         });
 
         this.wss.onMessage('nextPhase', () => {
@@ -267,10 +278,14 @@ export class flow {
             this.scorebords.children[4].style.pointerEvents = 'all';
         }
 
+        this.rulemanager.nowHai--;
+
         this.uimanager.changePhase();
     }
 
     reStart(nextParent) {
+        this.blockmanager.unlockFooter();
+
         this.gameCount++;
         if (this.gameCount == 4) {
             this.uimanager.showPlayResult();
@@ -294,6 +309,8 @@ export class flow {
     }
 
     nextPhase(isPon = false) {
+        this.rulemanager.nowHai--;
+
         console.log('nextPhase()');
         this.uimanager.hideNowBlink();
         console.log('nowPhaseNumber', this.nowPhaseNumber);
@@ -308,6 +325,20 @@ export class flow {
             this.scorebords.children[4].style.opacity = 0;
             this.scorebords.children[4].style.pointerEvents = 'none';
         }
+    }
+
+    sendTie() {
+        let sendData = {
+            type: 'tie',
+            payload: { roomId: this.playermanager.roomId, grammerData: this.uimanager.wordUp.innerHTML, userId: this.playermanager.userId },
+        };
+
+        this.wss.send(sendData);
+    }
+
+    tie(grammerDatas) {
+        this.blockmanager.lockFooter();
+        this.uimanager.showTieResult(grammerDatas);
     }
 
     throw(hai) {

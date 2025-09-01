@@ -4,6 +4,7 @@ import { usersManager } from '../server/usersManager.js';
 import roomMemberDB from '../db/repositories/roomMemberRepository.js';
 import roomsDB from '../db/repositories/roomsRepository.js';
 import { routemanager } from '../app.js';
+import { type } from 'os';
 
 export class playManager {
     /**
@@ -56,7 +57,7 @@ export class playManager {
             this.sendToClients(sendData, roomId);
             this.roommanager.noticeEntryRoom(roomId, roomMembersData.length);
         } else if (userId == parentId) {
-            this.playclientsmanager.playClients[roomId].entry = 0;
+            this.playclientsmanager.playClients[roomId].roomData.entry = 0;
         }
     }
 
@@ -68,7 +69,7 @@ export class playManager {
             let roomMembersData = await roomMemberDB.getRoomMembers(roomId);
             await roomMemberDB.updateIsReady(userId, false);
             this.playclientsmanager.entryRoom(roomId, userId, ws);
-            console.log('clientsLength', Object.keys(this.playclientsmanager.playClients[roomId]).length - 3);
+            console.log('clientsLength', Object.keys(this.playclientsmanager.playClients[roomId]).length - 1);
 
             // 割合送信
             await ws.send(
@@ -81,21 +82,19 @@ export class playManager {
                 })
             );
 
-            this.playclientsmanager.playClients[roomId].entry++;
+            this.playclientsmanager.playClients[roomId].roomData.entry++;
             const roomMemberCounts = await roomMemberDB.roomMemberCounts(roomId);
-            console.log("ゲームに入ろうとしているログだよ",this.playclientsmanager.playClients[roomId].entry, "ルームメンバーカウントのログだよ",roomMemberCounts);
-            if (this.playclientsmanager.playClients[roomId].entry == roomMemberCounts) {
+            if (this.playclientsmanager.playClients[roomId].roomData.entry == roomMemberCounts) {
                 const sendData = {
                     type: 'startGame',
                     payload: {},
                 };
                 console.log('sendStart');
-                this.playclientsmanager.playClients[roomId].entry = 0;
+                this.playclientsmanager.playClients[roomId].roomData.entry = 0;
 
                 setTimeout(() => {
                     this.sendToClients(sendData, roomId);
                 }, 500);
-                
             }
         });
 
@@ -151,15 +150,15 @@ export class playManager {
 
         this.wss.onMessage('skip', async (ws, data) => {
             const roomId = data.roomId;
-            this.playclientsmanager.playC[roomId].skip++;
+            this.playclientsmanager.playC[roomId].roomData.skip++;
             const roomMemberCounts = await roomMemberDB.roomMemberCounts(roomId);
-            if (this.playclientsmanager.playC[roomId].skip == roomMemberCounts - 1) {
+            if (this.playclientsmanager.playC[roomId].roomData.skip == roomMemberCounts - 1) {
                 const sendData = {
                     type: 'nextPhase',
                     payload: {},
                 };
                 this.sendToClients(sendData, roomId);
-                this.playclientsmanager.playC[roomId].skip = 0;
+                this.playclientsmanager.playC[roomId].roomData.skip = 0;
             }
         });
 
@@ -169,16 +168,16 @@ export class playManager {
                 type: 'pon',
                 payload: { ponPlayerNumber: data.playerNumber, decreasePoint: data.decreasePoint },
             };
-            this.playclientsmanager.playC[roomId].skip = 0;
+            this.playclientsmanager.playC[roomId].roomData.skip = 0;
             this.sendToClients(sendData, roomId);
         });
 
         this.wss.onMessage('nextRound', async (ws, data) => {
             const roomId = data.roomId;
-            this.playclientsmanager.playC[roomId].nextRound++;
+            this.playclientsmanager.playC[roomId].roomData.nextRound++;
             const roomMemberCounts = await roomMemberDB.roomMemberCounts(roomId);
-            if (this.playclientsmanager.playC[roomId].nextRound == roomMemberCounts) {
-                this.playclientsmanager.playC[roomId].nextRound = 0;
+            if (this.playclientsmanager.playC[roomId].roomData.nextRound == roomMemberCounts) {
+                this.playclientsmanager.playC[roomId].roomData.nextRound = 0;
                 const sendData = {
                     type: 'reStart',
                     payload: { tumoPlayerNumber: data.playerNumber },
@@ -210,6 +209,23 @@ export class playManager {
         });
 
         this.wss.onMessage('entryRoom', async (ws, data) => this.onMessageEntryRoom(ws, data), 1);
+
+        this.wss.onMessage('tie', async (ws, data) => {
+            const roomId = data.roomId;
+            this.playclientsmanager.playClients[roomId].roomData.tieCount++;
+            this.playclientsmanager.playClients[roomId].roomData.tie[data.userId] = data.grammerData;
+            const roomMemberCounts = await roomMemberDB.roomMemberCounts(roomId);
+
+            if (roomMemberCounts == this.playclientsmanager.playClients[roomId].roomData.tieCount) {
+                let sendData = {
+                    type: 'tie',
+                    payload: { grammerDatas: this.playclientsmanager.playClients[roomId].roomData.tie },
+                };
+                this.sendToClients(sendData, roomId);
+
+                this.playclientsmanager.playClients[roomId].roomData.tieCount = 0;
+            }
+        });
 
         setTimeout(() => {
             routemanager.onPost('outRoom', async (data) => {
@@ -258,7 +274,7 @@ export class playManager {
     sendToClients(sendData, roomId) {
         if (!this.playclientsmanager.playC.hasOwnProperty(roomId)) return;
         Object.values(this.playclientsmanager.playC[roomId]).forEach((client, index) => {
-            if (index == 0 || index == 1 || index == 2) return;
+            if (index == 0) return;
             client.send(JSON.stringify(sendData));
         });
     }
