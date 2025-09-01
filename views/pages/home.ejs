@@ -37,6 +37,7 @@
                         <button onclick="window.location.href = '/logout'" style="height: 50%; width: 100%; font-size: 18px; border: none">
                             ログアウト
                         </button>
+                        <button id="wa" style="height: 50%; width: 100%; font-size: 18px; border: none;">設定</button>
                     </div>
                 </div>
             </div>
@@ -62,6 +63,20 @@
             <input id="roomName" class="room-name-input" type="text" value="<%= name %>の部屋" />
             <div style="display: flex; justify-content: right">
                 <button class="join-btn" style="margin: 10px" id="createBtn">作成</button>
+            </div>
+        </div>
+
+        <div id="settingdiv" class="settingdiv" style="opacity: 0; pointer-events: none;">
+            Change the color of your name tag!
+            <div class="colors-row">
+                <button class="colorbox" id="ChangeUpColor1" style="background-color: rgba(0, 0, 0, 0.5);">black</button>
+                <button class="colorbox" id="ChangeUpColor2" style="background-color: rgba(255, 255, 255, 0.5); color: black;">white</button>
+                <button class="colorbox" id="ChangeUpColor3" style="background-color: rgba(255, 0, 0, 0.5)">red</button>
+                <button class="colorbox" id="ChangeUpColor4" style="background-color: rgba(0, 0, 255, 0.5);">blue</button>
+                <button class="colorbox" id="ChangeUpColor5" style="background-color: rgba(0, 255, 0, 0.5); color: black;">green</button>
+                <button class="colorbox" id="ChangeUpColor6" style="background-color: rgba(255, 255, 0, 0.5); color: black;">yellow</button>
+                <button class="colorbox" id="ChangeUpColor7" style="background-color: rgba(128, 0, 128, 0.3);">purple</button>
+                <button class="colorbox" id="ChangeUpColor8" style="background-color: rgba(128, 128, 128, 0.5);">graw</button>
             </div>
         </div>
     </body>
