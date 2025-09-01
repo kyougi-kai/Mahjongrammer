@@ -19,7 +19,7 @@ const pointTemplete = {
 
 let checkGrammerTestArray = {
     sentence: 3,
-    s: ['we'],
+    s: ['he'],
     v: ['have', 'been', 'making'],
     o1: ['this', 'machine'],
 };
