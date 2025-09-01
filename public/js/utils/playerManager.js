@@ -204,4 +204,7 @@ export class playerManager {
         const userId = userIds[date];
         return this.playerMembers[userId];
     }
+    changeNametags(data) {
+        
+    }
 }
