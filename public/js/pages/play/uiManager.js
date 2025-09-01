@@ -1,4 +1,5 @@
 import { tango } from '/js/utils/wordData.js';
+import { functions } from '/js/utils/functions.js';
 
 export class uiManager {
     constructor(playermanager) {
@@ -111,10 +112,15 @@ export class uiManager {
         this.throwHaiTable.children[position].children[0].remove();
     }
 
-    showRoundResult(grammerData, playerName, score, tokuten) {
+    async showRoundResult(grammerData, playerName, score, tokuten) {
+        let translateSentence = '';
+        for (let i = 0; i < score[1].length; i++) {
+            console.log(score[1][i]);
+            translateSentence += (await functions.translateEnglish(score[1][i].join(' '))) + ' ';
+        }
         this.resultPage.style.display = 'flex';
         this.resultPage.getElementsByClassName('result-name')[0].innerHTML = playerName;
-        this.resultPage.getElementsByClassName('score-text')[0].innerHTML = score.join('<br>');
+        this.resultPage.getElementsByClassName('score-text')[0].innerHTML = translateSentence + '<br>' + score[0].join('<br>');
         this.resultPage.getElementsByClassName('allten')[0].innerHTML = `合計${tokuten}`;
         document.getElementById('resultGrammerDiv').innerHTML = grammerData;
     }
@@ -173,21 +179,28 @@ export class uiManager {
         clearTimeout(this.time);
     }
 
-    showPlayResult(){
+    showPlayResult() {
         this.playResultPage.style.opacity = '1';
         this.playResultPage.style.pointerEvents = 'all';
 
         let gradeList = [];
-        for(let i = 0; i < this.playermanager.getPlayerCount(); i++){
+        for (let i = 0; i < this.playermanager.getPlayerCount(); i++) {
             gradeList.push(1);
 
-            for(let j = 0; j < this.playermanager.getPlayerCount(); j++){
+            for (let j = 0; j < this.playermanager.getPlayerCount(); j++) {
                 console.log(Number(this.scoreBord.children[this.playermanager.phaseToPosition(i)].innerHTML));
-                if(Number(this.scoreBord.children[this.playermanager.phaseToPosition(i)].innerHTML) < Number(this.scoreBord.children[this.playermanager.phaseToPosition(j)].innerHTML)){
+                if (
+                    Number(this.scoreBord.children[this.playermanager.phaseToPosition(i)].innerHTML) <
+                    Number(this.scoreBord.children[this.playermanager.phaseToPosition(j)].innerHTML)
+                ) {
                     gradeList[i]++;
                 }
 
-                if(Number(this.scoreBord.children[this.playermanager.phaseToPosition(i)].innerHTML) == Number(this.scoreBord.children[this.playermanager.phaseToPosition(j)].innerHTML) && i > j){
+                if (
+                    Number(this.scoreBord.children[this.playermanager.phaseToPosition(i)].innerHTML) ==
+                        Number(this.scoreBord.children[this.playermanager.phaseToPosition(j)].innerHTML) &&
+                    i > j
+                ) {
                     gradeList[i]++;
                 }
             }
@@ -195,19 +208,21 @@ export class uiManager {
 
         console.log(gradeList);
 
-        for(let i = 1; i <= this.playermanager.getPlayerCount(); i++){
-            for(let j = 0; j < this.playermanager.getPlayerCount(); j++){
-                if(i == gradeList[j]){
+        for (let i = 1; i <= this.playermanager.getPlayerCount(); i++) {
+            for (let j = 0; j < this.playermanager.getPlayerCount(); j++) {
+                if (i == gradeList[j]) {
                     let temporaryDiv = document.createElement('div');
                     temporaryDiv.classList.add('result-grade');
-                    temporaryDiv.innerHTML = `<h2>${i}位</h2><h2>${Object.values(this.playermanager.playerMembers)[j]}</h2><p class="result-score">${Number(this.scoreBord.children[this.playermanager.phaseToPosition(j)].innerHTML)}</p>`;
+                    temporaryDiv.innerHTML = `<h2>${i}位</h2><h2>${
+                        Object.values(this.playermanager.playerMembers)[j]
+                    }</h2><p class="result-score">${Number(this.scoreBord.children[this.playermanager.phaseToPosition(j)].innerHTML)}</p>`;
                     this.playResultPage.insertBefore(temporaryDiv, document.getElementById('playResultFinish'));
                 }
             }
         }
     }
 
-    cutin(text){
+    cutin(text) {
         const overlay = document.createElement('div');
         overlay.textContent = text;
         Object.assign(overlay.style, {
@@ -254,7 +269,7 @@ export class uiManager {
         });
     }
 
-    showRoundStart(nowRound){
+    showRoundStart(nowRound) {
         //ラウンド
         const round = document.createElement('div');
         round.textContent = `第${nowRound}ラウンド`;
@@ -301,7 +316,7 @@ export class uiManager {
         }, 2000);
     }
 
-    changePhase(){
+    changePhase() {
         if (this.topleft.style.getPropertyValue('--original-html-ban') == '') {
             this.showBlink(this.playermanager.phaseToPosition(0));
             let idx2 = this.playermanager.phaseToPosition(0);
@@ -334,7 +349,7 @@ export class uiManager {
             this.topleft.style.setProperty('--original-html-ban', idx2);
         }
     }
-    errorbox(word){
+    errorbox(word) {
         const errordiv = document.createElement('div');
         errordiv.innerHTML = word;
         Object.assign(errordiv.style, {
@@ -356,18 +371,18 @@ export class uiManager {
 
         const displayDuration = 3500;
 
-            setTimeout(() => {
-                errordiv.style.opacity = '0';
-                errordiv.addEventListener('transitionend', () => errordiv.remove(), { once: true });
-            }, displayDuration);
+        setTimeout(() => {
+            errordiv.style.opacity = '0';
+            errordiv.addEventListener('transitionend', () => errordiv.remove(), { once: true });
+        }, displayDuration);
     }
 
-    showTagText(){
-        if(this.hideTimeOut != null)clearTimeout(this.hideTimeOut);
+    showTagText() {
+        if (this.hideTimeOut != null) clearTimeout(this.hideTimeOut);
     }
 
-    hideTagText(){
-        if(this.hideTimeOut != null)clearTimeout(this.hideTimeOut);
+    hideTagText() {
+        if (this.hideTimeOut != null) clearTimeout(this.hideTimeOut);
         this.hideTimeOut = null;
 
         this.hideTimeOut = setTimeout(() => {
