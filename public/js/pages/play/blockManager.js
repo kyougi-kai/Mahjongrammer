@@ -165,4 +165,12 @@ export class blockManager {
             event.preventDefault();
         });
     }
+
+    lockFooter() {
+        document.getElementsByClassName('footer')[0].style.pointerEvents = 'none';
+    }
+
+    unlockFooter() {
+        document.getElementsByClassName('footer')[0].style.pointerEvents = 'all';
+    }
 }
