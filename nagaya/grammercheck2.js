@@ -20,7 +20,7 @@ const pointTemplete = {
 let checkGrammerTestArray = {
     sentence: 3,
     s: ['he'],
-    v: ['have', 'been', 'making'],
+    v: ['does', 'made'],
     o1: ['this', 'machine'],
 };
 
@@ -1543,6 +1543,7 @@ function checkTotalGrammerMatters(GCR) {
             }
         }
     }
+
     return GCR;
 }
 
