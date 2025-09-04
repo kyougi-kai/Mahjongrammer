@@ -173,6 +173,7 @@ p {
     background: white;
     margin: 20px;
     box-sizing: border-box;
+    color: black;
 }
 
 .name div {

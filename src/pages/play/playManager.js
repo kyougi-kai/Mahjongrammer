@@ -4,7 +4,7 @@ import { usersManager } from '../server/usersManager.js';
 import roomMemberDB from '../db/repositories/roomMemberRepository.js';
 import roomsDB from '../db/repositories/roomsRepository.js';
 import { routemanager } from '../app.js';
-import { type } from 'os';
+import { haiManager } from './haiManager.js';
 
 export class playManager {
     /**
@@ -15,6 +15,7 @@ export class playManager {
         this.wss = wss;
         this.playclientsmanager = new playClientsManager(wss);
         this.roommanager = roommanager;
+        this.haimanager = new haiManager();
 
         this._setup();
     }
@@ -87,7 +88,7 @@ export class playManager {
             if (this.playclientsmanager.playClients[roomId].roomData.entry == roomMemberCounts) {
                 const sendData = {
                     type: 'startGame',
-                    payload: {},
+                    payload: { hais: this.datamanager.generateHais() },
                 };
                 console.log('sendStart');
                 this.playclientsmanager.playClients[roomId].roomData.entry = 0;
@@ -180,7 +181,7 @@ export class playManager {
                 this.playclientsmanager.playC[roomId].roomData.nextRound = 0;
                 const sendData = {
                     type: 'reStart',
-                    payload: { tumoPlayerNumber: data.playerNumber },
+                    payload: { tumoPlayerNumber: data.playerNumber, hais: this.datamanager.generateHais() },
                 };
                 this.sendToClients(sendData, roomId);
             }

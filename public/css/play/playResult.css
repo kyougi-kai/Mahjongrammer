@@ -11,11 +11,11 @@
     align-items: center;
 }
 
-.result-main{
+.result-main {
     color: white;
 }
 
-.result-grade{
+.result-grade {
     display: grid;
     grid-template-columns: 2fr 2fr 5fr;
     border: 2px solid white;
@@ -24,11 +24,18 @@
     width: 34vw;
 }
 
-.result-grade h2{
+.result-grade h2 {
     margin: 5px 8px;
 }
 
-.result-score{
+.result-score {
     font-size: 20px;
     margin: auto 10px auto auto;
+}
+
+.result-grammer-div {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    align-items: center;
 }

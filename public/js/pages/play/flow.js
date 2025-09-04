@@ -1,14 +1,12 @@
-import { hai } from '/js/pages/play/hai.js';
-import { tango } from '/js/utils/wordData.js';
 export class flow {
-    constructor(wss, blockmanager, uimanager, playermanager, togoout, datamanager, rulemanager) {
+    constructor(wss, blockmanager, uimanager, playermanager, togoout, datamanager, haimanager) {
         this.wss = wss;
         this.blockmanager = blockmanager;
         this.uimanager = uimanager;
         this.playermanager = playermanager;
         this.togoout = togoout;
         this.datamanager = datamanager;
-        this.rulemanager = rulemanager;
+        this.haimanager = haimanager;
         this.gameCount = 0;
 
         this.ponCount = 0;
@@ -163,14 +161,15 @@ export class flow {
             this.datamanager.updateRatio(data.ratio);
         });
 
-        this.wss.onMessage('startGame', () => {
+        this.wss.onMessage('startGame', (data) => {
             console.log('ゲームスタート');
+
             this.start();
         });
 
         this.wss.onMessage('throwHai', (data) => {
             //引き分け
-            if (this.rulemanager.nowHai == 0) {
+            if (this.rulemanager.hais.length == 0) {
                 this.sendTie();
                 return;
             }
@@ -251,7 +250,7 @@ export class flow {
         let tango = word;
         let temporaryHai = '';
         if (tango === null) {
-            tango = this.datamanager.pickTango();
+            tango = this.rulemanager.hais.pop();
             temporaryHai = new hai(tango.word, tango.partOfSpeech, this.uimanager);
         } else temporaryHai = new hai(tango, null, this.uimanager);
         this.blockmanager.attachDraggable(temporaryHai.getHai);
@@ -260,6 +259,7 @@ export class flow {
     }
 
     start() {
+        this.rulemanager.initHais();
         this.roundcnt++;
         this.uimanager.showRoundStart(this.roundcnt);
         // プレイヤーにはいを配る
@@ -284,6 +284,7 @@ export class flow {
     }
 
     reStart(nextParent) {
+        this.rulemanager.initHais();
         this.blockmanager.unlockFooter();
 
         this.gameCount++;
