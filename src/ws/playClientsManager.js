@@ -51,7 +51,7 @@ export class playClientsManager {
     async entryRoom(roomId, userId, ws) {
         const isRoom = await roomsDB.isNull('room_id', roomId);
         if (!isRoom && !this.playClients.hasOwnProperty(roomId)) {
-            this.playClients[roomId] = { skip: 0, nextRound: 0, entry: 0 };
+            this.playClients[roomId] = { roomData: { skip: 0, nextRound: 0, entry: 0, tieCount: 0, tie: {} } };
         }
         this.playClients[roomId][userId] = ws;
     }
