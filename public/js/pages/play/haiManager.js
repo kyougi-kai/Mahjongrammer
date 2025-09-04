@@ -7,60 +7,122 @@
 import { tango } from '/js/utils/wordData.js';
 
 export class haiManager {
-    constructor(word, hinsi = null, uimanager) {
+    constructor(wss, datamanager, blockmanager, uimanager) {
+        this.wss = wss;
+        this.datamanager = datamanager;
+        this.blockmanager = blockmanager;
         this.uimanager = uimanager;
         this.hais = [];
         this.tagText = document.getElementById('tagText');
+        this.maxHai = 2;
+        this.throwElement = null;
+
+        this.wss.onMessage('getRoomMemberData', (data) => {
+            this.datamanager.updateRatio(data.ratio);
+        });
+
+        this.wss.onMessage('startGame', (data) => {
+            this.hais = data.hais;
+        });
+
+        this.wss.onMessage('reStart', (data) => {
+            this.hais = data.hais;
+        });
+
+        this.wss.onMessage('throwHai', (data) => {
+            this.throwElement = data.hai;
+        });
+    }
+
+    // 自分が引く牌だけ残す
+    initHais(number, max) {
+        let temporaryHais = [];
+        temporaryHais.push(this.hais.slice(number * 7, 7));
+        for (let i = max * 7; i < this.hais.length; i = i + max) {
+            temporaryHais.push(this.hais[i]);
+        }
+
+        console.log(number, max);
+        console.log(this.hais);
+        console.log(temporaryHais);
+
+        this.hais = temporaryHais;
+    }
+
+    // ponした牌を手元に追加
+    pon() {
+        let nanka = document.createElement('div');
+        nanka.innerHTML = this.throwElement;
+
+        this.blockmanager.attachDraggable(nanka.children[0]);
+        nanka.children[0].style.opacity = '1';
+        nanka.children[0].addEventListener('click', () => {
+            nanka.changeKatuyou();
+        });
+        document.getElementById('wordDown').appendChild(nanka.children[0]);
+        nanka.remove();
+    }
+
+    drawHai(word = null) {
+        let tango = word;
+        let temporaryHai = '';
+        if (tango === null) {
+            tango = this.hais.pop();
+            temporaryHai = new hai(tango.word, tango.partOfSpeech, this.uimanager);
+        } else temporaryHai = new hai(tango, null, this.uimanager);
+        this.blockmanager.attachDraggable(temporaryHai.getHai);
+
+        document.getElementById('wordDown').appendChild(temporaryHai.getHai);
     }
 
     createHai(word, hinsi = null) {
         hinsi == null ? (hinsi = tango[word]['hinsi'][0]) : 0;
-        this.hai = document.createElement('div');
-        this.hai.classList.add('border-div');
+        let hai = document.createElement('div');
+        hai.classList.add('border-div');
 
         const p = document.createElement('p');
-        p.innerHTML = this.word;
-        this.hai.appendChild(p);
+        p.innerHTML = word;
+        hai.appendChild(p);
 
         let clickTimer = null;
 
-        this.hai.addEventListener('click', (e) => {
+        hai.addEventListener('click', (e) => {
             if (clickTimer) return;
 
             clickTimer = setTimeout(() => {
-                this.changeKatuyou();
+                this.changeKatuyou(hai);
                 clickTimer = null;
             }, 200);
         });
 
-        this.hai.addEventListener('dblclick', (e) => {
+        hai.addEventListener('dblclick', (e) => {
             clearTimeout(clickTimer);
             clickTimer = null;
         });
 
         // 後ろに画像表示 名詞はとりあえず1番目のやつ
         let wakusei = '';
-        if (this.hinsi == '名詞') {
+        if (hinsi == '名詞') {
             wakusei = Math.floor(Math.random() * 7 + 1);
             while (wakusei == 3 || wakusei == 5) {
                 wakusei = Math.floor(Math.random() * 7 + 1);
             }
         }
-        this.hai.style.animation = `hai${Math.floor(Math.random() * 3 + 1)} 2s infinite alternate ease-in-out`;
-        this.hai.style.backgroundImage = `url(/img/partOfSpeech/${this.hinsi + wakusei}.png)`;
-        this.hai.style.backgroundRepeat = 'no-repeat';
+        hai.style.animation = `hai${Math.floor(Math.random() * 3 + 1)} 2s infinite alternate ease-in-out`;
+        hai.style.backgroundImage = `url(/img/partOfSpeech/${hinsi + wakusei}.png)`;
+        hai.style.backgroundRepeat = 'no-repeat';
 
-        this.attachShowTags(this.hai);
-        return this.hai;
+        this.attachShowTags(hai, word, hinsi);
+        return hai;
     }
 
-    attachShowTags(element) {
+    attachShowTags(element, word, hinsi) {
         this.enterDelay = null;
         element.addEventListener('dblclick', () => {
-            let word = tango[this.word]['tags'].join(' ');
-            word += '<br>';
-            word += tango[this.word]['means'][this.hinsi];
-            this.showTagText(word, element);
+            let sentence = tango[word]['tags'].join(' ');
+            sentence += '<br>';
+            sentence += tango[word]['means'][hinsi];
+            this.showTagText(sentence, element);
 
             this.uimanager.showTagText();
         });
@@ -72,25 +134,25 @@ export class haiManager {
         });
     }
 
-    changeKatuyou() {
-        const p = this.hai.querySelector('p');
+    changeKatuyou(hai) {
+        const p = hai.querySelector('p');
         if (!p) return;
 
-        if (this.hai.style.getPropertyValue('--original-html') == '') {
-            this.hai.style.setProperty('--original-html', p.innerHTML);
+        if (hai.style.getPropertyValue('--original-html') == '') {
+            hai.style.setProperty('--original-html', p.innerHTML);
         }
         const keys = Object.keys(tango);
         const values = Object.values(tango);
-        const index = keys.indexOf(this.hai.style.getPropertyValue('--original-html'));
+        const index = keys.indexOf(hai.style.getPropertyValue('--original-html'));
         if (values[index].katuyou !== undefined && values[index].katuyou.length != 0) {
-            if (this.hai.style.getPropertyValue('--original-html-ban') == '') {
+            if (hai.style.getPropertyValue('--original-html-ban') == '') {
                 let idx2 = (values[index].katuyou.indexOf(p.innerHTML) + 1) % values[index].katuyou.length;
                 p.innerHTML = values[index].katuyou[idx2];
-                this.hai.style.setProperty('--original-html-ban', idx2);
+                hai.style.setProperty('--original-html-ban', idx2);
             } else {
-                let idx2 = (Number(this.hai.style.getPropertyValue('--original-html-ban')) + 1) % values[index].katuyou.length;
+                let idx2 = (Number(hai.style.getPropertyValue('--original-html-ban')) + 1) % values[index].katuyou.length;
                 p.innerHTML = values[index].katuyou[idx2];
-                this.hai.style.setProperty('--original-html-ban', idx2);
+                hai.style.setProperty('--original-html-ban', idx2);
             }
         }
     }
