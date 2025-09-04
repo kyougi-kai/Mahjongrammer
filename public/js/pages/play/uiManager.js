@@ -14,6 +14,9 @@ export class uiManager {
         this.tops = ['-8%', '69%', '69%', '-8%'];
         this.lefts = ['61%', '61%', '-15%', '-15%'];
 
+        this.wordUp = document.getElementById('wordUp');
+        this.wordDown = document.getElementById('wordDown');
+
         this.hideTimeOut = null;
 
         // チートdiv
@@ -95,8 +98,8 @@ export class uiManager {
     }
 
     initTable() {
-        document.getElementById('wordUp').innerHTML = '';
-        document.getElementById('wordDown').innerHTML = '';
+        this.wordUp.innerHTML = '';
+        this.wordDown.innerHTML = '';
     }
 
     changePoint(position, point) {
@@ -123,6 +126,20 @@ export class uiManager {
         this.resultPage.getElementsByClassName('score-text')[0].innerHTML = translateSentence + '<br>' + score[0].join('<br>');
         this.resultPage.getElementsByClassName('allten')[0].innerHTML = `合計${tokuten}`;
         document.getElementById('resultGrammerDiv').innerHTML = grammerData;
+    }
+
+    showTieResult(grammerDatas) {
+        console.log(grammerDatas);
+        this.resultPage.style.display = 'flex';
+        this.resultPage.getElementsByClassName('result-name')[0].innerHTML = '引き分け';
+
+        let wordUps = '';
+        Object.keys(this.playermanager.playerMembers).forEach((id) => {
+            wordUps += this.playermanager.playerMembers[id] + '<br>';
+            wordUps += grammerDatas[id] + '<br>';
+        });
+
+        document.getElementById('resultGrammerDiv').innerHTML = wordUps;
     }
 
     hideRoundResult() {
@@ -370,10 +387,11 @@ export class uiManager {
         document.body.appendChild(errordiv);
 
         const displayDuration = 3500;
-
+        let CountSum = 1;
         setTimeout(() => {
             errordiv.style.opacity = '0';
             errordiv.addEventListener('transitionend', () => errordiv.remove(), { once: true });
+            CountSum = 0;
         }, displayDuration);
     }
 

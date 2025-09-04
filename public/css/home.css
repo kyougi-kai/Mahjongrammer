@@ -44,15 +44,16 @@ body {
 
 .heyaset {
     position: absolute;
-    right: 17%;
-    width: 11%;
+    right: 13%;
+    width: 20%;
+    height: 18%;
     aspect-ratio: 4 / 5;
     background: transparent;
     /* border: 2px dashed red; */
     border: none;
     cursor: pointer;
     z-index: 10;
-    transform: rotate(24deg);
+   transform: rotate(24deg);
 }
 
 .name-div {
@@ -99,4 +100,36 @@ body {
     border-radius: 5px;
     width: 90%;
     outline: none;
+}
+
+.colorbox{
+    padding: 12px;
+    text-align: center;
+    border: 2px solid black;
+}
+
+.settingdiv{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 600px;
+    min-width: 320px;
+    max-height: 80vh;
+    min-height: 200px;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    opacity: 0;
+    z-index: 101;
+}
+
+.rotate{
+    transform:rotate3d(1,1,1,195deg);
+}
+
+.colors-row{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
 }

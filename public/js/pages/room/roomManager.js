@@ -16,6 +16,28 @@ export class roomManager {
     getConnectUrl() {
         return `${this.protocol}://${window.location.host}/room/${this.playermanager.roomId}`;
     }
+
+    
 }
 
 const roommanager = new roomManager();
+
+const backgroundDiv = document.getElementById('backdiv'); 
+const settingdiv = document.getElementById('settingdiv');
+    document.getElementById('settingBtn').addEventListener('click', () => {
+        backgroundDiv.style.opacity = '1';
+        backgroundDiv.style.pointerEvents = 'all';
+        settingdiv.style.opacity = '1';
+        settingdiv.style.pointerEvents = 'all';
+    });
+
+    backgroundDiv.addEventListener('click', (e) => {
+        backgroundDiv.style.opacity = '0';
+        backgroundDiv.style.pointerEvents = 'none';
+        settingdiv.style.opacity = '0';
+        settingdiv.style.pointerEvents = 'none';
+    });
+
+    document.getElementById('ChangeUpColor1').addEventListener('click', () => {
+        
+    });

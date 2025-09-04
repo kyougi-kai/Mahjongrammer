@@ -6,18 +6,15 @@
 
 import { tango } from '/js/utils/wordData.js';
 
-export class hai {
+export class haiManager {
     constructor(word, hinsi = null, uimanager) {
         this.uimanager = uimanager;
-        this.word = word;
-        console.log(word);
-        hinsi == null ? (this.hinsi = tango[word]['hinsi'][0]) : (this.hinsi = hinsi);
-
-        this.createHai();
+        this.hais = [];
         this.tagText = document.getElementById('tagText');
     }
 
-    createHai() {
+    createHai(word, hinsi = null) {
+        hinsi == null ? (hinsi = tango[word]['hinsi'][0]) : 0;
         this.hai = document.createElement('div');
         this.hai.classList.add('border-div');
 

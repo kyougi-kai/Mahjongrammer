@@ -5,7 +5,7 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import { connectionManager } from '../ws/connectionManager.js';
 import { roomManager } from '../pages/roomManager.js';
-import { playManager } from '../pages/playManager.js';
+import { playManager } from '../pages/play/playManager.js';
 const __dirname = import.meta.dirname;
 
 export class serverManager {

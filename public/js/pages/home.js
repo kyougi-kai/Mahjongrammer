@@ -9,6 +9,7 @@ const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
 const userId = functions.sN(document.getElementById('userID').innerHTML);
 const roomList = document.getElementById('roomList');
 const mainDiv = roomList.children[1];
+const colorChange = document.getElementById('settingdiv');
 let rooms = [];
 
 window.onload = () => {
@@ -78,6 +79,17 @@ window.onload = () => {
         backgroundDiv.style.pointerEvents = 'none';
         createRoomDiv.style.opacity = '0';
         createRoomDiv.style.pointerEvents = 'none';
+        colorChange.style.opacity = '0';
+        colorChange.style.pointerEvents = 'none';
+    });
+
+    document.getElementById('wa').addEventListener('click', () => {
+        colorChange.style.opacity = '1';
+        colorChange.style.pointerEvents = 'all';
+        createRoomDiv.style.opacity = '0';
+        createRoomDiv.style.pointerEvents = 'none';
+        backgroundDiv.style.opacity = '1';
+        backgroundDiv.style.pointerEvents = 'all';
     });
 
     document.getElementById('createBtn').addEventListener('click', () => {

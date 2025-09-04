@@ -1,0 +1,5 @@
+export class ruleManager {
+    constructor() {
+        
+    }
+}
