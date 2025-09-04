@@ -1,4 +1,9 @@
-import { tango } from '/js/utils/wordData.js';
+let tango = null;
+if (typeof window === 'undefined') {
+    tango = await import('./wordData.js');
+} else {
+    tango = await import('/js/utils/wordData.js');
+}
 
 export class DM {
     constructor() {

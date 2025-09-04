@@ -1,11 +1,9 @@
 export class flow {
-    constructor(wss, blockmanager, uimanager, playermanager, togoout, datamanager, haimanager) {
+    constructor(wss, uimanager, playermanager, togoout, haimanager) {
         this.wss = wss;
-        this.blockmanager = blockmanager;
         this.uimanager = uimanager;
         this.playermanager = playermanager;
         this.togoout = togoout;
-        this.datamanager = datamanager;
         this.haimanager = haimanager;
         this.gameCount = 0;
 
@@ -15,7 +13,6 @@ export class flow {
 
         this.scorebords = document.getElementById('scoreBord');
         this.youCanThrow = false;
-        this.throwElement = null;
 
         this.sendInterval = null;
 
@@ -62,7 +59,7 @@ export class flow {
         let tag = window.prompt('単語を入力してください');
         if (tag != '') {
             if (tango.hasOwnProperty(tag)) {
-                this.drawHai(tag);
+                this.haimanager.drawHai(tag);
             }
         } else {
             alert('単語を入力してください');
@@ -157,19 +154,14 @@ export class flow {
             }
         });
 
-        this.wss.onMessage('getRoomMemberData', (data) => {
-            this.datamanager.updateRatio(data.ratio);
-        });
-
         this.wss.onMessage('startGame', (data) => {
             console.log('ゲームスタート');
-
             this.start();
         });
 
         this.wss.onMessage('throwHai', (data) => {
             //引き分け
-            if (this.rulemanager.hais.length == 0) {
+            if (this.haimanager.hais.length == 0) {
                 this.sendTie();
                 return;
             }
@@ -191,7 +183,6 @@ export class flow {
                 this.uimanager.showThrowHai(data.hai, 2);
             }
             console.log(data.hai);
-            this.throwElement = data.hai;
         });
 
         this.wss.onMessage('tie', (data) => {
@@ -220,17 +211,7 @@ export class flow {
             console.log(this.playermanager.getPlayerNumber());
             if (data.ponPlayerNumber == this.playermanager.getPlayerNumber()) {
                 this.uimanager.changePonPoint((this.ponCount + 1) * this.ponCos);
-
-                let nanka = document.createElement('div');
-                nanka.innerHTML = this.throwElement;
-
-                this.blockmanager.attachDraggable(nanka.children[0]);
-                nanka.children[0].style.opacity = '1';
-                document.getElementById('wordDown').appendChild(nanka.children[0]);
-                nanka.remove();
-                nanka.children[0].addEventListener('click', () => {
-                    this.hai.changeKatuyou();
-                });
+                this.haimanager.pon();
             }
 
             this.uimanager.cutin(`${this.playermanager.getPlayerName(data.ponPlayerNumber)}さんがポン！`);
@@ -246,47 +227,29 @@ export class flow {
         });
     }
 
-    drawHai(word = null) {
-        let tango = word;
-        let temporaryHai = '';
-        if (tango === null) {
-            tango = this.rulemanager.hais.pop();
-            temporaryHai = new hai(tango.word, tango.partOfSpeech, this.uimanager);
-        } else temporaryHai = new hai(tango, null, this.uimanager);
-        this.blockmanager.attachDraggable(temporaryHai.getHai);
-
-        document.getElementById('wordDown').appendChild(temporaryHai.getHai);
-    }
-
     start() {
-        this.rulemanager.initHais();
+        this.haimanager.initHais(this.playermanager.getPlayerNumber(), this.playermanager.getPlayerCount());
         this.roundcnt++;
         this.uimanager.showRoundStart(this.roundcnt);
         // プレイヤーにはいを配る
         let count = 0;
         let nan = setInterval(() => {
             if (count == 6) clearInterval(nan);
-            this.drawHai();
+            this.haimanager.drawHai();
             count++;
         }, 200);
 
         this.scorebords.style.opacity = 1;
         if (this.playermanager.isParent()) {
             this.youCanThrow = true;
-            this.drawHai();
+            this.haimanager.drawHai();
             this.scorebords.children[4].style.opacity = 1;
             this.scorebords.children[4].style.pointerEvents = 'all';
         }
-
-        this.rulemanager.nowHai--;
-
         this.uimanager.changePhase();
     }
 
     reStart(nextParent) {
-        this.rulemanager.initHais();
-        this.blockmanager.unlockFooter();
-
         this.gameCount++;
         if (this.gameCount == 4) {
             this.uimanager.showPlayResult();
@@ -310,14 +273,12 @@ export class flow {
     }
 
     nextPhase(isPon = false) {
-        this.rulemanager.nowHai--;
-
         console.log('nextPhase()');
         this.uimanager.hideNowBlink();
         console.log('nowPhaseNumber', this.nowPhaseNumber);
         this.uimanager.showBlink(this.playermanager.phaseToPosition(this.nowPhaseNumber));
         if (this.nowPhaseNumber == this.playermanager.getPlayerNumber()) {
-            if (!isPon) this.drawHai();
+            if (!isPon) this.haimanager.drawHai();
             this.youCanThrow = true;
 
             this.scorebords.children[4].style.opacity = 1;
@@ -338,7 +299,6 @@ export class flow {
     }
 
     tie(grammerDatas) {
-        this.blockmanager.lockFooter();
         this.uimanager.showTieResult(grammerDatas);
     }
 

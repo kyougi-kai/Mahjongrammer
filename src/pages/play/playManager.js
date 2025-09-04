@@ -1,9 +1,9 @@
-import { connectionManager } from '../ws/connectionManager.js';
-import { playClientsManager } from '../ws/playClientsManager.js';
-import { usersManager } from '../server/usersManager.js';
-import roomMemberDB from '../db/repositories/roomMemberRepository.js';
-import roomsDB from '../db/repositories/roomsRepository.js';
-import { routemanager } from '../app.js';
+import { connectionManager } from '../../ws/connectionManager.js';
+import { playClientsManager } from '../../ws/playClientsManager.js';
+import { usersManager } from '../../server/usersManager.js';
+import roomMemberDB from '../../db/repositories/roomMemberRepository.js';
+import roomsDB from '../../db/repositories/roomsRepository.js';
+import { routemanager } from '../../app.js';
 import { haiManager } from './haiManager.js';
 
 export class playManager {
@@ -88,7 +88,7 @@ export class playManager {
             if (this.playclientsmanager.playClients[roomId].roomData.entry == roomMemberCounts) {
                 const sendData = {
                     type: 'startGame',
-                    payload: { hais: this.datamanager.generateHais() },
+                    payload: { hais: this.datamanager.generateHais(roomMemberCounts) },
                 };
                 console.log('sendStart');
                 this.playclientsmanager.playClients[roomId].roomData.entry = 0;
@@ -181,7 +181,7 @@ export class playManager {
                 this.playclientsmanager.playC[roomId].roomData.nextRound = 0;
                 const sendData = {
                     type: 'reStart',
-                    payload: { tumoPlayerNumber: data.playerNumber, hais: this.datamanager.generateHais() },
+                    payload: { tumoPlayerNumber: data.playerNumber, hais: this.datamanager.generateHais(roomMemberCounts) },
                 };
                 this.sendToClients(sendData, roomId);
             }
