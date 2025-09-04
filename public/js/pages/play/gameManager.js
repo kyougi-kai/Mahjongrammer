@@ -1,6 +1,6 @@
 import { connectionManager } from '/js/utils/connectionManager.js';
 import { playerManager } from '/js/utils/playerManager.js';
-import { ruleManager } from '/js/pages/play/ruleManager.js';
+import { haiManager } from '/js/pages/play/haiManager.js';
 import { flow } from '/js/pages/play/flow.js';
 import { uiManager } from '/js/pages/play/uiManager.js';
 import { blockManager } from '/js/pages/play/blockManager.js';
