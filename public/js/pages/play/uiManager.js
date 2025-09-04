@@ -387,10 +387,11 @@ export class uiManager {
         document.body.appendChild(errordiv);
 
         const displayDuration = 3500;
-
+        let CountSum = 1;
         setTimeout(() => {
             errordiv.style.opacity = '0';
             errordiv.addEventListener('transitionend', () => errordiv.remove(), { once: true });
+            CountSum = 0;
         }, displayDuration);
     }
 
