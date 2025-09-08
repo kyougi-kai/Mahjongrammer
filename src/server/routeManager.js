@@ -3,7 +3,7 @@ import { cookieManager } from '../utils/cookieManager.js';
 import { serverManager } from './serverManager.js';
 import { usersManager } from '../server/usersManager.js';
 import roomsDB from '../db/repositories/roomsRepository.js';
-import roomMemberDB from '../db/repositories/roomMemberRepository.js';
+import userColorDB from '../db/repositories/userColorRepository.js'
 
 export class routeManager {
     /**
@@ -159,6 +159,9 @@ export class routeManager {
                 if (addUserResult) {
                     const userId = await usersManager.nameToId(username);
                     cookieManager.saveCookie(res, 'userId', userId);
+
+                    // user_colorにデータを追加
+                    await userColorDB.insertColor(userId);
                     res.json({ success: true });
                 } else res.json({ success: false, error: 'ユーザー名が既に使われています' });
             } catch (err) {

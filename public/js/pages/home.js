@@ -114,6 +114,20 @@ window.onload = () => {
         Math.floor(parseInt(document.getElementById('backgroundImage').offsetHeight) * 0.07) +
         (parseInt(window.innerHeight) - parseInt(document.getElementById('backgroundImage').offsetHeight)) / 2 +
         'px';
+
+    for (let i = 0; i < 8; i++) {
+        document.getElementsByClassName('colorbox')[i].addEventListener('click', () => {
+            const color = document.getElementsByClassName('colorbox')[i].innerHTML;
+            let sendData = {
+                type: 'changeColor',
+                payload: {
+                    userId: userId,
+                    color: color,
+                },
+            };
+            connectionmanager.send(sendData);
+        });
+    }
 };
 
 window.addEventListener('resize', () => {
