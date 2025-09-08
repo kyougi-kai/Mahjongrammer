@@ -53,7 +53,8 @@ body {
     border: none;
     cursor: pointer;
     z-index: 10;
-   transform: rotate(24deg);
+    transform: rotate(35deg);
+    transform-origin: center;
 }
 
 .name-div {
@@ -126,7 +127,14 @@ body {
 
 .rotate{
     transform:rotate3d(1,1,1,195deg);
-}
+    transform-style: preserve-3d; /* 子要素にも3D効果を適用する */
+    perspective: 1000px;         
+    right: 11%;
+    width: 25%;
+    height: 18%;
+    top:60%; 
+    position: absolute;  
+} 
 
 .colors-row{
     display: grid;
