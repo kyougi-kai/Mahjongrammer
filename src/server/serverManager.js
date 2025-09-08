@@ -6,6 +6,7 @@ import cors from 'cors';
 import { connectionManager } from '../ws/connectionManager.js';
 import { roomManager } from '../pages/roomManager.js';
 import { playManager } from '../pages/play/playManager.js';
+import { homeManager } from '../pages/home/homeManager.js';
 const __dirname = import.meta.dirname;
 
 export class serverManager {
@@ -18,6 +19,7 @@ export class serverManager {
         // ページごと
         this.roommanager = new roomManager(this.wss);
         this.playmanager = new playManager(this.wss, this.roommanager);
+        this.homemanager = new homeManager(this.wss);
     }
 
     _expressSetUp() {
