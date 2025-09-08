@@ -367,32 +367,39 @@ export class uiManager {
         }
     }
     errorbox(word) {
-        const errordiv = document.createElement('div');
-        errordiv.innerHTML = word;
-        Object.assign(errordiv.style, {
-            position: 'absolute',
-            bottom: '275px',
-            left: '15%',
-            backgroundColor: 'rgba(109, 109, 109, 0.4)',
-            color: '#FFFFFF',
-            border: '2px solid #000000',
-            zIndex: 9999,
-            fontSize: '24px',
-            opacity: '1',
-            borderRadius: '10px',
-            transition: 'opacity 0.5s ease',
-            padding: '10px',
-            maxWidth: '60%',
-        });
-        document.body.appendChild(errordiv);
+        if (this.sumter === undefined) {
+            this.sumter = 0; 
+        }
+        if(this.sumter == 0){
+            const errordiv = document.createElement('div');
+            errordiv.innerHTML = word;
+            Object.assign(errordiv.style, {
+                position: 'absolute',
+                bottom: '275px',
+                left: '15%',
+                backgroundColor: 'rgba(109, 109, 109, 0.4)',
+                color: '#FFFFFF',
+                border: '2px solid #000000',
+                zIndex: 9999,
+                fontSize: '24px',
+                opacity: '1',
+                borderRadius: '10px',
+                transition: 'opacity 0.5s ease',
+                padding: '10px',
+                maxWidth: '60%',
+            });
+            document.body.appendChild(errordiv);
 
-        const displayDuration = 3500;
-        let CountSum = 1;
-        setTimeout(() => {
-            errordiv.style.opacity = '0';
-            errordiv.addEventListener('transitionend', () => errordiv.remove(), { once: true });
-            CountSum = 0;
-        }, displayDuration);
+            const displayDuration = 3500;
+            this.sumter = 1;
+            console.log(this.sumter);
+            setTimeout(() => {
+                errordiv.style.opacity = '0';
+                errordiv.addEventListener('transitionend', () => errordiv.remove(), { once: true });
+                this.sumter = 0;
+                console.log(this.sumter);
+            }, displayDuration);
+        }
     }
 
     showTagText() {
