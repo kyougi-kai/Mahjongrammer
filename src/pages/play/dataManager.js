@@ -1,4 +1,4 @@
-import { tango } from '/js/utils/wordData.js';
+import { tango } from '../../../public/js/utils/wordData.js';
 
 export class DM {
     constructor() {

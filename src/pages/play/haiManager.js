@@ -1,4 +1,4 @@
-import { DM } from '../../../public/js/utils/dataManager.js';
+import { DM } from './dataManager.js';
 
 export class haiManager {
     constructor() {
