@@ -16,16 +16,8 @@ export class gameManager {
         this.uimanager = new uiManager(this.playermanager);
         this.togoout = new toGoOut(this.uimanager);
         this.datamanager = new DM();
-        this.rulemanager = new ruleManager();
-        this.flow = new flow(
-            this.connectionmanager,
-            this.blockmanager,
-            this.uimanager,
-            this.playermanager,
-            this.togoout,
-            this.datamanager,
-            this.rulemanager
-        );
+        this.haimanager = new haiManager(this.connectionmanager, this.datamanager, this.blockmanager, this.uimanager);
+        this.flow = new flow(this.connectionmanager, this.uimanager, this.playermanager, this.togoout, this.haimanager);
 
         this.blockmanager.setFlow(this.flow);
         this.uimanager.setFlow(this.flow);

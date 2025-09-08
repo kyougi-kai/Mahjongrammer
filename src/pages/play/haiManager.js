@@ -5,10 +5,12 @@ export class haiManager {
         this.datamanager = new DM();
     }
 
-    generateHais(size = 10) {
+    generateHais(playerCount, size = 10) {
         let hais = [];
-        for (let i = 0; i < size; i++) {
+        for (let i = 0; i < playerCount * 7 + size; i++) {
             hais.push(this.datamanager.pickTango());
         }
+
+        return hais;
     }
 }
