@@ -86,9 +86,10 @@ export class playManager {
             this.playclientsmanager.playClients[roomId].roomData.entry++;
             const roomMemberCounts = await roomMemberDB.roomMemberCounts(roomId);
             if (this.playclientsmanager.playClients[roomId].roomData.entry == roomMemberCounts) {
+                const ratio = await roomsDB.getRow('ratio', 'room_id', roomId);
                 const sendData = {
                     type: 'startGame',
-                    payload: { hais: this.datamanager.generateHais(roomMemberCounts) },
+                    payload: { hais: this.haimanager.generateHais(roomMemberCounts, 2, ratio) },
                 };
                 console.log('sendStart');
                 this.playclientsmanager.playClients[roomId].roomData.entry = 0;
