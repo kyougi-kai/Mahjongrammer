@@ -40,6 +40,11 @@ create table room_member(
     foreign key (room_id) references rooms(room_id) on delete cascade,
     foreign key (user_id) references users(user_id) on delete cascade
 );
+create table user_color{
+    user_id char(36) primary key,
+    color varchar(255) default 'black',
+    foreign key color references users(user_id)
+}
 
 // データベース起動
 mysqld --console
