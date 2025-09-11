@@ -111,7 +111,7 @@ export class playerManager {
 
                 if (this.type == 'room') {
                     if (this.userId == user.user_id && index == 0) this.startBtn = document.getElementById('startBtn').style.display = 'block';
-                    this.addPlayer(user.username, user.isReady, index == 0);
+                    this.addPlayer(user.username, user.isReady, index == 0, user.color);
                 }
             });
             console.log(this.playerMembers);
@@ -129,6 +129,7 @@ export class playerManager {
 
     addPlayer(playerName, isReady = false, isHost = false) {
         const playerTag = document.createElement('div');
+        playerTag.style.background = 
         playerTag.classList.add('player');
         isReady ? playerTag.classList.add('ready') : playerTag.classList.add('not-ready');
         if (isHost) playerTag.classList.add('host');

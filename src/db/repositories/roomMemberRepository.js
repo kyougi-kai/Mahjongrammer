@@ -20,7 +20,7 @@ export class roomMemberRepository extends baseRepository {
 
     async getRoomMembers(roomId) {
         const sql =
-            'select username, room_member.user_id, isReady from users, room_member where users.user_id = room_member.user_id and room_member.room_id = ? order by created_at';
+            'select username, room_member.user_id, isReady, color from users, room_member, user_color where users.user_id = room_member.user_id and room_member.room_id = ? and users.user_id = user_color.user_id order by created_at';
         const params = [roomId];
         const data = await this.query(sql, params);
         return data;
