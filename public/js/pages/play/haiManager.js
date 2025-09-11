@@ -64,15 +64,17 @@ export class haiManager {
     }
 
     drawHai(word = null) {
+        console.log('---drawHai---');
+        console.log(this.hais);
         let tango = word;
         let temporaryHai = '';
         if (tango === null) {
             tango = this.hais.pop();
-            temporaryHai = new hai(tango.word, tango.partOfSpeech, this.uimanager);
-        } else temporaryHai = new hai(tango, null, this.uimanager);
-        this.blockmanager.attachDraggable(temporaryHai.getHai);
+            temporaryHai = this.createHai(tango.word, tango.partOfSpeech);
+        } else temporaryHai = this.createHai(tango.word, tango.partOfSpeech);
+        this.blockmanager.attachDraggable(temporaryHai);
 
-        document.getElementById('wordDown').appendChild(temporaryHai.getHai);
+        document.getElementById('wordDown').appendChild(temporaryHai);
     }
 
     createHai(word, hinsi = null) {
