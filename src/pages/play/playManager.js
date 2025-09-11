@@ -214,19 +214,12 @@ export class playManager {
 
         this.wss.onMessage('tie', async (ws, data) => {
             const roomId = data.roomId;
-            this.playclientsmanager.playClients[roomId].roomData.tieCount++;
             this.playclientsmanager.playClients[roomId].roomData.tie[data.userId] = data.grammerData;
-            const roomMemberCounts = await roomMemberDB.roomMemberCounts(roomId);
-
-            if (roomMemberCounts == this.playclientsmanager.playClients[roomId].roomData.tieCount) {
-                let sendData = {
-                    type: 'tie',
-                    payload: { grammerDatas: this.playclientsmanager.playClients[roomId].roomData.tie },
-                };
-                this.sendToClients(sendData, roomId);
-
-                this.playclientsmanager.playClients[roomId].roomData.tieCount = 0;
-            }
+            let sendData = {
+                type: 'tie',
+                payload: { grammerDatas: this.playclientsmanager.playClients[roomId].roomData.tie },
+            };
+            this.sendToClients(sendData, roomId);
         });
 
         setTimeout(() => {

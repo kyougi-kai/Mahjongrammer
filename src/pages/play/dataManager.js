@@ -23,7 +23,7 @@ export class DM {
     }
 
     updateRatio(ratio) {
-        console.log(typeof ratio);
+        if (typeof ratio == 'string') ratio = JSON.parse(ratio);
         let sum = ratio.reduce((acc, value) => acc + value, 0);
         this._ratio = ratio.map((value) => value / sum);
     }

@@ -21,10 +21,6 @@ export class haiManager {
             this.datamanager.updateRatio(data.ratio);
         });
 
-        this.wss.onMessage('startGame', (data) => {
-            this.hais = data.hais;
-        });
-
         this.wss.onMessage('reStart', (data) => {
             this.hais = data.hais;
         });
@@ -35,10 +31,13 @@ export class haiManager {
     }
 
     // 自分が引く牌だけ残す
-    initHais(number, max) {
+    initHais(hais, number, max) {
+        console.log('start initHais');
+        this.hais = hais;
         let temporaryHais = [];
-        temporaryHais.push(this.hais.slice(number * 7, 7));
-        for (let i = max * 7; i < this.hais.length; i = i + max) {
+        temporaryHais = this.hais.slice(number * 7, number * 7 + 7).concat();
+        for (let i = max * 7 + number; i < this.hais.length; i = i + max) {
+            console.log(i);
             temporaryHais.push(this.hais[i]);
         }
 
@@ -64,15 +63,18 @@ export class haiManager {
     }
 
     drawHai(word = null) {
+        console.log('---drawHai---');
+        console.log(this.hais);
+        console.log(this.hais[0]);
         let tango = word;
         let temporaryHai = '';
         if (tango === null) {
             tango = this.hais.pop();
-            temporaryHai = new hai(tango.word, tango.partOfSpeech, this.uimanager);
-        } else temporaryHai = new hai(tango, null, this.uimanager);
-        this.blockmanager.attachDraggable(temporaryHai.getHai);
+            temporaryHai = this.createHai(tango.word, tango.partOfSpeech);
+        } else temporaryHai = this.createHai(tango.word, tango.partOfSpeech);
+        this.blockmanager.attachDraggable(temporaryHai);
 
-        document.getElementById('wordDown').appendChild(temporaryHai.getHai);
+        document.getElementById('wordDown').appendChild(temporaryHai);
     }
 
     createHai(word, hinsi = null) {
