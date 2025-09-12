@@ -117,7 +117,7 @@ window.onload = () => {
 
     for (let i = 0; i < 8; i++) {
         document.getElementsByClassName('colorbox')[i].addEventListener('click', () => {
-            const color = document.getElementsByClassName('colorbox')[i].innerHTML;
+            const color = document.getElementsByClassName('colorbox')[i].style.backgroundColor;
             let sendData = {
                 type: 'changeColor',
                 payload: {

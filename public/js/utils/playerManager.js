@@ -81,7 +81,7 @@ export class playerManager {
             if (this.type != 'play' && !this.playerMembers.hasOwnProperty(data.userId)) {
                 this.playerMembers[data.userId] = data.username;
                 console.log(this.playerMembers);
-                this.addPlayer(data.username, data.isReady);
+                this.addPlayer(data.username, data.isReady,false,data.color);
             }
         });
 
@@ -127,9 +127,9 @@ export class playerManager {
         });
     }
 
-    addPlayer(playerName, isReady = false, isHost = false) {
+    addPlayer(playerName, isReady = false, isHost = false,color) {
         const playerTag = document.createElement('div');
-        playerTag.style.background = 
+        playerTag.style.backgroundColor = color;
         playerTag.classList.add('player');
         isReady ? playerTag.classList.add('ready') : playerTag.classList.add('not-ready');
         if (isHost) playerTag.classList.add('host');
