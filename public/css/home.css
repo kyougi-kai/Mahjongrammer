@@ -44,15 +44,15 @@ body {
 
 .heyaset {
     position: absolute;
-    right: 15%;
-    width: 15%;
-    height: 18%;
+    transform: skewX(-30deg); 
+    right: 18%;
+    width: 10%;
     background: transparent;
     border: none;
     cursor: pointer;
     z-index: 10;
-    transform: rotate(35deg);
-    transform-origin: center;
+    aspect-ratio: 4 / 5;
+    /* border: 2px dashed yellow; */
 }
 
 .name-div {
@@ -123,17 +123,6 @@ body {
     z-index: 101;
 }
 
-.rotate{
-    transform: skewX(-30deg);      
-    right: 18%;
-    width: 9.5%;
-    height: 24%;
-    top:61%; 
-    position: absolute; 
-    border: none;
-    cursor: pointer; 
-    aspect-ratio: 4 / 5;
-} 
 
 .colors-row{
     display: grid;
