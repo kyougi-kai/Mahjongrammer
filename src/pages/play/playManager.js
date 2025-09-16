@@ -5,6 +5,7 @@ import roomMemberDB from '../../db/repositories/roomMemberRepository.js';
 import roomsDB from '../../db/repositories/roomsRepository.js';
 import { routemanager } from '../../app.js';
 import { haiManager } from './haiManager.js';
+import userColorDB from '../../db/repositories/userColorRepository.js';
 
 export class playManager {
     /**
@@ -47,12 +48,14 @@ export class playManager {
         this.playclientsmanager.entryRoom(roomId, userId, ws);
         if (isPlayer) {
             const username = await usersManager.idToName(userId);
+            const color = await userColorDB.getRow('color', 'user_id', userId);
             const sendData = {
                 type: 'entryRoom',
                 payload: {
                     username: username,
                     userId: userId,
                     isReady: false,
+                    color: color,
                 },
             };
             this.sendToClients(sendData, roomId);

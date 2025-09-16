@@ -81,6 +81,7 @@ export class playerManager {
             if (this.type != 'play' && !this.playerMembers.hasOwnProperty(data.userId)) {
                 this.playerMembers[data.userId] = data.username;
                 console.log(this.playerMembers);
+                console.log(data);
                 this.addPlayer(data.username, data.isReady,false,data.color);
             }
         });
@@ -135,6 +136,7 @@ export class playerManager {
         if (isHost) playerTag.classList.add('host');
 
         playerTag.innerHTML = playerName;
+        console.log(playerTag);
         document.getElementById('playerTags').appendChild(playerTag);
     }
 
