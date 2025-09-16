@@ -79,3 +79,7 @@ pool.queryで出した値は必ず何も操作せず変数に入れる
 ALTER TABLE room_member
 ADD COLUMN isReady BOOLEAN DEFAULT FALSE;
 
+---postgres---
+//接続
+psql -h db.eshzkpazbtlywbgjzrim.supabase.co -p 5432 -d postgres -U postgres
+
