@@ -86,13 +86,16 @@ export class playManager {
                 })
             );
 
+            // 割合保存
+            this.playclientsmanager.playClients[roomId].roomData.ratio = ratio;
+
             this.playclientsmanager.playClients[roomId].roomData.entry++;
             const roomMemberCounts = await roomMemberDB.roomMemberCounts(roomId);
             if (this.playclientsmanager.playClients[roomId].roomData.entry == roomMemberCounts) {
                 const ratio = await roomsDB.getRow('ratio', 'room_id', roomId);
                 const sendData = {
                     type: 'startGame',
-                    payload: { hais: this.haimanager.generateHais(roomMemberCounts, 2, ratio) },
+                    payload: { hais: this.haimanager.generateHais(roomMemberCounts, 2, this.playclientsmanager.playClients[roomId].roomData.ratio) },
                 };
                 console.log('sendStart');
                 this.playclientsmanager.playClients[roomId].roomData.entry = 0;
@@ -185,7 +188,10 @@ export class playManager {
                 this.playclientsmanager.playC[roomId].roomData.nextRound = 0;
                 const sendData = {
                     type: 'reStart',
-                    payload: { tumoPlayerNumber: data.playerNumber, hais: this.datamanager.generateHais(roomMemberCounts) },
+                    payload: {
+                        tumoPlayerNumber: data.playerNumber,
+                        hais: this.haimanager.generateHais(roomMemberCounts, 2, this.playclientsmanager.playClients[roomId].roomData.ratio),
+                    },
                 };
                 this.sendToClients(sendData, roomId);
             }
