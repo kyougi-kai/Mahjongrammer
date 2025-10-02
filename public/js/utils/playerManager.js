@@ -20,6 +20,7 @@ export class playerManager {
         this.roomId = pageName.split('/')[4];
         this.userId = functions.sN(document.getElementById('userIdText').innerHTML);
         this.parentNumber = 0;
+        this.color = [];
 
         this.sendBeaconFlag = false;
 
@@ -79,10 +80,10 @@ export class playerManager {
         */
         this.wss?.onMessage('entryRoom', (data) => {
             if (this.type != 'play' && !this.playerMembers.hasOwnProperty(data.userId)) {
-                this.playerMembers[data.userId] = data.username;
+                this.playerMembers[data.userId] = { name: data.username };
                 console.log(this.playerMembers);
                 console.log(data);
-                this.addPlayer(data.username, data.isReady,false,data.color);
+                this.addPlayer(data.username, data.isReady, false, data.color);
             }
         });
 
@@ -107,11 +108,13 @@ export class playerManager {
         this.wss?.onMessage('getRoomMemberData', (data) => {
             console.log('getRoomMemberData');
             console.log(data);
+            console.log(data.roomMembers[0].color);
             data.roomMembers.forEach((user, index) => {
-                this.playerMembers[user.user_id] = user.username;
-
+                this.playerMembers[user.user_id] = { name: user.username, color: user.color };
                 if (this.type == 'room') {
                     if (this.userId == user.user_id && index == 0) this.startBtn = document.getElementById('startBtn').style.display = 'block';
+                    console.log('---update color ---');
+                    console.log(user.color);
                     this.addPlayer(user.username, user.isReady, index == 0, user.color);
                 }
             });
@@ -128,7 +131,7 @@ export class playerManager {
         });
     }
 
-    addPlayer(playerName, isReady = false, isHost = false,color) {
+    addPlayer(playerName, isReady = false, isHost = false, color) {
         const playerTag = document.createElement('div');
         playerTag.style.backgroundColor = color;
         playerTag.classList.add('player');
@@ -164,8 +167,8 @@ export class playerManager {
             console.log(this.phaseToPosition(index));
             console.log(this.nameDivs[this.phaseToPosition(index)]);
             const nameElem = this.nameDivs[this.phaseToPosition(index)].children[0];
-
-            nameElem.innerHTML = value;
+            nameElem.style.backgroundColor = value.color;
+            nameElem.innerHTML = value.name;
         });
     }
 
@@ -205,9 +208,7 @@ export class playerManager {
         const userIds = Object.keys(this.playerMembers);
         if (date < 0 || date >= userIds.length) return null;
         const userId = userIds[date];
-        return this.playerMembers[userId];
+        return this.playerMembers[userId]?.name;
     }
-    changeNametags(data) {
-        
-    }
+    changeNametags(data) {}
 }
