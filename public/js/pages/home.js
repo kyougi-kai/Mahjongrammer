@@ -126,6 +126,12 @@ window.onload = () => {
                 },
             };
             connectionmanager.send(sendData);
+            backgroundDiv.style.opacity = '0';
+            backgroundDiv.style.pointerEvents = 'none';
+            createRoomDiv.style.opacity = '0';
+            createRoomDiv.style.pointerEvents = 'none';
+            colorChange.style.opacity = '0';
+            colorChange.style.pointerEvents = 'none';
         });
     }
 };

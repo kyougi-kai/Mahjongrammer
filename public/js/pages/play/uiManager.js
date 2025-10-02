@@ -135,7 +135,7 @@ export class uiManager {
 
         let wordUps = '';
         Object.keys(this.playermanager.playerMembers).forEach((id) => {
-            wordUps += this.playermanager.playerMembers[id] + '<br>';
+            wordUps += this.playermanager.playerMembers[id].name + '<br>';
             wordUps += grammerDatas[id] + '<br>';
         });
 
@@ -231,7 +231,7 @@ export class uiManager {
                     let temporaryDiv = document.createElement('div');
                     temporaryDiv.classList.add('result-grade');
                     temporaryDiv.innerHTML = `<h2>${i}位</h2><h2>${
-                        Object.values(this.playermanager.playerMembers)[j]
+                        Object.values(this.playermanager.playerMembers)[j].name
                     }</h2><p class="result-score">${Number(this.scoreBord.children[this.playermanager.phaseToPosition(j)].innerHTML)}</p>`;
                     this.playResultPage.insertBefore(temporaryDiv, document.getElementById('playResultFinish'));
                 }
@@ -368,9 +368,9 @@ export class uiManager {
     }
     errorbox(word) {
         if (this.sumter === undefined) {
-            this.sumter = 0; 
+            this.sumter = 0;
         }
-        if(this.sumter == 0){
+        if (this.sumter == 0) {
             const errordiv = document.createElement('div');
             errordiv.innerHTML = word;
             Object.assign(errordiv.style, {
