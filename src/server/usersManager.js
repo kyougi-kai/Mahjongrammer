@@ -1,4 +1,6 @@
 import { usersRepository } from '../db/repositories/usersRepository.js';
+import { v4 as uuidv4 } from 'uuid';
+
 const usersrepository = new usersRepository();
 
 export class usersManager {
@@ -18,7 +20,8 @@ export class usersManager {
         } else {
             // ユーザーをデータベースに追加
             try {
-                await usersrepository.query('insert into users(user_id, username, password) values(uuid(), ?, ?);', [username, password]);
+                const userId = uuidv4(); // Generate UUID beforehand
+                await usersrepository.query('insert into users(user_id, username, password) values(?, ?, ?);', [userId, username, password]);
                 return true;
             } catch (err) {
                 console.error(err);
