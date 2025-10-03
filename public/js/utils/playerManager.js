@@ -133,7 +133,7 @@ export class playerManager {
 
     addPlayer(playerName, isReady = false, isHost = false, color) {
         const playerTag = document.createElement('div');
-        playerTag.style.backgroundColor = color;
+        playerTag.style.backgroundColor = this.rgbaStringToArray(color, 0.3);
         playerTag.classList.add('player');
         isReady ? playerTag.classList.add('ready') : playerTag.classList.add('not-ready');
         if (isHost) playerTag.classList.add('host');
@@ -141,6 +141,13 @@ export class playerManager {
         playerTag.innerHTML = playerName;
         console.log(playerTag);
         document.getElementById('playerTags').appendChild(playerTag);
+    }
+
+    rgbaStringToArray(rgbaStr,a) {
+      // "rgba(255, 0, 0, 0.5)" → [255, 0, 0, 0.5]
+      const match = rgbaStr.match(/rgba?\(([^)]+)\)/);
+      if (!match) return null;
+        return `rgba(${match[1].split(',')[0]},${match[1].split(',')[1]},${match[1].split(',')[2]},${a})`;
     }
 
     deletePlayer(playerId) {
@@ -168,6 +175,11 @@ export class playerManager {
             console.log(this.nameDivs[this.phaseToPosition(index)]);
             const nameElem = this.nameDivs[this.phaseToPosition(index)].children[0];
             nameElem.style.backgroundColor = value.color;
+            console.log(value.color);
+            if(value.color == 'rgba(255, 255, 255, 0.8)' || value.color == 'rgba(0, 255, 0, 0.8)' || value.color == 'rgba(255, 255, 0, 0.8)'){
+                nameElem.style.color = 'black';
+                console.log('change black');
+            }
             nameElem.innerHTML = value.name;
         });
     }
