@@ -26,7 +26,8 @@ export class dbClient {
         if (process.env.env == 'production') {
             let index = 1;
             const sqlConverted = sql.replace(/\?/g, () => `$${index++}`);
-            return await this.pool.unsafe(sqlConverted, params);
+            const result = await this.pool.unsafe(sqlConverted, params);
+            return result;
         } else {
             const [rows] = await this.pool.execute(sql, params);
             return rows;
