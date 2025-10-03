@@ -1,4 +1,5 @@
 import { baseRepository } from './baseRepository.js';
+import { v4 as uuidv4 } from 'uuid';
 
 export class roomsRepository extends baseRepository {
     constructor() {
@@ -13,8 +14,9 @@ export class roomsRepository extends baseRepository {
     }
 
     async createRoom(parentId, roomName, ratio) {
-        const sql = 'insert into rooms (room_id, room_name, parent_id, ratio) values(uuid(), ?, ?, ?)';
-        const param = [roomName, parentId, ratio];
+        const roomId = uuidv4(); // Generate UUID beforehand
+        const sql = 'insert into rooms (room_id, room_name, parent_id, ratio) values(?, ?, ?, ?)';
+        const param = [roomId, roomName, parentId, ratio];
         await this.query(sql, param);
     }
 
