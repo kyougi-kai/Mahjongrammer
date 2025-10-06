@@ -27,7 +27,8 @@ export class playManager {
         const roomId = data.roomId;
         const userId = data.userId;
         const parentId = await roomsDB.getRow('parent_id', 'room_id', roomId);
-        await console.log(roomsDB.query('SELECT * FROM rooms'));
+        await console.log(await roomsDB.query('SELECT * FROM rooms'));
+        await console.log(await roomMemberDB.query('SELECT * FROM room_member'));
         // const ratio = await roomsDB.getRow('ratio', 'room_id', roomId);
 
         // room_member に追加
