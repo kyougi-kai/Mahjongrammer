@@ -38,7 +38,7 @@ export class baseRepository {
         console.log('isNull SQL:', sql);
         console.log(result[0]);
         console.log(result[0]['count']);
-        return process.env.env === 'development' ? result[0]['count'] == 0 : result[0]['count(*)'] == 0;
+        return process.env.env === 'production' ? result[0]['count'] == 0 : result[0]['count(*)'] == 0;
     }
 
     /**
