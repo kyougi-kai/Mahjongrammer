@@ -327,6 +327,10 @@ export class uiManager {
             padding: '0',
         });
         let startss = document.body.appendChild(this.start_img);
+        //効果音
+        let letsr = Math.floor(Math.random()*15);
+        audio.src=`/public/mp3/lets_ver${letsr}.wav`;
+        audio.play(); //audioを再生
 
         setInterval(() => {
             startss.remove();
