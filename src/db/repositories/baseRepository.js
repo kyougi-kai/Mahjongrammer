@@ -35,7 +35,10 @@ export class baseRepository {
             params = [filterValue];
         }
         const result = await db.query(sql, params);
-        return result[0]['count(*)'] == 0;
+        console.log('isNull SQL:', sql);
+        console.log(result[0]);
+        console.log(result[0]['count']);
+        return process.env.env === 'development' ? result[0]['count'] == 0 : result[0]['count(*)'] == 0;
     }
 
     /**

@@ -22,13 +22,19 @@ export class playManager {
     }
 
     async onMessageEntryRoom(ws, data) {
+        console.log('entryRoom');
+        console.log(data);
         const roomId = data.roomId;
         const userId = data.userId;
         const parentId = await roomsDB.getRow('parent_id', 'room_id', roomId);
+        await console.log(await roomsDB.query('SELECT * FROM rooms'));
+        await console.log(await roomMemberDB.query('SELECT * FROM room_member'));
+        console.log('parentId:', parentId);
         // const ratio = await roomsDB.getRow('ratio', 'room_id', roomId);
 
         // room_member に追加
         const isPlayer = await roomMemberDB.isNull('user_id', userId);
+        console.log('isPlayer:', isPlayer);
         if (isPlayer) await roomMemberDB.addRoomMember(roomId, userId);
 
         let roomMembersData = await roomMemberDB.getRoomMembers(roomId);
