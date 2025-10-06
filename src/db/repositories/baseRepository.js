@@ -35,6 +35,8 @@ export class baseRepository {
             params = [filterValue];
         }
         const result = await db.query(sql, params);
+        console.log('isNull SQL:', sql);
+        console.log(result);
         return result[0]['count(*)'] == 0;
     }
 
