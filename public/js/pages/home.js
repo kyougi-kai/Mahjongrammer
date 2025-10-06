@@ -115,7 +115,7 @@ window.onload = () => {
         (parseInt(window.innerHeight) - parseInt(document.getElementById('backgroundImage').offsetHeight)) / 2 +
         'px';
 
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 14; i++) {
         document.getElementsByClassName('colorbox')[i].addEventListener('click', () => {
             const color = document.getElementsByClassName('colorbox')[i].style.backgroundColor;
             let sendData = {

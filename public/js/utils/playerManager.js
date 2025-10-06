@@ -133,7 +133,13 @@ export class playerManager {
 
     addPlayer(playerName, isReady = false, isHost = false, color) {
         const playerTag = document.createElement('div');
-        playerTag.style.backgroundColor = this.rgbaStringToArray(color, 0.3);
+        if (color == 'black'){
+            console.log(color);
+            color = 'rgba(0, 0, 0, 0.8)';
+            playerTag.style.backgroundColor = this.rgbaStringToArray(color, 0.3);
+        }else{
+            playerTag.style.backgroundColor = this.rgbaStringToArray(color, 0.3);
+        }
         playerTag.classList.add('player');
         isReady ? playerTag.classList.add('ready') : playerTag.classList.add('not-ready');
         if (isHost) playerTag.classList.add('host');
@@ -144,8 +150,8 @@ export class playerManager {
     }
 
     rgbaStringToArray(rgbaStr,a) {
-      // "rgba(255, 0, 0, 0.5)" → [255, 0, 0, 0.5]
       const match = rgbaStr.match(/rgba?\(([^)]+)\)/);
+      console.log(match);
       if (!match) return null;
         return `rgba(${match[1].split(',')[0]},${match[1].split(',')[1]},${match[1].split(',')[2]},${a})`;
     }
@@ -176,7 +182,9 @@ export class playerManager {
             const nameElem = this.nameDivs[this.phaseToPosition(index)].children[0];
             nameElem.style.backgroundColor = value.color;
             console.log(value.color);
-            if(value.color == 'rgba(255, 255, 255, 0.8)' || value.color == 'rgba(0, 255, 0, 0.8)' || value.color == 'rgba(255, 255, 0, 0.8)'){
+            if(value.color == 'rgba(255, 255, 255, 0.8)' || value.color == 'rgba(0, 255, 0, 0.8)' || value.color == 'rgba(255, 255, 0, 0.8)'
+                || value.color == 'rgba(255, 165, 0, 0.8)' || value.color == 'rgba(0, 255, 255, 0.8)'|| value.color == 'rgba(191, 255, 0, 0.8)'
+            ){
                 nameElem.style.color = 'black';
                 console.log('change black');
             }
