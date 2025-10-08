@@ -15,7 +15,7 @@ export class roomMemberRepository extends baseRepository {
         const sql = 'select room_id, count(*) from room_member where room_id = ? group by room_id';
         const params = [roomId];
         const data = await this.query(sql, params);
-        return data[0]['count(*)'];
+        return process.env.env == 'production' ? data[0]['count'] : data[0]['count(*)'];
     }
 
     async getRoomMembers(roomId) {

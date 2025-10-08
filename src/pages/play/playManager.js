@@ -98,6 +98,7 @@ export class playManager {
 
             this.playclientsmanager.playClients[roomId].roomData.entry++;
             const roomMemberCounts = await roomMemberDB.roomMemberCounts(roomId);
+            console.log('rormMemberCounts', roomMemberCounts);
             if (this.playclientsmanager.playClients[roomId].roomData.entry == roomMemberCounts) {
                 const sendData = {
                     type: 'startGame',
