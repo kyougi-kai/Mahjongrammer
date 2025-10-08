@@ -10,6 +10,7 @@ const userId = functions.sN(document.getElementById('userID').innerHTML);
 const roomList = document.getElementById('roomList');
 const mainDiv = roomList.children[1];
 const colorChange = document.getElementById('settingdiv');
+const nowColor = document.getElementById('nowColor');
 let rooms = [];
 
 window.onload = () => {
@@ -118,6 +119,8 @@ window.onload = () => {
     for (let i = 0; i < 14; i++) {
         document.getElementsByClassName('colorbox')[i].addEventListener('click', () => {
             const color = document.getElementsByClassName('colorbox')[i].style.backgroundColor;
+            const textColor = document.getElementsByClassName('colorbox')[i].style.color;
+            const text = document.getElementsByClassName('colorbox')[i].innerHTML;
             let sendData = {
                 type: 'changeColor',
                 payload: {
@@ -132,6 +135,9 @@ window.onload = () => {
             createRoomDiv.style.pointerEvents = 'none';
             colorChange.style.opacity = '0';
             colorChange.style.pointerEvents = 'none';
+            nowColor.style.backgroundColor = color;
+            nowColor.style.color = textColor;
+            nowColor.innerHTML = `now your color is ${text}`;
         });
     }
 };
