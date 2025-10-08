@@ -80,6 +80,7 @@ export class playManager {
             await roomMemberDB.updateIsReady(userId, false);
             this.playclientsmanager.entryRoom(roomId, userId, ws);
             console.log('clientsLength', Object.keys(this.playclientsmanager.playClients[roomId]).length - 1);
+            console.log('ratio', ratio);
 
             // 割合送信
             await ws.send(
@@ -97,8 +98,8 @@ export class playManager {
 
             this.playclientsmanager.playClients[roomId].roomData.entry++;
             const roomMemberCounts = await roomMemberDB.roomMemberCounts(roomId);
+            console.log('rormMemberCounts', roomMemberCounts);
             if (this.playclientsmanager.playClients[roomId].roomData.entry == roomMemberCounts) {
-                const ratio = await roomsDB.getRow('ratio', 'room_id', roomId);
                 const sendData = {
                     type: 'startGame',
                     payload: { hais: this.haimanager.generateHais(roomMemberCounts, 2, this.playclientsmanager.playClients[roomId].roomData.ratio) },

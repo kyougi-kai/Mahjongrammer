@@ -16,7 +16,7 @@ export class roomsRepository extends baseRepository {
     async createRoom(parentId, roomName, ratio) {
         const roomId = uuidv4(); // Generate UUID beforehand
         const sql = 'insert into rooms (room_id, room_name, parent_id, ratio) values(?, ?, ?, ?)';
-        const param = [roomId, roomName, parentId, ratio];
+        const param = [roomId, roomName, parentId, JSON.stringify(ratio)];
         await this.query(sql, param);
     }
 
