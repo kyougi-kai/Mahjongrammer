@@ -80,13 +80,14 @@ export class playManager {
             await roomMemberDB.updateIsReady(userId, false);
             this.playclientsmanager.entryRoom(roomId, userId, ws);
             console.log('clientsLength', Object.keys(this.playclientsmanager.playClients[roomId]).length - 1);
+            console.log('ratio', ratio);
 
             // 割合送信
             await ws.send(
                 JSON.stringify({
                     type: 'getRoomMemberData',
                     payload: {
-                        ratio: JSON.parse(ratio),
+                        ratio: ratio,
                         roomMembers: roomMembersData,
                     },
                 })
