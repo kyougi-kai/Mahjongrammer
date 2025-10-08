@@ -107,7 +107,9 @@ export class playManager {
                 console.log('sendStart');
                 this.playclientsmanager.playClients[roomId].roomData.entry = 0;
 
-                this.sendToClients(sendData, roomId);
+                setTimeout(() => {
+                    this.sendToClients(sendData, roomId);
+                }, 500);
             }
         });
 
