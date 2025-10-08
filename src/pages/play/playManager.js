@@ -87,7 +87,7 @@ export class playManager {
                 JSON.stringify({
                     type: 'getRoomMemberData',
                     payload: {
-                        ratio: ratio,
+                        ratio: JSON.parse(ratio),
                         roomMembers: roomMembersData,
                     },
                 })
