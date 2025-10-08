@@ -194,6 +194,9 @@ export class uiManager {
     pon() {
         this.ponskip.style.display = 'none';
         clearTimeout(this.time);
+        let ponaudio = Math.floor(Math.random()*20);
+        audio.src=`/public/mp3/lets_ver${ponaudio}.wav`;
+        audio.play(); //audioを再生
     }
 
     showPlayResult() {
@@ -328,8 +331,8 @@ export class uiManager {
         });
         let startss = document.body.appendChild(this.start_img);
         //効果音
-        let letsr = Math.floor(Math.random()*15);
-        audio.src=`/public/mp3/lets_ver${letsr}.wav`;
+        let letsaudio = Math.floor(Math.random()*15);
+        audio.src=`/public/mp3/lets_ver${letsaudio}.wav`;
         audio.play(); //audioを再生
 
         setInterval(() => {
