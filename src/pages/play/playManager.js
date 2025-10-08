@@ -99,7 +99,6 @@ export class playManager {
             this.playclientsmanager.playClients[roomId].roomData.entry++;
             const roomMemberCounts = await roomMemberDB.roomMemberCounts(roomId);
             if (this.playclientsmanager.playClients[roomId].roomData.entry == roomMemberCounts) {
-                const ratio = await roomsDB.getRow('ratio', 'room_id', roomId);
                 const sendData = {
                     type: 'startGame',
                     payload: { hais: this.haimanager.generateHais(roomMemberCounts, 2, this.playclientsmanager.playClients[roomId].roomData.ratio) },
@@ -107,9 +106,7 @@ export class playManager {
                 console.log('sendStart');
                 this.playclientsmanager.playClients[roomId].roomData.entry = 0;
 
-                setTimeout(() => {
-                    this.sendToClients(sendData, roomId);
-                }, 500);
+                this.sendToClients(sendData, roomId);
             }
         });
 
