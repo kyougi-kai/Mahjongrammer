@@ -103,6 +103,10 @@ window.onload = () => {
             },
         };
         connectionmanager.send(sendData);
+        //効果音
+        const audio = new Audio();
+        audio.src="/public/mp3/acreateroom.mp3";
+        audio.play(); //audioを再生
     });
 
     // ボタンの位置

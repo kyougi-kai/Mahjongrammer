@@ -22,6 +22,10 @@ document.addEventListener('click', () => {
                 });
                 const data = await response.json();
                 if (data.success) {
+                    //効果音
+                    const audio = new Audio();
+                    audio.src="/public/mp3/agamestart.mp3";
+                    audio.play(); //audioを再生
                     window.location.href = '/home';
                 } else {
                     alert('ログイン失敗: ' + data.error);
