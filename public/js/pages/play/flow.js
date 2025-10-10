@@ -162,6 +162,7 @@ export class flow {
 
         this.wss.onMessage('throwHai', (data) => {
             //引き分け
+            console.log(this.haimanager.hais);
             if (this.haimanager.hais.length == 0) {
                 this.sendTie();
                 return;

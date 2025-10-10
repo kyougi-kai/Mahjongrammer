@@ -38,7 +38,9 @@ export class actionManager {
 
         this.wss.onMessage('sendChat', (data) => {
             const chatText = document.createElement('div');
-            chatText.innerHTML = `<strong>${this.playermanager.playerMembers[data.userId]}:</strong> ${data.text}`;
+            const player = this.playermanager.playerMembers[data.userId];
+            const playerName = player && player.name ? player.name : data.userId;
+            chatText.innerHTML = `<strong>${playerName}:</strong> ${data.text}`;
             document.getElementById('chat-box').appendChild(chatText);
         });
 
