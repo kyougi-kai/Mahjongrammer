@@ -399,6 +399,10 @@ export class uiManager {
                 maxWidth: '60%',
             });
             document.body.appendChild(errordiv);
+            //効果音
+            const audio = new Audio();
+            audio.src="/public/mp3/amiss.mp3";
+            audio.play(); //audioを再生
 
             const displayDuration = 3500;
             this.sumter = 1;

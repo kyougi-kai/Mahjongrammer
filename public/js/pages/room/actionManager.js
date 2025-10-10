@@ -26,6 +26,10 @@ export class actionManager {
                 this.readyBtn.classList.remove('btn-unready');
                 this.readyBtn.classList.add('btn-ready');
                 this.readyBtn.innerHTML = '準備完了';
+                //効果音
+                const audio = new Audio();
+                audio.src="/public/mp3/aready.mp3";
+                audio.play(); //audioを再生
             } else {
                 this.sendReadyMessage(true);
                 this.readyBtn.classList.add('btn-unready');
@@ -55,6 +59,10 @@ export class actionManager {
             };
 
             this.wss.send(sendData);
+            //効果音
+            const audio = new Audio();
+            audio.src="/public/mp3/astart.mp3";
+            audio.play(); //audioを再生
         });
 
         this.wss.onMessage('moveToPlay', (data) => {
@@ -105,6 +113,10 @@ export class actionManager {
         if (readyCnt == this.playermanager.getPlayerCount()) {
             this.startBtn.disabled = false;
             this.startBtn.style.opacity = '1';
+            //効果音
+            const audio = new Audio();
+            audio.src="/public/mp3/aallready.mp3";
+            audio.play(); //audioを再生
         } else {
             this.startBtn.disabled = true;
             this.startBtn.style.opacity = '0.5';
