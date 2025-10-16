@@ -102,7 +102,7 @@ export class playManager {
             if (this.playclientsmanager.playClients[roomId].roomData.entry == roomMemberCounts) {
                 const sendData = {
                     type: 'startGame',
-                    payload: { hais: this.haimanager.generateHais(roomMemberCounts, 2, this.playclientsmanager.playClients[roomId].roomData.ratio) },
+                    payload: { hais: this.haimanager.generateHais(roomMemberCounts, 10, this.playclientsmanager.playClients[roomId].roomData.ratio) },
                 };
                 console.log('sendStart');
                 this.playclientsmanager.playClients[roomId].roomData.entry = 0;
@@ -197,7 +197,7 @@ export class playManager {
                     type: 'reStart',
                     payload: {
                         tumoPlayerNumber: data.playerNumber,
-                        hais: this.haimanager.generateHais(roomMemberCounts, 2, this.playclientsmanager.playClients[roomId].roomData.ratio),
+                        hais: this.haimanager.generateHais(roomMemberCounts,10, this.playclientsmanager.playClients[roomId].roomData.ratio),
                     },
                 };
                 this.sendToClients(sendData, roomId);
