@@ -100,14 +100,16 @@ export class playManager {
             const roomMemberCounts = await roomMemberDB.roomMemberCounts(roomId);
             console.log('rormMemberCounts', roomMemberCounts);
             if (this.playclientsmanager.playClients[roomId].roomData.entry == roomMemberCounts) {
+                const deck = this.haimanager.generateHais(
+                    roomMemberCounts,
+                    this.haimanager.maxHai,
+                    this.playclientsmanager.playClients[roomId].roomData.ratio
+                );
                 const sendData = {
                     type: 'startGame',
                     payload: {
-                        hais: this.haimanager.generateHais(
-                            roomMemberCounts,
-                            this.haimanager.maxHai,
-                            this.playclientsmanager.playClients[roomId].roomData.ratio
-                        ),
+                        hais: deck.hais,
+                        doras: deck.doras,
                     },
                 };
                 console.log('sendStart');
@@ -199,15 +201,17 @@ export class playManager {
             const roomMemberCounts = await roomMemberDB.roomMemberCounts(roomId);
             if (this.playclientsmanager.playC[roomId].roomData.nextRound == roomMemberCounts) {
                 this.playclientsmanager.playC[roomId].roomData.nextRound = 0;
+                const deck = this.haimanager.generateHais(
+                    roomMemberCounts,
+                    this.haimanager.maxHai,
+                    this.playclientsmanager.playClients[roomId].roomData.ratio
+                );
                 const sendData = {
                     type: 'reStart',
                     payload: {
                         tumoPlayerNumber: data.playerNumber,
-                        hais: this.haimanager.generateHais(
-                            roomMemberCounts,
-                            this.haimanager.maxHai,
-                            this.playclientsmanager.playClients[roomId].roomData.ratio
-                        ),
+                        hais: deck.hais,
+                        doras: deck.doras,
                     },
                 };
                 this.sendToClients(sendData, roomId);
