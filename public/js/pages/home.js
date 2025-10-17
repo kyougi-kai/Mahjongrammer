@@ -26,7 +26,22 @@ window.onload = () => {
                 payload: {},
             };
             connectionmanager.send(sendData);
+            // サーバーにエントリーして現在の色を取得
+            const entryData = {
+                type: 'entryHome',
+                payload: { userId: userId },
+            };
+            connectionmanager.send(entryData);
         }, 1000);
+    });
+
+    // サーバーから色を受け取って #nowColor を更新
+    connectionmanager.onMessage('setColor', (data) => {
+        if (!data || !data.color) return;
+        nowColor.style.backgroundColor = data.color;
+        // テキスト色と表示は既存の方式に合わせて調整
+        nowColor.style.color = '#ffffff';
+        nowColor.innerHTML = `now your color is`;
     });
 
     // 部屋のデータを取得
