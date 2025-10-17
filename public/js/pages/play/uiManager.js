@@ -192,12 +192,13 @@ export class uiManager {
     }
 
     pon() {
+        console.log('function : pon');
         this.ponskip.style.display = 'none';
         clearTimeout(this.time);
         //効果音
         const audio = new Audio();
         let ponaudio = Math.floor(Math.random()*20);
-        audio.src=`/mp3/lets_ver${ponaudio}.wav`;
+        audio.src=`/mp3/pon_ver${ponaudio}.wav`;
         audio.play(); //audioを再生
     }
 
@@ -292,6 +293,8 @@ export class uiManager {
     }
 
     showRoundStart(nowRound) {
+        console.log('function : showRoundStart');
+
         //ラウンド
         const round = document.createElement('div');
         round.textContent = `第${nowRound}ラウンド`;
@@ -312,7 +315,7 @@ export class uiManager {
             fontFamily: 'sans-serif',
         });
         let rounds = document.body.appendChild(round);
-
+  
         setInterval(() => {
             rounds.remove();
         }, 2000);
@@ -333,10 +336,12 @@ export class uiManager {
         });
         let startss = document.body.appendChild(this.start_img);
         //効果音
+        /*
         const audio = new Audio();
         let letsaudio = Math.floor(Math.random()*15);
-    audio.src=`/mp3/lets_ver${letsaudio}.wav`;
-        audio.play(); //audioを再生
+        audio.src=`/mp3/lets_ver${letsaudio}.wav`;
+        */
+        // audio.play(); //audioを再生
 
         setInterval(() => {
             startss.remove();
