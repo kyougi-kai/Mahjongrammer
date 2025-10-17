@@ -28,7 +28,7 @@ export class actionManager {
                 this.readyBtn.innerHTML = '準備完了';
                 //効果音
                 const audio = new Audio();
-                audio.src="/public/mp3/aready.mp3";
+                audio.src="/mp3/aready.mp3";
                 audio.play(); //audioを再生
             } else {
                 this.sendReadyMessage(true);
@@ -63,7 +63,7 @@ export class actionManager {
             this.wss.send(sendData);
             //効果音
             const audio = new Audio();
-            audio.src="/public/mp3/astart.mp3";
+            audio.src="/mp3/astart.mp3";
             audio.play(); //audioを再生
         });
 
@@ -117,7 +117,7 @@ export class actionManager {
             this.startBtn.style.opacity = '1';
             //効果音
             const audio = new Audio();
-            audio.src="/public/mp3/aallready.mp3";
+            audio.src="/mp3/aallready.mp3";
             audio.play(); //audioを再生
         } else {
             this.startBtn.disabled = true;

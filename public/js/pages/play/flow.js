@@ -324,7 +324,7 @@ export class flow {
             hai.remove();
             //効果音
             const audio = new Audio();
-            audio.src="/public/mp3/athrowhai.mp3";
+            audio.src="/mp3/athrowhai.mp3";
             audio.play(); //audioを再生
         }
     }
