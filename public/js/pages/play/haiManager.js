@@ -14,7 +14,6 @@ export class haiManager {
         this.uimanager = uimanager;
         this.hais = [];
         this.tagText = document.getElementById('tagText');
-        this.maxHai = 2;
         this.throwElement = null;
 
         this.wss.onMessage('getRoomMemberData', (data) => {

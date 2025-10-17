@@ -208,7 +208,7 @@ export class uiManager {
         //効果音
         const audio = new Audio();
         let ponaudio = Math.floor(Math.random()*20);
-        audio.src=`/public/mp3/lets_ver${ponaudio}.wav`;
+        audio.src=`/mp3/lets_ver${ponaudio}.wav`;
         audio.play(); //audioを再生
     }
 
@@ -346,7 +346,7 @@ export class uiManager {
         //効果音
         const audio = new Audio();
         let letsaudio = Math.floor(Math.random()*15);
-        audio.src=`/public/mp3/lets_ver${letsaudio}.wav`;
+    audio.src=`/mp3/lets_ver${letsaudio}.wav`;
         audio.play(); //audioを再生
 
         setInterval(() => {
@@ -412,7 +412,7 @@ export class uiManager {
             document.body.appendChild(errordiv);
             //効果音
             const audio = new Audio();
-            audio.src="/public/mp3/amiss.mp3";
+            audio.src="/mp3/amiss.mp3";
             audio.play(); //audioを再生
 
             const displayDuration = 3500;
