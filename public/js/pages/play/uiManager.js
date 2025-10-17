@@ -112,7 +112,16 @@ export class uiManager {
     }
 
     hideThrowHai(position) {
-        this.throwHaiTable.children[position].children[0].remove();
+        try {
+            const slot = this.throwHaiTable.children[position];
+            if (!slot) return;
+            // 子要素やイベントリスナごと消すため、浅いクローンで置換する
+            const newSlot = slot.cloneNode(false); // attributes/class はコピーされるが子要素はコピーされない
+            newSlot.style.opacity = '0';
+            slot.parentNode.replaceChild(newSlot, slot);
+        } catch (err) {
+            console.log('hideThrowHai エラー', err);
+        }
     }
 
     async showRoundResult(grammerData, playerName, score, tokuten) {
@@ -131,6 +140,8 @@ export class uiManager {
     showTieResult(grammerDatas) {
         console.log(grammerDatas);
         this.resultPage.style.display = 'flex';
+        this.resultPage.getElementsByClassName('score-text')[0].innerHTML = '';
+        this.resultPage.getElementsByClassName('allten')[0].innerHTML = '';
         this.resultPage.getElementsByClassName('result-name')[0].innerHTML = '引き分け';
 
         let wordUps = '';
