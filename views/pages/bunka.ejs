@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MP4動画再生</title>
+</head>
+
+<body>
+    <video id="video1" controls width="640" height="360">
+        <source src="/mp4/HeartBeatDying.mp4" type="video/mp4" />
+        お使いのブラウザは動画タグに対応していません。
+    </video>
+    <video controls width="640" height="360">
+        <source src="/mp4/心電図.mp4" type="video/mp4" />
+        お使いのブラウザは動画タグに対応していません。
+    </video>
+
+    <script>
+        const video1 = document.getElementById('video1');
+
+        video1.addEventListener('timeupdate', () => {
+            if (video1.currentTime >= 3.7) {
+                video1.currentTime = 0;
+                video1.play(); // 念のため再生も再開
+            }
+        });
+    </script>
+</body>
+
+</html>

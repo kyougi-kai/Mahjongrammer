@@ -3,7 +3,7 @@ import { cookieManager } from '../utils/cookieManager.js';
 import { serverManager } from './serverManager.js';
 import { usersManager } from '../server/usersManager.js';
 import roomsDB from '../db/repositories/roomsRepository.js';
-import userColorDB from '../db/repositories/userColorRepository.js'
+import userColorDB from '../db/repositories/userColorRepository.js';
 
 export class routeManager {
     /**
@@ -45,6 +45,14 @@ export class routeManager {
             const userId = req.cookies.userId;
             if (userId === undefined) res.render('pages/index');
             else (await usersManager.isUserById(userId)) ? res.render('pages/index') : res.redirect('/home');
+        });
+
+        this.serverManager.onGet('/bunka', async (req, res) => {
+            res.render('pages/bunka');
+        });
+
+        this.serverManager.onGet('/bunka2', async (req, res) => {
+            res.render('pages/bunka2');
         });
 
         this.serverManager.onGet('/roomkensaku', async (req, res) => {

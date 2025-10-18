@@ -18,6 +18,20 @@ export class homeManager {
             ws.send(JSON.stringify(sendData));
         });
 
-        
+        this.wss.onMessage('reset', async (ws, data) => {
+            const sendData = {
+                type: 'resetVideo',
+                payload: {},
+            };
+            ws.send(JSON.stringify(sendData));
+        });
+
+        this.wss.onMessage('change', async (ws, data) => {
+            const sendData = {
+                type: 'changeVideo',
+                payload: {},
+            };
+            ws.send(JSON.stringify(sendData));
+        });
     }
 }
