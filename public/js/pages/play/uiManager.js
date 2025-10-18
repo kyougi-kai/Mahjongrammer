@@ -4,6 +4,7 @@ import { functions } from '/js/utils/functions.js';
 export class uiManager {
     constructor(playermanager) {
         this.playermanager = playermanager;
+        this.haimanager = null;
         this.throwHaiTable = document.getElementsByClassName('throw-hai-table')[0];
         this.ponskip = document.getElementsByClassName('bark-div')[0];
         this.flow = null;
@@ -18,6 +19,9 @@ export class uiManager {
         this.wordDown = document.getElementById('wordDown');
 
         this.hideTimeOut = null;
+
+        // doras表示
+        this.doraTable = document.getElementsByClassName('dora-badge')[0];
 
         // チートdiv
         this.hinsiDiv = document.getElementById('hinsiDrop');
@@ -197,8 +201,8 @@ export class uiManager {
         clearTimeout(this.time);
         //効果音
         const audio = new Audio();
-        let ponaudio = Math.floor(Math.random()*20);
-        audio.src=`/mp3/pon_ver${ponaudio}.wav`;
+        let ponaudio = Math.floor(Math.random() * 20);
+        audio.src = `/mp3/pon_ver${ponaudio}.wav`;
         audio.play(); //audioを再生
     }
 
@@ -315,7 +319,7 @@ export class uiManager {
             fontFamily: 'sans-serif',
         });
         let rounds = document.body.appendChild(round);
-  
+
         setInterval(() => {
             rounds.remove();
         }, 2000);
@@ -336,12 +340,10 @@ export class uiManager {
         });
         let startss = document.body.appendChild(this.start_img);
         //効果音
-        /*
         const audio = new Audio();
-        let letsaudio = Math.floor(Math.random()*15);
-        audio.src=`/mp3/lets_ver${letsaudio}.wav`;
-        */
-        // audio.play(); //audioを再生
+        let letsaudio = Math.floor(Math.random() * 15);
+        audio.src = `/mp3/lets_ver${letsaudio}.wav`;
+        audio.play(); //audioを再生
 
         setInterval(() => {
             startss.remove();
@@ -406,7 +408,7 @@ export class uiManager {
             document.body.appendChild(errordiv);
             //効果音
             const audio = new Audio();
-            audio.src="/mp3/amiss.mp3";
+            audio.src = '/mp3/amiss.mp3';
             audio.play(); //audioを再生
 
             const displayDuration = 3500;
@@ -432,5 +434,13 @@ export class uiManager {
         this.hideTimeOut = setTimeout(() => {
             document.getElementById('tagText').style.opacity = '0';
         }, 3000);
+    }
+
+    showDoras(doras) {
+        this.doraTable.innerHTML = '';
+        doras.forEach((dora) => {
+            let temporary = this.haimanager.createHai(dora.word, dora.partOfSpeech);
+            this.doraTable.appendChild(temporary);
+        });
     }
 }

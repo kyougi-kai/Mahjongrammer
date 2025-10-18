@@ -9,15 +9,17 @@ import { DM } from '/js/utils/dataManager.js';
 
 export class gameManager {
     constructor() {
+        this.datamanager = new DM();
         this.protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
         this.connectionmanager = new connectionManager();
         this.playermanager = new playerManager(this.connectionmanager, 'play');
         this.blockmanager = new blockManager();
         this.uimanager = new uiManager(this.playermanager);
         this.togoout = new toGoOut(this.uimanager);
-        this.datamanager = new DM();
         this.haimanager = new haiManager(this.connectionmanager, this.datamanager, this.blockmanager, this.uimanager);
         this.flow = new flow(this.connectionmanager, this.uimanager, this.playermanager, this.togoout, this.haimanager);
+
+        this.uimanager.haimanager = this.haimanager;
 
         this.blockmanager.setFlow(this.flow);
         this.uimanager.setFlow(this.flow);

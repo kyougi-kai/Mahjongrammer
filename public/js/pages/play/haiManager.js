@@ -13,6 +13,7 @@ export class haiManager {
         this.blockmanager = blockmanager;
         this.uimanager = uimanager;
         this.hais = [];
+        this.doras = [];
         this.tagText = document.getElementById('tagText');
         this.throwElement = null;
 
@@ -22,6 +23,8 @@ export class haiManager {
 
         this.wss.onMessage('reStart', (data) => {
             this.hais = data.hais;
+            this.doras = data.doras;
+            this.uimanager.showDoras(this.doras);
         });
 
         this.wss.onMessage('throwHai', (data) => {
@@ -30,9 +33,11 @@ export class haiManager {
     }
 
     // 自分が引く牌だけ残す
-    initHais(hais, number, max) {
+    initHais(hais, doras, number, max) {
         console.log('start initHais');
         this.hais = hais;
+        this.doras = doras;
+        this.uimanager.showDoras(this.doras);
         let temporaryHais = [];
         temporaryHais = this.hais.slice(number * 7, number * 7 + 7).concat();
         for (let i = max * 7 + number; i < this.hais.length; i = i + max) {

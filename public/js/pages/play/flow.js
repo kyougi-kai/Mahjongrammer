@@ -156,7 +156,7 @@ export class flow {
 
         this.wss.onMessage('startGame', (data) => {
             console.log('ゲームスタート');
-            this.haimanager.initHais(data.hais, this.playermanager.getPlayerNumber(), this.playermanager.getPlayerCount());
+            this.haimanager.initHais(data.hais, data.doras, this.playermanager.getPlayerNumber(), this.playermanager.getPlayerCount());
             this.start();
         });
 
@@ -324,7 +324,7 @@ export class flow {
             hai.remove();
             //効果音
             const audio = new Audio();
-            audio.src="/mp3/athrowhai.mp3";
+            audio.src = '/mp3/athrowhai.mp3';
             audio.play(); //audioを再生
         }
     }
