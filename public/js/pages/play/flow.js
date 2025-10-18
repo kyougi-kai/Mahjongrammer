@@ -254,6 +254,23 @@ export class flow {
     reStart(nextParent) {
         this.gameCount++;
         if (this.gameCount == 4) {
+            // 試合終了時にも捨て牌やテーブルをクリアしておく
+            try {
+                console.log('reStart: gameCount==4 -> clearing tables and thrown tiles');
+                this.uimanager.initTable();
+            } catch (err) {
+                console.log('initTable エラー', err);
+            }
+
+            for (let i = 0; i < this.playermanager.getPlayerCount(); i++) {
+                try {
+                    console.log('reStart: hideThrowHai for', i);
+                    this.uimanager.hideThrowHai(i);
+                } catch (err) {
+                    // 存在しない場合は無視
+                }
+            }
+
             this.uimanager.showPlayResult();
         } else {
             // やること
