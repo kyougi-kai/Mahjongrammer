@@ -192,7 +192,7 @@ export class flow {
         });
 
         this.wss.onMessage('nextPhase', () => {
-            this.uimanager.pon();
+            this.uimanager.ponSkipReset();
             if (this.sendInterval != null) clearTimeout(this.sendInterval);
             this.sendInterval = null;
             this.nowPhaseNumber = (this.nowPhaseNumber + 1) % this.playermanager.getPlayerCount();
@@ -222,7 +222,7 @@ export class flow {
             this.uimanager.hideNowBlink();
             console.log('reStart');
             console.log(data.tumoPlayerNumber, this.playermanager.parentNumber);
-            this.haimanager.initHais(data.hais, this.playermanager.getPlayerNumber(), this.playermanager.getPlayerCount());
+            this.haimanager.initHais(data.hais, data.doras, this.playermanager.getPlayerNumber(), this.playermanager.getPlayerCount());
             if (data.tumoPlayerNumber != this.playermanager.parentNumber) {
                 this.playermanager.parentNumber = (this.playermanager.parentNumber + 1) % this.playermanager.getPlayerCount();
             }

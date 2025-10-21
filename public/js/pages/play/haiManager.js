@@ -21,12 +21,6 @@ export class haiManager {
             this.datamanager.updateRatio(data.ratio);
         });
 
-        this.wss.onMessage('reStart', (data) => {
-            this.hais = data.hais;
-            this.doras = data.doras;
-            this.uimanager.showDoras(this.doras);
-        });
-
         this.wss.onMessage('throwHai', (data) => {
             this.throwElement = data.hai;
         });
