@@ -26,15 +26,15 @@ export class actionManager {
                 this.readyBtn.classList.remove('btn-unready');
                 this.readyBtn.classList.add('btn-ready');
                 this.readyBtn.innerHTML = '準備完了';
-                //効果音
-                const audio = new Audio();
-                audio.src="/mp3/aready.mp3";
-                audio.play(); //audioを再生
             } else {
                 this.sendReadyMessage(true);
                 this.readyBtn.classList.add('btn-unready');
                 this.readyBtn.classList.remove('btn-ready');
                 this.readyBtn.innerHTML = 'キャンセル';
+                //効果音
+                const audio = new Audio();
+                audio.src="/mp3/aready.mp3";
+                audio.play(); //audioを再生
             }
 
             this.isReady = !this.isReady;
