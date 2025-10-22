@@ -207,7 +207,11 @@ export class uiManager {
     }
 
     pon() {
-        console.log('function : pon');
+        this.ponskip.style.display = 'none';
+        clearTimeout(this.time);
+    }
+
+    ponSkipReset() {
         this.ponskip.style.display = 'none';
         clearTimeout(this.time);
     }
