@@ -120,7 +120,7 @@ export class flow {
                     roomId: this.playermanager.roomId,
                 },
             };
-            this.uimanager.hideponskip();
+            this.uimanager.hideBarkDiv();
             this.wss.send(skipData);
         });
 
@@ -192,7 +192,7 @@ export class flow {
         });
 
         this.wss.onMessage('nextPhase', () => {
-            this.uimanager.ponSkipReset();
+            this.uimanager.barkdivReset();
             if (this.sendInterval != null) clearTimeout(this.sendInterval);
             this.sendInterval = null;
             this.nowPhaseNumber = (this.nowPhaseNumber + 1) % this.playermanager.getPlayerCount();

@@ -309,7 +309,8 @@ p {
 }
 
 .pon-button,
-.skip-button {
+.skip-button,
+.agari-button {
     padding: 14px 32px;
     font-size: 20px;
     font-weight: bold;
@@ -322,7 +323,8 @@ p {
     margin: 20px 0;
 }
 
-.pon-button {
+.pon-button,
+.agari-button {
     background-color: #d43f00;
     color: white;
 }

@@ -6,7 +6,11 @@ export class uiManager {
         this.playermanager = playermanager;
         this.haimanager = null;
         this.throwHaiTable = document.getElementsByClassName('throw-hai-table')[0];
-        this.ponskip = document.getElementsByClassName('bark-div')[0];
+
+        // barkDiv
+        this.barkDiv = document.getElementsByClassName('bark-div')[0];
+        this.countDownText = document.getElementById('countDown');
+
         this.flow = null;
         this.scoreBord = document.getElementById('scoreBord');
         this.resultPage = document.getElementById('resultpage');
@@ -112,7 +116,7 @@ export class uiManager {
     }
 
     changePonPoint(point) {
-        this.ponskip.children[0].innerHTML = 'ポン -' + point;
+        this.barkDiv.children[0].innerHTML = 'ポン -' + point;
     }
 
     hideThrowHai(position) {
@@ -162,30 +166,31 @@ export class uiManager {
     }
 
     showCountDown() {
-        console.log(this.ponskip);
-        this.ponskip.style.display = 'block';
+        this.barkDiv.children[2].style.display = 'none';
+        console.log(this.barkDiv);
+        this.barkDiv.style.display = 'block';
         console.log(this.flow.nowPhaseNumber);
         console.log(this.playermanager.getPlayerNumber());
         if (this.playermanager.getPlayerNumber() == this.flow.nowPhaseNumber) {
             console.log('ya');
-            this.ponskip.children[0].style.display = 'none';
-            this.ponskip.children[1].style.display = 'none';
+            this.barkDiv.children[0].style.display = 'none';
+            this.barkDiv.children[1].style.display = 'none';
         } else {
-            this.ponskip.children[0].style.display = 'block';
-            this.ponskip.children[1].style.display = 'block';
+            this.barkDiv.children[0].style.display = 'block';
+            this.barkDiv.children[1].style.display = 'block';
         }
         this.count = 2;
-        this.ponskip.children[2].innerHTML = this.count + 1;
+        this.countDownText.innerHTML = this.count + 1;
         const countDown = () => {
-            this.ponskip.children[2].innerHTML = this.count;
+            this.countDownText.innerHTML = this.count;
             this.count--;
         };
         this.time = setInterval(() => {
             countDown();
             if (this.count < 0) {
                 clearInterval(this.time);
-                this.ponskip.children[2].innerHTML = '';
-                this.ponskip.style.display = 'none';
+                this.countDownText.innerHTML = '';
+                this.barkDiv.style.display = 'none';
             }
         }, 1000);
     }
@@ -199,15 +204,13 @@ export class uiManager {
         this.scoreBord.children[position].style.animation = 'blinking 2s infinite ease';
     }
 
-    hideponskip() {
-        this.ponDiv = this.ponskip.children[0];
-        this.skipDiv = this.ponskip.children[1];
-        this.ponDiv.style.display = 'none';
-        this.skipDiv.style.display = 'none';
+    hideBarkDiv() {
+        this.barkDiv.children[0].style.display = 'none';
+        this.barkDiv.children[1].style.display = 'none';
     }
 
     pon() {
-        this.ponskip.style.display = 'none';
+        this.barkDiv.style.display = 'none';
         clearTimeout(this.time);
         //効果音
         const audio = new Audio();
@@ -216,8 +219,8 @@ export class uiManager {
         audio.play(); //audioを再生
     }
 
-    ponSkipReset() {
-        this.ponskip.style.display = 'none';
+    barkDivReset() {
+        this.barkDiv.style.display = 'none';
         clearTimeout(this.time);
     }
 
@@ -262,6 +265,13 @@ export class uiManager {
                 }
             }
         }
+    }
+
+    myTurn() {
+        this.barkDiv.style.display = 'block';
+        this.barkDiv.children[0].style.display = 'none';
+        this.barkDiv.children[1].style.display = 'none';
+        this.barkDiv.children[2].style.display = 'block';
     }
 
     cutin(text) {
