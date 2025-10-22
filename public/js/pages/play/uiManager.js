@@ -210,11 +210,6 @@ export class uiManager {
         console.log('function : pon');
         this.ponskip.style.display = 'none';
         clearTimeout(this.time);
-        //効果音
-        const audio = new Audio();
-        let ponaudio = Math.floor(Math.random() * 20);
-        audio.src = `/mp3/pon_ver${ponaudio}.wav`;
-        audio.play(); //audioを再生
     }
 
     showPlayResult() {
