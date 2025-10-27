@@ -48,6 +48,7 @@ export class actionManager {
             document.getElementById('chat-box').appendChild(chatText);
         });
 
+
         this.wss.onMessage('changeIsReady', (data) => {
             this.changeIsReady(data.userId, data.isReady);
         });
@@ -94,6 +95,8 @@ export class actionManager {
         };
         this.wss.send(sendData);
     }
+
+    
 
     changeIsReady(targetId, isReady) {
         const idx = Object.keys(this.playermanager.playerMembers).indexOf(targetId);

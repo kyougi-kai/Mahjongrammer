@@ -11,13 +11,12 @@ export class roomManager {
 
         const connectUrl = this.getConnectUrl();
         this.connectionmanager.connect(connectUrl);
+        
     }
 
     getConnectUrl() {
         return `${this.protocol}://${window.location.host}/room/${this.playermanager.roomId}`;
     }
-
-    
 }
 
 const roommanager = new roomManager();
