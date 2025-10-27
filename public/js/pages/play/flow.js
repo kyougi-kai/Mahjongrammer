@@ -197,7 +197,7 @@ export class flow {
         });
 
         this.wss.onMessage('nextPhase', () => {
-            this.uimanager.barkdivReset();
+            this.uimanager.barkDivReset();
             if (this.sendInterval != null) clearTimeout(this.sendInterval);
             this.sendInterval = null;
             this.nowPhaseNumber = (this.nowPhaseNumber + 1) % this.playermanager.getPlayerCount();
@@ -250,6 +250,7 @@ export class flow {
         if (this.playermanager.isParent()) {
             this.youCanThrow = true;
             this.haimanager.drawHai();
+            this.uimanager.myTurn();
             this.scorebords.children[4].style.opacity = 1;
             this.scorebords.children[4].style.pointerEvents = 'all';
         }
@@ -304,6 +305,7 @@ export class flow {
         if (this.nowPhaseNumber == this.playermanager.getPlayerNumber()) {
             if (!isPon) this.haimanager.drawHai();
             this.youCanThrow = true;
+            this.uimanager.myTurn();
 
             this.scorebords.children[4].style.opacity = 1;
             this.scorebords.children[4].style.pointerEvents = 'all';
