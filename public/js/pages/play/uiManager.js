@@ -1,5 +1,6 @@
 import { tango } from '/js/utils/wordData.js';
 import { functions } from '/js/utils/functions.js';
+import { AM } from 'js/utils/audioManager';
 
 export class uiManager {
     constructor(playermanager) {
@@ -360,10 +361,7 @@ export class uiManager {
         });
         let startss = document.body.appendChild(this.start_img);
         //効果音
-        const audio = new Audio();
-        let letsaudio = Math.floor(Math.random() * 15);
-        audio.src = `/mp3/lets_ver${letsaudio}.wav`;
-        audio.play(); //audioを再生
+        AM.soundEffect('lets');
 
         setInterval(() => {
             startss.remove();
@@ -426,10 +424,9 @@ export class uiManager {
                 maxWidth: '60%',
             });
             document.body.appendChild(errordiv);
+            
             //効果音
-            const audio = new Audio();
-            audio.src = '/mp3/amiss.mp3';
-            audio.play(); //audioを再生
+            AM.soundeffects(amiss);
 
             const displayDuration = 3500;
             this.sumter = 1;

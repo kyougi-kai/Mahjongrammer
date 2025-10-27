@@ -118,10 +118,9 @@ window.onload = () => {
             },
         };
         connectionmanager.send(sendData);
+        
         //効果音
-        const audio = new Audio();
-    audio.src="/mp3/acreateroom.mp3";
-        audio.play(); //audioを再生
+        AM.soundEffects(acreateroom);
     });
 
     // ボタンの位置

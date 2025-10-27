@@ -31,10 +31,9 @@ export class actionManager {
                 this.readyBtn.classList.add('btn-unready');
                 this.readyBtn.classList.remove('btn-ready');
                 this.readyBtn.innerHTML = 'キャンセル';
+
                 //効果音
-                const audio = new Audio();
-                audio.src="/mp3/aready.mp3";
-                audio.play(); //audioを再生
+                AM.soundEffects(aready);
             }
 
             this.isReady = !this.isReady;
@@ -63,9 +62,7 @@ export class actionManager {
 
             this.wss.send(sendData);
             //効果音
-            const audio = new Audio();
-            audio.src="/mp3/astart.mp3";
-            audio.play(); //audioを再生
+            AM.soundEffects(astart);
         });
 
         this.wss.onMessage('moveToPlay', (data) => {
@@ -118,10 +115,9 @@ export class actionManager {
         if (readyCnt == this.playermanager.getPlayerCount()) {
             this.startBtn.disabled = false;
             this.startBtn.style.opacity = '1';
+            
             //効果音
-            const audio = new Audio();
-            audio.src="/mp3/aallready.mp3";
-            audio.play(); //audioを再生
+            AM.soundEffects(aallready);
         } else {
             this.startBtn.disabled = true;
             this.startBtn.style.opacity = '0.5';
