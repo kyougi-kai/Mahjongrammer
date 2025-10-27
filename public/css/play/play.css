@@ -594,3 +594,15 @@ p {
     max-width: 40%;
     color: black;
 }
+
+.turns {
+    position: absolute;
+    top: 75%;
+    left: 21%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    color: white;
+    background: rgb(0 0 0 / 54%);
+    padding: 4px 12px;
+    border-radius: 8px;
+}
