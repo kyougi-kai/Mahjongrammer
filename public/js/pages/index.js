@@ -23,9 +23,7 @@ document.addEventListener('click', () => {
                 const data = await response.json();
                 if (data.success) {
                     //効果音
-                    const audio = new Audio();
-                    audio.src="/mp3/se/agamestart.mp3";
-                    audio.play(); //audioを再生
+                    AM.soundEffects(agamestart);
                     window.location.href = '/home';
                 } else {
                     alert('ログイン失敗: ' + data.error);
