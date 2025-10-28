@@ -1,6 +1,6 @@
 import { tango } from '/js/utils/wordData.js';
 import { functions } from '/js/utils/functions.js';
-import { AM } from 'js/utils/audioManager';
+import { AM } from '/js/utils/audioManager.js';
 
 export class uiManager {
     constructor(playermanager) {

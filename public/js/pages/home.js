@@ -1,5 +1,6 @@
 import { connectionManager } from '/js/utils/connectionManager.js';
 import { functions } from '/js/utils/functions.js';
+import { AM } from '/js/utils/audioManager.js';
 
 const backgroundDiv = document.getElementById('backgroundDiv');
 const backgroundDivName = document.getElementById('backgroundDivName');
