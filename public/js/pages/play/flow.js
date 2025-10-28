@@ -1,3 +1,5 @@
+import { AM } from '/js/utils/audioManager.js';
+
 export class flow {
     constructor(wss, uimanager, playermanager, togoout, haimanager) {
         this.wss = wss;
@@ -364,10 +366,7 @@ export class flow {
             this.wss.send(throwData);
             hai.remove();
             //効果音
-            const audio = new Audio();
-            audio.src="/mp3/athrowhai.mp3";
-            audio.play(); //audioを再生
-            AM.soundEffects(athrowhai);
+           AM.soundEffects(athrowhai);
         }
     }
 }
