@@ -464,6 +464,6 @@ export class uiManager {
     }
 
     updateRemainingTurns(remainingTurns) {
-        document.getElementById('turns').innerText = `残りターン: ${remainingTurns}`;
+        document.getElementById('turns').innerHTML = `${remainingTurns}`;
     }
 }

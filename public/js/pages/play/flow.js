@@ -212,7 +212,7 @@ export class flow {
                 this.remainingTurns--;
             }
             try {
-                this.uimanager.updateRemainingTurns();
+                this.uimanager.updateRemainingTurns(this.remainingTurns);
             } catch (err) {}
 
             this.nextPhase();
@@ -252,10 +252,9 @@ export class flow {
     start() {
         this.roundcnt++;
         this.uimanager.showRoundStart(this.roundcnt);
-        // ラウンド開始時に残りターンを初期化（プレイヤー人数 × 10）
         try {
             this.remainingTurns = 10 * this.playermanager.getPlayerCount();
-            this.uimanager.updateRemainingTurns();
+            this.uimanager.updateRemainingTurns(this.remainingTurns);
         } catch (err) {}
         // プレイヤーにはいを配る
         let count = 0;
