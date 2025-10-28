@@ -164,7 +164,7 @@ export class flow {
 
         this.wss.onMessage('startGame', (data) => {
             console.log('ゲームスタート');
-            this.haimanager.initHais(data.hais, this.playermanager.getPlayerNumber(), this.playermanager.getPlayerCount());
+            this.haimanager.initHais(data.hais, data.doras, this.playermanager.getPlayerNumber(), this.playermanager.getPlayerCount());
             this.start();
         });
 
@@ -241,7 +241,7 @@ export class flow {
             this.uimanager.hideNowBlink();
             console.log('reStart');
             console.log(data.tumoPlayerNumber, this.playermanager.parentNumber);
-            this.haimanager.initHais(data.hais, this.playermanager.getPlayerNumber(), this.playermanager.getPlayerCount());
+            this.haimanager.initHais(data.hais, data.doras, this.playermanager.getPlayerNumber(), this.playermanager.getPlayerCount());
             if (data.tumoPlayerNumber != this.playermanager.parentNumber) {
                 this.playermanager.parentNumber = (this.playermanager.parentNumber + 1) % this.playermanager.getPlayerCount();
             }
@@ -366,7 +366,7 @@ export class flow {
             this.wss.send(throwData);
             hai.remove();
             //効果音
-           AM.soundEffects(athrowhai);
+            AM.soundEffects(athrowhai);
         }
     }
 }

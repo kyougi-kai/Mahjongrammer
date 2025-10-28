@@ -424,7 +424,7 @@ export class uiManager {
                 maxWidth: '60%',
             });
             document.body.appendChild(errordiv);
-            
+
             //効果音
             AM.soundeffects(amiss);
 
@@ -454,6 +454,8 @@ export class uiManager {
     }
 
     showDoras(doras) {
+        console.log('showDoras');
+        console.log(doras);
         this.doraTable.innerHTML = '';
         doras.forEach((dora) => {
             let temporary = this.haimanager.createHai(dora.word, dora.partOfSpeech);
