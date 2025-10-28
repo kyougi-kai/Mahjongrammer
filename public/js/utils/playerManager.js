@@ -1,5 +1,6 @@
 // import { connectionManager } from "../../utils/connectionManager.js";
 import { functions } from '/js/utils/functions.js';
+import { AM } from '/js/utils/audioManager.js';
 
 export class playerManager {
     /**
@@ -147,9 +148,7 @@ export class playerManager {
         console.log(playerTag);
         document.getElementById('playerTags').appendChild(playerTag);
         //効果音
-        const audio = new Audio();
-    audio.src="/mp3/aplayercome.mp3";
-        audio.play(); //audioを再生
+        AM.soundEffects("aplayercome");
     }
 
     rgbaStringToArray(rgbaStr,a) {

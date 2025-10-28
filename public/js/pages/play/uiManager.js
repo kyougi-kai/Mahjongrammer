@@ -426,7 +426,7 @@ export class uiManager {
             document.body.appendChild(errordiv);
 
             //効果音
-            AM.soundeffects(amiss);
+            AM.soundEffects("amiss");
 
             const displayDuration = 3500;
             this.sumter = 1;
