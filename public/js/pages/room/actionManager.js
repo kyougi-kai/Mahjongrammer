@@ -26,6 +26,10 @@ export class actionManager {
                 this.readyBtn.classList.remove('btn-unready');
                 this.readyBtn.classList.add('btn-ready');
                 this.readyBtn.innerHTML = '準備完了';
+                //効果音
+                const audio = new Audio();
+                audio.src="/mp3/aready.mp3";
+                audio.play(); //audioを再生
             } else {
                 this.sendReadyMessage(true);
                 this.readyBtn.classList.add('btn-unready');
@@ -46,7 +50,6 @@ export class actionManager {
             chatText.innerHTML = `<strong>${playerName}:</strong> ${data.text}`;
             document.getElementById('chat-box').appendChild(chatText);
         });
-
 
         this.wss.onMessage('changeIsReady', (data) => {
             this.changeIsReady(data.userId, data.isReady);
@@ -92,8 +95,6 @@ export class actionManager {
         };
         this.wss.send(sendData);
     }
-
-    
 
     changeIsReady(targetId, isReady) {
         const idx = Object.keys(this.playermanager.playerMembers).indexOf(targetId);

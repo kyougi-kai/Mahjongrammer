@@ -7,6 +7,9 @@ export class flow {
         this.haimanager = haimanager;
         this.gameCount = 0;
 
+        // 残りターン（サーバの nextPhase を受けるごとにデクリメント）
+        this.remainingTurns = null;
+
         this.ponCount = 0;
         this.ponCos = 100;
         this.myScore = 2500;
@@ -123,7 +126,7 @@ export class flow {
                     roomId: this.playermanager.roomId,
                 },
             };
-            this.uimanager.hideBarkDiv();
+            this.uimanager.hideponskip();
             this.wss.send(skipData);
         });
 
@@ -159,7 +162,7 @@ export class flow {
 
         this.wss.onMessage('startGame', (data) => {
             console.log('ゲームスタート');
-            this.haimanager.initHais(data.hais, data.doras, this.playermanager.getPlayerNumber(), this.playermanager.getPlayerCount());
+            this.haimanager.initHais(data.hais, this.playermanager.getPlayerNumber(), this.playermanager.getPlayerCount());
             this.start();
         });
 
@@ -199,6 +202,17 @@ export class flow {
             if (this.sendInterval != null) clearTimeout(this.sendInterval);
             this.sendInterval = null;
             this.nowPhaseNumber = (this.nowPhaseNumber + 1) % this.playermanager.getPlayerCount();
+            // 残りターンをデクリメントして UI を更新
+            if (this.remainingTurns === null) {
+                // 初期化されていない場合はセット（安全策）
+                this.remainingTurns = 10 * this.playermanager.getPlayerCount();
+            } else if (this.remainingTurns > 0) {
+                this.remainingTurns--;
+            }
+            try {
+                this.uimanager.updateRemainingTurns();
+            } catch (err) {}
+
             this.nextPhase();
         });
 
@@ -225,7 +239,7 @@ export class flow {
             this.uimanager.hideNowBlink();
             console.log('reStart');
             console.log(data.tumoPlayerNumber, this.playermanager.parentNumber);
-            this.haimanager.initHais(data.hais, data.doras, this.playermanager.getPlayerNumber(), this.playermanager.getPlayerCount());
+            this.haimanager.initHais(data.hais, this.playermanager.getPlayerNumber(), this.playermanager.getPlayerCount());
             if (data.tumoPlayerNumber != this.playermanager.parentNumber) {
                 this.playermanager.parentNumber = (this.playermanager.parentNumber + 1) % this.playermanager.getPlayerCount();
             }
@@ -236,6 +250,11 @@ export class flow {
     start() {
         this.roundcnt++;
         this.uimanager.showRoundStart(this.roundcnt);
+        // ラウンド開始時に残りターンを初期化（プレイヤー人数 × 10）
+        try {
+            this.remainingTurns = 10 * this.playermanager.getPlayerCount();
+            this.uimanager.updateRemainingTurns();
+        } catch (err) {}
         // プレイヤーにはいを配る
         let count = 0;
         let nan = setInterval(() => {
@@ -346,7 +365,7 @@ export class flow {
             hai.remove();
             //効果音
             const audio = new Audio();
-            audio.src = '/mp3/athrowhai.mp3';
+            audio.src="/mp3/athrowhai.mp3";
             audio.play(); //audioを再生
             AM.soundEffects(athrowhai);
         }
