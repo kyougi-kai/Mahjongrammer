@@ -43,7 +43,7 @@ create table room_member(
 create table user_color(
     user_id char(36) primary key,
     color varchar(255) default 'black',
-    foreign key (user_id) references users(user_id)
+    foreign key (user_id) references users(user_id) on delete cascade
 );
 
 // データベース起動

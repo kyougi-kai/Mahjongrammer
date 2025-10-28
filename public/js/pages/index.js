@@ -1,8 +1,8 @@
-let loginFlag = 'login';
-const loginHeader = document.getElementsByClassName('login-header')[0];
+import {AM} from '/js/utils/audioManager.js';
 
+document.addEventListener('DOMContentLoaded', () => {
+    let loginFlag = 'login';
 let startFlag = false;
-
 document.addEventListener('click', () => {
     if (!startFlag) {
         startFlag = true;
@@ -23,7 +23,7 @@ document.addEventListener('click', () => {
                 const data = await response.json();
                 if (data.success) {
                     //効果音
-                    AM.soundEffects(agamestart);
+                    AM.soundEffects("agamestart");
                     window.location.href = '/home';
                 } else {
                     alert('ログイン失敗: ' + data.error);
@@ -52,3 +52,6 @@ signupTab.addEventListener('click', () => {
     submitBtn.textContent = 'サインイン';
     loginFlag = 'signin';
 });
+
+});
+
