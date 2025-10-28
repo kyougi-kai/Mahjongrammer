@@ -108,7 +108,6 @@ export class playerManager {
         this.wss?.onMessage('getRoomMemberData', (data) => {
             console.log('getRoomMemberData');
             console.log(data);
-            console.log(data.roomMembers[0].color);
             data.roomMembers.forEach((user, index) => {
                 this.playerMembers[user.user_id] = { name: user.username, color: user.color };
                 if (this.type == 'room') {

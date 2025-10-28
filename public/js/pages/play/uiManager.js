@@ -462,4 +462,8 @@ export class uiManager {
             this.doraTable.appendChild(temporary);
         });
     }
+
+    updateRemainingTurns(remainingTurns) {
+        document.getElementById('turns').innerText = `残りターン: ${remainingTurns}`;
+    }
 }
