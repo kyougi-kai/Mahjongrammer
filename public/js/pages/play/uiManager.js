@@ -464,6 +464,6 @@ export class uiManager {
     }
 
     updateRemainingTurns(remainingTurns) {
-        document.getElementById('turns').innerHTML = `${remainingTurns}`;
+        document.getElementById('turns').innerHTML = `${remainingTurns - 1}`;
     }
 }
