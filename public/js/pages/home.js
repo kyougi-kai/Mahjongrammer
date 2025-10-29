@@ -38,10 +38,12 @@ window.onload = () => {
 
     // サーバーから色を受け取って #nowColor を更新
     connectionmanager.onMessage('setColor', (data) => {
+        console.log(`now color${data.color}`);
         if (!data || !data.color) return;
         nowColor.style.backgroundColor = data.color;
-        // テキスト色と表示は既存の方式に合わせて調整
         nowColor.style.color = '#ffffff';
+        if (data.color === 'rgba(255, 255, 255,0.8)'|| data.color === 'rgba(255, 255, 255,0.8)') {
+        }
         nowColor.innerHTML = `now your color is`;
     });
 
