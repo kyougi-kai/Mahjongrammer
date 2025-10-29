@@ -62,9 +62,11 @@ export class actionManager {
                 },
             };
 
-            this.wss.send(sendData);
             //効果音
-            AM.soundEffects(astart);
+            AM.soundEffects("astart");
+
+            this.wss.send(sendData);
+
         });
 
         this.wss.onMessage('moveToPlay', (data) => {

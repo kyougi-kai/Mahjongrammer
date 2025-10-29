@@ -1,12 +1,12 @@
 export class AM{
     static soundEffect(soundCase){
         const soundData = {
-            'lets':15,
-            'pon':20
+            'lets':14,
+            'pon':19
         };
 
         const audio = new Audio();
-        let letsaudio = Math.floor(Math.random() * soundData[soundCase]);
+        let letsaudio = Math.floor(Math.random() * soundData[soundCase]) + 1;
         audio.src = `/mp3/${soundCase}_ver${letsaudio}.wav`;
         audio.play(); //audioを再生
     }

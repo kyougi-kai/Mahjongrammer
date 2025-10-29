@@ -365,7 +365,7 @@ export class flow {
             this.wss.send(throwData);
             hai.remove();
             //効果音
-            AM.soundEffects(athrowhai);
+            AM.soundEffects("athrowhai");
         }
     }
 }
