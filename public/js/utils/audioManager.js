@@ -16,4 +16,11 @@ export class AM{
             audio.src = `/mp3/${soundType}.mp3`;
             audio.play(); //audioを再生  
     }
+    
+    static bgmStart(){
+        const bgm = new Audio();
+        bgm.src = "mp3/bgm/グラ麻雀ゲームBGM_Let'sGrammahjong - 20251029 11.03.mp3";
+        bgm.loop = true;
+        bgm.play(); //audioを再生
+    }
 }

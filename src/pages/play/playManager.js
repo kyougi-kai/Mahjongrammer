@@ -112,7 +112,7 @@ export class playManager {
                         doras: deck.doras,
                     },
                 };
-                console.log('sendStart');
+                console.log("sendStart");
                 this.playclientsmanager.playClients[roomId].roomData.entry = 0;
 
                 setTimeout(() => {

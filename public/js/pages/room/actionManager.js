@@ -61,10 +61,6 @@ export class actionManager {
                     roomId: this.playermanager.roomId,
                 },
             };
-
-            //効果音
-            AM.soundEffects("astart");
-
             this.wss.send(sendData);
 
         });
@@ -131,7 +127,6 @@ export class actionManager {
             type: 'readyMessage',
             payload: { roomId: this.playermanager.roomId, userId: this.playermanager.userId, isReady: isReady },
         };
-
         this.wss.send(sendData);
     }
 }

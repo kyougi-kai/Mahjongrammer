@@ -250,6 +250,7 @@ export class flow {
     }
 
     start() {
+        
         this.roundcnt++;
         this.uimanager.showRoundStart(this.roundcnt);
         try {
