@@ -18,9 +18,14 @@ export class AM{
     }
     
     static bgmStart(){
-        const bgm = new Audio();
-        bgm.src = "mp3/bgm/グラ麻雀ゲームBGM_Let'sGrammahjong - 20251029 11.03.mp3";
-        bgm.loop = true;
-        bgm.play(); //audioを再生
+        this.bgm = new Audio();
+        this.bgm.src = "/mp3/bgm/gameBGM.mp3";
+        this.bgm.loop = true;
+        this.bgm.volume = 0.5;
+        this.bgm.play(); //audioを再生
     }
-}
+
+    static bgmStop(){
+        this.bgm.pause();
+    }
+}   

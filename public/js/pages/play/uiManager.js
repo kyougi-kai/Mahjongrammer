@@ -319,7 +319,6 @@ export class uiManager {
 
     showRoundStart(nowRound) {
         console.log('function : showRoundStart');
-
         //ラウンド
         const round = document.createElement('div');
         round.textContent = `第${nowRound}ラウンド`;
