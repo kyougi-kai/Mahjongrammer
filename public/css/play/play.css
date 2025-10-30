@@ -374,9 +374,10 @@ p {
 
 .result-button {
     padding: 1em 2em;
-    font-size: 1.2rem;
-    color: white;
-    background: linear-gradient(to bottom, #305030, #203820);
+    /* font-size: 1.2rem; */
+
+    /* background: linear-gradient(to bottom, #8ff2ff, #97dbf7); */
+    background: rgba(255, 255, 255, 0);
     border: none;
     border-radius: 12px;
     cursor: pointer;

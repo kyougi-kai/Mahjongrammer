@@ -44,7 +44,7 @@ body {
 
 .heyaset {
     position: absolute;
-    transform: skewX(-30deg); 
+    transform: skewX(-30deg);
     right: 18%;
     width: 10%;
     background: transparent;
@@ -91,24 +91,14 @@ body {
     display: none;
 }
 
-.room-name-input {
-    margin: auto auto 10px auto;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 90%;
-    outline: none;
-}
-
-.colorbox{
+.colorbox {
     padding: 12px;
     text-align: center;
     border: 2px solid black;
     margin: 5px;
 }
 
-.settingdiv{
+.settingdiv {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -118,20 +108,19 @@ body {
     min-width: 400px;
     max-height: 80vh;
     min-height: 200px;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     border-radius: 12px;
     opacity: 0;
     z-index: 101;
 }
 
-
-.colors-row{
+.colors-row {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 12px;
 }
 
-.nowColor{
+.nowColor {
     text-align: center;
     width: 200px;
     height: 40px;

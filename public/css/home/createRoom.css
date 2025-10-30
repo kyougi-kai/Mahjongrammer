@@ -1,0 +1,128 @@
+/* ===== モーダル全体 ===== */
+.enhanced-room-modal {
+    width: 350px;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transform: translate(-40%, -50%);
+    opacity: 0;
+    transition: 0.35s ease;
+    pointer-events: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+/* 表示時に付与するクラス例: .show でフェードイン */
+.enhanced-room-modal.show {
+    transform: translate(-50%, -50%);
+    pointer-events: all;
+    opacity: 1;
+}
+
+/* ===== ヘッダー ===== */
+.enhanced-room-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e6e6e6;
+    padding-bottom: 8px;
+}
+
+.enhanced-room-header h2 {
+    font-size: 20px;
+    margin: 0;
+}
+
+/* 閉じるボタン */
+.enhanced-close-btn {
+    background: transparent;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.enhanced-close-btn:hover {
+    transform: scale(1.25);
+    color: #ff4b4b;
+}
+
+/* ===== 入力欄 ===== */
+.form-group {
+    margin-top: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.enhanced-input {
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    transition: border 0.25s ease;
+}
+.enhanced-input:focus {
+    border-color: #4b8bff;
+    outline: none;
+}
+
+/* ===== 設定エリア ===== */
+.enhanced-settings {
+    margin-top: 15px;
+    padding: 12px;
+    background: #f8f9ff;
+    border-radius: 10px;
+    border: 1px solid #e3e5ff;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.enhanced-setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.slider-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.enhanced-slider {
+    width: 120px;
+    cursor: pointer;
+    accent-color: #4b8bff; /* 対対応ブラウザで青色化 */
+}
+
+.slider-value {
+    text-align: right;
+    font-weight: bold;
+    color: #4b4b4b;
+    font-size: 14px;
+}
+
+/* ===== ボタン ===== */
+.btn-area {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 16px;
+}
+
+.enhanced-create-btn {
+    padding: 8px 20px;
+    background: #4b8bff;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.25s;
+}
+.enhanced-create-btn:hover {
+    background: #336ee8;
+    transform: translateY(-1px);
+}

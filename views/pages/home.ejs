@@ -1,91 +1,121 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>グラ麻雀　｜　ホーム</title>
-        <link rel="icon" href="/img/haikeimoji/gu.png" />
-        <link rel="stylesheet" href="/css/home.css" />
-        <link rel="stylesheet" href="/css/home/roomList.css" />
-        <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
-    </head>
 
-    <body>
-        <img id="backgroundImage" class="background-image" src="/img/home.png" alt="" />
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>グラ麻雀　｜　ホーム</title>
+    <link rel="icon" href="/img/haikeimoji/gu.png" />
+    <link rel="stylesheet" href="/css/home.css" />
+    <link rel="stylesheet" href="/css/home/roomList.css" />
+    <link rel="stylesheet" href="/css/home/createRoom.css" />
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+</head>
 
-        <div class="home-div">
-            <div class="name-button" id="setname">
-                <button id="profile" style="display: flex; flex-direction: column-reverse">
-                    <h2 style="padding: 0 50% 17% 0; margin: 0"><%= name %></h2>
+<body>
+    <img id="backgroundImage" class="background-image" src="/img/home.png" alt="" />
+
+    <div class="home-div">
+        <div class="name-button" id="setname">
+            <button id="profile" style="display: flex; flex-direction: column-reverse">
+                <h2 style="padding: 0 50% 17% 0; margin: 0">
+                    <%= name %>
+                </h2>
+            </button>
+        </div>
+        <div id="userID" class="userID">
+            <%= userId %>
+        </div>
+        <button id="galaxyBtn" class="galaxyBtn"></button>
+        <br />
+        <br />
+        <button class="heyaset" id="showCreateBtn">
+            <h2></h2>
+        </button>
+        <div class="background-div" style="opacity: 0" id="backgroundDiv"></div>
+        <div id="accountSetting"
+            style="z-index:101;position: absolute; width: 100%; height: 100%; display: flex; top: 50%; left: 50%;opacity: 0; pointer-events: none;">
+            <div class="create-room-name" id="CreatSet"
+                style="width: 300px; height: 200px; display: flex; flex-direction: column; border: 1px solid #444; transform: translate(-50%, -50%)">
+                <button onclick="window.location.href = '/deleteUser'"
+                    style="height: 50%; width: 100%; font-size: 18px; border: none">
+                    アカウント削除
                 </button>
+                <button onclick="window.location.href = '/logout'"
+                    style="height: 50%; width: 100%; font-size: 18px; border: none">
+                    ログアウト
+                </button>
+                <button id="wa" style="height: 50%; width: 100%; font-size: 18px; border: none;">カラー設定</button>
             </div>
-            <div id="userID" class="userID"><%= userId %></div>
-            <button id="galaxyBtn" class="galaxyBtn"></button>
-            <br />
-            <br />
-           <button class="heyaset"  id="showCreateBtn"><h2></h2></button>
-            <div class="background-div" style="opacity: 0" id="backgroundDiv"></div>
-            <div class="background-div" style="opacity: 0" id="backgroundDivName">
-                <div style="position: absolute; width: 100%; height: 100%; display: flex; top: 50%; left: 50%; pointer-events: none">
-                    <div
-                        class="create-room-name"
-                        id="CreatSet"
-                        style="width: 300px; height: 200px; display: flex; flex-direction: column; border: 1px solid #444; transform: translate(-50%, -50%)">
-                        <button onclick="window.location.href = '/deleteUser'" style="height: 50%; width: 100%; font-size: 18px; border: none">
-                            アカウント削除
-                        </button>
-                        <button onclick="window.location.href = '/logout'" style="height: 50%; width: 100%; font-size: 18px; border: none">
-                            ログアウト
-                        </button>
-                        <button id="wa" style="height: 50%; width: 100%; font-size: 18px; border: none;">カラー設定</button>
-                    </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- 部屋作成モーダル -->
+    <div id="createRoomDiv" class="enhanced-room-modal">
+        <div class="enhanced-room-header">
+            <h2>部屋作成</h2>
+            <button class="close-btn enhanced-close-btn" id="closeCreateRoom">×</button>
+        </div>
+
+        <!-- 部屋名 -->
+        <div class="form-group">
+            <label for="roomName">部屋名</label>
+            <input id="roomName" class="enhanced-input" type="text" value="<%= name %>の部屋" />
+        </div>
+
+        <!-- 設定エリア -->
+        <div class="enhanced-settings">
+
+            <!-- ターン数 -->
+            <div class="enhanced-setting-item">
+                <label for="turnCount">ターン数</label>
+
+                <div class="slider-wrapper">
+                    <input type="range" id="turnCount" min="1" max="15" value="8" class="enhanced-slider" />
+                    <span id="turnValue" class="slider-value">8ターン</span>
                 </div>
             </div>
+
         </div>
 
-        <!-- 部屋表示 -->
-        <div class="room-list-wrapper" id="roomList" style="opacity: 0; transition: 0.4s; pointer-events: none; z-index: 10">
-            <div class="room-list-header">
-                <h2>部屋一覧</h2>
-                <button class="close-btn" id="closeRoomList">×</button>
-            </div>
+        <div class="btn-area">
+            <button class="enhanced-create-btn" id="createBtn">作成</button>
+        </div>
+    </div>
 
-            <div class="room-list-container" id="main-div"></div>
+    <!-- 部屋表示 -->
+    <div class="room-list-wrapper" id="roomList"
+        style="opacity: 0; transition: 0.4s; pointer-events: none; z-index: 10">
+        <div class="room-list-header">
+            <h2>部屋一覧</h2>
+            <button class="close-btn" id="closeRoomList">×</button>
         </div>
 
-        <!-- 部屋作成 -->
-        <div id="createRoomDiv" class="room-list-wrapper" style="opacity: 0; transition: 0.4s; pointer-events: none; z-index: 10">
-            <div class="room-list-header">
-                <h2>部屋作成</h2>
-                <button class="close-btn" id="closeCreateRoom">×</button>
-            </div>
+        <div class="room-list-container" id="main-div"></div>
+    </div>
 
-            <input id="roomName" class="room-name-input" type="text" value="<%= name %>の部屋" />
-            <div style="display: flex; justify-content: right">
-                <button class="join-btn" style="margin: 10px" id="createBtn">作成</button>
-            </div>
+    <div id="settingdiv" class="settingdiv" style="opacity: 0; pointer-events: none;">
+        Change the color of your name tag!
+        <div id="nowColor" class="nowColor"></div>
+        <div class="colors-row">
+            <button class="colorbox" style="background-color: rgba(0, 0, 0, 0.8);color:white;">black</button>
+            <button class="colorbox" style="background-color: rgba(255, 255, 255, 0.8); color: black;">white</button>
+            <button class="colorbox" style="background-color: rgba(255, 0, 0, 0.8);color:white">red</button>
+            <button class="colorbox" style="background-color: rgba(0, 0, 255, 0.8);color:white;">blue</button>
+            <button class="colorbox" style="background-color: rgba(0, 255, 0, 0.8); color: black;">green</button>
+            <button class="colorbox" style="background-color: rgba(255, 255, 0, 0.8); color: black;">yellow</button>
+            <button class="colorbox" style="background-color: rgba(128, 0, 128, 0.8);color:white;">purple</button>
+            <button class="colorbox" style="background-color: rgba(128, 128, 128, 0.8);color:white;">graw</button>
+            <button class="colorbox" style="background-color: rgba(255, 165, 0, 0.8); color: black;">orange</button>
+            <button class="colorbox" style="background-color: rgba(255, 0, 212, 0.8); color: white;">pink</button>
+            <button class="colorbox" style="background-color: rgba(139, 69, 19, 0.8); color: white;">brown</button>
+            <button class="colorbox" style="background-color: rgba(0, 255, 255, 0.8); color: black;">cyan</button>
+            <button class="colorbox" style="background-color: rgba(0, 0, 128, 0.8); color: white;">navy</button>
+            <button class="colorbox" style="background-color: rgba(191, 255, 0, 0.8); color: black;">lime</button>
         </div>
+    </div>
+</body>
+<script src="/js/pages/home.js" type="module" defer></script>
 
-        <div id="settingdiv" class="settingdiv" style="opacity: 0; pointer-events: none;">
-            Change the color of your name tag!
-            <div id="nowColor" class="nowColor"></div>
-            <div class="colors-row">
-                <button class="colorbox" style="background-color: rgba(0, 0, 0, 0.8);color:white;">black</button>
-                <button class="colorbox" style="background-color: rgba(255, 255, 255, 0.8); color: black;">white</button>
-                <button class="colorbox" style="background-color: rgba(255, 0, 0, 0.8);color:white">red</button>
-                <button class="colorbox" style="background-color: rgba(0, 0, 255, 0.8);color:white;">blue</button>
-                <button class="colorbox" style="background-color: rgba(0, 255, 0, 0.8); color: black;">green</button>
-                <button class="colorbox" style="background-color: rgba(255, 255, 0, 0.8); color: black;">yellow</button>
-                <button class="colorbox" style="background-color: rgba(128, 0, 128, 0.8);color:white;">purple</button>
-                <button class="colorbox" style="background-color: rgba(128, 128, 128, 0.8);color:white;">graw</button>
-                <button class="colorbox" style="background-color: rgba(255, 165, 0, 0.8); color: black;">orange</button>
-                <button class="colorbox" style="background-color: rgba(255, 0, 212, 0.8); color: white;">pink</button>
-                <button class="colorbox" style="background-color: rgba(139, 69, 19, 0.8); color: white;">brown</button>
-                <button class="colorbox" style="background-color: rgba(0, 255, 255, 0.8); color: black;">cyan</button>
-                <button class="colorbox" style="background-color: rgba(0, 0, 128, 0.8); color: white;">navy</button>
-                <button class="colorbox" style="background-color: rgba(191, 255, 0, 0.8); color: black;">lime</button>
-            </div>
-        </div>
-    </body>
-    <script src="/js/pages/home.js" type="module" defer></script>
 </html>
