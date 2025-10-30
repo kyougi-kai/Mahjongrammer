@@ -25,21 +25,24 @@ export class roomManager {
         });
 
         this.wss.onMessage('createRoom', async (ws, data) => {
-            const userId = data.userId;
-            await roomsrepository.createRoom(userId, data.roomName, data.ratio);
-            const roomId = await roomsrepository.getRoomId(userId);
-            this.roomclientsmanager.roomC.values().forEach((client) => {
-                const sendData = {
-                    type: 'getRoomData',
-                    payload: {
-                        roomName: data.roomName,
-                        roomId: roomId,
-                        room_member_counts: 0,
-                    },
-                };
-                const stringSendData = JSON.stringify(sendData);
-                client.send(stringSendData);
-            });
+            await this.createRoom(data.userId, data.roomName, data.ratio);
+        });
+    }
+
+    async createRoom(userId, roomName, ratio) {
+        await roomsrepository.createRoom(userId, roomName, ratio);
+        const roomId = await roomsrepository.getRoomId(userId);
+        this.roomclientsmanager.roomC.values().forEach((client) => {
+            const sendData = {
+                type: 'getRoomData',
+                payload: {
+                    roomName: data.roomName,
+                    roomId: roomId,
+                    room_member_counts: 0,
+                },
+            };
+            const stringSendData = JSON.stringify(sendData);
+            client.send(stringSendData);
         });
     }
 
