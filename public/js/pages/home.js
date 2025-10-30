@@ -131,7 +131,12 @@ function updateColor(color) {
     if (!color) return;
     dom.nowColor.style.backgroundColor = color;
     dom.nowColor.style.color = '#fff';
-    dom.nowColor.textContent = `now your color is`;
+    dom.nowColor.textContent = 'now color ';
+    if (dom.nowColor.style.backgroundColor == 'rgba(255, 255, 255,0.8)'|| dom.nowColor.style.backgroundColor == 'rgba(0, 255, 0,0.8)' ||
+        dom.nowColor.style.backgroundColor == 'rgba(255, 255, 0,0.8)' || dom.nowColor.style.backgroundColor == 'rgba(255, 165, 0,0.8)' ||
+        dom.nowColor.style.backgroundColor == 'rgba(0, 255, 255,0.8)' || dom.nowColor.style.backgroundColor == 'rgba(191, 255, 0, 0.8)'){
+        dom.nowColor.style.color = '#000';
+    }
 }
 
 // ==========================
