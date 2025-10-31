@@ -2,6 +2,7 @@ import { connectionManager } from './connectionManager.js';
 import roomsDB from '../db/repositories/roomsRepository.js';
 import roomMemberDB from '../db/repositories/roomMemberRepository.js';
 import { usersManager } from '../server/usersManager.js';
+import { parse } from 'uuid';
 
 export class playClientsManager {
     /**
@@ -49,6 +50,7 @@ export class playClientsManager {
     }
 
     createPlayClient(roomId, turn) {
+        turn = parseInt(turn);
         this.playClients[roomId] = { roomData: { skip: 0, nextRound: 0, entry: 0, tieCount: 0, tie: {}, turn: turn } };
     }
 

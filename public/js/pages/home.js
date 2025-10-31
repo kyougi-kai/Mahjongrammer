@@ -162,7 +162,7 @@ function bindUIEvents(ws) {
                 roomName: document.getElementById('roomName').value,
                 ratio: [5, 4, 2, 0, 2, 1, 0, 0, 2, 2],
                 userId,
-                turn: document.getElementById('turnValue').value,
+                turn: document.getElementById('turnCount').value,
             },
         });
         AM.soundEffects('acreateroom');

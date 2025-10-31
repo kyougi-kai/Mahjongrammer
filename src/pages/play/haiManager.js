@@ -7,6 +7,7 @@ export class haiManager {
     }
 
     generateHais(playerCount, ratio, turn) {
+        console.log('generateHais', playerCount, ratio, turn);
         const hais = this.pickHai(playerCount, turn * playerCount, ratio);
         const doras = this.pickDora(hais);
         return { hais, doras };
