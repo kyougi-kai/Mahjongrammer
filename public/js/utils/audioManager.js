@@ -19,7 +19,7 @@ export class AM{
     
     static bgmStart(){
         this.bgm = new Audio();
-        this.bgm.src = "/mp3/bgm/gameBGM.mp3";
+        this.bgm.src = "/mp3/bgm/グラ麻雀ゲームBGM_Let'sGrammahjong.mp3";
         this.bgm.loop = true;
         this.bgm.volume = 0.5;
         this.bgm.play(); //audioを再生

@@ -24,6 +24,8 @@ p {
 
 .name p {
     color: white;
+    font-size: 20px;
+    padding: 4px 8px;
 }
 
 .top-content {
@@ -68,10 +70,6 @@ p {
     transform: translateY(-50%) rotateZ(90deg);
 }
 
-.name p {
-    font-size: 20px;
-    padding: 4px 8px;
-}
 
 .selection-div {
     display: flex;
@@ -372,16 +370,6 @@ p {
     pointer-events: none;
 }
 
-.result-button {
-    padding: 1em 2em;
-    /* font-size: 1.2rem; */
-
-    /* background: linear-gradient(to bottom, #8ff2ff, #97dbf7); */
-    background: rgba(255, 255, 255, 0);
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-}
 
 .finish-button {
     position: absolute;

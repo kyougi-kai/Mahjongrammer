@@ -8,9 +8,10 @@ export class roomManager {
      *
      * @param {connectionManager} wss
      */
-    constructor(wss) {
+    constructor(wss, playclientsmanager) {
         this.wss = wss;
         this.roomclientsmanager = new roomClientsManager(this.wss);
+        this.playclientsmanager = playclientsmanager;
 
         // ルームテーブル初期化
         roomsrepository.initializeTable();
@@ -25,18 +26,19 @@ export class roomManager {
         });
 
         this.wss.onMessage('createRoom', async (ws, data) => {
-            await this.createRoom(data.userId, data.roomName, data.ratio);
+            await this.createRoom(data.userId, data.roomName, data.ratio, data.turn);
         });
     }
 
-    async createRoom(userId, roomName, ratio) {
+    async createRoom(userId, roomName, ratio, turn) {
         await roomsrepository.createRoom(userId, roomName, ratio);
         const roomId = await roomsrepository.getRoomId(userId);
+        this.playclientsmanager.createPlayClient(roomId, turn);
         this.roomclientsmanager.roomC.values().forEach((client) => {
             const sendData = {
                 type: 'getRoomData',
                 payload: {
-                    roomName: data.roomName,
+                    roomName: roomName,
                     roomId: roomId,
                     room_member_counts: 0,
                 },

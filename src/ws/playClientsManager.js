@@ -2,6 +2,7 @@ import { connectionManager } from './connectionManager.js';
 import roomsDB from '../db/repositories/roomsRepository.js';
 import roomMemberDB from '../db/repositories/roomMemberRepository.js';
 import { usersManager } from '../server/usersManager.js';
+import { parse } from 'uuid';
 
 export class playClientsManager {
     /**
@@ -48,11 +49,16 @@ export class playClientsManager {
         });
     }
 
+    createPlayClient(roomId, turn) {
+        turn = parseInt(turn);
+        this.playClients[roomId] = { roomData: { skip: 0, nextRound: 0, entry: 0, tieCount: 0, tie: {}, turn: turn } };
+    }
+
     async entryRoom(roomId, userId, ws) {
-        const isRoom = await roomsDB.isNull('room_id', roomId);
-        if (!isRoom && !this.playClients.hasOwnProperty(roomId)) {
-            this.playClients[roomId] = { roomData: { skip: 0, nextRound: 0, entry: 0, tieCount: 0, tie: {} } };
+        if (!this.playClients.hasOwnProperty(roomId)) {
+            console.log('Error: No such roomId in playClientsManager');
+        } else {
+            this.playClients[roomId][userId] = ws;
         }
-        this.playClients[roomId][userId] = ws;
     }
 }
