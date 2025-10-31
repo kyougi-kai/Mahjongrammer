@@ -36,7 +36,7 @@ const testGCR = {
     errors: {},
 };
 
-function checkGrammer(targetArray) {
+export function checkGrammer(targetArray) {
     targetArray.sentence = targetArray.sentence.toString();
 
     /**
@@ -1063,7 +1063,7 @@ function errorManager(GCR, typeText, errorID) {
             GCR.errors[keyName].index = GCR.currentIndex;
             GCR.errors[keyName].type = '文法ミス！';
             GCR.errors[keyName].reason = '動詞の使い方を間違えています';
-            GCR.errors[keyName].suggestion = '助動詞がない時は、I,you以外の単数形の主語には原型は使えません。活用形を変えてみましょう';
+            GCR.errors[keyName].suggestion = '助動詞がない時は、I,you以外の主語には原型は使えません。活用形を変えてみましょう';
             break;
         case 'SantangensMissbyhukusuu':
             keyName = 'SantangensMissbyhukusuu';
@@ -1223,33 +1223,6 @@ function errorManager(GCR, typeText, errorID) {
             GCR.errors[keyName].type = '助動詞ミス！';
             GCR.errors[keyName].reason = '助動詞の作り方を間違えています';
             GCR.errors[keyName].suggestion = '助動詞の次に完了形のhaveや受け身、進行形のbe動詞を置きたいときは原型にしましょう';
-            break;
-        case 'SoujodousiSantangensMissbyIyouwe':
-            keyName = 'SoujodousiSantangensMissbyIyouwe';
-            GCR.errors[keyName] = { ...errorTemplete };
-            GCR.errors[keyName].part = 'V';
-            GCR.errors[keyName].index = GCR.currentIndex;
-            GCR.errors[keyName].type = '助動詞ミス！';
-            GCR.errors[keyName].reason = '助動詞の使い方を間違えています';
-            GCR.errors[keyName].suggestion = 'I,youや複数を表す代名詞には三単現sは使えません。活用形を変えてみましょう';
-            break;
-        case 'SoujodousiSantangensMissbygenkei':
-            keyName = 'SoujodousiSantangensMissbygenkei';
-            GCR.errors[keyName] = { ...errorTemplete };
-            GCR.errors[keyName].part = 'V';
-            GCR.errors[keyName].index = GCR.currentIndex;
-            GCR.errors[keyName].type = '助動詞ミス！';
-            GCR.errors[keyName].reason = '助動詞の使い方を間違えています';
-            GCR.errors[keyName].suggestion = 'I,you以外の単数形の主語に対して原型の動詞は使えません。活用形を変えてみましょう';
-            break;
-        case 'SoujodousiSantangensMissbyhukusuu':
-            keyName = 'SoujodousiSantangensMissbyhukusuu';
-            GCR.errors[keyName] = { ...errorTemplete };
-            GCR.errors[keyName].part = 'V';
-            GCR.errors[keyName].index = GCR.currentIndex;
-            GCR.errors[keyName].type = '助動詞ミス！';
-            GCR.errors[keyName].reason = '助動詞の使い方を間違えています';
-            GCR.errors[keyName].suggestion = '複数形の名詞には、三単現sは使えません。活用形を変えてみましょう';
             break;
     }
 
@@ -1502,49 +1475,13 @@ function checkTotalGrammerMatters(GCR) {
             }
         }
     } else {
-        //主語+法助動詞+相助動詞+動詞（相助動詞がある場合）
+        //主語+法助動詞+動詞（相助動詞がある場合）
         if (GCR['allOfVTags'].houjodousi.includes('法助動詞')) {
             if (!GCR['allOfVTags'].jodousi.includes('原型')) {
                 /*法助動詞に原型以外の助動詞をつけている場合*/ errorManager(GCR, '', 'houJodousiMissbynotgenkei');
-            }
-        } else {
-            //主語+相助動詞+動詞例（I have played）(法助動詞がない場合)
-            try {
-                if (
-                    ((GCR['allOfSTags'].daimeisi.includes('二人称') &&
-                        GCR['allOfSTags'].daimeisi.includes('単数') &&
-                        GCR['allOfSTags'].daimeisi.includes('主格')) ||
-                        (GCR['allOfSTags'].daimeisi.includes('一人称') &&
-                            GCR['allOfSTags'].daimeisi.includes('単数') &&
-                            GCR['allOfSTags'].daimeisi.includes('主格')) ||
-                        GCR['allOfSTags'].daimeisi.includes('複数')) &&
-                    GCR['allOfVTags'].jodousi.includes('三単現s')
-                ) {
-                    /*I,youに三単現sの相助動詞をつけている場合 */ errorManager(GCR, '', 'SoujodousiSantangensMissbyIyouwe');
-                }
-                if (
-                    GCR['allOfSTags'].daimeisi.includes('三人称') &&
-                    GCR['allOfSTags'].daimeisi.includes('単数') &&
-                    GCR['allOfSTags'].daimeisi.includes('主格') &&
-                    GCR['allOfVTags'].jodousi.includes('原型')
-                ) {
-                    /*三人称単数現在形に原型の相助動詞をつけている場合 */ errorManager(GCR, '', 'SoujodousiSantangensMissbygenkei');
-                }
-            } catch (e) {
-                if (
-                    (GCR['allOfSTags'].meisi.includes('単数形') || GCR['allOfSTags'].meisi.includes('不可算名詞')) &&
-                    GCR['allOfVTags'].jodousi.includes('原型')
-                ) {
-                    /*単数形の名詞に原型の相助動詞をつけている場合 */ errorManager(GCR, '', 'SoujodousiSantangensMissbygenkei');
-                }
-                if (GCR['allOfSTags'].meisi.includes('複数形') && GCR['allOfVTags'].jodousi.includes('三単現s')) {
-                    /*複数形の名詞に三単現sの相助動詞をつけている場合 */ errorManager(GCR, '', 'SoujodousiSantangensMissbyhukusuu');
-                }
             }
         }
     }
 
     return GCR;
 }
-
-console.log('checkGrammer結果：', checkGrammerTestArray, checkGrammer(checkGrammerTestArray));
