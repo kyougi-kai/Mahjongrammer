@@ -14,6 +14,7 @@ document.addEventListener('click', () => {
             const username = document.getElementById('userName').value;
             const password = document.getElementById('password').value;
 
+
             try {
                 const response = await fetch(`/${loginFlag}`, {
                     method: 'POST',
@@ -24,7 +25,10 @@ document.addEventListener('click', () => {
                 if (data.success) {
                     //効果音
                     AM.soundEffects("agamestart");
-                    window.location.href = '/home';
+                    setInterval(() => {
+                        window.location.href = '/home';
+                    }, 800);
+                    
                 } else {
                     alert('ログイン失敗: ' + data.error);
                 }
