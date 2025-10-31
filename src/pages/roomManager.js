@@ -36,7 +36,7 @@ export class roomManager {
             const sendData = {
                 type: 'getRoomData',
                 payload: {
-                    roomName: data.roomName,
+                    roomName: roomName,
                     roomId: roomId,
                     room_member_counts: 0,
                 },
