@@ -1,5 +1,6 @@
 .result-page {
     /*opacity: 0;*/
+    background-image: url("../../img/result/背景.png");
     background-color: rgba(0, 0, 0, 0.7);
     position: absolute;
     top: 35%;

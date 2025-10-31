@@ -250,8 +250,12 @@ export class flow {
     }
 
     start() {
-        
         this.roundcnt++;
+        console.log(this.roundcnt);
+        if(this.roundcnt >= 2){
+            AM.bgmStop();
+        }
+        AM.bgmStart();
         this.uimanager.showRoundStart(this.roundcnt);
         try {
             this.remainingTurns = 10 * this.playermanager.getPlayerCount();
