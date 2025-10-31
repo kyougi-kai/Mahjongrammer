@@ -132,9 +132,14 @@ function updateColor(color) {
     dom.nowColor.style.backgroundColor = color;
     dom.nowColor.style.color = '#fff';
     dom.nowColor.textContent = 'now color ';
-    if (dom.nowColor.style.backgroundColor == 'rgba(255, 255, 255,0.8)'|| dom.nowColor.style.backgroundColor == 'rgba(0, 255, 0,0.8)' ||
-        dom.nowColor.style.backgroundColor == 'rgba(255, 255, 0,0.8)' || dom.nowColor.style.backgroundColor == 'rgba(255, 165, 0,0.8)' ||
-        dom.nowColor.style.backgroundColor == 'rgba(0, 255, 255,0.8)' || dom.nowColor.style.backgroundColor == 'rgba(191, 255, 0, 0.8)'){
+    if (
+        dom.nowColor.style.backgroundColor == 'rgba(255, 255, 255,0.8)' ||
+        dom.nowColor.style.backgroundColor == 'rgba(0, 255, 0,0.8)' ||
+        dom.nowColor.style.backgroundColor == 'rgba(255, 255, 0,0.8)' ||
+        dom.nowColor.style.backgroundColor == 'rgba(255, 165, 0,0.8)' ||
+        dom.nowColor.style.backgroundColor == 'rgba(0, 255, 255,0.8)' ||
+        dom.nowColor.style.backgroundColor == 'rgba(191, 255, 0, 0.8)'
+    ) {
         dom.nowColor.style.color = '#000';
     }
 }
@@ -157,6 +162,7 @@ function bindUIEvents(ws) {
                 roomName: document.getElementById('roomName').value,
                 ratio: [5, 4, 2, 0, 2, 1, 0, 0, 2, 2],
                 userId,
+                turn: document.getElementById('turnValue').value,
             },
         });
         AM.soundEffects('acreateroom');
