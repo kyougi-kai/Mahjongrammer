@@ -132,12 +132,21 @@ function updateColor(color) {
     dom.nowColor.style.backgroundColor = color;
     dom.nowColor.style.color = '#fff';
     dom.nowColor.textContent = 'now color ';
-    if (dom.nowColor.style.backgroundColor == 'rgba(255, 255, 255,0.8)'|| dom.nowColor.style.backgroundColor == 'rgba(0, 255, 0,0.8)' ||
-        dom.nowColor.style.backgroundColor == 'rgba(255, 255, 0,0.8)' || dom.nowColor.style.backgroundColor == 'rgba(255, 165, 0,0.8)' ||
-        dom.nowColor.style.backgroundColor == 'rgba(0, 255, 255,0.8)' || dom.nowColor.style.backgroundColor == 'rgba(191, 255, 0, 0.8)'){
+    const colors = ['rgba(255,255,255,0.8)', 'rgba(0,255,0,0.8)', 'rgba(255,255,0,0.8)', 'rgba(255,165,0,0.8)','rgba(0,255,255,0.8)', 'rgba(191,255,0,0.8)'];
+    const normalizedColor = color.replace(/\s+/g, '').toLowerCase();
+    if (colors.includes(normalizedColor)) {
         dom.nowColor.style.color = '#000';
     }
 }
+
+    const turnCount = document.getElementById('turnCount');
+    const turnValue = document.getElementById('turnValue');
+    turnCount.textContent = turnCount.value;
+    turnCount.parentNode.appendChild(turnValue);
+    
+    turnCount.addEventListener('input', (e) => {
+        turnValue.innerHTML = `${turnCount.value}ターン`;
+    });
 
 // ==========================
 // Event Bindings
