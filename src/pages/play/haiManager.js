@@ -3,12 +3,11 @@ import { DM } from './dataManager.js';
 export class haiManager {
     constructor() {
         this.datamanager = new DM();
-        this.maxHai = 10;
         this.doraNum = 5;
     }
 
-    generateHais(playerCount, size = 10, ratio) {
-        const hais = this.pickHai(playerCount, size, ratio);
+    generateHais(playerCount, ratio, turn) {
+        const hais = this.pickHai(playerCount, turn * playerCount, ratio);
         const doras = this.pickDora(hais);
         return { hais, doras };
     }

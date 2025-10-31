@@ -1,5 +1,4 @@
 import { connectionManager } from '../../ws/connectionManager.js';
-import { playClientsManager } from '../../ws/playClientsManager.js';
 import { usersManager } from '../../server/usersManager.js';
 import roomMemberDB from '../../db/repositories/roomMemberRepository.js';
 import roomsDB from '../../db/repositories/roomsRepository.js';
@@ -12,9 +11,9 @@ export class playManager {
      *
      * @param {connectionManager} wss
      */
-    constructor(wss, roommanager) {
+    constructor(wss, roommanager, playclientsmanager) {
         this.wss = wss;
-        this.playclientsmanager = new playClientsManager(wss);
+        this.playclientsmanager = playclientsmanager;
         this.roommanager = roommanager;
         this.haimanager = new haiManager();
 
@@ -102,8 +101,8 @@ export class playManager {
             if (this.playclientsmanager.playClients[roomId].roomData.entry == roomMemberCounts) {
                 const deck = this.haimanager.generateHais(
                     roomMemberCounts,
-                    this.haimanager.maxHai,
-                    this.playclientsmanager.playClients[roomId].roomData.ratio
+                    this.playclientsmanager.playClients[roomId].roomData.ratio,
+                    this.playclientsmanager.playClients[roomId].roomData.turn
                 );
                 const sendData = {
                     type: 'startGame',
@@ -112,7 +111,7 @@ export class playManager {
                         doras: deck.doras,
                     },
                 };
-                console.log("sendStart");
+                console.log('sendStart');
                 this.playclientsmanager.playClients[roomId].roomData.entry = 0;
 
                 setTimeout(() => {
@@ -203,8 +202,8 @@ export class playManager {
                 this.playclientsmanager.playC[roomId].roomData.nextRound = 0;
                 const deck = this.haimanager.generateHais(
                     roomMemberCounts,
-                    this.haimanager.maxHai,
-                    this.playclientsmanager.playClients[roomId].roomData.ratio
+                    this.playclientsmanager.playClients[roomId].roomData.ratio,
+                    this.playclientsmanager.playClients[roomId].roomData.turn
                 );
                 const sendData = {
                     type: 'reStart',

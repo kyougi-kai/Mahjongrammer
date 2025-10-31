@@ -7,6 +7,7 @@ import { connectionManager } from '../ws/connectionManager.js';
 import { roomManager } from '../pages/roomManager.js';
 import { playManager } from '../pages/play/playManager.js';
 import { homeManager } from '../pages/home/homeManager.js';
+import { playClientsManager } from '../ws/playClientsManager.js';
 const __dirname = import.meta.dirname;
 
 export class serverManager {
@@ -17,8 +18,9 @@ export class serverManager {
         this.wss.connect(this.server);
 
         // ページごと
-        this.roommanager = new roomManager(this.wss);
-        this.playmanager = new playManager(this.wss, this.roommanager);
+        this.playclientsmanager = new playClientsManager(this.wss);
+        this.roommanager = new roomManager(this.wss, this.playclientsmanager);
+        this.playmanager = new playManager(this.wss, this.roommanager, this.playclientsmanager);
         this.homemanager = new homeManager(this.wss);
     }
 
