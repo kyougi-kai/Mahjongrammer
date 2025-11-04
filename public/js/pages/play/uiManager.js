@@ -208,6 +208,7 @@ export class uiManager {
     hideBarkDiv() {
         this.barkDiv.children[0].style.display = 'none';
         this.barkDiv.children[1].style.display = 'none';
+        this.countDownText.innerHTML = '';
     }
 
     pon() {
@@ -425,7 +426,7 @@ export class uiManager {
             document.body.appendChild(errordiv);
 
             //効果音
-            AM.soundEffects("amiss");
+            AM.soundEffects('amiss');
 
             const displayDuration = 3500;
             this.sumter = 1;
