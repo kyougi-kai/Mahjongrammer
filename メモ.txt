@@ -88,3 +88,13 @@ ADD COLUMN isReady BOOLEAN DEFAULT FALSE;
 //接続
 psql "postgresql://postgres.eshzkpazbtlywbgjzrim:Kyougikai831@aws-1-ap-northeast-1.pooler.supabase.com:6543/postgres"
 
+---prisma---
+
+//リセット
+npx prisma migrate reset
+
+//マイグレーション
+npx prisma migrate dev --name init
+
+//GUI操作
+npx prisma studio
