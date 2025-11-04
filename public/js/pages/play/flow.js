@@ -122,13 +122,14 @@ export class flow {
         });
 
         this.barkdiv.children[1].addEventListener('click', (e) => {
+            console.log('skip');
             let skipData = {
                 type: 'skip',
                 payload: {
                     roomId: this.playermanager.roomId,
                 },
             };
-            this.uimanager.hideponskip();
+            this.uimanager.hideBarkDiv();
             this.wss.send(skipData);
         });
 
@@ -252,7 +253,7 @@ export class flow {
     start() {
         this.roundcnt++;
         console.log(this.roundcnt);
-        if(this.roundcnt >= 2){
+        if (this.roundcnt >= 2) {
             AM.bgmStop();
         }
         AM.bgmStart();
@@ -370,7 +371,7 @@ export class flow {
             this.wss.send(throwData);
             hai.remove();
             //効果音
-            AM.soundEffects("athrowhai");
+            AM.soundEffects('athrowhai');
         }
     }
 }
