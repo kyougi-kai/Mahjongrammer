@@ -17,14 +17,20 @@ export class AM{
             audio.play(); //audioを再生  
     }
     
-    static bgmStart(){
+    static gamebgmStart(){
         this.bgm = new Audio();
         this.bgm.src = "/mp3/bgm/グラ麻雀ゲームBGM_Let'sGrammahjong.mp3";
         this.bgm.loop = true;
         this.bgm.volume = 0.5;
         this.bgm.play(); //audioを再生
     }
-
+    static lobbybgmStart(){
+        this.bgm = new Audio();
+        this.bgm.src = "/mp3/bgm/グラ麻雀ロビー画面BGM_宇宙ステーション.mp3";
+        this.bgm.loop = true;
+        this.bgm.volume = 0.5;
+        this.bgm.play(); //audioを再生
+    }
     static bgmStop(){
         this.bgm.pause();
     }
