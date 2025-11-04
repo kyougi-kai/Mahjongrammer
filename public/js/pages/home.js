@@ -33,6 +33,7 @@ function init() {
     bindUIEvents(ws);
     adjustButtonPositions();
     window.addEventListener('resize', adjustButtonPositions);
+    AM.lobbybgmStart();
 }
 
 // ==========================
@@ -99,6 +100,7 @@ function createRoomItem(name, roomId, count = 0) {
     const btn = document.createElement('button');
     btn.className = 'join-btn';
     btn.textContent = '参加';
+    btn.onclick =AM.bgmStop();
     btn.onclick = () => (window.location.href = `/room/${roomId}`);
     div.appendChild(btn);
 
@@ -170,6 +172,7 @@ function bindUIEvents(ws) {
             },
         });
         AM.soundEffects('acreateroom');
+        AM.bgmStop();
     };
 
     document.getElementById('galaxyBtn').onclick = () => {

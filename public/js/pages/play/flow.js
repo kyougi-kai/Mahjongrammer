@@ -114,10 +114,11 @@ export class flow {
                         decreasePoint: this.ponCount * this.ponCos,
                     },
                 };
+                AM.soundEffect('pon');
                 this.wss.send(ponData);
 
                 //効果音
-                AM.soundEffect(pon);
+                
             }
         });
 
@@ -255,7 +256,7 @@ export class flow {
         if(this.roundcnt >= 2){
             AM.bgmStop();
         }
-        AM.bgmStart();
+        AM.gamebgmStart();
         this.uimanager.showRoundStart(this.roundcnt);
         try {
             this.remainingTurns = 10 * this.playermanager.getPlayerCount();
