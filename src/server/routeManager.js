@@ -67,6 +67,7 @@ export class routeManager {
                     userId: req.cookies.userId,
                 });
             } catch (err) {
+                res.render('pages/index');
                 console.log(`Error : ${err}`);
             }
         });
