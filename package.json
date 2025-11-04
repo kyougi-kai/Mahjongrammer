@@ -18,6 +18,7 @@
   "homepage": "https://github.com/kyougi-kai/Mahjongrammer#readme",
   "description": "",
   "dependencies": {
+    "@prisma/client": "^6.18.0",
     "add": "^2.0.6",
     "body-parser": "^1.20.3",
     "compromise": "^14.14.4",
@@ -39,5 +40,8 @@
   "engines": {
     "node": "22.x"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "prisma": "^6.18.0"
+  }
 }
