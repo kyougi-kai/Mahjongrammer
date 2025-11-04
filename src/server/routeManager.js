@@ -47,14 +47,6 @@ export class routeManager {
             else (await usersManager.isUserById(userId)) ? res.render('pages/index') : res.redirect('/home');
         });
 
-        this.serverManager.onGet('/bunka', async (req, res) => {
-            res.render('pages/bunka');
-        });
-
-        this.serverManager.onGet('/bunka2', async (req, res) => {
-            res.render('pages/bunka2');
-        });
-
         this.serverManager.onGet('/roomkensaku', async (req, res) => {
             await usersManager.isLogin(req, res);
             try {
