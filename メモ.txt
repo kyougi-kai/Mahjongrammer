@@ -29,6 +29,7 @@ create table rooms(
     room_name varchar(100) not null,
     parent_id char(36) not null,
     ratio varchar(255) not null,
+    isMachmaiking boolean default false,
     foreign key (parent_id) references users(user_id) on delete cascade
 );
 create table room_member(
@@ -43,6 +44,10 @@ create table room_member(
 create table user_color(
     user_id char(36) primary key,
     color varchar(255) default 'black',
+    foreign key (user_id) references users(user_id) on delete cascade
+);
+create table machmaiking(
+    user_id char(36) primary key,
     foreign key (user_id) references users(user_id) on delete cascade
 );
 
@@ -83,3 +88,13 @@ ADD COLUMN isReady BOOLEAN DEFAULT FALSE;
 //接続
 psql "postgresql://postgres.eshzkpazbtlywbgjzrim:Kyougikai831@aws-1-ap-northeast-1.pooler.supabase.com:6543/postgres"
 
+---prisma---
+
+//リセット
+npx prisma migrate reset
+
+//マイグレーション
+npx prisma migrate dev --name init
+
+//GUI操作
+npx prisma studio

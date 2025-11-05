@@ -1,0 +1,56 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model users {
+  user_id    String    @id @db.Char(36)
+  username   String    @db.VarChar(255)
+  password   String    @db.VarChar(255)
+  email      String?   @db.VarChar(255)
+
+  rooms        rooms[]       @relation("user_rooms")
+  room_member  room_member[]
+  user_color   user_color?
+  machmaiking  machmaiking?
+}
+
+model rooms {
+  room_id     String     @id @db.Char(36)
+  room_name   String     @db.VarChar(100)
+  parent_id   String     @db.Char(36)
+  ratio       String     @db.VarChar(255)
+  isMachmaiking Boolean   @default(false)
+
+  parent     users       @relation("user_rooms", fields: [parent_id], references: [user_id], onDelete: Cascade)
+  members    room_member[]
+}
+
+model room_member {
+  room_id    String   @db.Char(36)
+  user_id    String   @db.Char(36)
+  isReady    Boolean  @default(false)
+  created_at DateTime @default(now())
+
+  room   rooms @relation(fields: [room_id], references: [room_id], onDelete: Cascade)
+  user   users @relation(fields: [user_id], references: [user_id], onDelete: Cascade)
+
+  @@id([room_id, user_id])
+}
+
+model user_color {
+  user_id String  @id @db.Char(36)
+  color   String  @default("black") @db.VarChar(255)
+
+  user users @relation(fields: [user_id], references: [user_id], onDelete: Cascade)
+}
+
+model machmaiking {
+  user_id String @id @db.Char(36)
+
+  user users @relation(fields: [user_id], references: [user_id], onDelete: Cascade)
+}

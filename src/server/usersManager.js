@@ -11,7 +11,7 @@ export class usersManager {
     }
 
     static async isUserByUsername(username) {
-        return await !usersrepository.isNull('user_id', username);
+        return await !usersrepository.isNull('username', username);
     }
 
     static async addUser(username, password) {
