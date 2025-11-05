@@ -260,6 +260,7 @@ export class flow {
         AM.gamebgmStart();
         this.uimanager.showRoundStart(this.roundcnt);
         try {
+            console.log('start: updating remaining turns');
             this.uimanager.updateRemainingTurns();
         } catch (err) {}
         // プレイヤーにはいを配る
