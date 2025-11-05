@@ -1,4 +1,4 @@
-import { tango } from '../public/js/utils/wordData.js';
+import { tango } from '/js/utils/wordData.js';
 
 const errorTemplete = {
     part: '',
@@ -12,26 +12,6 @@ const pointTemplete = {
     pointName: '',
     pointValue: 0,
 };
-
-let checkGrammerTestArray = {
-    sentence: 3,
-    s: ['he'],
-    v: ['made', 'made'],
-    o1: ['this', 'machine'],
-};
-
-const testGCR = {
-    success: false,
-    successes: { S: [], V: [] },
-    currentType: ['S', 'V'],
-    currentTypeNum: 0,
-    currentIndex: 0,
-    flagsNum: 100,
-    temporaryWordsNum: 0,
-    message: '',
-    errors: {},
-};
-
 export function checkGrammer(targetArray) {
     targetArray.sentence = targetArray.sentence.toString();
 
@@ -1481,5 +1461,3 @@ function checkTotalGrammerMatters(GCR) {
 
     return GCR;
 }
-
-console.log('checkGrammer結果：', checkGrammerTestArray, checkGrammer(checkGrammerTestArray));

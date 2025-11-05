@@ -24,7 +24,7 @@ const errorTemplete = {
             wordsCount: 0,----ここがtrueNumと等しいならばtrueを返す
             targetIndex: 0----現在読み込んでいる部分の添え字
         },
-    };
+    };                          
 
 
 const testGCR = {
@@ -92,10 +92,6 @@ checkJodousiRoot→法助動詞、相助動詞、疑似法助動詞
 ・had better
 ・ought to
 ↑助動詞が変化しない
-
-
-
-
 
 errorManeger・・・エラーを一元的に管理する関数
 function errorManager(GCR,errorID){
