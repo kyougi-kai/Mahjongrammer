@@ -93,6 +93,10 @@ psql "postgresql://postgres.eshzkpazbtlywbgjzrim:Kyougikai831@aws-1-ap-northeast
 //リセット
 npx prisma migrate reset
 
+//データベースの同期
+npx prisma migrate dev
+npx prisma generate
+
 //マイグレーション
 npx prisma migrate dev --name init
 
