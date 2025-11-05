@@ -15,41 +15,8 @@ railway
 //ローカルでの環境構築
 create database mahjongrammer_db;
 create user 'kyougi_kai'@'localhost' identified by 'Kyougikai831';
-grant all privileges on mahjongrammer_db.* to 'kyougi_kai'@'localhost';
+grant all privileges on *.* to 'kyougi_kai'@'localhost';
 flush privileges;
-use mahjongrammer_db;
-create table users(
-    user_id char(36) primary key,
-    username varchar(255) not null,
-    password varchar(255) not null,
-    email varchar(255) null
-);
-create table rooms(
-    room_id char(36) primary key,
-    room_name varchar(100) not null,
-    parent_id char(36) not null,
-    ratio varchar(255) not null,
-    isMachmaiking boolean default false,
-    foreign key (parent_id) references users(user_id) on delete cascade
-);
-create table room_member(
-    room_id char(36),
-    user_id char(36),
-    isReady boolean default false,
-    created_at datetime not null default current_timestamp,
-    primary key (room_id, user_id),
-    foreign key (room_id) references rooms(room_id) on delete cascade,
-    foreign key (user_id) references users(user_id) on delete cascade
-);
-create table user_color(
-    user_id char(36) primary key,
-    color varchar(255) default 'black',
-    foreign key (user_id) references users(user_id) on delete cascade
-);
-create table machmaiking(
-    user_id char(36) primary key,
-    foreign key (user_id) references users(user_id) on delete cascade
-);
 
 // データベース起動
 mysqld --console
