@@ -30,10 +30,9 @@ export class roomManager {
         });
     }
 
-    async createRoom(userId, roomName, ratio, turn) {
+    async createRoom(userId, roomName, ratio) {
         await roomsrepository.createRoom(userId, roomName, ratio);
         const roomId = await roomsrepository.getRoomId(userId);
-        this.playclientsmanager.createPlayClient(roomId, turn);
         this.roomclientsmanager.roomC.values().forEach((client) => {
             const sendData = {
                 type: 'getRoomData',
