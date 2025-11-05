@@ -464,6 +464,7 @@ export class uiManager {
     }
 
     updateRemainingTurns() {
+        console.log('Updating remaining turns waaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
         const remainingTurns = document.getElementById('turnCount').value;
         console.log(remainingTurns);
         document.getElementById('turns').innerHTML = `${remainingTurns - 1}`;
