@@ -212,7 +212,7 @@ export class flow {
                 this.remainingTurns--;
             }
             try {
-                this.uimanager.updateRemainingTurns(this.remainingTurns);
+                this.uimanager.updateRemainingTurns(this.Turns);
             } catch (err) {}
 
             this.nextPhase();
@@ -258,8 +258,8 @@ export class flow {
         AM.bgmStart();
         this.uimanager.showRoundStart(this.roundcnt);
         try {
-            this.remainingTurns = 10 * this.playermanager.getPlayerCount();
-            this.uimanager.updateRemainingTurns(this.remainingTurns);
+            this.Turns = this.home.getTurnCount();
+            this.uimanager.updateRemainingTurns();
         } catch (err) {}
         // プレイヤーにはいを配る
         let count = 0;

@@ -462,7 +462,12 @@ export class uiManager {
         });
     }
 
-    updateRemainingTurns(remainingTurns) {
+    updateRemainingTurns() {
+        const remainingTurns = this.turnCount();
         document.getElementById('turns').innerHTML = `${remainingTurns - 1}`;
+    }
+
+    turnCount() {
+        return document.getElementById('turnCount').value;
     }
 }
