@@ -464,11 +464,8 @@ export class uiManager {
     }
 
     updateRemainingTurns() {
-        const remainingTurns = this.turnCount();
+        const remainingTurns = document.getElementById('turnCount').value;
+        console.log(remainingTurns);
         document.getElementById('turns').innerHTML = `${remainingTurns - 1}`;
-    }
-
-    turnCount() {
-        return document.getElementById('turnCount').value;
     }
 }
