@@ -30,7 +30,7 @@ export class roomManager {
         });
     }
 
-    async createRoom(userId, roomName, ratio) {
+    async createRoom(userId, roomName, ratio, turn) {
         await roomsrepository.createRoom(userId, roomName, ratio);
         const roomId = await roomsrepository.getRoomId(userId);
         this.roomclientsmanager.roomC.values().forEach((client) => {
@@ -45,6 +45,7 @@ export class roomManager {
             const stringSendData = JSON.stringify(sendData);
             client.send(stringSendData);
         });
+        this.playclientsmanager.createPlayClient(roomId, turn);
     }
 
     noticeEntryRoom(roomId, roomMemberCounts) {

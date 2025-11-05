@@ -100,7 +100,7 @@ function createRoomItem(name, roomId, count = 0) {
     const btn = document.createElement('button');
     btn.className = 'join-btn';
     btn.textContent = '参加';
-    btn.onclick =AM.bgmStop();
+    btn.onclick = AM.bgmStop();
     btn.onclick = () => (window.location.href = `/room/${roomId}`);
     div.appendChild(btn);
 
@@ -134,21 +134,28 @@ function updateColor(color) {
     dom.nowColor.style.backgroundColor = color;
     dom.nowColor.style.color = '#fff';
     dom.nowColor.textContent = 'now color ';
-    const colors = ['rgba(255,255,255,0.8)', 'rgba(0,255,0,0.8)', 'rgba(255,255,0,0.8)', 'rgba(255,165,0,0.8)','rgba(0,255,255,0.8)', 'rgba(191,255,0,0.8)'];
+    const colors = [
+        'rgba(255,255,255,0.8)',
+        'rgba(0,255,0,0.8)',
+        'rgba(255,255,0,0.8)',
+        'rgba(255,165,0,0.8)',
+        'rgba(0,255,255,0.8)',
+        'rgba(191,255,0,0.8)',
+    ];
     const normalizedColor = color.replace(/\s+/g, '').toLowerCase();
     if (colors.includes(normalizedColor)) {
         dom.nowColor.style.color = '#000';
     }
 }
 
-    const turnCount = document.getElementById('turnCount');
-    const turnValue = document.getElementById('turnValue');
-    turnCount.textContent = turnCount.value;
-    turnCount.parentNode.appendChild(turnValue);
-    
-    turnCount.addEventListener('input', (e) => {
-        turnValue.innerHTML = `${turnCount.value}ターン`;
-    });
+const turnCount = document.getElementById('turnCount');
+const turnValue = document.getElementById('turnValue');
+turnCount.textContent = turnCount.value;
+turnCount.parentNode.appendChild(turnValue);
+
+turnCount.addEventListener('input', (e) => {
+    turnValue.innerHTML = `${turnCount.value}ターン`;
+});
 
 // ==========================
 // Event Bindings
@@ -168,6 +175,7 @@ function bindUIEvents(ws) {
                 roomName: document.getElementById('roomName').value,
                 ratio: [5, 4, 2, 0, 2, 1, 0, 0, 2, 2],
                 userId,
+                turn: document.getElementById('turnCount').value,
             },
         });
         AM.soundEffects('acreateroom');
