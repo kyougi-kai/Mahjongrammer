@@ -264,11 +264,15 @@ export class uiManager {
         }
     }
 
+    /*
+        自分のターンになると呼ばれる
+    */
     myTurn() {
         this.barkDiv.style.display = 'block';
         this.barkDiv.children[0].style.display = 'none';
         this.barkDiv.children[1].style.display = 'none';
         this.barkDiv.children[2].style.display = 'block';
+        this.updateRemainingTurns();
     }
 
     cutin(text) {
@@ -465,8 +469,6 @@ export class uiManager {
 
     updateRemainingTurns() {
         console.log('Updating remaining turns waaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
-        const remainingTurns = document.getElementById('turnCount').value;
-        console.log(remainingTurns);
-        document.getElementById('turns').innerHTML = `${remainingTurns - 1}`;
+        document.getElementById('turns').innerHTML = this.haimanager.hais.length + 1;
     }
 }
