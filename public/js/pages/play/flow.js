@@ -118,7 +118,6 @@ export class flow {
                 this.wss.send(ponData);
 
                 //効果音
-                
             }
         });
 
@@ -213,9 +212,6 @@ export class flow {
             } else if (this.remainingTurns > 0) {
                 this.remainingTurns--;
             }
-            try {
-                this.uimanager.updateRemainingTurns(this.Turns);
-            } catch (err) {}
 
             this.nextPhase();
         });
@@ -259,27 +255,29 @@ export class flow {
         }
         AM.gamebgmStart();
         this.uimanager.showRoundStart(this.roundcnt);
-        try {
-            console.log('start: updating remaining turns');
-            this.uimanager.updateRemainingTurns();
-        } catch (err) {}
-        // プレイヤーにはいを配る
-        let count = 0;
-        let nan = setInterval(() => {
-            if (count == 6) clearInterval(nan);
-            this.haimanager.drawHai();
-            count++;
-        }, 200);
 
         this.scorebords.style.opacity = 1;
         if (this.playermanager.isParent()) {
             this.youCanThrow = true;
-            this.haimanager.drawHai();
-            this.uimanager.myTurn();
             this.scorebords.children[4].style.opacity = 1;
             this.scorebords.children[4].style.pointerEvents = 'all';
         }
         this.uimanager.changePhase();
+
+        // プレイヤーにはいを配る
+        let count = 0;
+        let nan = setInterval(() => {
+            this.haimanager.drawHai();
+            count++;
+            if (count == 7) {
+                if (this.playermanager.isParent()) {
+                    this.haimanager.drawHai();
+                }
+                console.log(this.haimanager.hais);
+                this.uimanager.myTurn();
+                clearInterval(nan);
+            }
+        }, 200);
     }
 
     reStart(nextParent) {
