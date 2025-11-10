@@ -14,8 +14,7 @@
 </head>
 
 <body>
-    <img id="backgroundImage" class="background-image" src="/img/home.png" alt="" />
-
+    <div class="background-blur"></div>
     <div class="home-div">
         <div class="name-button" id="setname">
             <button id="profile" style="display: flex; flex-direction: column-reverse">
@@ -50,6 +49,17 @@
             </div>
         </div>
     </div>
+    </div>
+
+    <div class="container">
+        <img id="backgroundImage" class="background-image" src="/img/home.png" alt="">
+
+        <div class="matchmaking-container">
+            <div class="status-text" id="statusText">
+                マッチメイキング<span class="dots"></span>
+            </div>
+            <button class="matchmaking-btn" id="matchBtn">マッチメイキング</button>
+        </div>
     </div>
 
     <!-- 部屋作成モーダル -->
@@ -116,10 +126,6 @@
             <button class="colorbox" style="background-color: rgba(191,255,0,0.8); color: black;">lime</button>
         </div>
     </div>
-
-    <button class="matchmaking-btn" id="matchmaking">
-        <span class="text">マッチメイキング</span>
-    </button>
 </body>
 <script src="/js/pages/home.js" type="module" defer></script>
 

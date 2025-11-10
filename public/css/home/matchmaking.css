@@ -1,41 +1,72 @@
-.matchmaking-btn {
+/* コンテナを左下に配置 */
+.matchmaking-container {
     position: absolute;
-    left: 50%;
-    top: 80%; /* 下の方に配置（数値を変えれば調整可能） */
-    transform: translateX(-50%);
-    padding: 14px 32px;
-    font-size: 18px;
-    font-weight: bold;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ステータステキスト */
+.status-text {
+    font-size: 14px;
+    color: #334;
+    margin-bottom: 8px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    text-shadow: 0 0 5px #334;
+}
+
+.matchmaking-btn {
+    background: linear-gradient(135deg, #556, #334); /* 落ち着いたグレー寄りの青 */
+    color: #eee; /* 明るい文字 */
     border: none;
-    border-radius: 10px;
-    background: linear-gradient(90deg, #4f46e5, #3b82f6);
-    color: white;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
     cursor: pointer;
-    overflow: hidden;
-    transition: 0.3s;
+    transition: 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 .matchmaking-btn:hover {
-    transform: translateX(-50%) scale(1.05);
-    box-shadow: 0 0 12px rgba(0, 153, 255, 0.5);
+    background: linear-gradient(135deg, #667, #445); /* ホバー時に少し明るく */
+    transform: scale(1.03);
 }
 
-.matchmaking-btn.loading .text::after {
-    content: ' .';
-    animation: dots 1.3s infinite;
+/* 表示中のアニメーション */
+.active .status-text {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-@keyframes dots {
+/* ドットアニメーション */
+.dots {
+    display: inline-block;
+    width: 1ch; /* 1文字幅 */
+    text-align: left;
+}
+
+.dots::after {
+    content: '';
+    display: inline-block;
+    animation: dotsAnim 2s steps(3, end) infinite;
+}
+
+@keyframes dotsAnim {
     0% {
-        content: ' .';
+        content: '';
     }
     33% {
-        content: ' ..';
+        content: '.';
     }
     66% {
-        content: ' ...';
+        content: '..';
     }
     100% {
-        content: ' .';
+        content: '...';
     }
 }
