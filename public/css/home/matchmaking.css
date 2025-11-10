@@ -1,0 +1,41 @@
+.matchmaking-btn {
+    position: absolute;
+    left: 50%;
+    top: 80%; /* 下の方に配置（数値を変えれば調整可能） */
+    transform: translateX(-50%);
+    padding: 14px 32px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #4f46e5, #3b82f6);
+    color: white;
+    cursor: pointer;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.matchmaking-btn:hover {
+    transform: translateX(-50%) scale(1.05);
+    box-shadow: 0 0 12px rgba(0, 153, 255, 0.5);
+}
+
+.matchmaking-btn.loading .text::after {
+    content: ' .';
+    animation: dots 1.3s infinite;
+}
+
+@keyframes dots {
+    0% {
+        content: ' .';
+    }
+    33% {
+        content: ' ..';
+    }
+    66% {
+        content: ' ...';
+    }
+    100% {
+        content: ' .';
+    }
+}

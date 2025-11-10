@@ -11,6 +11,7 @@ const dom = {
     roomList: document.getElementById('roomList'),
     nowColor: document.getElementById('nowColor'),
     colorChange: document.getElementById('settingdiv'),
+    matchmakingBtn: document.getElementById('matchmaking'),
 };
 
 // ===== 変数 =====
@@ -201,6 +202,11 @@ function bindUIEvents(ws) {
     };
 
     setupColorPicker(ws);
+
+    // マッチメイキングボタン
+    dom.matchmakingBtn.onclick = () => {
+        changeMatchmakingButtonState();
+    };
 }
 
 function setupColorPicker(ws) {
@@ -248,3 +254,19 @@ function adjustButtonPositions() {
 
     document.getElementById('profile').style.top = Math.floor(imgHeight * 0.07) + offset + 'px';
 }
+
+function changeMatchmakingButtonState() {
+    // ボタンのローディング状態をトグル
+    dom.matchmakingBtn.classList.contains('loading') ? dom.matchmakingBtn.classList.remove('loading') : dom.matchmakingBtn.classList.add('loading');
+}
+
+// ===========================
+// WebSocket Send Messages
+// ==========================
+
+// マッチメイキングの開始/停止メッセージを送信 次かく
+const isLoading = dom.matchmakingBtn.classList.contains('loading');
+ws.send({
+    type: isLoading ? 'startMatchmaking' : 'stopMatchmaking',
+    payload: { userId },
+});
