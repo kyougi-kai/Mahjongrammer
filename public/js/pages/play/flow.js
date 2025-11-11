@@ -1,4 +1,3 @@
-import e from 'express';
 import { AM } from '/js/utils/audioManager.js';
 
 export class flow {
@@ -197,8 +196,6 @@ export class flow {
             console.log(data.hai);
         });
 
-        
-
         this.wss.onMessage('tie', (data) => {
             this.tie(data.grammerDatas);
         });
@@ -331,9 +328,9 @@ export class flow {
 
         // 自分のターンだったら
         if (this.nowPhaseNumber == this.playermanager.getPlayerNumber()) {
-            if (!isPon && this.haimanager.hais.length !== 0){
+            if (!isPon && this.haimanager.hais.length !== 0) {
                 this.haimanager.drawHai();
-            }else{
+            } else {
                 let sendData = {
                     type: 'skipTurn',
                     payload: {
