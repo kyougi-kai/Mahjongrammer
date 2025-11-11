@@ -139,9 +139,10 @@ export class uiManager {
             console.log(score[1][i]);
             translateSentence += (await functions.translateEnglish(score[1][i].join(' '))) + ' ';
         }
+        console.log(score);
         this.resultPage.style.display = 'flex';
         this.resultPage.getElementsByClassName('result-name')[0].innerHTML = playerName;
-        this.resultPage.getElementsByClassName('score-text')[0].innerHTML = translateSentence + '<br>' + score[0].join('<br>');
+        this.resultPage.getElementsByClassName('score-text')[0].innerHTML = translateSentence + '<br>' + score[0].join('-');
         this.resultPage.getElementsByClassName('allten')[0].innerHTML = `合計${tokuten}`;
         document.getElementById('resultGrammerDiv').innerHTML = grammerData;
     }

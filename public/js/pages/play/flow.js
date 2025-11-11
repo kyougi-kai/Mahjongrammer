@@ -145,6 +145,7 @@ export class flow {
                     const parts = item.split(':');
                     if (parts.length === 2) {
                         const point = parseInt(parts[1], 10);
+                        console.log(`得点内訳: ${parts}`);
                         if (!isNaN(point)) {
                             tokuten += point;
                         }
