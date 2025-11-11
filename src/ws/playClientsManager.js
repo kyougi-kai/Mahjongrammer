@@ -51,7 +51,7 @@ export class playClientsManager {
 
     createPlayClient(roomId, turn) {
         turn = parseInt(turn);
-        this.playClients[roomId] = { roomData: { skip: 0, nextRound: 0, entry: 0, tieCount: 0, tie: {}, turn: turn } };
+        this.playClients[roomId] = { roomData: { skip: 0, nextRound: 0, entry: 0, tieCount: 0, tie: {}, turn: turn, finishUser: [] } };
         console.log('Created playClient for roomId:', roomId);
         console.log(this.playClients);
     }
