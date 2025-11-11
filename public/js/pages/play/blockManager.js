@@ -73,16 +73,6 @@ export class blockManager {
     attachDraggable(targetElement, dragElement = null) {
         targetElement.setAttribute('draggable', 'true');
 
-        targetElement.addEventListener('mouseenter', (event) => {
-            targetElement.style.cursor = 'grab';
-            targetElement.style.scale = '1.2';
-        });
-
-        targetElement.addEventListener('mouseleave', (event) => {
-            targetElement.style.cursor = 'default';
-            targetElement.style.scale = '1';
-        });
-
         targetElement.addEventListener('dragstart', (event) => {
             event.stopPropagation(); //親要素に伝播しないようにする
             this.movedAnotherParent = false;

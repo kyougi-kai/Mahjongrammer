@@ -463,6 +463,7 @@ export class uiManager {
         this.doraTable.innerHTML = '';
         doras.forEach((dora) => {
             let temporary = this.haimanager.createHai(dora.word, dora.partOfSpeech);
+            temporary.style.animation = '';
             this.doraTable.appendChild(temporary);
         });
     }

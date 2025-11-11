@@ -14,7 +14,12 @@ export class baseRepository {
         const sql = `select ${fieldName} from ${this.tableName} where ${filterName} = ?`;
         const params = [filterValue];
         const result = await db.query(sql, params);
-        return result[0][fieldName];
+
+        try {
+            return result[0][fieldName];
+        } catch (e) {
+            return null;
+        }
     }
 
     /**

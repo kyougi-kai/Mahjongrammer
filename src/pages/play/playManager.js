@@ -5,7 +5,7 @@ import roomsDB from '../../db/repositories/roomsRepository.js';
 import { routemanager } from '../../app.js';
 import { haiManager } from './haiManager.js';
 import userColorDB from '../../db/repositories/userColorRepository.js';
-import e from 'express';
+import { sendRedirect } from '../../utils/funtions.js';
 
 export class playManager {
     /**
@@ -76,6 +76,13 @@ export class playManager {
             const roomId = data.roomId;
             const ratio = await roomsDB.getRow('ratio', 'room_id', roomId);
             const userId = data.userId;
+
+            if (ratio === null) {
+                // 部屋が存在しない場合はホームにリダイレクト
+                sendRedirect(ws);
+                return;
+            }
+
             let roomMembersData = await roomMemberDB.getRoomMembers(roomId);
             await roomMemberDB.updateIsReady(userId, false);
             this.playclientsmanager.entryRoom(roomId, userId, ws);
@@ -230,9 +237,9 @@ export class playManager {
         this.wss.onMessage('skipTurn', async (ws, data) => {
             const roomId = data.roomId;
             const userId = data.userId;
-            if (!this.playclientsmanager.playClients[roomId].roomData.finishUser.includes(userId)){
+            if (!this.playclientsmanager.playClients[roomId].roomData.finishUser.includes(userId)) {
                 this.playclientsmanager.playClients[roomId].roomData.finishUser.push(userId);
-                if (this.playclientsmanager.playClients[roomId].roomData.finishUser.length === Object.keys(this.playermanager.playerMembers).length){
+                if (this.playclientsmanager.playClients[roomId].roomData.finishUser.length === Object.keys(this.playermanager.playerMembers).length) {
                     let sendData = {
                         type: 'tie',
                         payload: { grammerDatas: this.playclientsmanager.playClients[roomId].roomData.tie },
@@ -240,13 +247,13 @@ export class playManager {
                     this.sendToClients(sendData, roomId);
                     this.playclientsmanager.playClients[roomId].roomData.finishUser = [];
                 }
-            }else{
+            } else {
                 const sendData = {
                     type: 'nextPhase',
                     payload: {},
                 };
                 this.sendToClients(sendData, roomId);
-            };
+            }
         });
 
         this.wss.onMessage('tumo', async (ws, data) => {

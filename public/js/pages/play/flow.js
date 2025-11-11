@@ -245,6 +245,10 @@ export class flow {
             }
             this.reStart(this.playermanager.parentNumber);
         });
+
+        this.wss.onMessage('redirect', (data) => {
+            window.location.href = data.url;
+        });
     }
 
     start() {
