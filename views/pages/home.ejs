@@ -15,7 +15,9 @@
 
 <body>
     <div class="background-blur"></div>
-    <div class="home-div">
+    <div class="container">
+        <img id="backgroundImage" class="background-image" src="/img/home.png" alt="">
+
         <div class="name-button" id="setname">
             <button id="profile" style="display: flex; flex-direction: column-reverse">
                 <h2 style="padding: 0 50% 17% 0; margin: 0">
@@ -27,8 +29,6 @@
             <%= userId %>
         </div>
         <button id="galaxyBtn" class="galaxyBtn"></button>
-        <br />
-        <br />
         <button class="heyaset" id="showCreateBtn">
             <h2></h2>
         </button>
@@ -48,11 +48,6 @@
                 <button id="wa" style="height: 50%; width: 100%; font-size: 18px; border: none;">カラー設定</button>
             </div>
         </div>
-    </div>
-    </div>
-
-    <div class="container">
-        <img id="backgroundImage" class="background-image" src="/img/home.png" alt="">
 
         <div class="matchmaking-container">
             <div class="status-text" id="statusText">

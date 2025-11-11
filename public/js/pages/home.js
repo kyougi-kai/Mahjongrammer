@@ -264,11 +264,10 @@ function hideAllPopups() {
 function adjustButtonPositions() {
     const bg = document.getElementById('backgroundImage');
     const imgHeight = parseInt(bg.offsetHeight);
-    const offset = (innerHeight - imgHeight) / 2;
 
-    document.getElementById('showCreateBtn').style.bottom = Math.floor(imgHeight * 0.17) + offset + 'px';
+    document.getElementById('showCreateBtn').style.bottom = Math.floor(imgHeight * 0.17) + 'px';
 
-    document.getElementById('profile').style.top = Math.floor(imgHeight * 0.07) + offset + 'px';
+    document.getElementById('profile').style.top = Math.floor(imgHeight * 0.07) + 'px';
 }
 
 // ===========================
