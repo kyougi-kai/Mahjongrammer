@@ -235,23 +235,36 @@ export class playManager {
         });
 
         this.wss.onMessage('skipTurn', async (ws, data) => {
+            console.log(`受け取ったで${data}`);
             const roomId = data.roomId;
             const userId = data.userId;
+            console.log(`${this.playclientsmanager.playClients[roomId].roomData.finishUser.includes(userId)}がtureならないよ`);
             if (!this.playclientsmanager.playClients[roomId].roomData.finishUser.includes(userId)) {
                 this.playclientsmanager.playClients[roomId].roomData.finishUser.push(userId);
+                console.log(`入れたから確認するな${this.playclientsmanager.playClients[roomId].roomData.finishUser}`);
+                console.log(
+                    `次は今人数がどうなってるか確認するな${this.playclientsmanager.playClients[roomId].roomData.finishUser.length} : ${
+                        Object.keys(this.playermanager.playerMembers).length
+                    }`
+                );
                 if (this.playclientsmanager.playClients[roomId].roomData.finishUser.length === Object.keys(this.playermanager.playerMembers).length) {
+                    console.log('全員終わったから流局送るで');
                     let sendData = {
                         type: 'tie',
                         payload: { grammerDatas: this.playclientsmanager.playClients[roomId].roomData.tie },
                     };
+                    console.log(`送るでtieに${sendData}`);
                     this.sendToClients(sendData, roomId);
+                    console.log('配列をリセットするで');
                     this.playclientsmanager.playClients[roomId].roomData.finishUser = [];
                 }
             } else {
+                console.log('もう入ってるから次の人に板を回すで');
                 const sendData = {
                     type: 'nextPhase',
                     payload: {},
                 };
+                console.log(`送るでnextPhaseに${sendData}`);
                 this.sendToClients(sendData, roomId);
             }
         });

@@ -334,7 +334,7 @@ export class flow {
         if (this.nowPhaseNumber == this.playermanager.getPlayerNumber()) {
             if (!isPon && this.haimanager.hais.length !== 0) {
                 this.haimanager.drawHai();
-            } else {
+            } else if (!isPon && this.haimanager.hais.length === 0) {
                 let sendData = {
                     type: 'skipTurn',
                     payload: {
@@ -342,6 +342,8 @@ export class flow {
                         userId: this.playermanager.userId,
                     },
                 };
+                console.log('０になったらしいからスキップ送るで');
+                console.log(sendData);
                 this.wss.send(sendData);
             }
             this.youCanThrow = true;
