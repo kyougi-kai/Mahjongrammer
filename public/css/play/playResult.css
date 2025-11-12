@@ -37,6 +37,7 @@
 }
 
 .result-grammer-div {
+    margin-top: 3em;
     display: flex;
     flex-direction: column;
     color: white;
@@ -51,4 +52,7 @@
     border: none;
     border-radius: 12px;
     cursor: pointer;
+}
+.allten{
+    padding: 1em 0;
 }
