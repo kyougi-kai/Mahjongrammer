@@ -14,6 +14,7 @@ p {
     height: 100%;
     width: 100%;
     user-select: none;
+    display: flex;
 }
 
 .name {
@@ -205,11 +206,29 @@ p {
 }
 
 .main-bord {
+    display: block;
     position: relative;
-    height: 100%;
-    width: 100%;
+    height: 90%;
+    width: 90%;
+    box-shadow: inset 1px 1px 6px 6px;
     background-image: url('/img/background/ゲーム画面背景.png');
     background-size: 2200px;
+}
+
+.main-bord-background {
+    position: relative;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    background-image: url('/img/background/木の板.jpeg');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bord {
+    height: 100%;
+    width: 100%;
+    background: white;
 }
 
 .footer {

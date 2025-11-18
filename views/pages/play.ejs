@@ -19,83 +19,92 @@
     </div>
     <div class="background-div" id="backgroundDiv" style="opacity: 0;"></div>
     <div class="main-content">
-        <div class="main-bord">
-            <div style="display: none" class="result-page" id="resultpage">
-                <h2 class="result-name" style="color: white;margin: 20px 0;">リザルト</h2>
-                <div class="result-grammer-div" id="resultGrammerDiv"></div>
-                <!-- <div class="result-cnt" id="resultCnt"></div> -->
-                <div class="score-text" style="color: #fff;font-size: 1.5em;"></div>
-                <div class="allten" style="color: #ff4d4d;font-size: 3em;"></div>
-                <div id="resetButton" style="display: flex; width: 100%; justify-content: right">
-                    <button class="result-button" id="resultbutton"><img src="../../img/result/ボタン.png" /></button>
-                </div>
-            </div>
-            <div class="complete-div" id="completeDiv" style="opacity: 0;z-index:-1;pointer-events:none;">
-                <h2></h2>
-                <div class="complete-table">
-                </div>
-            </div>
+        <div class="bord bord-left">
 
-            <div class="top-content name">
-                <p></p>
-                <div style="opacity: 0;">
-                    ポン！
+        </div>
+        <div class="main-bord-background">
+            <div class="main-bord">
+                <div style="display: none" class="result-page" id="resultpage">
+                    <h2 class="result-name" style="color: white;margin: 20px 0;">リザルト</h2>
+                    <div class="result-grammer-div" id="resultGrammerDiv"></div>
+                    <!-- <div class="result-cnt" id="resultCnt"></div> -->
+                    <div class="score-text" style="color: #fff;font-size: 1.5em;"></div>
+                    <div class="allten" style="color: #ff4d4d;font-size: 3em;"></div>
+                    <div id="resetButton" style="display: flex; width: 100%; justify-content: right">
+                        <button class="result-button" id="resultbutton"><img src="../../img/result/ボタン.png" /></button>
+                    </div>
                 </div>
-            </div>
-            <div class="right-content name">
-                <p></p>
-                <div style="opacity: 0;">
-                    ポン！
+                <div class="complete-div" id="completeDiv" style="opacity: 0;z-index:-1;pointer-events:none;">
+                    <h2></h2>
+                    <div class="complete-table">
+                    </div>
                 </div>
-            </div>
-            <div class="bottom-content name">
-                <p id="usernameText">
-                    <%= username %>
-                </p>
-                <div style="opacity: 0;">
-                    ポン！
-                </div>
-            </div>
-            <div class="left-content name">
-                <p></p>
-                <div style="opacity: 0;">
-                    ポン！
-                </div>
-            </div>
 
-            <div class="throw-hai-table">
-                <div class="throw-hai top-content-hai" style="opacity: 0;">
-                    word
+                <div class="top-content name">
+                    <p></p>
+                    <div style="opacity: 0;">
+                        ポン！
+                    </div>
                 </div>
-                <div class="throw-hai right-content" style="opacity: 0;">
-                    word
+                <div class="right-content name">
+                    <p></p>
+                    <div style="opacity: 0;">
+                        ポン！
+                    </div>
                 </div>
-                <div class="throw-hai bottom-content" style="opacity: 0;">
-                    word
+                <div class="bottom-content name">
+                    <p id="usernameText">
+                        <%= username %>
+                    </p>
+                    <div style="opacity: 0;">
+                        ポン！
+                    </div>
                 </div>
-                <div class="throw-hai left-content" style="opacity: 0;">
-                    word
+                <div class="left-content name">
+                    <p></p>
+                    <div style="opacity: 0;">
+                        ポン！
+                    </div>
                 </div>
-            </div>
-            <div class="score-bord" style="opacity: 0;" id="scoreBord">
-                <p class="top-content-ten">3000</p>
-                <p class="right-content-ten">3000</p>
-                <p class="bottom-content-ten">3000</p>
-                <p class="left-content-ten">3000</p>
-                <p class="oyaban" id="oyaban"></p>
-            </div>
 
-            <button class="close-btn" id="closeBtn" style="display: none;">締め切る</button>
+                <div class="throw-hai-table">
+                    <div class="throw-hai top-content-hai" style="opacity: 0;">
+                        word
+                    </div>
+                    <div class="throw-hai right-content" style="opacity: 0;">
+                        word
+                    </div>
+                    <div class="throw-hai bottom-content" style="opacity: 0;">
+                        word
+                    </div>
+                    <div class="throw-hai left-content" style="opacity: 0;">
+                        word
+                    </div>
+                </div>
+                <div class="score-bord" style="opacity: 0;" id="scoreBord">
+                    <p class="top-content-ten">3000</p>
+                    <p class="right-content-ten">3000</p>
+                    <p class="bottom-content-ten">3000</p>
+                    <p class="left-content-ten">3000</p>
+                    <p class="oyaban" id="oyaban"></p>
+                </div>
 
-            <div class="bark-div" id="barkDiv" style="display: none;">
-                <button class="pon-button">ポン -100</button>
-                <button class="skip-button">スキップ</button>
-                <button class="agari-button" id="finishButton">あがり</button>
-                <h2 id="countDown"></h2>
+                <button class="close-btn" id="closeBtn" style="display: none;">締め切る</button>
+
+                <div class="bark-div" id="barkDiv" style="display: none;">
+                    <button class="pon-button">ポン -100</button>
+                    <button class="skip-button">スキップ</button>
+                    <button class="agari-button" id="finishButton">あがり</button>
+                    <h2 id="countDown"></h2>
+                </div>
             </div>
         </div>
+        <div class="bord bord-right">
 
-        <div class="footer">
+        </div>
+
+
+        <div class="footer" style="display: none;">
             <div style="display: flex;width:100%;">
                 <div class="sentence-pattern" id="sentencePattern">
                     <div>S</div>
