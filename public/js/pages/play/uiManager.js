@@ -140,8 +140,10 @@ export class uiManager {
             translateSentence += (await functions.translateEnglish(score[1][i].join(' '))) + ' ';
         }
         console.log(score);
-        let tokutenutiwake = score[0].toString().replace(/\s+/g,'<br>')
-        tokutenutiwake = tokutenutiwake.replace('-','');
+        let tokutenutiwake = score[0].toString().match(/[^:]+:\d+/g).join('<br>');
+         
+        console.log(tokutenutiwake);
+
         this.resultPage.style.display = 'flex';
         this.resultPage.getElementsByClassName('result-name')[0].innerHTML = playerName;
         this.resultPage.getElementsByClassName('score-text')[0].innerHTML = translateSentence + '<br>' + tokutenutiwake;
