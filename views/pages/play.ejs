@@ -20,7 +20,9 @@
     <div class="background-div" id="backgroundDiv" style="opacity: 0;"></div>
     <div class="main-content">
         <div class="bord bord-left">
+            <div class="dora-badge" role="status" aria-label="ドラ: 動詞">
 
+            </div>
         </div>
         <div class="main-bord-background">
             <div class="main-bord">
@@ -97,6 +99,24 @@
                     <button class="agari-button" id="finishButton">あがり</button>
                     <h2 id="countDown"></h2>
                 </div>
+
+                <div class="footer">
+                    <div style="display: flex;width:100%;">
+                        <div class="sentence-pattern" id="sentencePattern">
+                            <div>S</div>
+                            <div>V</div>
+                            <div>C</div>
+                            <div>O</div>
+                            <div style="background: rgb(255, 145, 77);">M</div>
+                        </div>
+                        <div style="width:100%;overflow:hidden;">
+                            <div class="hai-table" id="wordUp" style="background: rgb(217, 217, 217)"></div>
+                            <div class="hai-table" id="wordDown"
+                                style="background-image: url(/img/tyosakukenntaisaku.png)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="bord bord-right">
@@ -104,22 +124,7 @@
         </div>
 
 
-        <div class="footer" style="display: none;">
-            <div style="display: flex;width:100%;">
-                <div class="sentence-pattern" id="sentencePattern">
-                    <div>S</div>
-                    <div>V</div>
-                    <div>C</div>
-                    <div>O</div>
-                    <div style="background: rgb(255, 145, 77);">M</div>
-                </div>
-                <div style="width:100%;overflow:hidden;">
-                    <div class="hai-table" id="wordUp" style="background: rgb(217, 217, 217)"></div>
-                    <div class="hai-table" id="wordDown" style="background-image: url(/img/tyosakukenntaisaku.png)">
-                    </div>
-                </div>
-            </div>
-        </div>
+
 
         <p class="turns" id="turns" style="text-align: center;"></p>
 
@@ -173,10 +178,6 @@
               ">
             退出
         </button>
-
-        <div class="dora-badge" role="status" aria-label="ドラ: 動詞">
-
-        </div>
 </body>
 
 </html>
