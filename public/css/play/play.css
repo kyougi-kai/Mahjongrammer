@@ -18,21 +18,22 @@ p {
 }
 
 .name {
-    position: absolute;
-    min-width: 120px;
     background: rgb(30 30 30 / 54%);
-}
-
-.name p {
     color: white;
     font-size: 20px;
     padding: 4px 8px;
+    width: 400px;
+    margin-left: 5%;
+}
+
+.player-status {
+    position: absolute;
+    width: 100%;
 }
 
 .top-content {
-    top: 4%;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 1%;
+    transform: rotateZ(180deg);
 }
 
 .top-content-hai {
@@ -46,15 +47,14 @@ p {
 }
 
 .bottom-content {
-    bottom: 2%;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 1%;
 }
 
 .right-content {
-    top: 50%;
-    right: 5%;
-    transform: translateY(-50%);
+    transform: rotateZ(-90deg);
+    transform-origin: bottom right;
+    right: 2%;
+    bottom: 0;
 }
 
 .score-bord .right-content-ten {
@@ -62,9 +62,10 @@ p {
 }
 
 .left-content {
-    transform: translateY(-50%);
-    top: 50%;
-    left: 5%;
+    transform: rotateZ(90deg);
+    transform-origin: top left;
+    left: 2%;
+    top: 0;
 }
 
 .score-bord .left-content-ten {
@@ -187,10 +188,6 @@ p {
     transform: translateX(-50%) translateY(-190%);
 }
 
-.bottom-content.name {
-    left: 10%;
-}
-
 .parent {
     color: red;
 }
@@ -276,7 +273,7 @@ p {
     justify-content: center;
     align-items: center;
     cursor: move;
-    margin: auto 7px;
+    margin: 7px;
     border-radius: 5px;
     background-size: contain;
     transition: 0.6s;
@@ -444,13 +441,13 @@ p {
 
 @keyframes blinking {
     0% {
-        background: #dadada;
+        background: #ffffff00;
     }
     50% {
         background: rgba(255, 0, 0, 0.591);
     }
     100% {
-        background: #dadada;
+        background: #dadada00;
     }
 }
 
@@ -602,8 +599,6 @@ p {
     color: black;
     width: 100%;
 }
-
-
 
 .turns {
     position: absolute;

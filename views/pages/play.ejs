@@ -25,6 +25,26 @@
             </div>
         </div>
         <div class="main-bord-background">
+            <!-- 名前表示エリア -->
+            <div class="top-content player-status">
+                <p class="name"></p>
+                <p class="top-content-ten ten">3000点</p>
+            </div>
+            <div class="right-content player-status">
+                <p class="name"></p>
+                <p class="right-content-ten ten">3000点</p>
+            </div>
+            <div class="bottom-content player-status">
+                <p class="name" id="usernameText">
+                    <%= username %>
+                </p>
+                <p class="bottom-content-ten ten">3000点</p>
+            </div>
+            <div class="left-content player-status">
+                <p class="name"></p>
+                <p class="left-content-ten ten">3000点</p>
+            </div>
+
             <div class="main-bord">
                 <div style="display: none" class="result-page" id="resultpage">
                     <h2 class="result-name" style="color: white;margin: 20px 0;">リザルト</h2>
@@ -42,33 +62,6 @@
                     </div>
                 </div>
 
-                <div class="top-content name">
-                    <p></p>
-                    <div style="opacity: 0;">
-                        ポン！
-                    </div>
-                </div>
-                <div class="right-content name">
-                    <p></p>
-                    <div style="opacity: 0;">
-                        ポン！
-                    </div>
-                </div>
-                <div class="bottom-content name">
-                    <p id="usernameText">
-                        <%= username %>
-                    </p>
-                    <div style="opacity: 0;">
-                        ポン！
-                    </div>
-                </div>
-                <div class="left-content name">
-                    <p></p>
-                    <div style="opacity: 0;">
-                        ポン！
-                    </div>
-                </div>
-
                 <div class="throw-hai-table">
                     <div class="throw-hai top-content-hai" style="opacity: 0;">
                         word
@@ -83,11 +76,7 @@
                         word
                     </div>
                 </div>
-                <div class="score-bord" style="opacity: 0;" id="scoreBord">
-                    <p class="top-content-ten">3000</p>
-                    <p class="right-content-ten">3000</p>
-                    <p class="bottom-content-ten">3000</p>
-                    <p class="left-content-ten">3000</p>
+                <div class="score-bord" style="opacity: 0;">
                     <p class="oyaban" id="oyaban"></p>
                 </div>
 
@@ -163,7 +152,7 @@
         </div>
 
         <button onclick="window.location='/home'" style="
-                position: absolute;
+                position: fixed;
                 top: 10px;
                 right: 10px;
                 z-index: 9999;

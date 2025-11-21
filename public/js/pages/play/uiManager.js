@@ -13,7 +13,7 @@ export class uiManager {
         this.countDownText = document.getElementById('countDown');
 
         this.flow = null;
-        this.scoreBord = document.getElementById('scoreBord');
+        this.scoreBord = document.getElementsByClassName('ten');
         this.resultPage = document.getElementById('resultpage');
         this.playResultPage = document.getElementById('playResult');
         this.topleft = document.getElementById('oyaban');
@@ -112,8 +112,8 @@ export class uiManager {
     }
 
     changePoint(position, point) {
-        const targetElement = this.scoreBord.children[position];
-        targetElement.innerHTML = Number(targetElement.innerHTML) + point;
+        const targetElement = this.scoreBord[position];
+        targetElement.innerHTML = Number(targetElement.innerHTML) + point + '点';
     }
 
     changePonPoint(point) {
@@ -201,8 +201,8 @@ export class uiManager {
     }
 
     showBlink(position) {
-        this.oldBord = this.scoreBord.children[position];
-        this.scoreBord.children[position].style.animation = 'blinking 2s infinite ease';
+        this.oldBord = this.scoreBord[position];
+        this.scoreBord[position].style.animation = 'blinking 2s infinite ease';
     }
 
     hideBarkDiv() {
@@ -230,17 +230,17 @@ export class uiManager {
             gradeList.push(1);
 
             for (let j = 0; j < this.playermanager.getPlayerCount(); j++) {
-                console.log(Number(this.scoreBord.children[this.playermanager.phaseToPosition(i)].innerHTML));
+                console.log(Number(this.scoreBord[this.playermanager.phaseToPosition(i)].innerHTML));
                 if (
-                    Number(this.scoreBord.children[this.playermanager.phaseToPosition(i)].innerHTML) <
-                    Number(this.scoreBord.children[this.playermanager.phaseToPosition(j)].innerHTML)
+                    Number(this.scoreBord[this.playermanager.phaseToPosition(i)].innerHTML) <
+                    Number(this.scoreBord[this.playermanager.phaseToPosition(j)].innerHTML)
                 ) {
                     gradeList[i]++;
                 }
 
                 if (
-                    Number(this.scoreBord.children[this.playermanager.phaseToPosition(i)].innerHTML) ==
-                        Number(this.scoreBord.children[this.playermanager.phaseToPosition(j)].innerHTML) &&
+                    Number(this.scoreBord[this.playermanager.phaseToPosition(i)].innerHTML) ==
+                        Number(this.scoreBord[this.playermanager.phaseToPosition(j)].innerHTML) &&
                     i > j
                 ) {
                     gradeList[i]++;
@@ -257,7 +257,7 @@ export class uiManager {
                     temporaryDiv.classList.add('result-grade');
                     temporaryDiv.innerHTML = `<h2>${i}位</h2><h2>${
                         Object.values(this.playermanager.playerMembers)[j].name
-                    }</h2><p class="result-score">${Number(this.scoreBord.children[this.playermanager.phaseToPosition(j)].innerHTML)}</p>`;
+                    }</h2><p class="result-score">${Number(this.scoreBord[this.playermanager.phaseToPosition(j)].innerHTML)}</p>`;
                     this.playResultPage.insertBefore(temporaryDiv, document.getElementById('playResultFinish'));
                 }
             }
