@@ -172,10 +172,10 @@ export class flow {
         this.wss.onMessage('throwHai', (data) => {
             //引き分け
             console.log(this.haimanager.hais);
-            if (this.haimanager.hais.length == 0) {
+            /*if (this.haimanager.hais.length == 0) {
                 this.sendTie();
                 return;
-            }
+            }*/
 
             try {
                 this.uimanager.showThrowHai(data.hai, this.playermanager.phaseToPosition(this.nowPhaseNumber));
@@ -334,12 +334,15 @@ export class flow {
         if (this.nowPhaseNumber == this.playermanager.getPlayerNumber()) {
             if (!isPon && this.haimanager.hais.length !== 0) {
                 this.haimanager.drawHai();
-            } else {
+                console.log('どろー');
+            } else if (this.haimanager.hais.length <= 0) {
+                console.log('すきっぷ');
                 let sendData = {
                     type: 'skipTurn',
                     payload: {
                         roomId: this.playermanager.roomId,
                         userId: this.playermanager.userId,
+                        playercount: this.playermanager.getPlayerCount(),
                     },
                 };
                 this.wss.send(sendData);

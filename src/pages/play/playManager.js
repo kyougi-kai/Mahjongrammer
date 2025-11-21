@@ -237,9 +237,11 @@ export class playManager {
         this.wss.onMessage('skipTurn', async (ws, data) => {
             const roomId = data.roomId;
             const userId = data.userId;
+            const playercount = data.playercount;
+            console.log('skipTurn受信', roomId, userId);
             if (!this.playclientsmanager.playClients[roomId].roomData.finishUser.includes(userId)) {
                 this.playclientsmanager.playClients[roomId].roomData.finishUser.push(userId);
-                if (this.playclientsmanager.playClients[roomId].roomData.finishUser.length === Object.keys(this.playermanager.playerMembers).length) {
+                if (this.playclientsmanager.playClients[roomId].roomData.finishUser.length === playercount) {
                     let sendData = {
                         type: 'tie',
                         payload: { grammerDatas: this.playclientsmanager.playClients[roomId].roomData.tie },
