@@ -104,7 +104,7 @@ export class flow {
         });
 
         this.barkdiv.children[0].addEventListener('click', (e) => {
-            if (Number(this.scorebords[2].innerHTML) >= (this.ponCount + 1) * this.ponCos) {
+            if (Number(this.scorebords[1].innerHTML) >= (this.ponCount + 1) * this.ponCos) {
                 this.ponCount++;
                 let ponData = {
                     type: 'pon',
@@ -262,8 +262,8 @@ export class flow {
 
         if (this.playermanager.isParent()) {
             this.youCanThrow = true;
-            this.scorebords[4].style.opacity = 1;
-            this.scorebords[4].style.pointerEvents = 'all';
+            this.scorebords[3].style.opacity = 1;
+            this.scorebords[3].style.pointerEvents = 'all';
         }
         this.uimanager.changePhase();
 
@@ -346,11 +346,11 @@ export class flow {
             this.youCanThrow = true;
             this.uimanager.myTurn();
 
-            this.scorebords[4].style.opacity = 1;
-            this.scorebords[4].style.pointerEvents = 'all';
+            this.scorebords[3].style.opacity = 1;
+            this.scorebords[3].style.pointerEvents = 'all';
         } else {
-            this.scorebords[4].style.opacity = 0;
-            this.scorebords[4].style.pointerEvents = 'none';
+            this.scorebords[3].style.opacity = 0;
+            this.scorebords[3].style.pointerEvents = 'none';
         }
     }
 

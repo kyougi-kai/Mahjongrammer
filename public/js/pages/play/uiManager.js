@@ -17,8 +17,8 @@ export class uiManager {
         this.resultPage = document.getElementById('resultpage');
         this.playResultPage = document.getElementById('playResult');
         this.topleft = document.getElementById('oyaban');
-        this.tops = ['-8%', '69%', '69%', '-8%'];
-        this.lefts = ['61%', '61%', '-15%', '-15%'];
+        this.tops = ['4%', '81%', '81%', '4%'];
+        this.lefts = ['78%', '78%', '2%', '2%'];
 
         this.wordUp = document.getElementById('wordUp');
         this.wordDown = document.getElementById('wordDown');
@@ -202,7 +202,6 @@ export class uiManager {
 
     showBlink(position) {
         this.oldBord = this.scoreBord[position];
-        this.scoreBord[position].style.animation = 'blinking 2s infinite ease';
     }
 
     hideBarkDiv() {
