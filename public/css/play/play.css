@@ -33,19 +33,13 @@ p {
     color: white;
 }
 
+.ten {
+    margin-left: 20px;
+}
+
 .top-content {
     top: 1%;
     transform: rotateZ(180deg);
-}
-
-.top-content-hai {
-    top: 15%;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.score-bord {
-    transform: translateX(-50%) rotateZ(180deg);
 }
 
 .bottom-content {
@@ -54,16 +48,28 @@ p {
 
 .right-content {
     transform: rotateZ(-90deg);
-    transform-origin: bottom right;
-    right: 2%;
+    transform-origin: bottom left;
+    left: 99%;
     bottom: 0;
 }
 
 .left-content {
     transform: rotateZ(90deg);
     transform-origin: top left;
-    left: 2%;
+    left: 4%;
     top: 0;
+}
+
+.top-content-hai {
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%) rotateZ(180deg);
+}
+
+.right-content-hai {
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%) rotateZ(-90deg);
 }
 
 .selection-div {
@@ -222,10 +228,15 @@ p {
     background: white;
 }
 
+.above-bord {
+    width: 100%;
+    height: 82%;
+    position: relative;
+}
+
 .footer {
     position: absolute;
-    bottom: 0;
-    height: 200px;
+    height: 18%;
     display: flex; /* 子要素を横並びにする */
     justify-content: center;
     width: 100%;
@@ -280,7 +291,7 @@ p {
     color: white;
     border-radius: 10px;
     font-size: 1.2vw;
-    -webkit-text-stroke: 2px black;
+    -webkit-text-stroke: 0.7px black;
     font-weight: bold;
 }
 
@@ -293,6 +304,10 @@ p {
     height: 242px;
     background-image: url('/img/background/gameplaycenter.png');
     background-size: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .score-bord p {
@@ -581,13 +596,11 @@ p {
 }
 
 .turns {
-    position: absolute;
-    top: 37%;
-    left: 50%;
-    transform: translateX(-50%);
     font-size: 50px;
     color: white;
     background: rgb(0 0 0 / 54%);
-    padding: 4px 12px;
-    border-radius: 50px;
+    width: 79px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    margin: 9px 3px 0 0;
 }

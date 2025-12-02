@@ -46,47 +46,31 @@
             </div>
 
             <div class="main-bord">
-                <div style="display: none" class="result-page" id="resultpage">
-                    <h2 class="result-name" style="color: white;margin: 20px 0;">リザルト</h2>
-                    <div class="result-grammer-div" id="resultGrammerDiv"></div>
-                    <!-- <div class="result-cnt" id="resultCnt"></div> -->
-                    <div class="score-text" style="color: #fff;font-size: 1.5em;"></div>
-                    <div class="allten" style="color: #ff4d4d;font-size: 3em;"></div>
-                    <div id="resetButton" style="display: flex; width: 100%; justify-content: right">
-                        <button class="result-button" id="resultbutton"><img src="../../img/result/ボタン.png" /></button>
+                <div class="above-bord">
+                    <div class="throw-hai-table">
+                        <div class="throw-hai top-content-hai" style="opacity: 0;">
+                            word
+                        </div>
+                        <div class="throw-hai right-content-hai" style="opacity: 0;">
+                            word
+                        </div>
+                        <div class="throw-hai bottom-content-hai" style="opacity: 0;">
+                            word
+                        </div>
+                        <div class="throw-hai left-content-hai" style="opacity: 0;">
+                            word
+                        </div>
                     </div>
-                </div>
-                <div class="complete-div" id="completeDiv" style="opacity: 0;z-index:-1;pointer-events:none;">
-                    <h2></h2>
-                    <div class="complete-table">
+                    <div class="score-bord">
+                        <p class="turns" id="turns" style="text-align: center;"></p>
+                        <p class="oyaban" id="oyaban"></p>
                     </div>
-                </div>
-
-                <div class="throw-hai-table">
-                    <div class="throw-hai top-content-hai" style="opacity: 0;">
-                        word
+                    <div class="bark-div" id="barkDiv" style="display: none;">
+                        <button class="pon-button">ポン -100</button>
+                        <button class="skip-button">スキップ</button>
+                        <button class="agari-button" id="finishButton">あがり</button>
+                        <h2 id="countDown"></h2>
                     </div>
-                    <div class="throw-hai right-content" style="opacity: 0;">
-                        word
-                    </div>
-                    <div class="throw-hai bottom-content" style="opacity: 0;">
-                        word
-                    </div>
-                    <div class="throw-hai left-content" style="opacity: 0;">
-                        word
-                    </div>
-                </div>
-                <div class="score-bord">
-                    <p class="oyaban" id="oyaban"></p>
-                </div>
-
-                <button class="close-btn" id="closeBtn" style="display: none;">締め切る</button>
-
-                <div class="bark-div" id="barkDiv" style="display: none;">
-                    <button class="pon-button">ポン -100</button>
-                    <button class="skip-button">スキップ</button>
-                    <button class="agari-button" id="finishButton">あがり</button>
-                    <h2 id="countDown"></h2>
                 </div>
 
                 <div class="footer">
@@ -103,16 +87,29 @@
                         </div>
                     </div>
                 </div>
+
+                <div style="display: none" class="result-page" id="resultpage">
+                    <h2 class="result-name" style="color: white;margin: 20px 0;">リザルト</h2>
+                    <div class="result-grammer-div" id="resultGrammerDiv"></div>
+                    <!-- <div class="result-cnt" id="resultCnt"></div> -->
+                    <div class="score-text" style="color: #fff;font-size: 1.5em;"></div>
+                    <div class="allten" style="color: #ff4d4d;font-size: 3em;"></div>
+                    <div id="resetButton" style="display: flex; width: 100%; justify-content: right">
+                        <button class="result-button" id="resultbutton"><img src="../../img/result/ボタン.png" /></button>
+                    </div>
+                </div>
+                <div class="complete-div" id="completeDiv" style="opacity: 0;z-index:-1;pointer-events:none;">
+                    <h2></h2>
+                    <div class="complete-table">
+                    </div>
+                </div>
+
+                <button class="close-btn" id="closeBtn" style="display: none;">締め切る</button>
             </div>
         </div>
         <div class="bord bord-right">
 
         </div>
-
-
-
-
-        <p class="turns" id="turns" style="text-align: center;"></p>
 
         <div class="result-page" id="playResult" style="opacity: 0;pointer-events: none;">
             <h2 class="result-main">試合結果</h2>
