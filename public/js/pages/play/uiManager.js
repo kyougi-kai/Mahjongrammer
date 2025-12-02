@@ -134,6 +134,7 @@ export class uiManager {
     }
 
     async showRoundResult(grammerData, playerName, score, tokuten) {
+        AM.bgmStop();
         let translateSentence = '';
         for (let i = 0; i < score[1].length; i++) {
             console.log(score[1][i]);
@@ -157,6 +158,7 @@ export class uiManager {
         }).join('');
 
         this.resultPage.style.display = 'flex';
+        this.resultPage.getElementsByClassName('result-round')[0].innerHTML = `第ラウンド`
         this.resultPage.getElementsByClassName('result-name')[0].innerHTML = playerName;
         this.resultPage.getElementsByClassName('score-text')[0].innerHTML = translateSentence + '<br>' + tokutenutiwake;
         this.resultPage.getElementsByClassName('allten')[0].innerHTML = `合計${tokuten}`;
