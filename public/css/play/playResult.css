@@ -13,6 +13,19 @@
     flex-direction: column;
     align-items: center;
 }
+.result-round{
+    color: white;
+    font-size: 30px;
+    margin-left: 30px;
+    display: inline;
+    position: absolute;
+    left: 0;
+}
+.result-name{
+    color: white;
+    font-size: 30px;
+    display: inline;
+}
 
 .result-main {
     color: white;
@@ -54,9 +67,7 @@
     cursor: pointer;
 }
 
-.score-text{
 
-}
 
 .allten{
     padding: 1em 0;
