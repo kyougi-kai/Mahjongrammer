@@ -15,16 +15,17 @@
 }
 .result-round{
     color: white;
-    font-size: 30px;
-    margin-left: 30px;
+    font-size: 40px;
+    margin-left: 60px;
     display: inline;
     position: absolute;
     left: 0;
 }
 .result-name{
     color: white;
-    font-size: 30px;
+    font-size: 40px;
     display: inline;
+    font-weight: bold;
 }
 
 .result-main {

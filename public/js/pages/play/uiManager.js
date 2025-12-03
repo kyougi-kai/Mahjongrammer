@@ -158,9 +158,10 @@ export class uiManager {
         }).join('');
 
         this.resultPage.style.display = 'flex';
-        this.resultPage.getElementsByClassName('result-round')[0].innerHTML = `第ラウンド`
+        this.resultPage.getElementsByClassName('result-round')[0].innerHTML = `第${this.flow.roundcnt}ラウンド`
         this.resultPage.getElementsByClassName('result-name')[0].innerHTML = playerName;
-        this.resultPage.getElementsByClassName('score-text')[0].innerHTML = translateSentence + '<br>' + tokutenutiwake;
+        this.resultPage.getElementsByClassName('score-text')[0].innerHTML = translateSentence + '<br>' + '<br>';
+        this.resultPage.getElementsByClassName('score-breakdown')[0].innerHTML = tokutenutiwake
         this.resultPage.getElementsByClassName('allten')[0].innerHTML = `合計${tokuten}`;
         document.getElementById('resultGrammerDiv').innerHTML = grammerData;
     }
