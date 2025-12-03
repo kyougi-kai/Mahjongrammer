@@ -113,7 +113,7 @@ export class uiManager {
 
     changePoint(position, point) {
         const targetElement = this.scoreBord[position];
-        targetElement.innerHTML = Number(targetElement.innerHTML) + point + '点';
+        targetElement.innerHTML = parseInt(targetElement.innerHTML) + Number(point) + '点';
     }
 
     changePonPoint(point) {
