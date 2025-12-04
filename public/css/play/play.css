@@ -15,6 +15,15 @@ p {
     width: 100%;
     user-select: none;
     display: flex;
+    transform-origin: top left;
+}
+
+/* ウィンドウ幅が1920pxより小さい場合 */
+@media (max-width: 1919px) {
+    .main-content {
+        width: 1920px;
+        scale: calc(100vw / 1920px);
+    }
 }
 
 .name {
