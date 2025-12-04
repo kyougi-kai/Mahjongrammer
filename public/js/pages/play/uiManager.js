@@ -134,14 +134,34 @@ export class uiManager {
     }
 
     async showRoundResult(grammerData, playerName, score, tokuten) {
+        AM.bgmStop();
         let translateSentence = '';
         for (let i = 0; i < score[1].length; i++) {
             console.log(score[1][i]);
             translateSentence += (await functions.translateEnglish(score[1][i].join(' '))) + ' ';
         }
+        console.log(score);
+        let utiwake = score[0].toString().match(/[^:]+:\d+/g).join('<br>');
+        const items = utiwake.split(' ');
+  
+        // 各項目をHTMLに変換
+        const  tokutenutiwake= items.map(item => {
+            // コロンで分割
+            const parts = item.split(':');
+            if (parts.length === 2) {
+            return `<div style="display: flex; justify-content: space-between;">
+                <span>${parts[0]}</span>
+                <span>:${parts[1]}</span>
+            </div>`;
+            }
+            return item;
+        }).join('');
+
         this.resultPage.style.display = 'flex';
+        this.resultPage.getElementsByClassName('result-round')[0].innerHTML = `第${this.flow.roundcnt}ラウンド`
         this.resultPage.getElementsByClassName('result-name')[0].innerHTML = playerName;
-        this.resultPage.getElementsByClassName('score-text')[0].innerHTML = translateSentence + '<br>' + score[0].join('<br>');
+        this.resultPage.getElementsByClassName('score-text')[0].innerHTML = translateSentence + '<br>' + '<br>';
+        this.resultPage.getElementsByClassName('score-breakdown')[0].innerHTML = tokutenutiwake
         this.resultPage.getElementsByClassName('allten')[0].innerHTML = `合計${tokuten}`;
         document.getElementById('resultGrammerDiv').innerHTML = grammerData;
     }

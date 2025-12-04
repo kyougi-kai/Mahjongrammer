@@ -13,6 +13,20 @@
     flex-direction: column;
     align-items: center;
 }
+.result-round{
+    color: white;
+    font-size: 40px;
+    margin-left: 60px;
+    display: inline;
+    position: absolute;
+    left: 0;
+}
+.result-name{
+    color: white;
+    font-size: 40px;
+    display: inline;
+    font-weight: bold;
+}
 
 .result-main {
     color: white;
@@ -37,6 +51,7 @@
 }
 
 .result-grammer-div {
+    margin-top: 3em;
     display: flex;
     flex-direction: column;
     color: white;
@@ -51,4 +66,10 @@
     border: none;
     border-radius: 12px;
     cursor: pointer;
+}
+
+
+
+.allten{
+    padding: 1em 0;
 }
