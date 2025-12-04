@@ -16,7 +16,7 @@ export class flow {
         this.ponCos = 100;
         this.myScore = 2500;
 
-        this.scorebords = document.getElementById('scoreBord');
+        this.scorebords = document.getElementsByClassName('ten');
         this.youCanThrow = false;
 
         this.sendInterval = null;
@@ -104,7 +104,7 @@ export class flow {
         });
 
         this.barkdiv.children[0].addEventListener('click', (e) => {
-            if (Number(this.scorebords.children[2].innerHTML) >= (this.ponCount + 1) * this.ponCos) {
+            if (Number(this.scorebords[1].innerHTML) >= (this.ponCount + 1) * this.ponCos) {
                 this.ponCount++;
                 let ponData = {
                     type: 'pon',
@@ -261,11 +261,10 @@ export class flow {
         AM.gamebgmStart();
         this.uimanager.showRoundStart(this.roundcnt);
 
-        this.scorebords.style.opacity = 1;
         if (this.playermanager.isParent()) {
             this.youCanThrow = true;
-            this.scorebords.children[4].style.opacity = 1;
-            this.scorebords.children[4].style.pointerEvents = 'all';
+            this.scorebords[3].style.opacity = 1;
+            this.scorebords[3].style.pointerEvents = 'all';
         }
         this.uimanager.changePhase();
 
@@ -350,11 +349,11 @@ export class flow {
             this.youCanThrow = true;
             this.uimanager.myTurn();
 
-            this.scorebords.children[4].style.opacity = 1;
-            this.scorebords.children[4].style.pointerEvents = 'all';
+            this.scorebords[3].style.opacity = 1;
+            this.scorebords[3].style.pointerEvents = 'all';
         } else {
-            this.scorebords.children[4].style.opacity = 0;
-            this.scorebords.children[4].style.pointerEvents = 'none';
+            this.scorebords[3].style.opacity = 0;
+            this.scorebords[3].style.pointerEvents = 'none';
         }
     }
 
