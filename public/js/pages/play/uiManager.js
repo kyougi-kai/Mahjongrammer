@@ -13,12 +13,12 @@ export class uiManager {
         this.countDownText = document.getElementById('countDown');
 
         this.flow = null;
-        this.scoreBord = document.getElementById('scoreBord');
+        this.scoreBord = document.getElementsByClassName('ten');
         this.resultPage = document.getElementById('resultpage');
         this.playResultPage = document.getElementById('playResult');
         this.topleft = document.getElementById('oyaban');
-        this.tops = ['-8%', '69%', '69%', '-8%'];
-        this.lefts = ['61%', '61%', '-15%', '-15%'];
+        this.tops = ['4%', '81%', '81%', '4%'];
+        this.lefts = ['78%', '78%', '2%', '2%'];
 
         this.wordUp = document.getElementById('wordUp');
         this.wordDown = document.getElementById('wordDown');
@@ -112,8 +112,8 @@ export class uiManager {
     }
 
     changePoint(position, point) {
-        const targetElement = this.scoreBord.children[position];
-        targetElement.innerHTML = Number(targetElement.innerHTML) + point;
+        const targetElement = this.scoreBord[position];
+        targetElement.innerHTML = parseInt(targetElement.innerHTML) + Number(point) + '点';
     }
 
     changePonPoint(point) {
@@ -158,9 +158,10 @@ export class uiManager {
         }).join('');
 
         this.resultPage.style.display = 'flex';
-        this.resultPage.getElementsByClassName('result-round')[0].innerHTML = `第ラウンド`
+        this.resultPage.getElementsByClassName('result-round')[0].innerHTML = `第${this.flow.roundcnt}ラウンド`
         this.resultPage.getElementsByClassName('result-name')[0].innerHTML = playerName;
-        this.resultPage.getElementsByClassName('score-text')[0].innerHTML = translateSentence + '<br>' + tokutenutiwake;
+        this.resultPage.getElementsByClassName('score-text')[0].innerHTML = translateSentence + '<br>' + '<br>';
+        this.resultPage.getElementsByClassName('score-breakdown')[0].innerHTML = tokutenutiwake
         this.resultPage.getElementsByClassName('allten')[0].innerHTML = `合計${tokuten}`;
         document.getElementById('resultGrammerDiv').innerHTML = grammerData;
     }
@@ -220,8 +221,7 @@ export class uiManager {
     }
 
     showBlink(position) {
-        this.oldBord = this.scoreBord.children[position];
-        this.scoreBord.children[position].style.animation = 'blinking 2s infinite ease';
+        this.oldBord = this.scoreBord[position];
     }
 
     hideBarkDiv() {
@@ -249,17 +249,17 @@ export class uiManager {
             gradeList.push(1);
 
             for (let j = 0; j < this.playermanager.getPlayerCount(); j++) {
-                console.log(Number(this.scoreBord.children[this.playermanager.phaseToPosition(i)].innerHTML));
+                console.log(Number(this.scoreBord[this.playermanager.phaseToPosition(i)].innerHTML));
                 if (
-                    Number(this.scoreBord.children[this.playermanager.phaseToPosition(i)].innerHTML) <
-                    Number(this.scoreBord.children[this.playermanager.phaseToPosition(j)].innerHTML)
+                    Number(this.scoreBord[this.playermanager.phaseToPosition(i)].innerHTML) <
+                    Number(this.scoreBord[this.playermanager.phaseToPosition(j)].innerHTML)
                 ) {
                     gradeList[i]++;
                 }
 
                 if (
-                    Number(this.scoreBord.children[this.playermanager.phaseToPosition(i)].innerHTML) ==
-                        Number(this.scoreBord.children[this.playermanager.phaseToPosition(j)].innerHTML) &&
+                    Number(this.scoreBord[this.playermanager.phaseToPosition(i)].innerHTML) ==
+                        Number(this.scoreBord[this.playermanager.phaseToPosition(j)].innerHTML) &&
                     i > j
                 ) {
                     gradeList[i]++;
@@ -276,7 +276,7 @@ export class uiManager {
                     temporaryDiv.classList.add('result-grade');
                     temporaryDiv.innerHTML = `<h2>${i}位</h2><h2>${
                         Object.values(this.playermanager.playerMembers)[j].name
-                    }</h2><p class="result-score">${Number(this.scoreBord.children[this.playermanager.phaseToPosition(j)].innerHTML)}</p>`;
+                    }</h2><p class="result-score">${Number(this.scoreBord[this.playermanager.phaseToPosition(j)].innerHTML)}</p>`;
                     this.playResultPage.insertBefore(temporaryDiv, document.getElementById('playResultFinish'));
                 }
             }

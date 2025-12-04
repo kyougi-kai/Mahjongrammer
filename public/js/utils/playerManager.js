@@ -133,11 +133,11 @@ export class playerManager {
 
     addPlayer(playerName, isReady = false, isHost = false, color) {
         const playerTag = document.createElement('div');
-        if (color == 'black'){
+        if (color == 'black') {
             console.log(color);
             color = 'rgba(0, 0, 0, 0.8)';
             playerTag.style.backgroundColor = this.rgbaStringToArray(color, 0.3);
-        }else{
+        } else {
             playerTag.style.backgroundColor = this.rgbaStringToArray(color, 0.3);
         }
         playerTag.classList.add('player');
@@ -148,13 +148,13 @@ export class playerManager {
         console.log(playerTag);
         document.getElementById('playerTags').appendChild(playerTag);
         //効果音
-        AM.soundEffects("aplayercome");
+        AM.soundEffects('aplayercome');
     }
 
-    rgbaStringToArray(rgbaStr,a) {
-      const match = rgbaStr.match(/rgba?\(([^)]+)\)/);
-      console.log(match);
-      if (!match) return null;
+    rgbaStringToArray(rgbaStr, a) {
+        const match = rgbaStr.match(/rgba?\(([^)]+)\)/);
+        console.log(match);
+        if (!match) return null;
         return `rgba(${match[1].split(',')[0]},${match[1].split(',')[1]},${match[1].split(',')[2]},${a})`;
     }
 
@@ -169,7 +169,7 @@ export class playerManager {
         let j = 0;
         while (j < 4) {
             if (j !== 2) {
-                this.nameDivs[j].children[0].innerHTML = '';
+                this.nameDivs[j].innerHTML = '';
             }
             j++;
         }
@@ -181,12 +181,17 @@ export class playerManager {
             console.log(index);
             console.log(this.phaseToPosition(index));
             console.log(this.nameDivs[this.phaseToPosition(index)]);
-            const nameElem = this.nameDivs[this.phaseToPosition(index)].children[0];
+            const nameElem = this.nameDivs[this.phaseToPosition(index)];
             nameElem.style.backgroundColor = value.color;
             console.log(value.color);
-            if(value.color == 'rgba(255, 255, 255, 0.8)' || value.color == 'rgba(0, 255, 0, 0.8)' || value.color == 'rgba(255, 255, 0, 0.8)'
-                || value.color == 'rgba(255, 165, 0, 0.8)' || value.color == 'rgba(0, 255, 255, 0.8)'|| value.color == 'rgba(191, 255, 0, 0.8)'
-            ){
+            if (
+                value.color == 'rgba(255, 255, 255, 0.8)' ||
+                value.color == 'rgba(0, 255, 0, 0.8)' ||
+                value.color == 'rgba(255, 255, 0, 0.8)' ||
+                value.color == 'rgba(255, 165, 0, 0.8)' ||
+                value.color == 'rgba(0, 255, 255, 0.8)' ||
+                value.color == 'rgba(191, 255, 0, 0.8)'
+            ) {
                 nameElem.style.color = 'black';
                 console.log('change black');
             }
