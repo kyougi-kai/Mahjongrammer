@@ -113,7 +113,7 @@ p {
 .division-div {
     min-width: 200px;
     height: 80%;
-    margin: 20px 20px 0 20px;
+    margin: 20px 5px 0 5px;
     background: #ffbd59;
     position: relative;
     display: flex;
@@ -285,8 +285,9 @@ p {
     background-color: rgb(255, 255, 255);
     width: 100%;
     height: 50%;
-    overflow: hidden;
     text-align: center;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 
 .border-div {
@@ -323,7 +324,7 @@ p {
     transform: translateX(-50%) translateY(-50%);
     width: 250px;
     height: 242px;
-    background-image: url('/img/background/gameplaycenter.png');
+    background-image: url('/img/background/ゲーム画面真ん中改.png');
     background-size: 100%;
 
     display: flex;
