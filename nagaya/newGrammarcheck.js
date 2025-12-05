@@ -1,4 +1,4 @@
-const API_SERVER_URL = 'http://localhost:11434/api/generate';
+const API_SERVER_URL = 'http://localhost:8081/v2/check';
 
 const testPassage = 'I can be eaten by you.';
 
