@@ -216,9 +216,10 @@ export class playManager {
                 const sendData = {
                     type: 'reStart',
                     payload: {
-                        tumoPlayerNumber: data.playerNumber,
+                        tumoPlayerNumber: data.roundResult == '引き分け' ? -1 : data.playerNumber,
                         hais: deck.hais,
                         doras: deck.doras,
+                        roundResult: data.roundResult,
                     },
                 };
                 this.sendToClients(sendData, roomId);
@@ -238,7 +239,7 @@ export class playManager {
             const roomId = data.roomId;
             const userId = data.userId;
             const playercount = data.playercount;
-            console.log('skipTurn受信', roomId, userId);
+            console.log('skipTurn受信', roomId, userId, 'playercount=', playercount);
             if (!this.playclientsmanager.playClients[roomId].roomData.finishUser.includes(userId)) {
                 this.playclientsmanager.playClients[roomId].roomData.finishUser.push(userId);
                 if (this.playclientsmanager.playClients[roomId].roomData.finishUser.length === playercount) {
@@ -249,7 +250,8 @@ export class playManager {
                     this.sendToClients(sendData, roomId);
                     this.playclientsmanager.playClients[roomId].roomData.finishUser = [];
                 }
-            } else {
+            }
+            if (this.playclientsmanager.playClients[roomId].roomData.finishUser.length !== 0) {
                 const sendData = {
                     type: 'nextPhase',
                     payload: {},
