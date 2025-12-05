@@ -216,9 +216,10 @@ export class playManager {
                 const sendData = {
                     type: 'reStart',
                     payload: {
-                        tumoPlayerNumber: data.playerNumber,
+                        tumoPlayerNumber: data.roundResult == '引き分け' ? -1 : data.playerNumber,
                         hais: deck.hais,
                         doras: deck.doras,
+                        roundResult: data.roundResult,
                     },
                 };
                 this.sendToClients(sendData, roomId);
@@ -238,17 +239,11 @@ export class playManager {
             console.log(`受け取ったで${data}`);
             const roomId = data.roomId;
             const userId = data.userId;
-            console.log(`${this.playclientsmanager.playClients[roomId].roomData.finishUser.includes(userId)}がtureならないよ`);
+            const playercount = data.playercount;
+            console.log('skipTurn受信', roomId, userId, 'playercount=', playercount);
             if (!this.playclientsmanager.playClients[roomId].roomData.finishUser.includes(userId)) {
                 this.playclientsmanager.playClients[roomId].roomData.finishUser.push(userId);
-                console.log(`入れたから確認するな${this.playclientsmanager.playClients[roomId].roomData.finishUser}`);
-                console.log(
-                    `次は今人数がどうなってるか確認するな${this.playclientsmanager.playClients[roomId].roomData.finishUser.length} : ${
-                        Object.keys(this.playermanager.playerMembers).length
-                    }`
-                );
-                if (this.playclientsmanager.playClients[roomId].roomData.finishUser.length === Object.keys(this.playermanager.playerMembers).length) {
-                    console.log('全員終わったから流局送るで');
+                if (this.playclientsmanager.playClients[roomId].roomData.finishUser.length === playercount) {
                     let sendData = {
                         type: 'tie',
                         payload: { grammerDatas: this.playclientsmanager.playClients[roomId].roomData.tie },
@@ -258,8 +253,8 @@ export class playManager {
                     console.log('配列をリセットするで');
                     this.playclientsmanager.playClients[roomId].roomData.finishUser = [];
                 }
-            } else {
-                console.log('もう入ってるから次の人に板を回すで');
+            }
+            if (this.playclientsmanager.playClients[roomId].roomData.finishUser.length !== 0) {
                 const sendData = {
                     type: 'nextPhase',
                     payload: {},

@@ -176,7 +176,11 @@ export class uiManager {
         let wordUps = '';
         Object.keys(this.playermanager.playerMembers).forEach((id) => {
             wordUps += this.playermanager.playerMembers[id].name + '<br>';
-            wordUps += grammerDatas[id] + '<br>';
+            if (grammerDatas[id] == 'undefined' || grammerDatas[id] == null || grammerDatas[id] == '') {
+                wordUps += '<br>';
+            } else {
+                wordUps += grammerDatas[id] + '<br>';
+            }
         });
 
         document.getElementById('resultGrammerDiv').innerHTML = wordUps;
@@ -489,6 +493,6 @@ export class uiManager {
 
     updateRemainingTurns() {
         console.log('Updating remaining turns waaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
-        document.getElementById('turns').innerHTML = this.haimanager.hais.length + 1;
+        document.getElementById('turns').innerHTML = this.haimanager.hais.length;
     }
 }

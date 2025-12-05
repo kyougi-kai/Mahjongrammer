@@ -73,6 +73,7 @@ export class haiManager {
         this.blockmanager.attachDraggable(temporaryHai);
 
         document.getElementById('wordDown').appendChild(temporaryHai);
+        console.log(`残りの牌: ${this.hais.length}`);
     }
 
     createHai(word, hinsi = null) {

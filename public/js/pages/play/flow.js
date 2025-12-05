@@ -24,8 +24,9 @@ export class flow {
         // 親を添え字0としたときの番
         this.nowPhaseNumber = 0;
 
-        //ラウンド数
+        //ラウンド
         this.roundcnt = 0;
+        this.roundResult = '';
 
         this.barkdiv = document.getElementById('barkDiv');
 
@@ -90,6 +91,7 @@ export class flow {
             }
         });
 
+        // 次へのボタンを押したら
         document.getElementById('resultbutton').addEventListener('click', (e) => {
             this.uimanager.hideRoundResult();
             let sendData = {
@@ -97,6 +99,7 @@ export class flow {
                 payload: {
                     roomId: this.playermanager.roomId,
                     playerNumber: this.nowPhaseNumber,
+                    roundResult: this.roundResult,
                 },
             };
 
@@ -173,10 +176,10 @@ export class flow {
         this.wss.onMessage('throwHai', (data) => {
             //引き分け
             console.log(this.haimanager.hais);
-            if (this.haimanager.hais.length == 0) {
+            /*if (this.haimanager.hais.length == 0) {
                 this.sendTie();
                 return;
-            }
+            }*/
 
             try {
                 this.uimanager.showThrowHai(data.hai, this.playermanager.phaseToPosition(this.nowPhaseNumber));
@@ -241,10 +244,13 @@ export class flow {
             console.log('reStart');
             console.log(data.tumoPlayerNumber, this.playermanager.parentNumber);
             this.haimanager.initHais(data.hais, data.doras, this.playermanager.getPlayerNumber(), this.playermanager.getPlayerCount());
-            if (data.tumoPlayerNumber != this.playermanager.parentNumber) {
+            if (data.tumoPlayerNumber != this.playermanager.parentNumber && data.roundResult != '引き分け') {
+                console.log('親交代');
                 this.playermanager.parentNumber = (this.playermanager.parentNumber + 1) % this.playermanager.getPlayerCount();
             }
             this.reStart(this.playermanager.parentNumber);
+
+            this.roundResult = '';
         });
 
         this.wss.onMessage('redirect', (data) => {
@@ -329,17 +335,21 @@ export class flow {
         this.uimanager.hideNowBlink();
         console.log('nowPhaseNumber', this.nowPhaseNumber);
         this.uimanager.showBlink(this.playermanager.phaseToPosition(this.nowPhaseNumber));
+        console.log(`残りの牌: ${this.haimanager.hais.length}`);
 
         // 自分のターンだったら
         if (this.nowPhaseNumber == this.playermanager.getPlayerNumber()) {
-            if (!isPon && this.haimanager.hais.length !== 0) {
+            if (!isPon && this.haimanager.hais.length > 0) {
                 this.haimanager.drawHai();
+                console.log('どろー');
             } else if (!isPon && this.haimanager.hais.length === 0) {
+                console.log('すきっぷ');
                 let sendData = {
                     type: 'skipTurn',
                     payload: {
                         roomId: this.playermanager.roomId,
                         userId: this.playermanager.userId,
+                        playercount: this.playermanager.getPlayerCount(),
                     },
                 };
                 console.log('０になったらしいからスキップ送るで');
@@ -367,6 +377,7 @@ export class flow {
     }
 
     tie(grammerDatas) {
+        this.roundResult = '引き分け';
         this.uimanager.showTieResult(grammerDatas);
     }
 
