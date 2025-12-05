@@ -4,7 +4,7 @@
     background-size: cover;
     background-color: rgba(0, 0, 0, 0.7);
     position: absolute;
-    height: 70%;
+
     top: 50%;
     left: 50%;
     z-index: 5;
@@ -15,17 +15,16 @@
 }
 .result-round{
     color: white;
-    font-size: 40px;
-    margin-left: 60px;
+    font-size: 30px;
+    margin-left: 30px;
     display: inline;
     position: absolute;
     left: 0;
 }
 .result-name{
     color: white;
-    font-size: 40px;
+    font-size: 30px;
     display: inline;
-    font-weight: bold;
 }
 
 .result-main {
