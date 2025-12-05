@@ -19,10 +19,14 @@ p {
 }
 
 /* ウィンドウ幅が1920pxより小さい場合 */
-@media (max-width: 1919px) {
+@media (max-width: 1710px) {
     .main-content {
-        width: 1920px;
-        scale: calc(100vw / 1920px);
+        width: 1710px;
+        scale: calc(100vw / 1710px);
+    }
+
+    .border-div p {
+        font-size: 20px;
     }
 }
 
@@ -247,6 +251,12 @@ p {
     height: 100%;
     width: 100%;
     background: white;
+}
+
+@media screen and (max-width: 1920px) {
+    .bord-left {
+        width: 0;
+    }
 }
 
 .above-bord {
