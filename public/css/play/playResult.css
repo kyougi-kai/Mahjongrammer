@@ -4,7 +4,7 @@
     background-size: cover;
     background-color: rgba(0, 0, 0, 0.7);
     position: absolute;
-    height: 70%;
+
     top: 50%;
     left: 50%;
     z-index: 5;
@@ -12,6 +12,19 @@
     transform: translateX(-50%) translateY(-50%);
     flex-direction: column;
     align-items: center;
+}
+.result-round{
+    color: white;
+    font-size: 30px;
+    margin-left: 30px;
+    display: inline;
+    position: absolute;
+    left: 0;
+}
+.result-name{
+    color: white;
+    font-size: 30px;
+    display: inline;
 }
 
 .result-main {
@@ -37,6 +50,7 @@
 }
 
 .result-grammer-div {
+    margin-top: 3em;
     display: flex;
     flex-direction: column;
     color: white;
@@ -51,4 +65,10 @@
     border: none;
     border-radius: 12px;
     cursor: pointer;
+}
+
+
+
+.allten{
+    padding: 1em 0;
 }

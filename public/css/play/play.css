@@ -14,62 +14,84 @@ p {
     height: 100%;
     width: 100%;
     user-select: none;
+    display: flex;
+    transform-origin: top left;
+}
+
+/* ウィンドウ幅が1920pxより小さい場合 */
+@media (max-width: 1919px) {
+    .main-content {
+        width: 1920px;
+        scale: calc(100vw / 1920px);
+    }
 }
 
 .name {
-    position: absolute;
-    min-width: 120px;
     background: rgb(30 30 30 / 54%);
+    color: white;
+    padding: 4px 16px;
+    margin-left: 5%;
 }
 
-.name p {
+.player-status {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    font-size: 1.4vw;
+    width: 100%;
     color: white;
-    font-size: 20px;
-    padding: 4px 8px;
+}
+
+.ten {
+    margin-left: 20px;
 }
 
 .top-content {
-    top: 4%;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 1%;
+    transform: rotateZ(180deg);
+}
+
+.bottom-content {
+    bottom: 1%;
+}
+
+.right-content {
+    transform: rotateZ(-90deg);
+    transform-origin: bottom left;
+    left: 99%;
+    bottom: 0;
+}
+
+.left-content {
+    transform: rotateZ(90deg);
+    transform-origin: top left;
+    left: 4%;
+    top: 0;
 }
 
 .top-content-hai {
     top: 15%;
     left: 50%;
-    transform: translateX(-50%);
-}
-
-.score-bord .top-content-ten {
     transform: translateX(-50%) rotateZ(180deg);
 }
 
-.bottom-content {
-    bottom: 2%;
+.right-content-hai {
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%) rotateZ(-90deg);
+}
+
+.bottom-content-hai {
+    bottom: 15%;
     left: 50%;
     transform: translateX(-50%);
 }
 
-.right-content {
+.left-content-hai {
+    left: 0;
     top: 50%;
-    right: 5%;
-    transform: translateY(-50%);
-}
-
-.score-bord .right-content-ten {
-    transform: translateY(-50%) rotateZ(-90deg);
-}
-
-.left-content {
-    transform: translateY(-50%);
-    top: 50%;
-    left: 5%;
-}
-
-.score-bord .left-content-ten {
     transform: translateY(-50%) rotateZ(90deg);
 }
-
 
 .selection-div {
     display: flex;
@@ -91,7 +113,7 @@ p {
 .division-div {
     min-width: 200px;
     height: 80%;
-    margin: 20px 20px 0 20px;
+    margin: 20px 5px 0 5px;
     background: #ffbd59;
     position: relative;
     display: flex;
@@ -187,10 +209,6 @@ p {
     transform: translateX(-50%) translateY(-190%);
 }
 
-.bottom-content.name {
-    left: 10%;
-}
-
 .parent {
     color: red;
 }
@@ -206,18 +224,43 @@ p {
 }
 
 .main-bord {
+    display: block;
     position: relative;
-    height: calc(100% - 270px);
-    width: 100%;
+    height: 90%;
+    width: 90%;
+    box-shadow: inset 1px 1px 6px 6px;
     background-image: url('/img/background/ゲーム画面背景.png');
     background-size: 2200px;
 }
 
-.footer {
-    height: 270px;
-    display: flex; /* 子要素を横並びにする */
-    flex-wrap: wrap;
+.main-bord-background {
+    position: relative;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    background-image: url('/img/background/木の板.jpeg');
+    display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+.bord {
+    height: 100%;
+    width: 100%;
+    background: white;
+}
+
+.above-bord {
+    width: 100%;
+    height: 82%;
+    position: relative;
+}
+
+.footer {
+    position: absolute;
+    height: 18%;
+    display: flex; /* 子要素を横並びにする */
+    justify-content: center;
+    width: 100%;
 }
 
 .throw-hai {
@@ -242,9 +285,9 @@ p {
     background-color: rgb(255, 255, 255);
     width: 100%;
     height: 50%;
-    overflow-x: scroll;
-    overflow-y: hidden;
     text-align: center;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 
 .border-div {
@@ -255,7 +298,7 @@ p {
     justify-content: center;
     align-items: center;
     cursor: move;
-    margin: auto 7px;
+    margin: 4px;
     border-radius: 5px;
     background-size: contain;
     transition: 0.6s;
@@ -266,10 +309,11 @@ p {
 }
 
 .border-div p {
-    background: #ffffff91;
-    padding: 12px 20px;
+    padding: 0px 6px;
+    color: white;
     border-radius: 10px;
-    font-size: 20px;
+    font-size: 1.2vw;
+    -webkit-text-stroke: 0.7px black;
     font-weight: bold;
 }
 
@@ -280,13 +324,16 @@ p {
     transform: translateX(-50%) translateY(-50%);
     width: 250px;
     height: 242px;
-    background-image: url('/img/background/gameplaycenter.png');
+    background-image: url('/img/background/ゲーム画面真ん中改.png');
     background-size: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .score-bord p {
     position: absolute;
-    padding: 10px 25px;
     color: white;
 }
 
@@ -370,7 +417,6 @@ p {
     pointer-events: none;
 }
 
-
 .finish-button {
     position: absolute;
     top: 50%;
@@ -407,7 +453,6 @@ p {
 }
 
 .sentence-pattern {
-    width: 250px;
     height: 100%;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
@@ -415,8 +460,8 @@ p {
 
 .sentence-pattern div {
     background: rgb(255, 189, 89);
-    width: 200px;
-    height: 50px;
+    width: 140px;
+    height: 100%;
     margin: auto;
     display: flex;
     justify-content: center;
@@ -425,13 +470,13 @@ p {
 
 @keyframes blinking {
     0% {
-        background: #dadada;
+        opacity: 1;
     }
     50% {
-        background: rgba(255, 0, 0, 0.591);
+        opacity: 0.3;
     }
     100% {
-        background: #dadada;
+        opacity: 1;
     }
 }
 
@@ -458,39 +503,27 @@ p {
     }
 }
 
-.top-content-ten {
-    top: 7%;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.right-content-ten {
-    top: 50%;
-    right: -5%;
-    transform: translateY(-50%);
-}
-
-.left-content-ten {
-    transform: translateY(-50%);
-    top: 50%;
-    left: -4%;
-}
-
-.bottom-content-ten {
-    bottom: 1%;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
 .oyaban {
     position: 'absolute';
-    width: 100px;
-    height: 100px;
+    width: 48px;
+    height: 48px;
     background-image: url('/img/background/gameplaymoon.png');
-    background-size: 82%;
+    background-size: 100%;
     background-repeat: no-repeat;
-    top: 69%;
-    left: -15;
+    animation: glow 2s infinite ease;
+    border-radius: 50%;
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.6), 0 0 16px 4px rgba(255, 255, 255, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 16px 4px rgba(255, 255, 255, 0.8), 0 0 32px 8px rgba(255, 255, 255, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.6), 0 0 16px 4px rgba(255, 255, 255, 0.4);
+    }
 }
 
 @keyframes hariken {
@@ -547,12 +580,9 @@ p {
     --padding-y: 8px;
     --padding-x: 14px;
 
-    position: fixed;
-    top: 16px;
-    left: 16px;
+    position: relative;
 
     display: inline-block; /* 中の要素に合わせる */
-    min-width: var(--dora-min-width);
     padding: var(--padding-y) var(--padding-x);
     background: var(--bg);
     color: #fff;
@@ -578,20 +608,22 @@ p {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    box-sizing: border-box;
 
     display: flex;
-    max-width: 40%;
+    flex-wrap: wrap;
+    justify-content: space-between;
     color: black;
+    width: 96%;
+    margin: 2%;
 }
 
 .turns {
-    position: absolute;
-    top: 37%;
-    left: 50%;
-    transform: translateX(-50%);
     font-size: 50px;
     color: white;
     background: rgb(0 0 0 / 54%);
-    padding: 4px 12px;
-    border-radius: 50px;
+    width: 79px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    margin: 9px 3px 0 0;
 }

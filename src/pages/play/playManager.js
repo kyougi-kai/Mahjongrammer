@@ -236,6 +236,7 @@ export class playManager {
         });
 
         this.wss.onMessage('skipTurn', async (ws, data) => {
+            console.log(`受け取ったで${data}`);
             const roomId = data.roomId;
             const userId = data.userId;
             const playercount = data.playercount;
@@ -247,7 +248,9 @@ export class playManager {
                         type: 'tie',
                         payload: { grammerDatas: this.playclientsmanager.playClients[roomId].roomData.tie },
                     };
+                    console.log(`送るでtieに${sendData}`);
                     this.sendToClients(sendData, roomId);
+                    console.log('配列をリセットするで');
                     this.playclientsmanager.playClients[roomId].roomData.finishUser = [];
                 }
             }
@@ -256,6 +259,7 @@ export class playManager {
                     type: 'nextPhase',
                     payload: {},
                 };
+                console.log(`送るでnextPhaseに${sendData}`);
                 this.sendToClients(sendData, roomId);
             }
         });

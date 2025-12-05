@@ -19,100 +19,102 @@
     </div>
     <div class="background-div" id="backgroundDiv" style="opacity: 0;"></div>
     <div class="main-content">
-        <div class="main-bord">
-            <div style="display: none" class="result-page" id="resultpage">
-                <h2 class="result-name" style="color: white;margin: 20px 0;">リザルト</h2>
-                <div class="result-grammer-div" id="resultGrammerDiv"></div>
-                <!-- <div class="result-cnt" id="resultCnt"></div> -->
-                <div class="score-text" style="color: #fff;font-size: 1.5em;"></div>
-                <div class="allten" style="color: #ff4d4d;font-size: 3em;"></div>
-                <div id="resetButton" style="display: flex; width: 100%; justify-content: right">
-                    <button class="result-button" id="resultbutton"><img src="../../img/result/ボタン.png" /></button>
-                </div>
-            </div>
-            <div class="complete-div" id="completeDiv" style="opacity: 0;z-index:-1;pointer-events:none;">
-                <h2></h2>
-                <div class="complete-table">
-                </div>
-            </div>
+        <div class="bord bord-left">
+            <div class="dora-badge" role="status" aria-label="ドラ: 動詞">
 
-            <div class="top-content name">
-                <p></p>
-                <div style="opacity: 0;">
-                    ポン！
-                </div>
             </div>
-            <div class="right-content name">
-                <p></p>
-                <div style="opacity: 0;">
-                    ポン！
-                </div>
+        </div>
+        <div class="main-bord-background">
+            <!-- 名前表示エリア -->
+            <div class="top-content player-status">
+                <p class="name"></p>
+                <p class="top-content-ten ten">3000点</p>
             </div>
-            <div class="bottom-content name">
-                <p id="usernameText">
+            <div class="right-content player-status">
+                <p class="name"></p>
+                <p class="right-content-ten ten">3000点</p>
+            </div>
+            <div class="bottom-content player-status">
+                <p class="name" id="usernameText">
                     <%= username %>
                 </p>
-                <div style="opacity: 0;">
-                    ポン！
-                </div>
+                <p class="bottom-content-ten ten">3000点</p>
             </div>
-            <div class="left-content name">
-                <p></p>
-                <div style="opacity: 0;">
-                    ポン！
-                </div>
+            <div class="left-content player-status">
+                <p class="name"></p>
+                <p class="left-content-ten ten">3000点</p>
             </div>
 
-            <div class="throw-hai-table">
-                <div class="throw-hai top-content-hai" style="opacity: 0;">
-                    word
-                </div>
-                <div class="throw-hai right-content" style="opacity: 0;">
-                    word
-                </div>
-                <div class="throw-hai bottom-content" style="opacity: 0;">
-                    word
-                </div>
-                <div class="throw-hai left-content" style="opacity: 0;">
-                    word
-                </div>
-            </div>
-            <div class="score-bord" style="opacity: 0;" id="scoreBord">
-                <p class="top-content-ten">3000</p>
-                <p class="right-content-ten">3000</p>
-                <p class="bottom-content-ten">3000</p>
-                <p class="left-content-ten">3000</p>
-                <p class="oyaban" id="oyaban"></p>
-            </div>
-
-            <button class="close-btn" id="closeBtn" style="display: none;">締め切る</button>
-
-            <div class="bark-div" id="barkDiv" style="display: none;">
-                <button class="pon-button">ポン -100</button>
-                <button class="skip-button">スキップ</button>
-                <button class="agari-button" id="finishButton">あがり</button>
-                <h2 id="countDown"></h2>
-            </div>
-        </div>
-
-        <div class="footer">
-            <div style="display: flex;width:100%;">
-                <div class="sentence-pattern" id="sentencePattern">
-                    <div>S</div>
-                    <div>V</div>
-                    <div>C</div>
-                    <div>O</div>
-                    <div style="background: rgb(255, 145, 77);">M</div>
-                </div>
-                <div style="width:100%;overflow:hidden;">
-                    <div class="hai-table" id="wordUp" style="background: rgb(217, 217, 217)"></div>
-                    <div class="hai-table" id="wordDown" style="background-image: url(/img/tyosakukenntaisaku.png)">
+            <div class="main-bord">
+                <div class="above-bord">
+                    <div class="throw-hai-table">
+                        <div class="throw-hai top-content-hai" style="opacity: 0;">
+                            word
+                        </div>
+                        <div class="throw-hai right-content-hai" style="opacity: 0;">
+                            word
+                        </div>
+                        <div class="throw-hai bottom-content-hai" style="opacity: 0;">
+                            word
+                        </div>
+                        <div class="throw-hai left-content-hai" style="opacity: 0;">
+                            word
+                        </div>
+                    </div>
+                    <div class="score-bord">
+                        <p class="turns" id="turns" style="text-align: center;"></p>
+                        <p class="oyaban" id="oyaban"></p>
+                    </div>
+                    <div class="bark-div" id="barkDiv" style="display: none;">
+                        <button class="pon-button">ポン -100</button>
+                        <button class="skip-button">スキップ</button>
+                        <button class="agari-button" id="finishButton">あがり</button>
+                        <h2 id="countDown"></h2>
                     </div>
                 </div>
+
+                <div class="footer">
+                    <div class="sentence-pattern" id="sentencePattern">
+                        <div>S</div>
+                        <div>V</div>
+                        <div>C</div>
+                        <div>O</div>
+                        <div style="background: rgb(255, 145, 77);">M</div>
+                    </div>
+                    <div style="width:100%;overflow:hidden;">
+                        <div class="hai-table" id="wordUp" style="background: rgb(217, 217, 217)"></div>
+                        <div class="hai-table" id="wordDown" style="background-image: url(/img/tyosakukenntaisaku.png)">
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: none" class="result-page" id="resultpage">
+                    
+                <div style="margin: 30px;width: 100%;display: flex;justify-content: center;position: relative;">
+                    <div class="result-round"></div>
+                    <div class="result-name">リザルト</div>
+                </div>
+                    <div class="result-grammer-div" id="resultGrammerDiv"></div>
+                    <!-- <div class="result-cnt" id="resultCnt"></div> -->
+                    <div class="score-text" style="color: #fff;font-size: 1.5em;"></div>
+                    <div class="score-breakdown"style="color: #fff;font-size: 1.5em;"></div>
+                    <div class="allten" style="color: #ff4d4d;font-size: 3em;"></div>
+                    <div id="resetButton" style="display: flex; width: 100%; justify-content: right">
+                        <button class="result-button" id="resultbutton"><img src="../../img/result/ボタン.png" /></button>
+                    </div>
+                </div>
+                <div class="complete-div" id="completeDiv" style="opacity: 0;z-index:-1;pointer-events:none;">
+                    <h2></h2>
+                    <div class="complete-table">
+                    </div>
+                </div>
+
+                <button class="close-btn" id="closeBtn" style="display: none;">締め切る</button>
             </div>
         </div>
+        <div class="bord bord-right">
 
-        <p class="turns" id="turns" style="text-align: center;"></p>
+        </div>
 
         <div class="result-page" id="playResult" style="opacity: 0;pointer-events: none;">
             <h2 class="result-main">試合結果</h2>
@@ -149,7 +151,7 @@
         </div>
 
         <button onclick="window.location='/home'" style="
-                position: absolute;
+                position: fixed;
                 top: 10px;
                 right: 10px;
                 z-index: 9999;
@@ -164,10 +166,6 @@
               ">
             退出
         </button>
-
-        <div class="dora-badge" role="status" aria-label="ドラ: 動詞">
-
-        </div>
 </body>
 
 </html>
