@@ -1,6 +1,6 @@
 const API_SERVER_URL = 'http://localhost:8081/v2/check';
 
-const testPassage = 'I can eaten by you.';
+const testPassage = 'I stands by you.';
 
 async function grammarCheck(testPassage) {
     try {
