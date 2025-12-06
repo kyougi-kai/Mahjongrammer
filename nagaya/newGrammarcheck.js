@@ -1,4 +1,4 @@
-const API_SERVER_URL = 'http://localhost:8081/v2/check';
+const API_SERVER_URL = 'http://localhost:11434/api/generate';
 
 const testPassage = 'I can be eaten by you.';
 
@@ -17,7 +17,7 @@ async function grammarCheck(testPassage) {
     });
 
     const data = await response.json();
-    console.log(data);
+    //console.log(data);
     const parsed = JSON.parse(data.response);
     console.log(parsed);
 }
