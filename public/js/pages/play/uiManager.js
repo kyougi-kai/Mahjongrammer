@@ -13,10 +13,9 @@ export class uiManager {
             ponButton: document.getElementsByName('pon')[0],
             skipButton: document.getElementsByName('skip')[0],
             agariButton: document.getElementsByName('agari')[0],
+            countDownText: document.getElementById('countDown'),
+            playerStatus: document.getElementsByClassName('player-status'),
         };
-
-        // barkDiv
-        this.countDownText = document.getElementById('countDown');
 
         this.flow = null;
         this.scoreBord = document.getElementsByClassName('ten');
@@ -105,6 +104,10 @@ export class uiManager {
         this.elements.ponButton.addEventListener('click', () => {
             this.flow.pon();
         });
+
+        this.elements.skipButton.addEventListener('click', () => {
+            this.flow.skip();
+        });
     }
 
     showCheatDiv() {
@@ -125,12 +128,17 @@ export class uiManager {
     }
 
     changePoint(position, point) {
-        const targetElement = this.scoreBord[position];
+        const targetElement = this.elements.playerStatus[position].getElementsByClassName('ten')[0];
         targetElement.innerHTML = parseInt(targetElement.innerHTML) + Number(point) + '点';
     }
 
     changePonPoint(point) {
         this.elements.ponButton.innerHTML = 'ポン -' + point;
+    }
+
+    getPoint(position) {
+        const targetElement = this.elements.playerStatus[position].getElementsByClassName('ten')[0];
+        return parseInt(targetElement.innerHTML);
     }
 
     hideThrowHai(position) {
@@ -222,33 +230,25 @@ export class uiManager {
             this.elements.skipButton.style.display = 'block';
         }
         this.count = 2;
-        this.countDownText.innerHTML = this.count + 1;
+        this.elements.countDownText.innerHTML = this.count + 1;
         const countDown = () => {
-            this.countDownText.innerHTML = this.count;
+            this.elements.countDownText.innerHTML = this.count;
             this.count--;
         };
         this.time = setInterval(() => {
             countDown();
             if (this.count < 0) {
                 clearInterval(this.time);
-                this.countDownText.innerHTML = '';
+                this.elements.countDownText.innerHTML = '';
                 this.elements.barkDiv.style.display = 'none';
             }
         }, 1000);
     }
 
-    hideNowBlink() {
-        this.oldBord.style.animation = '';
-    }
-
-    showBlink(position) {
-        this.oldBord = this.scoreBord[position];
-    }
-
     hideBarkDiv() {
         this.elements.ponButton.style.display = 'none';
         this.elements.skipButton.style.display = 'none';
-        this.countDownText.innerHTML = '';
+        this.elements.countDownText.innerHTML = '';
     }
 
     pon() {
@@ -414,7 +414,6 @@ export class uiManager {
 
     changePhase() {
         if (this.topleft.style.getPropertyValue('--original-html-ban') == '') {
-            this.showBlink(this.playermanager.phaseToPosition(0));
             let idx2 = this.playermanager.phaseToPosition(0);
             console.log(idx2);
             console.log(this.topleft.style.top);
@@ -438,7 +437,6 @@ export class uiManager {
         } else {
             /*let currentIndex = Number(this.topleft.style.getPropertyValue('--original-html-ban'));
             let idx2 = (currentIndex + 1) % this.playermanager.getPlayerCount();*/
-            this.showBlink(this.playermanager.phaseToPosition(this.flow.nowPhaseNumber));
             let idx2 = this.playermanager.parentNumber;
             this.topleft.style.top = this.yourtops[idx2];
             this.topleft.style.left = this.yourlefts[idx2];
