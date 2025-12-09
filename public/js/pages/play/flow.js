@@ -16,7 +16,6 @@ export class flow {
         this.ponCos = 100;
         this.myScore = 2500;
 
-        this.scorebords = document.getElementsByClassName('ten');
         this.youCanThrow = false;
 
         this.sendInterval = null;
@@ -27,8 +26,6 @@ export class flow {
         //ラウンド
         this.roundcnt = 0;
         this.roundResult = '';
-
-        this.barkdiv = document.getElementById('barkDiv');
 
         document.getElementById('playFinish').addEventListener('click', () => {
             this.playermanager.sendBeaconFlag = true;
@@ -72,6 +69,38 @@ export class flow {
         }
     }
 
+    // ポンの処理
+    pon() {
+        if (this.uimanager.getPoint(2) >= (this.ponCount + 1) * this.ponCos) {
+            this.ponCount++;
+            let ponData = {
+                type: 'pon',
+                payload: {
+                    roomId: this.playermanager.roomId,
+                    playerNumber: this.playermanager.getPlayerNumber(),
+                    decreasePoint: this.ponCount * this.ponCos,
+                },
+            };
+            AM.soundEffect('pon');
+            this.wss.send(ponData);
+
+            //効果音
+        }
+    }
+
+    // skipの処理
+    skip() {
+        console.log('skip');
+        let skipData = {
+            type: 'skip',
+            payload: {
+                roomId: this.playermanager.roomId,
+            },
+        };
+        this.uimanager.hideBarkDiv();
+        this.wss.send(skipData);
+    }
+
     _setupWebsocket() {
         // 上がれるようにする
         document.getElementById('finishButton').addEventListener('click', (e) => {
@@ -104,36 +133,6 @@ export class flow {
             };
 
             this.wss.send(sendData);
-        });
-
-        this.barkdiv.children[0].addEventListener('click', (e) => {
-            if (Number(this.scorebords[1].innerHTML) >= (this.ponCount + 1) * this.ponCos) {
-                this.ponCount++;
-                let ponData = {
-                    type: 'pon',
-                    payload: {
-                        roomId: this.playermanager.roomId,
-                        playerNumber: this.playermanager.getPlayerNumber(),
-                        decreasePoint: this.ponCount * this.ponCos,
-                    },
-                };
-                AM.soundEffect('pon');
-                this.wss.send(ponData);
-
-                //効果音
-            }
-        });
-
-        this.barkdiv.children[1].addEventListener('click', (e) => {
-            console.log('skip');
-            let skipData = {
-                type: 'skip',
-                payload: {
-                    roomId: this.playermanager.roomId,
-                },
-            };
-            this.uimanager.hideBarkDiv();
-            this.wss.send(skipData);
         });
 
         this.wss.onMessage('tumo', (data) => {
@@ -240,7 +239,6 @@ export class flow {
             this.uimanager.cutin(`${this.playermanager.getPlayerName(data.ponPlayerNumber)}さんがポン！`);
         });
         this.wss.onMessage('reStart', (data) => {
-            this.uimanager.hideNowBlink();
             console.log('reStart');
             console.log(data.tumoPlayerNumber, this.playermanager.parentNumber);
             this.haimanager.initHais(data.hais, data.doras, this.playermanager.getPlayerNumber(), this.playermanager.getPlayerCount());
@@ -269,8 +267,6 @@ export class flow {
 
         if (this.playermanager.isParent()) {
             this.youCanThrow = true;
-            this.scorebords[3].style.opacity = 1;
-            this.scorebords[3].style.pointerEvents = 'all';
         }
         this.uimanager.changePhase();
 
@@ -325,17 +321,15 @@ export class flow {
                 }
             }
             console.log(this.nowPhaseNumber);
-            this.uimanager.showBlink(this.playermanager.phaseToPosition(nextParent));
             this.start();
         }
     }
 
     nextPhase(isPon = false) {
         console.log('nextPhase()');
-        this.uimanager.hideNowBlink();
         console.log('nowPhaseNumber', this.nowPhaseNumber);
-        this.uimanager.showBlink(this.playermanager.phaseToPosition(this.nowPhaseNumber));
         console.log(`残りの牌: ${this.haimanager.hais.length}`);
+        this.uimanager.elements.countDownText.innerHTML = '';
 
         // 自分のターンだったら
         if (this.nowPhaseNumber == this.playermanager.getPlayerNumber()) {
@@ -358,12 +352,6 @@ export class flow {
             }
             this.youCanThrow = true;
             this.uimanager.myTurn();
-
-            this.scorebords[3].style.opacity = 1;
-            this.scorebords[3].style.pointerEvents = 'all';
-        } else {
-            this.scorebords[3].style.opacity = 0;
-            this.scorebords[3].style.pointerEvents = 'none';
         }
     }
 

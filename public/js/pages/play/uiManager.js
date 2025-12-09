@@ -8,9 +8,14 @@ export class uiManager {
         this.haimanager = null;
         this.throwHaiTable = document.getElementsByClassName('throw-hai-table')[0];
 
-        // barkDiv
-        this.barkDiv = document.getElementsByClassName('bark-div')[0];
-        this.countDownText = document.getElementById('countDown');
+        this.elements = {
+            barkDiv: document.getElementById('barkDiv'),
+            ponButton: document.getElementsByName('pon')[0],
+            skipButton: document.getElementsByName('skip')[0],
+            agariButton: document.getElementsByName('agari')[0],
+            countDownText: document.getElementById('countDown'),
+            playerStatus: document.getElementsByClassName('player-status'),
+        };
 
         this.flow = null;
         this.scoreBord = document.getElementsByClassName('ten');
@@ -88,14 +93,27 @@ export class uiManager {
             let pickWord = pickWordList[Math.floor(Math.random() * pickWordList.length)];
             this.flow.drawHai(pickWord);
         });
-    }
 
-    showCheatDiv() {
-        document.getElementById('cheatDiv').style.display = 'block';
+        this.radialMenu();
     }
 
     setFlow(flow) {
         this.flow = flow;
+        this.domEvents();
+    }
+
+    domEvents() {
+        this.elements.ponButton.addEventListener('click', () => {
+            this.flow.pon();
+        });
+
+        this.elements.skipButton.addEventListener('click', () => {
+            this.flow.skip();
+        });
+    }
+
+    showCheatDiv() {
+        document.getElementById('cheatDiv').style.display = 'block';
     }
 
     showThrowHai(hai, position) {
@@ -112,12 +130,17 @@ export class uiManager {
     }
 
     changePoint(position, point) {
-        const targetElement = this.scoreBord[position];
+        const targetElement = this.elements.playerStatus[position].getElementsByClassName('ten')[0];
         targetElement.innerHTML = parseInt(targetElement.innerHTML) + Number(point) + '点';
     }
 
     changePonPoint(point) {
-        this.barkDiv.children[0].innerHTML = 'ポン -' + point;
+        this.elements.ponButton.innerHTML = 'ポン -' + point;
+    }
+
+    getPoint(position) {
+        const targetElement = this.elements.playerStatus[position].getElementsByClassName('ten')[0];
+        return parseInt(targetElement.innerHTML);
     }
 
     hideThrowHai(position) {
@@ -141,27 +164,32 @@ export class uiManager {
             translateSentence += (await functions.translateEnglish(score[1][i].join(' '))) + ' ';
         }
         console.log(score);
-        let utiwake = score[0].toString().match(/[^:]+:\d+/g).join('<br>');
+        let utiwake = score[0]
+            .toString()
+            .match(/[^:]+:\d+/g)
+            .join('<br>');
         const items = utiwake.split(' ');
-  
+
         // 各項目をHTMLに変換
-        const  tokutenutiwake= items.map(item => {
-            // コロンで分割
-            const parts = item.split(':');
-            if (parts.length === 2) {
-            return `<div style="display: flex; justify-content: space-between;">
+        const tokutenutiwake = items
+            .map((item) => {
+                // コロンで分割
+                const parts = item.split(':');
+                if (parts.length === 2) {
+                    return `<div style="display: flex; justify-content: space-between;">
                 <span>${parts[0]}</span>
                 <span>:${parts[1]}</span>
             </div>`;
-            }
-            return item;
-        }).join('');
+                }
+                return item;
+            })
+            .join('');
 
         this.resultPage.style.display = 'flex';
-        this.resultPage.getElementsByClassName('result-round')[0].innerHTML = `第${this.flow.roundcnt}ラウンド`
+        this.resultPage.getElementsByClassName('result-round')[0].innerHTML = `第${this.flow.roundcnt}ラウンド`;
         this.resultPage.getElementsByClassName('result-name')[0].innerHTML = playerName;
         this.resultPage.getElementsByClassName('score-text')[0].innerHTML = translateSentence + '<br>' + '<br>';
-        this.resultPage.getElementsByClassName('score-breakdown')[0].innerHTML = tokutenutiwake
+        this.resultPage.getElementsByClassName('score-breakdown')[0].innerHTML = tokutenutiwake;
         this.resultPage.getElementsByClassName('allten')[0].innerHTML = `合計${tokuten}`;
         document.getElementById('resultGrammerDiv').innerHTML = grammerData;
     }
@@ -191,56 +219,47 @@ export class uiManager {
     }
 
     showCountDown() {
-        this.barkDiv.children[2].style.display = 'none';
-        console.log(this.barkDiv);
-        this.barkDiv.style.display = 'block';
+        this.elements.agariButton.style.display = 'none';
+        this.elements.barkDiv.style.display = 'block';
         console.log(this.flow.nowPhaseNumber);
         console.log(this.playermanager.getPlayerNumber());
         if (this.playermanager.getPlayerNumber() == this.flow.nowPhaseNumber) {
             console.log('ya');
-            this.barkDiv.children[0].style.display = 'none';
-            this.barkDiv.children[1].style.display = 'none';
+            this.elements.ponButton.style.display = 'none';
+            this.elements.skipButton.style.display = 'none';
         } else {
-            this.barkDiv.children[0].style.display = 'block';
-            this.barkDiv.children[1].style.display = 'block';
+            this.elements.ponButton.style.display = 'block';
+            this.elements.skipButton.style.display = 'block';
         }
         this.count = 2;
-        this.countDownText.innerHTML = this.count + 1;
+        this.elements.countDownText.innerHTML = this.count + 1;
         const countDown = () => {
-            this.countDownText.innerHTML = this.count;
+            this.elements.countDownText.innerHTML = this.count;
             this.count--;
         };
         this.time = setInterval(() => {
             countDown();
             if (this.count < 0) {
                 clearInterval(this.time);
-                this.countDownText.innerHTML = '';
-                this.barkDiv.style.display = 'none';
+                this.elements.countDownText.innerHTML = '';
+                this.elements.barkDiv.style.display = 'none';
             }
         }, 1000);
     }
 
-    hideNowBlink() {
-        this.oldBord.style.animation = '';
-    }
-
-    showBlink(position) {
-        this.oldBord = this.scoreBord[position];
-    }
-
     hideBarkDiv() {
-        this.barkDiv.children[0].style.display = 'none';
-        this.barkDiv.children[1].style.display = 'none';
-        this.countDownText.innerHTML = '';
+        this.elements.ponButton.style.display = 'none';
+        this.elements.skipButton.style.display = 'none';
+        this.elements.countDownText.innerHTML = '';
     }
 
     pon() {
-        this.barkDiv.style.display = 'none';
+        this.elements.barkDiv.style.display = 'none';
         clearTimeout(this.time);
     }
 
     barkDivReset() {
-        this.barkDiv.style.display = 'none';
+        this.elements.barkDiv.style.display = 'none';
         clearTimeout(this.time);
     }
 
@@ -291,10 +310,10 @@ export class uiManager {
         自分のターンになると呼ばれる
     */
     myTurn() {
-        this.barkDiv.style.display = 'block';
-        this.barkDiv.children[0].style.display = 'none';
-        this.barkDiv.children[1].style.display = 'none';
-        this.barkDiv.children[2].style.display = 'block';
+        this.elements.barkDiv.style.display = 'block';
+        this.elements.ponButton.style.display = 'none';
+        this.elements.skipButton.style.display = 'none';
+        this.elements.agariButton.style.display = 'block';
         this.updateRemainingTurns();
     }
 
@@ -397,7 +416,6 @@ export class uiManager {
 
     changePhase() {
         if (this.topleft.style.getPropertyValue('--original-html-ban') == '') {
-            this.showBlink(this.playermanager.phaseToPosition(0));
             let idx2 = this.playermanager.phaseToPosition(0);
             console.log(idx2);
             console.log(this.topleft.style.top);
@@ -421,7 +439,6 @@ export class uiManager {
         } else {
             /*let currentIndex = Number(this.topleft.style.getPropertyValue('--original-html-ban'));
             let idx2 = (currentIndex + 1) % this.playermanager.getPlayerCount();*/
-            this.showBlink(this.playermanager.phaseToPosition(this.flow.nowPhaseNumber));
             let idx2 = this.playermanager.parentNumber;
             this.topleft.style.top = this.yourtops[idx2];
             this.topleft.style.left = this.yourlefts[idx2];
@@ -494,5 +511,86 @@ export class uiManager {
     updateRemainingTurns() {
         console.log('Updating remaining turns waaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
         document.getElementById('turns').innerHTML = this.haimanager.hais.length;
+    }
+
+    radialMenu() {
+        const tile = document.getElementById('tile1');
+        const menu = document.getElementById('pizzaMenu');
+
+        let pressTimer;
+        let startX, startY;
+        let currentDir = null;
+
+        function showMenu(x, y) {
+            menu.style.left = x - 80 + 'px';
+            menu.style.top = y - 80 + 'px';
+            menu.style.display = 'block';
+        }
+
+        function hideMenu() {
+            menu.style.display = 'none';
+            [...menu.children].forEach((s) => s.classList.remove('active'));
+            currentDir = null;
+        }
+
+        function detectDirection(dx, dy) {
+            const threshold = 20;
+            if (Math.abs(dx) < threshold && Math.abs(dy) < threshold) return null;
+
+            if (Math.abs(dx) > Math.abs(dy)) {
+                return dx > 0 ? 'right' : 'left';
+            } else {
+                return dy > 0 ? 'down' : 'up';
+            }
+        }
+
+        // 長押し → メニュー表示
+        tile.addEventListener('mousedown', (e) => {
+            startX = e.clientX;
+            startY = e.clientY;
+
+            pressTimer = setTimeout(() => {
+                showMenu(startX, startY);
+            }, 500);
+        });
+
+        // マウス移動で方向ハイライト
+        document.addEventListener('mousemove', (e) => {
+            if (menu.style.display !== 'block') return;
+
+            const dx = e.clientX - startX;
+            const dy = e.clientY - startY;
+
+            const dir = detectDirection(dx, dy);
+            if (dir === currentDir) return;
+            currentDir = dir;
+
+            [...menu.children].forEach((s) => {
+                s.classList.toggle('active', s.dataset.dir === dir);
+            });
+        });
+
+        // 離した瞬間が決定
+        document.addEventListener('mouseup', () => {
+            clearTimeout(pressTimer);
+
+            if (currentDir) {
+                switch (currentDir) {
+                    case 'up':
+                        alert('🔔 リーチ');
+                        break;
+                    case 'right':
+                        alert('🔍 意味表示');
+                        break;
+                    case 'down':
+                        alert('❌ 捨てる');
+                        break;
+                    case 'left':
+                        alert('🔄 単複切替');
+                        break;
+                }
+            }
+            hideMenu();
+        });
     }
 }

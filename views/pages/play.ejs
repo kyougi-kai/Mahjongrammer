@@ -63,9 +63,9 @@
                         <p class="oyaban" id="oyaban"></p>
                     </div>
                     <div class="bark-div" id="barkDiv" style="display: none;">
-                        <button class="pon-button">ポン -100</button>
-                        <button class="skip-button">スキップ</button>
-                        <button class="agari-button" id="finishButton">あがり</button>
+                        <button name="pon" class="pon-button">ポン -100</button>
+                        <button name="skip" class="skip-button">スキップ</button>
+                        <button name="agari" class="agari-button" id="finishButton">あがり</button>
                         <h2 id="countDown"></h2>
                     </div>
                 </div>
@@ -86,15 +86,14 @@
                 </div>
 
                 <div style="display: none" class="result-page" id="resultpage">
-                    
-                <div style="margin: 30px;width: 100%;display: flex;justify-content: center;position: relative;">
-                    <div class="result-round"></div>
-                    <div class="result-name">リザルト</div>
-                </div>
+                    <div style="margin: 30px;width: 100%;display: flex;justify-content: center;position: relative;">
+                        <div class="result-round"></div>
+                        <div class="result-name">リザルト</div>
+                    </div>
                     <div class="result-grammer-div" id="resultGrammerDiv"></div>
                     <!-- <div class="result-cnt" id="resultCnt"></div> -->
                     <div class="score-text" style="color: #fff;font-size: 1.5em;"></div>
-                    <div class="score-breakdown"style="color: #fff;font-size: 1.5em;"></div>
+                    <div class="score-breakdown" style="color: #fff;font-size: 1.5em;"></div>
                     <div class="allten" style="color: #ff4d4d;font-size: 3em;"></div>
                     <div id="resetButton" style="display: flex; width: 100%; justify-content: right">
                         <button class="result-button" id="resultbutton"><img src="../../img/result/ボタン.png" /></button>
@@ -165,6 +164,15 @@
               ">
             退出
         </button>
+
+        <div class="tile" id="tile1">planet</div>
+
+        <div class="pizza-menu" id="pizzaMenu">
+            <div class="slice up" data-dir="up">🔔</div>
+            <div class="slice right" data-dir="right">🔍</div>
+            <div class="slice down" data-dir="down">❌</div>
+            <div class="slice left" data-dir="left">🔄</div>
+        </div>
 </body>
 
 </html>
