@@ -93,6 +93,8 @@ export class uiManager {
             let pickWord = pickWordList[Math.floor(Math.random() * pickWordList.length)];
             this.flow.drawHai(pickWord);
         });
+
+        this.radialMenu();
     }
 
     setFlow(flow) {
@@ -509,5 +511,86 @@ export class uiManager {
     updateRemainingTurns() {
         console.log('Updating remaining turns waaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
         document.getElementById('turns').innerHTML = this.haimanager.hais.length;
+    }
+
+    radialMenu() {
+        const tile = document.getElementById('tile1');
+        const menu = document.getElementById('pizzaMenu');
+
+        let pressTimer;
+        let startX, startY;
+        let currentDir = null;
+
+        function showMenu(x, y) {
+            menu.style.left = x - 80 + 'px';
+            menu.style.top = y - 80 + 'px';
+            menu.style.display = 'block';
+        }
+
+        function hideMenu() {
+            menu.style.display = 'none';
+            [...menu.children].forEach((s) => s.classList.remove('active'));
+            currentDir = null;
+        }
+
+        function detectDirection(dx, dy) {
+            const threshold = 20;
+            if (Math.abs(dx) < threshold && Math.abs(dy) < threshold) return null;
+
+            if (Math.abs(dx) > Math.abs(dy)) {
+                return dx > 0 ? 'right' : 'left';
+            } else {
+                return dy > 0 ? 'down' : 'up';
+            }
+        }
+
+        // 長押し → メニュー表示
+        tile.addEventListener('mousedown', (e) => {
+            startX = e.clientX;
+            startY = e.clientY;
+
+            pressTimer = setTimeout(() => {
+                showMenu(startX, startY);
+            }, 500);
+        });
+
+        // マウス移動で方向ハイライト
+        document.addEventListener('mousemove', (e) => {
+            if (menu.style.display !== 'block') return;
+
+            const dx = e.clientX - startX;
+            const dy = e.clientY - startY;
+
+            const dir = detectDirection(dx, dy);
+            if (dir === currentDir) return;
+            currentDir = dir;
+
+            [...menu.children].forEach((s) => {
+                s.classList.toggle('active', s.dataset.dir === dir);
+            });
+        });
+
+        // 離した瞬間が決定
+        document.addEventListener('mouseup', () => {
+            clearTimeout(pressTimer);
+
+            if (currentDir) {
+                switch (currentDir) {
+                    case 'up':
+                        alert('🔔 リーチ');
+                        break;
+                    case 'right':
+                        alert('🔍 意味表示');
+                        break;
+                    case 'down':
+                        alert('❌ 捨てる');
+                        break;
+                    case 'left':
+                        alert('🔄 単複切替');
+                        break;
+                }
+            }
+            hideMenu();
+        });
     }
 }
