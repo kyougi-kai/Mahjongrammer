@@ -72,6 +72,25 @@ export class flow {
         }
     }
 
+    // ポンの処理
+    pon() {
+        if (Number(this.scorebords[1].innerHTML) >= (this.ponCount + 1) * this.ponCos) {
+            this.ponCount++;
+            let ponData = {
+                type: 'pon',
+                payload: {
+                    roomId: this.playermanager.roomId,
+                    playerNumber: this.playermanager.getPlayerNumber(),
+                    decreasePoint: this.ponCount * this.ponCos,
+                },
+            };
+            AM.soundEffect('pon');
+            this.wss.send(ponData);
+
+            //効果音
+        }
+    }
+
     _setupWebsocket() {
         // 上がれるようにする
         document.getElementById('finishButton').addEventListener('click', (e) => {
@@ -104,24 +123,6 @@ export class flow {
             };
 
             this.wss.send(sendData);
-        });
-
-        this.barkdiv.children[0].addEventListener('click', (e) => {
-            if (Number(this.scorebords[1].innerHTML) >= (this.ponCount + 1) * this.ponCos) {
-                this.ponCount++;
-                let ponData = {
-                    type: 'pon',
-                    payload: {
-                        roomId: this.playermanager.roomId,
-                        playerNumber: this.playermanager.getPlayerNumber(),
-                        decreasePoint: this.ponCount * this.ponCos,
-                    },
-                };
-                AM.soundEffect('pon');
-                this.wss.send(ponData);
-
-                //効果音
-            }
         });
 
         this.barkdiv.children[1].addEventListener('click', (e) => {

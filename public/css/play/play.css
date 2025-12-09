@@ -18,18 +18,6 @@ p {
     transform-origin: top left;
 }
 
-/* ウィンドウ幅が1920pxより小さい場合 */
-@media (max-width: 1710px) {
-    .main-content {
-        width: 1710px;
-        scale: calc(100vw / 1710px);
-    }
-
-    .border-div p {
-        font-size: 20px;
-    }
-}
-
 .name {
     background: rgb(30 30 30 / 54%);
     color: white;
@@ -193,7 +181,6 @@ p {
     display: flex;
     align-items: center;
     height: 90%;
-    min-width: 200px;
     background: white;
     margin: 20px;
     box-sizing: border-box;
@@ -636,4 +623,39 @@ p {
     aspect-ratio: 1 / 1;
     border-radius: 50%;
     margin: 9px 3px 0 0;
+}
+
+.hai-table::-webkit-scrollbar {
+    height: 10px; /* 横スクロールバーの太さ */
+}
+
+.hai-table::-webkit-scrollbar-track {
+    background: #e6e6e6; /* 明るいグレーの背景 */
+    border-radius: 8px;
+}
+
+.hai-table::-webkit-scrollbar-thumb {
+    background: #a6a6a6; /* 中間グレーのつまみ */
+    border-radius: 8px; /* 丸みをつけて柔らかく */
+    border: 2px solid #e6e6e6; /* 枠を作ることで上品な質感 */
+}
+
+.hai-table::-webkit-scrollbar-thumb:hover {
+    background: #8c8c8c; /* hover で少し濃く。主張しすぎない控えめな変化 */
+}
+
+/* ウィンドウ幅が1920pxより小さい場合 */
+@media (max-width: 1710px) {
+    .main-content {
+        width: 1710px;
+        scale: calc(100vw / 1710px);
+    }
+
+    .border-div p {
+        font-size: 26px;
+    }
+
+    .player-status {
+        font-size: 30px;
+    }
 }

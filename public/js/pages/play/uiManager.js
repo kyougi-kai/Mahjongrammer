@@ -8,8 +8,14 @@ export class uiManager {
         this.haimanager = null;
         this.throwHaiTable = document.getElementsByClassName('throw-hai-table')[0];
 
+        this.elements = {
+            barkDiv: document.getElementById('barkDiv'),
+            ponButton: document.getElementsByName('pon')[0],
+            skipButton: document.getElementsByName('skip')[0],
+            agariButton: document.getElementsByName('agari')[0],
+        };
+
         // barkDiv
-        this.barkDiv = document.getElementsByClassName('bark-div')[0];
         this.countDownText = document.getElementById('countDown');
 
         this.flow = null;
@@ -90,12 +96,19 @@ export class uiManager {
         });
     }
 
-    showCheatDiv() {
-        document.getElementById('cheatDiv').style.display = 'block';
-    }
-
     setFlow(flow) {
         this.flow = flow;
+        this.domEvents();
+    }
+
+    domEvents() {
+        this.elements.ponButton.addEventListener('click', () => {
+            this.flow.pon();
+        });
+    }
+
+    showCheatDiv() {
+        document.getElementById('cheatDiv').style.display = 'block';
     }
 
     showThrowHai(hai, position) {
@@ -117,7 +130,7 @@ export class uiManager {
     }
 
     changePonPoint(point) {
-        this.barkDiv.children[0].innerHTML = 'ポン -' + point;
+        this.elements.ponButton.innerHTML = 'ポン -' + point;
     }
 
     hideThrowHai(position) {
@@ -141,27 +154,32 @@ export class uiManager {
             translateSentence += (await functions.translateEnglish(score[1][i].join(' '))) + ' ';
         }
         console.log(score);
-        let utiwake = score[0].toString().match(/[^:]+:\d+/g).join('<br>');
+        let utiwake = score[0]
+            .toString()
+            .match(/[^:]+:\d+/g)
+            .join('<br>');
         const items = utiwake.split(' ');
-  
+
         // 各項目をHTMLに変換
-        const  tokutenutiwake= items.map(item => {
-            // コロンで分割
-            const parts = item.split(':');
-            if (parts.length === 2) {
-            return `<div style="display: flex; justify-content: space-between;">
+        const tokutenutiwake = items
+            .map((item) => {
+                // コロンで分割
+                const parts = item.split(':');
+                if (parts.length === 2) {
+                    return `<div style="display: flex; justify-content: space-between;">
                 <span>${parts[0]}</span>
                 <span>:${parts[1]}</span>
             </div>`;
-            }
-            return item;
-        }).join('');
+                }
+                return item;
+            })
+            .join('');
 
         this.resultPage.style.display = 'flex';
-        this.resultPage.getElementsByClassName('result-round')[0].innerHTML = `第${this.flow.roundcnt}ラウンド`
+        this.resultPage.getElementsByClassName('result-round')[0].innerHTML = `第${this.flow.roundcnt}ラウンド`;
         this.resultPage.getElementsByClassName('result-name')[0].innerHTML = playerName;
         this.resultPage.getElementsByClassName('score-text')[0].innerHTML = translateSentence + '<br>' + '<br>';
-        this.resultPage.getElementsByClassName('score-breakdown')[0].innerHTML = tokutenutiwake
+        this.resultPage.getElementsByClassName('score-breakdown')[0].innerHTML = tokutenutiwake;
         this.resultPage.getElementsByClassName('allten')[0].innerHTML = `合計${tokuten}`;
         document.getElementById('resultGrammerDiv').innerHTML = grammerData;
     }
@@ -191,18 +209,17 @@ export class uiManager {
     }
 
     showCountDown() {
-        this.barkDiv.children[2].style.display = 'none';
-        console.log(this.barkDiv);
-        this.barkDiv.style.display = 'block';
+        this.elements.agariButton.style.display = 'none';
+        this.elements.barkDiv.style.display = 'block';
         console.log(this.flow.nowPhaseNumber);
         console.log(this.playermanager.getPlayerNumber());
         if (this.playermanager.getPlayerNumber() == this.flow.nowPhaseNumber) {
             console.log('ya');
-            this.barkDiv.children[0].style.display = 'none';
-            this.barkDiv.children[1].style.display = 'none';
+            this.elements.ponButton.style.display = 'none';
+            this.elements.skipButton.style.display = 'none';
         } else {
-            this.barkDiv.children[0].style.display = 'block';
-            this.barkDiv.children[1].style.display = 'block';
+            this.elements.ponButton.style.display = 'block';
+            this.elements.skipButton.style.display = 'block';
         }
         this.count = 2;
         this.countDownText.innerHTML = this.count + 1;
@@ -215,7 +232,7 @@ export class uiManager {
             if (this.count < 0) {
                 clearInterval(this.time);
                 this.countDownText.innerHTML = '';
-                this.barkDiv.style.display = 'none';
+                this.elements.barkDiv.style.display = 'none';
             }
         }, 1000);
     }
@@ -229,18 +246,18 @@ export class uiManager {
     }
 
     hideBarkDiv() {
-        this.barkDiv.children[0].style.display = 'none';
-        this.barkDiv.children[1].style.display = 'none';
+        this.elements.ponButton.style.display = 'none';
+        this.elements.skipButton.style.display = 'none';
         this.countDownText.innerHTML = '';
     }
 
     pon() {
-        this.barkDiv.style.display = 'none';
+        this.elements.barkDiv.style.display = 'none';
         clearTimeout(this.time);
     }
 
     barkDivReset() {
-        this.barkDiv.style.display = 'none';
+        this.elements.barkDiv.style.display = 'none';
         clearTimeout(this.time);
     }
 
@@ -291,10 +308,10 @@ export class uiManager {
         自分のターンになると呼ばれる
     */
     myTurn() {
-        this.barkDiv.style.display = 'block';
-        this.barkDiv.children[0].style.display = 'none';
-        this.barkDiv.children[1].style.display = 'none';
-        this.barkDiv.children[2].style.display = 'block';
+        this.elements.barkDiv.style.display = 'block';
+        this.elements.ponButton.style.display = 'none';
+        this.elements.skipButton.style.display = 'none';
+        this.elements.agariButton.style.display = 'block';
         this.updateRemainingTurns();
     }
 
