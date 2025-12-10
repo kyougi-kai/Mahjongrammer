@@ -74,6 +74,10 @@ export class haiManager {
 
         document.getElementById('wordDown').appendChild(temporaryHai);
         console.log(`残りの牌: ${this.hais.length}`);
+
+        temporaryHai.addEventListener('click', () => {
+            this.uimanager.showRadialMenu(temporaryHai);
+        });
     }
 
     createHai(word, hinsi = null) {
