@@ -19,6 +19,7 @@ export class uiManager {
 
         this.flow = null;
         this.scoreBord = document.getElementsByClassName('ten');
+        this.winner = document.getElementById('winner');
         this.resultPage = document.getElementById('resultpage');
         this.playResultPage = document.getElementById('playResult');
         this.topleft = document.getElementById('oyaban');
@@ -192,6 +193,9 @@ export class uiManager {
         this.resultPage.getElementsByClassName('score-breakdown')[0].innerHTML = tokutenutiwake;
         this.resultPage.getElementsByClassName('allten')[0].innerHTML = `合計${tokuten}`;
         document.getElementById('resultGrammerDiv').innerHTML = grammerData;
+            this.winner.style.opacity ='1';
+            this.winner.classList.remove("animation");
+            this.winner.classList.add("animation");
     }
 
     showTieResult(grammerDatas) {
