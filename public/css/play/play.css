@@ -645,83 +645,131 @@ p {
 }
 
 /* ラジアルメニュー用 */
-.tile {
-    width: 100px;
-    height: 130px;
-    background: white;
-    border: 2px solid #ddd;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    user-select: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-}
-
-/* ピザメニュー本体 */
-.pizza-menu {
+.radial-menu {
     position: absolute;
     width: 160px;
     height: 160px;
-    border-radius: 50%;
-    background: #ffffffcc;
-    backdrop-filter: blur(4px);
-    display: none;
+    pointer-events: none;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.2s ease-out, transform 0.25s cubic-bezier(0.25, 1.4, 0.5, 1);
 }
 
-/* スライス共通 */
-.slice {
+.radial-menu button {
     position: absolute;
-    width: 50%;
-    height: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    transition: background 0.1s;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    pointer-events: auto;
+    font-size: x-large;
 }
 
-/* 各方向の位置＋clip-pathで三角スライス化 */
-.slice.up {
+/* ツールチップ */
+.radial-menu button::after {
+    content: attr(data-label);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -140%);
+    background: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+    font-size: 14px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease-out;
+}
+
+/* ホバー時に表示 */
+.radial-menu button:hover::after {
+    opacity: 1;
+}
+
+/* 4 buttons at NESW */
+.btn-top {
     top: 0;
-    left: 25%;
-    width: 50%;
-    height: 50%;
-    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
-
-.slice.right {
-    top: 25%;
+.btn-right {
+    top: 50%;
     right: 0;
-    width: 50%;
-    height: 50%;
-    clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+    transform: translate(50%, -50%);
 }
-
-.slice.down {
+.btn-bottom {
     bottom: 0;
-    left: 25%;
-    width: 50%;
-    height: 50%;
-    clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+    left: 50%;
+    transform: translate(-50%, 50%);
 }
-
-.slice.left {
-    top: 25%;
+.btn-left {
+    top: 50%;
     left: 0;
-    width: 50%;
-    height: 50%;
-    clip-path: polygon(100% 0%, 100% 100%, 0% 50%);
+    transform: translate(-50%, -50%);
 }
 
-/* ハイライト */
-.slice.active {
-    background: #dff2ff;
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+.word-meaning-panel {
+    --cut: 12px; /* 斜めカット：少しだけ大きくして領域らしさを出す */
+    --bg: rgba(0, 0, 0, 0.55); /* ドラより軽めの黒で柔らかいコントラスト */
+    --padding-y: 8px;
+    --padding-x: 14px;
+    --max-width: 260px; /* 外側余白におさまる適度な幅 */
+    --border-glow: 0 0 14px rgba(255, 255, 255, 0.15);
+
+    position: relative; /* ゲーム画面の余白に固定しやすい */
+
+    background: var(--bg);
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.45;
+
+    padding: var(--padding-y) var(--padding-x);
+    width: 96%;
+
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35), var(--border-glow);
+    backdrop-filter: blur(5px);
+
+    clip-path: polygon(
+        var(--cut) 0,
+        calc(100% - var(--cut)) 0,
+        100% var(--cut),
+        100% calc(100% - var(--cut)),
+        calc(100% - var(--cut)) 100%,
+        var(--cut) 100%,
+        0 calc(100% - var(--cut)),
+        0 var(--cut)
+    );
+
+    box-sizing: border-box;
+
+    /* 長文対応 */
+    overflow-wrap: break-word;
+    white-space: normal;
+
+    z-index: 9000; /* ドラより下層に配置(重なった時の階層調整) */
+    margin: 2%;
+}
+
+/* 見出し（単語本体） */
+.word-meaning-panel .word-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
+}
+
+/* 品詞ラベル */
+.word-meaning-panel .pos-tag {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 2px 8px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 600;
 }
 
 /* ウィンドウ幅が1920pxより小さい場合 */

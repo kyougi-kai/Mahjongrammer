@@ -15,6 +15,7 @@ export class uiManager {
             agariButton: document.getElementsByName('agari')[0],
             countDownText: document.getElementById('countDown'),
             playerStatus: document.getElementsByClassName('player-status'),
+            haiMenu: document.getElementById('radialMenu'),
         };
 
         this.flow = null;
@@ -94,7 +95,8 @@ export class uiManager {
             this.flow.drawHai(pickWord);
         });
 
-        this.radialMenu();
+        // イベント設定
+        this.setCloseRadialMenuEvent();
     }
 
     setFlow(flow) {
@@ -513,84 +515,39 @@ export class uiManager {
         document.getElementById('turns').innerHTML = this.haimanager.hais.length;
     }
 
-    radialMenu() {
-        const tile = document.getElementById('tile1');
-        const menu = document.getElementById('pizzaMenu');
-
-        let pressTimer;
-        let startX, startY;
-        let currentDir = null;
-
-        function showMenu(x, y) {
-            menu.style.left = x - 80 + 'px';
-            menu.style.top = y - 80 + 'px';
-            menu.style.display = 'block';
-        }
-
-        function hideMenu() {
-            menu.style.display = 'none';
-            [...menu.children].forEach((s) => s.classList.remove('active'));
-            currentDir = null;
-        }
-
-        function detectDirection(dx, dy) {
-            const threshold = 20;
-            if (Math.abs(dx) < threshold && Math.abs(dy) < threshold) return null;
-
-            if (Math.abs(dx) > Math.abs(dy)) {
-                return dx > 0 ? 'right' : 'left';
-            } else {
-                return dy > 0 ? 'down' : 'up';
+    setCloseRadialMenuEvent() {
+        document.addEventListener('click', (e) => {
+            if (!this.elements.haiMenu.contains(e.target)) {
+                this.closeRadialMenu();
             }
-        }
-
-        // 長押し → メニュー表示
-        tile.addEventListener('mousedown', (e) => {
-            startX = e.clientX;
-            startY = e.clientY;
-
-            pressTimer = setTimeout(() => {
-                showMenu(startX, startY);
-            }, 500);
         });
+    }
 
-        // マウス移動で方向ハイライト
-        document.addEventListener('mousemove', (e) => {
-            if (menu.style.display !== 'block') return;
+    showRadialMenu(targetElement) {
+        this.elements.haiMenu.style.transition = '';
+        this.elements.haiMenu.style.transform = 'scale(0.5)';
+        this.elements.haiMenu.style.opacity = '0';
+        this.elements.haiMenu.style.display = 'none';
 
-            const dx = e.clientX - startX;
-            const dy = e.clientY - startY;
+        const rect = targetElement.getBoundingClientRect();
+        const x = rect.left + rect.width / 2;
+        const y = rect.top + rect.height / 2;
 
-            const dir = detectDirection(dx, dy);
-            if (dir === currentDir) return;
-            currentDir = dir;
-
-            [...menu.children].forEach((s) => {
-                s.classList.toggle('active', s.dataset.dir === dir);
+        this.elements.haiMenu.style.left = x - 80 + 'px';
+        this.elements.haiMenu.style.top = y - 80 + 'px';
+        this.elements.haiMenu.style.display = 'block';
+        requestAnimationFrame(() => {
+            this.elements.haiMenu.style.display = 'block';
+            this.elements.haiMenu.style.transition = 'opacity 0.2s ease-out, transform 0.25s cubic-bezier(0.25, 1.4, 0.5, 1)';
+            requestAnimationFrame(() => {
+                this.elements.haiMenu.style.transform = 'scale(1)';
+                this.elements.haiMenu.style.opacity = '1';
             });
         });
+    }
 
-        // 離した瞬間が決定
-        document.addEventListener('mouseup', () => {
-            clearTimeout(pressTimer);
-
-            if (currentDir) {
-                switch (currentDir) {
-                    case 'up':
-                        alert('🔔 リーチ');
-                        break;
-                    case 'right':
-                        alert('🔍 意味表示');
-                        break;
-                    case 'down':
-                        alert('❌ 捨てる');
-                        break;
-                    case 'left':
-                        alert('🔄 単複切替');
-                        break;
-                }
-            }
-            hideMenu();
-        });
+    closeRadialMenu() {
+        this.elements.haiMenu.style.opacity = '0';
+        this.elements.haiMenu.style.transform = 'scale(0.5)';
     }
 }

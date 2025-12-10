@@ -112,6 +112,14 @@
             <div class="dora-badge" role="status" aria-label="ドラ: 動詞">
 
             </div>
+            <div class="word-meaning-panel">
+                <div class="word-title">launch</div>
+                <div class="pos-tag">動詞（他動詞）</div>
+                <div class="word-body">
+                    「打ち上げる」「開始する」という意味の動詞。
+                    宇宙モチーフのロケット牌と相性が良い単語。
+                </div>
+            </div>
         </div>
 
         <div class="result-page" id="playResult" style="opacity: 0;pointer-events: none;">
@@ -165,13 +173,11 @@
             退出
         </button>
 
-        <div class="tile" id="tile1">planet</div>
-
-        <div class="pizza-menu" id="pizzaMenu">
-            <div class="slice up" data-dir="up">🔔</div>
-            <div class="slice right" data-dir="right">🔍</div>
-            <div class="slice down" data-dir="down">❌</div>
-            <div class="slice left" data-dir="left">🔄</div>
+        <div id="radialMenu" class="radial-menu" style="display:none;">
+            <button name="reachRadialButton" class="btn-top" data-label="リーチ">🔔</button>
+            <button name="meanRadialButton" class="btn-right" data-label="意味">🔍</button>
+            <button name="conjugationRadialButton" class="btn-bottom" data-label="活用形">🔄</button>
+            <button name="throwRadialButton" class="btn-left" data-label="捨てる">🚮</button>
         </div>
 </body>
 
