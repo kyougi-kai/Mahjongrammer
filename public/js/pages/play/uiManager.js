@@ -187,7 +187,8 @@ export class uiManager {
                 return item;
             })
             .join('');
-
+console.log(Object.values(this.playermanager.playerMembers)[this.playermanager.getPlayerNumber()].name);
+console.log(this.playermanager.playerMembers);
         this.resultPage.style.display = 'flex';
         this.resultPage.getElementsByClassName('result-round')[0].innerHTML = `第${this.flow.roundcnt}ラウンド`;
         this.resultPage.getElementsByClassName('result-name')[0].innerHTML = playerName;
@@ -195,9 +196,11 @@ export class uiManager {
         this.resultPage.getElementsByClassName('score-breakdown')[0].innerHTML = tokutenutiwake;
         this.resultPage.getElementsByClassName('allten')[0].innerHTML = `合計${tokuten}`;
         document.getElementById('resultGrammerDiv').innerHTML = grammerData;
-            this.winner.style.opacity ='1';
+        if(playerName == Object.values(this.playermanager.playerMembers)[this.playermanager.getPlayerNumber()].name){
+            document.getElementById('winner').style.display ='block';
             this.winner.classList.remove("animation");
             this.winner.classList.add("animation");
+        }
     }
 
     showTieResult(grammerDatas) {
@@ -222,6 +225,7 @@ export class uiManager {
 
     hideRoundResult() {
         document.getElementById('resultpage').style.display = 'none';
+        document.getElementById('winner').style.display ='none';
     }
 
     showCountDown() {
