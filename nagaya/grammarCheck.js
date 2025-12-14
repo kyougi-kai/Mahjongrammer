@@ -1,6 +1,5 @@
-import Spacy from 'spacy-js';
-
 const API_SERVER_URL = 'http://localhost:8081/v2/check';
+const SPACY_API_URL = 'http://localhost:8080/parse';
 
 const testPassage = 'I want to my stands by you.';
 
@@ -38,9 +37,21 @@ async function grammarCheck(testPassage) {
 
 async function spaCy(testPassage) {
     try {
-        const nlp = Spacy.load('en_core_web_sm', 'http://localhost:8080');
-        const doc = await nlp(testPassage);
-        console.log('spaCy result:', doc);
+        const response = await fetch(SPACY_API_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ text: testPassage }),
+        });
+
+        if (!response.ok) {
+            console.error(`HTTP error! status: ${response.status}`);
+            return;
+        }
+
+        const data = await response.json();
+        console.log('spaCy result:', data);
     } catch (error) {
         console.error('spaCy error:', error.message);
     }
