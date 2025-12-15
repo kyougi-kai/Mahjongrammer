@@ -57,6 +57,12 @@ async function spaCy(testPassage) {
     }
 }
 
+
+
+
+
+
+
 // 実行
 grammarCheck(testPassage);
 spaCy(testPassage);
