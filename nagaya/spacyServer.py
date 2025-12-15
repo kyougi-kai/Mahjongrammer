@@ -14,14 +14,15 @@ def parse():
     for t in doc:
         tokens.append({
             "text": t.text,
-            "whitespace": bool(t.whitespace_),
             "i": t.i,
             "lemma": t.lemma_,
             "pos": t.pos_,
             "tag": t.tag_,
             "dep": t.dep_,
-            "ent_iob": t.ent_iob_,
-            "ent_type": t.ent_type_
+            "head_i": t.head.i,
+            "head_text": t.head.text,
+            "children": [c.text for c in t.children],
+
         })
     ents = [{"start": e.start, "end": e.end, "label": e.label_} for e in doc.ents]
     sents = [{"start": s.start, "end": s.end} for s in doc.sents]
