@@ -8,6 +8,7 @@ export class flow {
         this.togoout = togoout;
         this.haimanager = haimanager;
         this.gameCount = 0;
+        this.finishbutton = document.getElementById('finishButton');
 
         // 残りターン（サーバの nextPhase を受けるごとにデクリメント）
         this.remainingTurns = null;
@@ -77,6 +78,7 @@ export class flow {
         document.getElementById('finishButton').addEventListener('click', (e) => {
             let score = this.togoout.tumo();
             if (score != 0) {
+                this.finishbutton.style.display = 'none';
                 let tumoData = {
                     type: 'tumo',
                     payload: {
@@ -365,6 +367,7 @@ export class flow {
             this.scorebords[3].style.opacity = 0;
             this.scorebords[3].style.pointerEvents = 'none';
         }
+        this.uimanager.changePhase();
     }
 
     sendTie() {

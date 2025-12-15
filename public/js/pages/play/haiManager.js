@@ -109,7 +109,7 @@ export class haiManager {
                 wakusei = Math.floor(Math.random() * 7 + 1);
             }
         }
-        hai.style.animation = `hai${Math.floor(Math.random() * 3 + 1)} 2s infinite alternate ease-in-out`;
+        //hai.style.animation = `hai${Math.floor(Math.random() * 3 + 1)} 2s infinite alternate ease-in-out`;
         hai.style.backgroundImage = `url(/img/partOfSpeech/${hinsi + wakusei}.png)`;
         hai.style.backgroundRepeat = 'no-repeat';
 

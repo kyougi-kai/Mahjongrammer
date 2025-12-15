@@ -14,6 +14,7 @@ export class uiManager {
 
         this.flow = null;
         this.scoreBord = document.getElementsByClassName('ten');
+        this.tokutenBord = document.getElementsByClassName('ten').innerHTML;
         this.resultPage = document.getElementById('resultpage');
         this.playResultPage = document.getElementById('playResult');
         this.topleft = document.getElementById('oyaban');
@@ -278,9 +279,10 @@ export class uiManager {
                 if (i == gradeList[j]) {
                     let temporaryDiv = document.createElement('div');
                     temporaryDiv.classList.add('result-grade');
-                    temporaryDiv.innerHTML = `<h2>${i}位</h2><h2>${
+                    temporaryDiv.innerHTML = `<h2>${j+1}位</h2><h2>${
                         Object.values(this.playermanager.playerMembers)[j].name
-                    }</h2><p class="result-score">${Number(this.scoreBord[this.playermanager.phaseToPosition(j)].innerHTML)}</p>`;
+                    }</h2><p class="result-score">${this.scoreBord[this.playermanager.phaseToPosition(j)].innerHTML}</p>`;
+                    console.log(i,j);
                     this.playResultPage.insertBefore(temporaryDiv, document.getElementById('playResultFinish'));
                 }
             }
