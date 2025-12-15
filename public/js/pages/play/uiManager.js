@@ -16,6 +16,10 @@ export class uiManager {
             countDownText: document.getElementById('countDown'),
             playerStatus: document.getElementsByClassName('player-status'),
             haiMenu: document.getElementById('radialMenu'),
+            meanButton: document.getElementsByName('meanRadialButton')[0],
+            conjugationButton: document.getElementsByName('conjugationRadialButton')[0],
+            throwButton: document.getElementsByName('throwRadialButton')[0],
+            tagText: document.getElementById('tagText'),
         };
 
         this.flow = null;
@@ -29,8 +33,6 @@ export class uiManager {
 
         this.wordUp = document.getElementById('wordUp');
         this.wordDown = document.getElementById('wordDown');
-
-        this.hideTimeOut = null;
 
         // doras表示
         this.doraTable = document.getElementsByClassName('dora-badge')[0];
@@ -97,7 +99,7 @@ export class uiManager {
         });
 
         // イベント設定
-        this.setCloseRadialMenuEvent();
+        this.setCloseEvents();
     }
 
     setFlow(flow) {
@@ -105,6 +107,7 @@ export class uiManager {
         this.domEvents();
     }
 
+    // domイベント設定
     domEvents() {
         this.elements.ponButton.addEventListener('click', () => {
             this.flow.pon();
@@ -113,10 +116,49 @@ export class uiManager {
         this.elements.skipButton.addEventListener('click', () => {
             this.flow.skip();
         });
+
+        // 意味表示ボタン
+        this.elements.meanButton.addEventListener('mousedown', async () => {
+            if (this.haimanager.nowHai == null) return;
+            const word = this.haimanager.nowHai.children[0].innerHTML;
+            this.showWordMean(word, this.haimanager.nowHai);
+        });
+
+        // 活用変更ボタン
+        this.elements.conjugationButton.addEventListener('mousedown', () => {
+            if (this.haimanager.nowHai == null) return;
+            this.haimanager.changeKatuyou(this.haimanager.nowHai);
+        });
+
+        // 捨てるボタン
+        this.elements.throwButton.addEventListener('mousedown', () => {
+            if (this.haimanager.nowHai == null) return;
+            this.flow.throw(this.haimanager.nowHai);
+        });
     }
 
     showCheatDiv() {
         document.getElementById('cheatDiv').style.display = 'block';
+    }
+
+    showWordMean(word, element) {
+        const hinsi = element.getAttribute('name');
+        let sentence = tango[word]['tags'].join(' ');
+        sentence += '<br>';
+        sentence += tango[word]['means'][hinsi];
+        this.elements.tagText.innerHTML = sentence;
+        this.elements.tagText.style.transition = '0';
+        this.elements.tagText.style.opacity = '0';
+        this.elements.tagText.style.left = 'none';
+        this.elements.tagText.style.bottom = 'none';
+        this.elements.tagText.style.display = 'none';
+        requestAnimationFrame(() => {
+            this.elements.tagText.style.display = 'block';
+            this.elements.tagText.style.transition = '0.4s';
+            this.elements.tagText.style.opacity = '1';
+            this.elements.tagText.style.left = element.getBoundingClientRect().x + Number(element.offsetWidth) / 2 + 'px';
+            this.elements.tagText.style.bottom = Number(window.innerHeight) - element.getBoundingClientRect().y + 20 + 'px';
+        });
     }
 
     showThrowHai(hai, position) {
@@ -187,8 +229,8 @@ export class uiManager {
                 return item;
             })
             .join('');
-console.log(Object.values(this.playermanager.playerMembers)[this.playermanager.getPlayerNumber()].name);
-console.log(this.playermanager.playerMembers);
+        console.log(Object.values(this.playermanager.playerMembers)[this.playermanager.getPlayerNumber()].name);
+        console.log(this.playermanager.playerMembers);
         this.resultPage.style.display = 'flex';
         this.resultPage.getElementsByClassName('result-round')[0].innerHTML = `第${this.flow.roundcnt}ラウンド`;
         this.resultPage.getElementsByClassName('result-name')[0].innerHTML = playerName;
@@ -196,10 +238,10 @@ console.log(this.playermanager.playerMembers);
         this.resultPage.getElementsByClassName('score-breakdown')[0].innerHTML = tokutenutiwake;
         this.resultPage.getElementsByClassName('allten')[0].innerHTML = `合計${tokuten}`;
         document.getElementById('resultGrammerDiv').innerHTML = grammerData;
-        if(playerName == Object.values(this.playermanager.playerMembers)[this.playermanager.getPlayerNumber()].name){
-            document.getElementById('winner').style.display ='block';
-            this.winner.classList.remove("animation");
-            this.winner.classList.add("animation");
+        if (playerName == Object.values(this.playermanager.playerMembers)[this.playermanager.getPlayerNumber()].name) {
+            document.getElementById('winner').style.display = 'block';
+            this.winner.classList.remove('animation');
+            this.winner.classList.add('animation');
         }
     }
 
@@ -225,7 +267,7 @@ console.log(this.playermanager.playerMembers);
 
     hideRoundResult() {
         document.getElementById('resultpage').style.display = 'none';
-        document.getElementById('winner').style.display ='none';
+        document.getElementById('winner').style.display = 'none';
     }
 
     showCountDown() {
@@ -494,19 +536,6 @@ console.log(this.playermanager.playerMembers);
         }
     }
 
-    showTagText() {
-        if (this.hideTimeOut != null) clearTimeout(this.hideTimeOut);
-    }
-
-    hideTagText() {
-        if (this.hideTimeOut != null) clearTimeout(this.hideTimeOut);
-        this.hideTimeOut = null;
-
-        this.hideTimeOut = setTimeout(() => {
-            document.getElementById('tagText').style.opacity = '0';
-        }, 3000);
-    }
-
     showDoras(doras) {
         console.log('showDoras');
         console.log(doras);
@@ -523,10 +552,12 @@ console.log(this.playermanager.playerMembers);
         document.getElementById('turns').innerHTML = this.haimanager.hais.length;
     }
 
-    setCloseRadialMenuEvent() {
-        document.addEventListener('click', (e) => {
-            if (!this.elements.haiMenu.contains(e.target)) {
-                this.closeRadialMenu();
+    setCloseEvents() {
+        document.addEventListener('mousedown', (e) => {
+            this.closeRadialMenu();
+
+            if (!e.target.classList.contains('btn-right')) {
+                this.elements.tagText.style.opacity = '0';
             }
         });
     }
