@@ -3,7 +3,12 @@ import { tango } from '../public/js/utils/wordData.js';
 const LT_API_URL = 'http://localhost:8081/v2/check';
 const SPACY_API_URL = 'http://localhost:8080/parse';
 
+<<<<<<< Updated upstream
 const testPassage = 'I have never seen such a beautiful scenery before.';
+=======
+//const testPassage = 'I want to my stands by you.';
+const testPassage = 'Want I stand.';
+>>>>>>> Stashed changes
 
 function checkGrammar(sentence) {
   const tokens = tokenize(sentence);
