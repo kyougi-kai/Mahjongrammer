@@ -324,6 +324,7 @@ export class uiManager {
             gradeList.push(1);
 
             for (let j = 0; j < this.playermanager.getPlayerCount(); j++) {
+                console.log(this.playermanager.phaseToPosition(i));
                 console.log(Number(this.scoreBord[this.playermanager.phaseToPosition(i)].innerHTML));
                 if (
                     Number(this.scoreBord[this.playermanager.phaseToPosition(i)].innerHTML) <
