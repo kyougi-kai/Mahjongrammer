@@ -9,6 +9,7 @@ export class uiManager {
         this.throwHaiTable = document.getElementsByClassName('throw-hai-table')[0];
 
         this.elements = {
+            mainContent: document.getElementsByClassName('main-content')[0],
             barkDiv: document.getElementById('barkDiv'),
             ponButton: document.getElementsByName('pon')[0],
             skipButton: document.getElementsByName('skip')[0],
@@ -569,8 +570,12 @@ export class uiManager {
         this.elements.haiMenu.style.display = 'none';
 
         const rect = targetElement.getBoundingClientRect();
+
         const x = rect.left + rect.width / 2;
         const y = rect.top + rect.height / 2;
+
+        console.log(rect.left, rect.top, rect.width, rect.height);
+        console.log(x, y);
 
         this.elements.haiMenu.style.left = x - 80 + 'px';
         this.elements.haiMenu.style.top = y - 80 + 'px';
