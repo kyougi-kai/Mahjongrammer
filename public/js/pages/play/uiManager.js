@@ -326,17 +326,18 @@ export class uiManager {
 
             for (let j = 0; j < this.playermanager.getPlayerCount(); j++) {
                 console.log(this.playermanager.phaseToPosition(i));
-                console.log(Number(this.scoreBord[this.playermanager.phaseToPosition(i)].innerHTML));
+                console.log(this.scoreBord[this.playermanager.phaseToPosition(i)].innerHTML);
+                console.log(parseInt(this.scoreBord[this.playermanager.phaseToPosition(i)].innerHTML));
                 if (
-                    Number(this.scoreBord[this.playermanager.phaseToPosition(i)].innerHTML) <
-                    Number(this.scoreBord[this.playermanager.phaseToPosition(j)].innerHTML)
+                    parseInt(this.scoreBord[this.playermanager.phaseToPosition(i)].innerHTML) <
+                    parseInt(this.scoreBord[this.playermanager.phaseToPosition(j)].innerHTML)
                 ) {
                     gradeList[i]++;
                 }
 
                 if (
-                    Number(this.scoreBord[this.playermanager.phaseToPosition(i)].innerHTML) ==
-                        Number(this.scoreBord[this.playermanager.phaseToPosition(j)].innerHTML) &&
+                    parseInt(this.scoreBord[this.playermanager.phaseToPosition(i)].innerHTML) ==
+                        parseInt(this.scoreBord[this.playermanager.phaseToPosition(j)].innerHTML) &&
                     i > j
                 ) {
                     gradeList[i]++;
@@ -353,7 +354,7 @@ export class uiManager {
                     temporaryDiv.classList.add('result-grade');
                     temporaryDiv.innerHTML = `<h2>${i}位</h2><h2>${
                         Object.values(this.playermanager.playerMembers)[j].name
-                    }</h2><p class="result-score">${Number(this.scoreBord[this.playermanager.phaseToPosition(j)].innerHTML)}</p>`;
+                    }</h2><p class="result-score">${parseInt(this.scoreBord[this.playermanager.phaseToPosition(j)].innerHTML)}</p>`;
                     this.playResultPage.insertBefore(temporaryDiv, document.getElementById('playResultFinish'));
                 }
             }
