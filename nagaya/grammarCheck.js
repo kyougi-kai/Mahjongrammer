@@ -3,12 +3,12 @@ import { tango } from '../public/js/utils/wordData.js';
 const LT_API_URL = 'http://localhost:8081/v2/check';
 const SPACY_API_URL = 'http://localhost:8080/parse';
 
-const testPassage = 'I have never seen such a beautiful scenery before.';
+const testPassage = 'You are able to play the piano well.';
 
 function checkGrammar(sentence) {
-    const tokens = tokenize(sentence);
+    const doc = tokenize(sentence);
 
-    const skeleton = buildSkeleton(tokens);
+    const skeleton = buildSkeleton(doc);
 
     console.log('Skeleton:', skeleton);
     //   const sentenceType = resolveSentenceType(skeleton);
@@ -47,20 +47,21 @@ async function tokenize(sentence) {
     }
 }
 
-function buildSkeleton(tokens) {
-    const verbUnit = extractMainVerbUnit(tokens); //動詞から先につくる
-    const subject = extractSubject(tokens, verbUnit); //まだ
-    const { objects, complement } = extractComplements(tokens, verbUnit); //まだ
+function buildSkeleton(doc) {
+    const verbUnit = extractMainVerbUnit(doc);
+
+    const subject = extractSubject(doc, verbUnit);
+
+    const { objects, complement } = extractObjectsAndComplement(doc, verbUnit);
+
+    const modifiers = extractModifiers(doc, verbUnit);
 
     return {
-        subject,
+        subject: subject,
         verb: verbUnit,
-        objects,
-        complement,
-        modifiers: {
-            adverbs: verbUnit.adverbs,
-            prepositionalPhrases: extractPrepositionalPhrases(tokens),
-        },
+        objects: objects,
+        complement: complement,
+        modifiers: modifiers,
     };
 }
 
