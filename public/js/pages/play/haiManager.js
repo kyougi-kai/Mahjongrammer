@@ -15,6 +15,7 @@ export class haiManager {
         this.hais = [];
         this.doras = [];
         this.tagText = document.getElementById('tagText');
+        this.tagText.style.position = 'fixed';
         this.throwElement = null;
 
         this.wss.onMessage('getRoomMemberData', (data) => {

@@ -637,3 +637,11 @@ p {
     border-radius: 50%;
     margin: 9px 3px 0 0;
 }
+
+@keyframes color-blink {
+  0%, 100% { color: #fff; }
+  50% { color: #e91e63; }
+}
+.color-blink {
+  animation: color-blink 1s infinite;
+}
