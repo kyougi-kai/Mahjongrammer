@@ -101,6 +101,9 @@ export class flow {
         this.wss.send(skipData);
     }
 
+    // リーチの処理
+    reach() {}
+
     _setupWebsocket() {
         // 上がれるようにする
         document.getElementById('finishButton').addEventListener('click', (e) => {

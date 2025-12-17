@@ -21,6 +21,7 @@ export class uiManager {
             conjugationButton: document.getElementsByName('conjugationRadialButton')[0],
             throwButton: document.getElementsByName('throwRadialButton')[0],
             tagText: document.getElementById('tagText'),
+            reachButton: document.getElementsByName('reachRadialButton')[0],
         };
 
         this.flow = null;
@@ -135,6 +136,11 @@ export class uiManager {
         this.elements.throwButton.addEventListener('mousedown', () => {
             if (this.haimanager.nowHai == null) return;
             this.flow.throw(this.haimanager.nowHai);
+        });
+
+        // リーチボタン
+        this.elements.reachButton.addEventListener('mousedown', () => {
+            this.flow.reach();
         });
     }
 
