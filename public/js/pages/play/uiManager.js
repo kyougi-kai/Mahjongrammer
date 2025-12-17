@@ -21,6 +21,7 @@ export class uiManager {
             conjugationButton: document.getElementsByName('conjugationRadialButton')[0],
             throwButton: document.getElementsByName('throwRadialButton')[0],
             tagText: document.getElementById('tagText'),
+            reachButton: document.getElementsByName('reachRadialButton')[0],
         };
 
         this.flow = null;
@@ -136,6 +137,11 @@ export class uiManager {
             if (this.haimanager.nowHai == null) return;
             this.flow.throw(this.haimanager.nowHai);
         });
+
+        // リーチボタン
+        this.elements.reachButton.addEventListener('mousedown', () => {
+            this.flow.reach();
+        });
     }
 
     showCheatDiv() {
@@ -157,7 +163,7 @@ export class uiManager {
             this.elements.tagText.style.display = 'block';
             this.elements.tagText.style.transition = '0.4s';
             this.elements.tagText.style.opacity = '1';
-            this.elements.tagText.style.left = element.getBoundingClientRect().x + Number(element.offsetWidth) / 2 + 'px';
+            this.elements.tagText.style.left = element.getBoundingClientRect().x + Number(element.getBoundingClientRect().width) / 2 + 'px';
             this.elements.tagText.style.bottom = Number(window.innerHeight) - element.getBoundingClientRect().y + 20 + 'px';
         });
     }
@@ -326,17 +332,18 @@ export class uiManager {
 
             for (let j = 0; j < this.playermanager.getPlayerCount(); j++) {
                 console.log(this.playermanager.phaseToPosition(i));
-                console.log(Number(this.scoreBord[this.playermanager.phaseToPosition(i)].innerHTML));
+                console.log(this.scoreBord[this.playermanager.phaseToPosition(i)].innerHTML);
+                console.log(parseInt(this.scoreBord[this.playermanager.phaseToPosition(i)].innerHTML));
                 if (
-                    Number(this.scoreBord[this.playermanager.phaseToPosition(i)].innerHTML) <
-                    Number(this.scoreBord[this.playermanager.phaseToPosition(j)].innerHTML)
+                    parseInt(this.scoreBord[this.playermanager.phaseToPosition(i)].innerHTML) <
+                    parseInt(this.scoreBord[this.playermanager.phaseToPosition(j)].innerHTML)
                 ) {
                     gradeList[i]++;
                 }
 
                 if (
-                    Number(this.scoreBord[this.playermanager.phaseToPosition(i)].innerHTML) ==
-                        Number(this.scoreBord[this.playermanager.phaseToPosition(j)].innerHTML) &&
+                    parseInt(this.scoreBord[this.playermanager.phaseToPosition(i)].innerHTML) ==
+                        parseInt(this.scoreBord[this.playermanager.phaseToPosition(j)].innerHTML) &&
                     i > j
                 ) {
                     gradeList[i]++;
@@ -353,7 +360,7 @@ export class uiManager {
                     temporaryDiv.classList.add('result-grade');
                     temporaryDiv.innerHTML = `<h2>${i}位</h2><h2>${
                         Object.values(this.playermanager.playerMembers)[j].name
-                    }</h2><p class="result-score">${Number(this.scoreBord[this.playermanager.phaseToPosition(j)].innerHTML)}</p>`;
+                    }</h2><p class="result-score">${parseInt(this.scoreBord[this.playermanager.phaseToPosition(j)].innerHTML)}</p>`;
                     this.playResultPage.insertBefore(temporaryDiv, document.getElementById('playResultFinish'));
                 }
             }
@@ -566,12 +573,11 @@ export class uiManager {
 
     showRadialMenu(targetElement) {
         this.elements.haiMenu.style.transition = '';
-        this.elements.haiMenu.style.transform = 'scale(0.5)';
         this.elements.haiMenu.style.opacity = '0';
         this.elements.haiMenu.style.display = 'none';
 
+        // 座標系さん
         const rect = targetElement.getBoundingClientRect();
-
         const x = rect.left + rect.width / 2;
         const y = rect.top + rect.height / 2;
 
@@ -580,12 +586,12 @@ export class uiManager {
 
         this.elements.haiMenu.style.left = x - 80 + 'px';
         this.elements.haiMenu.style.top = y - 80 + 'px';
+
         this.elements.haiMenu.style.display = 'block';
         requestAnimationFrame(() => {
             this.elements.haiMenu.style.display = 'block';
             this.elements.haiMenu.style.transition = 'opacity 0.2s ease-out, transform 0.25s cubic-bezier(0.25, 1.4, 0.5, 1)';
             requestAnimationFrame(() => {
-                this.elements.haiMenu.style.transform = 'scale(1)';
                 this.elements.haiMenu.style.opacity = '1';
             });
         });
@@ -593,6 +599,5 @@ export class uiManager {
 
     closeRadialMenu() {
         this.elements.haiMenu.style.opacity = '0';
-        this.elements.haiMenu.style.transform = 'scale(0.5)';
     }
 }
