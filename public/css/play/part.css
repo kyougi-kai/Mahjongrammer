@@ -22,3 +22,9 @@
   border-style: solid;
   border-color: rgba(109, 109, 109, 0.4) transparent transparent transparent;
 }
+
+@media (max-width: 1710px) {
+    .balloon {
+        scale: calc(100vw / 1710px);
+    }
+  }
