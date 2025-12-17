@@ -220,9 +220,10 @@ function bindUIEvents(ws) {
     setupColorPicker(ws);
 
     // マッチメイキングボタン
-    btns.matchBtn.onclick = () => {
-        toggleMatchUi();
-    };
+
+    // btns.matchBtn.onclick = () => {
+    //     toggleMatchUi();
+    // };
 }
 
 function setupColorPicker(ws) {

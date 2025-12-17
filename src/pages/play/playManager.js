@@ -196,9 +196,19 @@ export class playManager {
             const roomId = data.roomId;
             const sendData = {
                 type: 'pon',
-                payload: { ponPlayerNumber: data.playerNumber, decreasePoint: data.decreasePoint },
+                payload: { ponPlayerNumber: data.playerNumber, decreasePoint: data.decreasePoint, ponOrLon: data.ponOrLon },
             };
             this.playclientsmanager.playC[roomId].roomData.skip = 0;
+            this.sendToClients(sendData, roomId);
+        });
+
+        // リーチ
+        this.wss.onMessage('reach', async (ws, data) => {
+            const roomId = data.roomId;
+            const sendData = {
+                type: 'reach',
+                payload: { hai: data.hai, leftHai: data.leftHai, rightHai: data.rightHai },
+            };
             this.sendToClients(sendData, roomId);
         });
 

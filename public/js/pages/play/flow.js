@@ -79,6 +79,7 @@ export class flow {
                     roomId: this.playermanager.roomId,
                     playerNumber: this.playermanager.getPlayerNumber(),
                     decreasePoint: this.ponCount * this.ponCos,
+                    ponOrLon: this.reachHinsi != null ? 'ロン' : 'ポン',
                 },
             };
             AM.soundEffect('pon');
@@ -102,7 +103,49 @@ export class flow {
     }
 
     // リーチの処理
-    reach() {}
+    reach(hinsi) {
+        this.reachHinsi = hinsi;
+        console.log('reach');
+        let hai = this.haimanager.nowHai;
+        hai.removeAttribute('draggable');
+        let leftHai = hai.previousElementSibling;
+        if (leftHai) {
+            leftHai.style.animation = '';
+            leftHai = leftHai.outerHTML;
+        }
+        let rightHai = hai.nextElementSibling;
+        if (rightHai) {
+            rightHai.style.animation = '';
+            rightHai = rightHai.outerHTML;
+        }
+
+        let reachData = {
+            type: 'reach',
+            payload: {
+                roomId: this.playermanager.roomId,
+                hai: hai.outerHTML,
+                leftHai: leftHai,
+                rightHai: rightHai,
+            },
+        };
+        this.youCanThrow = false;
+        this.wss.send(reachData);
+
+        this.appendTemporaryHai(hai);
+        hai.remove();
+        //効果音
+        AM.soundEffects('athrowhai');
+    }
+
+    appendTemporaryHai(targetElement) {
+        // 仮の牌
+        let temporaryHai = document.createElement('div');
+        temporaryHai.classList.add('border-div');
+        temporaryHai.style.opacity = '0.5';
+        temporaryHai.style.backgroundImage = `url(/img/partOfSpeech/${this.reachHinsi}.png)`;
+        temporaryHai.setAttribute('name', 'fantomu');
+        targetElement.after(temporaryHai);
+    }
 
     _setupWebsocket() {
         // 上がれるようにする
@@ -178,10 +221,6 @@ export class flow {
         this.wss.onMessage('throwHai', (data) => {
             //引き分け
             console.log(this.haimanager.hais);
-            /*if (this.haimanager.hais.length == 0) {
-                this.sendTie();
-                return;
-            }*/
 
             try {
                 this.uimanager.showThrowHai(data.hai, this.playermanager.phaseToPosition(this.nowPhaseNumber));
@@ -200,6 +239,31 @@ export class flow {
                 this.uimanager.showThrowHai(data.hai, 2);
             }
             console.log(data.hai);
+        });
+
+        this.wss.onMessage('reach', (data) => {
+            this.uimanager.cutin(`${this.playermanager.getPlayerName(this.nowPhaseNumber)}リーチ！`);
+            this.uimanager.showReachHai(this.playermanager.phaseToPosition(this.nowPhaseNumber), data.leftHai, data.rightHai);
+
+            setTimeout(() => {
+                try {
+                    this.uimanager.changePoint(this.playermanager.phaseToPosition(this.nowPhaseNumber), -1000);
+                    this.uimanager.showThrowHai(data.hai, this.playermanager.phaseToPosition(this.nowPhaseNumber));
+                    if (this.playermanager.isParent()) {
+                        let nextData = {
+                            type: 'next',
+                            payload: {
+                                roomId: this.playermanager.roomId,
+                            },
+                        };
+                        this.sendInterval = setTimeout(() => {
+                            this.wss.send(nextData);
+                        }, 3000);
+                    }
+                } catch (err) {
+                    this.uimanager.showThrowHai(data.hai, 2);
+                }
+            }, 1000);
         });
 
         this.wss.onMessage('tie', (data) => {
@@ -236,10 +300,19 @@ export class flow {
             console.log(this.playermanager.getPlayerNumber());
             if (data.ponPlayerNumber == this.playermanager.getPlayerNumber()) {
                 this.uimanager.changePonPoint((this.ponCount + 1) * this.ponCos);
-                this.haimanager.pon();
+                let temporaryHai = this.haimanager.pon();
+
+                if (this.reachHinsi != null) {
+                    temporaryHai.classList.add('reach-hai-border');
+                }
+
+                if (this.reachHinsi != null && temporaryHai.getAttribute('name') == this.reachHinsi) {
+                    document.getElementsByName('fantomu')[0].after(temporaryHai);
+                    document.getElementsByName('fantomu')[0].remove();
+                }
             }
 
-            this.uimanager.cutin(`${this.playermanager.getPlayerName(data.ponPlayerNumber)}さんがポン！`);
+            this.uimanager.cutin(`${this.playermanager.getPlayerName(data.ponPlayerNumber)}さんが${data.ponOrLon}！`);
         });
         this.wss.onMessage('reStart', (data) => {
             console.log('reStart');
@@ -291,6 +364,10 @@ export class flow {
 
     reStart(nextParent) {
         this.gameCount++;
+        this.reachHinsi = null;
+        this.uimanager.resetTehuda();
+        this.uimanager.elements.reachButton.style.display = 'block';
+        this.uimanager.elements.ponButton.innerHTML = 'ポン';
         if (this.gameCount == 4) {
             // 試合終了時にも捨て牌やテーブルをクリアしておく
             try {
@@ -337,8 +414,17 @@ export class flow {
         // 自分のターンだったら
         if (this.nowPhaseNumber == this.playermanager.getPlayerNumber()) {
             if (!isPon && this.haimanager.hais.length > 0) {
-                this.haimanager.drawHai();
+                let { hai, hinsi } = this.haimanager.drawHai();
                 console.log('どろー');
+
+                if (this.reachHinsi != null) {
+                    hai.classList.add('reach-hai-border');
+                }
+
+                if (this.reachHinsi != null && hinsi == this.reachHinsi) {
+                    document.getElementsByName('fantomu')[0].after(hai);
+                    document.getElementsByName('fantomu')[0].remove();
+                }
             } else if (!isPon && this.haimanager.hais.length === 0) {
                 console.log('すきっぷ');
                 let sendData = {
@@ -389,6 +475,10 @@ export class flow {
             };
             this.youCanThrow = false;
             this.wss.send(throwData);
+
+            if (this.reachHinsi != null && hai.getAttribute('name') == this.reachHinsi) {
+                this.appendTemporaryHai(hai);
+            }
             hai.remove();
             //効果音
             AM.soundEffects('athrowhai');

@@ -57,8 +57,12 @@ export class haiManager {
         nanka.children[0].addEventListener('click', () => {
             nanka.changeKatuyou();
         });
-        document.getElementById('wordDown').appendChild(nanka.children[0]);
+
+        let temporaryHai = nanka.children[0];
+        document.getElementById('wordDown').appendChild(temporaryHai);
         nanka.remove();
+
+        return temporaryHai;
     }
 
     drawHai(word = null) {
@@ -80,6 +84,8 @@ export class haiManager {
             this.uimanager.showRadialMenu(temporaryHai);
             this.nowHai = temporaryHai;
         });
+
+        return { hai: temporaryHai, hinsi: tango.partOfSpeech };
     }
 
     createHai(word, hinsi = null) {
@@ -91,8 +97,6 @@ export class haiManager {
         p.innerHTML = word;
         hai.appendChild(p);
 
-        let clickTimer = null;
-
         // 後ろに画像表示 名詞はとりあえず1番目のやつ
         let wakusei = '';
         if (hinsi == '名詞') {
@@ -102,7 +106,7 @@ export class haiManager {
             }
         }
         hai.style.animation = `hai${Math.floor(Math.random() * 3 + 1)} 2s infinite alternate ease-in-out`;
-        hai.style.backgroundImage = `url(/img/partOfSpeech/${hinsi + wakusei}.png)`;
+        hai.style.backgroundImage = `url(/img/partOfSpeech/${hinsi}.png)`;
         hai.style.backgroundRepeat = 'no-repeat';
         hai.setAttribute('name', hinsi);
         return hai;

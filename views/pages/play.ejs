@@ -68,16 +68,23 @@
                         <button name="agari" class="agari-button" id="finishButton">あがり</button>
                         <h2 id="countDown"></h2>
                     </div>
+
+                    <div class="top-tehuda">
+                    </div>
+                    <div class="right-tehuda">
+                    </div>
+                    <div class="left-tehuda">
+                    </div>
                 </div>
 
                 <div class="footer">
-                    <div class="sentence-pattern" id="sentencePattern">
+                    <!-- <div class="sentence-pattern" id="sentencePattern">
                         <div>S</div>
                         <div>V</div>
                         <div>C</div>
                         <div>O</div>
                         <div style="background: rgb(255, 145, 77);">M</div>
-                    </div>
+                    </div> -->
                     <div style="width:100%;overflow:hidden;">
                         <div class="hai-table" id="wordUp" style="background: rgb(217, 217, 217)"></div>
                         <div class="hai-table" id="wordDown" style="background-image: url(/img/tyosakukenntaisaku.png)">
@@ -106,6 +113,28 @@
                 </div>
 
                 <button class="close-btn" id="closeBtn" style="display: none;">締め切る</button>
+
+                <div class="hinsi-sentaku" style="display: none;opacity:0;">
+                    <div class="hinsi-title">
+                        品詞を選択してください -1000ポイント
+                    </div>
+                    <div class="hinsi-body">
+                        <div name="名詞" class="border-div" style="background-image: url(/img/partOfSpeech/名詞1.png);">
+                        </div>
+                        <div name="動詞" class="border-div" style="background-image: url(/img/partOfSpeech/動詞.png);">
+                        </div>
+                        <div name="形容詞" class="border-div" style="background-image: url(/img/partOfSpeech/形容詞.png);">
+                        </div>
+                        <div name="冠詞" class="border-div" style="background-image: url(/img/partOfSpeech/冠詞.png);">
+                        </div>
+                        <div name="助動詞" class="border-div" style="background-image: url(/img/partOfSpeech/助動詞.png);">
+                        </div>
+                        <div name="前置詞" class="border-div" style="background-image: url(/img/partOfSpeech/前置詞.png);">
+                        </div>
+                        <div name="代名詞" class="border-div" style="background-image: url(/img/partOfSpeech/代名詞.png);">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="bord bord-right">
@@ -129,15 +158,15 @@
         <div class="playresult-page" id="playResult" style="opacity: 0;pointer-events: none;">
             <h2 class="result-main">試合結果</h2>
             <div id="playResultFinish" style="display: flex; width: 100%; justify-content: right">
-                <button id="playFinish" class="result-button"><img src="../../img/result/終了ボタン.png"/></button>
+                <button id="playFinish" class="result-button"><img src="../../img/result/終了ボタン.png" /></button>
             </div>
         </div>
     </div>
 
     <div id="tagText" class="balloon" style="opacity: 0;">
-        </div>
+    </div>
 
-        <div id="cheatDiv" style="
+    <div id="cheatDiv" style="
                                 z-index: 4;
                                 display: none;
                                 position: absolute;
@@ -147,21 +176,21 @@
                                 transform: translateX(-50%) translateY(-50%);
                                 background: white;
                             ">
-            <div style="display: flex">
-                <div style="padding-right: 20px">
-                    <label for="hinsiDrop">品詞</label>
-                    <select name="hinsis" id="hinsiDrop"></select>
-                </div>
-                <div>
-                    <label for="tagDrop">タグ</label>
-                    <select name="tags" id="tagDrop"></select>
-                </div>
+        <div style="display: flex">
+            <div style="padding-right: 20px">
+                <label for="hinsiDrop">品詞</label>
+                <select name="hinsis" id="hinsiDrop"></select>
             </div>
-
-            <button id="pickButton">決定</button>
+            <div>
+                <label for="tagDrop">タグ</label>
+                <select name="tags" id="tagDrop"></select>
+            </div>
         </div>
 
-        <button onclick="window.location='/home'" style="
+        <button id="pickButton">決定</button>
+    </div>
+
+    <button onclick="window.location='/home'" style="
                 position: fixed;
                 top: 10px;
                 right: 10px;
@@ -175,15 +204,15 @@
                 cursor: pointer;
                 box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
               ">
-            退出
-        </button>
+        退出
+    </button>
 
-        <div id="radialMenu" class="radial-menu" style="display:none;">
-            <button name="reachRadialButton" class="btn-top" data-label="リーチ">🔔</button>
-            <button name="meanRadialButton" class="btn-right" data-label="意味">🔍</button>
-            <button name="conjugationRadialButton" class="btn-bottom" data-label="活用形">🔄</button>
-            <button name="throwRadialButton" class="btn-left" data-label="捨てる">🚮</button>
-        </div>
+    <div id="radialMenu" class="radial-menu" style="display:none;">
+        <button name="reachRadialButton" class="btn-top" data-label="リーチ">🔔</button>
+        <button name="meanRadialButton" class="btn-right" data-label="意味">🔍</button>
+        <button name="conjugationRadialButton" class="btn-bottom" data-label="活用形">🔄</button>
+        <button name="throwRadialButton" class="btn-left" data-label="捨てる">🚮</button>
+    </div>
 </body>
 
 </html>

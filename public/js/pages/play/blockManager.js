@@ -7,6 +7,8 @@ export class blockManager {
         this.originalParent = null;
         this.wordDown = document.getElementById('wordDown');
         this.haiTables = Array.from(document.getElementsByClassName('hai-table'));
+
+        /*
         this.sentencePatterns = Array.from(document.getElementById('sentencePattern').children);
         this.divisions = document.getElementsByClassName('division-div');
 
@@ -17,8 +19,10 @@ export class blockManager {
             this.attachDraggable(value, temporaryDiv);
         });
 
+        */
+
         this.haiTables.forEach((value) => {
-            this.attachDraggabled(value);
+            this.attachDraggabled(value, ['reach-hai-border']);
         });
 
         this.sentenceList = {

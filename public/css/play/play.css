@@ -248,13 +248,13 @@ p {
 
 .above-bord {
     width: 100%;
-    height: 82%;
+    height: 85%;
     position: relative;
 }
 
 .footer {
     position: absolute;
-    height: 18%;
+    height: 15%;
     display: flex; /* 子要素を横並びにする */
     justify-content: center;
     width: 100%;
@@ -294,7 +294,6 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: move;
     margin: 4px;
     border-radius: 5px;
     background-size: contain;
@@ -348,6 +347,7 @@ p {
     bottom: 5%;
     right: 7%;
     display: flex;
+    z-index: 10;
 }
 
 .pon-button,
@@ -710,7 +710,8 @@ p {
     transform: translate(-50%, -50%);
 }
 
-.word-meaning-panel {
+.hinsi-sentaku {
+    transition: 0.4s;
     --cut: 12px; /* 斜めカット：少しだけ大きくして領域らしさを出す */
     --bg: rgba(0, 0, 0, 0.55); /* ドラより軽めの黒で柔らかいコントラスト */
     --padding-y: 8px;
@@ -718,7 +719,10 @@ p {
     --max-width: 260px; /* 外側余白におさまる適度な幅 */
     --border-glow: 0 0 14px rgba(255, 255, 255, 0.15);
 
-    position: relative; /* ゲーム画面の余白に固定しやすい */
+    position: absolute; /* ゲーム画面の余白に固定しやすい */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
     background: var(--bg);
     color: #fff;
@@ -726,7 +730,6 @@ p {
     line-height: 1.45;
 
     padding: var(--padding-y) var(--padding-x);
-    width: 96%;
 
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35), var(--border-glow);
     backdrop-filter: blur(5px);
@@ -749,26 +752,42 @@ p {
     white-space: normal;
 
     z-index: 9000; /* ドラより下層に配置(重なった時の階層調整) */
-    margin: 2%;
 }
 
-/* 見出し（単語本体） */
-.word-meaning-panel .word-title {
+.hinsi-sentaku .hinsi-title {
     font-size: 18px;
     font-weight: 700;
     margin-bottom: 6px;
     text-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
 }
 
-/* 品詞ラベル */
-.word-meaning-panel .pos-tag {
-    display: inline-block;
-    background: rgba(255, 255, 255, 0.15);
-    padding: 2px 8px;
-    border-radius: 6px;
-    margin-bottom: 8px;
-    font-size: 12px;
-    font-weight: 600;
+.hinsi-sentaku .hinsi-body {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.top-tehuda {
+    position: absolute;
+    display: flex;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%) rotateX(180deg);
+}
+
+.right-tehuda {
+    position: absolute;
+    display: flex;
+    top: 50%;
+    right: -10%;
+    transform: translateY(-50%) rotateZ(-90deg);
+}
+
+.left-tehuda {
+    position: absolute;
+    display: flex;
+    top: 50%;
+    left: -10%;
+    transform: translateY(-50%) rotateZ(90deg);
 }
 
 /* ウィンドウ幅が1920pxより小さい場合 */
@@ -778,7 +797,7 @@ p {
         scale: calc(100vw / 1710px);
     }
 
-    .radial-menu{
+    .radial-menu {
         scale: calc(100vw / 1710px);
     }
 

@@ -22,6 +22,11 @@ export class uiManager {
             throwButton: document.getElementsByName('throwRadialButton')[0],
             tagText: document.getElementById('tagText'),
             reachButton: document.getElementsByName('reachRadialButton')[0],
+            hinsiSentaku: document.getElementsByClassName('hinsi-sentaku')[0],
+            hinsiBody: document.getElementsByClassName('hinsi-body')[0],
+            topTehuda: document.getElementsByClassName('top-tehuda')[0],
+            rightTehuda: document.getElementsByClassName('right-tehuda')[0],
+            leftTehuda: document.getElementsByClassName('left-tehuda')[0],
         };
 
         this.flow = null;
@@ -140,7 +145,25 @@ export class uiManager {
 
         // リーチボタン
         this.elements.reachButton.addEventListener('mousedown', () => {
-            this.flow.reach();
+            this.elements.hinsiSentaku.style.display = 'block';
+            this.elements.hinsiSentaku.style.opacity = '1';
+        });
+
+        // 品詞選択ボタン
+        Array.from(this.elements.hinsiBody.children).forEach((element) => {
+            element.addEventListener('click', () => {
+                this.flow.reach(element.getAttribute('name'));
+                this.elements.hinsiSentaku.style.opacity = '0';
+                this.elements.hinsiSentaku.style.display = 'none';
+
+                this.disableDragAllChildren(this.wordUp);
+                this.disableDragAllChildren(this.wordDown);
+
+                // リーチできなくする
+                this.elements.reachButton.style.display = 'none';
+
+                this.elements.ponButton.innerHTML = 'ロン';
+            });
         });
     }
 
@@ -172,6 +195,7 @@ export class uiManager {
         console.log('捨てた牌を表示するよ！');
         this.throwHaiTable.children[position].style.opacity = '1';
         this.throwHaiTable.children[position].innerHTML = hai;
+        this.throwHai = this.throwHaiTable.children[position].children[0];
         this.throwHaiTable.children[position].children[0].style.opacity = '1';
         this.showCountDown();
     }
@@ -287,7 +311,14 @@ export class uiManager {
             this.elements.ponButton.style.display = 'none';
             this.elements.skipButton.style.display = 'none';
         } else {
-            this.elements.ponButton.style.display = 'block';
+            if (this.flow.reachHinsi != null) {
+                if (this.flow.reachHinsi != null && this.flow.reachHinsi == this.throwHai.getAttribute('name')) {
+                    this.elements.ponButton.style.display = 'block';
+                } else this.elements.ponButton.style.display = 'none';
+            } else {
+                this.elements.ponButton.style.display = 'block';
+            }
+
             this.elements.skipButton.style.display = 'block';
         }
         this.count = 2;
@@ -568,6 +599,11 @@ export class uiManager {
             if (!e.target.classList.contains('btn-right')) {
                 this.elements.tagText.style.opacity = '0';
             }
+
+            if (!e.target.closest('.btn-top') && !e.target.closest('.hinsi-sentaku')) {
+                this.elements.hinsiSentaku.style.opacity = '0';
+                this.elements.hinsiSentaku.style.display = 'none';
+            }
         });
     }
 
@@ -575,6 +611,9 @@ export class uiManager {
         this.elements.haiMenu.style.transition = '';
         this.elements.haiMenu.style.opacity = '0';
         this.elements.haiMenu.style.display = 'none';
+
+        if (targetElement.style.animation == '') this.elements.throwButton.style.display = 'none';
+        else this.elements.throwButton.style.display = 'block';
 
         // 座標系さん
         const rect = targetElement.getBoundingClientRect();
@@ -599,5 +638,38 @@ export class uiManager {
 
     closeRadialMenu() {
         this.elements.haiMenu.style.opacity = '0';
+    }
+
+    disableDragAllChildren(rootElement) {
+        rootElement.querySelectorAll('*').forEach((el) => {
+            el.setAttribute('draggable', 'false');
+            el.style.animation = '';
+        });
+    }
+
+    showReachHai(position, leftHai, rightHai) {
+        let temporaryhai = document.createElement('div');
+        temporaryhai.classList.add('border-div');
+        temporaryhai.style.background = 'white';
+
+        if (leftHai == null) leftHai = '';
+        if (rightHai == null) rightHai = '';
+        switch (position) {
+            case 0:
+                this.elements.topTehuda.innerHTML = leftHai + temporaryhai.outerHTML + rightHai;
+                break;
+            case 1:
+                this.elements.rightTehuda.innerHTML = leftHai + temporaryhai.outerHTML + rightHai;
+                break;
+            case 3:
+                this.elements.leftTehuda.innerHTML = leftHai + temporaryhai.outerHTML + rightHai;
+                break;
+        }
+    }
+
+    resetTehuda() {
+        this.elements.topTehuda.innerHTML = '';
+        this.elements.rightTehuda.innerHTML = '';
+        this.elements.leftTehuda.innerHTML = '';
     }
 }
