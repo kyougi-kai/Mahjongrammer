@@ -14,8 +14,6 @@ export class haiManager {
         this.uimanager = uimanager;
         this.hais = [];
         this.doras = [];
-        this.tagText = document.getElementById('tagText');
-        this.tagText.style.position = 'fixed';
         this.throwElement = null;
 
         this.wss.onMessage('getRoomMemberData', (data) => {
@@ -25,6 +23,8 @@ export class haiManager {
         this.wss.onMessage('throwHai', (data) => {
             this.throwElement = data.hai;
         });
+        // 意味表示
+        this.nowHai = null;
     }
 
     // 自分が引く牌だけ残す
@@ -57,8 +57,12 @@ export class haiManager {
         nanka.children[0].addEventListener('click', () => {
             nanka.changeKatuyou();
         });
-        document.getElementById('wordDown').appendChild(nanka.children[0]);
+
+        let temporaryHai = nanka.children[0];
+        document.getElementById('wordDown').appendChild(temporaryHai);
         nanka.remove();
+
+        return temporaryHai;
     }
 
     drawHai(word = null) {
@@ -75,6 +79,13 @@ export class haiManager {
 
         document.getElementById('wordDown').appendChild(temporaryHai);
         console.log(`残りの牌: ${this.hais.length}`);
+
+        temporaryHai.addEventListener('click', () => {
+            this.uimanager.showRadialMenu(temporaryHai);
+            this.nowHai = temporaryHai;
+        });
+
+        return { hai: temporaryHai, hinsi: tango.partOfSpeech };
     }
 
     createHai(word, hinsi = null) {
@@ -86,22 +97,6 @@ export class haiManager {
         p.innerHTML = word;
         hai.appendChild(p);
 
-        let clickTimer = null;
-
-        hai.addEventListener('click', (e) => {
-            if (clickTimer) return;
-
-            clickTimer = setTimeout(() => {
-                this.changeKatuyou(hai);
-                clickTimer = null;
-            }, 200);
-        });
-
-        hai.addEventListener('dblclick', (e) => {
-            clearTimeout(clickTimer);
-            clickTimer = null;
-        });
-
         // 後ろに画像表示 名詞はとりあえず1番目のやつ
         let wakusei = '';
         if (hinsi == '名詞') {
@@ -110,30 +105,11 @@ export class haiManager {
                 wakusei = Math.floor(Math.random() * 7 + 1);
             }
         }
-        //hai.style.animation = `hai${Math.floor(Math.random() * 3 + 1)} 2s infinite alternate ease-in-out`;
-        hai.style.backgroundImage = `url(/img/partOfSpeech/${hinsi + wakusei}.png)`;
+        hai.style.animation = `hai${Math.floor(Math.random() * 3 + 1)} 2s infinite alternate ease-in-out`;
+        hai.style.backgroundImage = `url(/img/partOfSpeech/${hinsi}.png)`;
         hai.style.backgroundRepeat = 'no-repeat';
-
-        this.attachShowTags(hai, word, hinsi);
+        hai.setAttribute('name', hinsi);
         return hai;
-    }
-
-    attachShowTags(element, word, hinsi) {
-        this.enterDelay = null;
-        element.addEventListener('dblclick', () => {
-            let sentence = tango[word]['tags'].join(' ');
-            sentence += '<br>';
-            sentence += tango[word]['means'][hinsi];
-            this.showTagText(sentence, element);
-
-            this.uimanager.showTagText();
-        });
-
-        element.addEventListener('mouseout', () => {
-            clearTimeout(this.enterDelay);
-            this.enterDelay = null;
-            this.uimanager.hideTagText();
-        });
     }
 
     changeKatuyou(hai) {
@@ -157,13 +133,5 @@ export class haiManager {
                 hai.style.setProperty('--original-html-ban', idx2);
             }
         }
-    }
-
-    showTagText(word, targetElement) {
-        this.tagText.innerHTML = word;
-        this.tagText.style.opacity = '1';
-        this.tagText.style.left = targetElement.getBoundingClientRect().x + Number(targetElement.offsetWidth) / 2 + 'px';
-        this.tagText.style.bottom = Number(window.innerHeight) - targetElement.getBoundingClientRect().y + 20 + 'px';
-        // 消す処理
     }
 }
