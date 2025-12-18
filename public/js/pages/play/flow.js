@@ -364,11 +364,9 @@ export class flow {
 
             /*this.scorebords[3].style.opacity = 1;
             this.scorebords[3].style.pointerEvents = 'all';*/
-            this.scorebords[2].classList.add('color-blink');
         } else {
             /*this.scorebords[3].style.opacity = 0;
             this.scorebords[3].style.pointerEvents = 'none';*/
-            this.scorebords[2].classList.remove('color-blink');
         }
         this.uimanager.changePhase();
     }
