@@ -3,7 +3,7 @@ import { tango } from '../public/js/utils/wordData.js';
 const LT_API_URL = 'http://localhost:8081/v2/check';
 const SPACY_API_URL = 'http://localhost:8080/parse';
 
-const testPassage = 'You are able to play the piano well.';
+const testPassage = 'You have to be gaved the piano by me.';
 
 async function checkGrammar(sentence) {
     const doc = await tokenize(sentence);
@@ -70,7 +70,7 @@ function buildSkeleton(doc) {
 function extractMainVerbUnit(doc) {
     console.log('Extracting main verb unit from doc:', doc);
     const root = doc.find((t) => t.dep === 'ROOT');
-
+    console.log('Root token:', root.children);
     const unit = {
         head: root,
         headIndex: root.i,
@@ -91,27 +91,32 @@ function extractMainVerbUnit(doc) {
     };
 
     for (const child of root.children) {
-        switch (child.dep) {
-            case 'aux':
-            case 'auxpass':
-                unit.auxiliaries.push(child);
-                unit.auxiliaryIndices.push(child.index);
-                break;
+        console.log('Processing child token:', child);
+        for (let docIndex = 0; docIndex < doc.length; docIndex++) {
+            if (doc[docIndex].text == child) {
+                switch (doc[docIndex].dep) {
+                    case 'aux':
+                    case 'auxpass':
+                        unit.auxiliaries.push(child);
+                        unit.auxiliaryIndices.push(doc[docIndex].i);
+                        break;
 
-            case 'neg':
-                unit.negation = child;
-                unit.negationIndex = child.index;
-                break;
+                    case 'neg':
+                        unit.negation = child;
+                        unit.negationIndex = doc[docIndex].i;
+                        break;
 
-            case 'advmod':
-                unit.adverbs.push(child);
-                unit.adverbIndices.push(child.index);
-                break;
+                    case 'advmod':
+                        unit.adverbs.push(child);
+                        unit.adverbIndices.push(doc[docIndex].i);
+                        break;
 
-            case 'mark':
-                unit.markers.push(child);
-                unit.markerIndices.push(child.index);
-                break;
+                    case 'mark':
+                        unit.markers.push(child);
+                        unit.markerIndices.push(doc[docIndex].i);
+                        break;
+                }
+            }
         }
     }
 
