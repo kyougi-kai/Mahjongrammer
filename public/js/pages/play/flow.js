@@ -187,6 +187,7 @@ export class flow {
             let tokuten = 0;
             console.log('get tumo');
             console.log(data);
+            this.uimanager.elements.agariButton.style.display = 'none';
 
             data.score[0].forEach((scoreString) => {
                 const items = scoreString.split(' ');

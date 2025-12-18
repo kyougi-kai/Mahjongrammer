@@ -138,6 +138,21 @@
             </div>
         </div>
         <div class="bord bord-right">
+            <button onclick="window.location='/home'" style="
+                            position: relative;
+                            top: 10px;
+                            right: 10px;
+                            background-color: #ff4d4d;
+                            color: white;
+                            border: none;
+                            padding: 10px 20px;
+                            border-radius: 5px;
+                            font-size: 16px;
+                            cursor: pointer;
+                            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+                          ">
+                退出
+            </button>
             <div class="dora-badge" role="status" aria-label="ドラ: 動詞">
 
             </div>
@@ -163,7 +178,7 @@
         </div>
     </div>
 
-    <div id="tagText" class="balloon" style="opacity: 0;">
+    <div id="tagText" class="balloon" style="opacity: 0;top:0;">
     </div>
 
     <div id="cheatDiv" style="
@@ -189,23 +204,6 @@
 
         <button id="pickButton">決定</button>
     </div>
-
-    <button onclick="window.location='/home'" style="
-                position: fixed;
-                top: 10px;
-                right: 10px;
-                z-index: 9999;
-                background-color: #ff4d4d;
-                color: white;
-                border: none;
-                padding: 10px 20px;
-                border-radius: 5px;
-                font-size: 16px;
-                cursor: pointer;
-                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-              ">
-        退出
-    </button>
 
     <div id="radialMenu" class="radial-menu" style="display:none;">
         <button name="reachRadialButton" class="btn-top" data-label="リーチ">🔔</button>

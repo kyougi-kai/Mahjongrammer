@@ -5,6 +5,11 @@ html {
     height: 100%;
 }
 
+body {
+    background-image: url(https://us.123rf.com/450wm/ggebl/ggebl1403/ggebl140300020/26704411-white-clean-stiched-seamless-diagonal-background-pattern.jpg?ver=6);
+    background-repeat: repeat;
+}
+
 p {
     margin: 0;
 }
@@ -237,7 +242,6 @@ p {
 .bord {
     height: 100%;
     width: 100%;
-    background: white;
 }
 
 @media screen and (max-width: 1920px) {
@@ -609,7 +613,6 @@ p {
 
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     color: black;
     width: 96%;
     margin: 2%;
