@@ -168,6 +168,25 @@ export class flow {
             }
         });
 
+        document.addEventListener('keydown', (e) => {
+            if (e.key == 'p') {
+                let sendData = {
+                    type: 'test',
+                    payload: {
+                        roomId: this.playermanager.roomId,
+                        sentence: 'I want to eat sushi.',
+                    },
+                };
+
+                this.wss.send(sendData);
+            }
+        });
+
+        this.wss.onMessage('test', (data) => {
+            console.log('ぐらまーちぇっく');
+            console.log(data.result);
+        });
+
         // 次へのボタンを押したら
         document.getElementById('resultbutton').addEventListener('click', (e) => {
             this.uimanager.hideRoundResult();
