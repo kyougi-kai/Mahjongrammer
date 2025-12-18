@@ -5,8 +5,8 @@ const SPACY_API_URL = 'http://localhost:8080/parse';
 
 const testPassage = 'You are able to play the piano well.';
 
-function checkGrammar(sentence) {
-    const doc = tokenize(sentence);
+async function checkGrammar(sentence) {
+    const doc = await tokenize(sentence);
 
     const skeleton = buildSkeleton(doc);
 
@@ -50,53 +50,82 @@ async function tokenize(sentence) {
 function buildSkeleton(doc) {
     const verbUnit = extractMainVerbUnit(doc);
 
-    const subject = extractSubject(doc, verbUnit);
+    // const subject = extractSubject(doc, verbUnit);
 
-    const { objects, complement } = extractObjectsAndComplement(doc, verbUnit);
+    // const complement = extractComplement(doc, verbUnit);
 
-    const modifiers = extractModifiers(doc, verbUnit);
+    // const objects = extractObjects(doc, verbUnit);
+
+    // const modifiers = extractModifiers(doc, verbUnit);
 
     return {
-        subject: subject,
+        subject: 'subject',
         verb: verbUnit,
-        objects: objects,
-        complement: complement,
-        modifiers: modifiers,
+        objects: 'objects',
+        complement: 'complement',
+        modifiers: 'modifiers',
     };
 }
 
-function extractMainVerbUnit(tokens) {
-    //主動詞（V）を抽出
-    const root = tokens.find((t) => t.dep === 'ROOT');
-
-    if (!root) return null;
+function extractMainVerbUnit(doc) {
+    console.log('Extracting main verb unit from doc:', doc);
+    const root = doc.find((t) => t.dep === 'ROOT');
 
     const unit = {
         head: root,
-        auxiliaries: [], //助動詞など
-        adverbs: [], //副詞など
-        negation: null, //notなど
+        headIndex: root.i,
+
+        auxiliaries: [],
+        auxiliaryIndices: [],
+
+        negation: null,
+        negationIndex: null,
+
+        adverbs: [],
+        adverbIndices: [],
+
         markers: [],
-        //追加で他動詞等の情報を入れ、エラーチェックに使う
+        markerIndices: [],
+
+        span: { start: root.index, end: root.index },
     };
 
     for (const child of root.children) {
-        if (child.dep === 'aux' || child.dep === 'auxpass') {
-            unit.auxiliaries.push(child);
-        }
+        switch (child.dep) {
+            case 'aux':
+            case 'auxpass':
+                unit.auxiliaries.push(child);
+                unit.auxiliaryIndices.push(child.index);
+                break;
 
-        if (child.dep === 'advmod') {
-            unit.adverbs.push(child);
-        }
+            case 'neg':
+                unit.negation = child;
+                unit.negationIndex = child.index;
+                break;
 
-        if (child.dep === 'neg') {
-            unit.negation = child;
-        }
+            case 'advmod':
+                unit.adverbs.push(child);
+                unit.adverbIndices.push(child.index);
+                break;
 
-        if (child.dep === 'mark') {
-            unit.markers.push(child);
+            case 'mark':
+                unit.markers.push(child);
+                unit.markerIndices.push(child.index);
+                break;
         }
     }
+
+    // span計算
+    const all = [
+        unit.headIndex,
+        ...unit.auxiliaryIndices,
+        ...(unit.negationIndex !== null ? [unit.negationIndex] : []),
+        ...unit.adverbIndices,
+        ...unit.markerIndices,
+    ];
+
+    unit.span.start = Math.min(...all);
+    unit.span.end = Math.max(...all);
 
     return unit;
 }
@@ -416,7 +445,7 @@ async function spaCy(testPassage) {
 
 // 実行
 
-//checkGrammar(testPassage);
+checkGrammar(testPassage);
 //checkByLT(testPassage);
-spaCy(testPassage);
+//spaCy(testPassage);
 //tokenize(testPassage);

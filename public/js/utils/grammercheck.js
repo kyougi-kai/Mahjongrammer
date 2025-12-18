@@ -1,4 +1,5 @@
 import { tango } from '/js/utils/wordData.js';
+import { execFile } from 'child_process';
 
 const errorTemplete = {
     part: '',
@@ -12,7 +13,23 @@ const pointTemplete = {
     pointName: '',
     pointValue: 0,
 };
-export function checkGrammer(targetArray) {
+
+function analyzeSentence(sentence) {
+    return new Promise((resolve, reject) => {
+        execFile('python', ['SVServer.py', sentence], { encoding: 'utf8' }, (err, stdout, stderr) => {
+            if (err) return reject(err);
+            resolve(JSON.parse(stdout));
+        });
+    });
+}
+
+export function checkGrammer(targetSentence) {
+    console.log('checkGrammer開始', targetSentence);
+    (async () => {
+        const result = await analyzeSentence(targetSentence);
+        console.log(result);
+    })();
+    const targetArray = result;
     targetArray.sentence = targetArray.sentence.toString();
 
     /**
