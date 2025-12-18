@@ -28,7 +28,6 @@ export class actionManager {
                 this.readyBtn.classList.remove('btn-unready');
                 this.readyBtn.classList.add('btn-ready');
                 this.readyBtn.innerHTML = '準備完了';
-                
             } else {
                 this.sendReadyMessage(true);
                 this.readyBtn.classList.add('btn-unready');
@@ -36,7 +35,7 @@ export class actionManager {
                 this.readyBtn.innerHTML = 'キャンセル';
 
                 //効果音
-                AM.soundEffects("aready");
+                AM.soundEffects('aready');
             }
 
             this.isReady = !this.isReady;
@@ -62,7 +61,6 @@ export class actionManager {
                 },
             };
             this.wss.send(sendData);
-
         });
 
         this.wss.onMessage('moveToPlay', (data) => {
@@ -113,9 +111,10 @@ export class actionManager {
         if (readyCnt == this.playermanager.getPlayerCount()) {
             this.startBtn.disabled = false;
             this.startBtn.style.opacity = '1';
-            
+            this.startBtn.style.display = 'block';
+
             //効果音
-            AM.soundEffects("aallready");
+            AM.soundEffects('aallready');
         } else {
             this.startBtn.disabled = true;
             this.startBtn.style.opacity = '0.5';
