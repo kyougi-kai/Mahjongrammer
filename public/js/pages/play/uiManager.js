@@ -464,12 +464,12 @@ export class uiManager {
         round.textContent = `第${nowRound}ラウンド`;
         Object.assign(round.style, {
             position: 'fixed',
-            top: '0',
+            top: '10vw',
             left: '0',
             width: '100vw',
             height: '100vh',
             color: 'black', // 文字色
-            fontSize: '10vw', // フォントサイズは画面幅に応じて可変
+            fontSize: '5vw', // フォントサイズは画面幅に応じて可変
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
@@ -488,9 +488,9 @@ export class uiManager {
         this.start_img.src = '../img/haikeimoji/LETSGRAMMAHJONG2.png';
         Object.assign(this.start_img.style, {
             position: 'fixed',
-            top: '0',
-            left: '0',
-            width: '100vw',
+            top: '10vw',
+            left: '25vw',
+            width: '50vw',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
