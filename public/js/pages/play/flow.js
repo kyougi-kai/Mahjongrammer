@@ -174,7 +174,7 @@ export class flow {
                     type: 'test',
                     payload: {
                         roomId: this.playermanager.roomId,
-                        sentence: 'I want to eat sushi.',
+                        sentence: 'I want an apple',
                     },
                 };
 
@@ -376,7 +376,7 @@ export class flow {
             if (count == 7) {
                 if (this.playermanager.isParent()) {
                     this.haimanager.drawHai();
-                    this.scorebords[2].classList.add('color-blink');
+                    // this.scorebords[2].classList.add('color-blink');
                 }
                 console.log(this.haimanager.hais);
                 this.uimanager.myTurn();
@@ -467,11 +467,11 @@ export class flow {
 
             /*this.scorebords[3].style.opacity = 1;
             this.scorebords[3].style.pointerEvents = 'all';*/
-            this.scorebords[2].classList.add('color-blink');
+            // this.scorebords[2].classList.add('color-blink');
         } else {
             /*this.scorebords[3].style.opacity = 0;
             this.scorebords[3].style.pointerEvents = 'none';*/
-            this.scorebords[2].classList.remove('color-blink');
+            // this.scorebords[2].classList.remove('color-blink');
         }
         this.uimanager.changePhase();
     }

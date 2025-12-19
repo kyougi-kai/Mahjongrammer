@@ -69,12 +69,13 @@ export class haiManager {
         console.log('---drawHai---');
         console.log(this.hais);
         console.log(this.hais[0]);
-        let tango = word;
+        let tangoo = word;
         let temporaryHai = '';
-        if (tango === null) {
-            tango = this.hais.pop();
-            temporaryHai = this.createHai(tango.word, tango.partOfSpeech);
-        } else temporaryHai = this.createHai(tango.word, tango.partOfSpeech);
+        if (tangoo === null) {
+            tangoo = this.hais.pop();
+            console.log(tangoo);
+            temporaryHai = this.createHai(tangoo.word, tangoo.partOfSpeech);
+        } else temporaryHai = this.createHai(tangoo.word, tangoo.partOfSpeech);
         this.blockmanager.attachDraggable(temporaryHai);
 
         document.getElementById('wordDown').appendChild(temporaryHai);
@@ -85,7 +86,7 @@ export class haiManager {
             this.nowHai = temporaryHai;
         });
 
-        return { hai: temporaryHai, hinsi: tango.partOfSpeech };
+        return { hai: temporaryHai, hinsi: tangoo.partOfSpeech };
     }
 
     createHai(word, hinsi = null) {

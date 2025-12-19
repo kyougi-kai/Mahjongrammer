@@ -76,10 +76,11 @@ export class playManager {
         // テスト
         this.wss.onMessage('test', async (ws, data) => {
             const roomId = data.roomId;
+            const result = await checkGrammer(data.sentence);
             const sendData = {
                 type: 'test',
                 payload: {
-                    result: checkGrammer(data.sentence),
+                    result: result,
                 },
             };
             this.sendToClients(sendData, roomId);
@@ -239,9 +240,10 @@ export class playManager {
                 const sendData = {
                     type: 'reStart',
                     payload: {
-                        tumoPlayerNumber: data.playerNumber,
+                        tumoPlayerNumber: data.roundResult == '引き分け' ? -1 : data.playerNumber,
                         hais: deck.hais,
                         doras: deck.doras,
+                        roundResult: data.roundResult,
                     },
                 };
                 this.sendToClients(sendData, roomId);

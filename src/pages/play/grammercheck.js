@@ -23,13 +23,13 @@ function analyzeSentence(sentence) {
     });
 }
 
-export function checkGrammer(targetSentence) {
+export async function checkGrammer(targetSentence) {
     console.log('checkGrammer開始', targetSentence);
-    (async () => {
+    const result = await (async () => {
         const result = await analyzeSentence(targetSentence);
         console.log(result);
+        return result;
     })();
-    console.log(result);
     const targetArray = result;
     targetArray.sentence = targetArray.sentence.toString();
 

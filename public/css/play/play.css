@@ -629,9 +629,200 @@ p {
 }
 
 @keyframes color-blink {
-  0%, 100% { color: #fff; }
-  50% { color: #e91e63; }
+    0%,
+    100% {
+        color: #fff;
+    }
+    50% {
+        color: #e91e63;
+    }
 }
+
+.hai-table::-webkit-scrollbar {
+    height: 10px; /* 横スクロールバーの太さ */
+}
+
+.hai-table::-webkit-scrollbar-track {
+    background: #e6e6e6; /* 明るいグレーの背景 */
+    border-radius: 8px;
+}
+
+.hai-table::-webkit-scrollbar-thumb {
+    background: #a6a6a6; /* 中間グレーのつまみ */
+    border-radius: 8px; /* 丸みをつけて柔らかく */
+    border: 2px solid #e6e6e6; /* 枠を作ることで上品な質感 */
+}
+
+.hai-table::-webkit-scrollbar-thumb:hover {
+    background: #8c8c8c; /* hover で少し濃く。主張しすぎない控えめな変化 */
+}
+
+/* ラジアルメニュー用 */
+.radial-menu {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease-out, transform 0.25s cubic-bezier(0.25, 1.4, 0.5, 1);
+}
+
+.radial-menu button {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    pointer-events: auto;
+    font-size: x-large;
+}
+
+/* ツールチップ */
+.radial-menu button::after {
+    content: attr(data-label);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -140%);
+    background: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+    font-size: 14px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease-out;
+}
+
+/* ホバー時に表示 */
+.radial-menu button:hover::after {
+    opacity: 1;
+}
+
+/* 4 buttons at NESW */
+.btn-top {
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.btn-right {
+    top: 50%;
+    right: 0;
+    transform: translate(50%, -50%);
+}
+.btn-bottom {
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+}
+.btn-left {
+    top: 50%;
+    left: 0;
+    transform: translate(-50%, -50%);
+}
+
+.hinsi-sentaku {
+    transition: 0.4s;
+    --cut: 12px; /* 斜めカット：少しだけ大きくして領域らしさを出す */
+    --bg: rgba(0, 0, 0, 0.55); /* ドラより軽めの黒で柔らかいコントラスト */
+    --padding-y: 8px;
+    --padding-x: 14px;
+    --max-width: 260px; /* 外側余白におさまる適度な幅 */
+    --border-glow: 0 0 14px rgba(255, 255, 255, 0.15);
+
+    position: absolute; /* ゲーム画面の余白に固定しやすい */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background: var(--bg);
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.45;
+
+    padding: var(--padding-y) var(--padding-x);
+
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35), var(--border-glow);
+    backdrop-filter: blur(5px);
+
+    clip-path: polygon(
+        var(--cut) 0,
+        calc(100% - var(--cut)) 0,
+        100% var(--cut),
+        100% calc(100% - var(--cut)),
+        calc(100% - var(--cut)) 100%,
+        var(--cut) 100%,
+        0 calc(100% - var(--cut)),
+        0 var(--cut)
+    );
+
+    box-sizing: border-box;
+
+    /* 長文対応 */
+    overflow-wrap: break-word;
+    white-space: normal;
+
+    z-index: 9000; /* ドラより下層に配置(重なった時の階層調整) */
+}
+
+.hinsi-sentaku .hinsi-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
+}
+
+.hinsi-sentaku .hinsi-body {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.top-tehuda {
+    position: absolute;
+    display: flex;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%) rotateX(180deg);
+}
+
+.right-tehuda {
+    position: absolute;
+    display: flex;
+    top: 50%;
+    right: -10%;
+    transform: translateY(-50%) rotateZ(-90deg);
+}
+
+.left-tehuda {
+    position: absolute;
+    display: flex;
+    top: 50%;
+    left: -10%;
+    transform: translateY(-50%) rotateZ(90deg);
+}
+
+/* ウィンドウ幅が1920pxより小さい場合 */
+@media (max-width: 1710px) {
+    .main-content {
+        width: 1710px;
+        scale: calc(100vw / 1710px);
+    }
+
+    .radial-menu {
+        scale: calc(100vw / 1710px);
+    }
+
+    .border-div p {
+        font-size: 26px;
+    }
+
+    .player-status {
+        font-size: 30px;
+    }
+}
+
 .color-blink {
-  animation: color-blink 1s infinite;
+    animation: color-blink 1s infinite;
 }
