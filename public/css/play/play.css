@@ -638,10 +638,14 @@ p {
     margin: 9px 3px 0 0;
 }
 
-@keyframes color-blink {
-  0%, 100% { color: #fff; }
-  50% { color: #e91e63; }
-}
-.color-blink {
-  animation: color-blink 1s infinite;
+.redbox-top {
+    position: absolute;
+    background: red;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 4px;
+    width: 100px;
+    height: 35px;
+    top: 12px;
+    left: 70px;
 }
