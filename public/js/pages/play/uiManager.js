@@ -8,13 +8,30 @@ export class uiManager {
         this.haimanager = null;
         this.throwHaiTable = document.getElementsByClassName('throw-hai-table')[0];
 
-        // barkDiv
-        this.barkDiv = document.getElementsByClassName('bark-div')[0];
-        this.countDownText = document.getElementById('countDown');
+        this.elements = {
+            mainContent: document.getElementsByClassName('main-content')[0],
+            barkDiv: document.getElementById('barkDiv'),
+            ponButton: document.getElementsByName('pon')[0],
+            skipButton: document.getElementsByName('skip')[0],
+            agariButton: document.getElementsByName('agari')[0],
+            countDownText: document.getElementById('countDown'),
+            playerStatus: document.getElementsByClassName('player-status'),
+            haiMenu: document.getElementById('radialMenu'),
+            meanButton: document.getElementsByName('meanRadialButton')[0],
+            conjugationButton: document.getElementsByName('conjugationRadialButton')[0],
+            throwButton: document.getElementsByName('throwRadialButton')[0],
+            tagText: document.getElementById('tagText'),
+            reachButton: document.getElementsByName('reachRadialButton')[0],
+            hinsiSentaku: document.getElementsByClassName('hinsi-sentaku')[0],
+            hinsiBody: document.getElementsByClassName('hinsi-body')[0],
+            topTehuda: document.getElementsByClassName('top-tehuda')[0],
+            rightTehuda: document.getElementsByClassName('right-tehuda')[0],
+            leftTehuda: document.getElementsByClassName('left-tehuda')[0],
+        };
 
         this.flow = null;
         this.scoreBord = document.getElementsByClassName('ten');
-        this.tokutenBord = document.getElementsByClassName('ten').innerHTML;
+        this.winner = document.getElementById('winner');
         this.resultPage = document.getElementById('resultpage');
         this.playResultPage = document.getElementById('playResult');
         this.topleft = document.getElementById('oyaban');
@@ -27,8 +44,6 @@ export class uiManager {
 
         this.wordUp = document.getElementById('wordUp');
         this.wordDown = document.getElementById('wordDown');
-
-        this.hideTimeOut = null;
 
         // doras表示
         this.doraTable = document.getElementsByClassName('dora-badge')[0];
@@ -93,20 +108,98 @@ export class uiManager {
             let pickWord = pickWordList[Math.floor(Math.random() * pickWordList.length)];
             this.flow.drawHai(pickWord);
         });
+
+        // イベント設定
+        this.setCloseEvents();
+    }
+
+    setFlow(flow) {
+        this.flow = flow;
+        this.domEvents();
+    }
+
+    // domイベント設定
+    domEvents() {
+        this.elements.ponButton.addEventListener('click', () => {
+            this.flow.pon();
+        });
+
+        this.elements.skipButton.addEventListener('click', () => {
+            this.flow.skip();
+        });
+
+        // 意味表示ボタン
+        this.elements.meanButton.addEventListener('mousedown', async () => {
+            if (this.haimanager.nowHai == null) return;
+            const word = this.haimanager.nowHai.children[0].innerHTML;
+            this.showWordMean(word, this.haimanager.nowHai);
+        });
+
+        // 活用変更ボタン
+        this.elements.conjugationButton.addEventListener('mousedown', () => {
+            if (this.haimanager.nowHai == null) return;
+            this.haimanager.changeKatuyou(this.haimanager.nowHai);
+        });
+
+        // 捨てるボタン
+        this.elements.throwButton.addEventListener('mousedown', () => {
+            if (this.haimanager.nowHai == null) return;
+            this.flow.throw(this.haimanager.nowHai);
+        });
+
+        // リーチボタン
+        this.elements.reachButton.addEventListener('mousedown', () => {
+            this.elements.hinsiSentaku.style.display = 'block';
+            this.elements.hinsiSentaku.style.opacity = '1';
+        });
+
+        // 品詞選択ボタン
+        Array.from(this.elements.hinsiBody.children).forEach((element) => {
+            element.addEventListener('click', () => {
+                this.flow.reach(element.getAttribute('name'));
+                this.elements.hinsiSentaku.style.opacity = '0';
+                this.elements.hinsiSentaku.style.display = 'none';
+
+                this.disableDragAllChildren(this.wordUp);
+                this.disableDragAllChildren(this.wordDown);
+
+                // リーチできなくする
+                this.elements.reachButton.style.display = 'none';
+
+                this.elements.ponButton.innerHTML = 'ロン';
+            });
+        });
     }
 
     showCheatDiv() {
         document.getElementById('cheatDiv').style.display = 'block';
     }
 
-    setFlow(flow) {
-        this.flow = flow;
+    showWordMean(word, element) {
+        const hinsi = element.getAttribute('name');
+        let sentence = tango[word]['tags'].join(' ');
+        sentence += '<br>';
+        sentence += tango[word]['means'][hinsi];
+        this.elements.tagText.innerHTML = sentence;
+        this.elements.tagText.style.transition = '0';
+        this.elements.tagText.style.opacity = '0';
+        this.elements.tagText.style.left = 'none';
+        this.elements.tagText.style.bottom = 'none';
+        this.elements.tagText.style.display = 'none';
+        requestAnimationFrame(() => {
+            this.elements.tagText.style.display = 'block';
+            this.elements.tagText.style.transition = '0.4s';
+            this.elements.tagText.style.opacity = '1';
+            this.elements.tagText.style.left = element.getBoundingClientRect().x + Number(element.getBoundingClientRect().width) / 2 + 'px';
+            this.elements.tagText.style.bottom = Number(window.innerHeight) - element.getBoundingClientRect().y + 20 + 'px';
+        });
     }
 
     showThrowHai(hai, position) {
         console.log('捨てた牌を表示するよ！');
         this.throwHaiTable.children[position].style.opacity = '1';
         this.throwHaiTable.children[position].innerHTML = hai;
+        this.throwHai = this.throwHaiTable.children[position].children[0];
         this.throwHaiTable.children[position].children[0].style.opacity = '1';
         this.showCountDown();
     }
@@ -117,12 +210,17 @@ export class uiManager {
     }
 
     changePoint(position, point) {
-        const targetElement = this.scoreBord[position];
+        const targetElement = this.elements.playerStatus[position].getElementsByClassName('ten')[0];
         targetElement.innerHTML = parseInt(targetElement.innerHTML) + Number(point) + '点';
     }
 
     changePonPoint(point) {
-        this.barkDiv.children[0].innerHTML = 'ポン -' + point;
+        this.elements.ponButton.innerHTML = 'ポン -' + point;
+    }
+
+    getPoint(position) {
+        const targetElement = this.elements.playerStatus[position].getElementsByClassName('ten')[0];
+        return parseInt(targetElement.innerHTML);
     }
 
     hideThrowHai(position) {
@@ -146,29 +244,40 @@ export class uiManager {
             translateSentence += (await functions.translateEnglish(score[1][i].join(' '))) + ' ';
         }
         console.log(score);
-        let utiwake = score[0].toString().match(/[^:]+:\d+/g).join('<br>');
+        let utiwake = score[0]
+            .toString()
+            .match(/[^:]+:\d+/g)
+            .join('<br>');
         const items = utiwake.split(' ');
-  
+
         // 各項目をHTMLに変換
-        const  tokutenutiwake= items.map(item => {
-            // コロンで分割
-            const parts = item.split(':');
-            if (parts.length === 2) {
-            return `<div style="display: flex; justify-content: space-between;">
+        const tokutenutiwake = items
+            .map((item) => {
+                // コロンで分割
+                const parts = item.split(':');
+                if (parts.length === 2) {
+                    return `<div style="display: flex; justify-content: space-between;">
                 <span>${parts[0]}</span>
                 <span>:${parts[1]}</span>
             </div>`;
-            }
-            return item;
-        }).join('');
-
+                }
+                return item;
+            })
+            .join('');
+        console.log(Object.values(this.playermanager.playerMembers)[this.playermanager.getPlayerNumber()].name);
+        console.log(this.playermanager.playerMembers);
         this.resultPage.style.display = 'flex';
-        this.resultPage.getElementsByClassName('result-round')[0].innerHTML = `第${this.flow.roundcnt}ラウンド`
+        this.resultPage.getElementsByClassName('result-round')[0].innerHTML = `第${this.flow.roundcnt}ラウンド`;
         this.resultPage.getElementsByClassName('result-name')[0].innerHTML = playerName;
         this.resultPage.getElementsByClassName('score-text')[0].innerHTML = translateSentence + '<br>' + '<br>';
-        this.resultPage.getElementsByClassName('score-breakdown')[0].innerHTML = tokutenutiwake
+        this.resultPage.getElementsByClassName('score-breakdown')[0].innerHTML = tokutenutiwake;
         this.resultPage.getElementsByClassName('allten')[0].innerHTML = `合計${tokuten}`;
         document.getElementById('resultGrammerDiv').innerHTML = grammerData;
+        if (playerName == Object.values(this.playermanager.playerMembers)[this.playermanager.getPlayerNumber()].name) {
+            document.getElementById('winner').style.display = 'block';
+            this.winner.classList.remove('animation');
+            this.winner.classList.add('animation');
+        }
     }
 
     showTieResult(grammerDatas) {
@@ -193,59 +302,58 @@ export class uiManager {
 
     hideRoundResult() {
         document.getElementById('resultpage').style.display = 'none';
+        document.getElementById('winner').style.display = 'none';
     }
 
     showCountDown() {
-        this.barkDiv.children[2].style.display = 'none';
-        console.log(this.barkDiv);
-        this.barkDiv.style.display = 'block';
+        this.elements.agariButton.style.display = 'none';
+        this.elements.barkDiv.style.display = 'block';
         console.log(this.flow.nowPhaseNumber);
         console.log(this.playermanager.getPlayerNumber());
         if (this.playermanager.getPlayerNumber() == this.flow.nowPhaseNumber) {
             console.log('ya');
-            this.barkDiv.children[0].style.display = 'none';
-            this.barkDiv.children[1].style.display = 'none';
+            this.elements.ponButton.style.display = 'none';
+            this.elements.skipButton.style.display = 'none';
         } else {
-            this.barkDiv.children[0].style.display = 'block';
-            this.barkDiv.children[1].style.display = 'block';
+            if (this.flow.reachHinsi != null) {
+                if (this.flow.reachHinsi != null && this.flow.reachHinsi == this.throwHai.getAttribute('name')) {
+                    this.elements.ponButton.style.display = 'block';
+                } else this.elements.ponButton.style.display = 'none';
+            } else {
+                this.elements.ponButton.style.display = 'block';
+            }
+
+            this.elements.skipButton.style.display = 'block';
         }
         this.count = 2;
-        this.countDownText.innerHTML = this.count + 1;
+        this.elements.countDownText.innerHTML = this.count + 1;
         const countDown = () => {
-            this.countDownText.innerHTML = this.count;
+            this.elements.countDownText.innerHTML = this.count;
             this.count--;
         };
         this.time = setInterval(() => {
             countDown();
             if (this.count < 0) {
                 clearInterval(this.time);
-                this.countDownText.innerHTML = '';
-                this.barkDiv.style.display = 'none';
+                this.elements.countDownText.innerHTML = '';
+                this.elements.barkDiv.style.display = 'none';
             }
         }, 1000);
     }
 
-    hideNowBlink() {
-        this.oldBord.style.animation = '';
-    }
-
-    showBlink(position) {
-        this.oldBord = this.scoreBord[position];
-    }
-
     hideBarkDiv() {
-        this.barkDiv.children[0].style.display = 'none';
-        this.barkDiv.children[1].style.display = 'none';
-        this.countDownText.innerHTML = '';
+        this.elements.ponButton.style.display = 'none';
+        this.elements.skipButton.style.display = 'none';
+        this.elements.countDownText.innerHTML = '';
     }
 
     pon() {
-        this.barkDiv.style.display = 'none';
+        this.elements.barkDiv.style.display = 'none';
         clearTimeout(this.time);
     }
 
     barkDivReset() {
-        this.barkDiv.style.display = 'none';
+        this.elements.barkDiv.style.display = 'none';
         clearTimeout(this.time);
     }
 
@@ -258,17 +366,19 @@ export class uiManager {
             gradeList.push(1);
 
             for (let j = 0; j < this.playermanager.getPlayerCount(); j++) {
-                console.log(Number(this.scoreBord[this.playermanager.phaseToPosition(i)].innerHTML));
+                console.log(this.playermanager.phaseToPosition(i));
+                console.log(this.scoreBord[this.playermanager.phaseToPosition(i)].innerHTML);
+                console.log(parseInt(this.scoreBord[this.playermanager.phaseToPosition(i)].innerHTML));
                 if (
-                    Number(this.scoreBord[this.playermanager.phaseToPosition(i)].innerHTML) <
-                    Number(this.scoreBord[this.playermanager.phaseToPosition(j)].innerHTML)
+                    parseInt(this.scoreBord[this.playermanager.phaseToPosition(i)].innerHTML) <
+                    parseInt(this.scoreBord[this.playermanager.phaseToPosition(j)].innerHTML)
                 ) {
                     gradeList[i]++;
                 }
 
                 if (
-                    Number(this.scoreBord[this.playermanager.phaseToPosition(i)].innerHTML) ==
-                        Number(this.scoreBord[this.playermanager.phaseToPosition(j)].innerHTML) &&
+                    parseInt(this.scoreBord[this.playermanager.phaseToPosition(i)].innerHTML) ==
+                        parseInt(this.scoreBord[this.playermanager.phaseToPosition(j)].innerHTML) &&
                     i > j
                 ) {
                     gradeList[i]++;
@@ -297,10 +407,10 @@ export class uiManager {
         自分のターンになると呼ばれる
     */
     myTurn() {
-        this.barkDiv.style.display = 'block';
-        this.barkDiv.children[0].style.display = 'none';
-        this.barkDiv.children[1].style.display = 'none';
-        this.barkDiv.children[2].style.display = 'block';
+        this.elements.barkDiv.style.display = 'block';
+        this.elements.ponButton.style.display = 'none';
+        this.elements.skipButton.style.display = 'none';
+        this.elements.agariButton.style.display = 'block';
         this.updateRemainingTurns();
     }
 
@@ -358,12 +468,12 @@ export class uiManager {
         round.textContent = `第${nowRound}ラウンド`;
         Object.assign(round.style, {
             position: 'fixed',
-            top: '0',
+            top: '10vw',
             left: '0',
             width: '100vw',
             height: '100vh',
             color: 'black', // 文字色
-            fontSize: '10vw', // フォントサイズは画面幅に応じて可変
+            fontSize: '5vw', // フォントサイズは画面幅に応じて可変
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
@@ -382,9 +492,9 @@ export class uiManager {
         this.start_img.src = '../img/haikeimoji/LETSGRAMMAHJONG2.png';
         Object.assign(this.start_img.style, {
             position: 'fixed',
-            top: '0',
-            left: '0',
-            width: '100vw',
+            top: '10vw',
+            left: '25vw',
+            width: '50vw',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
@@ -403,7 +513,6 @@ export class uiManager {
 
     changePhase() {
         if (this.topleft.style.getPropertyValue('--original-html-ban') == '') {
-            this.showBlink(this.playermanager.phaseToPosition(0));
             let idx2 = this.playermanager.phaseToPosition(0);
             console.log(idx2);
             console.log(this.topleft.style.top);
@@ -431,7 +540,6 @@ export class uiManager {
         } else {
             /*let currentIndex = Number(this.topleft.style.getPropertyValue('--original-html-ban'));
             let idx2 = (currentIndex + 1) % this.playermanager.getPlayerCount();*/
-            this.showBlink(this.playermanager.phaseToPosition(this.flow.nowPhaseNumber));
             let idx2 = this.playermanager.parentNumber;
             this.topleft.style.top = this.yourtops[idx2];
             this.topleft.style.left = this.yourlefts[idx2];
@@ -477,19 +585,6 @@ export class uiManager {
         }
     }
 
-    showTagText() {
-        if (this.hideTimeOut != null) clearTimeout(this.hideTimeOut);
-    }
-
-    hideTagText() {
-        if (this.hideTimeOut != null) clearTimeout(this.hideTimeOut);
-        this.hideTimeOut = null;
-
-        this.hideTimeOut = setTimeout(() => {
-            document.getElementById('tagText').style.opacity = '0';
-        }, 3000);
-    }
-
     showDoras(doras) {
         console.log('showDoras');
         console.log(doras);
@@ -504,5 +599,86 @@ export class uiManager {
     updateRemainingTurns() {
         console.log('Updating remaining turns waaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
         document.getElementById('turns').innerHTML = this.haimanager.hais.length;
+    }
+
+    setCloseEvents() {
+        document.addEventListener('mousedown', (e) => {
+            this.closeRadialMenu();
+
+            if (!e.target.classList.contains('btn-right')) {
+                this.elements.tagText.style.opacity = '0';
+            }
+
+            if (!e.target.closest('.btn-top') && !e.target.closest('.hinsi-sentaku')) {
+                this.elements.hinsiSentaku.style.opacity = '0';
+                this.elements.hinsiSentaku.style.display = 'none';
+            }
+        });
+    }
+
+    showRadialMenu(targetElement) {
+        this.elements.haiMenu.style.transition = '';
+        this.elements.haiMenu.style.opacity = '0';
+        this.elements.haiMenu.style.display = 'none';
+
+        if (targetElement.style.animation == '') this.elements.throwButton.style.display = 'none';
+        else this.elements.throwButton.style.display = 'block';
+
+        // 座標系さん
+        const rect = targetElement.getBoundingClientRect();
+        const x = rect.left + rect.width / 2;
+        const y = rect.top + rect.height / 2;
+
+        console.log(rect.left, rect.top, rect.width, rect.height);
+        console.log(x, y);
+
+        this.elements.haiMenu.style.left = x - 80 + 'px';
+        this.elements.haiMenu.style.top = y - 80 + 'px';
+
+        this.elements.haiMenu.style.display = 'block';
+        requestAnimationFrame(() => {
+            this.elements.haiMenu.style.display = 'block';
+            this.elements.haiMenu.style.transition = 'opacity 0.2s ease-out, transform 0.25s cubic-bezier(0.25, 1.4, 0.5, 1)';
+            requestAnimationFrame(() => {
+                this.elements.haiMenu.style.opacity = '1';
+            });
+        });
+    }
+
+    closeRadialMenu() {
+        this.elements.haiMenu.style.opacity = '0';
+    }
+
+    disableDragAllChildren(rootElement) {
+        rootElement.querySelectorAll('*').forEach((el) => {
+            el.setAttribute('draggable', 'false');
+            el.style.animation = '';
+        });
+    }
+
+    showReachHai(position, leftHai, rightHai) {
+        let temporaryhai = document.createElement('div');
+        temporaryhai.classList.add('border-div');
+        temporaryhai.style.background = 'white';
+
+        if (leftHai == null) leftHai = '';
+        if (rightHai == null) rightHai = '';
+        switch (position) {
+            case 0:
+                this.elements.topTehuda.innerHTML = leftHai + temporaryhai.outerHTML + rightHai;
+                break;
+            case 1:
+                this.elements.rightTehuda.innerHTML = leftHai + temporaryhai.outerHTML + rightHai;
+                break;
+            case 3:
+                this.elements.leftTehuda.innerHTML = leftHai + temporaryhai.outerHTML + rightHai;
+                break;
+        }
+    }
+
+    resetTehuda() {
+        this.elements.topTehuda.innerHTML = '';
+        this.elements.rightTehuda.innerHTML = '';
+        this.elements.leftTehuda.innerHTML = '';
     }
 }

@@ -6,6 +6,7 @@ import { routemanager } from '../../app.js';
 import { haiManager } from './haiManager.js';
 import userColorDB from '../../db/repositories/userColorRepository.js';
 import { sendRedirect } from '../../utils/funtions.js';
+import { checkGrammer } from './grammercheck.js';
 
 export class playManager {
     /**
@@ -72,6 +73,19 @@ export class playManager {
     }
 
     _setup() {
+        // テスト
+        this.wss.onMessage('test', async (ws, data) => {
+            const roomId = data.roomId;
+            const result = await checkGrammer(data.sentence);
+            const sendData = {
+                type: 'test',
+                payload: {
+                    result: result,
+                },
+            };
+            this.sendToClients(sendData, roomId);
+        });
+
         this.wss.onMessage('entryPlay', async (ws, data) => {
             const roomId = data.roomId;
             const ratio = await roomsDB.getRow('ratio', 'room_id', roomId);
@@ -196,9 +210,19 @@ export class playManager {
             const roomId = data.roomId;
             const sendData = {
                 type: 'pon',
-                payload: { ponPlayerNumber: data.playerNumber, decreasePoint: data.decreasePoint },
+                payload: { ponPlayerNumber: data.playerNumber, decreasePoint: data.decreasePoint, ponOrLon: data.ponOrLon },
             };
             this.playclientsmanager.playC[roomId].roomData.skip = 0;
+            this.sendToClients(sendData, roomId);
+        });
+
+        // リーチ
+        this.wss.onMessage('reach', async (ws, data) => {
+            const roomId = data.roomId;
+            const sendData = {
+                type: 'reach',
+                payload: { hai: data.hai, leftHai: data.leftHai, rightHai: data.rightHai },
+            };
             this.sendToClients(sendData, roomId);
         });
 
@@ -236,7 +260,6 @@ export class playManager {
         });
 
         this.wss.onMessage('skipTurn', async (ws, data) => {
-            console.log(`受け取ったで${data}`);
             const roomId = data.roomId;
             const userId = data.userId;
             const playercount = data.playercount;
@@ -248,9 +271,7 @@ export class playManager {
                         type: 'tie',
                         payload: { grammerDatas: this.playclientsmanager.playClients[roomId].roomData.tie },
                     };
-                    console.log(`送るでtieに${sendData}`);
                     this.sendToClients(sendData, roomId);
-                    console.log('配列をリセットするで');
                     this.playclientsmanager.playClients[roomId].roomData.finishUser = [];
                 }
             }
@@ -259,7 +280,6 @@ export class playManager {
                     type: 'nextPhase',
                     payload: {},
                 };
-                console.log(`送るでnextPhaseに${sendData}`);
                 this.sendToClients(sendData, roomId);
             }
         });

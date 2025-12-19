@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
 
-const DEFAULT_PATH = path.join(__dirname,'wordData.js');
+const DEFAULT_PATH = path.join(__dirname,'wordData_neo.js');
 
 function resolvePath(arg) {
   if (!arg) return DEFAULT_PATH;

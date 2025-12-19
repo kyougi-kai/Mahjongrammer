@@ -1,6 +1,5 @@
 import { tango } from './wordData.js';
-// import { execFile } from 'child_process';
-let execFile = null;
+import { execFile } from 'child_process';
 
 const errorTemplete = {
     part: '',
@@ -24,11 +23,12 @@ function analyzeSentence(sentence) {
     });
 }
 
-export function checkGrammer(targetSentence) {
+export async function checkGrammer(targetSentence) {
     console.log('checkGrammer開始', targetSentence);
-    (async () => {
+    const result = await (async () => {
         const result = await analyzeSentence(targetSentence);
         console.log(result);
+        return result;
     })();
     const targetArray = result;
     targetArray.sentence = targetArray.sentence.toString();
