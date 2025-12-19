@@ -126,15 +126,14 @@ GRAMMAR_DICT = {
   "apostrophes": "アポストロフィ",
 }
 
-def apply_grammar_dict(text):
+def apply_grammar_dict(text: str) -> str:
     for en, ja in GRAMMAR_DICT.items():
-        pattern = r"\b" + re.escape(en) + r"\b"
-        text = re.sub(pattern, ja, text, flags=re.IGNORECASE)
+        text = text.replace(en, ja)
     return text
 
-def translate_text(text):
-    text = apply_grammar_dict(text)
-    return translate.translate(text, "en", "ja")
+def translate_text(text: str) -> str:
+    ja = translate.translate(text, "en", "ja")
+    return apply_grammar_dict(ja)
 
 parser = etree.XMLParser(remove_blank_text=False)
 tree = etree.parse(str(IN_XML), parser)
@@ -143,12 +142,14 @@ root = tree.getroot()
 count = 0
 
 for msg in root.findall(".//message"):
-    # タグ直下テキスト
+    # ① <message>直下のテキスト
     if msg.text and msg.text.strip():
         msg.text = translate_text(msg.text)
 
-    # 子要素の tail だけ翻訳
+    # ② 子要素（<suggestion>など）
     for child in msg:
+        # child.text は翻訳しない！
+        # child.tail は翻訳する
         if child.tail and child.tail.strip():
             child.tail = translate_text(child.tail)
 
