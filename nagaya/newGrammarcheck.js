@@ -1,6 +1,6 @@
 const API_SERVER_URL = 'http://localhost:11434/api/generate';
 
-const testPassage = 'I can is eaten by you.';
+const testPassage = '日本の英語教師として、I can is eaten by you.を日本語に訳してください。';
 
 async function grammarCheck(testPassage) {
     const response = await fetch(API_SERVER_URL, {
@@ -9,17 +9,14 @@ async function grammarCheck(testPassage) {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            model: 'grammarCheck:latest',
-            prompt: `${testPassage}`,
-            format: 'json',
+            model: 'qwen3:14b',
+            prompt: testPassage,
             stream: false,
         }),
     });
 
-    const data = await response.json();
-    console.log(data);
-    const parsed = JSON.parse(data.response);
-    console.log(parsed);
+    const data = response;
+    console.log('data:', data);
 }
 
 grammarCheck(testPassage);

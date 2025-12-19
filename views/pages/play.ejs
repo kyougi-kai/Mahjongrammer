@@ -1,165 +1,137 @@
 <!DOCTYPE html>
 <html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>グラ麻雀 ｜ プレイ</title>
+        <link rel="icon" href="/img/haikeimoji/gu.png" />
+        <link rel="stylesheet" href="/css/play/play.css" />
+        <link rel="stylesheet" href="/css/play/playResult.css" />
+        <link rel="stylesheet" href="/css/play/part.css" />
+        <meta name="robots" content="noindex" />
+        <script src="/js/pages/play/gameManager.js" type="module" defer></script>
+    </head>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>グラ麻雀 ｜ プレイ</title>
-    <link rel="icon" href="/img/haikeimoji/gu.png" />
-    <link rel="stylesheet" href="/css/play/play.css" />
-    <link rel="stylesheet" href="/css/play/playResult.css" />
-    <link rel="stylesheet" href="/css/play/part.css" />
-    <meta name="robots" content="noindex">
-    <script src="/js/pages/play/gameManager.js" type="module" defer></script>
-</head>
-
-<body>
-    <div style="display: none;" id="userIdText">
-        <%= userId %>
-    </div>
-    <div class="background-div" id="backgroundDiv" style="opacity: 0;"></div>
-    <div class="main-content">
-        <div class="bord bord-left">
-        </div>
-        <div class="main-bord-background">
-            <!-- 名前表示エリア -->
-            <div class="top-content player-status">
-                <p class="name"></p>
-                <p class="top-content-ten ten">3000点</p>
-            </div>
-            <div class="right-content player-status">
-                <p class="name"></p>
-                <p class="right-content-ten ten">3000点</p>
-            </div>
-            <div class="bottom-content player-status">
-                <p class="name" id="usernameText">
-                    <%= username %>
-                </p>
-                <p class="bottom-content-ten ten">3000点</p>
-            </div>
-            <div class="left-content player-status">
-                <p class="name"></p>
-                <p class="left-content-ten ten">3000点</p>
-            </div>
-
-            <div class="main-bord">
-                <div class="above-bord">
-                    <div class="throw-hai-table">
-                        <div class="throw-hai top-content-hai" style="opacity: 0;">
-                            word
-                        </div>
-                        <div class="throw-hai right-content-hai" style="opacity: 0;">
-                            word
-                        </div>
-                        <div class="throw-hai bottom-content-hai" style="opacity: 0;">
-                            word
-                        </div>
-                        <div class="throw-hai left-content-hai" style="opacity: 0;">
-                            word
-                        </div>
-                    </div>
-                    <div class="score-bord">
-                        <p class="turns" id="turns" style="text-align: center;"></p>
-                        <p class="oyaban" id="oyaban"></p>
-                        <p></p>
-                    </div>
-                    <div class="bark-div" id="barkDiv" style="display: none;">
-                        <button name="pon" class="pon-button">ポン -100</button>
-                        <button name="skip" class="skip-button">スキップ</button>
-                        <button name="agari" class="agari-button" id="finishButton">あがり</button>
-                        <h2 id="countDown"></h2>
-                    </div>
-
-                    <div class="top-tehuda">
-                    </div>
-                    <div class="right-tehuda">
-                    </div>
-                    <div class="left-tehuda">
-                    </div>
+    <body>
+        <div style="display: none" id="userIdText"><%= userId %></div>
+        <div class="background-div" id="backgroundDiv" style="opacity: 0"></div>
+        <div class="main-content">
+            <div class="bord bord-left"></div>
+            <div class="main-bord-background">
+                <!-- 名前表示エリア -->
+                <div class="top-content player-status">
+                    <p class="name"></p>
+                    <p class="top-content-ten ten">3000点</p>
+                </div>
+                <div class="right-content player-status">
+                    <p class="name"></p>
+                    <p class="right-content-ten ten">3000点</p>
+                </div>
+                <div class="bottom-content player-status">
+                    <p class="name" id="usernameText"><%= username %></p>
+                    <p class="bottom-content-ten ten">3000点</p>
+                </div>
+                <div class="left-content player-status">
+                    <p class="name"></p>
+                    <p class="left-content-ten ten">3000点</p>
                 </div>
 
-                <div class="footer">
-                    <!-- <div class="sentence-pattern" id="sentencePattern">
+                <div class="main-bord">
+                    <div class="above-bord">
+                        <div class="throw-hai-table">
+                            <div class="throw-hai top-content-hai" style="opacity: 0">word</div>
+                            <div class="throw-hai right-content-hai" style="opacity: 0">word</div>
+                            <div class="throw-hai bottom-content-hai" style="opacity: 0">word</div>
+                            <div class="throw-hai left-content-hai" style="opacity: 0">word</div>
+                        </div>
+                        <div class="score-bord">
+                            <p class="turns" id="turns" style="text-align: center"></p>
+                            <p class="oyaban" id="oyaban"></p>
+                            <p></p>
+                        </div>
+                        <div class="bark-div" id="barkDiv" style="display: none">
+                            <button name="pon" class="pon-button">ポン -100</button>
+                            <button name="skip" class="skip-button">スキップ</button>
+                            <button name="agari" class="agari-button" id="finishButton">あがり</button>
+                            <h2 id="countDown"></h2>
+                        </div>
+
+                        <div class="top-tehuda"></div>
+                        <div class="right-tehuda"></div>
+                        <div class="left-tehuda"></div>
+                    </div>
+
+                    <div class="footer">
+                        <!-- <div class="sentence-pattern" id="sentencePattern">
                         <div>S</div>
                         <div>V</div>
                         <div>C</div>
                         <div>O</div>
                         <div style="background: rgb(255, 145, 77);">M</div>
                     </div> -->
-                    <div style="width:100%;overflow:hidden;">
-                        <div class="hai-table" id="wordUp" style="background: rgb(217, 217, 217)"></div>
-                        <div class="hai-table" id="wordDown" style="background-image: url(/img/tyosakukenntaisaku.png)">
+                        <div style="width: 100%; overflow: hidden">
+                            <div class="hai-table" id="wordUp" style="background: rgb(217, 217, 217)"></div>
+                            <div class="hai-table" id="wordDown" style="background-image: url(/img/tyosakukenntaisaku.png)"></div>
                         </div>
                     </div>
-                </div>
-                <div class="winner animation" style="display: none;" id="winner">WINNER</div>
-                <div style="display: none" class="result-page" id="resultpage">
-                    <div style="margin: 30px;width: 100%;display: flex;justify-content: center;position: relative;">
-                        <div class="result-round"></div>
-                        <div class="result-name">リザルト</div>
+                    <div class="winner animation" style="display: none" id="winner">WINNER</div>
+                    <div style="display: none" class="result-page" id="resultpage">
+                        <div style="margin: 30px; width: 100%; display: flex; justify-content: center; position: relative">
+                            <div class="result-round"></div>
+                            <div class="result-name">リザルト</div>
+                        </div>
+                        <div class="result-grammer-div" id="resultGrammerDiv"></div>
+                        <!-- <div class="result-cnt" id="resultCnt"></div> -->
+                        <div class="score-text" style="color: #fff; font-size: 1.5em"></div>
+                        <div class="score-breakdown" style="color: #fff; font-size: 1.5em"></div>
+                        <div class="allten" style="color: #ff4d4d; font-size: 3em"></div>
+                        <div id="resetButton" style="display: flex; width: 100%; justify-content: right">
+                            <button class="result-button" id="resultbutton"><img src="../../img/result/ボタン.png" /></button>
+                        </div>
                     </div>
-                    <div class="result-grammer-div" id="resultGrammerDiv"></div>
-                    <!-- <div class="result-cnt" id="resultCnt"></div> -->
-                    <div class="score-text" style="color: #fff;font-size: 1.5em;"></div>
-                    <div class="score-breakdown" style="color: #fff;font-size: 1.5em;"></div>
-                    <div class="allten" style="color: #ff4d4d;font-size: 3em;"></div>
-                    <div id="resetButton" style="display: flex; width: 100%; justify-content: right">
-                        <button class="result-button" id="resultbutton"><img src="../../img/result/ボタン.png" /></button>
+                    <div class="complete-div" id="completeDiv" style="opacity: 0; z-index: -1; pointer-events: none">
+                        <h2></h2>
+                        <div class="complete-table"></div>
                     </div>
-                </div>
-                <div class="complete-div" id="completeDiv" style="opacity: 0;z-index:-1;pointer-events:none;">
-                    <h2></h2>
-                    <div class="complete-table">
-                    </div>
-                </div>
 
-                <button class="close-btn" id="closeBtn" style="display: none;">締め切る</button>
+                    <button class="close-btn" id="closeBtn" style="display: none">締め切る</button>
 
-                <div class="hinsi-sentaku" style="display: none;opacity:0;">
-                    <div class="hinsi-title">
-                        品詞を選択してください -1000ポイント
-                    </div>
-                    <div class="hinsi-body">
-                        <div name="名詞" class="border-div" style="background-image: url(/img/partOfSpeech/名詞1.png);">
-                        </div>
-                        <div name="動詞" class="border-div" style="background-image: url(/img/partOfSpeech/動詞.png);">
-                        </div>
-                        <div name="形容詞" class="border-div" style="background-image: url(/img/partOfSpeech/形容詞.png);">
-                        </div>
-                        <div name="冠詞" class="border-div" style="background-image: url(/img/partOfSpeech/冠詞.png);">
-                        </div>
-                        <div name="助動詞" class="border-div" style="background-image: url(/img/partOfSpeech/助動詞.png);">
-                        </div>
-                        <div name="前置詞" class="border-div" style="background-image: url(/img/partOfSpeech/前置詞.png);">
-                        </div>
-                        <div name="代名詞" class="border-div" style="background-image: url(/img/partOfSpeech/代名詞.png);">
+                    <div class="hinsi-sentaku" style="display: none; opacity: 0">
+                        <div class="hinsi-title">品詞を選択してください -1000ポイント</div>
+                        <div class="hinsi-body">
+                            <div name="名詞" class="border-div" style="background-image: url(/img/partOfSpeech/名詞1.png)"></div>
+                            <div name="動詞" class="border-div" style="background-image: url(/img/partOfSpeech/動詞.png)"></div>
+                            <div name="形容詞" class="border-div" style="background-image: url(/img/partOfSpeech/形容詞.png)"></div>
+                            <div name="冠詞" class="border-div" style="background-image: url(/img/partOfSpeech/冠詞.png)"></div>
+                            <div name="助動詞" class="border-div" style="background-image: url(/img/partOfSpeech/助動詞.png)"></div>
+                            <div name="前置詞" class="border-div" style="background-image: url(/img/partOfSpeech/前置詞.png)"></div>
+                            <div name="代名詞" class="border-div" style="background-image: url(/img/partOfSpeech/代名詞.png)"></div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="bord bord-right">
-            <button onclick="window.location='/home'" style="
-                            position: relative;
-                            top: 10px;
-                            right: 10px;
-                            background-color: #ff4d4d;
-                            color: white;
-                            border: none;
-                            padding: 10px 20px;
-                            border-radius: 5px;
-                            font-size: 16px;
-                            cursor: pointer;
-                            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-                          ">
-                退出
-            </button>
-            <div class="dora-badge" role="status" aria-label="ドラ: 動詞">
+            <div class="bord bord-right">
+                <button
+                    onclick="window.location='/home'"
+                    style="
+                        position: relative;
+                        top: 10px;
+                        right: 10px;
+                        background-color: #ff4d4d;
+                        color: white;
+                        border: none;
+                        padding: 10px 20px;
+                        border-radius: 5px;
+                        font-size: 16px;
+                        cursor: pointer;
+                        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+                    ">
+                    退出
+                </button>
+                <div class="dora-badge" role="status" aria-label="ドラ: 動詞"></div>
 
-            </div>
-
-            <!-- 単語意味表示パネル -->
-            <!--   
+                <!-- 単語意味表示パネル -->
+                <!--   
             <div class="word-meaning-panel">
                 <div class="word-title">launch</div>
                 <div class="pos-tag">動詞（他動詞）</div>
@@ -168,50 +140,49 @@
                     宇宙モチーフのロケット牌と相性が良い単語。
                 </div>
             </div>
-            -->
-        </div>
+            --></div>
 
-        <div class="playresult-page" id="playResult" style="opacity: 0;pointer-events: none;">
-            <h2 class="result-main">試合結果</h2>
-            <div id="playResultFinish" style="display: flex; width: 100%; justify-content: right">
-                <button id="playFinish" class="result-button"><img src="../../img/result/終了ボタン.png" /></button>
-            </div>
-        </div>
-    </div>
-
-    <div id="tagText" class="balloon" style="opacity: 0;top:0;">
-    </div>
-
-    <div id="cheatDiv" style="
-                                z-index: 4;
-                                display: none;
-                                position: absolute;
-                                padding: 20px;
-                                top: 50%;
-                                left: 50%;
-                                transform: translateX(-50%) translateY(-50%);
-                                background: white;
-                            ">
-        <div style="display: flex">
-            <div style="padding-right: 20px">
-                <label for="hinsiDrop">品詞</label>
-                <select name="hinsis" id="hinsiDrop"></select>
-            </div>
-            <div>
-                <label for="tagDrop">タグ</label>
-                <select name="tags" id="tagDrop"></select>
+            <div class="playresult-page" id="playResult" style="opacity: 0; pointer-events: none">
+                <h2 class="result-main">試合結果</h2>
+                <div id="playResultFinish" style="display: flex; width: 100%; justify-content: right">
+                    <button id="playFinish" class="result-button"><img src="../../img/result/終了ボタン.png" /></button>
+                </div>
             </div>
         </div>
 
-        <button id="pickButton">決定</button>
-    </div>
+        <div id="tagText" class="balloon" style="opacity: 0"></div>
 
-    <div id="radialMenu" class="radial-menu" style="display:none;">
-        <button name="reachRadialButton" class="btn-top" data-label="リーチ">🔔</button>
-        <button name="meanRadialButton" class="btn-right" data-label="意味">🔍</button>
-        <button name="conjugationRadialButton" class="btn-bottom" data-label="活用形">🔄</button>
-        <button name="throwRadialButton" class="btn-left" data-label="捨てる">🚮</button>
-    </div>
-</body>
+        <div
+            id="cheatDiv"
+            style="
+                z-index: 4;
+                display: none;
+                position: absolute;
+                padding: 20px;
+                top: 50%;
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+                background: white;
+            ">
+            <div style="display: flex">
+                <div style="padding-right: 20px">
+                    <label for="hinsiDrop">品詞</label>
+                    <select name="hinsis" id="hinsiDrop"></select>
+                </div>
+                <div>
+                    <label for="tagDrop">タグ</label>
+                    <select name="tags" id="tagDrop"></select>
+                </div>
+            </div>
 
+            <button id="pickButton">決定</button>
+        </div>
+
+        <div id="radialMenu" class="radial-menu" style="display: none">
+            <button name="reachRadialButton" class="btn-top" data-label="リーチ">🔔</button>
+            <button name="meanRadialButton" class="btn-right" data-label="意味">🔍</button>
+            <button name="conjugationRadialButton" class="btn-bottom" data-label="活用形">🔄</button>
+            <button name="throwRadialButton" class="btn-left" data-label="捨てる">🚮</button>
+        </div>
+    </body>
 </html>
