@@ -1,6 +1,5 @@
-import { tango } from './wordData.js';
-// import { execFile } from 'child_process';
-let execFile = null;
+import { tango } from '/js/utils/wordData.js';
+import { execFile } from 'child_process';
 
 const errorTemplete = {
     part: '',

@@ -19,6 +19,11 @@ export class toGoOut {
         this.checkList = Object.keys(this.sentenceList);
 
         this.table = document.getElementById('wordUp');
+        document.addEventListener('keydown', (e) => {
+            if (e.key == 'p') {
+                tumoreruka();
+            }
+        });
     }
 
     tumoreruka() {

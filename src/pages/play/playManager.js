@@ -6,7 +6,6 @@ import { routemanager } from '../../app.js';
 import { haiManager } from './haiManager.js';
 import userColorDB from '../../db/repositories/userColorRepository.js';
 import { sendRedirect } from '../../utils/funtions.js';
-import { checkGrammer } from './grammercheck.js';
 
 export class playManager {
     /**
@@ -73,18 +72,6 @@ export class playManager {
     }
 
     _setup() {
-        // テスト
-        this.wss.onMessage('test', async (ws, data) => {
-            const roomId = data.roomId;
-            const sendData = {
-                type: 'test',
-                payload: {
-                    result: checkGrammer(data.sentence),
-                },
-            };
-            this.sendToClients(sendData, roomId);
-        });
-
         this.wss.onMessage('entryPlay', async (ws, data) => {
             const roomId = data.roomId;
             const ratio = await roomsDB.getRow('ratio', 'room_id', roomId);
@@ -280,6 +267,7 @@ export class playManager {
                 };
                 this.sendToClients(sendData, roomId);
             }
+            
         });
 
         this.wss.onMessage('tumo', async (ws, data) => {
