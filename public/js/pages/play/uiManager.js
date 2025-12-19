@@ -37,6 +37,10 @@ export class uiManager {
         this.topleft = document.getElementById('oyaban');
         this.tops = ['4%', '81%', '81%', '4%'];
         this.lefts = ['78%', '78%', '2%', '2%'];
+        this.redtops = ['5%','29%','5%','29%'];
+        this.redlefts = ['28%','77%','82%','5%'];
+        this.redwidths = ['100px','37px','100px','37px'];
+        this.redheights= ['37px','100px','37px','100px'];
 
         this.wordUp = document.getElementById('wordUp');
         this.wordDown = document.getElementById('wordDown');
@@ -520,6 +524,10 @@ export class uiManager {
             let k = 0;
             this.yourtops = [];
             this.yourlefts = [];
+            this.yourredtops = [];
+            this.yourredlefts = [];
+            this.yourredwidht = [];
+            this.yourredheight = [];
             for (i; i < j; i++) {
                 this.yourtops[k] = this.tops[i % this.tops.length];
                 this.yourlefts[k] = this.lefts[i % this.lefts.length];

@@ -628,6 +628,17 @@ p {
     margin: 9px 3px 0 0;
 }
 
+.redbox-top {
+    position: absolute;
+    background: red;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 4px;
+    width: 100px;
+    height: 35px;
+    top: 12px;
+    left: 70px;
+}
 @keyframes color-blink {
     0%,
     100% {
