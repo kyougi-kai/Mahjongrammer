@@ -376,7 +376,6 @@ export class flow {
             if (count == 7) {
                 if (this.playermanager.isParent()) {
                     this.haimanager.drawHai();
-                    // this.scorebords[2].classList.add('color-blink');
                 }
                 console.log(this.haimanager.hais);
                 this.uimanager.myTurn();
@@ -464,12 +463,6 @@ export class flow {
             }
             this.youCanThrow = true;
             this.uimanager.myTurn();
-
-            /*this.scorebords[3].style.opacity = 1;
-            this.scorebords[3].style.pointerEvents = 'all';*/
-        } else {
-            /*this.scorebords[3].style.opacity = 0;
-            this.scorebords[3].style.pointerEvents = 'none';*/
         }
         this.uimanager.changePhase();
     }
