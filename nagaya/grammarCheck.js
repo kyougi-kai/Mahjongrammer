@@ -3,7 +3,7 @@ import { tango } from '../public/js/utils/wordData.js';
 const LT_API_URL = 'http://localhost:8081/v2/check';
 const SPACY_API_URL = 'http://localhost:8080/parse';
 
-const testPassage = 'You have to be gaved the piano by me.';
+const testPassage = 'You have never given the piano me.';
 
 async function checkGrammar(sentence) {
     const doc = await tokenize(sentence);
@@ -87,7 +87,7 @@ function extractMainVerbUnit(doc) {
         markers: [],
         markerIndices: [],
 
-        span: { start: root.index, end: root.index },
+        span: { start: root.i, end: root.i },
     };
 
     for (const child of root.children) {

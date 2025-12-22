@@ -128,6 +128,8 @@ export class toGoOut {
             payload: {
                 roomId: this.playermanager.roomId,
                 sentence: sentence,
+                grammerData: this.uimanager.wordUp.innerHTML,
+                playerNumber: this.playermanager.getPlayerNumber(),
             },
         };
         this.wss.send(sendData);
@@ -135,17 +137,7 @@ export class toGoOut {
         /* つもの処理
 
         this.finishbutton.style.display = 'none';
-                let tumoData = {
-                    type: 'tumo',
-                    payload: {
-                        roomId: this.playermanager.roomId,
-                        grammerData: this.uimanager.wordUp.innerHTML,
-                        playerNumber: this.playermanager.getPlayerNumber(),
-                        score: score,
-                    },
-                };
-
-                this.wss.send(tumoData);
+                
 
         */
 
