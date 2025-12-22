@@ -86,6 +86,36 @@ export class playManager {
             this.sendToClients(sendData, roomId);
         });
 
+        // 文法チェック
+        this.wss.onMessage('grammerCheck', async (ws, data) => {
+            const roomId = data.roomId;
+            let result = { success: false, errors: {} };
+            try {
+                result = await checkGrammer(data.sentence);
+            } catch (e) {
+                result.errors = '文法がめちゃくちゃ';
+            }
+
+            if (result.success == false) {
+                console.log('文法解析失敗');
+                const sendData = {
+                    type: 'grammerError',
+                    payload: {
+                        result: result,
+                    },
+                };
+                this.sendToClients(sendData, roomId);
+            } else {
+                const sendData = {
+                    type: 'tumo',
+                    payload: {
+                        result: result,
+                    },
+                };
+                this.sendToClients(sendData, roomId);
+            }
+        });
+
         this.wss.onMessage('entryPlay', async (ws, data) => {
             const roomId = data.roomId;
             const ratio = await roomsDB.getRow('ratio', 'room_id', roomId);

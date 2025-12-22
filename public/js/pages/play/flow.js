@@ -151,21 +151,7 @@ export class flow {
     _setupWebsocket() {
         // 上がれるようにする
         document.getElementById('finishButton').addEventListener('click', (e) => {
-            let score = this.togoout.tumo();
-            if (score != 0) {
-                this.finishbutton.style.display = 'none';
-                let tumoData = {
-                    type: 'tumo',
-                    payload: {
-                        roomId: this.playermanager.roomId,
-                        grammerData: this.uimanager.wordUp.innerHTML,
-                        playerNumber: this.playermanager.getPlayerNumber(),
-                        score: score,
-                    },
-                };
-
-                this.wss.send(tumoData);
-            }
+            this.togoout.tumo();
         });
 
         document.addEventListener('keydown', (e) => {

@@ -1,8 +1,8 @@
-import { checkGrammer } from '/js/utils/grammercheck.js';
-
 export class toGoOut {
-    constructor(uimanager) {
+    constructor(uimanager, connectionmanager, playermanager) {
         this.uimanager = uimanager;
+        this.wss = connectionmanager;
+        this.playermanager = playermanager;
 
         this.sentenceList = {
             sv: 1,
@@ -19,6 +19,12 @@ export class toGoOut {
         this.checkList = Object.keys(this.sentenceList);
 
         this.table = document.getElementById('wordUp');
+
+        this.wss.onMessage('grammerError', (data) => {
+            if (data.result.errors === '文法がめちゃくちゃ') this.uimanager.errorbox('文法がめちゃくちゃです。やり直してください。');
+            else this.uimanager.errorbox([...new Set(Object.values(data.result.errors).map((error) => error.reason))]);
+            // this.uimanager.errorbox(data.payload.errors);
+        });
     }
 
     tumoreruka() {
@@ -104,8 +110,46 @@ export class toGoOut {
         return grammerData;
     }
 
+    getGrammerDataNew() {
+        let resultSentence = '';
+        Array.from(this.uimanager.wordUp.children).forEach((value, index) => {
+            console.log(value);
+            console.log(value.children[0].textContent.trim());
+            resultSentence += value.children[0].textContent.trim() + ' ';
+        });
+        console.log(resultSentence);
+        return resultSentence;
+    }
+
     tumo() {
-        const grammerDatas = this.getGrammerData();
+        const sentence = this.getGrammerDataNew();
+        const sendData = {
+            type: 'grammerCheck',
+            payload: {
+                roomId: this.playermanager.roomId,
+                sentence: sentence,
+            },
+        };
+        this.wss.send(sendData);
+
+        /* つもの処理
+
+        this.finishbutton.style.display = 'none';
+                let tumoData = {
+                    type: 'tumo',
+                    payload: {
+                        roomId: this.playermanager.roomId,
+                        grammerData: this.uimanager.wordUp.innerHTML,
+                        playerNumber: this.playermanager.getPlayerNumber(),
+                        score: score,
+                    },
+                };
+
+                this.wss.send(tumoData);
+
+        */
+
+        /*
         if (grammerDatas == false) {
             // 今後の処理
             return 0;
@@ -146,6 +190,8 @@ export class toGoOut {
             if (errorFlag || point < 1000) result = [];
             console.log(result);
             return result;
+            
         }
+        */
     }
 }
