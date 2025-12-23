@@ -470,7 +470,7 @@ export class uiManager {
         round.textContent = `第${nowRound}ラウンド`;
         Object.assign(round.style, {
             position: 'fixed',
-            top: '10vw',
+            top: '7vw',
             left: '0',
             width: '100vw',
             height: '100vh',
