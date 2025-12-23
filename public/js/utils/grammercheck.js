@@ -31,7 +31,7 @@ export function checkGrammer(targetSentence) {
         console.log(result);
     })();
     const targetArray = result;
-    targetArray.sentence = targetArray.sentence.toString();
+    if (targetArray.sentence !== null) targetArray.sentence = targetArray.sentence.toString();
 
     /**
      * @typedef {Object} gcr

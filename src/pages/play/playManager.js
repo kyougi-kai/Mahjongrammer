@@ -86,6 +86,47 @@ export class playManager {
             this.sendToClients(sendData, roomId);
         });
 
+        // 文法チェック
+        this.wss.onMessage('grammerCheck', async (ws, data) => {
+            const roomId = data.roomId;
+            let result = { success: false, errors: {} };
+            try {
+                result = await checkGrammer(data.sentence);
+            } catch (e) {
+                result.errors = '文法がめちゃくちゃ';
+            }
+
+            if (result.success == false) {
+                console.log('文法解析失敗');
+                const sendData = {
+                    type: 'grammerError',
+                    payload: {
+                        result: result,
+                    },
+                };
+                this.sendToClients(sendData, roomId);
+            } else {
+                let resultData = [[], []];
+                const pointDetails = Object.values(result.points)
+                    .map((point) => `${point.pointName}:${point.pointValue}`)
+                    .join(' ');
+                resultData[0].push(pointDetails);
+                resultData[1] = data.sentence;
+
+                console.log(resultData);
+
+                const sendData = {
+                    type: 'tumo',
+                    payload: {
+                        grammerData: data.grammerData,
+                        tumoPlayerNumber: data.playerNumber,
+                        score: resultData,
+                    },
+                };
+                this.sendToClients(sendData, roomId);
+            }
+        });
+
         this.wss.onMessage('entryPlay', async (ws, data) => {
             const roomId = data.roomId;
             const ratio = await roomsDB.getRow('ratio', 'room_id', roomId);
@@ -286,6 +327,7 @@ export class playManager {
 
         this.wss.onMessage('tumo', async (ws, data) => {
             const roomId = data.roomId;
+            console.log('tumo受信', data.grammerData);
             const sendData = {
                 type: 'tumo',
                 payload: {

@@ -44,15 +44,12 @@ export class flow {
 
             if (e.key == 'z') {
                 this.uimanager.wordUp.innerHTML =
-                    '<div class="sentence-div" draggable="true"><div class="division-div division-s" draggable="true" style="opacity: 1;">\
-                    <div class="border-div" draggable="true" style="animation: 2s ease-in-out 0s infinite alternate none running hai3; background-image: url(&quot;/img/partOfSpeech/冠詞.png&quot;); background-repeat: no-repeat; opacity: 1;">\
-                    <p>a</p></div><div class="border-div" draggable="true" style="animation: 2s ease-in-out 0s infinite alternate none running hai3; background-image: url(&quot;/img/partOfSpeech/名詞2.png&quot;); background-repeat: no-repeat; opacity: 1;">\
-                    <p>cat</p></div></div><div class="division-div division-v" draggable="true" style="opacity: 1;">\
-                    <div class="border-div" draggable="true" style="animation: 2s ease-in-out 0s infinite alternate none running hai3; background-image: url(&quot;/img/partOfSpeech/助動詞.png&quot;); background-repeat: no-repeat; opacity: 1;">\
-                    <p>can</p></div><div class="border-div" draggable="true" style="animation: 2s ease-in-out 0s infinite alternate none running hai3; background-image: url(&quot;/img/partOfSpeech/動詞.png&quot;); background-repeat: no-repeat; opacity: 1;">\
-                    <p>play</p></div></div><div class="division-div division-o" draggable="true" style="opacity: 1;">\
-                    <div class="border-div" draggable="true" style="animation: 2s ease-in-out 0s infinite alternate none running hai1; background-image: url(&quot;/img/partOfSpeech/冠詞.png&quot;); background-repeat: no-repeat; opacity: 1;">\
-                    <p>the</p></div><div class="border-div" draggable="true" style="animation: 2s ease-in-out 0s infinite alternate none running hai3; background-image: url(&quot;/img/partOfSpeech/名詞2.png&quot;); background-repeat: no-repeat; opacity: 1;"><p>game</p></div></div></div>';
+                    '<div class="border-div" draggable="true" style="animation: 2s ease-in-out 0s infinite alternate none running hai3; background-image: url(&quot;/img/partOfSpeech/冠詞.png&quot;); background-repeat: no-repeat; opacity: 1;"><p>a</p></div>\
+                    <div class="border-div" draggable="true" style="animation: 2s ease-in-out 0s infinite alternate none running hai3; background-image: url(&quot;/img/partOfSpeech/名詞2.png&quot;); background-repeat: no-repeat; opacity: 1;"><p>cat</p></div>\
+                    <div class="border-div" draggable="true" style="animation: 2s ease-in-out 0s infinite alternate none running hai3; background-image: url(&quot;/img/partOfSpeech/助動詞.png&quot;); background-repeat: no-repeat; opacity: 1;"><p>can</p></div>\
+                    <div class="border-div" draggable="true" style="animation: 2s ease-in-out 0s infinite alternate none running hai3; background-image: url(&quot;/img/partOfSpeech/動詞.png&quot;); background-repeat: no-repeat; opacity: 1;"><p>play</p></div>\
+                    <div class="border-div" draggable="true" style="animation: 2s ease-in-out 0s infinite alternate none running hai1; background-image: url(&quot;/img/partOfSpeech/冠詞.png&quot;); background-repeat: no-repeat; opacity: 1;"><p>the</p></div>\
+                    <div class="border-div" draggable="true" style="animation: 2s ease-in-out 0s infinite alternate none running hai3; background-image: url(&quot;/img/partOfSpeech/名詞2.png&quot;); background-repeat: no-repeat; opacity: 1;"><p>game</p></div>';
             }
         });
 
@@ -151,21 +148,7 @@ export class flow {
     _setupWebsocket() {
         // 上がれるようにする
         document.getElementById('finishButton').addEventListener('click', (e) => {
-            let score = this.togoout.tumo();
-            if (score != 0) {
-                this.finishbutton.style.display = 'none';
-                let tumoData = {
-                    type: 'tumo',
-                    payload: {
-                        roomId: this.playermanager.roomId,
-                        grammerData: this.uimanager.wordUp.innerHTML,
-                        playerNumber: this.playermanager.getPlayerNumber(),
-                        score: score,
-                    },
-                };
-
-                this.wss.send(tumoData);
-            }
+            this.togoout.tumo();
         });
 
         document.addEventListener('keydown', (e) => {
@@ -215,23 +198,24 @@ export class flow {
                     const parts = item.split(':');
                     if (parts.length === 2) {
                         const point = parseInt(parts[1], 10);
-                        console.log(`得点内訳: ${parts}`);
+                        console.log(`得点内訳: ${point}`);
                         if (!isNaN(point)) {
-                            tokuten += point;
+                            tokuten += Number(point);
+                            console.log(`現在の合計点数: ${tokuten}`);
                         }
                     }
                 });
             });
-            tokuten *= this.playermanager.getPlayerCount() - 1;
             const tumoPlayerName = Object.values(this.playermanager.playerMembers)[data.tumoPlayerNumber].name;
             this.uimanager.showRoundResult(data.grammerData, tumoPlayerName, data.score, tokuten);
-            this.uimanager.changePoint(this.playermanager.phaseToPosition(data.tumoPlayerNumber), tokuten);
-
-            for (let i = 0; i < Object.keys(this.playermanager.playerMembers).length; i++) {
-                if (data.tumoPlayerNumber == i) continue;
-
-                this.uimanager.changePoint(this.playermanager.phaseToPosition(i), -tokuten);
+            if (this.playermanager.getPlayerNumber() - 1 == 0) {
+                for (let i = 0; i < Object.keys(this.playermanager.playerMembers).length; i++) {
+                    if (data.tumoPlayerNumber == i) continue;
+                    this.uimanager.changePoint(this.playermanager.phaseToPosition(i), -tokuten);
+                }
             }
+            tokuten *= this.playermanager.getPlayerCount() - 1;
+            this.uimanager.changePoint(this.playermanager.phaseToPosition(data.tumoPlayerNumber), tokuten);
         });
 
         this.wss.onMessage('startGame', (data) => {

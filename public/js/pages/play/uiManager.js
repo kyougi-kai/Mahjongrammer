@@ -37,10 +37,10 @@ export class uiManager {
         this.topleft = document.getElementById('oyaban');
         this.tops = ['4%', '81%', '81%', '4%'];
         this.lefts = ['78%', '78%', '2%', '2%'];
-        this.redtops = ['5%','29%','5%','29%'];
-        this.redlefts = ['28%','77%','82%','5%'];
-        this.redwidths = ['100px','37px','100px','37px'];
-        this.redheights= ['37px','100px','37px','100px'];
+        this.redtops = ['5%', '29%', '5%', '29%'];
+        this.redlefts = ['28%', '77%', '82%', '5%'];
+        this.redwidths = ['100px', '37px', '100px', '37px'];
+        this.redheights = ['37px', '100px', '37px', '100px'];
 
         this.wordUp = document.getElementById('wordUp');
         this.wordDown = document.getElementById('wordDown');
@@ -190,8 +190,9 @@ export class uiManager {
             this.elements.tagText.style.display = 'block';
             this.elements.tagText.style.transition = '0.4s';
             this.elements.tagText.style.opacity = '1';
-            this.elements.tagText.style.left = element.getBoundingClientRect().x + Number(element.getBoundingClientRect().width) / 2 + 'px';
-            this.elements.tagText.style.bottom = Number(window.innerHeight) - element.getBoundingClientRect().y + 20 + 'px';
+            this.elements.tagText.style.left = element.getBoundingClientRect().x + element.getBoundingClientRect().width  / 2 + 'px'; //element.getBoundingClientRectがNumberで囲われていたがもともとNumber型っぽかったのではずした
+            this.elements.tagText.style.bottom = Number(window.innerHeight) - element.getBoundingClientRect().y + Number(window.innerHeight)/ 200 +'px';//20pxという定数で位置変更していたため、画面の大きさから参照するようにした。
+
         });
     }
 
@@ -238,16 +239,12 @@ export class uiManager {
 
     async showRoundResult(grammerData, playerName, score, tokuten) {
         AM.bgmStop();
-        let translateSentence = '';
-        for (let i = 0; i < score[1].length; i++) {
-            console.log(score[1][i]);
-            translateSentence += (await functions.translateEnglish(score[1][i].join(' '))) + ' ';
-        }
-        console.log(score);
+        let translateSentence = await functions.translateEnglish(score[1]);
         let utiwake = score[0]
             .toString()
             .match(/[^:]+:\d+/g)
             .join('<br>');
+        console.log('utiwake:', utiwake);
         const items = utiwake.split(' ');
 
         // 各項目をHTMLに変換
@@ -272,6 +269,7 @@ export class uiManager {
         this.resultPage.getElementsByClassName('score-text')[0].innerHTML = translateSentence + '<br>' + '<br>';
         this.resultPage.getElementsByClassName('score-breakdown')[0].innerHTML = tokutenutiwake;
         this.resultPage.getElementsByClassName('allten')[0].innerHTML = `合計${tokuten}`;
+        console.log('grammerData:', grammerData);
         document.getElementById('resultGrammerDiv').innerHTML = grammerData;
         if (playerName == Object.values(this.playermanager.playerMembers)[this.playermanager.getPlayerNumber()].name) {
             document.getElementById('winner').style.display = 'block';
@@ -393,10 +391,10 @@ export class uiManager {
                 if (i == gradeList[j]) {
                     let temporaryDiv = document.createElement('div');
                     temporaryDiv.classList.add('result-grade');
-                    temporaryDiv.innerHTML = `<h2>${j+1}位</h2><h2>${
+                    temporaryDiv.innerHTML = `<h2>${j + 1}位</h2><h2>${
                         Object.values(this.playermanager.playerMembers)[j].name
                     }</h2><p class="result-score">${this.scoreBord[this.playermanager.phaseToPosition(j)].innerHTML}</p>`;
-                    console.log(i,j);
+                    console.log(i, j);
                     this.playResultPage.insertBefore(temporaryDiv, document.getElementById('playResultFinish'));
                 }
             }
