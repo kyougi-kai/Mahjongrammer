@@ -360,9 +360,9 @@ export class flow {
             if (count == 7) {
                 if (this.playermanager.isParent()) {
                     this.haimanager.drawHai();
+                    this.uimanager.myTurn();
                 }
                 console.log(this.haimanager.hais);
-                this.uimanager.myTurn();
                 clearInterval(nan);
             }
         }, 200);

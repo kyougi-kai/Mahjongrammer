@@ -126,6 +126,7 @@ export class toGoOut {
         const sendData = {
             type: 'grammerCheck',
             payload: {
+                userId: this.playermanager.userId,
                 roomId: this.playermanager.roomId,
                 sentence: sentence,
                 grammerData: this.uimanager.wordUp.innerHTML,

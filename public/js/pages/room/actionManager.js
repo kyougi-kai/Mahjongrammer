@@ -92,6 +92,8 @@ export class actionManager {
     }
 
     changeIsReady(targetId, isReady) {
+        if(!this.playermanager.isParent())return;
+
         const idx = Object.keys(this.playermanager.playerMembers).indexOf(targetId);
         const targetElement = document.getElementById('playerTags').children[idx + 1];
         const temporary = isReady ? 'ready' : 'not-ready';

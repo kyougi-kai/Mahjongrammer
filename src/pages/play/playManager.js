@@ -89,6 +89,7 @@ export class playManager {
         // 文法チェック
         this.wss.onMessage('grammerCheck', async (ws, data) => {
             const roomId = data.roomId;
+            const userId = data.userId;
             let result = { success: false, errors: {} };
             try {
                 result = await checkGrammer(data.sentence);
@@ -104,7 +105,7 @@ export class playManager {
                         result: result,
                     },
                 };
-                this.sendToClients(sendData, roomId);
+                this.playclientsmanager.playClients[roomId][userId].send(JSON.stringify(sendData));
             } else {
                 let resultData = [[], []];
                 const pointDetails = Object.values(result.points)
