@@ -92,8 +92,6 @@ export class actionManager {
     }
 
     changeIsReady(targetId, isReady) {
-        if(!this.playermanager.isParent())return;
-
         const idx = Object.keys(this.playermanager.playerMembers).indexOf(targetId);
         const targetElement = document.getElementById('playerTags').children[idx + 1];
         const temporary = isReady ? 'ready' : 'not-ready';
@@ -110,6 +108,7 @@ export class actionManager {
 
         console.log(readyCnt);
 
+        if(!this.playermanager.isParent())return;
         if (readyCnt == this.playermanager.getPlayerCount()) {
             this.startBtn.disabled = false;
             this.startBtn.style.opacity = '1';
