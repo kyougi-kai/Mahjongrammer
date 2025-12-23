@@ -190,9 +190,9 @@ export class uiManager {
             this.elements.tagText.style.display = 'block';
             this.elements.tagText.style.transition = '0.4s';
             this.elements.tagText.style.opacity = '1';
-            this.elements.tagText.style.left = element.getBoundingClientRect().x + element.getBoundingClientRect().width  / 2 + 'px'; //element.getBoundingClientRectがNumberで囲われていたがもともとNumber型っぽかったのではずした
-            this.elements.tagText.style.bottom = Number(window.innerHeight) - element.getBoundingClientRect().y + Number(window.innerHeight)/ 200 +'px';//20pxという定数で位置変更していたため、画面の大きさから参照するようにした。
-
+            this.elements.tagText.style.left = element.getBoundingClientRect().x + element.getBoundingClientRect().width / 2 + 'px'; //element.getBoundingClientRectがNumberで囲われていたがもともとNumber型っぽかったのではずした
+            this.elements.tagText.style.bottom =
+                Number(window.innerHeight) - element.getBoundingClientRect().y + Number(window.innerHeight) / 200 + 'px'; //20pxという定数で位置変更していたため、画面の大きさから参照するようにした。
         });
     }
 
@@ -276,6 +276,10 @@ export class uiManager {
             this.winner.classList.remove('animation');
             this.winner.classList.add('animation');
         }
+
+        requestAnimationFrame(() => {
+            this.disableDragAllChildren(document.getElementById('resultGrammerDiv'));
+        });
     }
 
     showTieResult(grammerDatas) {

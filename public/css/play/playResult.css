@@ -1,18 +1,19 @@
 .result-page {
     /*opacity: 0;*/
-    background-image: url("../../img/result/背景.png");
+    background-image: url('../../img/result/背景.png');
     background-size: cover;
     background-color: rgba(0, 0, 0, 0.7);
     position: absolute;
     top: 50%;
     left: 50%;
+    width: 1150px;
     z-index: 5;
     display: flex;
     transform: translateX(-50%) translateY(-50%);
     flex-direction: column;
     align-items: center;
 }
-.winner{
+.winner {
     position: absolute;
     top: 10%;
     left: 40%;
@@ -23,24 +24,25 @@
     align-items: center;
     color: yellow;
     font-family: Arial;
-    font-size:60px;
+    font-size: 60px;
 }
 @keyframes slideIn {
-  0% {
-    transform: translateX(180px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-  }
-  40%,100% {
-    opacity: 1;
-  }
+    0% {
+        transform: translateX(180px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+    }
+    40%,
+    100% {
+        opacity: 1;
+    }
 }
-.animation{
+.animation {
     animation: slideIn 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
-.result-round{
+.result-round {
     color: white;
     font-size: 30px;
     margin-left: 30px;
@@ -48,7 +50,7 @@
     position: absolute;
     left: 0;
 }
-.result-name{
+.result-name {
     color: white;
     font-size: 30px;
     display: inline;
@@ -57,7 +59,7 @@
 
 .playresult-page {
     /*opacity: 0;*/
-    background-image: url("../../img/result/背景修正版.png");
+    background-image: url('../../img/result/背景修正版.png');
     background-size: cover;
     background-color: rgba(0, 0, 0, 0.7);
     position: absolute;
@@ -95,7 +97,7 @@
 .result-grammer-div {
     margin-top: 3em;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     color: white;
     align-items: center;
 }
@@ -110,8 +112,6 @@
     cursor: pointer;
 }
 
-
-
-.allten{
+.allten {
     padding: 1em 0;
 }
