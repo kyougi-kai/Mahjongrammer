@@ -168,6 +168,11 @@ function exchangeToPoint(GCR, targetArray) {
     let keyName;
     let totalWordsCount = 0;
 
+    keyName = 'リーチ';
+    GCR.points[keyName] = { ...pointTemplete };
+    GCR.points[keyName].pointName = keyName;
+    GCR.points[keyName].pointValue = 'リーチ：×2';
+
     switch (targetArray.sentence) {
         case '1': //第一文型SV
             totalWordsCount += GCR.allOfSTags.wordsCount;
@@ -196,7 +201,7 @@ function exchangeToPoint(GCR, targetArray) {
             keyName = '第三文型SVO';
             GCR.points[keyName] = { ...pointTemplete };
             GCR.points[keyName].pointName = keyName;
-            GCR.points[keyName].pointValue += 300;
+            GCR.points[keyName].pointValue += 600;
             break;
         case '4': //第四文型SVOO
             totalWordsCount += GCR.allOfSTags.wordsCount;
@@ -226,7 +231,7 @@ function exchangeToPoint(GCR, targetArray) {
     keyName = '牌の個数';
     GCR.points[keyName] = { ...pointTemplete };
     GCR.points[keyName].pointName = keyName;
-    GCR.points[keyName].pointValue += totalWordsCount * 100;
+    GCR.points[keyName].pointValue += totalWordsCount * 200;
     GCR = pointManager(GCR);
     return GCR;
 }
@@ -1244,7 +1249,7 @@ function pointManager(GCR) {
         keyName = '助動詞';
         GCR.points[keyName] = { ...pointTemplete };
         GCR.points[keyName].pointName = keyName;
-        GCR.points[keyName].pointValue += 300;
+        GCR.points[keyName].pointValue += 600;
     }
     if (GCR['allOfVTags'].houjodousi.includes('未来')) {
         //未来型なら
