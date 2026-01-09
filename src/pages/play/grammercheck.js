@@ -54,12 +54,14 @@ export async function checkGrammer(targetSentence, flg) {
     //ここにtargetSentenceとtargetArrayの順番違いを検出するコードを書く
 
     let imitateSentence = '';
+    let textCnt = 0;
 
     for (const key in targetArray) {
         console.log('key', key);
         if (key != 'sentence') {
             for (const text in targetArray[key]) {
                 imitateSentence += targetArray[key][text] + ' ';
+                textCnt++;
                 console.log('text', text);
             }
         }
@@ -70,6 +72,13 @@ export async function checkGrammer(targetSentence, flg) {
         console.log('シーケンスNG');
         GCR.success = false;
         GCR = errorManager(GCR, '', 'SequenceMiss');
+        return GCR;
+    }
+
+    if (textCnt <= 5) {
+        console.log('単語数不足');
+        GCR.success = false;
+        GCR = errorManager(GCR, '', 'TooFewWords');
         return GCR;
     }
 
@@ -190,13 +199,6 @@ function exchangeToPoint(GCR, targetArray) {
     GCR.points = {};
     let keyName;
     let totalWordsCount = 0;
-
-    if (GCR.isReach) {
-        keyName = 'リーチ';
-        GCR.points[keyName] = { ...pointTemplete };
-        GCR.points[keyName].pointName = keyName;
-        GCR.points[keyName].pointValue = 'リーチ：×2';
-    }
 
     switch (targetArray.sentence) {
         case '1': //第一文型SV
@@ -1256,6 +1258,15 @@ function errorManager(GCR, typeText, errorID) {
             GCR.errors[keyName].type = '文法ミス！';
             GCR.errors[keyName].reason = '文の順番が違います';
             GCR.errors[keyName].suggestion = '並び替えてみましょう';
+            break;
+        case 'TooFewWords':
+            keyName = 'TooFewWords';
+            GCR.errors[keyName] = { ...errorTemplete };
+            GCR.errors[keyName].part = 'S';
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '文法ミス！';
+            GCR.errors[keyName].reason = '単語数が５語以下です';
+            GCR.errors[keyName].suggestion = 'もう少し単語を足してみましょう';
             break;
     }
 
