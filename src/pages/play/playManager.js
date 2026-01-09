@@ -92,6 +92,7 @@ export class playManager {
             const userId = data.userId;
             let result = { success: false, errors: {} };
             try {
+                console.log('reachFlag:', data.reachFlag);
                 result = await checkGrammer(data.sentence, data.reachFlag);
             } catch (e) {
                 result.errors = '文法がめちゃくちゃ';
