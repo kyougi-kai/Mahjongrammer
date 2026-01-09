@@ -3,6 +3,7 @@ export class toGoOut {
         this.uimanager = uimanager;
         this.wss = connectionmanager;
         this.playermanager = playermanager;
+        this.flow = null;
 
         this.sentenceList = {
             sv: 1,
@@ -131,6 +132,7 @@ export class toGoOut {
                 sentence: sentence,
                 grammerData: this.uimanager.wordUp.innerHTML,
                 playerNumber: this.playermanager.getPlayerNumber(),
+                reachFlag: this.flow.reachHinsi != null ? true : false,
             },
         };
         this.wss.send(sendData);
