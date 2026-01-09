@@ -23,7 +23,8 @@ function analyzeSentence(sentence) {
     });
 }
 
-export async function checkGrammer(targetSentence) {
+export async function checkGrammer(targetSentence, flg) {
+    console.log('flg', flg);
     console.log('checkGrammer開始', targetSentence);
     const result = await (async () => {
         const result = await analyzeSentence(targetSentence);
@@ -32,7 +33,6 @@ export async function checkGrammer(targetSentence) {
     })();
     const targetArray = result;
     targetArray.sentence = targetArray.sentence.toString();
-
     /**
      * @typedef {Object} gcr
      * @property {boolean} success -成功-
@@ -49,7 +49,29 @@ export async function checkGrammer(targetSentence) {
         temporaryWordsNum: 0,
         message: '',
         errors: {},
+        isReach: flg,
     };
+    //ここにtargetSentenceとtargetArrayの順番違いを検出するコードを書く
+
+    let imitateSentence = '';
+
+    for (const key in targetArray) {
+        console.log('key', key);
+        if (key != 'sentence') {
+            for (const text in targetArray[key]) {
+                imitateSentence += targetArray[key][text] + ' ';
+                console.log('text', text);
+            }
+        }
+    }
+
+    console.log('imitateSentence', imitateSentence);
+    if (imitateSentence.trim() !== targetSentence.trim()) {
+        console.log('シーケンスNG');
+        GCR.success = false;
+        GCR = errorManager(GCR, '', 'SequenceMiss');
+        return GCR;
+    }
 
     switch (targetArray.sentence) {
         case '1': //第一文型SV
@@ -160,6 +182,7 @@ export async function checkGrammer(targetSentence) {
     if (GCR.success == true) {
         GCR = exchangeToPoint(GCR, targetArray);
     }
+    console.log('最終GCR', GCR);
     return GCR;
 }
 
@@ -168,10 +191,12 @@ function exchangeToPoint(GCR, targetArray) {
     let keyName;
     let totalWordsCount = 0;
 
-    keyName = 'リーチ';
-    GCR.points[keyName] = { ...pointTemplete };
-    GCR.points[keyName].pointName = keyName;
-    GCR.points[keyName].pointValue = 'リーチ：×2';
+    if (GCR.isReach) {
+        keyName = 'リーチ';
+        GCR.points[keyName] = { ...pointTemplete };
+        GCR.points[keyName].pointName = keyName;
+        GCR.points[keyName].pointValue = 'リーチ：×2';
+    }
 
     switch (targetArray.sentence) {
         case '1': //第一文型SV
@@ -201,7 +226,7 @@ function exchangeToPoint(GCR, targetArray) {
             keyName = '第三文型SVO';
             GCR.points[keyName] = { ...pointTemplete };
             GCR.points[keyName].pointName = keyName;
-            GCR.points[keyName].pointValue += 600;
+            GCR.points[keyName].pointValue += 300;
             break;
         case '4': //第四文型SVOO
             totalWordsCount += GCR.allOfSTags.wordsCount;
@@ -231,7 +256,7 @@ function exchangeToPoint(GCR, targetArray) {
     keyName = '牌の個数';
     GCR.points[keyName] = { ...pointTemplete };
     GCR.points[keyName].pointName = keyName;
-    GCR.points[keyName].pointValue += totalWordsCount * 200;
+    GCR.points[keyName].pointValue += totalWordsCount * 100;
     GCR = pointManager(GCR);
     return GCR;
 }
@@ -1223,6 +1248,15 @@ function errorManager(GCR, typeText, errorID) {
             GCR.errors[keyName].reason = '助動詞の作り方を間違えています';
             GCR.errors[keyName].suggestion = '助動詞の次に完了形のhaveや受け身、進行形のbe動詞を置きたいときは原型にしましょう';
             break;
+        case 'SequenceMiss':
+            keyName = 'SequenceMiss';
+            GCR.errors[keyName] = { ...errorTemplete };
+            GCR.errors[keyName].part = 'V';
+            GCR.errors[keyName].index = GCR.currentIndex;
+            GCR.errors[keyName].type = '文法ミス！';
+            GCR.errors[keyName].reason = '文の順番が違います';
+            GCR.errors[keyName].suggestion = '並び替えてみましょう';
+            break;
     }
 
     return GCR;
@@ -1249,7 +1283,7 @@ function pointManager(GCR) {
         keyName = '助動詞';
         GCR.points[keyName] = { ...pointTemplete };
         GCR.points[keyName].pointName = keyName;
-        GCR.points[keyName].pointValue += 600;
+        GCR.points[keyName].pointValue += 300;
     }
     if (GCR['allOfVTags'].houjodousi.includes('未来')) {
         //未来型なら
@@ -1303,6 +1337,12 @@ function pointManager(GCR) {
         GCR.points[keyName] = { ...pointTemplete };
         GCR.points[keyName].pointName = keyName;
         GCR.points[keyName].pointValue += 400;
+    }
+    if (GCR.isReach) {
+        //リーチならば得点２倍
+        for (const pointKey in GCR.points) {
+            GCR.points[pointKey].pointValue *= 2;
+        }
     }
     return GCR;
 }
